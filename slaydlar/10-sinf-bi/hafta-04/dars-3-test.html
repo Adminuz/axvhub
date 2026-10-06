@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>12-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>12-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">BI &amp; ML</span><span class="badge">4-hafta · 12-dars</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Subquery nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Boshqa so'rov ichiga qavs bilan yozilgan SELECT</button>
+      <button class="opt" type="button">Jadvalni o'chiruvchi buyruq</button>
+      <button class="opt" type="button">Yangi ma'lumotlar bazasi</button>
+      <button class="opt" type="button">Ustun taxallusi</button>
+    </div>
+    <div class="explain">Subquery (ichki so'rov) alohida SELECT bo'lib, natijasi tashqi so'rovda ishlatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">CTE qaysi kalit so'z bilan boshlanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">CASE</button>
+      <button class="opt" type="button">GROUP</button>
+      <button class="opt" type="button" data-ok>WITH</button>
+      <button class="opt" type="button">UNION</button>
+    </div>
+    <div class="explain"><code>WITH nom AS (...)</code> vaqtinchalik nomlangan natijani e'lon qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>CASE WHEN</code> ifodasi nima bilan tugaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">STOP</button>
+      <button class="opt" type="button" data-ok>END</button>
+      <button class="opt" type="button">CLOSE</button>
+      <button class="opt" type="button">ELSE</button>
+    </div>
+    <div class="explain"><code>CASE ... END</code> juftligi: <code>ELSE</code> ixtiyoriy, lekin <code>END</code> majburiy.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Skalyar subquery nechta qiymat qaytarishi kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ikkita</button>
+      <button class="opt" type="button">Istalgancha</button>
+      <button class="opt" type="button">Hech qancha</button>
+      <button class="opt" type="button" data-ok>Aynan bitta</button>
+    </div>
+    <div class="explain">Skalyar subquery <code>&gt;</code> yoki <code>=</code> bilan ishlatilgani uchun bitta qiymat berishi shart.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>FROM (SELECT ...) AS t</code> dagi <code>AS t</code> nima uchun kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat chiroy uchun</button>
+      <button class="opt" type="button">Ustunlarni o'chirish uchun</button>
+      <button class="opt" type="button">Saralash uchun</button>
+      <button class="opt" type="button" data-ok>FROM dagi subquery ga taxallus berish majburiy</button>
+    </div>
+    <div class="explain">FROM dagi ichki so'rov vaqtinchalik jadval, uni nomlash kerak (<code>AS t</code>).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>SELECT CASE WHEN 7 &gt; 10 THEN 'A' WHEN 7 &gt; 5 THEN 'B' ELSE 'C' END</code> nima chiqaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">A</button>
+      <button class="opt" type="button" data-ok>B</button>
+      <button class="opt" type="button">C</button>
+      <button class="opt" type="button">NULL</button>
+    </div>
+    <div class="explain">Shartlar yuqoridan pastga tekshiriladi: 7 &gt; 10 yolg'on, 7 &gt; 5 to'g'ri, demak B.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Ikkinchi CTE ni birinchisidan keyin qanday yozamiz?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ikkinchi WITH bilan</button>
+      <button class="opt" type="button">Nuqtali vergul bilan</button>
+      <button class="opt" type="button" data-ok>Vergul bilan: WITH a AS (...), b AS (...)</button>
+      <button class="opt" type="button">Qavs ichida</button>
+    </div>
+    <div class="explain">Bir <code>WITH</code> ichida CTE lar vergul bilan ajratiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>SUM(CASE WHEN yil = 2022 THEN oquvchilar_soni END)</code> nimaga xizmat qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>2022-yil qiymatlarini alohida ustunga ajratish (pivot)</button>
+      <button class="opt" type="button">Yilni o'chirish</button>
+      <button class="opt" type="button">Barcha yillarni qo'shish</button>
+      <button class="opt" type="button">Jadvalni saralash</button>
+    </div>
+    <div class="explain">Shartga mos kelmagan satrlar NULL bo'lib, SUM ularni o'tkazib yuboradi; shunday qilib bitta yil ustuni hosil bo'ladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>jami - LAG(jami) OVER (ORDER BY yil)</code> da birinchi yil uchun nima chiqadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">0</button>
+      <button class="opt" type="button" data-ok>NULL</button>
+      <button class="opt" type="button">Jami qiymatning o'zi</button>
+      <button class="opt" type="button">Xato</button>
+    </div>
+    <div class="explain">Birinchi yilning oldingisi yo'q, shuning uchun LAG NULL qaytaradi, ayirma ham NULL bo'ladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Ichki ro'yxatda NULL bo'lishi mumkin va "yo'qlarni" topish kerak. Qaysi yo'l xavfsizroq?</p>
+    <div class="opts">
+      <button class="opt" type="button">NOT IN (subquery)</button>
+      <button class="opt" type="button">= NULL</button>
+      <button class="opt" type="button">CASE WHEN bilan sanash</button>
+      <button class="opt" type="button" data-ok>LEFT JOIN ... IS NULL (anti-join)</button>
+    </div>
+    <div class="explain"><code>NOT IN</code> ichki ro'yxatdagi NULL tufayli kutilmagan natija berishi mumkin, anti-join esa xavfsiz.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards two">
+    <div class="card"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Test yakunlandi</h3><p>Barcha savollar tugadi. To'g'ri javoblaringizni sanang.</p></div>
+    <div class="card accent"><div class="icon"><i data-ic="book-open" data-anim="float"></i></div><h3>Nimani takrorlash kerak?</h3><p>Subquery turlari, CTE (WITH), CASE WHEN tartibi, pivot va LAG.</p></div>
+  </div>
+  <p class="small mt">To'g'ri javoblar soni: 9-10 a'lo, 7-8 yaxshi, 5-6 takrorlang.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

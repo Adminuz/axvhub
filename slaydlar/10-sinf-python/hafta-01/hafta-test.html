@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>1-hafta testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>1-hafta testi</h1>
+  <p class="muted">20 ta savol &middot; taxminan 18 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">1-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/20</h2>
+  <div class="quiz">
+    <p class="q">Sahifa to'liq qayta yuklanmasdan o'zgarishi va server faqat JSON uzatishi qaysi usulga xos?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>CSR/USR</button>
+      <button class="opt" type="button">SSR</button>
+      <button class="opt" type="button">Ikkalasiga ham</button>
+      <button class="opt" type="button">Hech qaysisiga</button>
+    </div>
+    <div class="explain">CSR/USR da server faqat ma'lumot beradi, DOM brauzerda quriladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/20</h2>
+  <div class="quiz">
+    <p class="q">Next.js, Nuxt.js yoki Prerender nima uchun ishlatiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ma'lumotlar bazasi uchun</button>
+      <button class="opt" type="button" data-ok>CSR ilovalarida SEO muammosini hal qilish uchun</button>
+      <button class="opt" type="button">Virtual muhit uchun</button>
+      <button class="opt" type="button">Serializer yozish uchun</button>
+    </div>
+    <div class="explain">CSR da SEO murakkab, shu vositalar qo'shimcha chora bo'lib xizmat qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/20</h2>
+  <div class="quiz">
+    <p class="q">«Bitta backend — ko'p frontend» g'oyasi nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Bitta server faqat bitta brauzerga xizmat qiladi</button>
+      <button class="opt" type="button">Backendni har platforma uchun qayta yozish kerak</button>
+      <button class="opt" type="button" data-ok>Bitta REST API dan Web, iOS, Android va Telegram bot foydalana oladi</button>
+      <button class="opt" type="button">Frontend backend ichida yoziladi</button>
+    </div>
+    <div class="explain">JSON qaytaruvchi API platformaga bog'liq emas.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/20</h2>
+  <div class="quiz">
+    <p class="q">Mijoz va serverni mustaqil rivojlantirish imkonini beradigan REST tamoyili qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Stateless</button>
+      <button class="opt" type="button">Uniform Interface</button>
+      <button class="opt" type="button">Caching</button>
+      <button class="opt" type="button" data-ok>Client-Server ajratilganligi</button>
+    </div>
+    <div class="explain">Interfeys va backend ajratilgan, shuning uchun alohida rivojlanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/20</h2>
+  <div class="quiz">
+    <p class="q">DRF ning Web Browsable API imkoniyati nima beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>API ni brauzer orqali to'g'ridan-to'g'ri ko'rish va sinash</button>
+      <button class="opt" type="button">Saytni tezlashtiradi</button>
+      <button class="opt" type="button">Parollarni shifrlaydi</button>
+      <button class="opt" type="button">HTML shablon yaratadi</button>
+    </div>
+    <div class="explain">Brauzerda <code>/api/v1/posts/</code> ni ochib, so'rovlarni sinab ko'rish mumkin.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/20</h2>
+  <div class="quiz">
+    <p class="q">Trello kabi drag-and-drop doskasi uchun qaysi usul mos?</p>
+    <div class="opts">
+      <button class="opt" type="button">SSR, chunki SEO muhim</button>
+      <button class="opt" type="button" data-ok>USR (SPA), chunki yuqori interaktivlik kerak</button>
+      <button class="opt" type="button">SSR, chunki server yuki oz</button>
+      <button class="opt" type="button">Statik HTML</button>
+    </div>
+    <div class="explain">Kartani ko'chirishda sahifa qayta yuklanmasligi kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/20</h2>
+  <div class="quiz">
+    <p class="q">Ushbu loyiha papka strukturasida <code>apps/</code> ichida qaysi ilova izohlarni boshqaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>common</code></button>
+      <button class="opt" type="button"><code>news</code></button>
+      <button class="opt" type="button" data-ok><code>comments</code></button>
+      <button class="opt" type="button"><code>accounts</code></button>
+    </div>
+    <div class="explain"><code>comments</code> izohlar tizimi, <code>news</code> yangilik, kategoriya va teglar uchun.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/20</h2>
+  <div class="quiz">
+    <p class="q"><code>.gitignore</code> ga qaysi narsalar kiritilishi kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>manage.py</code> va <code>models.py</code></button>
+      <button class="opt" type="button"><code>requirements.txt</code> va <code>urls.py</code></button>
+      <button class="opt" type="button">Barcha .py fayllar</button>
+      <button class="opt" type="button" data-ok><code>venv</code>, <code>.env</code>, media</button>
+    </div>
+    <div class="explain">Muhit, maxfiy kalitlar va yuklangan fayllar omborga tushmasligi kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/20</h2>
+  <div class="quiz">
+    <p class="q"><code>.env.example</code> fayli nima uchun yaratiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Boshqa dasturchilarga qanday o'zgaruvchilar kerakligini ko'rsatuvchi shablon sifatida</button>
+      <button class="opt" type="button">Haqiqiy parollarni saqlash uchun</button>
+      <button class="opt" type="button">Django ni tezlashtirish uchun</button>
+      <button class="opt" type="button">Migratsiya uchun</button>
+    </div>
+    <div class="explain">Unda haqiqiy qiymatlar emas, namunaviy qiymatlar bo'ladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/20</h2>
+  <div class="quiz">
+    <p class="q"><code>os.getenv('DEBUG', 'False')</code> da ikkinchi argument nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ma'lumotlar bazasi nomi</button>
+      <button class="opt" type="button" data-ok>O'zgaruvchi topilmasa ishlatiladigan standart qiymat</button>
+      <button class="opt" type="button">Xato matni</button>
+      <button class="opt" type="button">Paket versiyasi</button>
+    </div>
+    <div class="explain"><code>.env</code> da DEBUG bo'lmasa, 'False' olinadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 11/20</h2>
+  <div class="quiz">
+    <p class="q">Post jadvalidagi <code>status</code> maydoni qaysi qiymatlarni qabul qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>open</code>, <code>closed</code></button>
+      <button class="opt" type="button"><code>new</code>, <code>old</code></button>
+      <button class="opt" type="button" data-ok><code>draft</code>, <code>published</code>, <code>archived</code></button>
+      <button class="opt" type="button"><code>guest</code>, <code>user</code>, <code>admin</code></button>
+    </div>
+    <div class="explain">Qoralama, e'lon qilingan va arxivlangan holatlar.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 12/20</h2>
+  <div class="quiz">
+    <p class="q">Nega <code>slug</code> maydonlari <code>unique=True</code> bo'lishi kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Tezroq saqlash uchun</button>
+      <button class="opt" type="button">Parolni himoya qilish uchun</button>
+      <button class="opt" type="button">Django talab qilgani uchun</button>
+      <button class="opt" type="button" data-ok>Har bir yozuvni URL orqali bir ma'noli topish uchun</button>
+    </div>
+    <div class="explain">Bir xil slug ikki yozuvni URL da ajrata olmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 13/20</h2>
+  <div class="quiz">
+    <p class="q">Post modeliga <code>['status', 'published_at']</code> indeksi nima uchun qo'yiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Qidiruv va filtrni tezlashtirish uchun</button>
+      <button class="opt" type="button">Maydonlarni yashirish uchun</button>
+      <button class="opt" type="button">Unikallikni tekshirish uchun</button>
+      <button class="opt" type="button">JSON hajmini kamaytirish uchun</button>
+    </div>
+    <div class="explain">Indeks bazada tez qidirish imkonini beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 14/20</h2>
+  <div class="quiz">
+    <p class="q">Category va Tag modelida <code>slug</code> kiritilmasa, <code>save()</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Xato beradi</button>
+      <button class="opt" type="button" data-ok><code>slugify(self.name)</code> orqali avtomatik to'ldiradi</button>
+      <button class="opt" type="button">Bo'sh qoldiradi</button>
+      <button class="opt" type="button">ID ni slug qiladi</button>
+    </div>
+    <div class="explain">Slug nomdan avtomatik yasaladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 15/20</h2>
+  <div class="quiz">
+    <p class="q"><code>PostListSerializer</code> da <code>category = CategorySerializer(read_only=True)</code> nimani anglatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Kategoriya yozishda talab qilinadi</button>
+      <button class="opt" type="button">Kategoriya o'chiriladi</button>
+      <button class="opt" type="button" data-ok>Kategoriya o'qishda to'liq obyekt ko'rinadi, lekin shu orqali yozib bo'lmaydi</button>
+      <button class="opt" type="button">Kategoriya yashiriladi</button>
+    </div>
+    <div class="explain">Nested serializer read_only bo'lib, yozish uchun ID <code>PostWriteSerializer</code> orqali beriladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 16/20</h2>
+  <div class="quiz">
+    <p class="q"><code>GET /posts/{slug}/</code> qaysi ViewSet amaliga (action) mos?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>list</code></button>
+      <button class="opt" type="button"><code>create</code></button>
+      <button class="opt" type="button"><code>destroy</code></button>
+      <button class="opt" type="button" data-ok><code>retrieve</code></button>
+    </div>
+    <div class="explain">Bitta resursni olish — retrieve. Ro'yxat — list.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 17/20</h2>
+  <div class="quiz">
+    <p class="q"><code>lookup_field = 'slug'</code> nimani o'zgartiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>URL da resurs ID o'rniga slug orqali topiladi</button>
+      <button class="opt" type="button">Maydon nomini</button>
+      <button class="opt" type="button">Javob formatini</button>
+      <button class="opt" type="button">Ruxsatlarni</button>
+    </div>
+    <div class="explain">Endi <code>/posts/my-news/</code> kabi manzil ishlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 18/20</h2>
+  <div class="quiz">
+    <p class="q"><code>apps.news</code> ilovasi ishlashi uchun u qaysi ro'yxatda yozilgan bo'lishi kerak va qaysi dars mavzusi bilan bog'liq?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>MIDDLEWARE</code>; 1-dars</button>
+      <button class="opt" type="button" data-ok><code>INSTALLED_APPS</code> (LOCAL_APPS); 2-dars sozlamalari</button>
+      <button class="opt" type="button"><code>ALLOWED_HOSTS</code>; 3-dars</button>
+      <button class="opt" type="button"><code>DATABASES</code>; 1-dars</button>
+    </div>
+    <div class="explain">2-darsda LOCAL_APPS ro'yxati INSTALLED_APPS ga qo'shiladi, 3-darsda esa shu ilova ichiga modellar yoziladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 19/20</h2>
+  <div class="quiz">
+    <p class="q">1-darsdagi REST tamoyillaridan qaysi biri 3-darsdagi <code>DefaultRouter</code> natijasi bilan bevosita bog'liq?</p>
+    <div class="opts">
+      <button class="opt" type="button">Stateless: router sessiyani saqlaydi</button>
+      <button class="opt" type="button">Client-Server: router HTML qaytaradi</button>
+      <button class="opt" type="button" data-ok>Uniform Interface: standart URL va HTTP metodlari</button>
+      <button class="opt" type="button">Hech biri</button>
+    </div>
+    <div class="explain">Router resurslarni standart URL va GET/POST/PUT/PATCH/DELETE orqali ochadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 20/20</h2>
+  <div class="quiz">
+    <p class="q">Quyidagilardan qaysi tartib to'g'ri: loyiha yaratish va ishga tushirishda dastlab nima, so'ng nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Serializer, venv, migrate</button>
+      <button class="opt" type="button">Router, venv, model</button>
+      <button class="opt" type="button">migrate, venv, router</button>
+      <button class="opt" type="button" data-ok>venv va paketlar, modellar, makemigrations/migrate, ViewSet va router</button>
+    </div>
+    <div class="explain">Muhit va sozlamalar (2-dars), keyin model, migratsiya, serializer, view, router (3-dars).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>11 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: SSR/CSR va REST (1-dars), loyiha sozlamalari va ERD (2-dars), model, serializer, ViewSet va router (3-dars).</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>6-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>6-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">2-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Code Review nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Kod <code>main</code> ga qo'shilishidan oldin boshqa muhandis tomonidan o'qib tahlil qilinishi</button>
+      <button class="opt" type="button">Kodni avtomatik yozish</button>
+      <button class="opt" type="button">Faqat testlarni ishga tushirish</button>
+      <button class="opt" type="button">Serverni qayta ishga tushirish</button>
+    </div>
+    <div class="explain">Bu xatolarni erta topish, xavfsizlik, bilim almashish va kod tozaligi uchun kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Code Review etikasining asosiy qoidasi qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Eng qattiq tanqid qilish</button>
+      <button class="opt" type="button" data-ok>Shaxsni emas, kodni tanqid qilish</button>
+      <button class="opt" type="button">Faqat xatolarni topish</button>
+      <button class="opt" type="button">Hech qachon maqtamaslik</button>
+    </div>
+    <div class="explain">Yaxshi yechimlarni ham maqtash kerak: «Ajoyib yechim».</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Blocker qaysi holatga tegishli?</p>
+    <div class="opts">
+      <button class="opt" type="button">Bo'sh qator</button>
+      <button class="opt" type="button">O'zgaruvchi nomi bo'yicha shaxsiy ta'b</button>
+      <button class="opt" type="button" data-ok>Kodda ochiq qolgan token</button>
+      <button class="opt" type="button">Ortiqcha ikki probel</button>
+    </div>
+    <div class="explain">Xavfsizlik zaifligi, tizim qulashi, noto'g'ri biznes mantiq va testlar yo'qligi — Blocker.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Nitpick sharhi qanday yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>Request changes</code> bilan</button>
+      <button class="opt" type="button">Merge'ni taqiqlaydi</button>
+      <button class="opt" type="button">Hech qachon yozilmaydi</button>
+      <button class="opt" type="button" data-ok>Boshiga <code>nit:</code> yoki <code>ixtiyoriy:</code> qo'yiladi va PR'ni to'xtatmaydi</button>
+    </div>
+    <div class="explain">Nitpick muallif ixtiyorida qoladi, mayda uslub masalalari uchun.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Review yakunidagi 3 qaror qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Comment, Approve, Request changes</button>
+      <button class="opt" type="button">Merge, Squash, Rebase</button>
+      <button class="opt" type="button">Add, Commit, Push</button>
+      <button class="opt" type="button">Fix, Feat, Docs</button>
+    </div>
+    <div class="explain">Comment bloklamaydi, Approve mergega ruxsat, Request changes tuzatishni talab qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">GitHub'dagi «Commit suggestion» nima beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Reponi o'chiradi</button>
+      <button class="opt" type="button" data-ok>Muallif taklif kodini bitta tugma bilan o'z branchiga commit qiladi</button>
+      <button class="opt" type="button">Issue yaratadi</button>
+      <button class="opt" type="button">PR'ni yopadi</button>
+    </div>
+    <div class="explain">Reviewer <code>suggestion</code> bloki yozadi, muallif lokal kodlamasdan qabul qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Branch Protection <code>Require a pull request before merging</code> yoqilsa nima bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">PR yopiladi</button>
+      <button class="opt" type="button">Branch o'chadi</button>
+      <button class="opt" type="button" data-ok><code>main</code> ga to'g'ridan-to'g'ri <code>git push</code> bloklanadi</button>
+      <button class="opt" type="button">Commit xabari o'zgaradi</button>
+    </div>
+    <div class="explain">Terminalda push qilinsa GH006: Protected branch update failed xatosi chiqadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Require status checks to pass nima talab qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Reviewer ismini yozishni</button>
+      <button class="opt" type="button">Branch nomini o'zgartirishni</button>
+      <button class="opt" type="button">Commitlarni o'chirishni</button>
+      <button class="opt" type="button" data-ok>Avtomatik testlar (CI) o'tmaguncha merge qilinmasligini</button>
+    </div>
+    <div class="explain">Bu avtomatik sifat darvozasi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Hamkasbingiz kodida SQL so'rovi satr qo'shish bilan tuzilgan. Qanday sharh professional?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Zaiflikni tushuntirib, parametrlangan so'rovni <code>suggestion</code> bilan taklif qilish</button>
+      <button class="opt" type="button">«Sen yomon yozibsan»</button>
+      <button class="opt" type="button">Hech narsa yozmasdan approve qilish</button>
+      <button class="opt" type="button">Kodni o'zingiz yashirincha o'zgartirish</button>
+    </div>
+    <div class="explain">Konstruktiv sharh sabab va aniq yechim beradi, shaxsga emas, kodga qaratiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Login funksiyasi bo'sh parolda 500 xato bilan qulaydi, bundan tashqari argument nomi <code>x</code>. Review'da qanday tasnif qilinadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ikkalasi ham Nitpick</button>
+      <button class="opt" type="button" data-ok>Qulash — Blocker (Request changes); nom — Nitpick</button>
+      <button class="opt" type="button">Ikkalasi ham Blocker</button>
+      <button class="opt" type="button">Qulash — Nitpick; nom — Blocker</button>
+    </div>
+    <div class="explain">Tizim qulashi tuzatilishi shart, nomlash esa ixtiyoriy maslahat.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: Code Review etikasi, Blocker va Nitpick, review qarorlari, suggestion, Branch Protection.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Figmada interaktiv Wireframe</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 1. SARLAVHA -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Figmada interaktiv Wireframe</h1>
+  <p class="muted">low-fidelity · 7 bosqich · user flow · interaktiv linklar</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced UX/UI</span><span class="badge">4-hafta · 12-dars</span>
+  
+</section>
+
+<!-- 2. Takrorlash -->
+<section>
+  <h2>Takrorlash: 10–11-darslar</h2>
+  <div class="cards three">
+    <div class="card">
+      <div class="icon"><i data-ic="layout-dashboard"></i></div>
+      <h3>10-dars</h3>
+      <p>Prototip turlari (low/mid/hi-fi), kichik vs katta prototip xatolari</p>
+    </div>
+    <div class="card teal">
+      <div class="icon"><i data-ic="git-branch"></i></div>
+      <h3>11-dars</h3>
+      <p>User flow, flowchart shakllari: romb (qaror), to'rtburchak (harakat), axborot arxitekturasi</p>
+    </div>
+    <div class="card accent">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>Bugun</h3>
+      <p>Wireframe nima, nega muhim, 7 bosqich, Figmada amaliyot</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SEC 01 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Wireframe</h1>
+  <p>Sahifaning «chizmasi» va GPS’i</p>
+</section>
+
+<!-- 3. Wireframe nima? -->
+<section>
+  <h2>Wireframe nima?</h2>
+  <div class="cards two">
+    <div class="card accent">
+      <div class="icon"><i data-ic="file-search"></i></div>
+      <h3>Ta'rif</h3>
+      <p>Wireframe — veb-sahifaning <strong>«chizmasi»</strong>: asosiy tuzilishi va joylashuvini belgilovchi tizim.</p>
+      <p class="small">Rang, shrift va grafika yo'q — faqat tuzilma!</p>
+    </div>
+    <div class="card teal">
+      <div class="icon"><i data-ic="navigation"></i></div>
+      <h3>O'xshatish</h3>
+      <p>Foydalanuvchi interfeysi va tajribasini xaritalashga yordam beruvchi <strong>GPS</strong> deb tasavvur qiling.</p>
+      <p class="small">Yo'lboshlovchi — manzilni tanlashda chalg'itmaydi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SVG: wireframe skeleti -->
+<section>
+  <h2>Wireframe skeleti: faqat kulrang qutilar</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 400">
+      <rect class="fn" x="250" y="10" width="500" height="380" rx="16"/>
+      <g class="fragment" data-tip="Header: logo va navigatsiya"><rect class="fa" x="270" y="30" width="460" height="50" rx="8"/><rect class="fn" x="285" y="42" width="70" height="26" rx="4"/><rect class="fn" x="560" y="45" width="50" height="20" rx="4"/><rect class="fn" x="620" y="45" width="50" height="20" rx="4"/><rect class="fn" x="680" y="45" width="40" height="20" rx="4"/></g>
+      <g class="fragment" data-tip="Hero: katta rasm o'rni (X belgisi) va sarlavha"><rect class="fn" x="270" y="95" width="460" height="130" rx="8"/><line class="ln" x1="270" y1="95" x2="730" y2="225"/><line class="ln" x1="730" y1="95" x2="270" y2="225"/></g>
+      <g class="fragment" data-tip="CTA: asosiy harakat tugmasi"><rect class="fb pulse" x="420" y="240" width="160" height="40" rx="20"/><text class="t-head" x="500" y="267" text-anchor="middle" font-size="18">CTA</text></g>
+      <g class="fragment" data-tip="Kontent kartalari"><rect class="fc" x="270" y="295" width="140" height="60" rx="8"/><rect class="fc" x="430" y="295" width="140" height="60" rx="8"/><rect class="fc" x="590" y="295" width="140" height="60" rx="8"/></g>
+      <g class="fragment" data-tip="Footer"><rect class="fn" x="270" y="365" width="460" height="16" rx="4"/></g>
+      <text class="t-muted" x="120" y="200" text-anchor="middle" font-size="22">rang yo‘q</text>
+      <text class="t-muted" x="880" y="200" text-anchor="middle" font-size="22">shrift yo‘q</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 4. Nega muhim? (5 sabab) -->
+<section>
+  <h2>Nega muhim? — 5 afzallik</h2>
+  <ol class="steps-n">
+    <li class="fragment">Funksionallik, foydalanish qulayligi va kontent tartibini <strong>ustuvor qiladi</strong></li>
+    <li class="fragment">Ranglar, shriftlar va rasmlar <strong>chalg'itmaydi</strong> — e'tibor tuzilmada</li>
+    <li class="fragment">Oddiy chizmalar qaror qabul qilishda <strong>aniq yo'l xaritasi</strong> beradi</li>
+    <li class="fragment">Turli variantlarni <strong>sinash</strong> osonlashadi, ijodkorlik kuchayadi</li>
+    <li class="fragment">Yakunda <strong>qulay va samarali</strong> veb-sahifalar yaratishga yordam beradi</li>
+  </ol>
+  <p class="small mt fragment"><i data-ic="triangle-alert"></i> Wireframesiz: dizayn qarorlarining tartibsiz labirintiga tushib qolish mumkin</p>
+  
+</section>
+
+<!-- SWAP: wireframesiz / bilan -->
+<section>
+  <h2>Wireframesiz yoki wireframe bilan?</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">Wireframesiz</button><button type="button">Wireframe bilan</button></div>
+    <div class="swap-p"><div class="card"><h3>Labirint</h3><p>Darhol ranglar va rasmlar bilan boshlanadi. Tuzilma xatosi kech topiladi, hammasini qayta chizish kerak bo‘ladi.</p></div></div>
+    <div class="swap-p"><div class="card accent"><h3>Yo‘l xaritasi</h3><p>Avval tuzilma va user flow kelishiladi. Variantlarni tez sinash va jamoa bilan muhokama qilish oson.</p></div></div>
+  </div>
+</section>
+
+<!-- 5. Qo'llanish holatlari -->
+<section>
+  <h2>Qo'llanish holatlari</h2>
+  <table>
+    <tr><th>Sayt turi</th><th>Muhim elementlar</th><th>Mumkin</th><th>Mumkinmas</th></tr>
+    <tr>
+      <td><strong>Ko'chmas mulk</strong></td>
+      <td>Interaktiv ro'yxat, galereya, xarita</td>
+      <td>Qidiruv va filtrni intuitiv qiling</td>
+      <td>Ko'p vizual bilan sahifani to'ldirmang</td>
+    </tr>
+    <tr>
+      <td><strong>E-commerce</strong></td>
+      <td>Mahsulot vitrinasi, sodda menyu, oson checkout</td>
+      <td>Vizual ierarxiyani to'g'ri quring</td>
+      <td>Checkoutni murakkablashtirmang</td>
+    </tr>
+    <tr>
+      <td><strong>Portfolio</strong></td>
+      <td>Loyihalar, xizmatlar, aloqa</td>
+      <td>Eng kuchli loyihalarni birinchi ko'rsating</td>
+      <td>Asosiy kontentni soyada qoldirmang</td>
+    </tr>
+  </table>
+  
+</section>
+
+<!-- QUIZ -->
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Nega wireframe’da rang, shrift va rasmlar ishlatilmaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Figma ularni qo‘llamaydi</button>
+      <button class="opt" type="button" data-ok>E’tibor tuzilma, kontent tartibi va funksionallikda qolishi uchun</button>
+      <button class="opt" type="button">Mijoz rangni yoqtirmaydi</button>
+      <button class="opt" type="button">Fayl hajmi kichik bo‘lishi uchun</button>
+    </div>
+    <div class="explain">Bezak chalg‘itadi. Low-fidelity bosqichda faqat joylashuv va mantiq muhim.</div>
+  </div>
+</section>
+
+<!-- 6. Vositalar -->
+<section>
+  <h2>Wireframe yaratish vositalari</h2>
+  <div class="cards three">
+    <div class="card">
+      <div class="icon"><i data-ic="pencil"></i></div>
+      <h3>Qog'oz va qalam</h3>
+      <p>Hali ham ajoyib usul! Tez, arzon, hamma uchun qulay.</p>
+    </div>
+    <div class="card accent">
+      <div class="icon"><i data-ic="pen-tool"></i></div>
+      <h3>Figma</h3>
+      <p>Piksel darajasida aniq wireframe. Bugun asosiy asbob.</p>
+      <p class="small">Brauzerda ishlaydi, jamoa bilan birga!</p>
+    </div>
+    <div class="card teal">
+      <div class="icon"><i data-ic="globe"></i></div>
+      <h3>Webflow</h3>
+      <p>Loyihani ishlab chiqish bosqichiga o'tkazishda qulay. Figma bilan juda mos keladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SEC 02 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Figmada 7 bosqich</h1>
+  <p>Fayldan interaktiv linkgacha</p>
+</section>
+
+<!-- 7. Figmada 7 bosqich -->
+<section>
+  <h2>Figmada wireframing: 7 bosqich</h2>
+  <div class="timeline">
+    <div class="tl"><b>1. Yangi fayl</b> — ro'yxatdan o'ting, yangi dizayn faylini oching</div>
+    <div class="tl"><b>2. Frame</b> — <code>F</code> tugmasi, sahifa o'lchamini tanlang (masalan 1440×1024)</div>
+    <div class="tl"><b>3. Header va navigatsiya</b> — to'g'ri to'rtburchaklar bilan menyu va logo joyi</div>
+    <div class="tl"><b>4. Asosiy elementlar</b> — rasm, matn, tugmalar uchun oddiy shakllar (minimalizm!)</div>
+    <div class="tl"><b>5. Tekislash</b> — Align vositalari, 8pt grid, bir xil oraliqlar</div>
+    <div class="tl"><b>6. Interaktiv linklar</b> — Prototype → On click → Navigate to → user flow</div>
+    <div class="tl"><b>7. Tekshirish</b> — Present rejimida sinash, jamoa bilan bo'lishish</div>
+  </div>
+  
+</section>
+
+<!-- 8. Figma klavishlar -->
+<section>
+  <h2>Figma: tezkor klavishlar</h2>
+  <div class="cards two">
+    <div class="card">
+      <div class="icon"><i data-ic="keyboard"></i></div>
+      <h3>Asosiy vositalar</h3>
+      <ul>
+        <li><code>F</code> — Frame yaratish</li>
+        <li><code>R</code> — Rectangle (to'rtburchak)</li>
+        <li><code>T</code> — Text (matn)</li>
+        <li><code>Ctrl+Z</code> — Bekor qilish</li>
+        <li><code>Ctrl+D</code> — Nusxa ko'chirish</li>
+      </ul>
+    </div>
+    <div class="card accent">
+      <div class="icon"><i data-ic="link"></i></div>
+      <h3>Interaktiv link</h3>
+      <ol>
+        <li>Elementni tanlang</li>
+        <li>O'ng panel: <strong>Prototype</strong> yorlig'i</li>
+        <li>O'q sudrab boshqa Frame'ga</li>
+        <li>On click → Navigate to</li>
+        <li>Present (▶) bilan sinab ko'ring</li>
+      </ol>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SVG: interaktiv link -->
+<section>
+  <h2>Interaktiv link: On click → Navigate to</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 380">
+      <rect class="fn" x="60" y="30" width="300" height="320" rx="20"/><text class="t-muted" x="210" y="20" text-anchor="middle" font-size="20">Frame: Bosh sahifa</text>
+      <rect class="fn" x="85" y="60" width="250" height="40" rx="6"/><rect class="fn" x="85" y="115" width="250" height="110" rx="6"/>
+      <rect class="fb pulse" x="125" y="250" width="170" height="50" rx="25"/><text class="t-head" x="210" y="282" text-anchor="middle" font-size="20">Yangiliklar</text>
+      <rect class="fn" x="640" y="30" width="300" height="320" rx="20"/><text class="t-muted" x="790" y="20" text-anchor="middle" font-size="20">Frame: Yangiliklar</text>
+      <rect class="fn" x="665" y="60" width="250" height="40" rx="6"/><rect class="fc" x="665" y="120" width="250" height="60" rx="6"/><rect class="fc" x="665" y="195" width="250" height="60" rx="6"/><rect class="fc" x="665" y="270" width="250" height="60" rx="6"/>
+      <g class="fragment" data-tip="Prototype yorlig'ida tugmadan Frame'ga o'qni sudraymiz">
+        <path class="la flowing" d="M 295 275 C 450 275 480 120 640 120"/>
+        <rect class="fa" x="390" y="150" width="200" height="70" rx="12"/><text class="t-head" x="490" y="182" text-anchor="middle" font-size="18">On click</text><text class="t-muted" x="490" y="207" text-anchor="middle" font-size="16">Navigate to</text>
+      </g>
+      <g class="fragment"><text class="t-accent" x="500" y="372" text-anchor="middle" font-size="22">Present (Play) - bosib sinab ko‘ramiz</text></g>
+    </svg>
+  </div>
+</section>
+
+<!-- STEPPER: Prototype yorlig'i -->
+<section>
+  <h2>Prototype yorlig‘ida 4 qadam</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="mouse-pointer-click" data-anim="pulse"></i></div><h3>1. Elementni tanlang</h3><p>Masalan, «Yangiliklar» tugmasi</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="move-right"></i></div><h3>2. O‘qni sudrang</h3><p>O‘ng panel - Prototype: elementdan kerakli Frame’ga</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="settings"></i></div><h3>3. Harakatni tanlang</h3><p>On click → Navigate to</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="play"></i></div><h3>4. Present</h3><p>Play tugmasi: bosib, o‘tishni tekshiring</p></div></div>
+  </div>
+</section>
+
+<!-- 9. Maktab sayti wireframe sxemasi -->
+<section>
+  <h2>Maktab sayti wireframe sxemasi</h2>
+  <pre><code>+--------------------------------------------------+
+| [LOGO]      Bosh | Qabul | Yangiliklar | Aloqa   |  &lt;- header
++--------------------------------------------------+
+| Bosh sahifa &gt; Yangiliklar                         |  &lt;- breadcrumbs
++--------------------------------------------------+
+|  [ Katta rasm ]      Sarlavha                     |
+|                      Qisqa matn   [ QABUL ]       |  &lt;- CTA
++--------------------------------------------------+
+| [Yangilik 1]   [Yangilik 2]   [Yangilik 3]        |
++--------------------------------------------------+
+| Havolalar | Mualliflik huquqi                     |  &lt;- footer
++--------------------------------------------------+</code></pre>
+  <p class="small fragment"><i data-ic="info"></i> Faqat kulrang/qora-oq shakllar — rang, rasm va maxsus shrift yo'q!</p>
+  
+</section>
+
+<!-- SVG: wireflow -->
+<section>
+  <h2>Wireflow: wireframe + oqim</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <g data-tip="Kirish nuqtasi: bosh sahifa"><rect class="fn" x="30" y="40" width="220" height="240" rx="16"/><rect class="fn" x="50" y="60" width="180" height="30" rx="4"/><rect class="fb" x="80" y="210" width="120" height="40" rx="20"/><text class="t-muted" x="140" y="150" text-anchor="middle" font-size="20">Bosh sahifa</text></g>
+      <g class="fragment" data-tip="Amal: ro'yxatdan o'tish formasi"><line class="la flowing" x1="250" y1="230" x2="390" y2="160"/><rect class="fn" x="390" y="40" width="220" height="240" rx="16"/><rect class="fc" x="410" y="90" width="180" height="30" rx="4"/><rect class="fc" x="410" y="135" width="180" height="30" rx="4"/><rect class="fb" x="440" y="210" width="120" height="40" rx="20"/><text class="t-muted" x="500" y="70" text-anchor="middle" font-size="20">Forma</text></g>
+      <g class="fragment" data-tip="Yakuniy harakat: muvaffaqiyat ekrani"><line class="la flowing" x1="610" y1="230" x2="750" y2="160"/><rect class="fn" x="750" y="40" width="220" height="240" rx="16"/><circle class="fg pulse" cx="860" cy="140" r="45"/><text class="t-muted" x="860" y="230" text-anchor="middle" font-size="20">Tayyor!</text></g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 10. Mini-quiz -->
+<section>
+  <h2>Mini-quiz</h2>
+  <div class="quiz">
+    <p class="q">Wireframega qaysi element mos KELMAYDI?</p>
+    <div class="opts">
+      <button class="opt bad" onclick="pick(this)">Menyu uchun oddiy to'rtburchaklar</button>
+      <button class="opt good" onclick="pick(this)">6 xil rangdagi shriftlar</button>
+      <button class="opt bad" onclick="pick(this)">Rasm joyi uchun kesishgan chiziqli to'rtburchak</button>
+      <button class="opt bad" onclick="pick(this)">CTA tugma shakli</button>
+    </div>
+    <div class="explain">Hujjat: wireframeda ranglar, shriftlar yoki rasmlar chalg'itmasligi kerak, e'tibor tuzilma va mazmunda.</div>
+  </div>
+  
+</section>
+
+<!-- SEC 03 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Amaliyot</h1>
+  <p>Maktab sayti: 2 ekran va interaktiv link</p>
+</section>
+
+<!-- ODATIY XATOLAR -->
+<section>
+  <h2>Odatiy xatolar</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="palette" data-anim="wiggle"></i></div><h3>Erta bezash</h3><p>Wireframe’da rang va rasm: e’tibor tuzilmadan chalg‘iydi</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="ruler"></i></div><h3>Tekislanmagan</h3><p>Oraliqlar har xil: tekislash va 8pt grid’dan foydalaning</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="unlink"></i></div><h3>Link yo‘q</h3><p>Ekranlar bog‘lanmagan: user flow ko‘rinmaydi</p></div>
+  </div>
+  <div class="stats mt">
+    <div class="stat"><div class="v"><span class="count" data-to="7">0</span></div><div class="l">bosqich</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="5">0</span></div><div class="l">afzallik</div></div>
+  </div>
+</section>
+
+<!-- 11. Amaliyot topshirig'i -->
+<section>
+  <h2>Amaliyot: Maktab sayti wireframe</h2>
+  <div class="task">
+    <span class="level hard">qiyin</span>
+    <p>Figmada 2 ta Frame yarating: «Bosh sahifa» va «Qabul»</p>
+  </div>
+  <div class="cards two">
+    <div class="card">
+      <h3>Frame 1: Bosh sahifa</h3>
+      <ul>
+        <li>Header: logo, menyu (4 havola)</li>
+        <li>Katta rasm joyi (kesishgan chiziq)</li>
+        <li>CTA tugma: «Qabul» (48px balandlik)</li>
+        <li>3 ta yangilik bloki (teng kenglik)</li>
+        <li>Footer</li>
+      </ul>
+    </div>
+    <div class="card accent">
+      <h3>Frame 2: Qabul</h3>
+      <ul>
+        <li>Sarlavha</li>
+        <li>3 maydonli forma</li>
+        <li>«Orqaga» havolasi</li>
+        <li>Prototype: CTA → Frame 2</li>
+        <li>Present da sinab ko'ring!</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small mt"><span class="timer">&#9200; 25 daqiqa</span></p>
+  
+</section>
+
+<!-- 12. Tezkor nazorat -->
+<section>
+  <h2>Tezkor nazorat</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <h3>Wireframe nima?</h3>
+      <p class="small">Veb-sahifaning chizmasi: asosiy tuzilma va joylashuvi</p>
+    </div>
+    <div class="card fragment">
+      <h3>Nega rang va rasm ishlatilmaydi?</h3>
+      <p class="small">Ular chalg'itadi — e'tibor mazmun va tuzilmada qolsin</p>
+    </div>
+    <div class="card fragment">
+      <h3>Figmada birinchi 3 bosqich?</h3>
+      <p class="small">1. Yangi fayl · 2. Frame · 3. Navigatsiya va header</p>
+    </div>
+    <div class="card accent fragment">
+      <h3>Interaktiv link qaysi bosqichda?</h3>
+      <p class="small">6-bosqich: Prototype → On click → Navigate to</p>
+    </div>
+    <div class="card teal fragment">
+      <h3>E-commerce wireframe'ida muhim?</h3>
+      <p class="small">Mahsulot vitrinasi, sodda menyu, oson checkout</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 13. Xulosa -->
+<section>
+  <h2>4-hafta yakuni va uyga vazifa</h2>
+  <div class="cards two">
+    <div class="card teal">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>4-hafta natijalari</h3>
+      <ul>
+        <li>Design thinking: prototiplashtirish bosqichlari</li>
+        <li>User flow va axborot arxitekturasi</li>
+        <li>Wireframe: low-fidelity, 7 bosqich</li>
+        <li>Figma: Frame, Prototype, Present</li>
+      </ul>
+    </div>
+    <div class="card accent">
+      <div class="icon"><i data-ic="book-open"></i></div>
+      <h3>Uyga vazifa</h3>
+      <ul>
+        <li>Portfolio sayti uchun 3 ekranli wireframe yarating</li>
+        <li>«Bosh sahifa», «Loyihalar», «Aloqa» Frame'lari</li>
+        <li>Har ekranda navigatsiya va footer</li>
+        <li>3 ekran orasida interaktiv linklar</li>
+        <li>Present screenshot yoki Figma havolasini yuboring</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small mt"><i data-ic="zap"></i> <strong>Keyingi hafta:</strong> Vizual ierarxiya, rang nazariyasi va tipografiya asoslari</p>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

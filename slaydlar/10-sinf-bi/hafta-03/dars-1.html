@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Relyatsion jadvallar, Kalitlar va Yaxlitlik</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Relyatsion jadvallar, Kalitlar va Yaxlitlik</h1>
+  <p class="muted">Jadval cheklovlari (Constraints), Natural vs Surrogate keys, Composite PK va ON DELETE qoidalari</p>
+  <span class="badge">10-sinf</span>
+  <span class="badge">BI va Machine Learning</span>
+  <span class="badge">3-hafta · 7-dars</span>
+</section>
+
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield" data-anim="float"></i></div>
+      <h3>Jadval cheklovlari</h3>
+      <p>NOT NULL, UNIQUE, CHECK va DEFAULT cheklovlari orqali ma'lumotlar sifatini kafolatlash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="key" data-anim="pulse"></i></div>
+      <h3>PK turlari & Composite</h3>
+      <p>Natural vs Surrogate Key farqlari hamda ko'p ustunli Composite Primary Key `(hudud, yil)`.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="link" data-anim="spin"></i></div>
+      <h3>Yaxlitlik & Anomaliyalar</h3>
+      <p>Foreign Key, ON DELETE CASCADE/RESTRICT qoidalari va 3 ta relyatsion anomaliyani yengish.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Jadval sxemasi va Cheklovlar</h1>
+  <p>Data Quality kafolati: NOT NULL, UNIQUE, CHECK va DEFAULT</p>
+</section>
+
+<section>
+  <h2>Nega cheklovlar (Constraints) zarur?</h2>
+  <div class="cols">
+    <div>
+      <div class="card">
+        <h3><i data-ic="file-text"></i> Cheklovlarsiz jadval (Tartibsizlik)</h3>
+        <p>Yosh ustuniga -25 yozish mumkin, talaba ismi bo'sh qolishi mumkin, bir xil pasport 10 kishiga kiritilishi mumkin.</p>
+        <div class="callout bad mt">
+          <p class="small">Bunday baza tez orada ifloslanadi va analitika uchun yaroqsiz bo'lib qoladi!</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card accent">
+        <h3><i data-ic="shield-check"></i> Cheklovlar bilan (Tartibli baza)</h3>
+        <p>Baza darajasidagi tekshiruvlar noto'g'ri qiymatlarni darhol to'xtatadi va qabul qilmaydi.</p>
+        <div class="callout tip mt">
+          <p class="small">Dasturda xato bo'lsa ham, baza ma'lumotlar tozaligini o'zi himoya qiladi!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Asosiy 4 ta ustun cheklovi</h2>
+  <div class="cards four">
+    <div class="card">
+      <div class="icon"><i data-ic="lock"></i></div>
+      <h3>NOT NULL</h3>
+      <p>Ustunda bo'sh (NULL) qiymat bo'lishiga mutlaqo yo'l qo'ymaydi.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>UNIQUE</h3>
+      <p>Ustundagi barcha qiymatlar takrorlanmas (yagona) bo'lishi shart.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="shield"></i></div>
+      <h3>CHECK</h3>
+      <p>Mantiqiy shartni tekshiradi: masalan, `CHECK (yosh >= 6 AND yosh <= 18)`.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>DEFAULT</h3>
+      <p>Qiymat berilmasa, avtomatik standart qiymat o'rnatadi (`DEFAULT 'Faol'`).</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Primary Key turlari va Composite PK</h1>
+  <p>Natural Key, Surrogate Key va ko'p ustunli birikmalar</p>
+</section>
+
+<section>
+  <h2>Natural Key vs Surrogate Key</h2>
+  <div class="cards two">
+    <div class="card">
+      <h3><i data-ic="key"></i> Natural Key (Tabiiy kalit)</h3>
+      <p>Haqiqiy hayotdan olingan unikal xususiyat:</p>
+      <ul>
+        <li>Fuqaroning JSHSHIR raqami</li>
+        <li>Kitobning xalqaro ISBN kodi</li>
+        <li>Avtomobilning VIN raqami</li>
+      </ul>
+      <div class="callout warn mt">
+        <p class="small">Kamchiligi: Real hayotda tashqi standartlar o'zgarishi mumkin.</p>
+      </div>
+    </div>
+    <div class="card accent">
+      <h3><i data-ic="database"></i> Surrogate Key (Sun'iy kalit)</h3>
+      <p>Baza tomonidan sun'iy ravishda yaratiladigan son:</p>
+      <ul>
+        <li>`id INTEGER PRIMARY KEY AUTOINCREMENT`</li>
+        <li>Biznes mantiqqa bog'liq bo'lmaydi</li>
+        <li>O'zgarmaydi va JOIN operatsiyalari uchun eng tezkor</li>
+      </ul>
+      <div class="callout tip mt">
+        <p class="small">Sanoatda DWH va ilovalar uchun standart tanlov hisoblanadi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Composite Primary Key (Murakkab kalit)</h2>
+  <div class="cols">
+    <div>
+      <div class="card">
+        <h3><i data-ic="layers"></i> Bitta ustun yetarli bo'lmaganda</h3>
+        <p>Ta'lim statistikasida bitta viloyat (masalan, Toshkent) har yili takrorlanadi. Bitta yil (masalan, 2024) barcha viloyatlarda takrorlanadi.</p>
+        <p class="small muted mt">Ammo <b>(hudud, yil)</b> juftligi har bir satr uchun mutlaqo unikaldir!</p>
+      </div>
+    </div>
+    <div>
+      <div class="card accent">
+        <h3><i data-ic="code"></i> SQL sintaksisi</h3>
+        <pre><code class="language-sql">CREATE TABLE ta_lim_kpi (
+    hudud TEXT NOT NULL,
+    yil INTEGER NOT NULL,
+    maktablar_soni INTEGER,
+    PRIMARY KEY (hudud, yil)
+);</code></pre>
+        <div class="callout tip mt">
+          <p class="small">Ikkita ustun birgalikda yagona birlamchi kalitni tashkil etadi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Foreign Key va Relyatsion yaxlitlik</h1>
+  <p>Referential Integrity, ON DELETE CASCADE, RESTRICT va SET NULL</p>
+</section>
+
+<section>
+  <h2>Ota yozuv o'chirilganda nima bo'ladi?</h2>
+  <div class="cards three">
+    <div class="card">
+      <h3>RESTRICT (Xavfsiz)</h3>
+      <p>Agar bog'langan bola yozuvlar bo'lsa, ota yozuvni o'chirish taqiqlanadi (xato beradi).</p>
+      <span class="badge mt">Standart qoida</span>
+    </div>
+    <div class="card accent">
+      <h3>CASCADE (Zanjir)</h3>
+      <p>Ota yozuv o'chirilishi bilan unga bog'liq barcha bolalar yozuvlari ham avtomatik o'chadi.</p>
+      <span class="badge mt">Tozalash uchun</span>
+    </div>
+    <div class="card accent2">
+      <h3>SET NULL (Bo'shatish)</h3>
+      <p>Ota o'chirilganda bola yozuvlar saqlanadi, lekin ularning FK ustuni NULL bo'lib qoladi.</p>
+      <span class="badge mt">Tarixni saqlash</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>CASCADE xatti-harakati diagrammasi</h2>
+  <div class="card">
+    <svg viewBox="0 0 920 250" width="100%" height="220">
+      <!-- Parent Box -->
+      <rect x="50" y="40" width="280" height="150" rx="10" class="fa"/>
+      <text x="70" y="75" class="t-head" font-size="16" font-weight="700">Ota jadval: maktablar</text>
+      <text x="70" y="110" class="t-accent" font-size="13">maktab_id = 15 [DELETE]</text>
+      <text x="70" y="140" class="t-muted" font-size="13">nom = "15-maktab"</text>
+      <text x="70" y="165" class="t-muted" font-size="12">O'chirish so'rovi yuborildi...</text>
+
+      <!-- Arrow -->
+      <path d="M 340 115 L 490 115" class="lb"/>
+      <text x="365" y="100" class="t-accent" font-size="12" font-weight="700">CASCADE</text>
+
+      <!-- Children Box -->
+      <rect x="500" y="40" width="370" height="150" rx="10" class="fb"/>
+      <text x="520" y="75" class="t-head" font-size="16" font-weight="700">Bola jadval: oquvchilar</text>
+      <text x="520" y="105" class="t-accent" font-size="12">oquvchi 1: maktab_id = 15 ──> [O'CHIRILDI]</text>
+      <text x="520" y="130" class="t-accent" font-size="12">oquvchi 2: maktab_id = 15 ──> [O'CHIRILDI]</text>
+      <text x="520" y="155" class="t-muted" font-size="12">Yetim yozuvlar qolmadi, baza yaxlitligi saqlandi!</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Bilimingizni sinang: ON DELETE qoidalari</h2>
+  <div class="cols">
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="trash"></i></div>
+          <h3>Bank tizimida CASCADE?</h3>
+          <p class="small muted">Mijoz o'chirilganda uning barcha kredit shartnomalariga CASCADE qo'llash to'g'rimi?</p>
+        </div>
+        <div class="face back">
+          <h3>Mutlaqo xato!</h3>
+          <p>Bankda moliyaviy tarix hech qachon avtomatik o'chirilmasligi shart. Bu yerda RESTRICT ishlatiladi!</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="link"></i></div>
+          <h3>Savatcha (Cart) tizimi?</h3>
+          <p class="small muted">Foydalanuvchi akkaunti o'chirilganda uning savatchasidagi vaqtinchalik tovarlariga-chi?</p>
+        </div>
+        <div class="face back">
+          <h3>CASCADE ideal!</h3>
+          <p>Chunki egasi yo'q bo'lgan savatcha bazada ortiqcha axlat yozuv bo'lib qolmasligi lozim.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Relyatsion anomaliyalar va Amaliyot</h1>
+  <p>Qo'shish, yangilash va o'chirish anomaliyalari hamda Python sqlite3 kodi</p>
+</section>
+
+<section>
+  <h2>3 ta relyatsion anomaliya</h2>
+  <div class="cards three">
+    <div class="card">
+      <h3>Insertion Anomaly</h3>
+      <p><b>Qo'shish muammosi:</b> Yangi o'qituvchini bazaga kiritish uchun albatta sinf yoki dars ochilgan bo'lishi shart bo'lib qoladi.</p>
+    </div>
+    <div class="card accent">
+      <h3>Update Anomaly</h3>
+      <p><b>Yangilash muammosi:</b> Maktab direktori o'zgarganda, bitta ismni 1000 ta qatorda alohida o'zgartirish kerak bo'ladi.</p>
+    </div>
+    <div class="card accent2">
+      <h3>Deletion Anomaly</h3>
+      <p><b>O'chirish muammosi:</b> Maktabdagi oxirgi o'quvchi o'chirilishi bilan birga maktabning o'zi ham bazadan tasodifan o'chib ketadi.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Python sqlite3: Cheklovlarni yaratish</h2>
+  <pre><code class="language-python">import sqlite3
+
+conn = sqlite3.connect('data/maktab.db')
+cursor = conn.cursor()
+cursor.execute("PRAGMA foreign_keys = ON;") # Majburiy qator!
+
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS maktablar (
+    maktab_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    raqam INTEGER NOT NULL,
+    hudud TEXT NOT NULL,
+    sigim INTEGER NOT NULL CHECK (sigim > 0),
+    UNIQUE (raqam, hudud)
+);
+""")
+
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS oquvchilar (
+    oquvchi_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    maktab_id INTEGER NOT NULL,
+    ism TEXT NOT NULL,
+    sinf INTEGER CHECK (sinf BETWEEN 1 AND 11),
+    FOREIGN KEY (maktab_id) REFERENCES maktablar(maktab_id) ON DELETE CASCADE
+);
+""")
+conn.commit()</code></pre>
+</section>
+
+<section>
+  <h2>IntegrityError xatosini ushlash</h2>
+  <pre><code class="language-python"># CHECK xatosi: sig'im manfiy bo'lishi mumkin emas
+try:
+    cursor.execute("INSERT INTO maktablar (raqam, hudud, sigim) VALUES (5, 'Toshkent', -100);")
+    conn.commit()
+except sqlite3.IntegrityError as err:
+    print("Xato ushlandi (CHECK buzildi):", err)
+
+# UNIQUE xatosi: bir xil hudud va maktab raqami qayta kiritilmaydi
+try:
+    cursor.execute("INSERT INTO maktablar (raqam, hudud, sigim) VALUES (1, 'Toshkent', 800);")
+    cursor.execute("INSERT INTO maktablar (raqam, hudud, sigim) VALUES (1, 'Toshkent', 900);")
+    conn.commit()
+except sqlite3.IntegrityError as err:
+    print("Xato ushlandi (UNIQUE buzildi):", err)</code></pre>
+</section>
+
+<section>
+  <h2>Interaktiv savol</h2>
+  <div class="quiz">
+    <p class="q">Nima uchun ta'lim statistikasida hududiy ko'rsatkichlar uchun `PRIMARY KEY (hudud, yil)` murakkab kaliti ishlatiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Chunki SQLite bitta ustunli Primary Key qo'llab-quvvatlamaydi</button>
+      <button class="opt" type="button" data-ok>Chunki hudud ham, yil ham alohida takrorlanadi, faqat ularning birikmasi unikaldir</button>
+      <button class="opt" type="button">Chunki bu so'rovlarni avtomatik ravishda CSV formatga o'tkazadi</button>
+    </div>
+    <div class="explain">To'g'ri! Hudud har yili qaytariladi, yil esa har bir viloyatda uchraydi. Unikal bo'lishi uchun ularning juftligi kalit qilinadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq: 3 daraja</h2>
+  <div class="cards three">
+    <div class="card">
+      <h3>1-daraja: Oson</h3>
+      <p>Bemorlar jadvalini yaratib, `CHECK` cheklovi orqali qon guruhi (I, II, III, IV) nazoratini o'rnating.</p>
+      <span class="badge">10 daqiqa</span>
+    </div>
+    <div class="card accent">
+      <h3>2-daraja: O'rta</h3>
+      <p>`ON DELETE CASCADE` orqali o'qituvchi o'chirilganda uning dars soatlari avtomatik tozalanishini sinang.</p>
+      <span class="badge">15 daqiqa</span>
+    </div>
+    <div class="card accent2">
+      <h3>3-daraja: Qiyin</h3>
+      <p>`(oquvchi_id, fan_id, chorak)` ustunlaridan Composite Primary Key tuzib, takroriy bahoni bloklang.</p>
+      <span class="badge">20 daqiqa</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <ul>
+    <li><b>Constraints</b> (NOT NULL, UNIQUE, CHECK, DEFAULT) ma'lumotlar sifatini baza darajasida kafolatlaydi.</li>
+    <li><b>Surrogate Key</b> sanoat tizimlari uchun eng barqaror va tezkor identifikator hisoblanadi.</li>
+    <li><b>Composite Primary Key</b> bitta ustun yetarli bo'lmaganda unikal juftliklar hosil qilish imkonini beradi.</li>
+    <li><b>ON DELETE CASCADE</b> yetim yozuvlarning oldini oladi, <b>RESTRICT</b> esa qimmatli ma'lumotlarni tasodifiy o'chishdan asraydi.</li>
+    <li><b>Keyingi dars:</b> ER-diagrammalar (ERD) loyihalash va Maktab ta'lim platformasi arxitekturasi!</li>
+  </ul>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

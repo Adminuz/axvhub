@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>3-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>3-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">1-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q"><code>TimeStampedModel</code> dagi <code>abstract = True</code> nimani anglatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Uning uchun alohida jadval ochilmaydi, faqat meros beriladi</button>
+      <button class="opt" type="button">Model o'chirib bo'lmaydi</button>
+      <button class="opt" type="button">Model faqat o'qish uchun</button>
+      <button class="opt" type="button">Model admin panelda ko'rinmaydi</button>
+    </div>
+    <div class="explain">Abstrakt model umumiy maydonlarni (created_at, updated_at) boshqa modellarga beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Serialization (serializatsiya) nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">JSON ni tekshirish</button>
+      <button class="opt" type="button" data-ok>Python obyektini JSON ga o'girish</button>
+      <button class="opt" type="button">Bazaga migratsiya qilish</button>
+      <button class="opt" type="button">URL yaratish</button>
+    </div>
+    <div class="explain">Mijozga yuborish uchun obyekt JSON ga aylantiriladi. Teskarisi — deserialization.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Nega alohida <code>PostWriteSerializer</code> yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Django boshqa usulni qabul qilmaydi</button>
+      <button class="opt" type="button">JSON ni tezlashtirish uchun</button>
+      <button class="opt" type="button" data-ok>Yozishda kategoriya va teglar uchun faqat ID yetarli, o'qishda to'liq ma'lumot kerak</button>
+      <button class="opt" type="button">Parolni yashirish uchun</button>
+    </div>
+    <div class="explain">O'qishda nested serializer, yozishda esa masalan <code>category: 2</code> yetarli.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">N+1 muammosi 100 ta post ro'yxatida nechta so'rov beradi (kategoriya nomi har safar alohida olinsa)?</p>
+    <div class="opts">
+      <button class="opt" type="button">1 ta</button>
+      <button class="opt" type="button">2 ta</button>
+      <button class="opt" type="button">100 ta</button>
+      <button class="opt" type="button" data-ok>101 ta</button>
+    </div>
+    <div class="explain">1 ta so'rov postlar uchun va har bir post uchun yana 1 tadan: 1 + 100 = 101.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>ManyToManyField</code> (masalan, tags) uchun qaysi optimallashtirish mos?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>prefetch_related</code></button>
+      <button class="opt" type="button"><code>select_related</code></button>
+      <button class="opt" type="button"><code>filter</code></button>
+      <button class="opt" type="button"><code>order_by</code></button>
+    </div>
+    <div class="explain"><code>prefetch_related</code> ManyToMany va teskari munosabatlarni alohida bitta so'rov bilan oladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Router: <code>router.register(r'posts', PostViewSet, basename='post')</code> bir qatori nima beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat GET /posts/</button>
+      <button class="opt" type="button" data-ok>Standart REST yo'nalishlari (list, create, retrieve, update, partial_update, destroy)</button>
+      <button class="opt" type="button">Faqat POST /posts/</button>
+      <button class="opt" type="button">Faqat admin panel</button>
+    </div>
+    <div class="explain">DefaultRouter har bir yo'nalishni qo'lda yozishni keraksiz qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>PostViewSet.get_serializer_class()</code> da <code>self.action == 'retrieve'</code> bo'lsa qaysi serializer qaytadi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>PostListSerializer</code></button>
+      <button class="opt" type="button"><code>PostWriteSerializer</code></button>
+      <button class="opt" type="button" data-ok><code>PostDetailSerializer</code></button>
+      <button class="opt" type="button"><code>TagSerializer</code></button>
+    </div>
+    <div class="explain">retrieve — bitta postni to'liq ko'rsatish, shuning uchun Detail serializer.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi buyruq model o'zgarishlaridan migratsiya faylini yaratadi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>python manage.py migrate</code></button>
+      <button class="opt" type="button"><code>python manage.py runserver</code></button>
+      <button class="opt" type="button"><code>python manage.py startapp</code></button>
+      <button class="opt" type="button" data-ok><code>python manage.py makemigrations</code></button>
+    </div>
+    <div class="explain"><code>makemigrations</code> fayl yaratadi, <code>migrate</code> esa uni bazaga qo'llaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>queryset = Article.objects.all()</code> bilan muallif va bo'lim ko'rsatilsa, qanday xato bor va tuzatish nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>N+1; <code>select_related('author', 'category')</code> qo'shish</button>
+      <button class="opt" type="button">Xato yo'q</button>
+      <button class="opt" type="button">N+1; <code>prefetch_related('author')</code> faqat shu</button>
+      <button class="opt" type="button">Indeks yo'q; <code>unique=True</code> qo'yish</button>
+    </div>
+    <div class="explain">author va category — ForeignKey, ularni bitta SQL JOIN bilan <code>select_related</code> olib keladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>GET /api/v1/comments/?post=3</code> da filtrni qayerda olamiz?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>request.body['post']</code></button>
+      <button class="opt" type="button" data-ok><code>self.request.query_params.get('post')</code> orqali <code>get_queryset()</code> da</button>
+      <button class="opt" type="button"><code>settings.py</code> da</button>
+      <button class="opt" type="button"><code>models.py</code> Meta ichida</button>
+    </div>
+    <div class="explain">So'rovdagi <code>?post=3</code> query_params da turadi, queryset esa <code>filter(post_id=...)</code> bilan toraytiriladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: abstrakt model, Serializer turlari, N+1 va select_related/prefetch_related, DefaultRouter.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

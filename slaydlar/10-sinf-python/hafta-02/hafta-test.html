@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>2-hafta testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>2-hafta testi</h1>
+  <p class="muted">20 ta savol &middot; taxminan 18 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">2-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/20</h2>
+  <div class="quiz">
+    <p class="q">Foydalanuvchi telefoniga kelgan 6 xonali SMS kodni kiritdi. Bu qaysi bosqich?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Autentifikatsiya: kod orqali haqiqiy egasi ekanini isbotlash</button>
+      <button class="opt" type="button">Identifikatsiya</button>
+      <button class="opt" type="button">Avtorizatsiya</button>
+      <button class="opt" type="button">Refresh</button>
+    </div>
+    <div class="explain">Telefon raqamni kiritish identifikatsiya, kodni tasdiqlash autentifikatsiya.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/20</h2>
+  <div class="quiz">
+    <p class="q">JWT payload'idagi <code>exp</code> maydoni nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Foydalanuvchi parolini</button>
+      <button class="opt" type="button" data-ok>Tokenning amal qilish muddati tugash vaqtini</button>
+      <button class="opt" type="button">Token berilgan vaqtni</button>
+      <button class="opt" type="button">Tokenning noyob ID sini</button>
+    </div>
+    <div class="explain">Muddat tugagach token yaroqsiz bo'ladi va <code>401 Unauthorized</code> qaytadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/20</h2>
+  <div class="quiz">
+    <p class="q">Access token muddati nega qisqa (15-60 daqiqa) bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Server xotirasini tejash uchun</button>
+      <button class="opt" type="button">Chunki uzun token ishlamaydi</button>
+      <button class="opt" type="button" data-ok>Token o'g'irlansa, zarar kam bo'lishi uchun</button>
+      <button class="opt" type="button">Parol uzunligini kamaytirish uchun</button>
+    </div>
+    <div class="explain">Muddati tez tugab, o'g'irlangan token yaroqsiz bo'lib qoladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/20</h2>
+  <div class="quiz">
+    <p class="q">Mikroservislar va mobil ilovalar uchun nega JWT qulay hisoblanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Serverda sessiya saqlaydi</button>
+      <button class="opt" type="button">Tokenni istalgan vaqt darhol bekor qiladi</button>
+      <button class="opt" type="button">Parolni ochiq yuboradi</button>
+      <button class="opt" type="button" data-ok>Stateless: har so'rovda DB ga token tekshirish so'rovi yuborilmaydi</button>
+    </div>
+    <div class="explain">Kamchiligi: muddati tugamaguncha to'xtatish murakkabroq.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/20</h2>
+  <div class="quiz">
+    <p class="q">JWT imzosi (Signature) qanday hosil qilinadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Header va Payload serverning <code>SECRET_KEY</code> bilan imzolanadi</button>
+      <button class="opt" type="button">Foydalanuvchi parolidan to'g'ridan-to'g'ri</button>
+      <button class="opt" type="button">Tasodifiy raqamdan, serversiz</button>
+      <button class="opt" type="button">Brauzer cookie'sidan</button>
+    </div>
+    <div class="explain">Shu sababli payloadni o'zgartirish imzoni buzadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/20</h2>
+  <div class="quiz">
+    <p class="q">Oddiy (DRF built-in) token usulining kamchiligi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Token umuman saqlanmaydi</button>
+      <button class="opt" type="button" data-ok>Har so'rovda tokenni tekshirish uchun bazaga qo'shimcha so'rov boradi</button>
+      <button class="opt" type="button">Faqat Android'da ishlaydi</button>
+      <button class="opt" type="button">Token imzolanmaydi va o'qib bo'lmaydi</button>
+    </div>
+    <div class="explain">Token DB'dagi bitta jadvalda saqlanadi, JWT esa buni talab qilmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/20</h2>
+  <div class="quiz">
+    <p class="q">Ro'yxatdan o'tmagan mehmon <code>IsAuthenticated</code> ulangan endpointga so'rov yuborsa, odatda nima bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Hamma ma'lumot qaytadi</button>
+      <button class="opt" type="button">So'rov avtomatik POST ga o'zgaradi</button>
+      <button class="opt" type="button" data-ok>Kirishga ruxsat berilmaydi (401 yoki 403)</button>
+      <button class="opt" type="button">Foydalanuvchi yaratiladi</button>
+    </div>
+    <div class="explain"><code>IsAuthenticated</code> faqat yaroqli token yoki sessiyasi borlarga ruxsat beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/20</h2>
+  <div class="quiz">
+    <p class="q">401 Unauthorized va 403 Forbidden farqi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ikkalasi bir xil</button>
+      <button class="opt" type="button">401 serverning o'zi buzilgan</button>
+      <button class="opt" type="button">403 muddati tugagan token</button>
+      <button class="opt" type="button" data-ok>401 tizimga kirmagan, 403 kirgan, lekin huquqi yo'q</button>
+    </div>
+    <div class="explain">Birinchisi autentifikatsiya, ikkinchisi avtorizatsiya muammosi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/20</h2>
+  <div class="quiz">
+    <p class="q"><code>perform_create</code> qachon chaqiriladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Serializer <code>is_valid()</code> dan o'tgach, obyekt saqlanishidan oldin</button>
+      <button class="opt" type="button">Serverni ishga tushirganda</button>
+      <button class="opt" type="button">Har GET so'rovda</button>
+      <button class="opt" type="button">Migratsiya paytida</button>
+    </div>
+    <div class="explain">Shu yerda <code>serializer.save(author=...)</code> yozish mumkin.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/20</h2>
+  <div class="quiz">
+    <p class="q"><code>IsOwnerOrStaff</code> da <code>user.is_staff</code> True bo'lsa, boshqa birovning obyektini o'zgartirish mumkinmi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Yo'q, faqat egasi o'zgartiradi</button>
+      <button class="opt" type="button" data-ok>Ha, staff uchun ruxsat beriladi</button>
+      <button class="opt" type="button">Yo'q, hech kim o'zgartira olmaydi</button>
+      <button class="opt" type="button">Faqat GET mumkin</button>
+    </div>
+    <div class="explain">Kodda: o'qish hammaga, o'zgartirish egasiga yoki staff'ga.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 11/20</h2>
+  <div class="quiz">
+    <p class="q">Nega <code>CategoryViewSet</code> ga <code>IsStaffOrReadOnly</code> ulanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat mehmonlar o'qisin</button>
+      <button class="opt" type="button">Hech kim o'qimasin</button>
+      <button class="opt" type="button" data-ok>Kategoriyalarni hamma o'qisin, lekin faqat xodimlar o'zgartirsin</button>
+      <button class="opt" type="button">Hamma o'zgartira olsin</button>
+    </div>
+    <div class="explain">SAFE metodlar hammaga, qolganlari staff uchun.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 12/20</h2>
+  <div class="quiz">
+    <p class="q"><code>search_fields</code> da <code>'=status'</code> nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Boshlanish bo'yicha</button>
+      <button class="opt" type="button">Full-text qidiruv</button>
+      <button class="opt" type="button">Hech narsa topmaydi</button>
+      <button class="opt" type="button" data-ok>Aniq tenglik bo'yicha qidirish (exact match)</button>
+    </div>
+    <div class="explain"><code>^</code> boshlanish, <code>=</code> aniq, <code>@</code> full-text (PostgreSQL).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 13/20</h2>
+  <div class="quiz">
+    <p class="q"><code>ordering = ("-published_at", "-created_at")</code> nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Standart tartib: e'lon vaqti bo'yicha eng yangilari birinchi</button>
+      <button class="opt" type="button">Faqat created_at saralanadi</button>
+      <button class="opt" type="button">O'sish tartibida</button>
+      <button class="opt" type="button">Saralash o'chirilgan</button>
+    </div>
+    <div class="explain">Mijoz <code>?ordering=</code> bermasa shu standart tartib qo'llanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 14/20</h2>
+  <div class="quiz">
+    <p class="q"><code>filterset_class</code> va <code>search_fields</code> farqi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Farqi yo'q</button>
+      <button class="opt" type="button" data-ok>Birinchisi aniq maydonlar bo'yicha qat'iy, ikkinchisi matn ichidan kalit so'z qidiradi</button>
+      <button class="opt" type="button">Birinchisi tartiblaydi, ikkinchisi sahifalaydi</button>
+      <button class="opt" type="button">Ikkalasi ham faqat sanani tekshiradi</button>
+    </div>
+    <div class="explain">Filtr: kategoriya, status, sana. Search: sarlavha, matn.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 15/20</h2>
+  <div class="quiz">
+    <p class="q"><code>?tags=1&amp;tags=2</code> so'rovi uchun <code>PostFilter</code> da qaysi maydon ko'rsatilgan?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>published_from</code></button>
+      <button class="opt" type="button"><code>ordering</code></button>
+      <button class="opt" type="button" data-ok><code>tags</code> (exact)</button>
+      <button class="opt" type="button"><code>search</code></button>
+    </div>
+    <div class="explain"><code>fields</code> lug'atida <code>"tags": ["exact"]</code> bor.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 16/20</h2>
+  <div class="quiz">
+    <p class="q"><code>DEFAULT_FILTER_BACKENDS</code> ga qaysi uchtasi kiritiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">DjangoFilterBackend, PageNumberPagination, AnonRateThrottle</button>
+      <button class="opt" type="button">SearchFilter, JWTAuthentication, AllowAny</button>
+      <button class="opt" type="button">OrderingFilter, FileResponse, APIClient</button>
+      <button class="opt" type="button" data-ok>DjangoFilterBackend, SearchFilter, OrderingFilter</button>
+    </div>
+    <div class="explain">Ular filtrlash, qidiruv va tartiblashni global yoqadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 17/20</h2>
+  <div class="quiz">
+    <p class="q">Foydalanuvchi JWT bilan <code>POST /api/v1/posts/</code> yubordi. To'g'ri ketma-ketlik qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>JWT orqali autentifikatsiya, permission tekshiruvi, <code>perform_create</code> da author biriktirish</button>
+      <button class="opt" type="button">perform_create, permission, JWT</button>
+      <button class="opt" type="button">Filtr, JWT, permission</button>
+      <button class="opt" type="button">Permission, author JSON'dan olish, JWT</button>
+    </div>
+    <div class="explain">Avval kim ekani aniqlanadi, so'ng huquq tekshiriladi, keyin muallif <code>request.user</code> dan olinadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 18/20</h2>
+  <div class="quiz">
+    <p class="q">Ali yaroqli token bilan Vali yozgan maqolani <code>PATCH</code> qildi va 403 oldi. Qaysi bosqich rad etdi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Identifikatsiya</button>
+      <button class="opt" type="button" data-ok>Avtorizatsiya (permission), autentifikatsiya muvaffaqiyatli o'tgan</button>
+      <button class="opt" type="button">Token imzosi</button>
+      <button class="opt" type="button">Filtrlash</button>
+    </div>
+    <div class="explain">Token yaroqli (401 emas), lekin <code>IsOwnerOrStaff</code> obyekt egasini tekshirib rad etdi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 19/20</h2>
+  <div class="quiz">
+    <p class="q">Post'dagi <code>author</code> ForeignKey Custom User'ga qanday ulanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">To'g'ridan-to'g'ri <code>django.contrib.auth.User</code> orqali</button>
+      <button class="opt" type="button"><code>SAFE_METHODS</code> orqali</button>
+      <button class="opt" type="button" data-ok><code>settings.AUTH_USER_MODEL</code> orqali</button>
+      <button class="opt" type="button"><code>DEFAULT_FILTER_BACKENDS</code> orqali</button>
+    </div>
+    <div class="explain"><code>AUTH_USER_MODEL = "accounts.User"</code> e'lon qilingach, FK shu sozlamaga ishora qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 20/20</h2>
+  <div class="quiz">
+    <p class="q">Mehmon <code>GET /api/v1/posts/?search=python</code> yubordi, <code>IsAuthenticatedOrReadOnly</code> ulangan. Natija?</p>
+    <div class="opts">
+      <button class="opt" type="button">Rad etiladi, chunki token yo'q</button>
+      <button class="opt" type="button">Faqat ordering ishlaydi</button>
+      <button class="opt" type="button">Server 429 qaytaradi</button>
+      <button class="opt" type="button" data-ok>Ro'yxat qaytadi, chunki GET xavfsiz metod; POST esa rad etiladi</button>
+    </div>
+    <div class="explain">O'qish hammaga ochiq, qidiruv esa faqat ro'yxatni saralaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>20 dan 18+</h3><p>A'lo. Hafta mavzulari yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>20 dan 12-17</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>11 va undan kam</h3><p>Uchala dars konspektini takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: autentifikatsiya va avtorizatsiya, JWT, permission klasslari, perform_create, filter/search/ordering.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

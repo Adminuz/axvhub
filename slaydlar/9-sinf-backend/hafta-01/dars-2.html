@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Sodda ma’lumot toifalari va arifmetika</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+      <!-- 1. SARLAVHA (HERO) -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>Sodda ma’lumot toifalari va arifmetika</h1>
+        <p class="muted">int, float, str, bool va murakkab hisob-kitoblar (//, %)</p>
+        <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">1-hafta · 2-dars</span>
+        
+      </section>
+
+      <!-- 2. Reja -->
+      <section>
+        <h2>Bugun nimalarni o‘rganamiz?</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="database" data-anim="float"></i></div>
+            <h3>4 ta sodda toifa</h3>
+            <p>int, float, str va bool toifalarining mohiyati</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="calculator" data-anim="bounce"></i></div>
+            <h3>Arifmetik amallar</h3>
+            <p>Qo'shish, ko'paytirish va ikkita bo'lish farqi (/ vs //)</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="percent" data-anim="float"></i></div>
+            <h3>Qoldiq va daraja</h3>
+            <p>% va ** operatorlarining backenddagi o'rni</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 3. SEC 01: SODDA TOIFALAR -->
+      <section class="sec">
+        <div class="num">01</div>
+        <h1>Ma’lumotlar toifalari</h1>
+        <p>Xotirada ma'lumotlar qanday shaklda saqlanadi?</p>
+      </section>
+
+      <!-- 4. SVG 1: DATA TYPES MAP -->
+      <section>
+        <h2>Pythonda 4 ta asosiy sodda toifa</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- 1. str -->
+            <g class="fragment">
+              <rect class="fa" x="40" y="80" width="200" height="200" rx="16"/>
+              <text class="t-head" x="140" y="140" text-anchor="middle" font-size="28">str</text>
+              <text class="t-accent" x="140" y="180" text-anchor="middle" font-size="18">Matn (string)</text>
+              <text class="t-muted" x="140" y="220" text-anchor="middle" font-size="16">"Salom"</text>
+              <text class="t-muted" x="140" y="245" text-anchor="middle" font-size="16">'DevOps'</text>
+            </g>
+
+            <!-- 2. int -->
+            <g class="fragment">
+              <rect class="fb" x="280" y="80" width="200" height="200" rx="16"/>
+              <text class="t-head" x="380" y="140" text-anchor="middle" font-size="28">int</text>
+              <text class="t-accent" x="380" y="180" text-anchor="middle" font-size="18">Butun son</text>
+              <text class="t-muted" x="380" y="220" text-anchor="middle" font-size="16">10, 42, -5</text>
+              <text class="t-muted" x="380" y="245" text-anchor="middle" font-size="16">2026</text>
+            </g>
+
+            <!-- 3. float -->
+            <g class="fragment">
+              <rect class="fc" x="520" y="80" width="200" height="200" rx="16"/>
+              <text class="t-head" x="620" y="140" text-anchor="middle" font-size="28">float</text>
+              <text class="t-accent" x="620" y="180" text-anchor="middle" font-size="18">Kasr son</text>
+              <text class="t-muted" x="620" y="220" text-anchor="middle" font-size="16">3.14, 0.5</text>
+              <text class="t-muted" x="620" y="245" text-anchor="middle" font-size="16">11.375</text>
+            </g>
+
+            <!-- 4. bool -->
+            <g class="fragment">
+              <rect class="fg" x="760" y="80" width="200" height="200" rx="16"/>
+              <text class="t-head" x="860" y="140" text-anchor="middle" font-size="28">bool</text>
+              <text class="t-accent" x="860" y="180" text-anchor="middle" font-size="18">Mantiqiy</text>
+              <text class="t-muted" x="860" y="220" text-anchor="middle" font-size="16">True</text>
+              <text class="t-muted" x="860" y="245" text-anchor="middle" font-size="16">False</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 5. KOD: TYPE() FUNKSIYASI -->
+      <section>
+        <h2>Toifani tekshirish: type()</h2>
+        <p>Python o‘zgaruvchi toifasini unga berilgan qiymatdan avtomatik aniqlaydi</p>
+        <pre><code class="language-python" data-line-numbers="1-4|6-9"># Har xil toifadagi ma'lumotlar
+x = 100
+pi = 3.14
+ism = "Ali"
+faol = True
+
+print(type(x))    # &lt;class 'int'&gt;
+print(type(pi))   # &lt;class 'float'&gt;
+print(type(ism))  # &lt;class 'str'&gt;
+print(type(faol)) # &lt;class 'bool'&gt;</code></pre>
+        
+      </section>
+
+      <!-- 6. SEC 02: ARIFMETIK AMALLAR -->
+      <section class="sec">
+        <div class="num">02</div>
+        <h1>Arifmetik amallar</h1>
+        <p>Standart operatorlar va amallar ustunligi</p>
+      </section>
+
+      <!-- 7. ASOSIY OPERATORLAR -->
+      <section>
+        <h2>Asosiy arifmetik operatorlar</h2>
+        <div class="cards four">
+          <div class="card fragment">
+            <h3>+ Qo‘shish</h3>
+            <p><code>15 + 5</code> &rarr; <code>20</code></p>
+          </div>
+          <div class="card fragment">
+            <h3>- Ayirish</h3>
+            <p><code>20 - 7</code> &rarr; <code>13</code></p>
+          </div>
+          <div class="card fragment">
+            <h3>* Ko‘paytirish</h3>
+            <p><code>6 * 8</code> &rarr; <code>48</code></p>
+          </div>
+          <div class="card fragment">
+            <h3>/ Bo‘lish</h3>
+            <p><code>8 / 2</code> &rarr; <code>4.0</code></p>
+          </div>
+        </div>
+        <div class="callout tip fragment">
+          <i data-ic="circle-alert"></i> E'tibor bering: <code>/</code> amali har doim <strong>float</strong> natija beradi!
+        </div>
+        
+      </section>
+
+      <!-- 8. SEC 03: // VA % AMALLARI -->
+      <section class="sec">
+        <div class="num">03</div>
+        <h1>Butun bo‘lish va Qoldiq</h1>
+        <p>// va % operatorlarining sirlari</p>
+      </section>
+
+      <!-- 9. SVG 2: // VA % TAHLILI -->
+      <section>
+        <h2>91 sonini bo‘lish tahlili</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- Asosiy son -->
+            <rect class="fn" x="60" y="120" width="180" height="120" rx="14"/>
+            <text class="t-head" x="150" y="175" text-anchor="middle" font-size="32">91</text>
+            <text class="t-muted" x="150" y="210" text-anchor="middle" font-size="16">Bo‘linuvchi</text>
+
+            <!-- 1-tarmoq: / amali -->
+            <g class="fragment">
+              <line class="la flowing" x1="240" y1="140" x2="440" y2="90"/>
+              <rect class="fa" x="440" y="40" width="500" height="80" rx="12"/>
+              <text class="t-head" x="470" y="85" font-size="22">91 / 8 = 11.375</text>
+              <text class="t-muted" x="780" y="85" font-size="18">Oddiy (float)</text>
+            </g>
+
+            <!-- 2-tarmoq: // amali -->
+            <g class="fragment">
+              <line class="lb flowing" x1="240" y1="180" x2="440" y2="180"/>
+              <rect class="fb pulse" x="440" y="140" width="500" height="80" rx="12"/>
+              <text class="t-head" x="470" y="185" font-size="22">91 // 2 = 45</text>
+              <text class="t-muted" x="780" y="185" font-size="18">Butun qism (int)</text>
+            </g>
+
+            <!-- 3-tarmoq: % amali -->
+            <g class="fragment">
+              <line class="lc flowing" x1="240" y1="220" x2="440" y2="270"/>
+              <rect class="fc" x="440" y="240" width="500" height="80" rx="12"/>
+              <text class="t-head" x="470" y="285" font-size="22">91 % 2 = 1</text>
+              <text class="t-muted" x="780" y="285" font-size="18">Qoldiq (int)</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 10. KOD: // VA % MISOL -->
+      <section>
+        <h2>// va % operatorlari amalda</h2>
+        <pre><code class="language-python" data-line-numbers="1-4|6-9"># Butun bo'lish (//)
+print(7 // 3)   # 2
+print(15 // 4)  # 3
+print(20 // 5)  # 4
+
+# Qoldiqni topish (%)
+print(8 % 3)    # 2 (chunki 8 = 3 * 2 + 2)
+print(15 % 4)   # 3 (chunki 15 = 4 * 3 + 3)
+print(10 % 2)   # 0 (qoldiq 0 bo'lsa juft son!)</code></pre>
+        
+      </section>
+
+      <!-- 11. DARAJA (**) OPERATORI -->
+      <section>
+        <h2>Darajaga oshirish: **</h2>
+        <p>Matematikadagi x<sup>y</sup> amali Pythonda <code>**</code> bilan ifodalanadi</p>
+        <div class="cards three">
+          <div class="card fragment">
+            <h3>2 ** 3</h3>
+            <p class="stat">8</p>
+            <p>2 ning kubi (2 × 2 × 2)</p>
+          </div>
+          <div class="card fragment">
+            <h3>5 ** 2</h3>
+            <p class="stat">25</p>
+            <p>5 ning kvadrati (5 × 5)</p>
+          </div>
+          <div class="card fragment">
+            <h3>10 ** 4</h3>
+            <p class="stat">10000</p>
+            <p>10 ning 4-darajasi</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 12. SVG 3: AMALLAR PIRAMIDASI -->
+      <section>
+        <h2>Amallar ustunligi tartibi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- 1-daraja: Qavslar -->
+            <g class="fragment">
+              <polygon class="fa" points="500,50 400,120 600,120"/>
+              <text class="t-head" x="500" y="105" text-anchor="middle" font-size="20">1. Qavslar ( )</text>
+            </g>
+
+            <!-- 2-daraja: Daraja -->
+            <g class="fragment">
+              <polygon class="fb" points="400,125 600,125 680,195 320,195"/>
+              <text class="t-head" x="500" y="170" text-anchor="middle" font-size="20">2. Daraja **</text>
+            </g>
+
+            <!-- 3-daraja: Ko'paytirish, Bo'lish, Qoldiq -->
+            <g class="fragment">
+              <polygon class="fc" points="320,200 680,200 760,270 240,270"/>
+              <text class="t-head" x="500" y="245" text-anchor="middle" font-size="20">3. * , / , // , %</text>
+            </g>
+
+            <!-- 4-daraja: Qo'shish, Ayirish -->
+            <g class="fragment">
+              <polygon class="fg" points="240,275 760,275 840,345 160,345"/>
+              <text class="t-head" x="500" y="320" text-anchor="middle" font-size="20">4. + , -</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 13. SVG 4: AMALIY KEYS - VAQTNI AJRATISH -->
+      <section>
+        <h2>Keys: Sekundlarni daqiqaga aylantirish</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- Kiruvchi sekund -->
+            <rect class="fn" x="60" y="120" width="220" height="120" rx="14"/>
+            <text class="t-head" x="170" y="170" text-anchor="middle" font-size="26">195 sekund</text>
+            <text class="t-muted" x="170" y="205" text-anchor="middle" font-size="16">Jami vaqt</text>
+
+            <!-- // 60 tarmog'i -->
+            <g class="fragment">
+              <line class="la flowing" x1="280" y1="150" x2="480" y2="100"/>
+              <rect class="fa pulse" x="480" y="50" width="460" height="100" rx="14"/>
+              <text class="t-head" x="510" y="95" font-size="22">195 // 60 = 3 daqiqa</text>
+              <text class="t-muted" x="510" y="125" font-size="16">Butun bo‘lish orqali to‘liq daqiqa olindi</text>
+            </g>
+
+            <!-- % 60 tarmog'i -->
+            <g class="fragment">
+              <line class="lc flowing" x1="280" y1="210" x2="480" y2="260"/>
+              <rect class="fc" x="480" y="210" width="460" height="100" rx="14"/>
+              <text class="t-head" x="510" y="255" font-size="22">195 % 60 = 15 sekund</text>
+              <text class="t-muted" x="510" y="285" font-size="16">Qoldiq orqali ortib qolgan sekund olindi</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 14. KOD: VAQT DASTURI -->
+      <section>
+        <h2>Vaqt hisobi kodi</h2>
+        <pre><code class="language-python" data-line-numbers="1-5|7-9"># Vaqtni ajratish algoritmi
+jami_sekund = 195
+
+daqiqa = jami_sekund // 60
+qoldiq_sekund = jami_sekund % 60
+
+print("Natija:", daqiqa, "daqiqa va", qoldiq_sekund, "sekund")
+# Konsolda chiqadi:
+# Natija: 3 daqiqa va 15 sekund</code></pre>
+        
+      </section>
+
+      <!-- 15. ODATIY XATOLAR -->
+      <section>
+        <h2>Ko‘p uchraydigan xatolar</h2>
+        <div class="cards two">
+          <div class="card fragment">
+            <h3>Xato: Nolga bo‘lish (ZeroDivision)</h3>
+            <pre><code class="language-python"># Xato
+x = 10 / 0
+# ZeroDivisionError: division by zero</code></pre>
+            <p>Dasturda sonni hech qachon nolga bo‘lib bo‘lmaydi!</p>
+          </div>
+          <div class="card fragment">
+            <h3>Xato: Matn va sonni qo‘shish</h3>
+            <pre><code class="language-python"># Xato
+y = "Yosh: " + 15
+# TypeError: can only concatenate str to str</code></pre>
+            <p>Har xil toifadagi ma'lumotlarni to‘g‘ridan-to‘g‘ri qo‘shib bo‘lmaydi.</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 16. AMALIY TOPSHIRIQ (TASK) -->
+      <section class="task">
+        <h2>Amaliy topshiriq: Arifmetik hisob-kitoblar</h2>
+        <p class="muted">Vaqt: 15 daqiqa · Darajalar bo‘yicha</p>
+        <div class="cards three">
+          <div class="card">
+            <h3>1. Oson</h3>
+            <p><code>91 / 8</code> va <code>91 // 2</code> amallarini konsolga chiqarib, natijalarni solishtiring.</p>
+          </div>
+          <div class="card">
+            <h3>2. O'rta</h3>
+            <p>Berilgan <code>350</code> sekundni <code>//</code> va <code>%</code> yordamida daqiqa va sekundga ajrating.</p>
+          </div>
+          <div class="card">
+            <h3>3. Qiyin</h3>
+            <p>Do'konda 53 000 so'm qaytimni 10 000 va 1 000 so'mlik kupyuralarga bo'lib chiqaring.</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 17. QUIZ / TEZKOR SAVOL -->
+      <section>
+        <h2>Tezkor sinov</h2>
+        <p>Quyidagi kod konsolga nima chiqaradi?</p>
+        <pre><code class="language-python">print(20 // 6, 20 % 6)</code></pre>
+        <div class="fragment callout tip">
+          <i data-ic="check"></i> <strong>Javob:</strong> <code>3 2</code> (chunki 20 = 6 * 3 + 2)
+        </div>
+        
+      </section>
+
+      <!-- 18. XULOSA -->
+      <section>
+        <h2>Xulosa va asosiy fikrlar</h2>
+        <div class="cards three">
+          <div class="card fragment">
+            <h3>4 ta toifa</h3>
+            <p>str, int, float, bool toifalari xotiraning asosiy qurilish g'ishtlari</p>
+          </div>
+          <div class="card fragment">
+            <h3>Bo‘lish turlari</h3>
+            <p>/ har doim float qaytaradi, // butun qismini oladi</p>
+          </div>
+          <div class="card fragment">
+            <h3>Qoldiq siri</h3>
+            <p>% yordamida juft/toqlik va vaqt birliklari oson hisoblanadi</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 19. YAKUNIY SLAYD -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>Rahmat!</h1>
+        <p class="muted">Keyingi dars: O‘zgaruvchilar va ma'lumotlar bilan ishlash</p>
+        <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span>
+        
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

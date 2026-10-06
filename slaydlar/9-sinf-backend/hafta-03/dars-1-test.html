@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>7-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>7-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Takrorlanuvchi algoritm (sikl) nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Bir xil amalni bir necha marta bajaradigan algoritm</button>
+      <button class="opt" type="button">Shartga qarab bitta tarmoqni tanlaydigan algoritm</button>
+      <button class="opt" type="button">Faqat bir marta ishlaydigan dastur</button>
+      <button class="opt" type="button">Xatolarni tuzatuvchi vosita</button>
+    </div>
+    <div class="explain">Sikl yordamida minglab takrorlashni 2-3 qator kod bilan bajarish mumkin.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Siklning 3 ta asosiy qismi qaysilar?</p>
+    <div class="opts">
+      <button class="opt" type="button">Kirish, chiqish, xato</button>
+      <button class="opt" type="button" data-ok>Boshlanish, takrorlanish sharti (soni), o'zgarish (qadam)</button>
+      <button class="opt" type="button"><code>if</code>, <code>elif</code>, <code>else</code></button>
+      <button class="opt" type="button">Nomi, turi, qiymati</button>
+    </div>
+    <div class="explain">Sikl qayerdan boshlanadi, qachongacha davom etadi va har aylanishda qanday o'zgaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>range(5)</code> qanday sonlarni hosil qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>1, 2, 3, 4, 5</code></button>
+      <button class="opt" type="button"><code>0, 1, 2, 3, 4, 5</code></button>
+      <button class="opt" type="button" data-ok><code>0, 1, 2, 3, 4</code></button>
+      <button class="opt" type="button"><code>5</code></button>
+    </div>
+    <div class="explain"><code>range(stop)</code> 0 dan boshlab <code>stop - 1</code> gacha.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>range(1, 6)</code> qanday sonlarni hosil qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>1, 2, 3, 4, 5, 6</code></button>
+      <button class="opt" type="button"><code>2, 3, 4, 5, 6</code></button>
+      <button class="opt" type="button"><code>0, 1, 2, 3, 4, 5</code></button>
+      <button class="opt" type="button" data-ok><code>1, 2, 3, 4, 5</code></button>
+    </div>
+    <div class="explain"><code>stop</code> qiymati (6) hisobga kirmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>range(0, 11, 2)</code> qanday sonlarni beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>0, 2, 4, 6, 8, 10</code></button>
+      <button class="opt" type="button"><code>2, 4, 6, 8, 10</code></button>
+      <button class="opt" type="button"><code>0, 2, 4, 6, 8</code></button>
+      <button class="opt" type="button"><code>0, 1, 2, ..., 10</code></button>
+    </div>
+    <div class="explain">Uchinchi parametr qadam (<code>step</code>) hisoblanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>range(10, 0, -1)</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">10 dan 0 gacha o'sib boradi</button>
+      <button class="opt" type="button" data-ok>10 dan 1 gacha teskari sanaydi</button>
+      <button class="opt" type="button">Xato beradi</button>
+      <button class="opt" type="button">Faqat <code>10</code> ni beradi</button>
+    </div>
+    <div class="explain">Manfiy qadam teskari sanash imkonini beradi; 0 hisobga kirmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>range(1, 10, 3)</code> qanday sonlarni hosil qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>1, 4, 7, 10</code></button>
+      <button class="opt" type="button"><code>3, 6, 9</code></button>
+      <button class="opt" type="button" data-ok><code>1, 4, 7</code></button>
+      <button class="opt" type="button"><code>1, 3, 6, 9</code></button>
+    </div>
+    <div class="explain">1 dan boshlab 3 qadam bilan, 10 ga yetmasdan to'xtaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Kod natijasi? <code>s = 0</code>; <code>for i in range(1, 5):</code> ichida <code>s += i</code>; <code>print(s)</code></p>
+    <div class="opts">
+      <button class="opt" type="button"><code>15</code></button>
+      <button class="opt" type="button"><code>4</code></button>
+      <button class="opt" type="button"><code>5</code></button>
+      <button class="opt" type="button" data-ok><code>10</code></button>
+    </div>
+    <div class="explain">1 + 2 + 3 + 4 = 10 (5 kirmaydi).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Nega <code>1</code> dan <code>n</code> gacha yig'indida <code>range(1, n + 1)</code> yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>range</code> da stop qiymati hisobga kirmaydi, <code>n</code> ham kirishi uchun</button>
+      <button class="opt" type="button"><code>n + 1</code> tezroq ishlaydi</button>
+      <button class="opt" type="button">Python buni talab qiladi</button>
+      <button class="opt" type="button"><code>1</code> ni tashlab ketish uchun</button>
+    </div>
+    <div class="explain"><code>range(1, n)</code> esa <code>n - 1</code> da to'xtab qoladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">1 dan 20 gacha barcha juft sonlarni chiqarish uchun qaysi <code>range</code> to'g'ri?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>range(2, 20, 2)</code></button>
+      <button class="opt" type="button" data-ok><code>range(2, 21, 2)</code></button>
+      <button class="opt" type="button"><code>range(1, 20, 2)</code></button>
+      <button class="opt" type="button"><code>range(2, 21)</code></button>
+    </div>
+    <div class="explain">20 kirishi uchun stop 21 bo'lishi kerak; 2 dan 2 qadam bilan juft sonlar.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: sikl tushunchasi, <code>for</code> va <code>range()</code> ning 3 ko'rinishi, yig'indi (<code>s += i</code>), <code>n + 1</code> qoidasi.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

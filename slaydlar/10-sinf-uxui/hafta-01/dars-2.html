@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Foydalanuvchiga Yo‘naltirilgan Dizayn</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 2-dars: Foydalanuvchiga yo‘naltirilgan dizayn (User-Centered Design — UCD) tamoyillari va bosqichlari -->
+
+<!-- 1. SARLAVHA -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Foydalanuvchiga Yo‘naltirilgan Dizayn</h1>
+  <p class="muted">User-Centered Design (UCD) tamoyillari va iterativ rivojlanish sikli</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced UX/UI</span><span class="badge">1-hafta · 2-dars</span>
+</section>
+
+<!-- 2. BUGUN NIMANI O'RGANAMIZ? -->
+<section>
+  <h2>Bugun nimani o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="users" data-anim="float"></i></div>
+      <h3>UCD falsafasi</h3>
+      <p>Foydalanuvchini loyihalash markaziga qo'yish va Donald Norman merosi</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers" data-anim="pulse"></i></div>
+      <h3>10 ta asosiy tamoyil</h3>
+      <p>Moslik, sodda til, qayta aloqa (feedback) va xatolarning oldini olish</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="refresh-cw" data-anim="spin"></i></div>
+      <h3>4 bosqichli iterativ sikl</h3>
+      <p>Kontekst, talablar, prototip va haqiqiy odamlar bilan baholash</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. BO'LIM 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>UCD tushunchasi va tarixi</h1>
+  <p>Dizayn — bu shunchaki san'at emas, insonlar muammosini hal qilish vositasidir</p>
+</section>
+
+<!-- 4. DONALD NORMAN VA UX -->
+<section>
+  <h2>Donald Norman va UX ning tug'ilishi</h2>
+  <div class="quote">
+    «Hech qanday mahsulot o'z-o'zidan mavjud emas. U doimo insoniy kontekst va his-tuyg'ular ichida ishlaydi.»
+  </div>
+  <div class="cards two mt">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="award"></i></div>
+      <h3>1993-yil: Apple</h3>
+      <p>Donald Norman dunyoda birinchi bo'lib rasmiy ravishda «User Experience Architect» lavozimiga asos soldi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="lightbulb" data-anim="draw"></i></div>
+      <h3>UCD Falsafasi</h3>
+      <p>Dastur texnologiya imkoniyatlariga emas, balki odamlarning ruhiyati va odatlariga moslashishi kerak.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. ILLYUSTRATSIYA 1: UCD MARKAZI -->
+<section>
+  <h2>Illyustratsiya: UCD Markaziy Modeli</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 360">
+      <!-- Markaziy doira (Foydalanuvchi) -->
+      <circle class="fa" cx="500" cy="180" r="85"/>
+      <svg x="465" y="125" width="70" height="70" viewBox="0 0 24 24" class="ic-s" stroke-width="1.6"><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+      <text class="t-head" x="500" y="225" text-anchor="middle" font-size="20" font-weight="bold">Foydalanuvchi</text>
+
+      <!-- 4 ta yo'ldosh blok -->
+      <g class="fragment">
+        <rect class="fb" x="120" y="50" width="220" height="90" rx="14"/>
+        <text class="t-head" x="230" y="90" text-anchor="middle" font-size="18" font-weight="bold">Ehtiyoj va maqsadlar</text>
+        <text class="t-muted" x="230" y="115" text-anchor="middle" font-size="14">Nimani xohlaydi?</text>
+        <line class="la flowing" x1="340" y1="105" x2="430" y2="145"/>
+      </g>
+
+      <g class="fragment">
+        <rect class="fc" x="660" y="50" width="220" height="90" rx="14"/>
+        <text class="t-head" x="770" y="90" text-anchor="middle" font-size="18" font-weight="bold">Kontekst va muhit</text>
+        <text class="t-muted" x="770" y="115" text-anchor="middle" font-size="14">Qayerda ishlatadi?</text>
+        <line class="lb flowing" x1="660" y1="105" x2="570" y2="145"/>
+      </g>
+
+      <g class="fragment">
+        <rect class="fg" x="120" y="220" width="220" height="90" rx="14"/>
+        <text class="t-head" x="230" y="260" text-anchor="middle" font-size="18" font-weight="bold">Qulaylik va soddalik</text>
+        <text class="t-muted" x="230" y="285" text-anchor="middle" font-size="14">Minimal kuch sarfi</text>
+        <line class="lc flowing" x1="340" y1="255" x2="430" y2="215"/>
+      </g>
+
+      <g class="fragment">
+        <rect class="fa" x="660" y="220" width="220" height="90" rx="14"/>
+        <text class="t-head" x="770" y="260" text-anchor="middle" font-size="18" font-weight="bold">Doimiy qayta aloqa</text>
+        <text class="t-muted" x="770" y="285" text-anchor="middle" font-size="14">Tizim holati aniqligi</text>
+        <line class="la flowing" x1="660" y1="255" x2="570" y2="215"/>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 6. UCD NING 4 ASOSIY ELEMENTI -->
+<section>
+  <h2>UCD ning 4 ta asosiy elementi</h2>
+  <div class="cards four">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="eye"></i></div>
+      <h3>Ko‘rinarlilik</h3>
+      <p>Foydalanuvchi bir qarashda nima qilish mumkinligini anglaydi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="compass"></i></div>
+      <h3>Kirish imkoniyati</h3>
+      <p>Ma'lumotlar oson topiladi, qidiruv va menyular qulay.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="file-text"></i></div>
+      <h3>O‘qish osonligi</h3>
+      <p>Matn o'lchami, kontrast va bloklar ko'zni charchatmaydi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="message-square"></i></div>
+      <h3>Tilning soddaligi</h3>
+      <p>Qisqa, ravon va jargonsiz insoniy tushuntirishlar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. BO'LIM 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>UCD ning 10 ta tamoyili</h1>
+  <p>Rasmiy o'quv qo'llanmasi bo'yicha mukammal interfeys qoidalari</p>
+</section>
+
+<!-- 8. ILLYUSTRATSIYA 2: 10 TAMOYIL SXEMASI -->
+<section>
+  <h2>10 ta UCD Tamoyillari xaritasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <!-- 5 ustun / 2 qator -->
+      <rect class="fa" x="20" y="40" width="170" height="110" rx="12"/>
+      <text class="t-head" x="105" y="80" text-anchor="middle" font-size="16" font-weight="bold">1. Noyob dizayn</text>
+      <text class="t-muted" x="105" y="110" text-anchor="middle" font-size="13">Auditoriyaga mos</text>
+
+      <rect class="fb" x="215" y="40" width="170" height="110" rx="12"/>
+      <text class="t-head" x="300" y="80" text-anchor="middle" font-size="16" font-weight="bold">2. Moslik</text>
+      <text class="t-muted" x="300" y="110" text-anchor="middle" font-size="13">Consistency</text>
+
+      <rect class="fc" x="410" y="40" width="170" height="110" rx="12"/>
+      <text class="t-head" x="495" y="80" text-anchor="middle" font-size="16" font-weight="bold">3. Sodda til</text>
+      <text class="t-muted" x="495" y="110" text-anchor="middle" font-size="13">Jargonsiz muloqot</text>
+
+      <rect class="fg" x="605" y="40" width="170" height="110" rx="12"/>
+      <text class="t-head" x="690" y="80" text-anchor="middle" font-size="16" font-weight="bold">4. Kam kuch sarfi</text>
+      <text class="t-muted" x="690" y="110" text-anchor="middle" font-size="13">Minimal kliklar</text>
+
+      <rect class="fa" x="800" y="40" width="180" height="110" rx="12"/>
+      <text class="t-head" x="890" y="80" text-anchor="middle" font-size="16" font-weight="bold">5. Ko'rsatmalar</text>
+      <text class="t-muted" x="890" y="110" text-anchor="middle" font-size="13">Oson yordam</text>
+
+      <!-- 2-qator -->
+      <rect class="fb" x="20" y="180" width="170" height="110" rx="12"/>
+      <text class="t-head" x="105" y="220" text-anchor="middle" font-size="16" font-weight="bold">6. Feedback</text>
+      <text class="t-muted" x="105" y="250" text-anchor="middle" font-size="13">Qayta aloqa</text>
+
+      <rect class="fc" x="215" y="180" width="170" height="110" rx="12"/>
+      <text class="t-head" x="300" y="220" text-anchor="middle" font-size="16" font-weight="bold">7. Oson navigatsiya</text>
+      <text class="t-muted" x="300" y="250" text-anchor="middle" font-size="13">Yo'lni topish</text>
+
+      <rect class="fg" x="410" y="180" width="170" height="110" rx="12"/>
+      <text class="t-head" x="495" y="220" text-anchor="middle" font-size="16" font-weight="bold">8. Erkinlik</text>
+      <text class="t-muted" x="495" y="250" text-anchor="middle" font-size="13">Bekor qilish imkoni</text>
+
+      <rect class="fa" x="605" y="180" width="170" height="110" rx="12"/>
+      <text class="t-head" x="690" y="220" text-anchor="middle" font-size="16" font-weight="bold">9. Aniq ma'lumot</text>
+      <text class="t-muted" x="690" y="250" text-anchor="middle" font-size="13">Tartibli bloklar</text>
+
+      <rect class="fb" x="800" y="180" width="180" height="110" rx="12"/>
+      <text class="t-head" x="890" y="220" text-anchor="middle" font-size="16" font-weight="bold">10. Xato oldini olish</text>
+      <text class="t-muted" x="890" y="250" text-anchor="middle" font-size="13">Himoya mexanizmi</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 9. TAMOYILLAR 1-3 -->
+<section>
+  <h2>Moslik, Sodda til va Kam kuch sarfi</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+      <h3>Moslik (Consistency)</h3>
+      <p>Ilova bo'ylab tugmalar va ranglar bir xil ma'noni anglatadi. Foydalanuvchi qayta o'rganmaydi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="message-square"></i></div>
+      <h3>Tushunarli til</h3>
+      <p>Texnik atamalar o'rniga kundalik insoniy so'zlar: "Error 500" emas, "Aloqa uzildi".</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="zap" data-anim="pulse"></i></div>
+      <h3>Kam kuch sarfi</h3>
+      <p>Vazifani bajarish uchun bosishlar va yozishlar sonini maksimal darajada qisqartirish.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10. TAMOYILLAR 4-6: FEEDBACK VA ERKINLIK -->
+<section>
+  <h2>Qayta aloqa (Feedback) va Erkinlik</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="activity" data-anim="pulse"></i></div>
+      <h3>Feedback mexanizmi</h3>
+      <p>Tizim har bir harakatga javob qaytarishi shart: yuklanish indikatori, yashil tasdiq belgisi yoki ovozli signal. Foydalanuvchi harakat natijasini doim ko'rib turadi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="undo"></i></div>
+      <h3>Harakat erkinligi (Control)</h3>
+      <p>Adashib bosilgan buyurtmani bekor qilish, "Orqaga" tugmasi va savatchani tozalash imkoniyati foydalanuvchiga to'liq nazorat va ishonch hissini beradi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 11. OLDIN VA KEYIN (SWAP): XATOLAR XABARI -->
+<section>
+  <h2>Oldin va keyin: Xatolik xabarlari</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">Quruq texnik xabar</button><button type="button">UCD asosidagi yechim</button></div>
+    <div class="swap-p">
+      <div class="card">
+        <h3>Fatal Error 0x8802: Null pointer</h3>
+        <p>Tushunarsiz kod va foydalanuvchini ayblovchi qo'rqinchli qizil oyna. Foydalanuvchi nima qilishni bilmay ilovani o'chirib tashlaydi.</p>
+      </div>
+    </div>
+    <div class="swap-p">
+      <div class="card accent">
+        <h3>Kechirasiz, internet aloqasi uzildi</h3>
+        <p>«Iltimos, Wi-Fi yoki mobil internetingizni tekshirib, qayta urinib ko'ring» tugmasi va yordam xizmati havolasi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. FLIP KARTALAR -->
+<section>
+  <h2>UCD tamoyillari amaliyotda</h2>
+  <p class="muted">Kartani bosing va amaliy misolni ko'ring</p>
+  <div class="cards three mt">
+    <div class="flip" style="min-height:200px">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="clock"></i></div>
+          <h3>Yuklanish ekrani</h3>
+          <span class="flip-hint">bosing</span>
+        </div>
+        <div class="face back">
+          <p>Progress bar foydalanuvchiga tizim muzlab qolmaganini va jarayon ketayotganini bildiradi.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip" style="min-height:200px">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="shield-check"></i></div>
+          <h3>Format himoyasi</h3>
+          <span class="flip-hint">bosing</span>
+        </div>
+        <div class="face back">
+          <p>Telefon raqam kiritilganda maska (+998 __ ___) orqali xato yozishning oldi olinadi.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip" style="min-height:200px">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="navigation"></i></div>
+          <h3>Non ushoqlari</h3>
+          <span class="flip-hint">bosing</span>
+        </div>
+        <div class="face back">
+          <p>Breadcrumbs navigatsiyasi foydalanuvchiga saytning qaysi bo'limida ekanini aniq ko'rsatadi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13. BO'LIM 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>4 bosqichli UCD sikli</h1>
+  <p>ISO 9241-210 xalqaro standarti bo'yicha iterativ jarayon</p>
+</section>
+
+<!-- 14. ILLYUSTRATSIYA 3: ISO SIKLI -->
+<section>
+  <h2>4 bosqichli iterativ sikl (ISO 9241-210)</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <!-- 1: Kontekst -->
+      <rect class="fa" x="40" y="40" width="200" height="110" rx="14"/>
+      <text class="t-head" x="140" y="85" text-anchor="middle" font-size="18" font-weight="bold">1. Kontekst</text>
+      <text class="t-muted" x="140" y="115" text-anchor="middle" font-size="14">Kim va qayerda?</text>
+
+      <line class="la flowing" x1="240" y1="95" x2="300" y2="95"/>
+      <polygon class="ar-a" points="305,95 290,85 290,105"/>
+
+      <!-- 2: Talablar -->
+      <rect class="fb" x="305" y="40" width="200" height="110" rx="14"/>
+      <text class="t-head" x="405" y="85" text-anchor="middle" font-size="18" font-weight="bold">2. Talablar</text>
+      <text class="t-muted" x="405" y="115" text-anchor="middle" font-size="14">Ehtiyojlar va maqsad</text>
+
+      <line class="lb flowing" x1="505" y1="95" x2="565" y2="95"/>
+      <polygon class="ar-b" points="570,95 555,85 555,105"/>
+
+      <!-- 3: Loyihalash -->
+      <rect class="fc" x="570" y="40" width="200" height="110" rx="14"/>
+      <text class="t-head" x="670" y="85" text-anchor="middle" font-size="18" font-weight="bold">3. Loyihalash</text>
+      <text class="t-muted" x="670" y="115" text-anchor="middle" font-size="14">Eskiz va prototip</text>
+
+      <line class="lc flowing" x1="770" y1="95" x2="830" y2="95"/>
+      <polygon class="ar-c" points="835,95 820,85 820,105"/>
+
+      <!-- 4: Baholash -->
+      <rect class="fg" x="835" y="40" width="145" height="110" rx="14"/>
+      <text class="t-head" x="907" y="85" text-anchor="middle" font-size="18" font-weight="bold">4. Baholash</text>
+      <text class="t-muted" x="907" y="115" text-anchor="middle" font-size="14">Testlash</text>
+
+      <!-- Qaytish yo'li (Iteratsiya) -->
+      <g class="fragment">
+        <path class="la flowing" d="M 907,150 L 907,260 L 405,260 L 405,155" fill="none"/>
+        <polygon class="ar-a" points="405,150 395,165 415,165"/>
+        <text class="t-accent" x="650" y="290" text-anchor="middle" font-size="18">Qayta takomillashtirish sikli (Iteratsiya)</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 15. STEPPER: 4 BOSQICH QADAMLARI -->
+<section>
+  <h2>UCD Jarayoni: qadam-baqadam</h2>
+  <div class="stepper">
+    <div class="stp on">
+      <div class="card">
+        <div class="icon"><i data-ic="users" data-anim="float"></i></div>
+        <h3>1. Kontekstni o'rganish</h3>
+        <p>Foydalanuvchilar kim, ular mahsulotni qaysi qurilmada va qanday sharoitda ishlatishini aniqlash.</p>
+      </div>
+    </div>
+    <div class="stp">
+      <div class="card">
+        <div class="icon"><i data-ic="target" data-anim="pulse"></i></div>
+        <h3>2. Talablarni shakllantirish</h3>
+        <p>Foydalanuvchi muammosini hal qilish uchun tizim qanday vazifalarni bajarishi shartligini yozish.</p>
+      </div>
+    </div>
+    <div class="stp">
+      <div class="card">
+        <div class="icon"><i data-ic="layout-template" data-anim="draw"></i></div>
+        <h3>3. Loyihalash (Prototip)</h3>
+        <p>Qog'oz eskizlardan boshlab, Figmada interaktiv bosiladigan ekranlar yaratish.</p>
+      </div>
+    </div>
+    <div class="stp">
+      <div class="card">
+        <div class="icon"><i data-ic="circle-check" data-anim="bounce"></i></div>
+        <h3>4. Foydalanuvchilar bilan testlash</h3>
+        <p>5-6 nafar real odamga vazifa berib, qayerda qiynalganini kuzatish va kamchiliklarni bartaraf etish.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 16. CHIZIQLI vs ITERATIV -->
+<section>
+  <h2>Nega UCD iterativ bo'lishi shart?</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>Eski usul (Waterfall)</h3>
+      <p>Reja -> Dizayn -> Dasturlash -> Chiqarish. Foydalanuvchi faqat oxirida ko'radi. Xato chiqsa millionlab zarar.</p>
+      <div class="chips mt"><span class="chip">Xavfli</span><span class="chip">Qimmat</span></div>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>UCD Iterativ yondashuv</h3>
+      <p>Har bir bosqichda sinab ko'riladi. Xato dasturlashdan oldin qog'oz yoki prototipda arzon tuzatiladi.</p>
+      <div class="chips mt"><span class="chip">Xavfsiz</span><span class="chip">Tejamkor</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 17. ILLYUSTRATSIYA 4: BIZNES VA STARTAPLARDA UCD -->
+<section>
+  <h2>UCD ning biznesdagi statistikasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <rect class="fa" x="60" y="80" width="380" height="170" rx="18"/>
+      <text class="t-head" x="250" y="130" text-anchor="middle" font-size="22" font-weight="bold">IT Startaplar inqirozi</text>
+      <text class="t-accent" x="250" y="180" text-anchor="middle" font-size="44" font-weight="bold">17%</text>
+      <text class="t-muted" x="250" y="215" text-anchor="middle" font-size="16">UCD yo'qligi sababli bozorga keraksiz mahsulot</text>
+
+      <rect class="fb" x="560" y="80" width="380" height="170" rx="18"/>
+      <text class="t-head" x="750" y="130" text-anchor="middle" font-size="22" font-weight="bold">Biznesdagi muvaffaqiyat</text>
+      <text class="t-accent" x="750" y="180" text-anchor="middle" font-size="44" font-weight="bold">~30%</text>
+      <text class="t-muted" x="750" y="215" text-anchor="middle" font-size="16">FYD tamoyillarini to'g'ri joriy qilish ulushi</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 18. AMALIY KEYS: MAKTAB KUTUBXONASI -->
+<section>
+  <h2>Amaliy keys: Maktab kutubxonasi</h2>
+  <div class="cards two">
+    <div class="card">
+      <h3>Muammo</h3>
+      <p>O'quvchilar tanaffusda 5 daqiqada kitob topa olmaydi, kutubxonachi esa daftarga qo'lda yozishga ulgurmaydi.</p>
+    </div>
+    <div class="card accent fragment">
+      <h3>UCD Yechimi</h3>
+      <p>1 qadamli qidiruv, kitob mavjudligini ko'rsatuvchi yashil indikator va 1 klikda band qilish (Reserve) tugmasi.</p>
+    </div>
+  </div>
+  <div class="callout mt fragment"><b>Natija:</b> Kitob berish vaqti 5 daqiqadan 20 soniyagacha qisqardi!</div>
+</section>
+
+<!-- 19. AMALIY TOPSHIRIQ -->
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Berilgan 3 ta texnik xatolik matnini UCD ning sodda til qoidasi bo'yicha qayta yozing.</div>
+  <div class="task"><span class="level mid">O'rta</span>Mobil bank ilovasidagi kvitansiya to'lovi muammosini 3 ta UCD tamoyili bo'yicha tahlil qiling.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Maktab kutubxonasi elektron tizimi uchun 4 bosqichli UCD siklini to'liq yoritib bering.</div>
+</section>
+
+<!-- 20. MINI TEST -->
+<section>
+  <h2>Bilimingizni sinang</h2>
+  <div class="quiz">
+    <p class="q">Tadqiqotlarga ko'ra, IT startaplarning necha foizi foydalanuvchiga yo'naltirilgan dizayn (UCD) yo'qligi sababli muvaffaqiyatsizlikka uchraydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat 2%</button>
+      <button class="opt" type="button" data-ok>17%</button>
+      <button class="opt" type="button">80%</button>
+      <button class="opt" type="button">Bunday statistika yo'q</button>
+    </div>
+    <div class="explain">To'g'ri: 2018-yilgi tadqiqotga ko'ra, IT-startaplarning 17%i aynan UCD joriy qilinmagani sababli bozorga keraksiz mahsulot chiqarib yiqiladi.</div>
+  </div>
+</section>
+
+<!-- 21. KENG TARQALGAN XATOLAR -->
+<section>
+  <h2>Keng tarqalgan xatolar</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-alert"></i></div>
+      <h3>«Men o'zim foydalanuvchiman»</h3>
+      <p>Dizayner hamma insonlar o'zi kabi o'ylaydi deb xato o'ylaydi (False-Consensus Effect). Odamlarning yoshi va tajribasi farqlidir.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-alert"></i></div>
+      <h3>Baholashni o'tkazib yuborish</h3>
+      <p>Dizaynni haqiqiy odamlarda sinab ko'rmasdan to'g'ridan-to'g'ri dasturlashga topshirish katta moliyaviy yo'qotishga olib keladi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 22. XULOSA -->
+<section>
+  <h2>Xulosa</h2>
+  <div class="cards two">
+    <div class="card">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Bugun o'rgandik</h3>
+      <ul class="mt">
+        <li>Donald Norman va UCD ning maqsadi</li>
+        <li>10 ta UCD tamoyili va elementlari</li>
+        <li>4 bosqichli iterativ rivojlanish sikli</li>
+      </ul>
+    </div>
+    <div class="card accent">
+      <div class="icon"><i data-ic="sparkles"></i></div>
+      <h3>Keyingi dars</h3>
+      <p><b>Usability, Accessibility va Simplicity:</b> Nielsenning 10 evristikasi, WCAG POUR va psixologik qonunlar bilan tanishamiz.</p>
+    </div>
+  </div>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Filtrlash, Qidiruv va Tartiblash</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 1-slayd: Sarlavha -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Filtrlash, Qidiruv va Tartiblash</h1>
+  <p class="muted">django-filter kutubxonasi, SearchFilter, OrderingFilter va murakkab so'rovlar</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">2-hafta &middot; 6-dars</span>
+  
+</section>
+
+<!-- 2-slayd: Dars rejasi -->
+<section>
+  <h2>Dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="list-filter" data-anim="pulse"></i></div>
+      <h3>django-filter</h3>
+      <p>DjangoFilterBackend, FilterSet klassi va maydonlar bo'yicha qat'iy filtrlash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="search" data-anim="float"></i></div>
+      <h3>SearchFilter</h3>
+      <p>To'liq matnli qidiruv: sarlavha, qisqa mazmun va matn ichidan kalit so'zlarni topish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="arrow-up-down" data-anim="spin"></i></div>
+      <h3>OrderingFilter</h3>
+      <p>Natijalarni sana, ko'rishlar soni yoki sarlavha bo'yicha tartiblash.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3-slayd: Bo'lim 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Ma'lumotlarni boshqarish</h1>
+  <p>Filtrlash, Qidiruv va Tartiblash farqi</p>
+</section>
+
+<!-- 4-slayd: SVG Sxema: 3 ta vosita -->
+<section>
+  <h2>Uchta asosiy boshqaruv vositasi</h2>
+  <p>Har biri o'zining aniq vazifasiga ega</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300" width="100%" height="300">
+      <!-- 1. Filtrlash -->
+      <rect x="50" y="60" width="260" height="180" rx="14" class="fa"></rect>
+      <text x="180" y="105" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">1. Filtrlash</text>
+      <text x="180" y="145" text-anchor="middle" class="t-accent" font-size="15">Aniq mezonlar</text>
+      <text x="180" y="180" text-anchor="middle" class="t-muted" font-size="14">?status=published</text>
+      <text x="180" y="205" text-anchor="middle" class="t-muted" font-size="14">&amp;category=1</text>
+
+      <!-- 2. Qidiruv -->
+      <rect x="370" y="60" width="260" height="180" rx="14" class="fb"></rect>
+      <text x="500" y="105" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">2. Qidiruv (Search)</text>
+      <text x="500" y="145" text-anchor="middle" class="t-accent" font-size="15">Matnli tahlil</text>
+      <text x="500" y="180" text-anchor="middle" class="t-muted" font-size="14">?search=python</text>
+      <text x="500" y="205" text-anchor="middle" class="t-muted" font-size="14">title, body ichidan</text>
+
+      <!-- 3. Tartiblash -->
+      <rect x="690" y="60" width="260" height="180" rx="14" class="fg"></rect>
+      <text x="820" y="105" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">3. Tartiblash</text>
+      <text x="820" y="145" text-anchor="middle" class="t-accent" font-size="15">Joylashuv tartibi</text>
+      <text x="820" y="180" text-anchor="middle" class="t-muted" font-size="14">?ordering=-published_at</text>
+      <text x="820" y="205" text-anchor="middle" class="t-muted" font-size="14">Eng yangilari tepada</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 5-slayd: SVG Sxema: URL Query parametrlari -->
+<section>
+  <h2>URL Query parametrlari anatomiyasi</h2>
+  <p>Barcha buyruqlar bitta qator URL orqali serverga uzatiladi</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300" width="100%" height="300">
+      <!-- URL Asosiy quti -->
+      <rect x="50" y="90" width="900" height="120" rx="16" class="fc"></rect>
+      <text x="500" y="145" text-anchor="middle" class="t-head" font-size="20" font-family="monospace">
+        /api/v1/posts/?category=2&amp;search=ai&amp;ordering=-published_at
+      </text>
+
+      <!-- Izohlar -->
+      <text x="180" y="250" text-anchor="middle" class="t-accent" font-size="15">Kategoriya filtri</text>
+      <text x="500" y="250" text-anchor="middle" class="t-accent" font-size="15">Matnli qidiruv</text>
+      <text x="800" y="250" text-anchor="middle" class="t-accent" font-size="15">Saralash yo'nalishi</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 6-slayd: Bo'lim 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>django-filter sozlash</h1>
+  <p>PostFilter va sana oraliqlari</p>
+</section>
+
+<!-- 7-slayd: PostFilter kodi -->
+<section>
+  <h2>src/apps/news/filters.py</h2>
+  <pre><code class="language-python" data-trim data-noescape data-line-numbers="1-15|4-9|11-15">import django_filters
+from apps.news.models import Post
+
+class PostFilter(django_filters.FilterSet):
+    published_from = django_filters.IsoDateTimeFilter(
+        field_name="published_at", lookup_expr="gte"
+    )
+    published_to = django_filters.IsoDateTimeFilter(
+        field_name="published_at", lookup_expr="lte"
+    )
+
+    class Meta:
+        model = Post
+        fields = {
+            "status": ["exact"],
+            "category": ["exact"],
+            "author": ["exact"],
+            "tags": ["exact"],
+        }</code></pre>
+</section>
+
+<!-- 8-slayd: PostViewSet konfiguratsiyasi -->
+<section>
+  <h2>src/apps/news/views.py (PostViewSet)</h2>
+  <pre><code class="language-python" data-trim data-noescape data-line-numbers="1-12|5|7|9-10">class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.select_related("category", "author") \
+                           .prefetch_related("tags").all()
+    lookup_field = "slug"
+
+    filterset_class = PostFilter
+
+    search_fields = ("title", "excerpt", "body")
+
+    ordering_fields = ("published_at", "created_at", "title", "status")
+    ordering = ("-published_at", "-created_at")</code></pre>
+</section>
+
+<!-- 9-slayd: Bo'lim 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Indekslar va unumdorlik</h1>
+  <p>Qidiruvni 100 barobar tezlashtirish siri</p>
+</section>
+
+<!-- 10-slayd: SVG Sxema: Indekssiz vs Indeksli -->
+<section>
+  <h2>Nega ma'lumotlar bazasida indeks kerak?</h2>
+  <p>Full Table Scan (Sekin) vs B-Tree Binary Search (Bir zumda)</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300" width="100%" height="300">
+      <!-- Indekssiz -->
+      <rect x="50" y="50" width="410" height="220" rx="14" class="fn"></rect>
+      <text x="255" y="90" text-anchor="middle" class="t-accent" font-size="20" font-weight="bold">Indekssiz qidiruv</text>
+      <text x="255" y="130" text-anchor="middle" class="t-muted" font-size="15">Full Table Scan</text>
+      <text x="255" y="165" text-anchor="middle" class="t-muted" font-size="14">Barcha 1 mln qatorni bittalab o'qiydi</text>
+      <text x="255" y="195" text-anchor="middle" class="t-accent" font-size="14">Vaqt: ~2500 ms (Juda sekin)</text>
+      <text x="255" y="230" text-anchor="middle" class="t-muted" font-size="14">Server protsessori qiziydi</text>
+
+      <!-- Indeksli -->
+      <rect x="540" y="50" width="410" height="220" rx="14" class="fg"></rect>
+      <text x="745" y="90" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Indeksli qidiruv (B-Tree)</text>
+      <text x="745" y="130" text-anchor="middle" class="t-head" font-size="15">Index Scan</text>
+      <text x="745" y="165" text-anchor="middle" class="t-muted" font-size="14">Kitob mundarijasidek to'g'ri topadi</text>
+      <text x="745" y="195" text-anchor="middle" class="t-head" font-size="14">Vaqt: ~5 ms (Bir zumda!)</text>
+      <text x="745" y="230" text-anchor="middle" class="t-head" font-size="14">500 barobar tezroq ishlash!</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 11-slayd: Browsable API da Filters tugmasi -->
+<section>
+  <h2>Browsable API da qidiruvni sinash</h2>
+  <div class="browser">
+    <div class="bar">
+      <i></i><i></i><i></i>
+      <span>http://127.0.0.1:8000/api/v1/posts/</span>
+    </div>
+    <div class="page">
+      <p>HTTP 200 OK &mdash; Filters tugmasi o'ng tomonda faol</p>
+      <pre><code class="language-json">{
+  "count": 1,
+  "results": [
+    {
+      "id": 12,
+      "title": "Sun'iy intellekt kelajagi",
+      "status": "published",
+      "published_at": "2026-10-04T10:00:00Z"
+    }
+  ]
+}</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- 12-slayd: Interaktiv Flip Card -->
+<section>
+  <h2>Atamalarni eslab qolamiz</h2>
+  <div class="cards three">
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="list-filter"></i></div>
+          <h3>FilterSet</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Filtrlar to'plami</h3>
+          <p>Model maydonlari qanday mezonlar bilan saralanishini belgilovchi sinf.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="search"></i></div>
+          <h3>SearchFilter</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Matnli qidiruv</h3>
+          <p>Sarlavha va matn ichidan kalit so'zlarni topib beruvchi DRF filtri.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="database"></i></div>
+          <h3>Indeks</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Mundarija ko'rsatkichi</h3>
+          <p>Ma'lumotlar bazasida qidiruv tezligini yuzlab barobar oshiruvchi struktura.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13-slayd: Mini-test Quiz -->
+<section>
+  <h2>Tezkor bilim tekshiruvi</h2>
+  <div class="quiz">
+    <p class="q">URL parametrida ?ordering=-published_at deb yozilganda natijalar qanday tartibda chiqadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Eng eski yangiliklar birinchi bo'lib chiqadi</button>
+      <button class="opt" type="button" data-ok>Eng yangi chop etilgan maqolalar birinchi bo'lib chiqadi (kamayish tartibida)</button>
+      <button class="opt" type="button">Maqolalar o'chirib tashlanadi</button>
+    </div>
+    <div class="explain">
+      To'g'ri! Maydon oldidagi minus (-) belgisi kamayish (descending) tartibini bildiradi, ya'ni eng so'nggi chop etilgan maqolalar ro'yxat boshida ko'rinadi.
+    </div>
+  </div>
+</section>
+
+<!-- 14-slayd: Odatiy xato -->
+<section>
+  <h2>Dasturchilar ko'p yo'l qo'yadigan xatolar</h2>
+  <div class="callout bad">
+    <i data-ic="circle-alert"></i>
+    Xato: Barcha ma'lumotlarni filtrsiz frontendga jo'natib, saralashni brauzerda JavaScript orqali bajarish (katta trafik va xotira yo'qotiladi).
+  </div>
+  <div class="callout tip">
+    <i data-ic="circle-check"></i>
+    To'g'ri: Filtrlash har doim backendda — ma'lumotlar bazasi darajasida amalga oshirilishi shart.
+  </div>
+</section>
+
+<!-- 15-slayd: Amaliy topshiriq -->
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>15 daqiqa</span></h2>
+  <div class="task">
+    <span class="level easy">Oson</span>
+    <code>pip install django-filter</code> qilib, <code>settings/base.py</code> ga ulang.
+  </div>
+  <div class="task">
+    <span class="level mid">O'rta</span>
+    <code>apps/news/filters.py</code> da <code>PostFilter</code> klassini yozing.
+  </div>
+  <div class="task">
+    <span class="level hard">Qiyin</span>
+    <code>PostViewSet</code> ga <code>filterset_class</code>, <code>search_fields</code> va <code>ordering_fields</code> ni ulang va testlang.
+  </div>
+</section>
+
+<!-- 16-slayd: Xulosa -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h2>2-haftani muvaffaqiyatli yakunladik!</h2>
+  <p class="muted">Keyingi haftada: Pagination (Sahifalash), Throttling (Rate limiting), Fayllar bilan ishlash va Swagger dokumentatsiya!</p>
+  <div class="chips">
+    <span class="chip">django-filter</span>
+    <span class="chip">SearchFilter</span>
+    <span class="chip">OrderingFilter</span>
+    <span class="chip">DB Indekslar</span>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

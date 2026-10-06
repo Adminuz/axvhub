@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Push-Button va LED Interfeysi (2-qism)</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Push-Button va LED Interfeysi (2-qism)</h1>
+  <p class="muted">Interaktiv Toggle mantig'i, kontaktlar dirillashi (Bounce &amp; Debounce) va ko'p tugmali tizimlar</p>
+  <span class="badge">9-sinf</span><span class="badge">IoT</span><span class="badge">3-hafta · 9-dars</span>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Toggle (Trigged) Mantig'i</h1>
+  <p>Tugmani bir marta bosganda holatni doimiy saqlab qolish siri</p>
+</section>
+
+<section>
+  <h2>Bosib Turish (Hold) vs Bosib Qo'yib Yuborish (Toggle)</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="hand"></i></div>
+      <h3>Hold (Bosib Turish)</h3>
+      <p>LED faqat tugma barmog'ingiz ostida ushlab turilgandagina yonadi.</p>
+      <p class="t-muted">Qo'l olinsa zudlik bilan o'chadi (qo'ng'iroq, siren).</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="toggle-right" data-anim="pulse"></i></div>
+      <h3 class="t-head">Toggle (Holatni Almashtirish)</h3>
+      <p>1 marta bosildi: LED yondi va yoniq qoladi.</p>
+      <p>Yana 1 marta bosildi: LED o'chdi va o'chiq qoladi.</p>
+      <p class="t-muted">Xona chirog'i, televizor, kompyuter yoqish tugmasi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Toggle Jarayonining To'lqin Diagrammasi</h2>
+  <div class="fragment fade-up">
+    <svg viewBox="0 0 900 260" width="100%" height="200" style="display:block; margin:auto;">
+      <rect x="40" y="20" width="820" height="220" rx="12" class="la" stroke-width="2" fill="none"/>
+      
+      <!-- Button Presses -->
+      <text x="80" y="65" class="t-head" font-size="13" font-weight="bold">Tugma bosilishi:</text>
+      <!-- Press 1 -->
+      <polyline points="220,75 250,75 250,45 290,45 290,75 450,75 450,45 490,45 490,75 750,75" stroke="currentColor" stroke-width="3" class="t-accent" fill="none"/>
+      <text x="270" y="35" text-anchor="middle" class="t-accent" font-size="11">1-bosish</text>
+      <text x="470" y="35" text-anchor="middle" class="t-accent" font-size="11">2-bosish</text>
+
+      <!-- LED Output -->
+      <text x="80" y="150" class="t-head" font-size="13" font-weight="bold">LED Holati:</text>
+      <polyline points="220,165 250,165 250,120 450,120 450,165 750,165" stroke="currentColor" stroke-width="4" class="fg" fill="none"/>
+      <text x="350" y="110" text-anchor="middle" class="t-head" font-size="13" font-weight="bold">YONIQ (HIGH)</text>
+      <text x="600" y="185" text-anchor="middle" class="t-muted" font-size="13">O'CHIQ (LOW)</text>
+
+      <!-- Time Axis -->
+      <line x1="220" y1="205" x2="750" y2="205" stroke="currentColor" stroke-width="2" class="t-muted"/>
+      <text x="480" y="222" text-anchor="middle" class="t-muted" font-size="11">Vaqt o'qi</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Kontakt Dirillashi (Bounce)</h1>
+  <p>Mexanik sakrashlar va dasturiy Debounce filtri</p>
+</section>
+
+<section>
+  <h2>Kontaktlar Nega Dirillaydi? (Button Bouncing)</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="activity" data-anim="bounce"></i></div>
+      <h3 class="t-accent">Mikroskopik Sakrashlar</h3>
+      <p>Tugma ichidagi metall kontaktlar bir-biriga urilganda elastik prujina kabi <strong>5–20 millisekund</strong> davomida sakraydi.</p>
+      <p class="t-muted">Ko'zimiz buni sezmaydi, lekin mikrokontroller uchun bu uzoq vaqtdir!</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3 class="t-accent">16 MGts Tezlikning Oqibati</h3>
+      <p>Arduino 10 millisekund ichida 20–30 marta tekshirib ulguradi.</p>
+      <p class="t-muted">Bitta oddiy bosishni dastur 10 marta bosildi deb o'ylab, LEDni tasodifiy o'chirib qo'yishi mumkin.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Osiloskopdagi Tebranish va Debounce</h2>
+  <div class="fragment fade-up">
+    <svg viewBox="0 0 900 270" width="100%" height="210" style="display:block; margin:auto;">
+      <rect x="40" y="20" width="820" height="230" rx="12" class="la" stroke-width="2" fill="none"/>
+      
+      <!-- Bouncing waveform -->
+      <text x="80" y="65" class="t-accent" font-size="14" font-weight="bold">Filtrsiz signal (Shovqinli):</text>
+      <polyline points="240,50 340,50 350,90 360,50 370,90 380,50 390,90 400,90 750,90" stroke="currentColor" stroke-width="3" class="t-accent" fill="none"/>
+      <text x="375" y="115" text-anchor="middle" class="t-accent" font-size="11">Tebranish (10 ms)</text>
+
+      <!-- Debounced waveform -->
+      <text x="80" y="170" class="t-head" font-size="14" font-weight="bold">Debounce qilingan signal:</text>
+      <polyline points="240,150 420,150 420,195 750,195" stroke="currentColor" stroke-width="4" class="fg" fill="none"/>
+      <text x="500" y="220" text-anchor="middle" class="t-head" font-size="12">Toza va barqaror signal</text>
+
+      <!-- 50ms Delay Window -->
+      <rect x="340" y="135" width="80" height="75" rx="4" class="fb" stroke-width="2" stroke-dasharray="3,3" fill="none"/>
+      <text x="380" y="130" text-anchor="middle" class="t-muted" font-size="11">50 ms filtr</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Holat O'zgarishini Aniqlash</h1>
+  <p>State Change Detection va Toggle C++ algoritmi</p>
+</section>
+
+<section>
+  <h2>O'tish Lahzasini Usulash (Edge Detection)</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+      <h3>Oldingi Holatni Saqlash</h3>
+      <p>Dasturda <code>lastButtonState</code> o'zgaruvchisi kiritiladi.</p>
+      <p>Har siklda joriy holat avvalgisi bilan solishtiriladi:</p>
+      <p class="t-muted"><code>reading != lastButtonState</code></p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="git-commit-horizontal"></i></div>
+      <h3 class="t-head">Bosilish Lahzasi (LOW)</h3>
+      <p>Agar holat o'zgargan bo'lsa VA yangi holat LOW bo'lsa:</p>
+      <p class="t-accent"><code>ledState = !ledState;</code></p>
+      <p class="t-muted">LED holati darhol teskarisiga aylanadi (0 -> 1, 1 -> 0).</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>To'liq Toggle C++ Kodi</h2>
+  <div class="fragment fade-up">
+    <pre><code class="language-cpp">const int btnPin = 2;
+const int ledPin = 9;
+
+int ledState = LOW;
+int lastBtn = HIGH;
+
+void setup() {
+  pinMode(btnPin, INPUT_PULLUP);
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  int reading = digitalRead(btnPin);
+
+  // Agar tugma yangi bosilgan bo'lsa:
+  if (reading != lastBtn && reading == LOW) {
+    ledState = !ledState;           // Invert (Toggle)
+    digitalWrite(ledPin, ledState); // Yangi holatni uzatish
+    delay(50);                      // Debounce filtri
+  }
+  lastBtn = reading;                // Holatni yangilash
+}</code></pre>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Ko'p Tugmali Tizim Arxitekturasi</h2>
+  <div class="fragment fade-up">
+    <svg viewBox="0 0 900 280" width="100%" height="220" style="display:block; margin:auto;">
+      <!-- Buttons on Left -->
+      <rect x="60" y="60" width="160" height="50" rx="8" class="fa" fill="none" stroke="currentColor"/>
+      <text x="140" y="90" text-anchor="middle" class="t-head" font-size="13">Tugma 1 (Pin 2)</text>
+
+      <rect x="60" y="140" width="160" height="50" rx="8" class="fa" fill="none" stroke="currentColor"/>
+      <text x="140" y="170" text-anchor="middle" class="t-head" font-size="13">Tugma 2 (Pin 3)</text>
+
+      <!-- Center Arduino -->
+      <rect x="340" y="40" width="220" height="180" rx="12" class="la" stroke-width="2" fill="none"/>
+      <text x="450" y="80" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">Arduino Uno</text>
+      <text x="450" y="115" text-anchor="middle" class="t-muted" font-size="12">Interaktiv Mantiq</text>
+      <text x="450" y="145" text-anchor="middle" class="t-accent" font-size="13">State Machine</text>
+
+      <!-- Lines to Arduino -->
+      <line x1="220" y1="85" x2="340" y2="85" stroke="currentColor" stroke-width="3" class="t-head"/>
+      <line x1="220" y1="165" x2="340" y2="165" stroke="currentColor" stroke-width="3" class="t-head"/>
+
+      <!-- Lines to LEDs -->
+      <line x1="560" y1="85" x2="680" y2="85" stroke="currentColor" stroke-width="3" class="t-accent"/>
+      <line x1="560" y1="165" x2="680" y2="165" stroke="currentColor" stroke-width="3" class="t-accent"/>
+
+      <!-- LEDs on Right -->
+      <circle cx="720" cy="85" r="22" class="fn" fill="none" stroke="currentColor" stroke-width="3"/>
+      <text x="720" y="90" text-anchor="middle" class="t-accent" font-size="11" font-weight="bold">LED 1</text>
+
+      <circle cx="720" cy="165" r="22" class="fg" fill="none" stroke="currentColor" stroke-width="3"/>
+      <text x="720" y="170" text-anchor="middle" class="t-head" font-size="11" font-weight="bold">LED 2</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Interaktiv Kartochkalar</h2>
+  <div class="cards two">
+    <div class="flip fragment fade-up">
+      <div class="flip-in">
+        <div class="face front fa">
+          <h3><i data-ic="circle-question-mark"></i> Debounce uchun 50 ms kechikish nega kerak?</h3>
+          <p class="t-muted">Javobni ko'rish uchun aylantiring</p>
+        </div>
+        <div class="face back fb">
+          <h3>Dirillashni Yo'qotish</h3>
+          <p>Metall kontaktlarning mikroskopik sakrashlari paytidagi soxta signallarni e'tiborga olmaslik uchun.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip fragment fade-up">
+      <div class="flip-in">
+        <div class="face front fa">
+          <h3><i data-ic="circle-question-mark"></i> !ledState ifodasi nimani anglatadi?</h3>
+          <p class="t-muted">Javobni ko'rish uchun aylantiring</p>
+        </div>
+        <div class="face back fg">
+          <h3>Mantiqiy Inkor (Invert)</h3>
+          <p>Agar 0 bo'lsa 1 ga, agar 1 bo'lsa 0 ga almashtiradi (Toggle mantig'i).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tezkor Test Savoli</h2>
+  <div class="quiz">
+    <div class="q">Tugma 1 marta bosilganda LED yoniq qolishi va ikkinchi marta bosilganda o'chishi uchun qaysi dasturiy mantiq qo'llaniladi?</div>
+    <div class="opts">
+      <div class="opt">A) Faqat delay(10000); qo'yish kerak</div>
+      <div class="opt">B) Faqat analogRead() funksiyasi ishlatiladi</div>
+      <div class="opt" data-ok>C) Holat o'zgarishini aniqlash va ledState = !ledState (Toggle) mantig'i</div>
+      <div class="opt">D) Hech qanday kod yozish shart emas</div>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Xulosa va Keyingi Qadam</h1>
+  <p>3-hafta 9-dars yakunlari</p>
+</section>
+
+<section>
+  <h2>Bugungi Darsda Nimani O'rgandik?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="toggle-right"></i></div>
+      <h3>Toggle Mantig'i</h3>
+      <p>Oddiy bosib turishdan farqli o'laroq, holatni eslab qoluvchi professional interfeys qurdik.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="activity"></i></div>
+      <h3>Debounce Texnikasi</h3>
+      <p>Mexanik kontakt tebranishini 50 ms filtr orqali tozalash va barqarorlikni ta'minlashni o'rgandik.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="git-branch"></i></div>
+      <h3>Ko'p Tugmali Boshqaruv</h3>
+      <p>Bir nechta tugmalar va LEDlar bilan turli rejimlar va Master Switch mantiqlarini sinovdan o'tkazdik.</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>9-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>9-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Avtomatik testlar nimaning oldini oladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Regressiyani: yangi o'zgarish eski funksiyani buzib qo'yishini</button>
+      <button class="opt" type="button">Internet uzilishini</button>
+      <button class="opt" type="button">Parol unutilishini</button>
+      <button class="opt" type="button">Serverning o'chishini</button>
+    </div>
+    <div class="explain">Testlar bir necha soniyada eski kodlar buzilmaganini ko'rsatadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q"><code>APITestCase</code> har bir test uchun qanday baza ishlatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Asosiy ishlab chiqish bazasi</button>
+      <button class="opt" type="button" data-ok>Vaqtinchalik baza, test tugagach tozalanadi</button>
+      <button class="opt" type="button">Hech qanday baza</button>
+      <button class="opt" type="button">Bulutli baza</button>
+    </div>
+    <div class="explain">Shuning uchun asosiy ma'lumotlarga zarar yetmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>force_authenticate(user=user)</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Foydalanuvchini bazadan o'chiradi</button>
+      <button class="opt" type="button">Parolni tiklaydi</button>
+      <button class="opt" type="button" data-ok>So'rovni parolsiz, shu foydalanuvchi nomidan yuboradi</button>
+      <button class="opt" type="button">Token muddatini uzaytiradi</button>
+    </div>
+    <div class="explain">Murakkab login jarayonini aylanib o'tishga imkon beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Faqat <code>apps.news</code> testlarini ishga tushirish buyrug'i qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>python manage.py runserver apps.news</code></button>
+      <button class="opt" type="button"><code>python test apps.news</code></button>
+      <button class="opt" type="button"><code>pip install apps.news</code></button>
+      <button class="opt" type="button" data-ok><code>python manage.py test apps.news</code></button>
+    </div>
+    <div class="explain">Argumentsiz <code>python manage.py test</code> barcha testlarni ishga tushiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Mehmon (tizimga kirmagan) foydalanuvchi maqola yaratmoqchi bo'lganda testda qaysi status kutiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>401 Unauthorized</button>
+      <button class="opt" type="button">200 OK</button>
+      <button class="opt" type="button">201 Created</button>
+      <button class="opt" type="button">404 Not Found</button>
+    </div>
+    <div class="explain">4 asosiy ssenariy: 200, 201, 401 va 403.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Boshqa birovning postini <code>PATCH</code> qilishga urinish testida qaysi status kutiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">201 Created</button>
+      <button class="opt" type="button" data-ok>403 Forbidden</button>
+      <button class="opt" type="button">200 OK</button>
+      <button class="opt" type="button">401 Unauthorized</button>
+    </div>
+    <div class="explain">Foydalanuvchi tizimga kirgan, lekin huquqi yo'q.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Yangi maqola muvaffaqiyatli yaratilsa, <code>POST</code> javobining statusi qanday?</p>
+    <div class="opts">
+      <button class="opt" type="button">200 OK</button>
+      <button class="opt" type="button">204 No Content</button>
+      <button class="opt" type="button" data-ok>201 Created</button>
+      <button class="opt" type="button">302 Found</button>
+    </div>
+    <div class="explain">Test: <code>assertEqual(response.status_code, status.HTTP_201_CREATED)</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">OpenAPI 3.0 nima va qaysi kutubxona uni avtomatik hosil qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ma'lumotlar bazasi turi; <code>django-filter</code></button>
+      <button class="opt" type="button">Test kutubxonasi; <code>APIClient</code></button>
+      <button class="opt" type="button">Parser; <code>MultiPartParser</code></button>
+      <button class="opt" type="button" data-ok>API tavsifi standarti; <code>drf-spectacular</code></button>
+    </div>
+    <div class="explain">U ViewSet va Serializer'larni tahlil qilib interaktiv hujjat quradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Swagger UI (<code>/api/docs/</code>) va ReDoc (<code>/api/redoc/</code>) farqi nimada?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Swagger'da «Try it out» bilan brauzerdan so'rov yuboriladi; ReDoc toza texnik hujjat</button>
+      <button class="opt" type="button">Swagger faqat testlarni yurgizadi</button>
+      <button class="opt" type="button">ReDoc so'rov yuborishga mo'ljallangan, Swagger esa yo'q</button>
+      <button class="opt" type="button">Ikkalasi bir xil va bir URL da</button>
+    </div>
+    <div class="explain">Ikkalasi ham bir xil OpenAPI sxemasidan foydalanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>test_list_posts</code> da nega <code>assertIn("results", response.data)</code> tekshiriladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Chunki Swagger shuni talab qiladi</button>
+      <button class="opt" type="button" data-ok>Pagination yoqilgani uchun ro'yxat <code>results</code> kaliti ichida keladi</button>
+      <button class="opt" type="button">Chunki <code>force_authenticate</code> ishlatilgan</button>
+      <button class="opt" type="button">Chunki bu faqat testda bo'ladi</button>
+    </div>
+    <div class="explain">Sahifalangan javob: <code>count</code>, <code>next</code>, <code>previous</code>, <code>results</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: APITestCase, force_authenticate, 200/201/401/403 ssenariylari, drf-spectacular, Swagger va ReDoc.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

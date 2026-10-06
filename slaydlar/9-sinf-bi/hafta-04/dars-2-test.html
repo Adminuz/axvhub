@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>2-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>2-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">Business Intelligence</span><span class="badge">4-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">RDBMS nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Jadval chizish dasturi</button>
+      <button class="opt" type="button">Faqat Excel qo'shimchasi</button>
+      <button class="opt" type="button" data-ok>Relatsion modelga asoslangan va SQL bilan boshqariladigan ma'lumotlar bazasi tizimi</button>
+      <button class="opt" type="button">Operatsion tizim</button>
+    </div>
+    <div class="explain">Masalan, SQL Server, PostgreSQL, MySQL.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Server talab qilmaydigan, bitta faylda ishlaydigan va telefon ilovalarida ko'p ishlatiladigan RDBMS qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Oracle</button>
+      <button class="opt" type="button">Microsoft SQL Server</button>
+      <button class="opt" type="button">PostgreSQL</button>
+      <button class="opt" type="button" data-ok>SQLite</button>
+    </div>
+    <div class="explain">SQLite — ichki (embedded) baza, smartfon va brauzerlarda bor.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Microsoft SQL Server ning SQL dialekti qanday ataladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">PL/SQL</button>
+      <button class="opt" type="button" data-ok>T-SQL</button>
+      <button class="opt" type="button">NoSQL</button>
+      <button class="opt" type="button">GraphQL</button>
+    </div>
+    <div class="explain">PL/SQL — Oracle dialekti.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">SSMS da so'rovni bajarish uchun qaysi tugma bosiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">F1</button>
+      <button class="opt" type="button" data-ok>F5 (Execute)</button>
+      <button class="opt" type="button">Ctrl + Z</button>
+      <button class="opt" type="button">F12</button>
+    </div>
+    <div class="explain">Execute yoki F5; natija Results va Messages oynalarida.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Ikki o'quvchiga bir xil ID berildi. Qaysi yaxlitlik turi buzildi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Referential integrity</button>
+      <button class="opt" type="button">Domain integrity</button>
+      <button class="opt" type="button">Hech qaysi</button>
+      <button class="opt" type="button" data-ok>Entity integrity</button>
+    </div>
+    <div class="explain">PRIMARY KEY takrorlanmasligi — entity integrity.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Buyurtmada mavjud bo'lmagan MijozID = 99 ko'rsatildi. Qaysi cheklov buni to'xtatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">UNIQUE</button>
+      <button class="opt" type="button" data-ok>FOREIGN KEY</button>
+      <button class="opt" type="button">DEFAULT</button>
+      <button class="opt" type="button">NOT NULL</button>
+    </div>
+    <div class="explain">FK faqat mavjud PK qiymatiga ishora qilishiga ruxsat beradi — referential integrity.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Narx faqat musbat bo'lishi uchun qaysi cheklov yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>UNIQUE (Narx)</code></button>
+      <button class="opt" type="button" data-ok><code>CHECK (Narx &gt; 0)</code></button>
+      <button class="opt" type="button"><code>DEFAULT 0</code></button>
+      <button class="opt" type="button"><code>FOREIGN KEY (Narx)</code></button>
+    </div>
+    <div class="explain">CHECK shartga mos bo'lmagan qiymatni rad etadi (domain integrity).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Email ustunida takroriy qiymat bo'lmasligi uchun qaysi cheklov?</p>
+    <div class="opts">
+      <button class="opt" type="button">CHECK</button>
+      <button class="opt" type="button">DEFAULT</button>
+      <button class="opt" type="button" data-ok>UNIQUE</button>
+      <button class="opt" type="button">NOT NULL</button>
+    </div>
+    <div class="explain">UNIQUE PK bo'lmagan ustunda ham takrorni taqiqlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">SQL Server da o'zbekcha <code>O'g'iloy</code> ismini qanday yozish to'g'ri?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>N'O'g'iloy'</code></button>
+      <button class="opt" type="button"><code>"O'g'iloy"</code></button>
+      <button class="opt" type="button" data-ok><code>N'O''g''iloy'</code></button>
+      <button class="opt" type="button"><code>[O'g'iloy]</code></button>
+    </div>
+    <div class="explain">Matn ichidagi apostrof ikkilantiriladi; N — Unicode matn.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">ACID dagi «A» (Atomicity) nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ma'lumot avtomatik shifrlanadi</button>
+      <button class="opt" type="button">Tranzaksiyalar alifbo tartibida bajariladi</button>
+      <button class="opt" type="button" data-ok>Tranzaksiya to'liq bajariladi yoki umuman bajarilmaydi</button>
+      <button class="opt" type="button">Baza avtomatik o'chiriladi</button>
+    </div>
+    <div class="explain">Masalan, pul yechildi-yu qo'shilmasa — hammasi bekor qilinadi (ROLLBACK).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: RDBMS platformalari, SSMS, yaxlitlik turlari, PK, FK, NOT NULL, UNIQUE, CHECK, DEFAULT, ACID.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>2-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>2-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">IoT</span><span class="badge">4-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Elektr zanjiri (sikl) nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat bitta sim</button>
+      <button class="opt" type="button" data-ok>Tok manbadan chiqib, iste'molchidan o'tib, manbaga qaytadigan berk yo'l</button>
+      <button class="opt" type="button">Arduino dasturi</button>
+      <button class="opt" type="button">Rezistor turi</button>
+    </div>
+    <div class="explain">Manba, o'tkazgich, iste'molchi, kalit va himoya rezistori.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Ochiq zanjirda nima sodir bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Tok ikki barobar oshadi</button>
+      <button class="opt" type="button" data-ok>Tok oqmaydi, LED o'chiq</button>
+      <button class="opt" type="button">LED yonadi</button>
+      <button class="opt" type="button">Rezistor qiziydi</button>
+    </div>
+    <div class="explain">Yo'l uzilgan — tok manbaga qaytolmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Breadboardning bir qatoridagi a–e teshiklari...</p>
+    <div class="opts">
+      <button class="opt" type="button">hech biri ulanmagan</button>
+      <button class="opt" type="button">faqat GND ga ulangan</button>
+      <button class="opt" type="button">f–j bilan ulangan</button>
+      <button class="opt" type="button" data-ok>o'zaro ulangan</button>
+    </div>
+    <div class="explain">Har qatorda 5 ta teshik bitta plastinkada; ariqcha ularni f–j dan ajratadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Breadboardning markaziy ariqchasi nima uchun kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Tokni kuchaytiradi</button>
+      <button class="opt" type="button" data-ok>Ikki yarmini ajratadi, DIP korpuslar ustiga qo'yiladi</button>
+      <button class="opt" type="button">Sovutish uchun</button>
+      <button class="opt" type="button">Simlarni saqlash uchun</button>
+    </div>
+    <div class="explain">DIP oyoqlari alohida qatorlarga tushadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">DPST qisqartmasi nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Digital Pin Switch Tool</button>
+      <button class="opt" type="button">Double Power Supply Terminal</button>
+      <button class="opt" type="button">Direct Push Switch Type</button>
+      <button class="opt" type="button" data-ok>Double Pole, Single Throw</button>
+    </div>
+    <div class="explain">Ikki zanjir, har biri faqat yoq/o'chir holatida.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">DIP switch'dagi har bir juft kontakt...</p>
+    <div class="opts">
+      <button class="opt" type="button">faqat birga yoqiladi</button>
+      <button class="opt" type="button">rezistor vazifasini bajaradi</button>
+      <button class="opt" type="button" data-ok>mustaqil kalit sifatida ishlaydi</button>
+      <button class="opt" type="button">LED ni almashtiradi</button>
+    </div>
+    <div class="explain">Har bir richag o'z zanjirini ochadi yoki yopadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">5 V manba, qizil LED (2 V), 10 mA uchun rezistor?</p>
+    <div class="opts">
+      <button class="opt" type="button">30 Om</button>
+      <button class="opt" type="button">3000 Om</button>
+      <button class="opt" type="button" data-ok>300 Om → 330 Om</button>
+      <button class="opt" type="button">Rezistor kerak emas</button>
+    </div>
+    <div class="explain">R = (5 − 2) / 0,010 = 300 Om.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">9 V batareyada 220 Om bilan qizil LED ulansa nima bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">LED xira yonadi</button>
+      <button class="opt" type="button" data-ok>Tok ≈ 32 mA — LED qizib, ishdan chiqishi mumkin</button>
+      <button class="opt" type="button">Tok nolga teng</button>
+      <button class="opt" type="button">Hech narsa o'zgarmaydi</button>
+    </div>
+    <div class="explain">9 V uchun kamida 470 Om kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">LED ning uzun oyog'i qanday ataladi va qayerga ulanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Anod — + tomonga</button>
+      <button class="opt" type="button">Katod — GND ga</button>
+      <button class="opt" type="button">Anod — GND ga</button>
+      <button class="opt" type="button">Katod — + tomonga</button>
+    </div>
+    <div class="explain">Qisqa oyoq — katod, GND ga.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Nega bu zanjirda dastur yozilmaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Tinkercad dasturni qo'llab-quvvatlamaydi</button>
+      <button class="opt" type="button" data-ok>Mikrokontroller ishlatilmaydi — kalit LEDni bevosita boshqaradi</button>
+      <button class="opt" type="button">LED dasturlanmaydi</button>
+      <button class="opt" type="button">Rezistor dasturni o'chiradi</button>
+    </div>
+    <div class="explain">Uslubiy ko'rsatma: mikrokontrollerdan foydalanmadik.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: elektr zanjiri, breadboard, kalit turlari, DIP switch, Om qonuni va rezistor hisobi.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

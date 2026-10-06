@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>6-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>6-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">2-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Versiya boshqaruvi tizimi (VCS) nimani amalga oshiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Fayllardagi o'zgarishlar tarixini (kim, qachon, nima) yozib boradi</button>
+      <button class="opt" type="button">Kodni avtomatik xatosiz qiladi</button>
+      <button class="opt" type="button">Faqat zaxira nusxani zip qiladi</button>
+      <button class="opt" type="button">Dasturni serverga o'rnatadi</button>
+    </div>
+    <div class="explain">VCS tarixni saqlaydi, jamoada parallel ishlashga imkon beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q"><code>git init</code> buyrug'i nima hosil qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>.gitignore</code> fayli</button>
+      <button class="opt" type="button" data-ok>Yashirin <code>.git</code> papkali yangi repozitoriya</button>
+      <button class="opt" type="button">GitHub dagi masofaviy repozitoriya</button>
+      <button class="opt" type="button">Yangi branch</button>
+    </div>
+    <div class="explain"><code>git init</code> joriy katalogda bo'sh Git repozitoriyasi yaratadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Fayllar <code>git add</code> dan keyin Git ning qaysi hududiga tushadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Git Repository</button>
+      <button class="opt" type="button">Working Directory</button>
+      <button class="opt" type="button" data-ok>Staging Area</button>
+      <button class="opt" type="button">GitHub</button>
+    </div>
+    <div class="explain"><code>add</code> — Staging Area ga, <code>commit</code> — Repository ga yozadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Har bir commit qaysi noyob identifikator bilan belgilanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Branch nomi</button>
+      <button class="opt" type="button">Fayl kengaytmasi</button>
+      <button class="opt" type="button">Foydalanuvchi paroli</button>
+      <button class="opt" type="button" data-ok>SHA-1 hash</button>
+    </div>
+    <div class="explain">Commit hash, muallif, sana va izohga ega bo'ladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Yangi fayl yaratildi. <code>git status</code> uni qanday ko'rsatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Untracked files (kuzatuvda emas)</button>
+      <button class="opt" type="button">Committed</button>
+      <button class="opt" type="button">Staged</button>
+      <button class="opt" type="button">Ignored</button>
+    </div>
+    <div class="explain">Git yangi faylni <code>git add</code> qilinmaguncha kuzatmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Commitlarni har birini bir qatorda ixcham ko'rish buyrug'i qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>git status -s</code></button>
+      <button class="opt" type="button" data-ok><code>git log --oneline</code></button>
+      <button class="opt" type="button"><code>git diff --short</code></button>
+      <button class="opt" type="button"><code>git commit --list</code></button>
+    </div>
+    <div class="explain"><code>git log</code> tarixni, <code>--oneline</code> esa ixcham ko'rinishni beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>git diff</code> nimani ko'rsatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Commitlar muallifini</button>
+      <button class="opt" type="button">Bog'langan masofaviy manzilni</button>
+      <button class="opt" type="button" data-ok>Fayllarda aynan qaysi qatorlar o'zgargani (<code>+</code> va <code>-</code>)</button>
+      <button class="opt" type="button">Barcha branchlar ro'yxatini</button>
+    </div>
+    <div class="explain">Qo'shilgan qatorlar <code>+</code>, o'chirilganlar <code>-</code> bilan ko'rsatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>git config --global user.name</code> va <code>user.email</code> nega kiritiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Internetga ulanish uchun</button>
+      <button class="opt" type="button">GitHub paroli o'rnida</button>
+      <button class="opt" type="button">Fayllarni shifrlash uchun</button>
+      <button class="opt" type="button" data-ok>Har bir commit kim tomonidan qilinganini bilish uchun</button>
+    </div>
+    <div class="explain">Bu ma'lumotlar commit muallifi sifatida yoziladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>.gitignore</code> ichida <code>*.log</code> yozilgan. Qaysi fayl e'tiborsiz qoldiriladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>server.log</code></button>
+      <button class="opt" type="button"><code>app.py</code></button>
+      <button class="opt" type="button"><code>log.txt</code></button>
+      <button class="opt" type="button"><code>index.html</code></button>
+    </div>
+    <div class="explain"><code>*.log</code> kengaytmasi <code>.log</code> bo'lgan barcha fayllarga mos keladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>index.html</code> ni tahrirladingiz va <code>git commit -m "fix"</code> qildingiz, <code>git add</code> qilmadingiz. Natija?</p>
+    <div class="opts">
+      <button class="opt" type="button">Barcha o'zgarishlar avtomatik commit bo'ladi</button>
+      <button class="opt" type="button" data-ok>O'zgarish commitga kirmaydi, chunki Staging Area ga o'tmagan</button>
+      <button class="opt" type="button">Fayl <code>.gitignore</code> ga tushadi</button>
+      <button class="opt" type="button">Git <code>add</code> ni o'zi bajaradi</button>
+    </div>
+    <div class="explain">Commit faqat Staging Area dagi o'zgarishlarni saqlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: VCS va Git hududlari, <code>git init/add/commit/log/diff</code>, <code>git config</code>, <code>.gitignore</code>.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Kompyuter tarmoqlari asoslari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 8-dars. Kompyuter tarmoqlari asoslari: OSI 7 qatlamli modeli va TCP/IP steki -->
+
+<!-- 1. SARLAVHA -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Kompyuter tarmoqlari asoslari</h1>
+  <p class="muted">OSI 7 qatlamli modeli, TCP/IP steki va ma'lumotlar enkapsulyatsiyasi</p>
+  <span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">3-hafta · 8-dars</span>
+</section>
+
+<!-- 2. MAQSADLAR KARTALARI -->
+<section>
+  <h2>Bugungi dars maqsadlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="network" data-anim="float"></i></div>
+      <h3>Tarmoq turlari</h3>
+      <p>LAN, WAN, Switch va Router qurilmalarining vazifasi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers" data-anim="pulse"></i></div>
+      <h3>OSI va TCP/IP</h3>
+      <p>7 qatlamli etalon model va 4 qatlamli amaliy Internet steki.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="arrow-down-to-line" data-anim="spin"></i></div>
+      <h3>Enkapsulyatsiya</h3>
+      <p>Ma'lumotlarning Data dan bitlargacha bo'lgan sarguzashti.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 3. STATISTIKA: INTERNET RAQAMLARDA -->
+<section>
+  <h2>Tarmoqlar raqamlarda</h2>
+  <div class="stats">
+    <div class="stat fragment"><div class="v">7 ta</div><div class="l">OSI etalon qatlamlari</div></div>
+    <div class="stat fragment"><div class="v">4 ta</div><div class="l">TCP/IP amaliy qatlamlari</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="99" data-suf="%">0</span></div><div class="l">suvosti kabellaridan o'tuvchi trafik</div></div>
+  </div>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Har bir xabar tarmoqdan o'tishda sarlavhalar (headers) bilan o'raladi.</div>
+</section>
+
+<!-- 4. BO'LIM 01: TARMOQ TURLARI VA QURILMALAR -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Tarmoq turlari va qurilmalar</h1>
+  <p>LAN, WAN, Switch va Router arxitekturasi</p>
+</section>
+
+<!-- 5. SVG ILLYUSTRATSIYA 1: TARMOQ TOPOLOGIYASI -->
+<section>
+  <h2>Mahalliy (LAN) va Global (WAN) tarmoq</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <rect class="fa" x="30" y="40" width="380" height="230" rx="16"/>
+      <text class="t-head" x="220" y="80" text-anchor="middle" font-size="22">Mahalliy tarmoq (LAN)</text>
+      <rect class="fn" x="60" y="110" width="140" height="60" rx="10"/>
+      <text class="t-head" x="130" y="145" text-anchor="middle" font-size="16">Kompyuter A</text>
+      <rect class="fn" x="240" y="110" width="140" height="60" rx="10"/>
+      <text class="t-head" x="310" y="145" text-anchor="middle" font-size="16">Kompyuter B</text>
+
+      <rect class="fb" x="140" y="190" width="160" height="60" rx="10"/>
+      <text class="t-head" x="220" y="225" text-anchor="middle" font-size="18">Switch (L2)</text>
+
+      <line class="la" x1="130" y1="170" x2="200" y2="190"/>
+      <line class="la" x1="310" y1="170" x2="240" y2="190"/>
+
+      <line class="la flowing" x1="410" y1="155" x2="520" y2="155"/><polygon class="ar-a" points="525,155 512,147 512,163"/>
+
+      <rect class="fc" x="530" y="110" width="160" height="90" rx="14"/>
+      <text class="t-head" x="610" y="150" text-anchor="middle" font-size="20">Router (L3)</text>
+      <text class="t-muted" x="610" y="180" text-anchor="middle" font-size="14">Default Gateway</text>
+
+      <line class="lb flowing" x1="690" y1="155" x2="790" y2="155"/><polygon class="ar-b" points="795,155 782,147 782,163"/>
+
+      <rect class="fg" x="800" y="90" width="170" height="130" rx="16"/>
+      <text class="t-head" x="885" y="150" text-anchor="middle" font-size="22">Internet</text>
+      <text class="t-muted" x="885" y="180" text-anchor="middle" font-size="15">(WAN)</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 6. TAQQOSLASH (SWAP): SWITCH vs ROUTER -->
+<section>
+  <h2>Switch va Router taqqosi</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">Switch (Kommutator)</button><button type="button">Router (Marshrutizator)</button></div>
+    <div class="swap-p">
+      <div class="card">
+        <h3>Switch (2-qatlam - Data Link)</h3>
+        <p>Faqat bitta mahalliy tarmoq (LAN) ichida ishlaydi.</p>
+        <p>Qurilmalarni ularning jismoniy <b>MAC manzillari</b> orqali taniydi.</p>
+        <p>Paketlarni tez va bevosita kerakli portga uzatadi.</p>
+      </div>
+    </div>
+    <div class="swap-p">
+      <div class="card accent">
+        <h3>Router (3-qatlam - Network)</h3>
+        <p>Turli mustaqil tarmoqlarni bir-biri bilan bog'laydi.</p>
+        <p>Mantiqiy <b>IP manzillar</b> bo'yicha global yo'nalishni (marshrut) belgilaydi.</p>
+        <p>Internetga chiqish darvozasi (Default Gateway) hisoblanadi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. BO'LIM 02: OSI 7 QATLAMLI MODELI -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>OSI 7 qatlamli modeli</h1>
+  <p>Tarmoq aloqasining nazariy etalon arxitekturasi</p>
+</section>
+
+<!-- 8. SVG ILLYUSTRATSIYA 2: OSI 7 QATLAM -->
+<section>
+  <h2>OSI 7 qatlamli zinalari</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <g class="fragment"><rect class="fa" x="50" y="20" width="900" height="35" rx="6"/><text class="t-head" x="80" y="44" font-size="18">7. Application (Amaliy)</text><text class="t-accent" x="650" y="44" font-size="16">HTTP, HTTPS, SSH, DNS</text></g>
+      <g class="fragment"><rect class="fb" x="50" y="60" width="900" height="35" rx="6"/><text class="t-head" x="80" y="84" font-size="18">6. Presentation (Taqdimot)</text><text class="t-muted" x="650" y="84" font-size="16">TLS/SSL, JSON, Shifrlash</text></g>
+      <g class="fragment"><rect class="fc" x="50" y="100" width="900" height="35" rx="6"/><text class="t-head" x="80" y="124" font-size="18">5. Session (Sessiya)</text><text class="t-muted" x="650" y="124" font-size="16">Seanslarni ochish va yopish</text></g>
+      <g class="fragment"><rect class="fg" x="50" y="140" width="900" height="35" rx="6"/><text class="t-head" x="80" y="164" font-size="18">4. Transport (Transport)</text><text class="t-accent" x="650" y="164" font-size="16">TCP, UDP, Portlar (Segment)</text></g>
+      <g class="fragment"><rect class="fa" x="50" y="180" width="900" height="35" rx="6"/><text class="t-head" x="80" y="204" font-size="18">3. Network (Tarmoq)</text><text class="t-accent" x="650" y="204" font-size="16">IP, ICMP, Routerlar (Paket)</text></g>
+      <g class="fragment"><rect class="fb" x="50" y="220" width="900" height="35" rx="6"/><text class="t-head" x="80" y="244" font-size="18">2. Data Link (Kanal)</text><text class="t-muted" x="650" y="244" font-size="16">Ethernet, MAC, Switch (Freym)</text></g>
+      <g class="fragment"><rect class="fn" x="50" y="260" width="900" height="35" rx="6"/><text class="t-head" x="80" y="284" font-size="18">1. Physical (Fizik)</text><text class="t-muted" x="650" y="284" font-size="16">Kabel, Optika, Radio (Bitlar)</text></g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 9. BO'LIM 03: OSI vs TCP/IP -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>OSI vs TCP/IP steki</h1>
+  <p>Nazariya va amaliyot o'rtasidagi ko'prik</p>
+</section>
+
+<!-- 10. SVG ILLYUSTRATSIYA 3: OSI vs TCP/IP -->
+<section>
+  <h2>OSI va TCP/IP taqqosi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <rect class="fa" x="60" y="40" width="400" height="240" rx="16"/>
+      <text class="t-head" x="260" y="75" text-anchor="middle" font-size="22">OSI modeli (7 qatlam)</text>
+      <text class="t-muted" x="260" y="110" text-anchor="middle" font-size="16">Application / Presentation / Session</text>
+      <text class="t-muted" x="260" y="150" text-anchor="middle" font-size="16">Transport</text>
+      <text class="t-muted" x="260" y="190" text-anchor="middle" font-size="16">Network</text>
+      <text class="t-muted" x="260" y="230" text-anchor="middle" font-size="16">Data Link / Physical</text>
+
+      <line class="la flowing" x1="460" y1="160" x2="540" y2="160"/><polygon class="ar-a" points="545,160 532,152 532,168"/>
+
+      <rect class="fb" x="540" y="40" width="400" height="240" rx="16"/>
+      <text class="t-head" x="740" y="75" text-anchor="middle" font-size="22">TCP/IP steki (4 qatlam)</text>
+      <text class="t-accent" x="740" y="110" text-anchor="middle" font-size="18">1. Application (HTTP, DNS)</text>
+      <text class="t-accent" x="740" y="150" text-anchor="middle" font-size="18">2. Transport (TCP, UDP)</text>
+      <text class="t-accent" x="740" y="190" text-anchor="middle" font-size="18">3. Internet (IP)</text>
+      <text class="t-accent" x="740" y="230" text-anchor="middle" font-size="18">4. Network Access (Ethernet)</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 11. BO'LIM 04: ENKAPSULYATSIYA -->
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Enkapsulyatsiya jarayoni</h1>
+  <p>Paketning qatlamlar bo'ylab o'ralishi va ochilishi</p>
+</section>
+
+<!-- 12. SVG ILLYUSTRATSIYA 4: ENKAPSULYATSIYA -->
+<section>
+  <h2>Enkapsulyatsiya oqimi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+      <rect class="fa" x="380" y="20" width="240" height="45" rx="8"/>
+      <text class="t-head" x="500" y="50" text-anchor="middle" font-size="18">Data (Application)</text>
+
+      <line class="la flowing" x1="500" y1="65" x2="500" y2="85"/><polygon class="ar-a" points="500,90 492,77 508,77"/>
+
+      <rect class="fb" x="300" y="90" width="400" height="45" rx="8"/>
+      <text class="t-head" x="500" y="120" text-anchor="middle" font-size="18">TCP Header + Data (Segment)</text>
+
+      <line class="la flowing" x1="500" y1="135" x2="500" y2="155"/><polygon class="ar-a" points="500,160 492,147 508,147"/>
+
+      <rect class="fc" x="220" y="160" width="560" height="45" rx="8"/>
+      <text class="t-head" x="500" y="190" text-anchor="middle" font-size="18">IP Header + Segment (Paket)</text>
+
+      <line class="la flowing" x1="500" y1="205" x2="500" y2="225"/><polygon class="ar-a" points="500,230 492,217 508,217"/>
+
+      <rect class="fg" x="140" y="230" width="720" height="45" rx="8"/>
+      <text class="t-head" x="500" y="260" text-anchor="middle" font-size="18">Frame Header + Paket + CRC (Freym)</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 13. KOD: LINUX TARMOQ BUYRUQLARI -->
+<section>
+  <h2>Linuxda tarmoq interfeyslarini ko'rish</h2>
+  <pre><code class="language-bash" data-trim data-noescape data-line-numbers="1-6|1-2|4|6">
+# Barcha interfeyslar va IP/MAC manzillar
+ip a
+
+# Marshrutlar va Default Gateway
+ip route
+
+# Ochiq portlar va tinglovchi jarayonlar
+sudo ss -tulpn
+  </code></pre>
+  <div class="callout tip"><i data-ic="circle-check"></i>Eski <code>ifconfig</code> va <code>netstat</code> o'rniga zamonaviy <code>ip</code> va <code>ss</code> ishlatiladi.</div>
+</section>
+
+<!-- 14. MINI TEST (QUIZ) -->
+<section>
+  <h2>Tezkor bilim sinovi</h2>
+  <div class="quiz">
+    <p class="q">Router (marshrutizator) OSI modelining qaysi qatlamida ishlaydi va qaysi manzilga tayanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">2-qatlam (MAC manzil)</button>
+      <button class="opt" type="button" data-ok>3-qatlam (IP manzil)</button>
+      <button class="opt" type="button">4-qatlam (Port raqami)</button>
+      <button class="opt" type="button">7-qatlam (URL manzil)</button>
+    </div>
+    <div class="explain">To'g'ri: Router 3-qatlamda (Network) ishlaydi va paketlarni IP manzillar bo'yicha yo'naltiradi!</div>
+  </div>
+</section>
+
+<!-- 15. AMALIY TOPSHIRIQ -->
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span><code>ip a</code> orqali o'z IP va MAC manzilingizni aniqlang.</div>
+  <div class="task"><span class="level mid">O'rta</span><code>ip route</code> yordamida Gateway (router) IP sini toping.</div>
+  <div class="task"><span class="level hard">Qiyin</span><code>sudo ss -tulpn</code> qilib ochiq portlarni tahlil qiling.</div>
+</section>
+
+<!-- 16. XULOSA -->
+<section>
+  <h2>Bugungi dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>O'rganilgan mavzular</h3>
+      <p>LAN va WAN, Switch vs Router, OSI 7 qatlamli modeli, TCP/IP steki va enkapsulyatsiya tamoyili.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="book-open"></i></div>
+      <h3>Uyga vazifa</h3>
+      <p>O'z kompyuteringiz tarmoq xaritasini chizish va OSI qatlamlarini jadvalda tasvirlash.</p>
+    </div>
+  </div>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>2-hafta testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>2-hafta testi</h1>
+  <p class="muted">20 ta savol &middot; taxminan 18 daqiqa</p>
+  <span class="badge">10-sinf Kiberxavfsizlik · 2-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/20</h2>
+  <div class="quiz">
+    <p class="q">Har qanday kiberxavfsizlik chorasi CIA uchligidan nechta komponentni himoyalashga qaratiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Kamida bittasini (C, I yoki A)</button>
+      <button class="opt" type="button">Hammasini bir vaqtda, boshqacha bo'lishi mumkin emas</button>
+      <button class="opt" type="button">Faqat ikkitasini</button>
+      <button class="opt" type="button">CIA ga aloqasi yo'q</button>
+    </div>
+    <div class="explain">Har qanday xavfsizlik chorasi CIA uchligidan kamida bittasini himoyalashga qaratilgan bo'ladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/20</h2>
+  <div class="quiz">
+    <p class="q">Tridi Bobning shifrlangan xabarini o'qiy olmadi, lekin oxiriga tasodifiy belgilar qo'shib buzdi. Qaysi mezon saqlanib, qaysi biri buzildi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ikkalasi ham buzildi</button>
+      <button class="opt" type="button" data-ok>Confidentiality saqlandi, Integrity buzildi</button>
+      <button class="opt" type="button">Ikkalasi ham saqlandi</button>
+      <button class="opt" type="button">Faqat Availability buzildi</button>
+    </div>
+    <div class="explain">Xabar o'qilmagani uchun Konfidensiallik saqlandi, lekin matn o'zgartirilgani uchun Yaxlitlik buzildi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/20</h2>
+  <div class="quiz">
+    <p class="q">Sog'liqni saqlash sohasida bemor tarixi uchun CIA uchligidan qaysi ikkitasi birga muhim hisoblanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat Availability</button>
+      <button class="opt" type="button">Faqat Integrity</button>
+      <button class="opt" type="button" data-ok>Integrity va Confidentiality</button>
+      <button class="opt" type="button">Hech biri muhim emas</button>
+    </div>
+    <div class="explain">Bemor qon guruhi noto'g'ri bo'lsa xavf (Integrity), kasallik siri oshkor bo'lmasligi kerak (Confidentiality).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/20</h2>
+  <div class="quiz">
+    <p class="q">MITM hujumida hujumchi Bobga «men routerman» deb, routerga esa «men Bobman» deb aytadi. Bu qanday mexanizm orqali amalga oshiriladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">DNS Spoofing</button>
+      <button class="opt" type="button">SQL Injection</button>
+      <button class="opt" type="button">Ransomware</button>
+      <button class="opt" type="button" data-ok>ARP Spoofing (ARP keshini zaharlash)</button>
+    </div>
+    <div class="explain">Bu klassik ARP Spoofing mexanizmi — hujumchi qalbaki ARP javoblari bilan ikki tomonni ham aldaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/20</h2>
+  <div class="quiz">
+    <p class="q">MITM hujumi muvaffaqiyatli bo'lganda CIA ning uchala mezoni ham buzilishi mumkinmi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Ha — sniffing (C), tampering (I) va paketlarni bloklash (A) orqali</button>
+      <button class="opt" type="button">Yo'q, faqat Confidentiality buziladi</button>
+      <button class="opt" type="button">Yo'q, MITM CIA ga aloqasi yo'q</button>
+      <button class="opt" type="button">Faqat Availability buziladi</button>
+    </div>
+    <div class="explain">MITM orqali hujumchi ma'lumotni o'qishi (C), o'zgartirishi (I) va bloklashi (A) mumkin — barcha uch mezon xavf ostida.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/20</h2>
+  <div class="quiz">
+    <p class="q">Statik ARP jadvali va DAI (Dynamic ARP Inspection) ning umumiy maqsadi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Internet tezligini oshirish</button>
+      <button class="opt" type="button" data-ok>Soxta ARP javoblarini aniqlab, ARP Spoofing / MITM hujumlarining oldini olish</button>
+      <button class="opt" type="button">Parollarni shifrlash</button>
+      <button class="opt" type="button">Fayllarni zaxiralash</button>
+    </div>
+    <div class="explain">Ikkalasi ham ARP keshini soxta ma'lumotlardan himoyalashga va MITM hujumining oldini olishga xizmat qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/20</h2>
+  <div class="quiz">
+    <p class="q">Oddiy foydalanuvchi bepul Wi-Fi ni «zo'r, parol yo'q» deb qaraydi, mutaxassis esa qanday qaraydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Xuddi shunday, farqi yo'q</button>
+      <button class="opt" type="button">«Bu tarmoqdan umuman foydalanib bo'lmaydi» deb o'ylaydi</button>
+      <button class="opt" type="button" data-ok>«Bu tarmoq shifrlanmagan, MITM xavfi bor, VPN yoqish kerak» deb baholaydi</button>
+      <button class="opt" type="button">Faqat tezlikka e'tibor beradi</button>
+    </div>
+    <div class="explain">Xavfsizlik tafakkuriga ega mutaxassis har doim potensial xavf nuqtai nazaridan fikrlaydi (Adversarial/Defensive thinking).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/20</h2>
+  <div class="quiz">
+    <p class="q">Brute-force va Dictionary hujumlari o'rtasidagi asosiy farq nimada?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ular bir xil usul, nomi boshqa</button>
+      <button class="opt" type="button">Dictionary hujumi faqat telefon raqamlarini sinaydi</button>
+      <button class="opt" type="button">Brute-force internetsiz ishlay olmaydi</button>
+      <button class="opt" type="button" data-ok>Brute-force barcha kombinatsiyalarni, Dictionary esa mashhur parollar ro'yxatini sinaydi</button>
+    </div>
+    <div class="explain">Brute-force matematik barcha kombinatsiyalarni, Dictionary esa odamlar ko'p ishlatadigan parollar ro'yxatini (rockyou.txt) sinaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/20</h2>
+  <div class="quiz">
+    <p class="q">Nmap va Hydra vositalari xavfsizlik tekshiruvida qanday rol o'ynaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Nmap ochiq portlarni, Hydra esa zaif parollarni aniqlashga yordam beradi</button>
+      <button class="opt" type="button">Fayllarni shifrlaydi</button>
+      <button class="opt" type="button">Ikkalasi ham faqat video oqim uchun ishlatiladi</button>
+      <button class="opt" type="button">Ular faqat Windows da ishlaydi</button>
+    </div>
+    <div class="explain">Nmap tarmoq xizmatlarini skanerlaydi, Hydra esa lug'at hujumi orqali parollarni tekshiradi — ikkalasi ham xavfsizlik auditida qo'llaniladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/20</h2>
+  <div class="quiz">
+    <p class="q">Parol menejeri va 2FA (ikki bosqichli autentifikatsiya) birgalikda qanday xavfni kamaytiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Internet tezligi pasayishini</button>
+      <button class="opt" type="button" data-ok>Parol o'g'irlansa ham hisobga ruxsatsiz kirish xavfini</button>
+      <button class="opt" type="button">Elektr energiyasi uzilishini</button>
+      <button class="opt" type="button">Server qulashini</button>
+    </div>
+    <div class="explain">Kuchli unikal parol + ikkinchi tasdiqlash omili — hisobni brute-force va parol sizib chiqishidan ancha ishonchli himoyalaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 11/20</h2>
+  <div class="quiz">
+    <p class="q">Bank tizimida Integrity buzilsa (balanslar o'zgarsa), bu qaysi CIA holatiga mos mustaqil misol bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Confidentiality buzilishi</button>
+      <button class="opt" type="button">Availability yaxshilanishi</button>
+      <button class="opt" type="button" data-ok>Moliyaviy barbod bo'lish va ishonchning yo'qolishi — Integrity buzilishining oqibati</button>
+      <button class="opt" type="button">Hech qanday oqibati yo'q</button>
+    </div>
+    <div class="explain">Balanslarning o'zgarishi — Yaxlitlik buzilishi bo'lib, bank uchun og'ir moliyaviy va obro' zarariga olib keladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 12/20</h2>
+  <div class="quiz">
+    <p class="q">Hujumchi MITM orqali Bobning login-parolini Wireshark bilan tutib olgandan so'ng, shu parolni boshqa saytlarda ham sinab ko'rmoqchi. Bunga qarshi eng samarali himoya nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Hech narsa qilish shart emas</button>
+      <button class="opt" type="button">Faqat Wi-Fi nomini o'zgartirish</button>
+      <button class="opt" type="button">Routerni qayta yoqish</button>
+      <button class="opt" type="button" data-ok>Har bir sayt uchun unikal parol ishlatish (parol menejeri yordamida)</button>
+    </div>
+    <div class="explain">Agar har bir saytda boshqa-boshqa parol bo'lsa, bitta sayt parolining o'g'irlanishi boshqa hisoblarga ta'sir qilmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 13/20</h2>
+  <div class="quiz">
+    <p class="q">«Assume Breach» (tizim allaqachon buzilgan deb faraz qilish) tamoyili qaysi zamonaviy arxitekturaga asos bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Zero Trust arxitekturasi</button>
+      <button class="opt" type="button">Classic Perimeter Security</button>
+      <button class="opt" type="button">Faqat antivirus asosidagi himoya</button>
+      <button class="opt" type="button">Parolsiz kirish tizimi</button>
+    </div>
+    <div class="explain">Assume Breach tamoyili — ichkariga allaqachon buzg'unchi kirgan deb, har bir so'rovni qat'iy tekshiradigan Zero Trust modeliga olib keladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 14/20</h2>
+  <div class="quiz">
+    <p class="q">Agar tashkilot faqat kuchli shifrlashga (Confidentiality) e'tibor bersa-yu, zaif parollar va ochiq RDP portlarini (xavfsizlik tafakkuri yetishmasligi) e'tiborsiz qoldirsa, nima yuz berishi mumkin?</p>
+    <div class="opts">
+      <button class="opt" type="button">Tizim 100% xavfsiz bo'lib qoladi</button>
+      <button class="opt" type="button" data-ok>Hujumchi zaif parol orqali to'g'ridan-to'g'ri kirib, shifrlashni chetlab o'tishi mumkin</button>
+      <button class="opt" type="button">Shifrlash zaif parollarni avtomatik mustahkamlaydi</button>
+      <button class="opt" type="button">Bu holatda CIA uchligi ahamiyatsiz bo'lib qoladi</button>
+    </div>
+    <div class="explain">Shifrlash qanchalik kuchli bo'lmasin, agar hujumchi to'g'ridan-to'g'ri tizimga (zaif parol orqali) kirsa, himoya besamar bo'lib qoladi — bu xavfsizlik tafakkurining ahamiyatini ko'rsatadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 15/20</h2>
+  <div class="quiz">
+    <p class="q">2-haftada o'rganilgan CIA, MITM va xavfsizlik tafakkuri mavzularini birlashtiruvchi umumiy g'oya nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat qonunlarni bilish yetarli</button>
+      <button class="opt" type="button">Faqat parol kuchli bo'lsa yetarli</button>
+      <button class="opt" type="button" data-ok>Nimani himoyalash (CIA), qanday hujumlar bo'lishi mumkinligi (MITM) va qanday fikrlash kerakligini (mindset) birga bilish</button>
+      <button class="opt" type="button">Internetdan butunlay voz kechish</button>
+    </div>
+    <div class="explain">CIA nimani himoyalashni, MITM qanday hujum bo'lishini, xavfsizlik tafakkuri esa qanday fikrlashni o'rgatadi — uchalasi birgalikda mustahkam himoya yaratadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 16/20</h2>
+  <div class="quiz">
+    <p class="q">Agar bank serverida Account Lockout siyosati bo'lmasa, Tridi Hydra orqali brute-force qilsa, bu CIA ning qaysi mezoniga tahdid soladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat Availability ga</button>
+      <button class="opt" type="button">Hech qaysisiga</button>
+      <button class="opt" type="button">Faqat Integrity ga</button>
+      <button class="opt" type="button" data-ok>Confidentiality ga (parol topilsa, hisobga ruxsatsiz kirish mumkin bo'ladi)</button>
+    </div>
+    <div class="explain">Agar parol topilsa, hujumchi hisobga kirib maxfiy ma'lumotlarni ko'rishi mumkin — bu Konfidensiallikka tahdid.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 17/20</h2>
+  <div class="quiz">
+    <p class="q">Xesh funksiyasi (SHA-256) va Nmap vositasi ikkalasi ham qaysi umumiy maqsadga xizmat qilishi mumkin?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Ikkalasi ham tizim holatini tekshirish va zaiflik/o'zgarishni aniqlash uchun ishlatiladi</button>
+      <button class="opt" type="button">Ikkalasi ham fayllarni shifrlaydi</button>
+      <button class="opt" type="button">Ikkalasi ham parolni yaratadi</button>
+      <button class="opt" type="button">Ular bir-biriga mutlaqo aloqasiz, umuman solishtirib bo'lmaydi</button>
+    </div>
+    <div class="explain">Xesh fayl o'zgarishini (Integrity) tekshirsa, Nmap tarmoqdagi zaif/ochiq nuqtalarni aniqlaydi — ikkalasi ham xavfsizlik holatini nazorat qilish vositasi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 18/20</h2>
+  <div class="quiz">
+    <p class="q">Favqulodda xizmat (Availability ustuvor) va bank (Integrity ustuvor) misollarida CIA ustuvorligi nima uchun turlicha?</p>
+    <div class="opts">
+      <button class="opt" type="button">Chunki CIA faqat banklarga tegishli</button>
+      <button class="opt" type="button" data-ok>Chunki har bir sohaning asosiy xavfi va oqibati boshqacha (hayot vs moliyaviy aniqlik)</button>
+      <button class="opt" type="button">Chunki ustuvorlik tasodifiy tanlanadi</button>
+      <button class="opt" type="button">Ular aslida bir xil ustuvorlikka ega</button>
+    </div>
+    <div class="explain">Favqulodda xizmatda kechikish hayotga xavf, bankda esa noto'g'ri summalar moliyaviy halokatga olib keladi — shu sabab ustuvorlik farq qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 19/20</h2>
+  <div class="quiz">
+    <p class="q">Agar kompaniya xodimlari kuchli parol va 2FA ishlatsa-yu, ammo ochiq Wi-Fi da HTTPS siz saytlarga kirsa, qanday xavf saqlanib qoladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Hech qanday xavf qolmaydi</button>
+      <button class="opt" type="button">Faqat internet tezligi pasayadi</button>
+      <button class="opt" type="button" data-ok>MITM orqali sessiya yoki login ma'lumotlari baribir tutib olinishi mumkin</button>
+      <button class="opt" type="button">2FA bu holatda kerak emas</button>
+    </div>
+    <div class="explain">Kuchli parol va 2FA MITM dan to'liq himoya qilmaydi, agar trafik shifrlanmagan (HTTP) bo'lsa, sessiya ma'lumotlari baribir xavf ostida.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 20/20</h2>
+  <div class="quiz">
+    <p class="q">2-haftada o'rganilgan darslarning umumiy ketma-ketligi qanday edi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Avval STRIDE, keyin CIA, keyin tarmoq asoslari</button>
+      <button class="opt" type="button">Faqat fishing va malware mavzulari takrorlandi</button>
+      <button class="opt" type="button">Avval OSI modeli, keyin CIA</button>
+      <button class="opt" type="button" data-ok>CIA triadasi (4-dars), CIA buzilishi va MITM (5-dars), xavfsizlik tafakkuri va parollar (6-dars)</button>
+    </div>
+    <div class="explain">2-hafta: 4-dars CIA asoslari, 5-dars CIA buzilish ssenariylari va MITM, 6-dars xavfsizlik tafakkuri va parollar bilan yakunlandi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>20 dan 17+</h3><p>A'lo. Hafta mavzulari yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>20 dan 12-16</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>11 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: CIA triadasi (4-dars), MITM va ARP spoofing (5-dars), xavfsizlik tafakkuri, Nmap va Hydra (6-dars).</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

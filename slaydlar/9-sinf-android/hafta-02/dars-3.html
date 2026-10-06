@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Android Studio va Android SDK bilan tanishuv</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Android Studio va Android SDK bilan tanishuv</h1>
+  <p class="muted">Rasmiy dasturlash muhiti va Android SDK arxitekturasi: ADB, aapt2 va d8</p>
+  <span class="badge">9-sinf</span>
+  <span class="badge">Android dasturlash</span>
+  <span class="badge">2-hafta · 6-dars</span>
+</section>
+
+<section>
+  <h2>Bugungi dars maqsadlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="monitor"></i></div>
+      <h3>Android Studio</h3>
+      <p>IntelliJ IDEA negizidagi rasmiy IDE va uning asosiy oynalari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="terminal"></i></div>
+      <h3>ADB ko'prigi</h3>
+      <p>Kompyuterdan turib Android telefonni terminal orqali boshqarish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="toolbox"></i></div>
+      <h3>SDK Build-Tools</h3>
+      <p>aapt2 resurslar paketlovchisi va d8 baytkod kompilyatori.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Android Studio muhiti</h1>
+  <p>Google va JetBrains hamkorligidagi mukammal IDE</p>
+</section>
+
+<section>
+  <h2>Android Studio imkoniyatlari</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="code-xml"></i></div>
+      <h3>Intellektual kod muharriri</h3>
+      <p>Kotlin va Java kodlarini yozishda avtomatik to'ldirish, xatolarni ko'rsatish va refaktoring.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layout-grid"></i></div>
+      <h3>Layout Editor</h3>
+      <p>XML va Jetpack Compose interfeyslarini real vaqtda ko'rib, vizual loyihalash.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Asosiy ishchi oynalar</h2>
+  <div class="timeline">
+    <div class="tl fragment"><b>Project Explorer:</b> Loyihaning barcha papkalari va fayllar daraxti.</div>
+    <div class="tl fragment"><b>Editor (Muharrir):</b> Kod yoziladigan va dizayn chiziladigan markaziy oyna.</div>
+    <div class="tl fragment"><b>Logcat:</b> Telefondagi barcha tizim xabarlari va nosozliklarni (crash) ko'rsatuvchi konsol.</div>
+    <div class="tl fragment"><b>Gradle:</b> Loyihani yig'ish va kutubxonalarni boshqarish paneli.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Android SDK arxitekturasi</h1>
+  <p>Software Development Kit: 3 ta asosiy ustun</p>
+</section>
+
+<section>
+  <h2>Android SDK nima?</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <h3>Dasturiy asboblar to'plami</h3>
+        <p>Kodni kompilyatsiya qilish, testdan o'tkazish va telefonda ishga tushirish vositalari.</p>
+        <p class="muted">SDK operatsion tizim bilan muloqot qilish imkonini beradi.</p>
+      </div>
+    </div>
+    <div>
+      <div class="callout good fragment fade-up">
+        <h4>3 ta asosiy tarkibiy qism:</h4>
+        <p>1. SDK Platforms (API versiyalar)</p>
+        <p>2. SDK Platform-Tools (ADB)</p>
+        <p>3. SDK Build-Tools (aapt2, d8)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>1. SDK Platforms</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>Tizim kutubxonalari</h3>
+      <p>Har bir Android versiyasi (Android 14 API 34, Android 15 API 35) uchun alohida <code>android.jar</code> to'plami.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="settings"></i></div>
+      <h3>SDK Manager</h3>
+      <p>Dasturchi yangi Android versiyalarini SDK Manager oynasi orqali bir tugma bilan yuklab oladi.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Platform-Tools: ADB ko'prigi</h1>
+  <p>Android Debug Bridge bilan kompyuterdan boshqarish</p>
+</section>
+
+<section>
+  <h2>ADB nima?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="terminal"></i></div>
+      <h3>Mijoz-Server ko'prigi</h3>
+      <p>Kompyuter va telefon o'rtasida USB yoki Wi-Fi orqali ma'lumot almashuvchi universal asbob.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="smartphone"></i></div>
+      <h3>Diagnostika va nazorat</h3>
+      <p>Ilovani o'rnatish, tizim loglarini o'qish va terminal orqali buyruqlar berish.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Asosiy ADB buyruqlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <h3>adb devices</h3>
+      <p class="muted">Kompyuterga ulangan barcha faol qurilmalar va emulyatorlar ro'yxatini chiqaradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <h3>adb install app.apk</h3>
+      <p class="muted">Ko'rsatilgan ilovani kompyuterdan to'g'ridan-to'g'ri smartfonga o'rnatadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <h3>adb logcat</h3>
+      <p class="muted">Telefon ichidagi barcha xabarlar va xatoliklarni oqim sifatida ko'rsatadi.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>SDK Build-Tools</h1>
+  <p>Kodni ilovaga aylantiruvchi yig'ish zavodi</p>
+</section>
+
+<section>
+  <h2>aapt2 va d8 kompilyatorlari</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="package"></i></div>
+      <h3>aapt2</h3>
+      <p>Android Asset Packaging Tool 2. Barcha XML maketlar, ranglar va rasmlarni tekshirib, binar shaklga paketlaydi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>d8 / r8</h3>
+      <p>Java baytkodini Android Runtime tushunadigan <code>.dex</code> baytkodiga o'tkazadi va keraksiz kodlarni tozalaydi.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Loyiha qanday yig'iladi?</h2>
+  <div class="timeline">
+    <div class="tl fragment"><b>1. Kod kompilyatsiyasi:</b> Kotlin/Java kodi baytkodga aylanadi.</div>
+    <div class="tl fragment"><b>2. Resurslar (aapt2):</b> XML fayllar va rasmlar binar paketlanadi.</div>
+    <div class="tl fragment"><b>3. DEX ga o'tish (d8):</b> Baytkod <code>.dex</code> formatiga o'tkaziladi.</div>
+    <div class="tl fragment"><b>4. Paketlash:</b> Barcha qismlar bitta APK yoki AAB fayliga birlashtiriladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>15 daqiqa</span></h2>
+  <div class="task">
+    <span class="level easy">Oson</span>
+    Android SDK ning 3 ta asosiy tarkibiy qismini daftaringizga yozing.
+  </div>
+  <div class="task">
+    <span class="level mid">O'rta</span>
+    <code>adb devices</code> va <code>adb logcat</code> buyruqlari nima vazifa bajarishini tushuntiring.
+  </div>
+  <div class="task">
+    <span class="level hard">Qiyin</span>
+    <code>aapt2</code> va <code>d8</code> vositalari kodni ilovaga aylantirishdagi rolini asoslang.
+  </div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Bugun o'rgandik</h3>
+      <p>Android Studio rasmiy IDE, Android SDK esa Platforms, ADB va Build-Tools (aapt2, d8) vositalariga tayanadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="book-open"></i></div>
+      <h3>Keyingi hafta</h3>
+      <p>3-hafta: Loyiha strukturasi (java, res, manifest, gradle), birinchi «Hello World» va AVD emulyatori.</p>
+    </div>
+  </div>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

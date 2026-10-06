@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Semantik HTML5 va accessibility</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Semantik HTML5 va accessibility</h1>
+  <p class="muted">semantik teglar, landmark, sarlavhalar iyerarxiyasi, alt, ARIA, WCAG (POUR), kontrast</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced UX/UI</span><span class="badge">5-hafta · 13-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimalarni o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="code-xml" data-anim="pulse"></i></div><h3>Semantik teglar</h3><p>Ma'noli HTML</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="layout-template" data-anim="float"></i></div><h3>Sahifa tuzilmasi</h3><p>Landmark va sarlavhalar</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="accessibility" data-anim="blink"></i></div><h3>ARIA va WCAG</h3><p>Hamma uchun qulay</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">Wireframe dagi yuqori qism (logo va menyu) nima deb ataladi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Header</button>
+    <button class="opt" type="button">Footer</button>
+    <button class="opt" type="button">Aside</button>
+    <button class="opt" type="button">Section</button>
+    </div>
+    <div class="explain">Header: sahifaning yuqori qismi, logo va navigatsiya.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Semantik teglar</h1>
+  <p>Ma'noli HTML</p>
+</section>
+
+<section>
+  <h2>Semantikaning foydalari</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Accessibility</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">Usability</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Maintainability</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">SEO</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Bitta to'g'ri teg to'rt foyda beradi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Non-semantik va semantik</h2>
+  <pre><code class="language-html" data-trim data-line-numbers="1-4|6-9">
+&lt;!-- Non-semantik --&gt;
+&lt;div id="header"&gt;Saytimizga xush kelibsiz!&lt;/div&gt;
+&lt;div id="content"&gt;Asosiy matn.&lt;/div&gt;
+&lt;div id="footer"&gt;Mualliflik huquqi 2026&lt;/div&gt;
+
+&lt;!-- Semantik --&gt;
+&lt;header&gt;Saytimizga xush kelibsiz!&lt;/header&gt;
+&lt;main&gt;Asosiy matn.&lt;/main&gt;
+&lt;footer&gt;Mualliflik huquqi 2026&lt;/footer&gt;
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Ikkala variant ekranda bir xil ko'rinishi mumkin, lekin faqat ikkinchisi ekran o'qiydigan qurilma va qidiruv tizimiga sahifa tuzilmasini aytib beradi.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Qaysi teg non-semantik hisoblanadi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok><code>div</code></button>
+    <button class="opt" type="button"><code>nav</code></button>
+    <button class="opt" type="button"><code>main</code></button>
+    <button class="opt" type="button"><code>footer</code></button>
+    </div>
+    <div class="explain"><code>div</code> o'zi ma'no bildirmaydi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Sahifa tuzilmasi</h1>
+  <p>Landmark va sarlavhalar</p>
+</section>
+
+<section>
+  <h2>Sahifa xaritasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">header + nav</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">main</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">aside</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">footer</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Landmarklar yordamchi texnologiyaga yo'l ko'rsatadi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Maktab sayti tuzilmasi</h2>
+  <pre><code class="language-html" data-trim data-line-numbers="1-8|9-16|17">
+&lt;header&gt;
+  &lt;nav&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="/"&gt;Bosh sahifa&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/qabul"&gt;Qabul&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+&lt;main&gt;
+  &lt;h1&gt;Maktab yangiliklari&lt;/h1&gt;
+  &lt;article&gt;
+    &lt;h2&gt;Olimpiada g'oliblari&lt;/h2&gt;
+    &lt;p&gt;Matn...&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;
+&lt;footer&gt;Aloqa: info@maktab.uz&lt;/footer&gt;
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Sahifada bitta <code>h1</code> va <code>main</code> bo'ladi. <code>h2</code> dan keyin to'g'ridan-to'g'ri <code>h4</code> yozmang: sarlavhalar iyerarxiyasi sakramasin.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Bitta sahifada nechta <code>main</code> bo'ladi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Bitta</button>
+    <button class="opt" type="button">Ikkita</button>
+    <button class="opt" type="button">Uchta</button>
+    <button class="opt" type="button">Cheksiz</button>
+    </div>
+    <div class="explain"><code>main</code> asosiy kontent: sahifada bitta.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>ARIA va WCAG</h1>
+  <p>Hamma uchun qulay</p>
+</section>
+
+<section>
+  <h2>WCAG: POUR</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Perceivable</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">Operable</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Understandable</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Robust</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Har tamoyil alohida talablar to'plami</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>alt va ARIA</h2>
+  <pre><code class="language-html" data-trim data-line-numbers="1|2|4-7|9">
+&lt;img src="maktab.jpg" alt="Maktab binosi, old tomondan"&gt;
+&lt;img src="chiziq.png" alt=""&gt;
+
+&lt;div role="tablist"&gt;
+  &lt;div role="tab" aria-selected="true"&gt;Umumiy&lt;/div&gt;
+  &lt;div role="tab" aria-selected="false"&gt;Tafsilot&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;button aria-label="Menyuni yopish"&gt;X&lt;/button&gt;
+  </code></pre>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i>Bezak (dekorativ) rasmga <code>alt=""</code> yoziladi: ekran o'qiydigan qurilma uni o'tkazib yuboradi. <code>div</code> dan tab yasalganda ARIA kerak; tayyor <code>button</code> bo'lsa, ARIA kerak emas.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">ARIA ni qachon ishlatamiz?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Mos semantik teg bo'lmaganda</button>
+    <button class="opt" type="button">Har doim, hamma elementga</button>
+    <button class="opt" type="button">Hech qachon</button>
+    <button class="opt" type="button">Faqat rasmlarga</button>
+    </div>
+    <div class="explain">Avval semantik HTML, ARIA — faqat zarur bo'lganda.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Div-sho'rva va semantik</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>Non-semantik (div)</h3>Hamma narsa <code>div</code>: ma'no yo'q, ekran o'qiydigan qurilma uchun tuzilma ko'rinmaydi</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>Semantik</h3><code>header</code>, <code>nav</code>, <code>main</code>, <code>footer</code>: ma'no aniq, SEO va accessibility yaxshi</div>
+  </div>
+  <div class="card accent fragment mt"><p>Semantik tuzilma o'qish va qo'llab-quvvatlashni osonlashtiradi.</p></div>
+</section>
+
+<section>
+  <h2>Atamalar. Bosing</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>Landmark</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Sahifa zonasi: header, nav, main, footer</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>alt</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Rasmning matnli tavsifi</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>ARIA</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Rol va holatni tushuntiruvchi atributlar</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>POUR</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>WCAG ning 4 tamoyili</p></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Sahifani semantik qilish</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="search" data-anim="pulse"></i></div><h3>1. Tahlil qiling</h3><p>Qaysi <code>div</code> qanday rol bajarayotganini toping.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="replace"></i></div><h3>2. Almashtiring</h3><p><code>div</code> o'rniga <code>header</code>, <code>nav</code>, <code>main</code>, <code>footer</code>.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="check"></i></div><h3>3. Tekshiring</h3><p>Sarlavhalar, <code>alt</code> va Lighthouse Accessibility.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>Landmark teglar</h2>
+    <table>
+      <thead><tr><th>Teg</th><th>Vazifasi</th><th>Soni</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td><code>header</code></td><td>yuqori qism, logo</td><td>bir nechta bo'lishi mumkin</td></tr>
+        <tr class="fragment"><td><code>nav</code></td><td>asosiy navigatsiya</td><td>1-2 ta</td></tr>
+        <tr class="fragment"><td><code>main</code></td><td>asosiy kontent</td><td>faqat bitta</td></tr>
+        <tr class="fragment"><td><code>aside</code></td><td>qo'shimcha blok</td><td>kerak bo'lsa</td></tr>
+        <tr class="fragment"><td><code>footer</code></td><td>pastki qism</td><td>bir nechta bo'lishi mumkin</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: tekshirish</p>
+  </section>
+  <section>
+    <h2>Accessibility tekshiruvi</h2>
+    <ol class="steps-n">
+      <li class="fragment">Sahifani brauzerda oching, DevTools &gt; Lighthouse.</li>
+      <li class="fragment">Faqat Accessibility ni tanlab, hisobotni oling.</li>
+      <li class="fragment">Kamida 2 ta xatoni (alt, kontrast) tuzating.</li>
+    </ol>
+  </section>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">div dan nav ga</h2>
+  <pre data-id="c"><code class="language-html" data-trim>
+&lt;div id="menu"&gt;
+  &lt;a href="/"&gt;Bosh&lt;/a&gt;
+&lt;/div&gt;
+  </code></pre>
+</section>
+<section data-auto-animate>
+  <h2 data-id="t">div dan nav ga</h2>
+  <pre data-id="c"><code class="language-html" data-trim data-line-numbers="1-3|4-6">
+&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="/"&gt;Bosh&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+  </code></pre>
+</section>
+
+<section>
+  <h2>Semantika raqamlarda</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="40" data-suf="">0</span></div><div class="l"> ta taxminan semantik element</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="4" data-suf="">0</span></div><div class="l"> ta foyda: A, U, M, SEO</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="4" data-suf="">0</span></div><div class="l"> ta WCAG tamoyili: POUR</div></div>
+  </div>
+  <p class="small fragment">Semantik teglar soni taxminiy: 30–40.</p>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Teg juftlash: Quyidagilarni mos tegga bog'lang: yuqori qism; asosiy navigatsiya; asosiy kontent; pastki qism.</div>
+  <div class="task"><span class="level mid">O'rta</span>div ni almashtiring: <code>&lt;div id="header"&gt;</code>, <code>&lt;div id="content"&gt;</code>, <code>&lt;div id="footer"&gt;</code> ni semantik teglarga almashtiring.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Maktab sayti, semantik: 12-darsdagi maktab sayti wireframe ini semantik HTML ga o'tkazing: header + nav, main (h1, 3 ta yangilik article), footer.</div>
+  <div class="task"><span class="level hard">Bonus</span>ARIA ni tekshiring: <code>&lt;nav role="navigation"&gt;</code> yozilgan. Bu to'g'rimi? Sababini yozing.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Semantik HTML</h3><p>Teg ma'no bildiradi; <code>div</code> non-semantik.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Landmark va sarlavha</h3><p><code>header</code>, <code>nav</code>, <code>main</code>, <code>footer</code>; bitta <code>h1</code>.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>ARIA va WCAG</h3><p>Avval semantik teg; POUR tamoyillari va <code>alt</code>.</p></div>
+  </div>
+  <p class="small fragment mt">Uyga vazifa: semantik sahifa tuzilmasi va Lighthouse hisoboti.</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="clipboard-list" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: Formalar va validatsiya</h1>
+  <p class="muted">form, label, input, validatsiya, semantika</p>
+  <span class="badge">5-hafta · 14-dars</span>
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

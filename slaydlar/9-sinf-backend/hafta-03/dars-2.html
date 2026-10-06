@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Shartli takrorlanish: while sikli</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+      <!-- 1. SARLAVHA (HERO) -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>Shartli takrorlanish: while sikli</h1>
+        <p class="muted">while operatori, cheksiz sikllar va break / continue boshqaruvi</p>
+        <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">3-hafta · 8-dars</span>
+        
+      </section>
+
+      <!-- 2. Reja -->
+      <section>
+        <h2>Bugun nimalarni o‘rganamiz?</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="rotate-cw" data-anim="float"></i></div>
+            <h3>while mohiyati</h3>
+            <p>Shart True bo‘lib turguncha takrorlash qoidasi</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="key-round" data-anim="bounce"></i></div>
+            <h3>Parol &amp; Cheksiz sikl</h3>
+            <p>1.43-rasm: Parol to‘g‘ri kiritilguncha so‘rash</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="shield-alert" data-anim="float"></i></div>
+            <h3>break va continue</h3>
+            <p>1.44-rasm: 3 ta urinish va majburiy to‘xtatish</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 3. HAYOTIY MISOLLAR -->
+      <section>
+        <h2>Qachon while ishlatiladi?</h2>
+        <div class="cards three">
+          <div class="card fragment">
+            <h3>Parol so‘rash</h3>
+            <p>Foydalanuvchi to‘g‘ri parol kiritguncha takror so‘rash</p>
+          </div>
+          <div class="card fragment">
+            <h3>0 kiritilguncha</h3>
+            <p>Foydalanuvchi 0 kiritmaguncha sonlarni yig‘ib borish</p>
+          </div>
+          <div class="card fragment">
+            <h3>Server so‘rovlari</h3>
+            <p>Server doimiy ishlab yangi keluvchi so‘rovlarni kutishi</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 4. SEC 01: WHILE SIKLI MEXANIZMI -->
+      <section class="sec">
+        <div class="num">01</div>
+        <h1>while mexanizmi</h1>
+        <p>Shart qachon tekshiriladi va qanday to‘xtaydi?</p>
+      </section>
+
+      <!-- 5. SVG 1: WHILE SXEMASI -->
+      <section>
+        <h2>while siklining ishlash oqimi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- Kirish -->
+            <rect class="fn" x="60" y="140" width="180" height="80" rx="12"/>
+            <text class="t-head" x="150" y="185" text-anchor="middle" font-size="20">Boshlanish</text>
+
+            <line class="la" x1="240" y1="180" x2="360" y2="180"/>
+
+            <!-- Shart rombi -->
+            <polygon class="fa pulse" points="480,110 600,180 480,250 360,180"/>
+            <text class="t-head" x="480" y="175" text-anchor="middle" font-size="20">Shart?</text>
+            <text class="t-muted" x="480" y="200" text-anchor="middle" font-size="14">(True mi?)</text>
+
+            <!-- True yo'li: sikl tanasi -->
+            <g class="fragment">
+              <line class="lg flowing" x1="480" y1="250" x2="480" y2="310"/>
+              <line class="lg flowing" x1="480" y1="310" x2="300" y2="310"/>
+              <line class="lg flowing" x1="300" y1="310" x2="300" y2="200"/>
+              <rect class="fg" x="660" y="220" width="220" height="90" rx="14"/>
+              <text class="t-head" x="770" y="265" text-anchor="middle" font-size="18">Amal bajariladi</text>
+              <text class="t-muted" x="770" y="290" text-anchor="middle" font-size="14">va qayta tekshiradi</text>
+              <line class="lg" x1="600" y1="180" x2="770" y2="180"/>
+              <line class="lg" x1="770" y1="180" x2="770" y2="220"/>
+            </g>
+
+            <!-- False yo'li: chiqish -->
+            <g class="fragment">
+              <line class="la flowing" x1="480" y1="110" x2="480" y2="50"/>
+              <line class="la flowing" x1="480" y1="50" x2="720" y2="50"/>
+              <rect class="fa" x="720" y="20" width="220" height="60" rx="10"/>
+              <text class="t-head" x="830" y="55" text-anchor="middle" font-size="18">Sikldan chiqish</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 6. KOD: SODDA HISOBAGICH -->
+      <section>
+        <h2>while yordamida sanash</h2>
+        <p>Rasmiy qo'llanmadagi 1.42-rasm misoli</p>
+        <pre><code class="language-python" data-line-numbers="1-2|4-6">i = 1
+
+# i soni 5 dan kichik yoki teng turguncha ishlaydi
+while i &lt;= 5:
+    print("Son:", i)
+    i += 1  # Har aylanishda qiymat 1 taga ortadi</code></pre>
+        <div class="callout tip fragment">
+          <i data-ic="check"></i> <code>i = 6</code> bo'lishi bilan <code>6 &lt;= 5</code> sharti False bo'ladi va sikl to'xtaydi.
+        </div>
+        
+      </section>
+
+      <!-- 7. SEC 02: CHEKSIZ SIKL XAVFI -->
+      <section class="sec">
+        <div class="num">02</div>
+        <h1>Cheksiz sikl xavfi</h1>
+        <p>Agar i += 1 yozish unutilsa nima bo‘ladi?</p>
+      </section>
+
+      <!-- 8. SVG 2: CHEKSIZ SIKL -->
+      <section>
+        <h2>Cheksiz sikl (Infinite Loop)</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- Xato kod bloki -->
+            <rect class="fn" x="80" y="70" width="380" height="220" rx="16"/>
+            <text class="t-head" x="120" y="120" font-size="20">i = 1</text>
+            <text class="t-accent" x="120" y="160" font-size="20">while i &lt;= 5:</text>
+            <text class="t-head" x="160" y="200" font-size="20">print(i)</text>
+            <text class="t-muted" x="120" y="250" font-size="16"># i += 1 UNUTILDI!</text>
+
+            <line class="la flowing" x1="460" y1="180" x2="580" y2="180"/>
+
+            <!-- Oqibati -->
+            <g class="fragment">
+              <rect class="fa pulse" x="580" y="60" width="360" height="240" rx="16"/>
+              <text class="t-head" x="760" y="115" text-anchor="middle" font-size="22">OGOHLANTIRISH</text>
+              <text class="t-muted" x="760" y="155" text-anchor="middle" font-size="16">i har doim 1 bo‘lib qoladi</text>
+              <text class="t-accent" x="760" y="195" text-anchor="middle" font-size="20">Sikl hech qachon to‘xtamaydi!</text>
+              <text class="t-head" x="760" y="240" text-anchor="middle" font-size="16">To‘xtatish: Ctrl + C</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 9. KOD: PAROL TEKSHIRISH (1.43-RASM) -->
+      <section>
+        <h2>Parol tekshirish dasturi</h2>
+        <p>Rasmiy qo'llanmadagi 1.43-rasm kodi</p>
+        <pre><code class="language-python" data-line-numbers="1-3|5-7|9">parol = "1234"
+kirit = input("Parol: ")
+
+# Kiritilgan qiymat to'g'ri bo'lmaguncha ishlayveradi
+while kirit != parol:
+    print("Xato! Qayta urinib ko'ring.")
+    kirit = input("Parol: ")
+
+print("Kirish muvaffaqiyatli!")</code></pre>
+        
+      </section>
+
+      <!-- 10. SEC 03: BREAK VA CONTINUE -->
+      <section class="sec">
+        <div class="num">03</div>
+        <h1>break va continue</h1>
+        <p>Siklni muddatidan oldin to‘xtatish va qadamni o‘tkazish</p>
+      </section>
+
+      <!-- 11. SVG 3: BREAK VS CONTINUE -->
+      <section>
+        <h2>break va continue farqi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- break -->
+            <g class="fragment">
+              <rect class="fa" x="60" y="60" width="400" height="240" rx="16"/>
+              <text class="t-head" x="260" y="115" text-anchor="middle" font-size="28">break</text>
+              <text class="t-accent" x="260" y="160" text-anchor="middle" font-size="18">Muddatidan oldin to‘xtatish</text>
+              <text class="t-muted" x="260" y="200" text-anchor="middle" font-size="15">Siklni butunlay yopadi</text>
+              <text class="t-muted" x="260" y="235" text-anchor="middle" font-size="15">Tashqariga sakraydi</text>
+              <text class="t-head" x="260" y="275" text-anchor="middle" font-size="15">"Favqulodda tormoz"</text>
+            </g>
+
+            <!-- continue -->
+            <g class="fragment">
+              <rect class="fb" x="540" y="60" width="400" height="240" rx="16"/>
+              <text class="t-head" x="740" y="115" text-anchor="middle" font-size="28">continue</text>
+              <text class="t-accent" x="740" y="160" text-anchor="middle" font-size="18">Qadamni o‘tkazib yuborish</text>
+              <text class="t-muted" x="740" y="200" text-anchor="middle" font-size="15">Joriy aylanishni tashlaydi</text>
+              <text class="t-muted" x="740" y="235" text-anchor="middle" font-size="15">Keyingi qadamga o‘tadi</text>
+              <text class="t-head" x="740" y="275" text-anchor="middle" font-size="15">"Navbatdagisiga o‘tish"</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 12. KOD: 3 TA URINISH (1.44-RASM) -->
+      <section>
+        <h2>3 ta urinishda tekshirish (1.44-rasm)</h2>
+        <pre><code class="language-python" data-line-numbers="1-4|6-9|11-13">urinishlar = 0
+
+while urinishlar &lt; 3:
+    parol = input("Parol kiriting: ")
+    if parol == "1234":
+        print("Kirish muvaffaqiyatli!")
+        break  # Kod darhol to'xtaydi, sikl tugaydi
+    urinishlar += 1
+
+if urinishlar == 3:
+    print("Urinishlar soni tugadi!")</code></pre>
+        
+      </section>
+
+      <!-- 13. ODATIY XATOLAR -->
+      <section>
+        <h2>while siklida ko‘p uchraydigan xatolar</h2>
+        <div class="cards two">
+          <div class="card fragment">
+            <h3>Xato: Hisoblagichni unutilishi</h3>
+            <pre><code class="language-python"># Xato: cheksiz sikl
+while i &lt;= 5:
+    print(i)
+    # i += 1 yozilmadi</code></pre>
+            <p>Har doim hisoblagich oshishi kerak!</p>
+          </div>
+          <div class="card fragment">
+            <h3>Xato: Shartni boshidanoq False qilish</h3>
+            <pre><code class="language-python"># Xato: umuman ishlamaydi
+i = 10
+while i &lt; 5:
+    print(i)</code></pre>
+            <p>Shart boshida True bo‘lishi shart.</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 14. AMALIY TOPSHIRIQ (TASK) -->
+      <section class="task">
+        <h2>Amaliy topshiriq: while sinovi</h2>
+        <p class="muted">Vaqt: 15 daqiqa · Darajalar bo‘yicha</p>
+        <div class="cards three">
+          <div class="card">
+            <h3>1. Oson</h3>
+            <p><code>while</code> orqali 1 dan 7 gacha bo‘lgan sonlarni ekranga chiqaring.</p>
+          </div>
+          <div class="card">
+            <h3>2. O'rta</h3>
+            <p>Foydalanuvchi "stop" deb yozmaguncha takroran ma'lumot so'rovchi dastur tuzing.</p>
+          </div>
+          <div class="card">
+            <h3>3. Qiyin</h3>
+            <p>Rasmiy 1.44-rasmdagi 3 ta urinishli parol tekshirish tizimini to'liq kodlang.</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 15. QUIZ / TEZKOR SAVOL -->
+      <section>
+        <h2>Tezkor sinov</h2>
+        <p>Quyidagi kod necha marta aylanadi?</p>
+        <pre><code class="language-python">x = 0
+while x &lt; 3:
+    print("Salom")
+    x += 1</code></pre>
+        <div class="fragment callout tip">
+          <i data-ic="check"></i> <strong>Javob:</strong> <code>3 marta</code> (x = 0, 1, 2 bo'lganda ishlaydi, x = 3 bo'lganda to'xtaydi)
+        </div>
+        
+      </section>
+
+      <!-- 16. XULOSA -->
+      <section>
+        <h2>Xulosa va asosiy fikrlar</h2>
+        <div class="cards three">
+          <div class="card fragment">
+            <h3>while sharti</h3>
+            <p>Noma'lum takrorlanishlar uchun qulay vosita</p>
+          </div>
+          <div class="card fragment">
+            <h3>Cheksiz sikl</h3>
+            <p>Hisoblagichni orttirib borish va Ctrl + C bilan to'xtatish</p>
+          </div>
+          <div class="card fragment">
+            <h3>break va continue</h3>
+            <p>Siklni muddatidan oldin to'xtatish va qadamni o'tkazib yuborish</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 17. YAKUNIY SLAYD -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>Rahmat!</h1>
+        <p class="muted">Keyingi dars: Tanlash operatori (match / case)</p>
+        <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span>
+        
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

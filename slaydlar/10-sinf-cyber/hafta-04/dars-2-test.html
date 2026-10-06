@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>11-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>11-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf Kiberxavfsizlik · 4-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz"><p class="q">Wireshark nima uchun ishlatiladi?</p><div class="opts"><button class="opt" type="button">Veb-sayt yaratish</button><button class="opt" type="button">Parollarni shifrlash</button><button class="opt" type="button" data-ok>Tarmoq paketlarini ushlab kuzatish, filtrlash va tahlil qilish</button><button class="opt" type="button">Virusdan tozalash</button></div><div class="explain">Wireshark paketlarni tutib, har qatlamini ochib ko'rsatadi.</div></div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz"><p class="q">Wireshark o'rnatishda nima majburiy?</p><div class="opts"><button class="opt" type="button" data-ok>Npcap (WinPcap) ni o'rnatishga ruxsat berish</button><button class="opt" type="button">Antivirusni o'chirish</button><button class="opt" type="button">Router parolini kiritish</button><button class="opt" type="button">Brauzerni yopish</button></div><div class="explain">Npcap paketlarni tutish uchun kerak.</div></div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz"><p class="q">Interfeysni tanlashda nimaga qaraladi?</p><div class="opts"><button class="opt" type="button">Eng uzun nomli interfeys</button><button class="opt" type="button">Hamma vaqt Loopback</button><button class="opt" type="button">Eng birinchi ro'yxatdagi</button><button class="opt" type="button" data-ok>Yonida yashil grafik chiziq bor, faol ulangan interfeys</button></div><div class="explain">Faol internetga ulangan interfeys yonida yashil chiziq bo'ladi.</div></div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz"><p class="q">Paketlar ro'yxati panelidagi ustunlardan qaysi biri YO'Q?</p><div class="opts"><button class="opt" type="button">Source</button><button class="opt" type="button" data-ok>Parol</button><button class="opt" type="button">Destination</button><button class="opt" type="button">Protocol</button></div><div class="explain">Ustunlar: No., Time, Source, Destination, Protocol, Length, Info.</div></div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz"><p class="q">Pastki panel (Hex + ASCII) nimani ko'rsatadi?</p><div class="opts"><button class="opt" type="button">Faqat IP manzillarni</button><button class="opt" type="button" data-ok>Paketning 16 lik va ASCII ko'rinishini</button><button class="opt" type="button">Protokollar daraxtini</button><button class="opt" type="button">Tarmoq xaritasini</button></div><div class="explain">Pastki panel tanlangan paketning xom ko'rinishini beradi.</div></div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz"><p class="q">HTTP so'rovlarini ko'rish uchun filtrga nima yoziladi?</p><div class="opts"><button class="opt" type="button">tls</button><button class="opt" type="button">ping</button><button class="opt" type="button">get-only</button><button class="opt" type="button" data-ok>http</button></div><div class="explain">Filtr maydoniga http yozilib Enter bosiladi.</div></div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz"><p class="q">Brauzer sayt ochganda serverga qanday so'rov yuboradi (HTTP)?</p><div class="opts"><button class="opt" type="button" data-ok>GET</button><button class="opt" type="button">SYN</button><button class="opt" type="button">ARP</button><button class="opt" type="button">TRACE</button></div><div class="explain">HTTP GET so'rovi tadbiqiy (7) sathda amalga oshadi.</div></div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz"><p class="q">HTTPS aloqasi boshlanishida Wiresharkda qaysi protokolni ko'ramiz?</p><div class="opts"><button class="opt" type="button">FTP</button><button class="opt" type="button">Telnet</button><button class="opt" type="button" data-ok>TLS Handshake (Client Hello)</button><button class="opt" type="button">ICMP Echo</button></div><div class="explain">Filtr tls bo'lsa TLS Handshake ko'rinadi.</div></div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz"><p class="q">Sayt ochilishidagi to'g'ri ketma-ketlik qaysi?</p><div class="opts"><button class="opt" type="button">HTTP GET, DNS, TLS, TCP</button><button class="opt" type="button">TLS, DNS, HTTP GET, TCP</button><button class="opt" type="button">TCP, HTTP GET, DNS, TLS</button><button class="opt" type="button" data-ok>DNS, TCP handshake, TLS, HTTP GET</button></div><div class="explain">Avval manzil topiladi (DNS), keyin TCP ulanadi, TLS boshlanadi, so'ng GET.</div></div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz"><p class="q">Login/parol HTTP orqali yuborilsa, Wiresharkda nima ko'rinadi?</p><div class="opts"><button class="opt" type="button">Hech narsa, hamma shifrlangan</button><button class="opt" type="button" data-ok>Hex+ASCII panelda ochiq matnda</button><button class="opt" type="button">Faqat MAC manzil</button><button class="opt" type="button">Faqat paket uzunligi</button></div><div class="explain">HTTP shifrlanmagan, shuning uchun login/parol ochiq ko'rinishi mumkin.</div></div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>9+ to'g'ri</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>6-8 to'g'ri</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: Wireshark panellari, http va tls filtrlari, sayt ochilish bosqichlari.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>15-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>15-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">5-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Dictionary ma'lumotni qanday saqlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Indeks bo'yicha ketma-ket</button>
+      <button class="opt" type="button">Faqat takrorsiz qiymatlar</button>
+      <button class="opt" type="button" data-ok><code>key: value</code> juftliklarda</button>
+      <button class="opt" type="button">O'zgarmas ketma-ketlikda</button>
+    </div>
+    <div class="explain">Dict - kalit-qiymat juftliklari tuzilmasi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Dict'da qaysi biri unikal bo'lishi shart?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Kalit (key)</button>
+      <button class="opt" type="button">Qiymat (value)</button>
+      <button class="opt" type="button">Ikkalasi ham</button>
+      <button class="opt" type="button">Hech biri</button>
+    </div>
+    <div class="explain">Kalit unikal; qiymatlar takrorlanishi mumkin.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>user = {"name": "Ali"}</code>; <code>user["name"]</code> nima?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>"name"</code></button>
+      <button class="opt" type="button"><code>KeyError</code></button>
+      <button class="opt" type="button"><code>0</code></button>
+      <button class="opt" type="button" data-ok><code>"Ali"</code></button>
+    </div>
+    <div class="explain">Kalitga murojaat qilsak, qiymat qaytadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Mavjud bo'lmagan kalitga <code>user["phone"]</code> bilan murojaat qilsak?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>None</code> qaytadi</button>
+      <button class="opt" type="button" data-ok><code>KeyError</code> chiqadi</button>
+      <button class="opt" type="button">Bo'sh satr qaytadi</button>
+      <button class="opt" type="button">Kalit avtomatik qo'shiladi</button>
+    </div>
+    <div class="explain">Kalit bo'lmasa xato chiqadi va dastur to'xtaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>user.get("phone", "yo'q")</code> kalit bo'lmasa nima qaytaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>"yo'q"</code></button>
+      <button class="opt" type="button"><code>KeyError</code></button>
+      <button class="opt" type="button"><code>"phone"</code></button>
+      <button class="opt" type="button"><code>False</code></button>
+    </div>
+    <div class="explain"><code>get()</code> xato bermaydi, ikkinchi argumentni qaytaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>user["age"] = 23</code>, agar <code>"age"</code> kaliti bor bo'lsa?</p>
+    <div class="opts">
+      <button class="opt" type="button">Yangi kalit qo'shiladi</button>
+      <button class="opt" type="button">Xato chiqadi</button>
+      <button class="opt" type="button" data-ok>Qiymat yangilanadi</button>
+      <button class="opt" type="button">Ikkinchi <code>"age"</code> paydo bo'ladi</button>
+    </div>
+    <div class="explain">Bor kalitga <code>=</code> bilan yangi qiymat berilsa, u yangilanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>d = {"a": 1}</code>; <code>d["b"] = 2</code>; <code>len(d)</code>?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>1</code></button>
+      <button class="opt" type="button"><code>3</code></button>
+      <button class="opt" type="button"><code>KeyError</code></button>
+      <button class="opt" type="button" data-ok><code>2</code></button>
+    </div>
+    <div class="explain"><code>"b"</code> yangi kalit, juftlik qo'shildi: 2 ta.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Bo'sh <code>{}</code> qaysi tur?</p>
+    <div class="opts">
+      <button class="opt" type="button">set</button>
+      <button class="opt" type="button" data-ok>dict</button>
+      <button class="opt" type="button">tuple</button>
+      <button class="opt" type="button">list</button>
+    </div>
+    <div class="explain">Bo'sh jingalak qavs - bo'sh dictionary.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">«Talabalar ma'lumotlari»da takrorlanuvchi baholar uchun qaysi tuzilma?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>set</button>
+      <button class="opt" type="button">tuple</button>
+      <button class="opt" type="button">string</button>
+      <button class="opt" type="button">dict</button>
+    </div>
+    <div class="explain">Rasmiy topshiriq: takrorlanuvchi baholarni set orqali tartibga solish.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>texts = {"uz": "Salom"}</code>; <code>texts.get("en", "Topilmadi")</code>?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>"Salom"</code></button>
+      <button class="opt" type="button"><code>KeyError</code></button>
+      <button class="opt" type="button" data-ok><code>"Topilmadi"</code></button>
+      <button class="opt" type="button"><code>None</code></button>
+    </div>
+    <div class="explain">"en" kaliti yo'q, shuning uchun standart qiymat qaytadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: <code>key: value</code>, <code>d["key"]</code> va <code>KeyError</code>, <code>get()</code>, yangilash va qo'shish, loyiha tuzilmalari.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

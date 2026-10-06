@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>7-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>7-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Nega barcha 50 000 ta maqolani bitta JSON ichida qaytarish xato?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Server xotirasi, tarmoq va brauzer ortiqcha yuklanadi</button>
+      <button class="opt" type="button">JSON 50 000 ta yozuvni saqlay olmaydi</button>
+      <button class="opt" type="button">Python massivlari yaratilmaydi</button>
+      <button class="opt" type="button">Faqat xavfsizlik uchun</button>
+    </div>
+    <div class="explain">Yechim: ma'lumotni qismlarga bo'lib berish, ya'ni Pagination.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q"><code>PageNumberPagination</code> da keyingi sahifa qaysi parametr bilan so'raladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>?cursor=2</code></button>
+      <button class="opt" type="button" data-ok><code>?page=2</code></button>
+      <button class="opt" type="button"><code>?offset=2</code> (faqat)</button>
+      <button class="opt" type="button"><code>?next=2</code></button>
+    </div>
+    <div class="explain">Sahifa o'lchami uchun <code>page_size</code> parametri ham ishlatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi pagination turi SQL <code>LIMIT</code> va <code>OFFSET</code> ga asoslangan?</p>
+    <div class="opts">
+      <button class="opt" type="button">PageNumberPagination</button>
+      <button class="opt" type="button">CursorPagination</button>
+      <button class="opt" type="button" data-ok>LimitOffsetPagination</button>
+      <button class="opt" type="button">AnonRateThrottle</button>
+    </div>
+    <div class="explain">Namuna: <code>?limit=10&amp;offset=20</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Ijtimoiy tarmoq tasmasi (Infinite Scroll) uchun qaysi pagination eng barqaror?</p>
+    <div class="opts">
+      <button class="opt" type="button">PageNumberPagination</button>
+      <button class="opt" type="button">LimitOffsetPagination</button>
+      <button class="opt" type="button">Hech biri</button>
+      <button class="opt" type="button" data-ok>CursorPagination</button>
+    </div>
+    <div class="explain">Cursor sahifa raqami emas, shifrlangan kursor (token) orqali ishlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Pagination javobidagi <code>count</code> maydoni nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Mezonlarga mos barcha yozuvlarning umumiy sonini</button>
+      <button class="opt" type="button">Joriy sahifadagi yozuvlar sonini</button>
+      <button class="opt" type="button">Sahifalar raqamini</button>
+      <button class="opt" type="button">So'rovlar limitini</button>
+    </div>
+    <div class="explain">Qolgan maydonlar: <code>next</code>, <code>previous</code>, <code>results</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Throttling nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ma'lumotlarni sahifalash</button>
+      <button class="opt" type="button" data-ok>Vaqt oralig'ida yuborilishi mumkin bo'lgan so'rovlar sonini cheklash</button>
+      <button class="opt" type="button">Faylni yuklab olish</button>
+      <button class="opt" type="button">Parolni shifrlash</button>
+    </div>
+    <div class="explain">Bu DoS va brute-force hujumlaridan himoya qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Limitdan oshganda server qanday status kodini qaytaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">403 Forbidden</button>
+      <button class="opt" type="button">401 Unauthorized</button>
+      <button class="opt" type="button" data-ok>429 Too Many Requests</button>
+      <button class="opt" type="button">404 Not Found</button>
+    </div>
+    <div class="explain">Javobda kutish vaqti haqida xabar bo'ladi (masalan, Expected available in 45 seconds).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Nega login uchun <code>login_anon: 10/min</code> kabi qattiqroq limit qo'yiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Login sahifasi og'ir bo'lgani uchun</button>
+      <button class="opt" type="button">Mobil ilovalar uchun</button>
+      <button class="opt" type="button">Ma'lumotlarni sahifalash uchun</button>
+      <button class="opt" type="button" data-ok>Parollarni ketma-ket tanlash (brute-force) ni to'xtatish uchun</button>
+    </div>
+    <div class="explain">Umumiy <code>anon</code> limiti 60/min, login uchun esa alohida <code>scope</code> qo'llanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>page_size = 10</code>, <code>max_page_size = 100</code> bo'lsa, <code>?page_size=500</code> yuborilganda nima bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Sahifa o'lchami 100 dan oshmaydi</button>
+      <button class="opt" type="button">500 ta yozuv qaytadi</button>
+      <button class="opt" type="button">Xatolik 429 qaytadi</button>
+      <button class="opt" type="button">Sahifa o'lchami 10 ga tushadi</button>
+    </div>
+    <div class="explain"><code>max_page_size</code> mijoz so'ray oladigan maksimal hajmni cheklaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>anon</code> limiti 60/min bo'lgan endpointga bir daqiqada 65 so'rov yuborilsa, nima kuzatiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Hammasi 200 OK</button>
+      <button class="opt" type="button" data-ok>Dastlabki 60 ta 200 OK, keyingilari 429</button>
+      <button class="opt" type="button">Dastlabki 5 tasi 429</button>
+      <button class="opt" type="button">Barchasi 403</button>
+    </div>
+    <div class="explain">Limit oshgach, vaqt tugaguncha so'rovlar throttled bo'ladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: pagination turlari, count/next/previous/results, throttling va 429, login_anon.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

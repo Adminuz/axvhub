@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>3-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>3-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">1-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi buyruq o'zgaruvchini quyi jarayonlar uchun ham ochiq (environment) qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>export</code></button>
+      <button class="opt" type="button"><code>echo</code></button>
+      <button class="opt" type="button"><code>source</code></button>
+      <button class="opt" type="button"><code>alias</code></button>
+    </div>
+    <div class="explain"><code>export</code> o'zgaruvchini joriy shell va undan tug'ilgan jarayonlarga uzatadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q"><code>NAME = "Ali"</code> yozilganda shell xato beradi. Sabab nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">O'zgaruvchi nomi kichik harfda bo'lmasligi kerak</button>
+      <button class="opt" type="button" data-ok>Tenglik belgisi atrofida bo'sh joy bo'lmasligi kerak</button>
+      <button class="opt" type="button">Qiymat qo'shtirnoqsiz yozilishi shart</button>
+      <button class="opt" type="button">Oldidan <code>$</code> qo'yilishi kerak</button>
+    </div>
+    <div class="explain">To'g'ri yozuv: <code>NAME="Ali"</code> — tenglik atrofida bo'shliq yo'q.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Joriy foydalanuvchining uy katalogini qaysi o'zgaruvchi saqlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>$USER</code></button>
+      <button class="opt" type="button"><code>$PWD</code></button>
+      <button class="opt" type="button" data-ok><code>$HOME</code></button>
+      <button class="opt" type="button"><code>$SHELL</code></button>
+    </div>
+    <div class="explain"><code>$HOME</code> — uy katalogi, <code>$USER</code> — foydalanuvchi nomi, <code>$PWD</code> — joriy katalog.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>~/.bashrc</code> ni tahrirlagach, terminalni yopmasdan o'zgarishni qanday yuklash mumkin?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>export ~/.bashrc</code></button>
+      <button class="opt" type="button"><code>cat ~/.bashrc</code></button>
+      <button class="opt" type="button"><code>alias ~/.bashrc</code></button>
+      <button class="opt" type="button" data-ok><code>source ~/.bashrc</code></button>
+    </div>
+    <div class="explain"><code>source</code> faylni joriy shellda qayta o'qib chiqadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>alias</code> ni terminal yopilgandan keyin ham saqlab qolish uchun nima qilinadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>~/.bashrc</code> fayliga yozib qo'yiladi</button>
+      <button class="opt" type="button"><code>/tmp</code> ga nusxa olinadi</button>
+      <button class="opt" type="button"><code>export</code> bilan yuboriladi</button>
+      <button class="opt" type="button"><code>/dev/null</code> ga yo'naltiriladi</button>
+    </div>
+    <div class="explain">Doimiy sozlamalar <code>~/.bashrc</code> (yoki <code>~/.zshrc</code>) ga kiritiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>mysql db_name &lt; backup.sql</code> da <code>&lt;</code> belgisi nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Natijani faylga yozadi</button>
+      <button class="opt" type="button" data-ok>Faylni dasturga STDIN sifatida uzatadi</button>
+      <button class="opt" type="button">Xatolarni yashiradi</button>
+      <button class="opt" type="button">Ikki buyruqni quvur bilan ulaydi</button>
+    </div>
+    <div class="explain"><code>&lt;</code> fayl mazmunini dasturning kirish oqimiga beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Ham natijani (STDOUT), ham xatoni (STDERR) bitta faylga yozish uchun qaysi yozuv mos?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>2&gt; file.log</code> faqat</button>
+      <button class="opt" type="button"><code>&gt;&gt; file.log 0&gt;&amp;1</code></button>
+      <button class="opt" type="button" data-ok><code>&gt; file.log 2&gt;&amp;1</code></button>
+      <button class="opt" type="button"><code>&lt; file.log</code></button>
+    </div>
+    <div class="explain"><code>2&gt;&amp;1</code> STDERR ni STDOUT bilan birlashtiradi; <code>&amp;&gt;</code> ham xuddi shuni qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>ls ~ | wc -l</code> buyrug'i nimani hisoblaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Uy katalogi hajmini</button>
+      <button class="opt" type="button">Faqat yashirin fayllar sonini</button>
+      <button class="opt" type="button">Katalogdagi xatolar sonini</button>
+      <button class="opt" type="button" data-ok>Uy katalogidagi fayllar sonini</button>
+    </div>
+    <div class="explain"><code>ls</code> natijasi quvur orqali <code>wc -l</code> ga beriladi, u qatorlarni sanaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>echo "A" &gt; app.log</code>, so'ng <code>echo "B" &gt; app.log</code> bajarildi. Fayl ichida nima bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Faqat <code>B</code></button>
+      <button class="opt" type="button"><code>A</code> va <code>B</code></button>
+      <button class="opt" type="button">Faqat <code>A</code></button>
+      <button class="opt" type="button">Fayl bo'sh bo'ladi</button>
+    </div>
+    <div class="explain"><code>&gt;</code> mavjud mazmunni o'chirib yangidan yozadi; qo'shish uchun <code>&gt;&gt;</code> kerak edi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>export PATH="$PATH:/home/user/my_scripts"</code> nimaga olib keladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Skriptlarga avtomatik <code>x</code> ruxsati beriladi</button>
+      <button class="opt" type="button" data-ok><code>my_scripts</code> dagi skriptlarni istalgan joydan nomi bilan chaqirish mumkin bo'ladi</button>
+      <button class="opt" type="button"><code>PATH</code> dagi eski yo'llar o'chiriladi</button>
+      <button class="opt" type="button">Skriptlar har safar qayta yuklanganda ishga tushadi</button>
+    </div>
+    <div class="explain">Shell buyruqni <code>PATH</code> dagi kataloglardan qidiradi; eski qiymat <code>$PATH</code> saqlanib, yangi yo'l qo'shiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: o'zgaruvchilar va <code>export</code>, <code>$PATH</code>, <code>.bashrc</code>, <code>&gt;</code> va <code>&gt;&gt;</code>, STDIN/STDOUT/STDERR, pipe.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

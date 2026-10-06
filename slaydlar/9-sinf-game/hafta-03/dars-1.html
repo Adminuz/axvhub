@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Qatlamlar Bilan Amaliy Ishlash va Assetlar Kollaji</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Qatlamlar Bilan Amaliy Ishlash va Assetlar Kollaji</h1>
+  <p class="muted">Smart Objects, Clipping Masks va yaxlit 2D o'yin sahnasini yig'ish</p>
+  <span class="badge">9-sinf</span><span class="badge">Game Design</span><span class="badge">3-hafta · 7-dars</span>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Qatlamlar Arxitekturasi</h1>
+  <p>Ko'p qatlamli o'yin loyihalarini professional tashkil qilish</p>
+</section>
+
+<section>
+  <h2>Nega Tartib va Arxitektura Zarur?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="folder-tree" data-anim="float"></i></div>
+      <h3>Yuzlab Qatlamlar Oqimi</h3>
+      <p>Haqiqiy o'yin darajasi 50 dan 200 tagacha alohida elementlardan iborat bo'ladi.</p>
+      <p class="t-muted">Nomlanmagan va tartibsiz qatlamlar loyihani tahrirlab bo'lmas holga keltiradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="tag"></i></div>
+      <h3>Nomlash Madaniyati</h3>
+      <p><code>Hero_Idle</code>, <code>Platform_Grass_01</code>, <code>VFX_Fire_Glow</code>.</p>
+      <p class="t-muted">Standart "Layer 1", "Layer 2 copy" kabi nomlar professional studiyalarda taqiqlanadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Qatlamlarni Guruhlash (Ctrl + G)</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>Mantiqiy Papkalar</h3>
+      <p>Bir-biriga bog'liq elementlarni alohida papkalarga yig'ish.</p>
+      <p class="t-muted"><code>Ctrl + G</code> — guruhlash, <code>Ctrl + Shift + G</code> — guruhni ochish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="eye"></i></div>
+      <h3>Bitta Bosishda Boshqarish</h3>
+      <p>Butun boshli o'yin qahramoni yoki UI blokini birdaniga berkitish yoki ko'rsatish.</p>
+      <p class="t-muted">Guruhga umumiy shaffoflik (Opacity) yoki rejim berish mumkin.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="palette"></i></div>
+      <h3>Rangli Belgilar (Color Labels)</h3>
+      <p>Muhim qatlamlarni qizil, yashil yoki ko'k ranglar bilan ajratib belgilash.</p>
+      <p class="t-muted">Vizual skanerlashda darhol ko'zga tashlanadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Qatlamlarni Qulflash (Locking)</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="lock"></i></div>
+      <h3>Lock All (To'liq Qulflash)</h3>
+      <p>Qatlamni tasodifan siljib ketishdan, o'chib ketishdan va ustiga chizilishdan asraydi.</p>
+      <p class="t-muted">Orqa fon manzaralari va tayyor zamin bloklari uchun tavsiya etiladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield"></i></div>
+      <h3>Lock Transparent Pixels</h3>
+      <p>Faqat chizilgan piksellarni bo'yash, shaffof qismlarga bo'yoq o'tmasligini ta'minlaydi.</p>
+      <p class="t-muted">Spraytning shaklini buzmasdan uning rangini tez o'zgartirish uchun qulay.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>2D Sahnaning Qatlamlar Arxitekturasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 820 240">
+      <rect x="20" y="20" width="780" height="42" rx="6" class="fn ln"></rect>
+      <text x="50" y="47" class="t-accent">[04_UI_HUD]</text>
+      <text x="220" y="47" class="t-muted">HP Bar, tangalar soni, pauza tugmasi va mini-xarita</text>
+
+      <rect x="20" y="72" width="780" height="42" rx="6" class="fa la"></rect>
+      <text x="50" y="99" class="t-head">[03_Foreground]</text>
+      <text x="220" y="99" class="t-head">Qahramon, qurollar, dushmanlar, kristall va zamin kontakt soyasi</text>
+
+      <rect x="20" y="124" width="780" height="42" rx="6" class="fb lb"></rect>
+      <text x="50" y="151" class="t-head">[02_Midground]</text>
+      <text x="220" y="151" class="t-head">Zamin platformalari, interaktiv sandiqlar, toshlar va yaqin daraxtlar</text>
+
+      <rect x="20" y="176" width="780" height="42" rx="6" class="fc lc"></rect>
+      <text x="50" y="203" class="t-head">[01_Background]</text>
+      <text x="220" y="203" class="t-head">Osmon, quyosh nurlari, bulutlar va uzoq tumanli tog'lar silueti</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Smart Objects</h1>
+  <p>Sifat yo'qotmasdan masshtablash va buzilmas tahrir (Aqlli Obyektlar)</p>
+</section>
+
+<section>
+  <h2>Smart Object Nima?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sparkles" data-anim="pulse"></i></div>
+      <h3>Xavfsiz Ichki Konteyner</h3>
+      <p>Qatlamni alohida himoyalangan konteyner ichiga joylashtirish usuli.</p>
+      <p class="t-muted">Original piksellar yoki vektor ma'lumotlari buzilmasdan saqlanadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="maximize-2"></i></div>
+      <h3>Cheksiz Masshtablash</h3>
+      <p>Obyektni 10% gacha kichraytirib, keyin yana kattalashtirsangiz ham zarracha sifat yo'qolmaydi.</p>
+      <p class="t-muted">Oddiy rastrda esa piksellar darhol loyqalanib ketadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Smart Filters Imkoniyati</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+      <h3>Qayta Sozlanuvchi Filtrlar</h3>
+      <p>Oddiy qatlamga berilgan Blur yoki Sharpen qaytarib bo'lmas darajada yopishib qoladi.</p>
+      <p class="t-muted">Smart Objectga berilgan filtrlar esa istalgan vaqtda qayta o'zgartiriladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="crop"></i></div>
+      <h3>Filtr Niqobi (Filter Mask)</h3>
+      <p>Filtr ta'sirini tasvirning faqat ma'lum bir qismiga oq-qora cho'tka bilan cheklash mumkin.</p>
+      <p class="t-muted">Masalan, faqat qahramonning qilichini porlatish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Rastr vs Smart Object Masshtablash</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 230">
+      <rect x="30" y="30" width="350" height="170" rx="8" class="fn ln"></rect>
+      <text x="205" y="65" text-anchor="middle" class="t-accent">Oddiy Rastr Qatlam</text>
+      <circle cx="100" cy="115" r="25" class="fg lg"></circle>
+      <text x="145" y="120" font-size="20" class="t-muted">→</text>
+      <circle cx="190" cy="115" r="8" class="fg lg"></circle>
+      <text x="225" y="120" font-size="20" class="t-muted">→</text>
+      <circle cx="280" cy="115" r="25" class="fg lg" stroke-dasharray="4"></circle>
+      <text x="205" y="165" text-anchor="middle" class="t-muted">100% → 10% → 100% qaytganda</text>
+      <text x="205" y="185" text-anchor="middle" class="t-head">Piksellar loyqalanadi va sifat yo'qoladi</text>
+
+      <rect x="420" y="30" width="350" height="170" rx="8" class="fn ln"></rect>
+      <text x="595" y="65" text-anchor="middle" class="t-accent">Smart Object</text>
+      <circle cx="490" cy="115" r="25" class="fa la"></circle>
+      <text x="535" y="120" font-size="20" class="t-accent">→</text>
+      <circle cx="580" cy="115" r="8" class="fa la"></circle>
+      <text x="615" y="120" font-size="20" class="t-accent">→</text>
+      <circle cx="670" cy="115" r="25" class="fa la"></circle>
+      <text x="595" y="165" text-anchor="middle" class="t-muted">100% → 10% → 100% qaytganda</text>
+      <text x="595" y="185" text-anchor="middle" class="t-head">Dastlabki 100% tiniqlik to'liq saqlanadi</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Clipping Mask</h1>
+  <p>Qatlamlarni bir-biriga kiygizish va shakl chegarasini saqlash</p>
+</section>
+
+<section>
+  <h2>Clipping Mask Nima? (Ctrl + Alt + G)</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield"></i></div>
+      <h3>Shakl Ichida Qolish</h3>
+      <p>Yuqori qatlamdagi rasm yoki teksturani faqat pastdagi asos qatlam chegarasida ko'rsatish.</p>
+      <p class="t-muted">Pastdagi shakl shaffof bo'lgan joylarda yuqori tekstura ham ko'rinmaydi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers-plus"></i></div>
+      <h3>Cheksiz Qatlamlar Zanjiri</h3>
+      <p>Bitta asosiy shaklga 2, 3 va undan ortiq tekstura va yorug'lik qatlamlarini ulash mumkin.</p>
+      <p class="t-muted">Har bir qatlam alohida Blending Mode va Opacity ga ega bo'ladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>O'yin Dizaynidagi Amaliy Vazifalari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="palette"></i></div>
+      <h3>Material Teksturalari</h3>
+      <p>Oddiy chizilgan qalqon yoki qilichga metall va yog'och fakturasini kiygizish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sun"></i></div>
+      <h3>Yorug'lik va Soya</h3>
+      <p>Personaj tanasidan chiqmasdan uning bir tomoniga yorug'lik nurini bo'yash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="zap"></i></div>
+      <h3>Maxsus Effektlar</h3>
+      <p>Sehrli qahramon kiyimiga oqib turuvchi lazer yoki yulduzlar galaktikasi berish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Clipping Mask Vizual Mexanizmi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 820 230">
+      <rect x="30" y="30" width="220" height="150" rx="6" class="fc lc"></rect>
+      <text x="140" y="100" text-anchor="middle" class="t-head">Katta Tekstura</text>
+      <text x="140" y="130" text-anchor="middle" class="t-muted">(Yuqori qatlam)</text>
+
+      <text x="280" y="115" font-size="28" text-anchor="middle" class="t-accent">+</text>
+
+      <rect x="310" y="30" width="220" height="150" rx="6" class="fn ln"></rect>
+      <circle cx="420" cy="105" r="45" class="fa la"></circle>
+      <text x="420" y="112" text-anchor="middle" class="t-head">Qalqon Doirasi</text>
+      <text x="420" y="165" text-anchor="middle" class="t-accent">Asosiy Qatlam (Pastda)</text>
+
+      <text x="560" y="115" font-size="28" text-anchor="middle" class="t-accent">=</text>
+
+      <rect x="590" y="30" width="200" height="150" rx="6" class="fb lb"></rect>
+      <circle cx="690" cy="105" r="45" class="fc lc"></circle>
+      <text x="690" y="112" text-anchor="middle" class="t-head">Metall Qalqon</text>
+      <text x="690" y="165" text-anchor="middle" class="t-head">Doiradan tashqariga chiqmaydi</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Assetlar Kollaji</h1>
+  <p>Yaxlit 2D o'yin sahnasini kompozitsiya qilish san'ati</p>
+</section>
+
+<section>
+  <h2>Kollajning 5 Ta Oltin Qoidasi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="crosshair"></i></div>
+      <h3>1. Masshtab va Perspektiva</h3>
+      <p>Elementlarning o'lchov nisbati realistik bo'lishi kerak.</p>
+      <p class="t-muted">Daraxtlar, qahramon va toshlar bir xil dunyo qonuniga bo'ysunadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="moon"></i></div>
+      <h3>2. Kontakt Soyalari (Contact Shadows)</h3>
+      <p>Obyekt zamin bilan to'qnashgan nuqtada to'q, zich soya bo'lishi shart.</p>
+      <p class="t-muted">Soyasiz obyekt xolstda havoda muallaq turgandek tuyuladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Yorug'lik Yo'nalishi va Rang Birligi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sun" data-anim="pulse"></i></div>
+      <h3>3. Yagona Nur Manbasi</h3>
+      <p>Quyosh yoki chiroq nurining yo'nalishi barcha assetlarda bir tomondan tushishi shart.</p>
+      <p class="t-muted">Har tomondan nur tushsa, ko'z kollajdagi sun'iylikni darhol sezadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="palette"></i></div>
+      <h3>4. Yagona Rang Harorati</h3>
+      <p>Turli rasmlardan olingan qismlar har xil rangda bo'ladi.</p>
+      <p class="t-muted">Sahnaning eng yuqorisiga Adjustment Layer (Curves, Color Balance) qo'yilib, barchasi uyg'unlashtiriladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Kontakt Soyasini Chizish Texnikasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="num">1</div>
+      <h3>Yangi Qatlam Ochish</h3>
+      <p>Qahramon yoki quti qatlamining ostiga yangi bo'sh qatlam ochiladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="num">2</div>
+      <h3>Multiply Rejimini Yoqish</h3>
+      <p>Qatlam rejimini <code>Multiply</code> ga o'tkazish (oq shaffof bo'lib, fon bilan qorishadi).</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="num">3</div>
+      <h3>0% Hardness Cho'tka</h3>
+      <p>To'q rangli yumshoq cho'tka bilan yerga tegib turgan nuqtaga mayin soya uriladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Yaxlit O'yin Sahnasi Kompozitsiyasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 230">
+      <circle cx="700" cy="50" r="30" class="fc lc"></circle>
+      <text x="700" y="55" text-anchor="middle" class="t-head">Quyosh</text>
+
+      <path d="M 0 160 L 250 80 L 500 160 Z" class="fn ln"></path>
+      <path d="M 350 160 L 600 90 L 800 160 Z" class="fn ln"></path>
+      <text x="250" y="140" text-anchor="middle" class="t-muted">Uzoq tog'lar (Xira, tumanli)</text>
+
+      <rect x="0" y="160" width="800" height="70" class="fb lb"></rect>
+      <text x="400" y="200" text-anchor="middle" class="t-head">Zamin Platformasi (Kontrastli va to'yingan)</text>
+
+      <rect x="180" y="110" width="60" height="70" rx="4" class="fa la"></rect>
+      <ellipse cx="210" cy="180" rx="40" ry="8" class="fg lg"></ellipse>
+      <text x="210" y="150" text-anchor="middle" class="t-accent">Qahramon</text>
+
+      <line x1="680" y1="70" x2="230" y2="120" stroke="var(--c-accent)" stroke-width="2" stroke-dasharray="4"></line>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Interaktiv Savol: Stamp Visible Amali</h2>
+  <div class="flip">
+    <div class="flip-in">
+      <div class="face front">
+        <div class="icon"><i data-ic="layers"></i></div>
+        <h3>Barcha qatlamlarni birlashtirmasdan qanday yagona rasm qilish mumkin?</h3>
+        <p class="t-muted">Kartanikiga bosing yoki aylantiring</p>
+      </div>
+      <div class="face back">
+        <div class="icon"><i data-ic="circle-check"></i></div>
+        <h3>Stamp Visible: Ctrl + Shift + Alt + E</h3>
+        <p>Photoshop mavjud barcha qatlamlarni saqlab qolgan holda, ularning to'liq ko'rinishini eng tepaga yangi bitta yagona qatlam qilib bosib beradi!</p>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Assetlar Kollajini Yig'ish Bosqichlari</h2>
+  <div class="stepper">
+    <div class="step fragment fade-up">
+      <div class="num">1</div>
+      <h3>Canvas va Fon</h3>
+      <p>1920x1080 xolst ochish, osmon va tog'larni pastki qatlamga joylash.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">2</div>
+      <h3>Platforma va Obyektlar</h3>
+      <p>Smart Object qilingan platformalar, qahramon va tangalarni perspektivaga moslash.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">3</div>
+      <h3>Soya va Rang Korreksiyasi</h3>
+      <p>Multiply bilan kontakt soyalarni chizish va Adjustment Layer orqali umumiy rang berish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tezkor Savol: Smart Object</h2>
+  <div class="quiz">
+    <div class="q">Nima uchun o'yin sahnasiga joylashtiriladigan qahramon va assetlarni darhol "Smart Object" ga aylantirish kerak?</div>
+    <div class="opts">
+      <div class="opt">A) Fayl hajmini 100 barobar kichraytirish uchun</div>
+      <div class="opt" data-ok>B) Qayta-qayta masshtablaganda tasvir tiniqligi va piksellari yo'qolmasligi uchun</div>
+      <div class="opt">C) Qatlamni avtomatik ravishda 3D modelga aylantirish uchun</div>
+      <div class="opt">D) O'chirg'ich bilan o'chirishni osonlashtirish uchun</div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Qatlamlar Bilan Ishlashda Tezkor Tugmalar</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="keyboard"></i></div>
+      <h3>Tashkil Qilish</h3>
+      <p><code>Ctrl + G</code> — Guruh yaratish</p>
+      <p><code>Ctrl + Shift + G</code> — Guruhni yoyish</p>
+      <p><code>Ctrl + J</code> — Qatlamni nusxalash</p>
+      <p><code>Ctrl + E</code> — Qatlamlarni birlashtirish</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="zap"></i></div>
+      <h3>Ilg'or Amallar</h3>
+      <p><code>Ctrl + Alt + G</code> — Clipping Mask yaratish</p>
+      <p><code>Ctrl + Shift + Alt + E</code> — Stamp Visible</p>
+      <p><code>Ctrl + [</code> va <code>Ctrl + ]</code> — Qatlamni pastga/tepaga surish</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Dars Xulosasi va Amaliy Vazifa</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Bugun O'rganganlarimiz</h3>
+      <p>Ko'p qatlamli fayllar arxitekturasi va guruhlash.</p>
+      <p>Smart Object va Clipping Mask afzalliklari.</p>
+      <p class="t-muted">2D o'yin sahnasining 5 oltin qoidasi bo'yicha kollaj.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="gamepad-2"></i></div>
+      <h3>Amaliy Vazifa</h3>
+      <p>Berilgan 4 ta assetdan to'liq 2D platformer sahnasini yig'ish.</p>
+      <p>Kontakt soyalari va yorug'lik effektlarini qo'shish.</p>
+      <p class="t-muted">Loyihani PSD va PNG formatlarida saqlash.</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

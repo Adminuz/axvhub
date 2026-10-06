@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>9-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>9-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf Kiberxavfsizlik · 3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Mijoz-Server (Client-Server) arxitekturasida Server qanday vazifani bajaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Boshqa qurilmalarga ma'lum xizmatlarni (veb, ma'lumotlar bazasi) taqdim etadi</button>
+      <button class="opt" type="button">Faqat xizmat so'raydi</button>
+      <button class="opt" type="button">Faqat internetni o'chiradi</button>
+      <button class="opt" type="button">Faqat tarmoq kabelini ulaydi</button>
+    </div>
+    <div class="explain">Server — tarmoqda boshqa qurilmalarga xizmat taqdim etuvchi markaziy kompyuter, Mijoz esa shu xizmatni so'raydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Maktab yoki ofis kabi kichik hududdagi lokal tarmoq qanday ataladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">WAN</button>
+      <button class="opt" type="button" data-ok>LAN</button>
+      <button class="opt" type="button">VPN</button>
+      <button class="opt" type="button">DNS</button>
+    </div>
+    <div class="explain">LAN (Local Area Network) — bino yoki ofis kabi kichik hududda joylashgan lokal tarmoq.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Yulduz (Star) topologiyasining yagona zaif nuqtasi (Single Point of Failure) qayerda joylashgan?</p>
+    <div class="opts">
+      <button class="opt" type="button">Har bir alohida kompyuterda</button>
+      <button class="opt" type="button">Internet provayderida</button>
+      <button class="opt" type="button" data-ok>Markaziy kommutatorda (Switch)</button>
+      <button class="opt" type="button">Faqat printerlar bog'langan portda</button>
+    </div>
+    <div class="explain">Agar markaziy Switch ishdan chiqsa, butun tarmoqdagi barcha kompyuterlar aloqasiz qolib ketadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">OSI modeli nechta sathdan iborat va eng pasti qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">4 ta sath, eng pasti Transport</button>
+      <button class="opt" type="button">5 ta sath, eng pasti Tadbiqiy</button>
+      <button class="opt" type="button">3 ta sath, eng pasti Tarmoq</button>
+      <button class="opt" type="button" data-ok>7 ta sath, eng pasti Fizik (Physical)</button>
+    </div>
+    <div class="explain">OSI modeli 7 sathdan iborat bo'lib, eng past sath — Fizik sath (kabel, signal, bitlar).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">TCP protokoli ulanish o'rnatishda qanday 3 bosqichli qo'l berishishdan foydalanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>SYN, SYN-ACK, ACK</button>
+      <button class="opt" type="button">GET, POST, ACK</button>
+      <button class="opt" type="button">PING, PONG, ACK</button>
+      <button class="opt" type="button">OPEN, READ, CLOSE</button>
+    </div>
+    <div class="explain">TCP 3-Way Handshake: mijoz SYN yuboradi, server SYN-ACK bilan javob beradi, mijoz ACK bilan tasdiqlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Nima sababdan jonli video qo'ng'iroqlarda (Zoom, Telegram call) TCP o'rniga UDP ishlatiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">UDP ma'lumotni 100% kafolatlagani uchun</button>
+      <button class="opt" type="button" data-ok>UDP yo'qolgan paketni qayta so'ramasdan darhol keyingisiga o'tadi, kechikish minimal bo'ladi</button>
+      <button class="opt" type="button">UDP faqat matnli xabarlar uchun mo'ljallangan</button>
+      <button class="opt" type="button">UDP internetsiz ishlaydi</button>
+    </div>
+    <div class="explain">Real vaqtda minimal kechikish muhim, shuning uchun yo'qolgan paketni kutib o'tirmaydigan UDP qo'llaniladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">`ping` buyrug'i qaysi protokol orqali ishlaydi va TTL nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">HTTP orqali; TTL — fayl hajmi</button>
+      <button class="opt" type="button">DNS orqali; TTL — parol uzunligi</button>
+      <button class="opt" type="button" data-ok>ICMP orqali; TTL — paket nechta routerdan o'tishi mumkinligini cheklovchi hisoblagich</button>
+      <button class="opt" type="button">ARP orqali; TTL — MAC manzil</button>
+    </div>
+    <div class="explain">Ping ICMP Echo Request/Reply orqali ishlaydi, TTL esa paketning cheksiz aylanib qolmasligi uchun router sonini cheklaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">OSI modelidagi enkapsulyatsiya jarayonida Tarmoq sathida ma'lumot qanday nom bilan ataladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Bit</button>
+      <button class="opt" type="button">Kadr (Frame)</button>
+      <button class="opt" type="button">Segment</button>
+      <button class="opt" type="button" data-ok>Paket (Packet)</button>
+    </div>
+    <div class="explain">Tarmoq sathida ma'lumot IP sarlavhasini olib, Paket (Packet) deb ataladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Harbiy va bank tizimlarining kritik serverlari o'rtasida ko'pincha qaysi topologiya qo'llaniladi va nega?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Mesh (To'liq bog'langan), chunki bir nechta kabel uzilsa ham aloqa boshqa yo'l orqali davom etadi</button>
+      <button class="opt" type="button">Shina (Bus), chunki arzon</button>
+      <button class="opt" type="button">Halqa (Ring), chunki eng tezkor</button>
+      <button class="opt" type="button">Yulduz (Star), chunki eng ishonchsiz</button>
+    </div>
+    <div class="explain">Mesh topologiyasida har bir tugun alohida bog'langani uchun maksimal ishonchlilik ta'minlanadi, lekin narxi yuqori.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Kanal sathida (Data Link) eng ko'p uchraydigan kiberhujum turi qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">SQL Injection</button>
+      <button class="opt" type="button" data-ok>ARP Spoofing va MAC Flooding</button>
+      <button class="opt" type="button">Cross-Site Scripting (XSS)</button>
+      <button class="opt" type="button">Ransomware shifrlash</button>
+    </div>
+    <div class="explain">Kanal sathida ARP protokoli ishlagani uchun ARP Spoofing va MAC Flooding bu sathga xos hujumlar hisoblanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: tarmoq topologiyalari, OSI 7 sathi va TCP/IP 4 sathi, TCP vs UDP, MAC va IP manzil farqi.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

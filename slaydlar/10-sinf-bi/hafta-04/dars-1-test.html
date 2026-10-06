@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>10-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>10-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">BI &amp; ML</span><span class="badge">4-hafta · 10-dars</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Agregat funksiya (SUM, AVG, COUNT) nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Har satrni alohida o'zgartiradi</button>
+      <button class="opt" type="button" data-ok>Ko'p satrdan bitta qiymat hosil qiladi</button>
+      <button class="opt" type="button">Jadvalni o'chiradi</button>
+      <button class="opt" type="button">Ustun nomini o'zgartiradi</button>
+    </div>
+    <div class="explain">Agregat funksiya ko'p satrni bitta natijaga (jami, o'rtacha, soni) aylantiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi funksiya qiymatlarning o'rtachasini hisoblaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">SUM</button>
+      <button class="opt" type="button">COUNT</button>
+      <button class="opt" type="button">MAX</button>
+      <button class="opt" type="button" data-ok>AVG</button>
+    </div>
+    <div class="explain">AVG o'rtacha arifmetik qiymatni beradi; SUM yig'indi, COUNT soni, MAX eng kattasi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Ustunda 20 satr bor, ulardan 5 tasi NULL. <code>COUNT(*)</code> nechta qaytaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>20</button>
+      <button class="opt" type="button">15</button>
+      <button class="opt" type="button">5</button>
+      <button class="opt" type="button">0</button>
+    </div>
+    <div class="explain"><code>COUNT(*)</code> NULL li satrlarni ham sanaydi. <code>COUNT(ustun)</code> esa 15 beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>GROUP BY yil</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Natijani yil bo'yicha o'chiradi</button>
+      <button class="opt" type="button">Yil ustunini qo'shadi</button>
+      <button class="opt" type="button" data-ok>Bir xil yil qiymatli satrlarni guruhlarga ajratadi</button>
+      <button class="opt" type="button">Faqat birinchi yilni tanlaydi</button>
+    </div>
+    <div class="explain"><code>GROUP BY</code> satrlarni guruhlarga bo'ladi, agregat funksiya har guruh uchun alohida hisoblanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Jadvalda 3 xil yil bor. <code>SELECT yil, SUM(x) FROM t GROUP BY yil</code> necha qator beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">1 qator</button>
+      <button class="opt" type="button">Jadvaldagi satrlar soniga teng qator</button>
+      <button class="opt" type="button" data-ok>3 qator</button>
+      <button class="opt" type="button">0 qator</button>
+    </div>
+    <div class="explain">Har guruh (har yil) bitta qator bo'lib chiqadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Guruhlardan keyin agregat natijasi bo'yicha filtrlash qaysi bandda yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>HAVING</button>
+      <button class="opt" type="button">WHERE</button>
+      <button class="opt" type="button">ORDER BY</button>
+      <button class="opt" type="button">LIMIT</button>
+    </div>
+    <div class="explain"><code>HAVING</code> guruhlarni filtrlaydi va agregat funksiyani qabul qiladi; <code>WHERE</code> guruhlashdan oldin ishlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi ijro tartibi to'g'ri?</p>
+    <div class="opts">
+      <button class="opt" type="button">SELECT, FROM, WHERE, GROUP BY, HAVING</button>
+      <button class="opt" type="button">FROM, GROUP BY, WHERE, HAVING, SELECT</button>
+      <button class="opt" type="button">WHERE, FROM, SELECT, GROUP BY, ORDER BY</button>
+      <button class="opt" type="button" data-ok>FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT</button>
+    </div>
+    <div class="explain">Avval jadval, so'ng satr filtri, guruhlash, guruh filtri, ustunlar, saralash va chegaralash bajariladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>NULLIF(SUM(oqituvchilar_soni), 0)</code> nima uchun yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Natijani nolga aylantiradi</button>
+      <button class="opt" type="button" data-ok>Maxraj nol bo'lsa NULL qaytarib, nolga bo'lish xatosidan saqlaydi</button>
+      <button class="opt" type="button">NULL qiymatlarni o'chiradi</button>
+      <button class="opt" type="button">Yig'indini ikki baravar qiladi</button>
+    </div>
+    <div class="explain"><code>NULLIF(a, 0)</code> a nolga teng bo'lsa NULL beradi, shunda bo'lish xatosi chiqmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>SELECT turi, COUNT(*) FROM maktablar GROUP BY turi HAVING COUNT(*) &gt; 5</code> qaysi turlarni qoldiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Har turdan 5 ta maktabni</button>
+      <button class="opt" type="button">Faqat 5 ta turni</button>
+      <button class="opt" type="button" data-ok>Maktablari 5 tadan ko'p turlarni</button>
+      <button class="opt" type="button">Maktablari 5 tadan kam turlarni</button>
+    </div>
+    <div class="explain"><code>HAVING COUNT(*) &gt; 5</code> guruhdagi satrlar soni 5 dan ko'p bo'lgan turlarni qoldiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>SELECT hudud_id, yil, SUM(x) FROM yillik_kpi GROUP BY hudud_id</code> da qanday muammo bor?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>yil ustuni GROUP BY da ham, agregat ichida ham emas: qaysi yil chiqishi noaniq</button>
+      <button class="opt" type="button">SUM guruhlanmaydi</button>
+      <button class="opt" type="button">hudud_id GROUP BY da bo'lmasligi kerak</button>
+      <button class="opt" type="button">Muammo yo'q, so'rov mukammal</button>
+    </div>
+    <div class="explain">SELECT dagi har ustun GROUP BY da bo'lishi yoki agregat ichida turishi kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards two">
+    <div class="card"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Test yakunlandi</h3><p>Barcha savollar tugadi. To'g'ri javoblaringizni sanang.</p></div>
+    <div class="card accent"><div class="icon"><i data-ic="book-open" data-anim="float"></i></div><h3>Nimani takrorlash kerak?</h3><p>GROUP BY / HAVING bo'yicha: agregat funksiyalar, WHERE va HAVING farqi, ijro tartibi.</p></div>
+  </div>
+  <p class="small mt">To'g'ri javoblar soni: 9-10 a'lo, 7-8 yaxshi, 5-6 takrorlang.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

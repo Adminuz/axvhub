@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>CIDR, subnet maska va segmentatsiya</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>CIDR, subnet maska va segmentatsiya</h1>
+  <p class="muted">subnet mask, CIDR prefiks, tarmoq va broadcast manzil, hostlar soni, subnetlash, segmentatsiya</p>
+  <span class="badge">10-sinf Kiberxavfsizlik</span><span class="badge">5-hafta · 14-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimalarni o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="ruler" data-anim="pulse"></i></div><h3>Subnet mask</h3><p>Tarmoq va host qismi</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="calculator" data-anim="float"></i></div><h3>Subnetlash</h3><p>Tarmoqni bo'lish</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="split" data-anim="blink"></i></div><h3>Segmentatsiya</h3><p>Tarmoqni ajratish</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">IPv4 manzil necha bit?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>32</button>
+    <button class="opt" type="button">64</button>
+    <button class="opt" type="button">128</button>
+    <button class="opt" type="button">16</button>
+    </div>
+    <div class="explain">IPv4 32 bitli; maska ham 32 bitli.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Subnet mask</h1>
+  <p>Tarmoq va host qismi</p>
+</section>
+
+<section>
+  <h2>Maska nima qiladi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">IP manzil</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">Maska bilan</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">solishtirish</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Tarmoq qismi</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Host qismi</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">1 bitlar tarmoq, 0 bitlar host</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Maska va prefiks</h2>
+  <pre><code class="language-bash" data-trim data-line-numbers="1-3|5-8">
+255.255.255.0   = /24
+255.255.0.0     = /16
+255.255.255.192 = /26
+
+192.168.10.5/24
+  tarmoq qismi: 192.168.10
+  host qismi:   5
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Prefiks (masalan, /24) — maskadagi birlar soni. Qancha ko'p bit tarmoqqa ajratilsa, shuncha kichik subnet hosil bo'ladi.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>/24</code> prefiksga mos maska qaysi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>255.255.255.0</button>
+    <button class="opt" type="button">255.255.0.0</button>
+    <button class="opt" type="button">255.0.0.0</button>
+    <button class="opt" type="button">255.255.255.192</button>
+    </div>
+    <div class="explain">24 ta birlik bit: 255.255.255.0.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Subnetlash</h1>
+  <p>Tarmoqni bo'lish</p>
+</section>
+
+<section>
+  <h2>Bo'lish hisobi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">4 subnet kerak</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">2 bit qarz</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">olamiz</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="145" text-anchor="middle" font-size="22">Yangi</text><text class="t-head" x="625" y="171" text-anchor="middle" font-size="22">prefiks /26</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">62 host</text><text class="t-head" x="875" y="171" text-anchor="middle" font-size="22">har birida</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">/24 dan 4 ta /26 hosil bo'ladi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>192.168.10.0/24 ni 4 ga bo'lish</h2>
+  <pre><code class="language-bash" data-trim data-line-numbers="1|2|3|4">
+192.168.10.0/26    hostlar .1 - .62     broadcast .63
+192.168.10.64/26   hostlar .65 - .126   broadcast .127
+192.168.10.128/26  hostlar .129 - .190  broadcast .191
+192.168.10.192/26  hostlar .193 - .254  broadcast .255
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Subnetlar 64 qadam bilan boshlanadi (2^6 = 64): 0, 64, 128, 192.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">/26 subnetda nechta host manzil bor?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>62</button>
+    <button class="opt" type="button">64</button>
+    <button class="opt" type="button">60</button>
+    <button class="opt" type="button">30</button>
+    </div>
+    <div class="explain">2^6 - 2 = 62.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Segmentatsiya</h1>
+  <p>Tarmoqni ajratish</p>
+</section>
+
+<section>
+  <h2>Maktab tarmog'i segmentlari</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Router</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">Kompyuter</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">sinfi</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Ma'muriyat</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Serverlar</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Har segment o'z subnetida</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Maktab uchun reja</h2>
+  <pre><code class="language-bash" data-trim data-line-numbers="1|2|3|4">
+192.168.10.0/26    kompyuter sinfi
+192.168.10.64/26   o'qituvchilar
+192.168.10.128/26  ma'muriyat
+192.168.10.192/26  serverlar
+  </code></pre>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i>Segmentlar orasidagi aloqa firewall qoidalari bilan boshqariladi (15-dars).</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Segmentatsiyaning asosiy xavfsizlik foydasi nima?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Hujum bitta segmentda cheklanadi</button>
+    <button class="opt" type="button">Internet tezlashadi</button>
+    <button class="opt" type="button">Parol kerak bo'lmaydi</button>
+    <button class="opt" type="button">Router kerak bo'lmaydi</button>
+    </div>
+    <div class="explain">Zararlangan qurilma boshqa segmentlarga osonlik bilan o'ta olmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Sinflar va CIDR</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>Sinfli (classful)</h3>A, B, C sinflar qat'iy maskalar bilan (/8, /16, /24); manzil isrof bo'ladi</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>CIDR</h3>Prefiks har qanday uzunlikda (/26, /27); manzil tejaladi, moslashuvchan</div>
+  </div>
+  <div class="card accent fragment mt"><p>Hozirgi tarmoqlarda CIDR ishlatiladi.</p></div>
+</section>
+
+<section>
+  <h2>Atamalar. Bosing</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>Subnet mask</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Tarmoq va host qismini ajratuvchi 32 bitli qiymat</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>Prefiks</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Maskadagi birlar soni (/24)</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>Broadcast</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Subnetdagi oxirgi manzil, hammaga</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>Segmentatsiya</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Tarmoqni mustaqil bo'limlarga ajratish</p></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Subnetlash bosqichlari</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="hash" data-anim="pulse"></i></div><h3>1. Subnetlar soni</h3><p>Nechta subnet kerakligini aniqlang.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="binary"></i></div><h3>2. Bitlar</h3><p>2^n &gt;= soni bo'lgan n ni toping; prefiksga qo'shing.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="list-checks"></i></div><h3>3. Diapazonlar</h3><p>Har subnet uchun tarmoq, hostlar va broadcast yozing.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>Prefikslar jadvali</h2>
+    <table>
+      <thead><tr><th>Prefiks</th><th>Maska</th><th>Hostlar</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td>/24</td><td>255.255.255.0</td><td>254</td></tr>
+        <tr class="fragment"><td>/25</td><td>255.255.255.128</td><td>126</td></tr>
+        <tr class="fragment"><td>/26</td><td>255.255.255.192</td><td>62</td></tr>
+        <tr class="fragment"><td>/27</td><td>255.255.255.224</td><td>30</td></tr>
+        <tr class="fragment"><td>/28</td><td>255.255.255.240</td><td>14</td></tr>
+        <tr class="fragment"><td>/30</td><td>255.255.255.252</td><td>2</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: python bilan tekshirish</p>
+  </section>
+  <section>
+    <h2><code>ipaddress</code> bilan tekshirish</h2>
+    <ol class="steps-n">
+      <li class="fragment"><code>python3</code> ni oching.</li>
+      <li class="fragment"><code>import ipaddress</code> yozing.</li>
+      <li class="fragment"><code>.subnets(new_prefix=26)</code> natijasini daftar bilan solishtiring.</li>
+    </ol>
+  </section>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">Subnetlarni chiqarish</h2>
+  <pre data-id="c"><code class="language-python" data-trim>
+import ipaddress
+net = ipaddress.ip_network('192.168.10.0/24')
+  </code></pre>
+</section>
+<section data-auto-animate>
+  <h2 data-id="t">Subnetlarni chiqarish</h2>
+  <pre data-id="c"><code class="language-python" data-trim data-line-numbers="3-4">
+import ipaddress
+net = ipaddress.ip_network('192.168.10.0/24')
+for s in net.subnets(new_prefix=26):
+    print(s, s.num_addresses - 2)
+  </code></pre>
+</section>
+
+<section>
+  <h2>Subnetlash raqamlarda</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="4" data-suf="">0</span></div><div class="l"> ta subnet: /24 dan</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="62" data-suf="">0</span></div><div class="l"> host: har /26 da</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="64" data-suf="">0</span></div><div class="l"> qadam: subnet boshlanishlari orasida</div></div>
+  </div>
+  <p class="small fragment">Hostlar soni = 2^h - 2.</p>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Maska: 255.255.255.0, 255.255.0.0 va 255.255.255.192 ni prefiksga o'tkazing.</div>
+  <div class="task"><span class="level mid">O'rta</span>Hostlar: /27 va /28 subnetlarda nechta host bo'ladi?</div>
+  <div class="task"><span class="level mid">O'rta</span>Bo'lish: 192.168.1.0/24 ni 8 ta subnetga bo'ling: yangi prefiksni va birinchi 3 subnetni yozing.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Manzil joylashuvi: 172.16.5.130/26 manzil qaysi subnetga kiradi? Tarmoq, broadcast va host diapazonini yozing.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Maska va prefiks</h3><p>255.255.255.0 = /24.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Hisob</h3><p>Hostlar = 2^h - 2; tarmoq va broadcast ajratilgan.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Segmentatsiya</h3><p>Tarmoqni bo'limlarga ajratib xavfsizlikni oshiradi.</p></div>
+  </div>
+  <p class="small fragment mt">Uyga vazifa: subnetlash hisoblari va maktab uchun segmentatsiya rejasi.</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="brick-wall" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: Firewall turlari va prinsiplari</h1>
+  <p class="muted">Tarmoqlararo ekran, ACL, qoidalar</p>
+  <span class="badge">5-hafta · 15-dars</span>
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

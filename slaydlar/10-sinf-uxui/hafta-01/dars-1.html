@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>UX Dizaynning Strategik Roli</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 1-dars: UX dizaynning strategik roli va biznes maqsadlari bilan uyg‘unlashuvi -->
+
+<!-- 1. SARLAVHA -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>UX Dizaynning Strategik Roli</h1>
+  <p class="muted">Biznes maqsadlari va foydalanuvchi tajribasini uyg'unlashtirish</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced UX/UI</span><span class="badge">1-hafta · 1-dars</span>
+</section>
+
+<!-- 2. BUGUN NIMANI O'RGANAMIZ? -->
+<section>
+  <h2>Bugun nimani o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="compass" data-anim="float"></i></div>
+      <h3>UX strategiyasi</h3>
+      <p>Foydalanuvchi tajribasining biznesdagi o'rni va raqobatdosh ustunligi</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="chart-bar" data-anim="pulse"></i></div>
+      <h3>Biznes metrikalari</h3>
+      <p>Konversiya (CR), Savatni tark etish va investitsiyalar daromadliligi (ROI)</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shopping-cart" data-anim="draw"></i></div>
+      <h3>4 bosqichli model</h3>
+      <p>Biznes maqsadlarini aniq UX qarorlariga aylantirish metodologiyasi</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. BO'LIM 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>UX nima va uning mohiyati</h1>
+  <p>Raqamli mahsulot muvaffaqiyatini belgilovchi poydevor</p>
+</section>
+
+<!-- 4. TAQQOSLASH: UX vs UI -->
+<section>
+  <h2>UX va UI o'rtasidagi farq</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>UX (Foydalanuvchi tajribasi)</h3>
+      <p>Mantiq, qulaylik, his-tuyg'ular va maqsadga eng tez yetishish yo'li.</p>
+      <div class="chips mt"><span class="chip">Arxitektura</span><span class="chip">Tadqiqot</span><span class="chip t">Mantiq</span></div>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>UI (Foydalanuvchi interfeysi)</h3>
+      <p>Vizual qiyofa: ranglar palitrasi, shriftlar, tugmalar va animatsiyalar.</p>
+      <div class="chips mt"><span class="chip">Ranglar</span><span class="chip">Tipografiya</span><span class="chip t">Piksel</span></div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 5. ILLYUSTRATSIYA 1: UX AYSBERGI -->
+<section>
+  <h2>Illyustratsiya: UX Aysbergi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 360">
+      <!-- Suv sathi -->
+      <line class="la" x1="50" y1="120" x2="950" y2="120" stroke-dasharray="8 6"/>
+      <text class="t-accent" x="80" y="110" font-size="20">Suv sathi (Ko'rinadigan qism)</text>
+      
+      <!-- Aysberg uchi (UI) -->
+      <polygon class="fa" points="500,30 580,120 420,120"/>
+      <text class="t-head" x="500" y="90" text-anchor="middle" font-size="22" font-weight="bold">UI Dizayn</text>
+      <text class="t-muted" x="500" y="112" text-anchor="middle" font-size="14">Ranglar, tugmalar, uslub</text>
+      
+      <!-- Aysberg asosi (UX) -->
+      <polygon class="fb" points="420,120 580,120 720,320 280,320"/>
+      <g class="fragment">
+        <text class="t-head" x="500" y="170" text-anchor="middle" font-size="22" font-weight="bold">Axborot arxitekturasi</text>
+        <text class="t-muted" x="500" y="195" text-anchor="middle" font-size="16">Foydalanuvchi yo'li va navigatsiya</text>
+      </g>
+      <g class="fragment">
+        <text class="t-head" x="500" y="240" text-anchor="middle" font-size="22" font-weight="bold">Foydalanuvchi tadqiqotlari</text>
+        <text class="t-muted" x="500" y="265" text-anchor="middle" font-size="16">Intervyular, ehtiyojlar va testlar</text>
+      </g>
+      <g class="fragment">
+        <text class="t-head" x="500" y="295" text-anchor="middle" font-size="20" font-weight="bold">Biznes strategiyasi</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 6. STATISTIKA: RAQAMLARDA UX TA'SIRI -->
+<section>
+  <h2>Raqamlarda UX kuchi</h2>
+  <div class="stats">
+    <div class="stat fragment">
+      <div class="v"><span class="count" data-to="100" data-suf=" $">0</span></div>
+      <div class="l">Sarflangan har 1$ uchun ROI daromadi (Forrester)</div>
+    </div>
+    <div class="stat fragment">
+      <div class="v"><span class="count" data-to="70" data-suf=" %">0</span></div>
+      <div class="l">Murakkablik sabab savatni tark etish ko'rsatkichi</div>
+    </div>
+    <div class="stat fragment">
+      <div class="v"><span class="count" data-to="88" data-suf=" %">0</span></div>
+      <div class="l">Yomon tajribadan so'ng qaytmaydigan foydalanuvchilar</div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. BO'LIM 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Asosiy biznes metrikalari</h1>
+  <p>Dizayn qarorlarini aniq natijalar bilan asoslash</p>
+</section>
+
+<!-- 8. METRIKA 1: KONVERSIYA -->
+<section>
+  <h2>Conversion Rate (Konversiya foizi)</h2>
+  <div class="card accent">
+    <h3>Konversiya nima?</h3>
+    <p>Saytga tashrif buyurgan barcha foydalanuvchilarning maqsadli harakatni (xarid, ro'yxatdan o'tish) bajargan ulushidir.</p>
+  </div>
+  <div class="cards two mt">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="calculator" data-anim="pulse"></i></div>
+      <h3>Hisoblash formulasi</h3>
+      <p><code>CR = (Xaridorlar / Tashrifchilar) × 100%</code></p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="trending-up"></i></div>
+      <h3>Biznesga ta'siri</h3>
+      <p>Reklama byudjetini oshirmasdan savdoni 2 barobarga oshirish imkoniyati.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9. ILLYUSTRATSIYA 2: KONVERSIYA HUNI -->
+<section>
+  <h2>Konversiya Huni (Funnel)</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <!-- 1-bosqich: Tashrif -->
+      <polygon class="fa" points="50,40 950,40 850,110 150,110"/>
+      <text class="t-head" x="500" y="75" text-anchor="middle" font-size="22">1. Saytga tashrif: 10 000 foydalanuvchi (100%)</text>
+      
+      <!-- 2-bosqich: Qidiruv va ko'rish -->
+      <polygon class="fb fragment" points="150,115 850,115 750,185 250,185"/>
+      <text class="t-head fragment" x="500" y="150" text-anchor="middle" font-size="22">2. Mahsulotni ko'rish: 4 000 kishi (40%)</text>
+      
+      <!-- 3-bosqich: Savatchaga qo'shish -->
+      <polygon class="fc fragment" points="250,190 750,190 650,260 350,260"/>
+      <text class="t-head fragment" x="500" y="225" text-anchor="middle" font-size="22">3. Savatchaga qo'shish: 1 200 kishi (12%)</text>
+      
+      <!-- 4-bosqich: Buyurtma berish -->
+      <polygon class="fg fragment" points="350,265 650,265 570,335 430,335"/>
+      <text class="t-head fragment" x="500" y="305" text-anchor="middle" font-size="22">4. Xarid yakunlandi: 300 kishi (3% CR)</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 10. METRIKA 2: SAVATNI TARK ETISH -->
+<section>
+  <h2>Savatni tark etish (Cart Abandonment)</h2>
+  <p class="muted">Nega har 10 kishidan 7 nafari savatni to'ldirib, sotib olmasdan chiqib ketadi?</p>
+  <div class="cards three mt">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="triangle-alert"></i></div>
+      <h3>Yashirin to'lovlar</h3>
+      <p>Yetkazib berish narxining faqat oxirgi bosqichda kutilmaganda paydo bo'lishi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="user-round-check"></i></div>
+      <h3>Majburiy ro'yxatdan o'tish</h3>
+      <p>Bitta tovar sotib olish uchun 15 ta maydonli forma to'ldirish talabi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shield-alert"></i></div>
+      <h3>Xavfsizlikka shubha</h3>
+      <p>Ishonchsiz ko'rinish va xavfsiz to'lov tizimlarining yo'qligi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 11. OLDIN VA KEYIN (SWAP) -->
+<section>
+  <h2>Oldin va keyin: Xarid jarayoni</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">Eski murakkab dizayn</button><button type="button">Yangi optimallashgan UX</button></div>
+    <div class="swap-p">
+      <div class="card">
+        <h3>5 bosqichli majburiy to'lov</h3>
+        <p>Email tasdiqlash -> Pasport ma'lumoti -> Manzil kodi -> Karta -> Tasdiq kodi. Oqibat: savatni tark etish 78%.</p>
+      </div>
+    </div>
+    <div class="swap-p">
+      <div class="card accent">
+        <h3>1 bosqichli tezkor xarid (Guest Checkout)</h3>
+        <p>Faqat telefon raqam va manzil. Xaridni rasmiylashtirish vaqti 45 soniyagacha qisqardi. Konversiya +42% ga oshdi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. BO'LIM 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>4 bosqichli UX strategik model</h1>
+  <p>Rasmiy dastur bo'yicha muvaffaqiyatli mahsulot loyihalash</p>
+</section>
+
+<!-- 13. ILLYUSTRATSIYA 3: 4 BOSQICHLI MODEL -->
+<section>
+  <h2>Strategik model zanjiri</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <!-- 1 -->
+      <rect class="fa" x="20" y="100" width="210" height="130" rx="16"/>
+      <text class="t-head" x="125" y="150" text-anchor="middle" font-size="20" font-weight="bold">1. Biznes</text>
+      <text class="t-muted" x="125" y="180" text-anchor="middle" font-size="16">Maqsadlarni belgilash</text>
+      
+      <line class="la flowing" x1="230" y1="165" x2="270" y2="165"/>
+      <polygon class="ar-a" points="275,165 260,155 260,175"/>
+
+      <!-- 2 -->
+      <rect class="fb" x="275" y="100" width="210" height="130" rx="16"/>
+      <text class="t-head" x="380" y="150" text-anchor="middle" font-size="20" font-weight="bold">2. Foydalanuvchi</text>
+      <text class="t-muted" x="380" y="180" text-anchor="middle" font-size="16">Ehtiyoj va og'riqlar</text>
+      
+      <line class="lb flowing" x1="485" y1="165" x2="525" y2="165"/>
+      <polygon class="ar-b" points="530,165 515,155 515,175"/>
+
+      <!-- 3 -->
+      <rect class="fc" x="530" y="100" width="210" height="130" rx="16"/>
+      <text class="t-head" x="635" y="150" text-anchor="middle" font-size="20" font-weight="bold">3. UX Qarorlari</text>
+      <text class="t-muted" x="635" y="180" text-anchor="middle" font-size="16">Bog'langan yechimlar</text>
+
+      <line class="lc flowing" x1="740" y1="165" x2="780" y2="165"/>
+      <polygon class="ar-c" points="785,165 770,155 770,175"/>
+
+      <!-- 4 -->
+      <rect class="fg" x="785" y="100" width="195" height="130" rx="16"/>
+      <text class="t-head" x="882" y="150" text-anchor="middle" font-size="20" font-weight="bold">4. Baholash</text>
+      <text class="t-muted" x="882" y="180" text-anchor="middle" font-size="16">Metrikalarni o'lchash</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 14. BOSQICH 1 & 2 TAFSILOTLARI -->
+<section>
+  <h2>Biznes maqsadlari va foydalanuvchi ehtiyoji</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="briefcase"></i></div>
+      <h3>Biznes nima xohlaydi?</h3>
+      <ul class="mt">
+        <li>Ko'proq tovar sotish (daromad o'sishi)</li>
+        <li>Savatni tashlab ketishni kamaytirish</li>
+        <li>Doimiy sodiq mijozlarni shakllantirish</li>
+      </ul>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="users"></i></div>
+      <h3>Foydalanuvchi nima xohlaydi?</h3>
+      <ul class="mt">
+        <li>Kerakli mahsulotni 3 soniyada topish</li>
+        <li>Aniq narx va kafolat shartlarini ko'rish</li>
+        <li>Ortiqcha boshog'riqsiz tezda xarid qilish</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 15. STEPPER: STRATEGIK BOSQICHLAR -->
+<section>
+  <h2>Onlayn do'konda UX qadamlari</h2>
+  <div class="stepper">
+    <div class="stp on">
+      <div class="card">
+        <div class="icon"><i data-ic="search" data-anim="pulse"></i></div>
+        <h3>1. Aqlli qidiruv</h3>
+        <p>Avtomatik to'ldirish va takliflar xaridorga tovarni bir zumda topishga yordam beradi.</p>
+      </div>
+    </div>
+    <div class="stp">
+      <div class="card">
+        <div class="icon"><i data-ic="credit-card-check" data-anim="float"></i></div>
+        <h3>2. Ochiq narx va yetkazish</h3>
+        <p>Mahsulot sahifasida yetkazib berish muddati va narxini oldindan ochiq ko'rsatish.</p>
+      </div>
+    </div>
+    <div class="stp">
+      <div class="card">
+        <div class="icon"><i data-ic="zap" data-anim="wiggle"></i></div>
+        <h3>3. 1 klikda buyurtma</h3>
+        <p>Ro'yxatdan o'tishni majburlamasdan, qulay va xavfsiz to'lovni ta'minlash.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 16. FLIP KARTALAR: UX QARORLARI VA NATIJA -->
+<section>
+  <h2>UX Qarorlari biznes natijasiga aylanadi</h2>
+  <p class="muted">Kartani bosing va biznes natijasini ko'ring</p>
+  <div class="cards three mt">
+    <div class="flip" style="min-height:200px">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="search"></i></div>
+          <h3>Katta qidiruv paneli</h3>
+          <span class="flip-hint">bosing</span>
+        </div>
+        <div class="face back">
+          <p>Mahsulot topish tezligi 3 barobar oshadi, savatga tovar qo'shish ko'payadi.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip" style="min-height:200px">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="mouse-pointer-click"></i></div>
+          <h3>Yorqin CTA tugma</h3>
+          <span class="flip-hint">bosing</span>
+        </div>
+        <div class="face back">
+          <p>Foydalanuvchi ikkilanmasdan xaridni davom ettiradi, konversiya +15% ga oshadi.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip" style="min-height:200px">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="shield-check"></i></div>
+          <h3>Ishonch belgilari</h3>
+          <span class="flip-hint">bosing</span>
+        </div>
+        <div class="face back">
+          <p>Karta ma'lumotlarini kiritishdagi qo'rquv yo'qoladi, to'lov muvaffaqiyati ortadi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 17. ILLYUSTRATSIYA 4: BIZNES VA FOYDALANUVCHI KESISHMASI -->
+<section>
+  <h2>UX Dizaynning oltin muvozanati</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <!-- Foydalanuvchi doirasi -->
+      <circle class="fa" cx="380" cy="160" r="130" opacity="0.8"/>
+      <text class="t-head" x="310" y="150" font-size="22" font-weight="bold">Foydalanuvchi</text>
+      <text class="t-muted" x="310" y="175" font-size="16">Qulaylik, tezlik, yengillik</text>
+      
+      <!-- Biznes doirasi -->
+      <circle class="fb" cx="620" cy="160" r="130" opacity="0.8"/>
+      <text class="t-head" x="690" y="150" font-size="22" font-weight="bold">Biznes</text>
+      <text class="t-muted" x="690" y="175" font-size="16">Daromad, o'sish, ROI</text>
+      
+      <!-- Kesishma markaz -->
+      <g class="fragment">
+        <circle class="fg" cx="500" cy="160" r="45"/>
+        <text class="t-head" x="500" y="166" text-anchor="middle" font-size="20" font-weight="bold">UX</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 18. AMALIY KEYS: KITOB DO'KONI -->
+<section>
+  <h2>Amaliy keys: Kitob do'koni</h2>
+  <div class="cards two">
+    <div class="card">
+      <h3>Dastlabki holat</h3>
+      <p>Oyiga 25 000 tashrif buyuruvchi va 750 ta xarid.</p>
+      <div class="callout mt"><b>Konversiya: 3.0%</b></div>
+    </div>
+    <div class="card accent fragment">
+      <h3>UX optimallashuvidan so'ng</h3>
+      <p>1 bosqichli checkout joriy etildi, xaridorlar 1 250 taga yetdi.</p>
+      <div class="callout mt"><b>Yangi konversiya: 5.0% (+66.7% o'sish!)</b></div>
+    </div>
+  </div>
+  <p class="small mt fragment">Kompaniya reklama sarflamasdan qo'shimcha 500 ta kitob sotdi!</p>
+</section>
+
+<!-- 19. AMALIY TOPSHIRIQ -->
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Berilgan raqamlar bo'yicha veb-saytning konversiya foizini hisoblang.</div>
+  <div class="task"><span class="level mid">O'rta</span>Savatni tark etishning 3 ta asosiy sababi va ularga mos UX yechimlar jadvalini tuzing.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Onlayn ta'lim platformasi uchun 4 bosqichli UX strategik model loyihasini ishlab chiqing.</div>
+</section>
+
+<!-- 20. MINI TEST -->
+<section>
+  <h2>Bilimingizni sinang</h2>
+  <div class="quiz">
+    <p class="q">Forrester tadqiqotlariga ko'ra, UX ga kiritilgan 1$ investitsiya biznesga qancha daromad (ROI) keltirishi mumkin?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat 1$ (o'zini qoplaydi)</button>
+      <button class="opt" type="button" data-ok>10$ dan 100$ gacha</button>
+      <button class="opt" type="button">Daromad keltirmaydi, faqat rasm</button>
+      <button class="opt" type="button">Maksimal 2$</button>
+    </div>
+    <div class="explain">To'g'ri: UX ga yo'naltirilgan investitsiya daromadliligi (ROI) o'rtacha 9,900% gacha yetishi mumkin!</div>
+  </div>
+</section>
+
+<!-- 21. KENG TARQALGAN XATOLAR -->
+<section>
+  <h2>Keng tarqalgan xatolar</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-alert"></i></div>
+      <h3>UX ni faqat rasm deb bilish</h3>
+      <p>Interfeys qanchalik jozibador bo'lmasin, agar to'lov yoki qidiruv noqulay bo'lsa, xaridor baribir ketadi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-alert"></i></div>
+      <h3>Biznes maqsadlarini unutish</h3>
+      <p>Biznes talablarini (daromad, konversiya) inobatga olmasdan qilingan dizayn kompaniyaga foyda keltirmaydi.</p>
+    </div>
+  </div>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i>Mukammal UX — bu foydalanuvchi qulayligi va biznes daromadining uyg'unligidir.</div>
+</section>
+
+<!-- 22. XULOSA -->
+<section>
+  <h2>Xulosa</h2>
+  <div class="cards two">
+    <div class="card">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Bugun o'rgandik</h3>
+      <ul class="mt">
+        <li>UX ning biznesdagi strategik ahamiyati</li>
+        <li>CR, Churn Rate, ROI metrikalari</li>
+        <li>4 bosqichli UX strategik modeli</li>
+      </ul>
+    </div>
+    <div class="card accent">
+      <div class="icon"><i data-ic="sparkles"></i></div>
+      <h3>Keyingi dars</h3>
+      <p><b>Foydalanuvchiga yo‘naltirilgan dizayn (UCD)</b> tamoyillari va Design Thinking 5 bosqichi bilan tanishamiz.</p>
+    </div>
+  </div>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>14-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>14-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">5-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Set qanday elementlar to'plami?</p>
+    <div class="opts">
+      <button class="opt" type="button">Tartibli va o'zgarmas</button>
+      <button class="opt" type="button" data-ok>Takrorlanmaydigan (unique)</button>
+      <button class="opt" type="button">Faqat kalit-qiymat</button>
+      <button class="opt" type="button">Faqat matnlar</button>
+    </div>
+    <div class="explain">Set'da takror element bo'lmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Bo'sh set qanday yaratiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>s = {}</code></button>
+      <button class="opt" type="button"><code>s = []</code></button>
+      <button class="opt" type="button" data-ok><code>s = set()</code></button>
+      <button class="opt" type="button"><code>s = ()</code></button>
+    </div>
+    <div class="explain"><code>{}</code> bo'sh dict bo'ladi; bo'sh set faqat <code>set()</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>print({1, 1, 2, 2, 3})</code> nima chiqaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>{1, 2, 3}</code></button>
+      <button class="opt" type="button"><code>{1, 1, 2, 2, 3}</code></button>
+      <button class="opt" type="button"><code>[1, 2, 3]</code></button>
+      <button class="opt" type="button">Xato</button>
+    </div>
+    <div class="explain">Set dublikatlarni saqlamaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Set'ga element qaysi metod bilan qo'shiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>append()</code></button>
+      <button class="opt" type="button"><code>insert()</code></button>
+      <button class="opt" type="button"><code>push()</code></button>
+      <button class="opt" type="button" data-ok><code>add()</code></button>
+    </div>
+    <div class="explain"><code>append</code> va <code>insert</code> list metodlari; set'da <code>add()</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>s = {10, 20}</code>; <code>print(s[0])</code> nima beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>10</code></button>
+      <button class="opt" type="button" data-ok><code>TypeError</code></button>
+      <button class="opt" type="button"><code>20</code></button>
+      <button class="opt" type="button"><code>None</code></button>
+    </div>
+    <div class="explain">Set'da indeks yo'q: 'set' object is not subscriptable.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Set'da element bor-yo'qligini qanday tekshiramiz?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>s.index(x)</code></button>
+      <button class="opt" type="button"><code>s[x]</code></button>
+      <button class="opt" type="button" data-ok><code>x in s</code></button>
+      <button class="opt" type="button"><code>s.count(x)</code></button>
+    </div>
+    <div class="explain"><code>in</code> bilan tekshirish set'da juda tez.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>{"Ali", "Vali"} | {"Vali", "Laylo"}</code> natijasida nechta element?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>3</code></button>
+      <button class="opt" type="button"><code>4</code></button>
+      <button class="opt" type="button"><code>2</code></button>
+      <button class="opt" type="button"><code>1</code></button>
+    </div>
+    <div class="explain">Birlashtirishda Vali bir marta qoladi: Ali, Vali, Laylo.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>nums = [1, 2, 2, 3]</code> dan takrorlarni olib tashlash?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>nums.unique()</code></button>
+      <button class="opt" type="button"><code>nums.remove(2)</code></button>
+      <button class="opt" type="button"><code>list.set(nums)</code></button>
+      <button class="opt" type="button" data-ok><code>set(nums)</code></button>
+    </div>
+    <div class="explain"><code>set(nums)</code> listdagi dublikatlarni olib tashlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>sorted({3, 1, 2})</code> nima qaytaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>[1, 2, 3]</code></button>
+      <button class="opt" type="button"><code>{1, 2, 3}</code></button>
+      <button class="opt" type="button"><code>(1, 2, 3)</code></button>
+      <button class="opt" type="button"><code>[3, 2, 1]</code></button>
+    </div>
+    <div class="explain"><code>sorted()</code> tartiblangan list qaytaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Kodda xato qaysi qatorda? <code>s = {}</code> / <code>s.add(1)</code></p>
+    <div class="opts">
+      <button class="opt" type="button">Xato yo'q</button>
+      <button class="opt" type="button" data-ok><code>s.add(1)</code>: <code>{}</code> - bu dict, unda <code>add</code> yo'q</button>
+      <button class="opt" type="button"><code>s = {}</code> sintaksis xatosi</button>
+      <button class="opt" type="button"><code>add</code> o'rniga <code>append</code> kerak</button>
+    </div>
+    <div class="explain"><code>{}</code> bo'sh dict yaratadi; <code>AttributeError</code> chiqadi. To'g'risi: <code>s = set()</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: set xususiyatlari, <code>set()</code>, <code>add()</code>, <code>in</code>, birlashtirish, <code>set(nums)</code>, <code>sorted()</code>.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

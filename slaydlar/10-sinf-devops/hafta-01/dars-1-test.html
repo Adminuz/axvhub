@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>1-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>1-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">1-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Unix falsafasidagi «Hamma narsa — bu fayl» qoidasi Linuxda nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Disklar, jarayonlar va qurilmalar ham fayllar tizimi daraxtida ifodalanadi</button>
+      <button class="opt" type="button">Faqat matn hujjatlari saqlanadi</button>
+      <button class="opt" type="button">Papkalar fayl hisoblanmaydi</button>
+      <button class="opt" type="button">Har bir dastur bitta fayldan iborat bo'lishi shart</button>
+    </div>
+    <div class="explain">Linuxda disklar, tarmoq soketlari, jarayonlar va qurilmalar ham fayllar tizimi ichida ko'rsatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Tizim va xizmatlarning konfiguratsiya fayllari (masalan, <code>nginx.conf</code>) qaysi katalogda saqlanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>/var</code></button>
+      <button class="opt" type="button" data-ok><code>/etc</code></button>
+      <button class="opt" type="button"><code>/tmp</code></button>
+      <button class="opt" type="button"><code>/dev</code></button>
+    </div>
+    <div class="explain"><code>/etc</code> — barcha sozlama fayllari joyi, DevOps uchun eng muhim katalog.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Tizim loglari odatda qaysi katalogda turadi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>/etc/log</code></button>
+      <button class="opt" type="button"><code>/home/log</code></button>
+      <button class="opt" type="button" data-ok><code>/var/log</code></button>
+      <button class="opt" type="button"><code>/proc/log</code></button>
+    </div>
+    <div class="explain"><code>/var</code> tez o'zgaruvchi ma'lumotlar (loglar, keshlar) uchun, loglar esa <code>/var/log</code> da.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>cd -</code> buyrug'i nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Bir pog'ona yuqoriga chiqaradi</button>
+      <button class="opt" type="button">Uy katalogiga o'tkazadi</button>
+      <button class="opt" type="button">Ildiz katalogga o'tkazadi</button>
+      <button class="opt" type="button" data-ok>Oldingi turgan katalogga qaytaradi</button>
+    </div>
+    <div class="explain"><code>cd ..</code> ota katalogga, <code>cd ~</code> uyga, <code>cd /</code> ildizga, <code>cd -</code> esa oldingi joyga qaytaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Terminal ishlash zanjirining to'g'ri tartibini ko'rsating.</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Terminal Emulator, Shell, Kernel</button>
+      <button class="opt" type="button">Kernel, Terminal Emulator, Shell</button>
+      <button class="opt" type="button">Shell, Kernel, Terminal Emulator</button>
+      <button class="opt" type="button">Terminal Emulator, Kernel, Shell</button>
+    </div>
+    <div class="explain">Emulator belgilarni qabul qiladi, Shell buyruqni tahlil qiladi, Kernel esa tizim chaqiruvlarini bajaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>mkdir -p a/b/c</code> buyrug'ida <code>-p</code> nima uchun kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Katalogni yashirin qiladi</button>
+      <button class="opt" type="button" data-ok>Ota kataloglar bo'lmasa ularni ham birga yaratadi</button>
+      <button class="opt" type="button">Katalogga parol qo'yadi</button>
+      <button class="opt" type="button">Mavjud katalogni o'chirib qayta yaratadi</button>
+    </div>
+    <div class="explain"><code>-p</code> (parents) ichma-ich kataloglar zanjirini bir buyruq bilan yaratadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>mv old.txt new.txt</code> buyrug'i nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faylni nusxalaydi</button>
+      <button class="opt" type="button">Faylni o'chiradi</button>
+      <button class="opt" type="button" data-ok>Faylni qayta nomlaydi</button>
+      <button class="opt" type="button">Fayl vaqt tamg'asini yangilaydi</button>
+    </div>
+    <div class="explain"><code>mv</code> ham ko'chirish, ham qayta nomlash uchun ishlatiladi; bir katalog ichida u nomni o'zgartiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>ls -lh</code> dagi <code>h</code> bayrog'i nimani beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Yashirin fayllarni ko'rsatadi</button>
+      <button class="opt" type="button">Fayllarni tartiblaydi</button>
+      <button class="opt" type="button">Yordam (help) oynasini ochadi</button>
+      <button class="opt" type="button" data-ok>Hajmlarni KB, MB, GB ko'rinishida ko'rsatadi</button>
+    </div>
+    <div class="explain"><code>h</code> — human-readable: hajm inson tushunadigan birliklarda chiqadi. Yashirin fayllar uchun <code>-a</code> kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Uy katalogingizda <code>.bashrc</code> fayli bor, lekin oddiy <code>ls</code> ko'rsatmayapti. Nima qilish kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>ls -a</code> ishlatish</button>
+      <button class="opt" type="button"><code>ls -l</code> ishlatish</button>
+      <button class="opt" type="button"><code>ls -h</code> ishlatish</button>
+      <button class="opt" type="button"><code>cd ..</code> qilish</button>
+    </div>
+    <div class="explain">Nuqta bilan boshlanadigan fayllar yashirin; ularni <code>ls -a</code> ko'rsatadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>cp src/ backup_src/</code> katalogni nusxalamadi. Sababi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Katalog nusxalab bo'lmaydi, faqat <code>mv</code> mumkin</button>
+      <button class="opt" type="button" data-ok>Katalog uchun <code>-r</code> (rekursiv) bayrog'i kerak</button>
+      <button class="opt" type="button">Oxiriga <code>/</code> qo'yilmasligi kerak edi</button>
+      <button class="opt" type="button"><code>-f</code> bayrog'i yetishmadi</button>
+    </div>
+    <div class="explain">Kataloglarni ichidagilari bilan nusxalash uchun <code>cp -r</code> ishlatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: FHS katalogları (<code>/etc</code>, <code>/var</code>), navigatsiya buyruqlari, <code>mkdir -p</code>, <code>cp -r</code>, <code>ls -a</code>.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

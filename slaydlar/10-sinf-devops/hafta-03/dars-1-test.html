@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>7-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>7-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Git da branch aslida nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Ma'lum commitga yo'naltirilgan yengil ko'rsatkich (pointer)</button>
+      <button class="opt" type="button">Loyihaning to'liq nusxasi</button>
+      <button class="opt" type="button">Alohida GitHub akkaunti</button>
+      <button class="opt" type="button">Commitlar arxivi (zip)</button>
+    </div>
+    <div class="explain">Branch yaratish fayllarni nusxalamaydi, shunchaki yangi havola hosil qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q"><code>git branch</code> natijasida joriy branch qanday belgilanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>#</code> belgisi bilan</button>
+      <button class="opt" type="button" data-ok><code>*</code> belgisi va yashil rang bilan</button>
+      <button class="opt" type="button">Ro'yxatda eng oxirida turadi</button>
+      <button class="opt" type="button"><code>HEAD</code> so'zi yoziladi</button>
+    </div>
+    <div class="explain">Masalan <code>* feature-contact</code>, qolganlari oddiy yoziladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>git branch -d</code> bilan <code>git branch -D</code> ning farqi nimada?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>-d</code> masofaviy, <code>-D</code> lokal branchni o'chiradi</button>
+      <button class="opt" type="button">Farqi yo'q</button>
+      <button class="opt" type="button" data-ok><code>-d</code> faqat birlashtirilgan branchni o'chiradi, <code>-D</code> majburiy o'chiradi</button>
+      <button class="opt" type="button"><code>-D</code> branch nomini o'zgartiradi</button>
+    </div>
+    <div class="explain">Birlashtirilmagan ishni yo'qotmaslik uchun <code>-d</code> xavfsiz hisoblanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Fast-forward merge qachon sodir bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ikki branch bir faylni o'zgartirsa</button>
+      <button class="opt" type="button">Faqat masofaviy branchlar orasida</button>
+      <button class="opt" type="button">Branch o'chirilganda</button>
+      <button class="opt" type="button" data-ok>Asosiy branchda ajralib chiqqandan beri yangi commit bo'lmasa</button>
+    </div>
+    <div class="explain">Git shunchaki <code>main</code> ko'rsatkichini oldinga siljitadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">3-way merge natijasida nima hosil bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Ikkala tarixni birlashtiruvchi maxsus Merge commit</button>
+      <button class="opt" type="button">Faqat bitta branch qoladi</button>
+      <button class="opt" type="button">Barcha commitlar o'chiriladi</button>
+      <button class="opt" type="button">Konflikt albatta chiqadi</button>
+    </div>
+    <div class="explain"><code>main</code> ham, feature ham o'zgargan bo'lsa Git Merge commit yaratadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Konflikt belgilarida <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> va <code>=======</code> oralig'idagi kod nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Qo'shilayotgan branchdagi kodni</button>
+      <button class="opt" type="button" data-ok>Joriy branchdagi kodni</button>
+      <button class="opt" type="button">Masofaviy serverdagi kodni</button>
+      <button class="opt" type="button">O'chirilgan kodni</button>
+    </div>
+    <div class="explain"><code>=======</code> dan <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> gacha esa qo'shilayotgan branch kodi turadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Lokal repozitoriyaga GitHub manzilini bog'lash buyrug'i qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>git clone origin &lt;url&gt;</code></button>
+      <button class="opt" type="button"><code>git push add &lt;url&gt;</code></button>
+      <button class="opt" type="button" data-ok><code>git remote add origin &lt;url&gt;</code></button>
+      <button class="opt" type="button"><code>git init origin &lt;url&gt;</code></button>
+    </div>
+    <div class="explain"><code>origin</code> — masofaviy manzilning standart nomi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>git push -u origin main</code> dagi <code>-u</code> nimani o'rnatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Foydalanuvchi nomini</button>
+      <button class="opt" type="button">Yangilanishni majburiy qilishni</button>
+      <button class="opt" type="button">Fayllarni unstage qilishni</button>
+      <button class="opt" type="button" data-ok>Upstream bog'lanishini</button>
+    </div>
+    <div class="explain">Keyingi safar shunchaki <code>git push</code> va <code>git pull</code> yetarli bo'ladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>git pull</code> aslida qaysi ikki amalning birikmasi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>git fetch</code> va <code>git merge</code></button>
+      <button class="opt" type="button"><code>git add</code> va <code>git commit</code></button>
+      <button class="opt" type="button"><code>git clone</code> va <code>git push</code></button>
+      <button class="opt" type="button"><code>git init</code> va <code>git remote</code></button>
+    </div>
+    <div class="explain">Pull masofaviy yangiliklarni yuklab, darhol lokal branchga birlashtiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>feature-login</code> ni <code>main</code> ga qo'shishning to'g'ri ketma-ketligi qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>git switch feature-login</code>, so'ng <code>git merge main</code></button>
+      <button class="opt" type="button" data-ok><code>git switch main</code>, so'ng <code>git merge feature-login</code></button>
+      <button class="opt" type="button"><code>git branch -d feature-login</code>, so'ng <code>git merge</code></button>
+      <button class="opt" type="button"><code>git push main</code>, so'ng <code>git switch feature-login</code></button>
+    </div>
+    <div class="explain">Avval qabul qiluvchi branchga o'tiladi, keyin birlashtirish buyrug'i beriladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: branch tushunchasi, <code>merge</code> turlari (Fast-forward, 3-way), konflikt belgilari, <code>remote</code>, <code>push</code>, <code>pull</code>.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

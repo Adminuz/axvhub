@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>15-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>15-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">8-sinf</span><span class="badge">Web Full-stack</span><span class="badge">5-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Responsiv dizayn nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Sahifaning tez yuklanishi</button>
+      <button class="opt" type="button" data-ok>Sahifaning har qanday ekranga moslashishi</button>
+      <button class="opt" type="button">Faqat telefon uchun alohida sayt</button>
+      <button class="opt" type="button">Animatsiyali dizayn</button>
+    </div>
+    <div class="explain">Ustun, shrift, masofalar o'zgaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Viewport meta tegi qayerga yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>&lt;footer&gt;</code> ichiga</button>
+      <button class="opt" type="button">CSS fayl boshiga</button>
+      <button class="opt" type="button" data-ok><code>&lt;head&gt;</code> ichiga</button>
+      <button class="opt" type="button"><code>&lt;img&gt;</code> ichiga</button>
+    </div>
+    <div class="explain">width=device-width, initial-scale=1.0.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>@media (min-width: 768px)</code> qachon ishlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ekran 768px dan tor bo'lsa</button>
+      <button class="opt" type="button">Faqat aniq 768px da</button>
+      <button class="opt" type="button">Hech qachon</button>
+      <button class="opt" type="button" data-ok>Ekran 768px yoki undan keng bo'lsa</button>
+    </div>
+    <div class="explain">min — «kamida».</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Ekran 500px. <code>@media (max-width: 767px)</code> ishlaydimi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Yo'q</button>
+      <button class="opt" type="button">Faqat planshetda</button>
+      <button class="opt" type="button" data-ok>Ha</button>
+      <button class="opt" type="button">Faqat chop etishda</button>
+    </div>
+    <div class="explain">500 ≤ 767.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Breakpoint nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">CSS dagi xato</button>
+      <button class="opt" type="button">Rasmning kesilish nuqtasi</button>
+      <button class="opt" type="button">Sahifa oxiri</button>
+      <button class="opt" type="button" data-ok>Dizayn o'zgaradigan ekran kengligi</button>
+    </div>
+    <div class="explain">Masalan: 576, 768, 992 px.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Mobile-first yondashuvida qaysi shart ishlatiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>max-width</code></button>
+      <button class="opt" type="button" data-ok><code>min-width</code></button>
+      <button class="opt" type="button"><code>max-height</code></button>
+      <button class="opt" type="button"><code>orientation</code></button>
+    </div>
+    <div class="explain">Asos — telefon, kengaygan sari qo'shiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Rasm konteynerdan toshmasligi uchun?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>width: 800px</code></button>
+      <button class="opt" type="button"><code>height: 100%</code></button>
+      <button class="opt" type="button" data-ok><code>max-width: 100%; height: auto</code></button>
+      <button class="opt" type="button"><code>object-fit: none</code></button>
+    </div>
+    <div class="explain">Nisbat saqlanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>object-fit: cover</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Rasmni to'liq ko'rsatadi, bo'sh joy qoldiradi</button>
+      <button class="opt" type="button">Rasmni cho'zadi</button>
+      <button class="opt" type="button">Rasmni yashiradi</button>
+      <button class="opt" type="button" data-ok>Ramkani to'ldiradi, ortiqchasini kesadi</button>
+    </div>
+    <div class="explain">contain — to'liq ko'rsatadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Fluid layout'ga mos yozuv?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>width: 90%; max-width: 1100px</code></button>
+      <button class="opt" type="button"><code>width: 1100px</code></button>
+      <button class="opt" type="button"><code>height: 500px</code></button>
+      <button class="opt" type="button"><code>position: fixed</code></button>
+    </div>
+    <div class="explain">Nisbiy o'lcham + chegara.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Media so'rov asosiy qoidadan yuqorida yozildi. Natija?</p>
+    <div class="opts">
+      <button class="opt" type="button">Media so'rov ustun keladi</button>
+      <button class="opt" type="button">Sahifa ochilmaydi</button>
+      <button class="opt" type="button" data-ok>Pastdagi asosiy qoida uni bosib o'tadi</button>
+      <button class="opt" type="button">Brauzer xato beradi</button>
+    </div>
+    <div class="explain">Kaskad: keyingi qoida ustun.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: responsiv dizayn, viewport, fluid layout, <code>@media</code>, breakpoint, mobile-first, rasmlar.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

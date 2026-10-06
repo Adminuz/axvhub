@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>12-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>12-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">4-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">JSON'da qaysi tuzilma kalit-qiymat juftliklari?</p>
+    <div class="opts">
+      <button class="opt" type="button">Array <code>[]</code></button>
+      <button class="opt" type="button" data-ok>Obyekt <code>{}</code></button>
+      <button class="opt" type="button">String</button>
+      <button class="opt" type="button">Number</button>
+    </div>
+    <div class="explain">Masalan <code>{"id":1}</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Python <code>None</code> JSON'da?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>None</code></button>
+      <button class="opt" type="button"><code>""</code></button>
+      <button class="opt" type="button" data-ok><code>null</code></button>
+      <button class="opt" type="button"><code>0</code></button>
+    </div>
+    <div class="explain"><code>True/False</code> - <code>true/false</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>json.dumps()</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">JSON matnini Python obyektiga</button>
+      <button class="opt" type="button">Faylni o'chiradi</button>
+      <button class="opt" type="button">JSON ni tekshiradi</button>
+      <button class="opt" type="button" data-ok>Python obyektini JSON matniga aylantiradi</button>
+    </div>
+    <div class="explain">Serializatsiya; teskarisi - <code>json.loads()</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">JSON qoidasi bo'yicha xato?</p>
+    <div class="opts">
+      <button class="opt" type="button">Kalitlar qo'sh tirnoqda</button>
+      <button class="opt" type="button"><code>null</code> kichik harfda</button>
+      <button class="opt" type="button" data-ok>Oxirgi elementdan keyin vergul</button>
+      <button class="opt" type="button">Ichma-ich obyekt</button>
+    </div>
+    <div class="explain">Oxirgi vergul va izohlar mumkin emas.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Pul summasini qanday saqlash tavsiya etiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>float</code></button>
+      <button class="opt" type="button">Faqat matn: "125 ming"</button>
+      <button class="opt" type="button"><code>null</code></button>
+      <button class="opt" type="button" data-ok>Tiyinda butun son yoki decimal satr</button>
+    </div>
+    <div class="explain">float yaxlitlash xatosi beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi o'zgarish odatda orqaga mos?</p>
+    <div class="opts">
+      <button class="opt" type="button">Maydonni olib tashlash</button>
+      <button class="opt" type="button" data-ok>Yangi maydon qo'shish</button>
+      <button class="opt" type="button">Maydon ma'nosini o'zgartirish</button>
+      <button class="opt" type="button">Maydon turini o'zgartirish</button>
+    </div>
+    <div class="explain">Qolganlari breaking change.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Yagona xato konverti qaysi maydonlardan iborat?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>status</code>, <code>trace</code></button>
+      <button class="opt" type="button"><code>error</code>, <code>stack</code></button>
+      <button class="opt" type="button" data-ok><code>code</code>, <code>message</code>, <code>details</code></button>
+      <button class="opt" type="button"><code>ok</code>, <code>data</code></button>
+    </div>
+    <div class="explain">code - mashina uchun, message - odam uchun.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>sort=-created_at</code> nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Yaratilgan vaqtni o'chirish</button>
+      <button class="opt" type="button">O'sish tartibida</button>
+      <button class="opt" type="button">Filtr</button>
+      <button class="opt" type="button" data-ok>Yaratilgan vaqt bo'yicha teskari (yangisi birinchi)</button>
+    </div>
+    <div class="explain">Minus - teskari tartib.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Token to'g'ri, lekin foydalanuvchi admin emas. Admin endpoint javobi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>403</button>
+      <button class="opt" type="button">401</button>
+      <button class="opt" type="button">404</button>
+      <button class="opt" type="button">200</button>
+    </div>
+    <div class="explain">Kimligi ma'lum, ruxsat yo'q.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Tezlik cheklovidan oshgan so'rov javobi?</p>
+    <div class="opts">
+      <button class="opt" type="button">500</button>
+      <button class="opt" type="button">403</button>
+      <button class="opt" type="button" data-ok>429 Too Many Requests</button>
+      <button class="opt" type="button">304</button>
+    </div>
+    <div class="explain"><code>RateLimit-*</code> sarlavhalari bilan.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: JSON turlari, serializatsiya, kontrakt va versiyalash, error envelope, paginatsiya, 401/403, 429.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

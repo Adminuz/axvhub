@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>SOLID: LSP, ISP, DIP va Refaktoring</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- SLIDE 1: Hero -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>SOLID: LSP, ISP, DIP va Refaktoring</h1>
+  <p class="muted">Moslashuvchan arxitektura, Dependency Injection va kod hidlarini davolash</p>
+  <span class="badge">11-sinf</span><span class="badge">Professional IT</span><span class="badge">3-hafta · 8-dars</span>
+  
+</section>
+
+<!-- SLIDE 2: Reja -->
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="split" data-anim="float"></i></div>
+      <h3>01. L & I: LSP va ISP</h3>
+      <p>Liskov almashinish kafolati va ixcham, maqsadli interfeyslar.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu" data-anim="pulse"></i></div>
+      <h3>02. D: Dependency Inversion</h3>
+      <p>DIP va Dependency Injection yordamida qatlamlarni mustaqil qilish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="wrench" data-anim="wiggle"></i></div>
+      <h3>03. Code Smells va Refaktor</h3>
+      <p>Yomon me'moriy belgilarni aniqlash va xavfsiz tozalash.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 3: Bo'lim 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>L &mdash; Liskov Substitution (LSP)</h1>
+  <p>Voris sinf bazaviy sinf o'rnida muammosiz va kutilmagan xatosiz ishlashi shart</p>
+  
+</section>
+
+<!-- SLIDE 4: SVG 1 - LSP Rectangle/Square problem -->
+<section>
+  <h2>LSP muammosi: To'rtburchak va Kvadrat</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- Rectangle -->
+      <g class="fragment">
+        <rect x="60" y="50" width="380" height="200" rx="12" class="fa la" stroke-width="2"/>
+        <text x="250" y="85" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">class Rectangle</text>
+        <rect x="150" y="110" width="200" height="90" rx="6" class="fb lb" stroke-width="2"/>
+        <text x="250" y="155" text-anchor="middle" class="t-muted" font-size="13">Eni: 200, Bo'yi: 90</text>
+        <text x="250" y="180" text-anchor="middle" class="t-accent" font-size="12">Eni o'zgarsa, bo'yiga ta'sir qilmaydi</text>
+      </g>
+
+      <!-- Square (Inherited) -->
+      <g class="fragment">
+        <rect x="520" y="50" width="380" height="200" rx="12" class="fc lc" stroke-width="2"/>
+        <text x="710" y="85" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">class Square(Rectangle)</text>
+        <rect x="650" y="110" width="120" height="120" rx="6" class="fa la" stroke-width="2"/>
+        <text x="710" y="165" text-anchor="middle" class="t-muted" font-size="13">Eni = Bo'yi</text>
+        <text x="710" y="195" text-anchor="middle" class="t-accent" font-size="12">LSP buzildi: kutilmagan yon ta'sir!</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 5: LSP Hayotiy misol -->
+<section>
+  <h2>Qush va Pingvin (LSP qoidasi)</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">Xato merosxo'rlik</button><button type="button">LSP ga mos dizayn</button></div>
+    <div class="swap-p"><div class="card"><h3>Xato: Qush uchadi deb hisoblash</h3><p><code>Bird.fly()</code> metodidan <code>Penguin</code> meros olsa, pingvin ucha olmagani sababli dastur xato tashlaydi yoki bo'sh qoladi. Voris bazaviy sinf o'rnini bosa olmaydi.</p></div></div>
+    <div class="swap-p"><div class="card accent"><h3>To'g'ri: Faqat uchar qushlarga metod berish</h3><p>Bazaviy <code>Bird</code> umumiy bo'ladi, <code>FlyingBird</code> esa alohida kengayadi. Pingvin faqat <code>Bird</code>dan meros oladi, <code>fly()</code> esa unga majburlanmaydi.</p></div></div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 6: Bo'lim 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>I &mdash; Interface Segregation (ISP)</h1>
+  <p>Mijozlar o'zlari ishlatmaydigan metodlarga bog'lanmasligi kerak</p>
+  
+</section>
+
+<!-- SLIDE 7: SVG 2 - ISP Fat vs Segregated -->
+<section>
+  <h2>ISP: Semiz interfeysdan ixcham qismlarga</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- Left: Fat Interface -->
+      <g class="fragment">
+        <rect x="50" y="40" width="380" height="220" rx="12" class="fa la" stroke-width="2"/>
+        <text x="240" y="75" text-anchor="middle" class="t-accent" font-size="16" font-weight="bold">YOMON: Semiz interfeys</text>
+        <rect x="80" y="100" width="320" height="130" rx="8" class="fn ln" stroke-width="1"/>
+        <text x="100" y="130" class="t-head" font-size="13">interface PaymentGateway:</text>
+        <text x="120" y="155" class="t-muted" font-size="12">&bull; pay_card()</text>
+        <text x="120" y="180" class="t-muted" font-size="12">&bull; pay_cash()</text>
+        <text x="120" y="205" class="t-muted" font-size="12">&bull; refund() [hamma ham ishlatmaydi]</text>
+      </g>
+
+      <!-- Arrow -->
+      <path d="M 450 150 L 510 150" class="lc" stroke-width="3" marker-end="url(#arr)" class="fragment"/>
+
+      <!-- Right: Segregated Interfaces -->
+      <g class="fragment">
+        <rect x="530" y="40" width="380" height="220" rx="12" class="fc lc" stroke-width="2"/>
+        <text x="720" y="75" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">YAXSHI: Kichik interfeyslar (ISP)</text>
+        <rect x="560" y="100" width="320" height="45" rx="6" class="fa la" stroke-width="1"/>
+        <text x="580" y="128" class="t-head" font-size="12">interface CardPayable: pay_card()</text>
+        <rect x="560" y="155" width="320" height="45" rx="6" class="fb lb" stroke-width="1"/>
+        <text x="580" y="183" class="t-head" font-size="12">interface Refundable: refund()</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 8: Bo'lim 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>D &mdash; Dependency Inversion (DIP)</h1>
+  <p>Yuqori darajadagi mantiq quyi detallarga emas, abstraksiyaga tayanishi shart</p>
+  
+</section>
+
+<!-- SLIDE 9: SVG 3 - DIP Architecture -->
+<section>
+  <h2>DIP: Qatlamlarning abstraksiyaga tayanishi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- High-level module -->
+      <g class="fragment">
+        <rect x="60" y="110" width="240" height="80" rx="10" class="fa la" stroke-width="2"/>
+        <text x="180" y="145" text-anchor="middle" class="t-head" font-size="15" font-weight="bold">UserService</text>
+        <text x="180" y="170" text-anchor="middle" class="t-muted" font-size="12">Yuqori daraja (Biznes)</text>
+      </g>
+
+      <!-- Center: Abstraction -->
+      <g class="fragment">
+        <rect x="360" y="110" width="240" height="80" rx="10" class="fc lc" stroke-width="2"/>
+        <text x="480" y="145" text-anchor="middle" class="t-head" font-size="15" font-weight="bold">UserRepository (ABC)</text>
+        <text x="480" y="170" text-anchor="middle" class="t-accent" font-size="12">Umumiy Abstraksiya</text>
+      </g>
+
+      <!-- Connecting arrows -->
+      <path d="M 300 150 L 360 150" class="la" stroke-width="3" marker-end="url(#arr)" class="fragment"/>
+      <path d="M 660 150 L 600 150" class="lb" stroke-width="3" marker-end="url(#arr)" class="fragment"/>
+
+      <!-- Low-level module -->
+      <g class="fragment">
+        <rect x="660" y="110" width="240" height="80" rx="10" class="fb lb" stroke-width="2"/>
+        <text x="780" y="145" text-anchor="middle" class="t-head" font-size="15" font-weight="bold">PostgresUserRepository</text>
+        <text x="780" y="170" text-anchor="middle" class="t-muted" font-size="12">Quyi daraja (Baza detali)</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 10: Dependency Injection (DI) -->
+<section>
+  <h2>Dependency Injection (DI) mexanizmi</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-x"></i></div>
+      <h3>Tight Coupling (O'zi yaratadi)</h3>
+      <p><code>class UserService: def __init__(self): self.db = PostgresDB()</code>. Agar Postgres o'chsa, barcha unit-testlar qulaydi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Loose Coupling (Tashqaridan oladi)</h3>
+      <p><code>def __init__(self, repo: UserRepository): self.repo = repo</code>. Testda soxta <code>FakeRepo</code>, prodda esa <code>PostgresRepo</code> kiritiladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 11: Bo'lim 4 -->
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Code Smells (Kod hidlari)</h1>
+  <p>Xato emas, lekin loyihaning parokanda bo'lishidan darak beruvchi belgilar</p>
+  
+</section>
+
+<!-- SLIDE 12: Asosiy Code Smells -->
+<section>
+  <h2>Keng tarqalgan 4 ta kod hidi</h2>
+  <div class="cards four">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="triangle-alert"></i></div>
+      <h3>Long Method</h3>
+      <p>Funksiya 50+ qatordan iborat.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="box"></i></div>
+      <h3>God Object</h3>
+      <p>Bitta ulkan sinf hamma ishni boshqaradi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="copy"></i></div>
+      <h3>Primitive Obsession</h3>
+      <p>Murakkab obyektsiz hamma narsani satrda saqlash.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="heart-crack"></i></div>
+      <h3>Feature Envy</h3>
+      <p>Metod o'z sinfidan ko'ra begona sinfga tayanadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 13: Refaktoring usullari -->
+<section>
+  <h2>Asosiy refaktoring usullari</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="scissors"></i></div>
+      <h3>Extract Method</h3>
+      <p>Katta funksiyadan mantiqiy bo'lakni yangi kichik funksiya qilib ajratish.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="folder-plus"></i></div>
+      <h3>Extract Class</h3>
+      <p>Ortiqcha mas'uliyatlarga ega sinfni alohida kichik sinflarga bo'lish.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="git-commit-horizontal"></i></div>
+      <h3>Testsiz refaktor yo'q</h3>
+      <p>Avval testlar yoziladi, keyin kod tuziladi va testlar yashil ekani tekshiriladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 14: .stepper: Refaktoring qadamlari -->
+<section>
+  <h2>Xavfsiz refaktoring qadamlari</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="test-tube"></i></div><h3>1. Testlar</h3><p>Mavjud kodga unit-testlar yozib oling.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="scissors"></i></div><h3>2. Kichik qadam</h3><p>Bitta metod yoki nomni o'zgartiring.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="play"></i></div><h3>3. Testni yurgizing</h3><p>Barcha testlar yana yashil ekaniga ishonch hosil qiling.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="git-commit-horizontal"></i></div><h3>4. Commit</h3><p>Kichik va aniq xabar bilan Git'ga yozing.</p></div></div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 15: .quiz -->
+<section>
+  <h2>Tezkor viktorina</h2>
+  <div class="quiz">
+    <p class="q">Qaysi tamoyil «Mijoz-sinflar o'zlari ishlatmaydigan metodlarga bog'lanmasligi kerak» deb talab qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">LSP (Liskov)</button>
+      <button class="opt" type="button" data-ok>ISP (Interface Segregation)</button>
+      <button class="opt" type="button">DIP (Dependency Inversion)</button>
+    </div>
+    <div class="explain">To'g'ri: ISP interfeyslarni kichik va aniq qismlarga ajratishni talab qiladi.</div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 16: Amaliy topshiriq -->
+<section>
+  <h2>Bugungi amaliy vazifa <span class="timer"><i data-ic="timer"></i>25 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Katta «PaymentGateway» interfeysini ISP asosida 2 ta kichik interfeysga ajrating.</div>
+  <div class="task"><span class="level mid">O'rta</span><code>UserService</code> sinfiga <code>UserRepository</code> interfeysi orqali Dependency Injection qo'llang.</div>
+  <div class="task"><span class="level hard">Qiyin</span><code>FakeUserRepository</code> yaratib, servisingizni tashqi bazasiz unit-test bilan to'liq tekshiring.</div>
+  
+</section>
+
+<!-- SLIDE 17: Dars xulosasi -->
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>LSP & ISP</h3>
+      <p>Ishonchli polimorfizm va ortiqcha yuklardan xoli ixcham interfeyslar.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>DIP & DI</h3>
+      <p>Abstraksiyalarga tayanish va oson testlanadigan elastik arxitektura.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Refaktoring</h3>
+      <p>Code Smells alomatlarini testlar himoyasida bosqichma-bosqich yo'qotish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 18: Keyingi dars -->
+<section class="hero">
+  <div class="icon"><i data-ic="box" data-anim="float"></i></div>
+  <h1>Keyingi dars: Loyihalash andozalari (Design Patterns)</h1>
+  <p class="muted">Creational patterns: Factory Method va Singleton arxitekturasi</p>
+  <span class="badge">3-hafta · 9-dars</span>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

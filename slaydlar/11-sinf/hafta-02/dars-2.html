@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Pull Request va Merge konfliktlar</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 11-sinf · 2-hafta · 5-dars: Pull Request madaniyati, PR shabloni va Merge konfliktlar -->
+
+<!-- 1. SARLAVHA -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Pull Request va Merge konfliktlar</h1>
+  <p class="muted">Kodni jamoaga to'g'ri taqdim etamiz va ziddiyatlarni xotirjam hal qilamiz</p>
+  <span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">2-hafta · 5-dars</span>
+  
+</section>
+
+<!-- 2. REJA -->
+<section>
+  <h2>Bugun nimani o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="git-pull-request" data-anim="float"></i></div><h3>PR madaniyati</h3><p>What, Why, How va dalillar bilan boyitilgan tavsif</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="file-code" data-anim="pulse"></i></div><h3>PR shabloni</h3><p>.github/pull_request_template.md va checklist</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="git-merge" data-anim="draw"></i></div><h3>Merge va konflikt</h3><p>Uch xil strategiya va ziddiyatni qo'lda yechish</p></div>
+  </div>
+  
+</section>
+
+<!-- 3. TAKRORLASH: flip kartalar -->
+<section>
+  <h2>Takrorlash: 4-dars</h2>
+  <div class="cards three">
+    <div class="flip" style="min-height:230px"><div class="flip-in">
+      <div class="face"><div class="icon"><i data-ic="git-branch"></i></div><h3>Nega alohida tarmoq?</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Yangi kod main'ni buzmasligi uchun: tajriba alohida tarmoqda yoziladi.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:230px"><div class="flip-in">
+      <div class="face"><div class="icon"><i data-ic="terminal"></i></div><h3>git switch -c feat/my-feature</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Yangi tarmoq yaratadi va darhol unga o'tadi.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:230px"><div class="flip-in">
+      <div class="face"><div class="icon"><i data-ic="message-square"></i></div><h3>Conventional commit</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Tur, qamrov va qisqa tavsif: masalan <code>feat(auth): add login</code>.</p></div>
+    </div></div>
+  </div>
+  
+</section>
+
+<!-- 4. SEC 01 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Pull Request anatomiyasi</h1>
+  <p>Taklifdan asosiy tarmoqqa qo'shilishgacha</p>
+</section>
+
+<!-- 5. PR NIMA -->
+<section>
+  <h2>Pull Request nima?</h2>
+  <div class="quote">PR — o'z tarmog'ingdagi o'zgarishlarni main'ga birlashtirishni so'rab jamoaga yuboriladigan rasmiy taklif.</div>
+  <div class="chips">
+    <span class="chip fragment">Muhokama maydoni</span>
+    <span class="chip t fragment">Sifat eshigi: CI, linter, skaner</span>
+    <span class="chip fragment">Loyiha tarixi</span>
+  </div>
+  <div class="callout tip fragment"><i data-ic="shield-check" data-anim="pulse"></i>PR shunchaki birlashtirish tugmasi emas: u jamoaviy nazorat.</div>
+  
+</section>
+
+<!-- 6. SVG 1: PR hayotiy sikli -->
+<section>
+  <h2>PR hayotiy sikli</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <g class="fragment" data-tip="Feature tarmog'ida yozilgan commitlar GitHub'ga push qilinadi.">
+        <rect class="fn" x="15" y="70" width="215" height="200" rx="18"/>
+        <text class="t-head" x="122" y="135" text-anchor="middle" font-size="28">1. Push</text>
+        <text class="t-muted" x="122" y="185" text-anchor="middle" font-size="22">feature branch</text>
+      </g>
+      <g class="fragment"><line class="la flowing" x1="232" y1="170" x2="262" y2="170"/><polygon class="ar-a" points="266,170 252,160 252,180"/></g>
+      <g class="fragment" data-tip="PR ochiladi: tavsifda What / Why / How va Closes #N yoziladi.">
+        <rect class="fa" x="268" y="70" width="215" height="200" rx="18"/>
+        <text class="t-head" x="375" y="135" text-anchor="middle" font-size="28">2. Open PR</text>
+        <text class="t-muted" x="375" y="185" text-anchor="middle" font-size="22">What/Why/How</text>
+        <text class="t-muted" x="375" y="225" text-anchor="middle" font-size="22">Closes #N</text>
+      </g>
+      <g class="fragment"><line class="la flowing" x1="485" y1="170" x2="515" y2="170"/><polygon class="ar-a" points="519,170 505,160 505,180"/></g>
+      <g class="fragment" data-tip="Avtomatik testlar ishlaydi, hamkasblar kodni ko'rib chiqadi va tasdiqlaydi.">
+        <rect class="fb" x="521" y="70" width="215" height="200" rx="18"/>
+        <text class="t-head" x="628" y="135" text-anchor="middle" font-size="28">3. Review</text>
+        <text class="t-muted" x="628" y="185" text-anchor="middle" font-size="22">CI testlar</text>
+        <text class="t-muted" x="628" y="225" text-anchor="middle" font-size="22">Approve</text>
+      </g>
+      <g class="fragment"><line class="la flowing" x1="738" y1="170" x2="768" y2="170"/><polygon class="ar-a" points="772,170 758,160 758,180"/></g>
+      <g class="fragment" data-tip="Tasdiqlangach PR main'ga birlashtiriladi, bog'langan Issue yopiladi.">
+        <rect class="fc pulse" x="774" y="70" width="211" height="200" rx="18"/>
+        <text class="t-head" x="880" y="135" text-anchor="middle" font-size="28">4. Merge</text>
+        <text class="t-muted" x="880" y="185" text-anchor="middle" font-size="22">main yangilanadi</text>
+        <text class="t-muted" x="880" y="225" text-anchor="middle" font-size="22">Issue yopiladi</text>
+      </g>
+    </svg>
+  </div>
+  <p class="small">Bosqichlar ustiga bosing: izoh chiqadi.</p>
+  
+</section>
+
+<!-- 7. WHAT / WHY / HOW -->
+<section>
+  <h2>Professional PR: Why / What / How</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><h3>Why? Nega?</h3><p>Qaysi muammo yoki Issue yopilmoqda? <code>Closes #14</code></p></div>
+    <div class="card fragment fade-up"><h3>What? Nima?</h3><p>Aynan nimalar o'zgardi: qisqa punktlar.</p></div>
+    <div class="card fragment fade-up"><h3>How? Qanday?</h3><p>Arxitektura qarori, algoritm yoki baza o'zgarishi.</p></div>
+  </div>
+  <div class="callout warn fragment"><i data-ic="triangle-alert"></i>«Kod yozdim» degan bo'sh tavsif bilan PR ochilmaydi.</div>
+  
+</section>
+
+<!-- 8. VERTIKAL: Issue avtomatik yopish -->
+<section>
+  <section>
+    <h2>Issue'ni avtomatik yopish</h2>
+    <pre><code class="language-markdown" data-trim data-noescape data-line-numbers="1|2|3">
+## Nega kerak?
+Profil sahifasidagi xatoni tuzatadi.
+Closes #15
+    </code></pre>
+    <div class="callout tip"><i data-ic="link" data-anim="wiggle"></i>PR merge bo'lishi bilan #15 Issue avtomatik yopiladi.</div>
+    <p class="small">Pastga bosing: boshqa kalit so'zlar</p>
+    
+  </section>
+  <section>
+    <h2>Kalit so'zlar</h2>
+    <div class="cards three">
+      <div class="card"><h3>Closes #12</h3><p>Vazifani yopadi</p></div>
+      <div class="card"><h3>Fixes #25</h3><p>Xatoni tuzatganini bildiradi</p></div>
+      <div class="card"><h3>Resolves #89</h3><p>Muammo hal bo'lganini bildiradi</p></div>
+    </div>
+    
+  </section>
+</section>
+
+<!-- 9. DALILLASH: swap -->
+<section>
+  <h2>Dalillash madaniyati (Evidence)</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">UI o'zgarishi</button><button type="button">Backend / API</button></div>
+    <div class="swap-p"><div class="card accent"><div class="icon"><i data-ic="image"></i></div><h3>Oldin / Keyin</h3><p>Skrinshot yoki qisqa GIF ilova qilinadi: reviewer loyihani yig'ib o'tirmaydi.</p></div></div>
+    <div class="swap-p"><div class="card teal"><div class="icon"><i data-ic="terminal"></i></div><h3>Log va testlar</h3><p>Terminal logi yoki muvaffaqiyatli test skrinshoti ilova qilinadi.</p></div></div>
+  </div>
+  <div class="callout tip"><i data-ic="check-check"></i>Dalil bor joyda munozara qisqa bo'ladi.</div>
+  
+</section>
+
+<!-- 10. SEC 02 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>PR shabloni va checklist</h1>
+  <p>Hamma bir xil standartda yozadi</p>
+</section>
+
+<!-- 11. SVG 2: shablon mexanizmi -->
+<section>
+  <h2>PR shabloni qanday ishlaydi?</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <g data-tip="Repository ildizida .github papkasi ichida turadigan shablon fayli.">
+        <rect class="fn" x="20" y="30" width="380" height="280" rx="18"/>
+        <text class="t-accent" x="210" y="75" text-anchor="middle" font-size="26">.github/</text>
+        <text class="t-accent" x="210" y="110" text-anchor="middle" font-size="24">pull_request_template.md</text>
+        <rect class="fa" x="45" y="135" width="330" height="150" rx="12"/>
+        <text class="t-muted" x="65" y="190" font-size="24">## Tavsif</text>
+        <text class="t-muted" x="65" y="240" font-size="24">- [ ] Testlar o'tdi</text>
+      </g>
+      <line class="la flowing" x1="410" y1="170" x2="540" y2="170"/>
+      <polygon class="ar-a" points="552,170 536,158 536,182"/>
+      <g data-tip="Yangi PR ochilganda tavsif oynasi shu matn bilan avtomatik to'ldiriladi.">
+        <rect class="fb" x="560" y="30" width="420" height="280" rx="18"/>
+        <text class="t-head" x="770" y="78" text-anchor="middle" font-size="26">Open a pull request</text>
+        <rect class="fn" x="585" y="105" width="370" height="180" rx="12"/>
+        <text class="t-head" x="770" y="160" text-anchor="middle" font-size="26">Tavsif oynasi</text>
+        <text class="t-muted" x="770" y="200" text-anchor="middle" font-size="24">avtomatik to'ladi</text>
+        <text class="t-muted" x="770" y="250" text-anchor="middle" font-size="24">Siz javob yozasiz</text>
+      </g>
+    </svg>
+  </div>
+  <p class="small">Qismlarni bosing yoki ustiga olib boring.</p>
+  
+</section>
+
+<!-- 12. VERTIKAL: shablon kodi + buyruqlar -->
+<section>
+  <section>
+    <h2>pull_request_template.md</h2>
+    <pre><code class="language-markdown" data-trim data-noescape data-line-numbers="1-2|3-4|5-6|7-10">
+## Tavsif (Description)
+&lt;!-- Ushbu PR nima qiladi? --&gt;
+## Nima uchun kerak? (Why)
+&lt;!-- Masalan: Closes #12 --&gt;
+## Asosiy o'zgarishlar
+-
+## Tekshiruv ro'yxati (Checklist)
+- [ ] Kod uslubi (linter) tekshirildi
+- [ ] Lokal testlar muvaffaqiyatli o'tdi
+- [ ] Maxfiy ma'lumotlar (.env) yo'qligi tekshirildi
+    </code></pre>
+    <p class="small">Pastga bosing: faylni repoga qo'shamiz</p>
+    
+  </section>
+  <section>
+    <h2>Shablonni repoga qo'shish</h2>
+    <pre class="terminal"><code class="language-bash" data-trim data-noescape data-line-numbers="1|2|3|4">
+mkdir -p .github
+nano .github/pull_request_template.md
+git add .github/pull_request_template.md
+git commit -m "chore(github): add pull request template"
+git push origin main
+    </code></pre>
+    
+  </section>
+</section>
+
+<!-- 13. KICHIK PR: count -->
+<section>
+  <h2>Kichik PR qoidasi</h2>
+  <div class="stats">
+    <div class="stat fragment"><div class="v"><span class="count" data-to="10" data-suf=" qator">0</span></div><div class="l">10 muhandis sinchiklab tekshiradi</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="1000" data-suf=" qator">0</span></div><div class="l">hamma «Looks good to me» deydi</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="300" data-suf=" qator">0</span></div><div class="l">ideal PR shundan oshmaydi</div></div>
+  </div>
+  <div class="callout tip fragment"><i data-ic="zap"></i>Katta PR: xatolar ko'zdan qochadi, konflikt ehtimoli oshadi.</div>
+  
+</section>
+
+<!-- 14. SEC 03 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Merge turlari va konfliktlar</h1>
+  <p>Squash, Rebase va ziddiyatlarni yechish</p>
+</section>
+
+<!-- 15. SVG 3: 3 xil merge -->
+<section>
+  <h2>Uch xil merge strategiyasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 380">
+      <g class="fragment" data-tip="Create a merge commit: barcha commitlar o'zgarishsiz qoladi, tepasiga maxsus Merge branch commiti qo'shiladi. Tarix to'liq, lekin katta jamoada chigal.">
+        <rect class="fn" x="15" y="20" width="300" height="340" rx="18"/>
+        <text class="t-head" x="165" y="70" text-anchor="middle" font-size="26">Merge commit</text>
+        <text class="t-muted" x="165" y="110" text-anchor="middle" font-size="22">Tarix to'liq saqlanadi</text>
+        <line class="ln" x1="75" y1="200" x2="265" y2="200"/>
+        <circle class="fa" cx="75" cy="200" r="13"/><circle class="fa" cx="135" cy="200" r="13"/><circle class="fa" cx="195" cy="200" r="13"/>
+        <circle class="fc" cx="265" cy="200" r="18"/>
+        <text class="t-muted" x="165" y="300" text-anchor="middle" font-size="22">+ Merge commit</text>
+      </g>
+      <g class="fragment" data-tip="Squash and merge: feature'dagi barcha commitlar bitta toza commitga siqiladi. Eng keng tarqalgan zamonaviy standart.">
+        <rect class="fa pulse" x="350" y="20" width="300" height="340" rx="18"/>
+        <text class="t-head" x="500" y="70" text-anchor="middle" font-size="26">Squash and merge</text>
+        <text class="t-muted" x="500" y="110" text-anchor="middle" font-size="22">Eng mashhuri</text>
+        <circle class="fb" cx="440" cy="160" r="12"/><circle class="fb" cx="500" cy="160" r="12"/><circle class="fb" cx="560" cy="160" r="12"/>
+        <line class="la flowing" x1="500" y1="180" x2="500" y2="225"/>
+        <circle class="fg" cx="500" cy="250" r="20"/>
+        <text class="t-muted" x="500" y="320" text-anchor="middle" font-size="22">Bitta toza commit</text>
+      </g>
+      <g class="fragment" data-tip="Rebase and merge: commitlar birma-bir main'ning oxiriga ko'chirib ulanadi, Merge commiti hosil bo'lmaydi.">
+        <rect class="fn" x="685" y="20" width="300" height="340" rx="18"/>
+        <text class="t-head" x="835" y="70" text-anchor="middle" font-size="26">Rebase and merge</text>
+        <text class="t-muted" x="835" y="110" text-anchor="middle" font-size="22">Chiziqli tarix</text>
+        <line class="ln" x1="745" y1="200" x2="925" y2="200"/>
+        <circle class="fc" cx="745" cy="200" r="13"/><circle class="fc" cx="835" cy="200" r="13"/><circle class="fc" cx="925" cy="200" r="13"/>
+        <text class="t-muted" x="835" y="300" text-anchor="middle" font-size="22">Merge commit yo'q</text>
+      </g>
+    </svg>
+  </div>
+  <p class="small">Ustiga bosing: tafsilot.</p>
+  
+</section>
+
+<!-- 16. VERTIKAL: qachon qaysi -->
+<section>
+  <section>
+    <h2>Squash: 15 xom commit, 1 toza commit</h2>
+    <div class="vs">
+      <div class="side fragment"><h3>Feature'da</h3>«tuzatdim», «yana xato», «ishladi»...</div>
+      <div class="mid">VS</div>
+      <div class="side b fragment"><h3>main'da</h3><code>feat: implement user settings</code></div>
+    </div>
+    <p class="small">Pastga bosing: qachon qaysi biri?</p>
+    
+  </section>
+  <section>
+    <h2>Qachon qaysi biri?</h2>
+    <div class="cards three">
+      <div class="card"><h3>Squash</h3><p>Odatiy zamonaviy standart: feature kichik va toza</p></div>
+      <div class="card"><h3>Merge commit</h3><p>Katta subsystem relizlari, Git Flow'da develop ni main'ga qo'shish</p></div>
+      <div class="card"><h3>Rebase</h3><p>Tarix qat'iy chiziqli bo'lishini xohlovchi jamoalar</p></div>
+    </div>
+    
+  </section>
+</section>
+
+<!-- 17. SVG 4: konflikt anatomiyasi -->
+<section>
+  <h2>Merge conflict qanday ko'rinadi?</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 400">
+      <rect class="fn" x="30" y="20" width="940" height="360" rx="18"/>
+      <g data-tip="HEAD: siz hozir turgan tarmoqdagi (main) joriy kod.">
+        <rect class="fa" x="55" y="45" width="890" height="110" rx="12"/>
+        <text class="t-accent" x="80" y="90" font-size="24">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD (main)</text>
+        <text class="t-head" x="80" y="132" font-size="24">return db.find(user_id)</text>
+      </g>
+      <text class="t-muted" x="500" y="195" text-anchor="middle" font-size="26">=======</text>
+      <g data-tip="Kelayotgan tarmoqdagi yangi kod. >>>>>>> qatorida tarmoq nomi yoziladi.">
+        <rect class="fb" x="55" y="215" width="890" height="110" rx="12"/>
+        <text class="t-head" x="80" y="260" font-size="24">return cache.get(user_id)</text>
+        <text class="t-accent" x="80" y="302" font-size="24">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feat/cache-users</text>
+      </g>
+      <text class="t-head" x="500" y="360" text-anchor="middle" font-size="24">Git tanlay olmaydi: siz tanlaysiz</text>
+    </svg>
+  </div>
+  <p class="small">Yuqori va pastki blokni bosing.</p>
+  
+</section>
+
+<!-- 18. AUTO-ANIMATE A -->
+<section data-auto-animate>
+  <h2>Konfliktli fayl</h2>
+  <pre data-id="kod"><code class="language-text" data-trim data-noescape>
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+host = "localhost"
+=======
+host = "127.0.0.1"
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feat/network
+  </code></pre>
+  
+</section>
+
+<!-- 19. AUTO-ANIMATE B -->
+<section data-auto-animate>
+  <h2>Yechilgan fayl</h2>
+  <pre data-id="kod"><code class="language-text" data-trim data-noescape>
+host = "127.0.0.1"
+  </code></pre>
+  <div class="callout tip"><i data-ic="circle-check" data-anim="bounce"></i>Belgilar o'chirildi: endi git add va git commit.</div>
+  
+</section>
+
+<!-- 20. STEPPER: konfliktni yechish -->
+<section>
+  <h2>Konfliktni yechish: 4 qadam</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="eye" data-anim="pulse"></i></div><h3>1. Muharrirda oching</h3><p>VS Code yoki boshqa muharrirda konfliktli faylga qarang.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="target" data-anim="float"></i></div><h3>2. Mantiqni tanlang</h3><p>Ikkala qismni tahlil qiling va to'g'ri kodni belgilang.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="settings" data-anim="spin"></i></div><h3>3. Belgilarni o'chiring</h3><p><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> qatorlarini qo'lda olib tashlang.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="git-commit-horizontal" data-anim="bounce"></i></div><h3>4. add va commit</h3><p><code>git add fayl</code>, so'ng <code>git commit</code>: merge yakunlanadi.</p></div></div>
+  </div>
+  
+</section>
+
+<!-- 21. TERMINAL: konflikt laboratoriyasi -->
+<section>
+  <h2>Konflikt laboratoriyasi</h2>
+  <pre class="terminal"><code class="language-bash" data-trim data-noescape data-line-numbers="1-3|4-6|7-8|9-11">
+git switch -c feat/update-text
+echo "Versiya 2.0 - feature" > app.txt
+git commit -am "feat: update line"
+git switch main
+echo "Versiya 1.5 - main" > app.txt
+git commit -am "fix: hotfix on main"
+git merge feat/update-text
+# CONFLICT (content): Merge conflict in app.txt
+echo "Versiya 2.0 - kelishuv" > app.txt
+git add app.txt
+git commit -m "merge: resolve conflict"
+  </code></pre>
+  
+</section>
+
+<!-- 22. BRAUZER: GitHub PR sahifasi -->
+<section>
+  <h2>GitHub'dagi toza PR</h2>
+  <div class="browser">
+    <div class="bar"><i></i><i></i><i></i><span>github.com/org/repo/pull/24</span></div>
+    <div class="page">
+      <h3>feat(auth): add google oauth login #24</h3>
+      <p><strong>Open</strong> · dev wants to merge 3 commits into <code>main</code> from <code>feat/auth</code></p>
+      <p>Why: Closes #14 · What: login tugmasi, callback · Checks: 2 successful</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 23. QUIZ -->
+<section>
+  <h2>Tezkor savol</h2>
+  <div class="quiz">
+    <p class="q">Feature'dagi 10 ta commit main'ga bitta toza commit bo'lib tushishi uchun qaysi strategiya tanlanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Create a merge commit</button>
+      <button class="opt" type="button" data-ok>Squash and merge</button>
+      <button class="opt" type="button">Rebase and merge</button>
+      <button class="opt" type="button">Git hech narsa qilmaydi</button>
+    </div>
+    <div class="explain">To'g'ri: Squash and merge barcha commitlarni bitta toza commitga siqadi va main tarixini tartibli saqlaydi.</div>
+  </div>
+  
+</section>
+
+<!-- 24. AMALIYOT -->
+<section>
+  <h2>Amaliyot <span class="timer"><i data-ic="timer" data-anim="spin"></i>20 daqiqa</span></h2>
+  <div class="task fragment"><span class="level easy">Oson</span>.github/pull_request_template.md shablonini yarating va push qiling.</div>
+  <div class="task fragment"><span class="level mid">O'rta</span>Konflikt laboratoriyasi: ataylab konflikt hosil qiling va VS Code'da yeching.</div>
+  <div class="task fragment"><span class="level hard">Qiyin</span>GitHub'da What/Why/How asosida PR oching, <code>Closes #N</code> yozing.</div>
+  
+</section>
+
+<!-- 25. XULOSA -->
+<section>
+  <h2>Bugun nimani bildik?</h2>
+  <div class="cards four">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="git-pull-request" data-anim="float"></i></div><h3>PR</h3><p>Muhokama va sifat eshigi</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="list-checks"></i></div><h3>Tavsif</h3><p>Why, What, How, dalil</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="git-merge"></i></div><h3>Squash</h3><p>Toza tarix uchun</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="bug"></i></div><h3>Konflikt</h3><p>Qo'lda uyg'unlashtiramiz</p></div>
+  </div>
+  
+</section>
+
+<!-- 26. VERTIKAL: Bilasizmi + keyingi dars -->
+<section>
+  <section>
+    <h2>Keyingi dars: Code Review</h2>
+    <div class="callout tip"><i data-ic="code-xml"></i>6-dars: PR'larni professional tahlil qilish, inline sharhlar, taklif kodi va Branch Protection.</div>
+    <p class="small">Pastga bosing: Bilasizmi?</p>
+    
+  </section>
+  <section>
+    <h2>Bilasizmi?</h2>
+    <div class="cards two">
+      <div class="card"><h3>2008-yil</h3><p>PR tushunchasini GitHub joriy qilgan. Undan oldin o'zgarishlar elektron pochta orqali .patch fayl bo'lib yuborilgan.</p></div>
+      <div class="card"><h3>Botlar ham ko'radi</h3><p>Zamonaviy loyihalarda inson ko'rib chiqishidan oldin botlar PR'dagi xatolarni topib, sharh qoldiradi.</p></div>
+    </div>
+    
+  </section>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

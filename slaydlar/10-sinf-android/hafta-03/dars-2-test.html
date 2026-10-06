@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>8-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>8-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Nega yangi funksiyani <code>main</code> da emas, alohida branch'da yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>main</code> barqaror qoladi, chala kod ilovani buzmaydi</button>
+      <button class="opt" type="button">Branch'da kod tez ishlaydi</button>
+      <button class="opt" type="button"><code>main</code> da yozish mumkin emas</button>
+      <button class="opt" type="button">Branch hajmni kamaytiradi</button>
+    </div>
+    <div class="explain">Branch asosiy loyihadan ajralgan «parallel olam».</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Yangi branch yaratib unga o'tadigan zamonaviy buyruq qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>git branch -d feature-bonus</code></button>
+      <button class="opt" type="button" data-ok><code>git switch -c feature-bonus</code></button>
+      <button class="opt" type="button"><code>git merge feature-bonus</code></button>
+      <button class="opt" type="button"><code>git stash feature-bonus</code></button>
+    </div>
+    <div class="explain">Eski usuli: <code>git checkout -b feature-bonus</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Ishlatib bo'lingan branch'ni o'chirish buyrug'i?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>git delete feature-bonus</code></button>
+      <button class="opt" type="button"><code>git switch -d</code></button>
+      <button class="opt" type="button" data-ok><code>git branch -d feature-bonus</code></button>
+      <button class="opt" type="button"><code>git revert feature-bonus</code></button>
+    </div>
+    <div class="explain"><code>-d</code> branch'ni xavfsiz o'chiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>git diff</code> da yashil <code>+</code> va qizil <code>-</code> nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Xatolar va ogohlantirishlarni</button>
+      <button class="opt" type="button">Yangi va eski branchlarni</button>
+      <button class="opt" type="button">Staged va untracked fayllarni</button>
+      <button class="opt" type="button" data-ok>Qo'shilgan va o'chirilgan satrlarni</button>
+    </div>
+    <div class="explain">Commitdan oldin aynan nima o'zgarganini ko'rsatadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>feature-bonus</code> ni <code>main</code> ga qo'shish uchun qanday ishlanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Avval <code>git switch main</code>, so'ng <code>git merge feature-bonus</code></button>
+      <button class="opt" type="button"><code>git merge main</code> ni feature'da bajarib, o'chirish</button>
+      <button class="opt" type="button"><code>git revert main</code></button>
+      <button class="opt" type="button"><code>git stash main</code></button>
+    </div>
+    <div class="explain">Birlashtirish qabul qiluvchi branch ustida turib bajariladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Merge Conflict qachon yuz beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Branch nomi uzun bo'lganda</button>
+      <button class="opt" type="button" data-ok>Ikki branchda bir faylning bir xil satri turlicha o'zgartirilganda</button>
+      <button class="opt" type="button">Fayl o'chirilganda</button>
+      <button class="opt" type="button">Commit xabari bo'sh bo'lganda</button>
+    </div>
+    <div class="explain">Git qaysi variant to'g'ri ekanini o'zi hal qila olmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Konflikt belgilarida <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> dan <code>=======</code> gacha qismda nima bor?</p>
+    <div class="opts">
+      <button class="opt" type="button">Qo'shilayotgan branch'dagi kod</button>
+      <button class="opt" type="button">O'chirilgan kod</button>
+      <button class="opt" type="button" data-ok>Joriy branch'dagi kod</button>
+      <button class="opt" type="button">Commit xabari</button>
+    </div>
+    <div class="explain"><code>=======</code> dan <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature-bonus</code> gacha esa qo'shilayotgan branch kodi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Konfliktni hal qilishning to'g'ri tartibi qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>git init</code> qayta bajarish</button>
+      <button class="opt" type="button">Faqat <code>git push</code></button>
+      <button class="opt" type="button">Papkani o'chirish</button>
+      <button class="opt" type="button" data-ok>Faylni tahrirlab belgilarni o'chirish, saqlash, <code>git add</code>, <code>git commit</code></button>
+    </div>
+    <div class="explain">Ajratuvchi belgilar fayldan butunlay olib tashlanishi shart.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Chala kodni commit qilmay <code>main</code> dagi xatoni tuzatish uchun nima qilinadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>git stash</code>, keyin <code>git stash pop</code></button>
+      <button class="opt" type="button"><code>git init</code></button>
+      <button class="opt" type="button"><code>git revert</code></button>
+      <button class="opt" type="button"><code>.git</code> ni o'chirish</button>
+    </div>
+    <div class="explain">Stash o'zgarishlarni vaqtincha «xaltaga» solib turadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>git revert &lt;hash&gt;</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Tarixni o'chiradi</button>
+      <button class="opt" type="button" data-ok>O'sha commitga qarama-qarshi yangi commit yaratadi, tarix buzilmaydi</button>
+      <button class="opt" type="button">Branch yaratadi</button>
+      <button class="opt" type="button">Repozitoriyni o'chiradi</button>
+    </div>
+    <div class="explain">Allaqachon commit qilingan o'zgarishni xavfsiz bekor qilish usuli.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: Branch, <code>switch</code>, <code>diff</code>, <code>merge</code> va conflict, <code>stash</code>, <code>revert</code>.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

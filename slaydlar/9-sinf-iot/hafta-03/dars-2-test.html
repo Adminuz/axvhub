@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>8-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>8-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">IoT</span><span class="badge">3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Raqamli kirish (Digital Input) pinni qanday o'qiydi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>0V ni LOW, 5V ni HIGH deb</button>
+      <button class="opt" type="button">Faqat 3.3V ni</button>
+      <button class="opt" type="button">Faqat tovushni</button>
+      <button class="opt" type="button">Faqat haroratni</button>
+    </div>
+    <div class="explain">digitalRead natijasi HIGH yoki LOW bo'ladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Push-button vazifasi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Tokni kuchaytiradi</button>
+      <button class="opt" type="button" data-ok>Bosilganda kontaktlarni birlashtirib, qo'yib yuborilganda uzadi</button>
+      <button class="opt" type="button">Yorug'lik chiqaradi</button>
+      <button class="opt" type="button">Dasturni saqlaydi</button>
+    </div>
+    <div class="explain">Kirish asbobi sifatida ishlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Suzuvchi pin (floating pin) nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">GND ga ulangan pin</button>
+      <button class="opt" type="button">Suvda ishlovchi pin</button>
+      <button class="opt" type="button" data-ok>Hech narsaga ulanmagan, tasodifiy qiymat o'qiydigan kirish pini</button>
+      <button class="opt" type="button">Doim HIGH bo'lgan pin</button>
+    </div>
+    <div class="explain">Havoda osilgan pin shovqinni ushlab, xato o'qiydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">INPUT_PULLUP rejimida qanday rezistor ishlatiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Tashqi 1 Ω rezistor</button>
+      <button class="opt" type="button">Rezistor ishlatilmaydi</button>
+      <button class="opt" type="button">220 Ω rezistor LED bilan</button>
+      <button class="opt" type="button" data-ok>Arduino ning ichki 20–50 kΩ tortuvchi rezistori</button>
+    </div>
+    <div class="explain">Tashqi rezistor ulash shart emas.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">INPUT_PULLUP da tugma bosilmaganda digitalRead nima qaytaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>1 (HIGH)</button>
+      <button class="opt" type="button">0 (LOW)</button>
+      <button class="opt" type="button">-1</button>
+      <button class="opt" type="button">2</button>
+    </div>
+    <div class="explain">Bo'sh turganda pin ichki rezistor tufayli HIGH.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">INPUT_PULLUP da tugma bosilganda (GND ga tutashganda) qiymat qanday?</p>
+    <div class="opts">
+      <button class="opt" type="button">1 (HIGH)</button>
+      <button class="opt" type="button" data-ok>0 (LOW)</button>
+      <button class="opt" type="button">5</button>
+      <button class="opt" type="button">O'zgarmaydi</button>
+    </div>
+    <div class="explain">Bosilganda pin GND ga ulanadi, shu sabab 0.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Pin holatini o'qiydigan buyruq qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>digitalWrite(pin, 1)</code></button>
+      <button class="opt" type="button"><code>pinMode(pin)</code></button>
+      <button class="opt" type="button" data-ok><code>digitalRead(pin)</code></button>
+      <button class="opt" type="button"><code>delay(pin)</code></button>
+    </div>
+    <div class="explain">digitalRead HIGH/LOW qiymat qaytaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>Serial.begin(9600);</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">LED ni yoqadi</button>
+      <button class="opt" type="button">Tugmani o'qiydi</button>
+      <button class="opt" type="button">Arduinoni o'chiradi</button>
+      <button class="opt" type="button" data-ok>USB orqali kompyuterga ma'lumot uzatish aloqasini 9600 tezlikda ochadi</button>
+    </div>
+    <div class="explain">Serial Monitor ishlashi uchun setup() da chaqiriladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>Serial.println(holat);</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Qiymatni Serial Monitor ga chiqarib, yangi qatorga o'tadi</button>
+      <button class="opt" type="button">Pin holatini o'zgartiradi</button>
+      <button class="opt" type="button">Dasturni to'xtatadi</button>
+      <button class="opt" type="button">Faqat LED ni yoqadi</button>
+    </div>
+    <div class="explain">Natijani ekranda kuzatish uchun ishlatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Tugma D2 va GND ga, INPUT_PULLUP bilan ulangan. Bosilganda LED yonishi uchun shart qanday?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>if (holat == 1)</code></button>
+      <button class="opt" type="button" data-ok><code>if (holat == 0)</code></button>
+      <button class="opt" type="button"><code>if (holat == 5)</code></button>
+      <button class="opt" type="button"><code>if (holat == HIGH)</code></button>
+    </div>
+    <div class="explain">Bosilganda holat 0 bo'ladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: Digital Input, INPUT_PULLUP, suzuvchi pin, digitalRead, Serial Monitor.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

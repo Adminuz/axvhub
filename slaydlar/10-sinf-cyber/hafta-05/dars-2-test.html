@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Test: 14-dars. CIDR, subnet maska va segmentatsiya</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Test: 14-dars. CIDR, subnet maska va segmentatsiya</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf Kiberxavfsizlik</span><span class="badge">5-hafta · 14-dars</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Subnet mask nimani ajratadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Parol va loginni</button>
+      <button class="opt" type="button">Port va protokolni</button>
+      <button class="opt" type="button">Domen va saytni</button>
+      <button class="opt" type="button" data-ok>Tarmoq va host qismini</button>
+    </div>
+    <div class="explain">Maska tarmoq va host qismlarini ajratadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">255.255.255.0 qaysi prefiksga teng?</p>
+    <div class="opts">
+      <button class="opt" type="button">/16</button>
+      <button class="opt" type="button">/8</button>
+      <button class="opt" type="button" data-ok>/24</button>
+      <button class="opt" type="button">/26</button>
+    </div>
+    <div class="explain">24 ta birlik bit.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">255.255.0.0 qaysi prefiksga teng?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>/16</button>
+      <button class="opt" type="button">/24</button>
+      <button class="opt" type="button">/8</button>
+      <button class="opt" type="button">/12</button>
+    </div>
+    <div class="explain">16 ta birlik bit.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Subnetdagi oxirgi manzil nima deyiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Tarmoq manzili</button>
+      <button class="opt" type="button" data-ok>Broadcast</button>
+      <button class="opt" type="button">Shlyuz</button>
+      <button class="opt" type="button">Maska</button>
+    </div>
+    <div class="explain">Host qismi to'liq 1 bo'lgan manzil broadcast.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">/26 subnetda nechta host manzil bor?</p>
+    <div class="opts">
+      <button class="opt" type="button">64</button>
+      <button class="opt" type="button">30</button>
+      <button class="opt" type="button" data-ok>62</button>
+      <button class="opt" type="button">126</button>
+    </div>
+    <div class="explain">2^6 - 2 = 62.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">/24 dan 4 teng subnet olish uchun yangi prefiks?</p>
+    <div class="opts">
+      <button class="opt" type="button">/25</button>
+      <button class="opt" type="button">/27</button>
+      <button class="opt" type="button">/28</button>
+      <button class="opt" type="button" data-ok>/26</button>
+    </div>
+    <div class="explain">2 qo'shimcha bit: /26.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">192.168.10.0/26 ning broadcast manzili?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>192.168.10.63</button>
+      <button class="opt" type="button">192.168.10.64</button>
+      <button class="opt" type="button">192.168.10.62</button>
+      <button class="opt" type="button">192.168.10.255</button>
+    </div>
+    <div class="explain">Subnet .0 dan .63 gacha, oxirgisi broadcast.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">/27 subnetda nechta host bor?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>30</button>
+      <button class="opt" type="button">32</button>
+      <button class="opt" type="button">62</button>
+      <button class="opt" type="button">14</button>
+    </div>
+    <div class="explain">2^5 - 2 = 30.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Segmentatsiyaning xavfsizlik foydasi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Parolni almashtiradi</button>
+      <button class="opt" type="button">Internetni tezlashtiradi</button>
+      <button class="opt" type="button" data-ok>Hujum tarqalishini cheklaydi</button>
+      <button class="opt" type="button">Virusni o'chiradi</button>
+    </div>
+    <div class="explain">Segmentlar bir-biridan ajratilgan.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi biri segmentatsiya usuli?</p>
+    <div class="opts">
+      <button class="opt" type="button">Defragmentatsiya</button>
+      <button class="opt" type="button" data-ok>VLAN va IP subnetlash</button>
+      <button class="opt" type="button">Arxivlash</button>
+      <button class="opt" type="button">Shifrlash kaliti</button>
+    </div>
+    <div class="explain">Mantiqiy segmentatsiya: VLAN va IP subnetlash.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: 14-dars konspekti va slaydlari</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

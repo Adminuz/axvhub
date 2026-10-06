@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Model, View va Serializer. Routerlar</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 1-slayd: Sarlavha -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Model, View va Serializer. Routerlar</h1>
+  <p class="muted">Django REST Framework-ning yuragi: Modellar, Serializerlar, ViewSetlar va marshrutlash</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">1-hafta &middot; 3-dars</span>
+  
+</section>
+
+<!-- 2-slayd: Dars rejasi -->
+<section>
+  <h2>Dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="database" data-anim="pulse"></i></div>
+      <h3>Django ORM &amp; Modellar</h3>
+      <p>TimeStampedModel, Category, Tag, Post va Comment modellarini yaratish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="code-xml" data-anim="float"></i></div>
+      <h3>Serializer &amp; N+1 Yechimi</h3>
+      <p>ModelSerializer, Read va Write serializerlari, select_related va prefetch_related.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="link" data-anim="spin"></i></div>
+      <h3>ViewSets &amp; Routers</h3>
+      <p>ModelViewSet, DefaultRouter va Browsable API orqali testlash.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3-slayd: Bo'lim 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Django ORM va Modellar</h1>
+  <p>NewsPortal ma'lumotlar bazasi jadvallari</p>
+</section>
+
+<!-- 4-slayd: TimeStampedModel -->
+<section>
+  <h2>Abstrakt model: TimeStampedModel</h2>
+  <p>Barcha modellar uchun umumiy yaratilgan va yangilangan vaqt tamoyili</p>
+  <pre><code class="language-python" data-trim data-noescape data-line-numbers="1-10|4-5|7-8"># src/apps/common/models.py
+from django.db import models
+
+class TimeStampedModel(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True  # Alohida jadval ochilmaydi</code></pre>
+  <div class="callout tip">
+    <i data-ic="circle-check"></i>
+    <code>abstract = True</code> kodi Djangoga bu modeldan faqat meros olish uchun foydalanishni buyuradi.
+  </div>
+</section>
+
+<!-- 5-slayd: Post modeli -->
+<section>
+  <h2>NewsPortal: Post modeli</h2>
+  <pre><code class="language-python" data-trim data-noescape data-line-numbers="1-15|4|6-9|11-13"># src/apps/news/models.py (qisqartirilgan)
+class Post(TimeStampedModel):
+    title = models.CharField(max_length=220)
+    slug = models.SlugField(max_length=240, unique=True)
+    body = models.TextField()
+    category = models.ForeignKey(
+        Category, on_delete=models.PROTECT, related_name="posts"
+    )
+    tags = models.ManyToManyField(Tag, blank=True, related_name="posts")
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)</code></pre>
+</section>
+
+<!-- 6-slayd: Bo'lim 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Serializer qatlami</h1>
+  <p>Python obyektlari va JSON o'rtasidagi ko'prik</p>
+</section>
+
+<!-- 7-slayd: SVG Sxema: Serializer ishlash tartibi -->
+<section>
+  <h2>Serializer qanday ishlaydi?</h2>
+  <p>Serialization (Chiqarish) va Deserialization (Qabul qilish va tekshirish)</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320" width="100%" height="320">
+      <!-- Database QuerySet -->
+      <rect x="40" y="80" width="240" height="170" rx="12" class="fa"></rect>
+      <text x="160" y="125" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Django Model</text>
+      <text x="160" y="160" text-anchor="middle" class="t-muted" font-size="15">&lt;Post: Sun'iy intellekt&gt;</text>
+      <text x="160" y="190" text-anchor="middle" class="t-accent" font-size="15">QuerySet obyektlari</text>
+      <text x="160" y="215" text-anchor="middle" class="t-muted" font-size="14">Python ichki formati</text>
+
+      <!-- Serializer (Markazda) -->
+      <rect x="380" y="50" width="240" height="230" rx="16" class="fb"></rect>
+      <text x="500" y="95" text-anchor="middle" class="t-head" font-size="22" font-weight="bold">Serializer</text>
+      <text x="500" y="135" text-anchor="middle" class="t-accent" font-size="15">1. Serialization</text>
+      <text x="500" y="160" text-anchor="middle" class="t-muted" font-size="14">(Model &rarr; JSON)</text>
+      <text x="500" y="195" text-anchor="middle" class="t-accent" font-size="15">2. Deserialization</text>
+      <text x="500" y="220" text-anchor="middle" class="t-muted" font-size="14">(JSON &rarr; Model)</text>
+      <text x="500" y="250" text-anchor="middle" class="t-head" font-size="14">is_valid() tekshiruvi</text>
+
+      <!-- Strelka O'ngga (Serialization) -->
+      <path d="M 290 130 L 370 130" class="la flowing" stroke-width="3"></path>
+      <polygon points="360,125 370,130 360,135" class="ar-a"></polygon>
+
+      <path d="M 630 130 L 710 130" class="la flowing" stroke-width="3"></path>
+      <polygon points="700,125 710,130 700,135" class="ar-a"></polygon>
+
+      <!-- JSON Client -->
+      <rect x="720" y="80" width="240" height="170" rx="12" class="fc"></rect>
+      <text x="840" y="125" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Frontend / Client</text>
+      <text x="840" y="160" text-anchor="middle" class="t-accent" font-size="15">{"title": "AI...", ...}</text>
+      <text x="840" y="190" text-anchor="middle" class="t-muted" font-size="15">Universal JSON matni</text>
+      <text x="840" y="215" text-anchor="middle" class="t-muted" font-size="14">Brauzer, Mobil, Bot</text>
+
+      <!-- Strelka Chapga (Deserialization) -->
+      <path d="M 710 200 L 630 200" class="lg flowing" stroke-width="3"></path>
+      <polygon points="640,195 630,200 640,205" class="ar-g"></polygon>
+
+      <path d="M 370 200 L 290 200" class="lg flowing" stroke-width="3"></path>
+      <polygon points="300,195 290,200 300,205" class="ar-g"></polygon>
+    </svg>
+  </div>
+</section>
+
+<!-- 8-slayd: Read vs Write Serializerlari -->
+<section>
+  <h2>Nega ikkita alohida serializer kerak?</h2>
+  <div class="vs">
+    <div class="side">
+      <h3><i data-ic="search"></i> PostListSerializer (Read)</h3>
+      <p>O'qish uchun: kategoriya va teglarning to'liq ma'lumotlari (nomi, slug) kerak.</p>
+      <pre><code class="language-json">{
+  "title": "Yangilik",
+  "category": { "id": 1, "name": "IT" }
+}</code></pre>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b">
+      <h3><i data-ic="pencil"></i> PostWriteSerializer (Write)</h3>
+      <p>Yozish uchun: mijozdan ortiqcha matn emas, faqat kategoriya ID raqami so'raladi.</p>
+      <pre><code class="language-json">{
+  "title": "Yangi post",
+  "category": 1
+}</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- 9-slayd: Bo'lim 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>N+1 muammosi va yechim</h1>
+  <p>Ma'lumotlar bazasi so'rovlarini optimallashtirish</p>
+</section>
+
+<!-- 10-slayd: SVG Sxema: N+1 vs select_related -->
+<section>
+  <h2>N+1 muammosi qanday yuz beradi?</h2>
+  <p>1 ta so'rov o'rniga 101 ta so'rov yuborilishi serverni "cho'ktiradi"</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 310" width="100%" height="310">
+      <!-- N+1 Yomon yo'l -->
+      <rect x="50" y="50" width="410" height="220" rx="14" class="fn"></rect>
+      <text x="255" y="90" text-anchor="middle" class="t-accent" font-size="20" font-weight="bold">Oddiy Post.objects.all()</text>
+      <text x="255" y="130" text-anchor="middle" class="t-muted" font-size="15">1. Postlarni oladi: 1 ta so'rov</text>
+      <text x="255" y="165" text-anchor="middle" class="t-muted" font-size="15">2. Har post uchun kategoriyani so'raydi</text>
+      <text x="255" y="195" text-anchor="middle" class="t-accent" font-size="15">100 ta post = 101 ta SQL so'rov!</text>
+      <text x="255" y="235" text-anchor="middle" class="t-head" font-size="16">Juda sekin va samarasiz</text>
+
+      <!-- select_related Yaxshi yo'l -->
+      <rect x="540" y="50" width="410" height="220" rx="14" class="fg"></rect>
+      <text x="745" y="90" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">select_related("category")</text>
+      <text x="745" y="130" text-anchor="middle" class="t-head" font-size="15">SQL INNER JOIN ishlatadi</text>
+      <text x="745" y="165" text-anchor="middle" class="t-muted" font-size="15">Post va kategoriyani birdan oladi</text>
+      <text x="745" y="195" text-anchor="middle" class="t-head" font-size="15">100 ta post = 1 ta SQL so'rov!</text>
+      <text x="745" y="235" text-anchor="middle" class="t-head" font-size="16">10 barobar tezroq ishlash!</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 11-slayd: select_related va prefetch_related qoidalari -->
+<section>
+  <h2>Qachon qaysi birini ishlatamiz?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="link-2"></i></div>
+      <h3>select_related()</h3>
+      <p><strong>One-to-One</strong> va <strong>One-to-Many (ForeignKey)</strong> uchun ishlatiladi.</p>
+      <p class="muted">SQL JOIN orqali bitta so'rovda bog'laydi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>prefetch_related()</h3>
+      <p><strong>Many-to-Many</strong> va teskari bog'lanishlar uchun ishlatiladi.</p>
+      <p class="muted">Alohida 1 ta optimallashgan qo'shimcha so'rov yuboradi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 12-slayd: Bo'lim 4 -->
+<section class="sec">
+  <div class="num">04</div>
+  <h1>ViewSets va Routerlar</h1>
+  <p>To'liq CRUD va avtomatik marshrutlash</p>
+</section>
+
+<!-- 13-slayd: PostViewSet kodi -->
+<section>
+  <h2>src/apps/news/views.py (PostViewSet)</h2>
+  <pre><code class="language-python" data-trim data-noescape data-line-numbers="1-15|2-3|5-9">class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.select_related("category") \
+                           .prefetch_related("tags").all()
+    lookup_field = "slug"
+
+    def get_serializer_class(self):
+        if self.action in ("create", "update", "partial_update"):
+            return PostWriteSerializer
+        if self.action == "retrieve":
+            return PostDetailSerializer
+        return PostListSerializer</code></pre>
+</section>
+
+<!-- 14-slayd: SVG Sxema: Router anatomiyasi -->
+<section>
+  <h2>DefaultRouter qanday ishlaydi?</h2>
+  <p>1 qator kod 6 ta standart REST API marshrutini shakllantiradi</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 310" width="100%" height="310">
+      <!-- Router qutisi -->
+      <rect x="50" y="80" width="280" height="150" rx="14" class="fa"></rect>
+      <text x="190" y="125" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">DefaultRouter</text>
+      <text x="190" y="160" text-anchor="middle" class="t-muted" font-size="14">router.register(</text>
+      <text x="190" y="185" text-anchor="middle" class="t-accent" font-size="14">"posts", PostViewSet)</text>
+
+      <!-- Strelkalar -->
+      <path d="M 340 155 L 470 155" class="la flowing" stroke-width="4"></path>
+      <polygon points="460,148 480,155 460,162" class="ar-a"></polygon>
+
+      <!-- Endpoints ro'yxati -->
+      <rect x="490" y="30" width="460" height="250" rx="14" class="fb"></rect>
+      <text x="520" y="70" class="t-head" font-size="16" font-weight="bold">GET /api/v1/posts/ &rarr; list</text>
+      <text x="520" y="110" class="t-accent" font-size="16" font-weight="bold">POST /api/v1/posts/ &rarr; create</text>
+      <text x="520" y="150" class="t-head" font-size="16" font-weight="bold">GET /api/v1/posts/{slug}/ &rarr; retrieve</text>
+      <text x="520" y="190" class="t-muted" font-size="16" font-weight="bold">PUT /api/v1/posts/{slug}/ &rarr; update</text>
+      <text x="520" y="230" class="t-muted" font-size="16" font-weight="bold">DELETE /api/v1/posts/{slug}/ &rarr; destroy</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 15-slayd: Browsable API da ko'rish -->
+<section>
+  <h2>API ni brauzerda tekshirish</h2>
+  <div class="browser">
+    <div class="bar">
+      <i></i><i></i><i></i>
+      <span>http://127.0.0.1:8000/api/v1/posts/</span>
+    </div>
+    <div class="page">
+      <p>HTTP 200 OK</p>
+      <pre><code class="language-json">[
+  {
+    "id": 1,
+    "title": "Sun'iy intellekt kelajagi",
+    "slug": "suniy-intellekt-kelajagi",
+    "category": { "id": 2, "name": "IT" }
+  }
+]</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- 16-slayd: Interaktiv Flip Card -->
+<section>
+  <h2>Atamalarni eslab qolamiz</h2>
+  <div class="cards three">
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="code-xml"></i></div>
+          <h3>Serializer</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Tarjimon</h3>
+          <p>Django modelini JSON ga va JSON ni modelga o'tkazuvchi qatlam.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="zap"></i></div>
+          <h3>select_related</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>SQL JOIN</h3>
+          <p>ForeignKey bog'lanishlarini 1 ta so'rov bilan olib keluvchi optimizator.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="link"></i></div>
+          <h3>Router</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Marshrutchi</h3>
+          <p>Barcha CRUD endpointlarini avtomatik yaratib beruvchi vosita.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 17-slayd: Mini-test Quiz -->
+<section>
+  <h2>Tezkor bilim tekshiruvi</h2>
+  <div class="quiz">
+    <p class="q">Nima uchun ManyToMany maydonlar uchun select_related emas, prefetch_related ishlatiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Chunki select_related umuman ishlamaydi</button>
+      <button class="opt" type="button" data-ok>Chunki ManyToMany bog'lanishlar SQL JOIN orqali ma'lumotlarni ko'paytirib yuboradi, prefetch_related esa alohida aqlli so'rov bilan birlashtiradi</button>
+      <button class="opt" type="button">Chunki ManyToMany maydonlar JSON formatiga o'tmaydi</button>
+    </div>
+    <div class="explain">
+      To'g'ri! ManyToMany bog'lanishlarda SQL JOIN ma'lumotlar hajmini keskin oshiradi. Shuning uchun Django prefetch_related orqali alohida qo'shimcha so'rov bilan birlashtiradi.
+    </div>
+  </div>
+</section>
+
+<!-- 18-slayd: Odatiy xato -->
+<section>
+  <h2>Dasturchilar ko'p yo'l qo'yadigan xatolar</h2>
+  <div class="callout bad">
+    <i data-ic="circle-alert"></i>
+    Xato: Har bir model uchun bitta yagona serializer yozib, unda barcha maydonlarni majburiy qilib qo'yish.
+  </div>
+  <div class="callout tip">
+    <i data-ic="circle-check"></i>
+    To'g'ri: Read va Write uchun serializerlarni ajrating (<code>PostListSerializer</code> va <code>PostWriteSerializer</code>).
+  </div>
+</section>
+
+<!-- 19-slayd: Amaliy topshiriq -->
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task">
+    <span class="level easy">Oson</span>
+    <code>CategorySerializer</code> va <code>TagSerializer</code> klasslarini yozing.
+  </div>
+  <div class="task">
+    <span class="level mid">O'rta</span>
+    <code>PostViewSet</code> ni <code>select_related</code> bilan yozing va <code>get_serializer_class</code> ni ulang.
+  </div>
+  <div class="task">
+    <span class="level hard">Qiyin</span>
+    <code>DefaultRouter</code> orqali barcha ViewSetlarni ulab, Browsable API orqali dastlabki maqolani yarating.
+  </div>
+</section>
+
+<!-- 20-slayd: Xulosa -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h2>1-haftani muvaffaqiyatli yakunladik!</h2>
+  <p class="muted">Keyingi haftada: Foydalanuvchilarni boshqarish, Custom User, JWT va Ruxsatlar (Permissions) bilan ishlaymiz!</p>
+  <div class="chips">
+    <span class="chip">Django ORM</span>
+    <span class="chip">ModelSerializer</span>
+    <span class="chip">select_related</span>
+    <span class="chip">ModelViewSet &amp; Router</span>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

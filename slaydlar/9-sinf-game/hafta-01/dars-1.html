@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Game Design Faniga Kirish</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Game Design Faniga Kirish</h1>
+  <p class="muted">O'yin yaratish san'ati, Game Designer roli va zamonaviy o'yin dvijoklari</p>
+  <span class="badge">9-sinf</span><span class="badge">Game Design</span><span class="badge">1-hafta · 1-dars</span>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Game Design Nima?</h1>
+  <p>G'oyadan unutilmas virtual sarguzashtgacha bo'lgan yo'l</p>
+</section>
+
+<section>
+  <h2>Game Design tushunchasi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="gamepad-2" data-anim="pulse"></i></div>
+      <h3>O'yin Tajribasini Loyihalash</h3>
+      <p>O'yin qoidalari, maqsadlari, mexanikasi, atrof-muhit va foydalanuvchi tajribasini yaratish jarayoni.</p>
+      <p class="t-muted">Shunchaki grafika emas, balki butun o'yin olamining mantiqiy tuzilishi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="wand-sparkles"></i></div>
+      <h3>San'at va Muhandislik Uyg'unligi</h3>
+      <p>Texnologiya, psixologiya, vizual san'at va matematik hisob-kitoblarning tutashgan nuqtasi.</p>
+      <p class="t-muted">O'yinchini har soniyada qiziqtirib turuvchi sehrli muvozanat.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Game Design Ishlab Chiqish Sxemasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="20" y="65" width="180" height="110" rx="8" class="fn ln"></rect>
+      <text x="110" y="100" class="t-head" text-anchor="middle">O'yin G'oyasi</text>
+      <text x="110" y="125" class="t-muted" text-anchor="middle">Konsept va janr</text>
+      <text x="110" y="150" class="t-accent" text-anchor="middle">Auditoriya tahlili</text>
+
+      <line x1="200" y1="120" x2="310" y2="120" class="la ar-a flowing"></line>
+      <text x="255" y="105" class="t-accent" text-anchor="middle">GDD</text>
+
+      <rect x="310" y="45" width="220" height="150" rx="8" class="fa la"></rect>
+      <text x="420" y="80" class="t-head" text-anchor="middle">Game Design Tizimi</text>
+      <text x="420" y="105" class="t-muted" text-anchor="middle">O'yin qoidalari va mexanika</text>
+      <text x="420" y="130" class="t-accent" text-anchor="middle">Level Design va Balans</text>
+      <text x="420" y="155" class="t-muted" text-anchor="middle">UI &amp; UX arxitekturasi</text>
+
+      <line x1="530" y1="120" x2="610" y2="120" class="lg ar-g flowing"></line>
+
+      <rect x="610" y="65" width="170" height="110" rx="8" class="fg lg"></rect>
+      <text x="695" y="100" class="t-head" text-anchor="middle">O'yin Tajribasi</text>
+      <text x="695" y="125" class="t-muted" text-anchor="middle">"Flow" holati</text>
+      <text x="695" y="150" class="t-accent" text-anchor="middle">Hayajon va qoniqish</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Game Designer Kasbiy Roli</h1>
+  <p>Loyiha "rejissyori", jamoa yetakchisi va qoidalar muallifi</p>
+</section>
+
+<section>
+  <h2>O'yin dizaynerining vazifalari</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="trophy"></i></div>
+      <h3>O'yin Rejissyori</h3>
+      <p>Dasturchilar, 2D/3D rassomlar va ovoz muhandislari ishini yagona maqsad sari birlashtiradi.</p>
+      <p class="t-muted">Har bir xodim o'yinning umumiy qarashini (Vision) aniq tushunishini ta'minlaydi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="swords"></i></div>
+      <h3>Qoidalar va Muvozanat (Balance)</h3>
+      <p>Qahramon kuchi, dushmanlar xatti-harakati va mukofotlar miqdorini doimiy sozlab boradi.</p>
+      <p class="t-muted">O'yinda biron bir qurol yoki personaj nohaq ustun bo'lib qolmasligi shart.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>G'oyadan o'yingacha bosqichlar</h2>
+  <div class="stepper">
+    <div class="step fragment fade-up">
+      <div class="num">1</div>
+      <h3>G'oya va Konsept</h3>
+      <p>O'yin qanday bo'ladi, bosh qahramon kim va o'yinchi qanday emotsiyalarni his qiladi?</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">2</div>
+      <h3>GDD Yozish</h3>
+      <p>Game Design Document: barcha mexanika, qoidalar va san'at talablari yozilgan batafsil hujjat.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">3</div>
+      <h3>Prototip Yaratish</h3>
+      <p>Grafikasiz, oddiy kubiklar bilan asosiy mexanikani tezkor sinab ko'rish (Greyboxing).</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">4</div>
+      <h3>Ishlab Chiqish va Reliz</h3>
+      <p>Grafika, musiqa, animatsiya ulanadi, test qilinadi va o'yin do'konlariga yuklanadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>5 Ta Asosiy Komponent</h1>
+  <p>Gameplay, Level Design, Narratsiya, UI va UX</p>
+</section>
+
+<section>
+  <h2>O'yin Dizaynining 5 Ustuni</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 250">
+      <rect x="20" y="30" width="230" height="90" rx="8" class="fa la"></rect>
+      <text x="40" y="65" class="t-head">1. Gameplay</text>
+      <text x="40" y="95" class="t-muted">O'yinchi nima qiladi: yugurish, sakrash, jang</text>
+
+      <rect x="285" y="30" width="230" height="90" rx="8" class="fb lb"></rect>
+      <text x="305" y="65" class="t-head">2. Level Design</text>
+      <text x="305" y="95" class="t-muted">Bosqichlar, xaritalar, labirintlar va to'siqlar</text>
+
+      <rect x="550" y="30" width="230" height="90" rx="8" class="fc lc"></rect>
+      <text x="570" y="65" class="t-head">3. Narratsiya</text>
+      <text x="570" y="95" class="t-muted">Hikoya, voqealar rivoji va qahramonlar</text>
+
+      <rect x="150" y="140" width="230" height="90" rx="8" class="fg lg"></rect>
+      <text x="170" y="175" class="t-head">4. UI (Interfeys)</text>
+      <text x="170" y="205" class="t-muted">Menyular, tugmalar, sog'lik paneli va HUD</text>
+
+      <rect x="420" y="140" width="230" height="90" rx="8" class="fn ln"></rect>
+      <text x="440" y="175" class="t-head">5. UX (Tajriba)</text>
+      <text x="440" y="205" class="t-muted">O'yinchining umumiy hissiyoti va qulayligi</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Gameplay va Level Design</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-play"></i></div>
+      <h3>Gameplay: Asosiy Loop</h3>
+      <p>O'yinchi har 30 soniyada takrorlaydigan asosiy harakatlar zanjiri (Core Gameplay Loop).</p>
+      <p class="t-muted">Masalan: Dushmanni yengish $\to$ O'lja to'plash $\to$ Qahramonni kuchaytirish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>Level Design: Fazoviy Pacing</h3>
+      <p>Bosqichlardagi qiyinchiliklarning to'g'ri taqsimlanishi, o'yinchini vizual yo'naltirish.</p>
+      <p class="t-muted">Xaritalar o'yinchini adashtirmasligi, aksincha qiziqish uyg'otishi lozim.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Narratsiya, UI va UX</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="wand-sparkles"></i></div>
+      <h3>Narratsiya</h3>
+      <p>Qahramon nega bu ishni qilyapti? Dunyo tarixi va dialoglar o'yinga jon bag'ishlaydi.</p>
+      <p class="t-muted">Emotsional bog'liqlik.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="gamepad"></i></div>
+      <h3>UI (Interfeys)</h3>
+      <p>O'yinchi bilan o'yin o'rtasidagi ko'prik: ballar, xarita va inventar oynalari.</p>
+      <p class="t-muted">Intuitiv va tushunarli.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sparkles"></i></div>
+      <h3>UX (Tajriba)</h3>
+      <p>O'yin o'ynaganda odam nima his qiladi? Boshqaruvning yengilligi va reaktsiya tezligi.</p>
+      <p class="t-muted">To'liq qoniqish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>O'yin Balansi va "Flow"</h1>
+  <p>Zerikish va xavotir o'rtasidagi oltin muvozanat</p>
+</section>
+
+<section>
+  <h2>Mixay Chiksantmixayi "Flow" Nazariyasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <line x1="100" y1="200" x2="720" y2="200" class="la ar-a"></line>
+      <text x="700" y="225" class="t-head">Mahorat (Skill) &rarr;</text>
+
+      <line x1="100" y1="200" x2="100" y2="30" class="la ar-a"></line>
+      <text x="40" y="45" class="t-head">&uarr; Qiyinchilik (Challenge)</text>
+
+      <polygon points="100,200 450,80 700,40 700,90 350,160 100,200" class="fg lg"></polygon>
+      <text x="420" y="125" class="t-head" text-anchor="middle">OQIM KANALI (FLOW ZONE)</text>
+      <text x="420" y="145" class="t-accent" text-anchor="middle">O'yinchi vaqtni unutadi!</text>
+
+      <rect x="130" y="50" width="180" height="60" rx="6" class="fb lb"></rect>
+      <text x="220" y="75" class="t-head" text-anchor="middle">Xavotir Zonasi</text>
+      <text x="220" y="95" class="t-muted" text-anchor="middle">Haddan tashqari qiyin</text>
+
+      <rect x="490" y="150" width="180" height="50" rx="6" class="fn ln"></rect>
+      <text x="580" y="172" class="t-head" text-anchor="middle">Zerikish Zonasi</text>
+      <text x="580" y="190" class="t-muted" text-anchor="middle">Haddan tashqari oson</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Oson o'yin vs Balanslangan o'yin</h2>
+  <div class="flip">
+    <div class="flip-in">
+      <div class="face front">
+        <div class="icon"><i data-ic="shield"></i></div>
+        <h3>Cheksiz Kuch va Oson O'yin</h3>
+        <p>Barcha dushmanlar bir zarbada mag'lub bo'lsa va to'siq bo'lmasa nima bo'ladi?</p>
+        <p class="t-muted">O'yinchi 10 daqiqadan so'ng zerikadi va o'yinni o'chirib tashlaydi!</p>
+      </div>
+      <div class="face back">
+        <div class="icon"><i data-ic="trophy"></i></div>
+        <h3>Mukammal Balans (Flow)</h3>
+        <p>Har bir g'alaba uchun o'yinchi o'z mahoratini oshirishi kerak.</p>
+        <p class="t-accent">Qiyinchilikni yengib o'tishgina haqiqiy zavq va dopamin bag'ishlaydi!</p>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">05</div>
+  <h1>O'yin Dvijoklari</h1>
+  <p>Zamonaviy Game Engine ekotizimi va konstruktorlar</p>
+</section>
+
+<section>
+  <h2>Game Engine nima va u nimalarni beradi?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu" data-anim="pulse"></i></div>
+      <h3>Tayyor Tizimlar Majmuasi</h3>
+      <p>Fizika qonunlari (gravitatsiya, to'qnashuvlar), yorug'lik renderi va tovushlarni noldan yozish shart emas.</p>
+      <p class="t-muted">Dasturchi texnik tafsilotlarga emas, o'yin mantig'iga e'tibor qaratadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="laptop"></i></div>
+      <h3>Cross-Platform Imkoniyati</h3>
+      <p>Bitta loyihani bir vaqtning o'zida Android, iOS, Windows, Mac va konsollarga chiqarish imkoniyati.</p>
+      <p class="t-muted">Tezkor eksport va universal moslashuv.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>O'yin dvijoklari xaritasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="30" y="50" width="160" height="140" rx="8" class="fa la"></rect>
+      <text x="110" y="85" class="t-head" text-anchor="middle">Unity</text>
+      <text x="110" y="115" class="t-accent" text-anchor="middle">C# Tili</text>
+      <text x="110" y="145" class="t-muted" text-anchor="middle">2D va 3D</text>
+      <text x="110" y="170" class="t-muted" text-anchor="middle">Mobil yetakchi</text>
+
+      <rect x="220" y="50" width="160" height="140" rx="8" class="fb lb"></rect>
+      <text x="300" y="85" class="t-head" text-anchor="middle">Unreal Engine</text>
+      <text x="300" y="115" class="t-accent" text-anchor="middle">C++ / Blueprints</text>
+      <text x="300" y="145" class="t-muted" text-anchor="middle">Fotorealistik 3D</text>
+      <text x="300" y="170" class="t-muted" text-anchor="middle">AAA gigantlar</text>
+
+      <rect x="410" y="50" width="160" height="140" rx="8" class="fc lc"></rect>
+      <text x="490" y="85" class="t-head" text-anchor="middle">Godot Engine</text>
+      <text x="490" y="115" class="t-accent" text-anchor="middle">GDScript / Bepul</text>
+      <text x="490" y="145" class="t-muted" text-anchor="middle">Open-Source</text>
+      <text x="490" y="170" class="t-muted" text-anchor="middle">Yengil va mustaqil</text>
+
+      <rect x="600" y="50" width="170" height="140" rx="8" class="fg lg"></rect>
+      <text x="685" y="85" class="t-head" text-anchor="middle">Construct 3</text>
+      <text x="685" y="115" class="t-accent" text-anchor="middle">Kodsiz (No-Code)</text>
+      <text x="685" y="145" class="t-muted" text-anchor="middle">2D Boshlovchilar</text>
+      <text x="685" y="170" class="t-muted" text-anchor="middle">Tezkor prototip</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Bilimingizni sinang</h2>
+  <div class="quiz">
+    <div class="q">O'yin qoidalari, mexanikasi va umumiy hissiy tajribasini loyihalashtiruvchi mutaxassis kim?</div>
+    <div class="opts">
+      <div class="opt">DevOps muhandisi</div>
+      <div class="opt" data-ok>Game Designer (O'yin dizayneri)</div>
+      <div class="opt">Tizim administratori</div>
+      <div class="opt">Database Administrator</div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Amaliy topshiriqlar</h2>
+  <div class="task fragment fade-up">
+    <span class="level easy">Oson</span>
+    <p>O'zingiz yoqtirgan bitta mobil o'yinni o'yin dizaynining 5 ta komponenti bo'yicha tahlil qiling.</p>
+  </div>
+  <div class="task fragment fade-up">
+    <span class="level mid">O'rta</span>
+    <p>O'yinda bitta qobiliyat haddan tashqari kuchli (overpowered) bo'lib qolsa, qanday muvozanatlash usullarini qo'llaysiz?</p>
+  </div>
+  <div class="task fragment fade-up">
+    <span class="level hard">Qiyin</span>
+    <p>Yangi o'yin g'oyasi uchun 1 sahifalik konsepsiya (Pitch) yozing: janr, maqsad, mexanika va dvijok tanlovi.</p>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="gamepad-2"></i></div>
+      <h3>Bugun Nimalarni Bildik?</h3>
+      <p>Game Design tushunchasi va o'yin industriyasi ahamiyati.</p>
+      <p class="t-muted">5 ta komponent: Gameplay, Level Design, Narratsiya, UI, UX.</p>
+      <p class="t-muted">Flow holati va zamonaviy o'yin dvijoklari (Unity, Unreal, Godot).</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="trophy"></i></div>
+      <h3>Uyga Vazifa</h3>
+      <p>Bitta o'yinni tahlil qilish va uning dizayndagi 3 ta ustunligini yozish.</p>
+      <p class="t-accent">Keyingi dars: O'yinlarning tarixi va janrlar tasnifi!</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>3-hafta testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>3-hafta testi</h1>
+  <p class="muted">20 ta savol &middot; taxminan 18 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/20</h2>
+  <div class="quiz">
+    <p class="q"><code>git checkout -b feature-x</code> buyrug'i nimaga teng?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>git switch -c feature-x</code></button>
+      <button class="opt" type="button"><code>git branch -d feature-x</code></button>
+      <button class="opt" type="button"><code>git switch main</code></button>
+      <button class="opt" type="button"><code>git merge feature-x</code></button>
+    </div>
+    <div class="explain">Ikkalasi ham branch yaratib, darhol unga o'tadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/20</h2>
+  <div class="quiz">
+    <p class="q">Merge konfliktini hal qilishning to'g'ri algoritmi qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat <code>git push</code> qilish</button>
+      <button class="opt" type="button" data-ok>Faylni tahrirlab belgilarni o'chirish, <code>git add</code>, <code>git commit</code></button>
+      <button class="opt" type="button">Belgilarni qoldirib <code>git commit</code> qilish</button>
+      <button class="opt" type="button">Branchni <code>-D</code> bilan o'chirish</button>
+    </div>
+    <div class="explain">Kerakli kod qoldiriladi, <code>&lt;&lt;&lt;</code>, <code>===</code>, <code>&gt;&gt;&gt;</code> belgilari olib tashlanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/20</h2>
+  <div class="quiz">
+    <p class="q">Bog'langan masofaviy manzillarni ko'rish uchun qaysi buyruq?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>git config --list</code></button>
+      <button class="opt" type="button"><code>git log --oneline</code></button>
+      <button class="opt" type="button" data-ok><code>git remote -v</code></button>
+      <button class="opt" type="button"><code>git status -r</code></button>
+    </div>
+    <div class="explain">Natijada <code>origin</code> uchun fetch va push manzillari chiqadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/20</h2>
+  <div class="quiz">
+    <p class="q"><code>git clone &lt;url&gt;</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat oxirgi commitni o'chiradi</button>
+      <button class="opt" type="button">Yangi branch yaratadi</button>
+      <button class="opt" type="button">Konfliktni hal qiladi</button>
+      <button class="opt" type="button" data-ok>Masofaviy repozitoriyaning to'liq nusxasini kompyuterga ko'chiradi</button>
+    </div>
+    <div class="explain">Clone tarixi bilan birga butun repozitoriyani yuklab oladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/20</h2>
+  <div class="quiz">
+    <p class="q">Branch yaratish nega bir necha millisekund vaqt oladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Fayllar nusxalanmaydi, faqat yangi havola hosil bo'ladi</button>
+      <button class="opt" type="button">Git faqat bo'sh branch yaratadi</button>
+      <button class="opt" type="button">Branch GitHub da yaratiladi</button>
+      <button class="opt" type="button">Barcha fayllar siqiladi</button>
+    </div>
+    <div class="explain">Branch — taxminan 40 baytlik ko'rsatkich.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/20</h2>
+  <div class="quiz">
+    <p class="q">Nega yangi funksiyani bevosita <code>main</code> branchda yozish xavfli hisoblanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>main</code> da commit qilib bo'lmaydi</button>
+      <button class="opt" type="button" data-ok><code>main</code> doimo barqaror va ishchi holatda bo'lishi shart</button>
+      <button class="opt" type="button">Git <code>main</code> ni avtomatik o'chiradi</button>
+      <button class="opt" type="button"><code>main</code> faqat GitHub da mavjud</button>
+    </div>
+    <div class="explain">Tajribalar <code>feature branch</code> da qilinib, tekshirilgach <code>main</code> ga qo'shiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/20</h2>
+  <div class="quiz">
+    <p class="q">Quyidagilardan qaysi biri OSI ning 5-qatlamiga (Session) tegishli vazifa?</p>
+    <div class="opts">
+      <button class="opt" type="button">Marshrutlash va IP manzillash</button>
+      <button class="opt" type="button">Signallarni kabel orqali uzatish</button>
+      <button class="opt" type="button" data-ok>Aloqa seansini ochish, ushlab turish va yopish</button>
+      <button class="opt" type="button">Portlar va oqimni boshqarish</button>
+    </div>
+    <div class="explain">5-qatlam ikki tizim orasidagi seans bilan ishlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/20</h2>
+  <div class="quiz">
+    <p class="q">Elektr, optik yoki radio signallar va kabellar OSI ning qaysi qatlamida?</p>
+    <div class="opts">
+      <button class="opt" type="button">2-qatlam, Data Link</button>
+      <button class="opt" type="button">3-qatlam, Network</button>
+      <button class="opt" type="button">4-qatlam, Transport</button>
+      <button class="opt" type="button" data-ok>1-qatlam, Physical</button>
+    </div>
+    <div class="explain">Physical qatlam bitlarni (0 va 1) jismoniy muhitda uzatadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/20</h2>
+  <div class="quiz">
+    <p class="q">IP (IPv4, IPv6) va ICMP protokollari TCP/IP ning qaysi qatlamiga kiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Internet qatlami (OSI ning 3-qatlami)</button>
+      <button class="opt" type="button">Transport qatlami</button>
+      <button class="opt" type="button">Application qatlami</button>
+      <button class="opt" type="button">Network Access qatlami</button>
+    </div>
+    <div class="explain">TCP va UDP Transport qatlamiga kiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/20</h2>
+  <div class="quiz">
+    <p class="q">Qabul qiluvchi kompyuter har qatlamda sarlavhani yechib oladi. Bu jarayon nima deyiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Enkapsulyatsiya</button>
+      <button class="opt" type="button" data-ok>Dekapsulyatsiya</button>
+      <button class="opt" type="button">Fragmentatsiya</button>
+      <button class="opt" type="button">Kompilyatsiya</button>
+    </div>
+    <div class="explain">Jo'natishda enkapsulyatsiya, qabul qilishda dekapsulyatsiya.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 11/20</h2>
+  <div class="quiz">
+    <p class="q"><code>172.16.0.0 – 172.31.255.255</code> diapazoni qaysi muhitda keng ishlatiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat uy Wi-Fi tarmoqlarida</button>
+      <button class="opt" type="button">Global Internetda ommaviy manzil sifatida</button>
+      <button class="opt" type="button" data-ok>Docker konteynerlarining standart tarmog'ida</button>
+      <button class="opt" type="button">IPv6 ga o'tishda</button>
+    </div>
+    <div class="explain">B sinf xususiy diapazoni o'rta kompaniyalarda va Docker da uchraydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 12/20</h2>
+  <div class="quiz">
+    <p class="q">Qism tarmoqda nega 2 ta manzil xostlarga berilmaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Biri DNS, ikkinchisi Gateway uchun</button>
+      <button class="opt" type="button">Ular IPv6 uchun ajratilgan</button>
+      <button class="opt" type="button">Ular har doim buzilgan bo'ladi</button>
+      <button class="opt" type="button" data-ok>Biri Network ID, ikkinchisi Broadcast uchun band</button>
+    </div>
+    <div class="explain">Shuning uchun xostlar soni N = 2^H − 2.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 13/20</h2>
+  <div class="quiz">
+    <p class="q"><code>ping -c 4 8.8.8.8</code> dagi <code>-c 4</code> nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Faqat 4 ta paket yuborish</button>
+      <button class="opt" type="button">4 soniya kutish</button>
+      <button class="opt" type="button">4 ta router orqali o'tish</button>
+      <button class="opt" type="button">4 ta port tekshirish</button>
+    </div>
+    <div class="explain">Aks holda <code>ping</code> Linuxda to'xtovsiz davom etadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 14/20</h2>
+  <div class="quiz">
+    <p class="q"><code>curl -v https://api.site.uz</code> qo'shimcha nimani ko'rsatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat status kodini</button>
+      <button class="opt" type="button" data-ok>SSL qo'l siqishi (handshake) va to'liq muloqotni</button>
+      <button class="opt" type="button">Server diskidagi fayllarni</button>
+      <button class="opt" type="button">Marshrutdagi routerlarni</button>
+    </div>
+    <div class="explain"><code>-v</code> (verbose) batafsil chiqish beradi, <code>-I</code> esa faqat sarlavhalarni.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 15/20</h2>
+  <div class="quiz">
+    <p class="q">Traceroute ostida har bir oraliq qadam (hop) nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Server porti</button>
+      <button class="opt" type="button">Ochiq xizmat</button>
+      <button class="opt" type="button" data-ok>Paket o'tgan router</button>
+      <button class="opt" type="button">MAC manzil</button>
+    </div>
+    <div class="explain">Uzilish qaysi routerda ekanini aynan hoplar ko'rsatadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 16/20</h2>
+  <div class="quiz">
+    <p class="q">Serverga ulanib bo'lmayapti. Xizmat shu serverda kerakli portni tinglayaptimi, buni qanday tekshirasiz?</p>
+    <div class="opts">
+      <button class="opt" type="button">Serverda <code>git log</code></button>
+      <button class="opt" type="button">Serverda <code>chmod 755</code></button>
+      <button class="opt" type="button">Serverda <code>alias</code></button>
+      <button class="opt" type="button" data-ok>Serverda <code>ss -tulpn</code></button>
+    </div>
+    <div class="explain"><code>ss -tulpn</code> TCP/UDP bo'yicha tinglanayotgan portlar va jarayonlarni ko'rsatadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 17/20</h2>
+  <div class="quiz">
+    <p class="q"><code>ss -tulpn</code> ustunidagi <code>tcp</code> yoki <code>udp</code> (Netid) OSI ning qaysi qatlamiga mos?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Transport (4-qatlam)</button>
+      <button class="opt" type="button">Network (3-qatlam)</button>
+      <button class="opt" type="button">Application (7-qatlam)</button>
+      <button class="opt" type="button">Data Link (2-qatlam)</button>
+    </div>
+    <div class="explain">TCP va UDP — transport protokollari, portlar ham shu qatlamda.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 18/20</h2>
+  <div class="quiz">
+    <p class="q"><code>curl -I</code> javobida <code>HTTP/2 200</code> ko'rinadi. HTTP OSI ning qaysi qatlamiga tegishli?</p>
+    <div class="opts">
+      <button class="opt" type="button">Transport (4-qatlam)</button>
+      <button class="opt" type="button" data-ok>Application (7-qatlam)</button>
+      <button class="opt" type="button">Network (3-qatlam)</button>
+      <button class="opt" type="button">Physical (1-qatlam)</button>
+    </div>
+    <div class="explain">HTTP, HTTPS, SSH, DNS, FTP — amaliy qatlam protokollari.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 19/20</h2>
+  <div class="quiz">
+    <p class="q">Kompyuter <code>192.168.1.50/24</code>, router <code>192.168.1.1</code>. Nega ular bir tarmoqda hisoblanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ikkalasi ham ommaviy IP</button>
+      <button class="opt" type="button">Router har doim kompyuter bilan bir xil IP ga ega bo'ladi</button>
+      <button class="opt" type="button" data-ok>Ikkalasi ham <code>192.168.1.0/24</code> tarmog'iga (xost qismi farq qiladi) tegishli</button>
+      <button class="opt" type="button">Chunki <code>ping</code> ishlaydi</button>
+    </div>
+    <div class="explain"><code>/24</code> da birinchi uch oktet tarmoq qismi, oxirgisi xost qismi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 20/20</h2>
+  <div class="quiz">
+    <p class="q">Git <code>origin</code> ga <code>https://</code> manzil orqali <code>push</code> qilinadi. Bu manzildagi protokol qaysi qatlamda?</p>
+    <div class="opts">
+      <button class="opt" type="button">Data Link (2-qatlam)</button>
+      <button class="opt" type="button">Physical (1-qatlam)</button>
+      <button class="opt" type="button">Network (3-qatlam)</button>
+      <button class="opt" type="button" data-ok>Application (7-qatlam)</button>
+    </div>
+    <div class="explain">HTTPS amaliy qatlam protokoli; uning ostida TCP, IP va freymlar ishlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>20 dan 18+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>20 dan 11-17</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>10 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: Git branchlar va remote (7-dars), OSI/TCP-IP (8-dars), IP manzillash va diagnostika (9-dars).</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

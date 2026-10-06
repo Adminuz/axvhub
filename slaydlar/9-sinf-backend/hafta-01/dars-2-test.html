@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>2-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>2-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">1-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Quyidagilardan qaysi biri <code>int</code> toifasiga misol?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>2026</code></button>
+      <button class="opt" type="button"><code>3.14</code></button>
+      <button class="opt" type="button"><code>"2026"</code></button>
+      <button class="opt" type="button"><code>True</code></button>
+    </div>
+    <div class="explain"><code>int</code> — musbat, manfiy yoki nol bo'lgan butun sonlar.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q"><code>print(type(3.14))</code> nima chiqaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>&lt;class 'int'&gt;</code></button>
+      <button class="opt" type="button" data-ok><code>&lt;class 'float'&gt;</code></button>
+      <button class="opt" type="button"><code>&lt;class 'str'&gt;</code></button>
+      <button class="opt" type="button"><code>&lt;class 'bool'&gt;</code></button>
+    </div>
+    <div class="explain">Nuqtali o'nli kasr <code>float</code> toifasiga kiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>bool</code> toifasi qanday qiymatlar qabul qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Istalgan butun son</button>
+      <button class="opt" type="button">Faqat <code>0</code> va <code>1</code> matn ko'rinishida</button>
+      <button class="opt" type="button" data-ok>Faqat <code>True</code> yoki <code>False</code></button>
+      <button class="opt" type="button">Istalgan matn</button>
+    </div>
+    <div class="explain"><code>bool</code> — mantiqiy toifa, faqat rost yoki yolg'on.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>8 / 2</code> ifodasining natijasi qanday?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>4</code> (int)</button>
+      <button class="opt" type="button"><code>4.5</code></button>
+      <button class="opt" type="button"><code>16</code></button>
+      <button class="opt" type="button" data-ok><code>4.0</code> (float)</button>
+    </div>
+    <div class="explain">Oddiy bo'lish <code>/</code> har doim <code>float</code> natija qaytaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>7 // 3</code> natijasi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>2</code></button>
+      <button class="opt" type="button"><code>2.33</code></button>
+      <button class="opt" type="button"><code>1</code></button>
+      <button class="opt" type="button"><code>3</code></button>
+    </div>
+    <div class="explain"><code>//</code> butun bo'lish: kasr qismi tashlab yuboriladi, <code>7 // 3 = 2</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>15 % 4</code> natijasi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>0</code></button>
+      <button class="opt" type="button" data-ok><code>3</code></button>
+      <button class="opt" type="button"><code>3.75</code></button>
+      <button class="opt" type="button"><code>4</code></button>
+    </div>
+    <div class="explain"><code>15 = 4 * 3 + 3</code>, qoldiq 3.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Pythonda darajaga oshirish uchun qaysi operator ishlatiladi? <code>5</code> ning kvadrati qanday yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>5 ^ 2</code></button>
+      <button class="opt" type="button"><code>5 // 2</code></button>
+      <button class="opt" type="button" data-ok><code>5 ** 2</code></button>
+      <button class="opt" type="button"><code>5 % 2</code></button>
+    </div>
+    <div class="explain">Daraja operatori <code>**</code>; <code>5 ** 2</code> natijasi <code>25</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>print(2 + 3 * 2 ** 2)</code> natijasi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>50</code></button>
+      <button class="opt" type="button"><code>20</code></button>
+      <button class="opt" type="button"><code>10</code></button>
+      <button class="opt" type="button" data-ok><code>14</code></button>
+    </div>
+    <div class="explain">Avval <code>**</code> (4), keyin <code>*</code> (12), oxirida <code>+</code> (14).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>10 % 2</code> natijasi <code>0</code> bo'lsa, bu son haqida nima deyish mumkin?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Son juft</button>
+      <button class="opt" type="button">Son toq</button>
+      <button class="opt" type="button">Son manfiy</button>
+      <button class="opt" type="button">Son kasr</button>
+    </div>
+    <div class="explain">Qoldiq nol bo'lsa, son 2 ga qoldiqsiz bo'linadi, ya'ni juft.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Qaytim <code>53000</code> so'm. Undagi 1000 so'mliklar sonini (10 000 lik ajratilgandan keyin) qaysi ifoda to'g'ri topadi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>qaytim // 1000</code></button>
+      <button class="opt" type="button" data-ok><code>(qaytim % 10000) // 1000</code></button>
+      <button class="opt" type="button"><code>qaytim % 1000</code></button>
+      <button class="opt" type="button"><code>qaytim / 10000</code></button>
+    </div>
+    <div class="explain"><code>53000 % 10000 = 3000</code>, <code>3000 // 1000 = 3</code>. Qolgan variantlar 53, 0 yoki 5.3 beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: toifalar (<code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>), <code>/</code> va <code>//</code> farqi, <code>%</code> va <code>**</code>, amallar ketma-ketligi.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

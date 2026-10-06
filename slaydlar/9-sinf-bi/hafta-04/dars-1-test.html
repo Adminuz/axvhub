@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>1-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>1-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">Business Intelligence</span><span class="badge">4-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Redundansiya nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ma'lumotning shifrlanishi</button>
+      <button class="opt" type="button">Jadvalni o'chirish</button>
+      <button class="opt" type="button" data-ok>Bir xil ma'lumotning bazada ortiqcha takrorlanishi</button>
+      <button class="opt" type="button">Ma'lumotning zaxira nusxasi</button>
+    </div>
+    <div class="explain">Masalan, mijoz telefoni har bir buyurtma qatorida takrorlanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Mijoz telefoni faqat bitta qatorda yangilanib, boshqalarida eskisi qoldi. Bu qanday anomaliya?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Update anomaly</button>
+      <button class="opt" type="button">Insert anomaly</button>
+      <button class="opt" type="button">Delete anomaly</button>
+      <button class="opt" type="button">Anomaliya emas</button>
+    </div>
+    <div class="explain">Takrorlangan ma'lumot qisman yangilanganda ziddiyat paydo bo'ladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Hali hech kim sotib olmagan yangi mahsulotni buyurtmalar jadvaliga qo'shib bo'lmaydi. Bu qaysi anomaliya?</p>
+    <div class="opts">
+      <button class="opt" type="button">Update anomaly</button>
+      <button class="opt" type="button">Delete anomaly</button>
+      <button class="opt" type="button" data-ok>Insert anomaly</button>
+      <button class="opt" type="button">Referential anomaly</button>
+    </div>
+    <div class="explain">Bir ma'lumotni (mahsulot) boshqasisiz (buyurtma) qo'shib bo'lmasligi — Insert anomaly.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">1NF ning asosiy talabi qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Har jadvalda kamida 3 ta FK</button>
+      <button class="opt" type="button">Barcha ustunlar raqamli</button>
+      <button class="opt" type="button" data-ok>Har katakda bitta atomar qiymat, takrorlanuvchi ustunlar guruhi yo'q</button>
+      <button class="opt" type="button">Jadvalda faqat bitta qator</button>
+    </div>
+    <div class="explain">«Sichqoncha, Klaviatura» kabi bir katakdagi ro'yxat 1NF ni buzadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">2NF qanday bog'liqlikni yo'qotadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Kalit bo'lmagan ustunlar orasidagi bog'liqlikni</button>
+      <button class="opt" type="button" data-ok>Kompozit kalitning faqat bir qismiga bog'liqlikni (qisman bog'liqlik)</button>
+      <button class="opt" type="button">Jadvallar orasidagi barcha bog'lanishlarni</button>
+      <button class="opt" type="button">NULL qiymatlarni</button>
+    </div>
+    <div class="explain">2NF — butun kalitga bog'liqlik; tranzitiv bog'liqlik 3NF da yo'qotiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>Xodimlar(XodimID, Ism, BolimID, BolimNomi)</code> — BolimNomi BolimID ga bog'liq. Qaysi shakl buzilgan?</p>
+    <div class="opts">
+      <button class="opt" type="button">1NF</button>
+      <button class="opt" type="button">2NF</button>
+      <button class="opt" type="button" data-ok>3NF</button>
+      <button class="opt" type="button">Hech qaysi</button>
+    </div>
+    <div class="explain">Kalit bo'lmagan ustun boshqa kalit bo'lmagan ustunga bog'liq — tranzitiv bog'liqlik.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">«Kalitga, butun kalitga, faqat kalitga» qoidasidagi «faqat kalitga» qaysi shaklga tegishli?</p>
+    <div class="opts">
+      <button class="opt" type="button">1NF</button>
+      <button class="opt" type="button">2NF</button>
+      <button class="opt" type="button" data-ok>3NF</button>
+      <button class="opt" type="button">Star schema</button>
+    </div>
+    <div class="explain">1NF — kalitga, 2NF — butun kalitga, 3NF — faqat kalitga.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Kassa yoki bank kabi tranzaksion (OLTP) tizimlarda model odatda qanday bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">To'liq denormalizatsiyalangan bitta jadval</button>
+      <button class="opt" type="button">Faqat Excel fayllar</button>
+      <button class="opt" type="button">Faqat Star schema</button>
+      <button class="opt" type="button" data-ok>Normalizatsiyalangan (3NF)</button>
+    </div>
+    <div class="explain">OLTP da yaxlitlik va takrorlanmaslik ustuvor — 3NF.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Star schema markazidagi jadval qanday ataladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Fact jadval</button>
+      <button class="opt" type="button">Dimension jadval</button>
+      <button class="opt" type="button">Junction jadval</button>
+      <button class="opt" type="button">Lookup jadval</button>
+    </div>
+    <div class="explain">Fact jadvalda raqamlar (Soni, Summa) va Dimension'larga FK lar turadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Nega BI hisobotlari uchun ba'zan denormalizatsiya qilinadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>O'qish tezligi va soddalik uchun</button>
+      <button class="opt" type="button">Ma'lumot hajmini oshirish uchun</button>
+      <button class="opt" type="button">Cheklovlarni o'chirish uchun</button>
+      <button class="opt" type="button">Parollarni yashirish uchun</button>
+    </div>
+    <div class="explain">Tahlilda ko'p o'qiladi; kamroq bog'lash bilan tezroq natija olinadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: redundansiya, Update/Insert/Delete anomaliyalari, 1NF, 2NF, 3NF, OLTP va Star schema.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

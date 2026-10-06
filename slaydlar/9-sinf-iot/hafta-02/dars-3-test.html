@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>6-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>6-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">IoT</span><span class="badge">2-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Arduino Uno platasida nechta raqamli kirish/chiqish pini bor?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>14 ta (0–13)</button>
+      <button class="opt" type="button">6 ta</button>
+      <button class="opt" type="button">54 ta</button>
+      <button class="opt" type="button">100 ta</button>
+    </div>
+    <div class="explain">Arduino Uno: ATmega328P, 16 MGts, 14 raqamli pin.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">GPIO nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Maxsus Wi-Fi moduli</button>
+      <button class="opt" type="button" data-ok>Kirish yoki chiqish rejimida ishlay oladigan umumiy maqsadli pinlar</button>
+      <button class="opt" type="button">Quvvat adapteri</button>
+      <button class="opt" type="button">Grafik protsessor</button>
+    </div>
+    <div class="explain">GPIO — General Purpose Input/Output.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>void setup()</code> funksiyasi qachon bajariladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Doimiy, cheksiz takrorlanadi</button>
+      <button class="opt" type="button">Har 1 soniyada</button>
+      <button class="opt" type="button" data-ok>Dastur boshida faqat 1 marta</button>
+      <button class="opt" type="button">Faqat tugma bosilganda</button>
+    </div>
+    <div class="explain">Dastlabki sozlashlar (pinMode) setup() da yoziladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>void loop()</code> qanday ishlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Bir marta bajariladi</button>
+      <button class="opt" type="button">Faqat xatolik bo'lganda ishlaydi</button>
+      <button class="opt" type="button">Faqat kompilyatsiya paytida</button>
+      <button class="opt" type="button" data-ok>Cheksiz takrorlanuvchi asosiy ishchi sikl</button>
+    </div>
+    <div class="explain">Dastur to'xtovsiz loop() ni aylantiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">9-pinni chiqish rejimiga sozlovchi buyruq qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>pinMode(9, OUTPUT);</code></button>
+      <button class="opt" type="button"><code>digitalRead(9);</code></button>
+      <button class="opt" type="button"><code>delay(9);</code></button>
+      <button class="opt" type="button"><code>pinMode(OUTPUT, 9);</code></button>
+    </div>
+    <div class="explain">Sintaksis: pinMode(pin, rejim).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>digitalWrite(LED, 1);</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">LED ni o'chiradi</button>
+      <button class="opt" type="button" data-ok>Pinga HIGH beradi, LED yonadi</button>
+      <button class="opt" type="button">Pin holatini o'qiydi</button>
+      <button class="opt" type="button">1 soniya kutadi</button>
+    </div>
+    <div class="explain">1 = HIGH, 0 = LOW.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>digitalWrite(LED,1); delay(2000); digitalWrite(LED,0); delay(1000);</code> — LED qanday ishlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">1 soniya yonadi, 2 soniya o'chadi</button>
+      <button class="opt" type="button">2 millisekund yonadi</button>
+      <button class="opt" type="button" data-ok>2 soniya yonadi, 1 soniya o'chadi</button>
+      <button class="opt" type="button">Doim yonib turadi</button>
+    </div>
+    <div class="explain">delay millisekundda: 2000 ms = 2 s.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">R = (5V − 2V) / 0.015 A hisobi qancha natija beradi va qaysi standart rezistor olinadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">20 Ω, yaqin 22 Ω</button>
+      <button class="opt" type="button">2 kΩ</button>
+      <button class="opt" type="button">75 Ω, yaqin 100 Ω</button>
+      <button class="opt" type="button" data-ok>200 Ω, yaqin standart 220 Ω</button>
+    </div>
+    <div class="explain">3 V / 0.015 A = 200 Ω; 220 Ω ni tanlaymiz.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Arduino pinlari yonidagi <code>~</code> belgisi nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>PWM imkoniyati borligini</button>
+      <button class="opt" type="button">Pin ishlamasligini</button>
+      <button class="opt" type="button">Pin GND ekanini</button>
+      <button class="opt" type="button">Pin faqat kirish ekanini</button>
+    </div>
+    <div class="explain">Tilda belgisi PWM pinlarini ko'rsatadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>pinMode(LED, OUTPUT);</code> qatori olib tashlansa nima ko'rinadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">LED yanada yorqin yonadi</button>
+      <button class="opt" type="button" data-ok>LED juda xira yonadi</button>
+      <button class="opt" type="button">Dastur kompilyatsiya bo'lmaydi va hech narsa chiqmaydi</button>
+      <button class="opt" type="button">LED portlaydi</button>
+    </div>
+    <div class="explain">Pin chiqish rejimiga o'tmagani uchun to'liq tok berilmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: Arduino Uno, GPIO, setup()/loop(), pinMode, digitalWrite, delay.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

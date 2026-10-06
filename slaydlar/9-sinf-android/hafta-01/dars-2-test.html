@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>2-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>2-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">Android dasturlash</span><span class="badge">1-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Android arxitekturasining eng quyi (poydevor) qatlami qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Linux Kernel</button>
+      <button class="opt" type="button">Applications</button>
+      <button class="opt" type="button">Java API Framework</button>
+      <button class="opt" type="button">Android Runtime</button>
+    </div>
+    <div class="explain">Linux Kernel drayverlar, xotira va jarayonlarni boshqaradi; qolgan qatlamlar uning ustiga quriladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Android arxitekturasi nechta asosiy qatlamdan iborat?</p>
+    <div class="opts">
+      <button class="opt" type="button">3 ta</button>
+      <button class="opt" type="button" data-ok>5 ta</button>
+      <button class="opt" type="button">4 ta</button>
+      <button class="opt" type="button">7 ta</button>
+    </div>
+    <div class="explain">Linux Kernel, HAL, Runtime va Native kutubxonalar, Java API Framework, Applications.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">HAL (Hardware Abstraction Layer) ning vazifasi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ilovalarni Google Play'ga yuklash</button>
+      <button class="opt" type="button">Java kodini JSON ga aylantirish</button>
+      <button class="opt" type="button" data-ok>Apparat xususiyatlarini yashirib, yuqori qatlamga standart interfeys berish</button>
+      <button class="opt" type="button">Ekran dizaynini XML da saqlash</button>
+    </div>
+    <div class="explain">Dasturchi bitta Camera API yozadi, HAL esa uni Samsung yoki Sony sensoriga moslab beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi runtime Android 5.0 dan boshlab asosiy bo'ldi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Dalvik (DVM)</button>
+      <button class="opt" type="button">JVM</button>
+      <button class="opt" type="button">WebKit</button>
+      <button class="opt" type="button" data-ok>ART (Android Runtime)</button>
+    </div>
+    <div class="explain">Dalvik Android 4.4 gacha ishlatilgan, ART esa 5.0 dan boshlab kiritilgan.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">AOT (Ahead-of-Time) kompilyatsiyasi qachon bajariladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Ilova o'rnatilayotgan paytda</button>
+      <button class="opt" type="button">Har safar tugma bosilganda</button>
+      <button class="opt" type="button">Faqat telefon o'chirilganda</button>
+      <button class="opt" type="button">Ilova o'chirilganda</button>
+    </div>
+    <div class="explain">ART ilovani o'rnatishda mashina kodiga oldindan o'giradi, shuning uchun u tez ochiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Androidda kompilyatsiya qilingan kod qaysi formatga aylanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>.exe</code></button>
+      <button class="opt" type="button" data-ok><code>.dex</code> (Dalvik Executable)</button>
+      <button class="opt" type="button"><code>.html</code></button>
+      <button class="opt" type="button"><code>.iso</code></button>
+    </div>
+    <div class="explain">.dex fayllarini Android Runtime tushunadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Ilovalarning hayotiy sikli va orqaga qaytish stekini qaysi komponent boshqaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Notification Manager</button>
+      <button class="opt" type="button">Content Provider</button>
+      <button class="opt" type="button" data-ok>Activity Manager</button>
+      <button class="opt" type="button">Resource Manager</button>
+    </div>
+    <div class="explain">Notification Manager bildirishnomalar, Content Provider ma'lumot almashish bilan shug'ullanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Til va tungi rejim kabi kichik sozlamalar qayerda saqlanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Firebase Realtime Database</button>
+      <button class="opt" type="button">WebKit</button>
+      <button class="opt" type="button">Surface Manager</button>
+      <button class="opt" type="button" data-ok>SharedPreferences / DataStore</button>
+    </div>
+    <div class="explain">Kichik sozlamalar kalit-qiymat juftligida SharedPreferences yoki DataStore'da saqlanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Zararli ilova nima uchun Click ilovasining shaxsiy ma'lumotlarini to'g'ridan-to'g'ri o'qiy olmaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Har bir ilova alohida UID va jarayonda ishlaydi, papka faqat o'z UID'iga ochiq</button>
+      <button class="opt" type="button">Click ilovasi har doim shifrlangan bo'ladi</button>
+      <button class="opt" type="button">Zararli ilova internetga ulana olmaydi</button>
+      <button class="opt" type="button">Telefon bir vaqtda faqat bitta ilovani ishlatadi</button>
+    </div>
+    <div class="explain">Linux fayl ruxsatlari tufayli boshqa UID uchun «Permission Denied» chiqadi; bu Application Sandbox.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Internet orqali real vaqtda sinxronlashadigan bulutli baza qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">SharedPreferences</button>
+      <button class="opt" type="button" data-ok>Firebase Realtime Database / Cloud Firestore</button>
+      <button class="opt" type="button">Faqat SQLite faylida</button>
+      <button class="opt" type="button">res/values/strings.xml</button>
+    </div>
+    <div class="explain">SQLite va Room qurilma ichida ishlaydi; Firebase esa online sinxronlashuvchi bazadir.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: 5 ta qatlam tartibi, HAL vazifasi, Dalvik va ART farqi (JIT va AOT), Sandbox va UID, ma'lumot saqlash texnologiyalari.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

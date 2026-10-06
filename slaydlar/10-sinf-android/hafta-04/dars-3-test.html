@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>12-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>12-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">4-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">CI qisqartmasi nimani anglatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Continuous Integration</button>
+      <button class="opt" type="button">Code Inspection</button>
+      <button class="opt" type="button">Central Internet</button>
+      <button class="opt" type="button">Compile Instantly</button>
+    </div>
+    <div class="explain">Continuous Integration: kodni doimiy asosiy loyihaga qo'shish va avtomatik tekshirish.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Kod qo'shilgan zahoti CI tizimi nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Kodni o'chiradi</button>
+      <button class="opt" type="button">Faqat xabar yozadi</button>
+      <button class="opt" type="button" data-ok>Kodni build qiladi, testdan o'tkazadi va tahlil qiladi</button>
+      <button class="opt" type="button">Ilovani do'konga chiqaradi</button>
+    </div>
+    <div class="explain">CI build, test, lint va scan vositalari bilan avtomatik tekshiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Continuous Deployment nimani anglatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat testlarni</button>
+      <button class="opt" type="button" data-ok>Ilovani avtomatik foydalanuvchilarga yetkazishni</button>
+      <button class="opt" type="button">Branch nomlashni</button>
+      <button class="opt" type="button">Kodni review qilishni</button>
+    </div>
+    <div class="explain">Deployment Delivery jarayonini rivojlantirib, ilovani avtomatik yetkazadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Pipeline nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Fayl turi</button>
+      <button class="opt" type="button">Gradle plagini</button>
+      <button class="opt" type="button">Emulyator</button>
+      <button class="opt" type="button" data-ok>Avtomatik bajariladigan jarayonlar ketma-ketligi</button>
+    </div>
+    <div class="explain">Masalan: checkout, build, test, natija; qo'lda ishsiz.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">GitHub Actions workflow fayli qaysi formatda?</p>
+    <div class="opts">
+      <button class="opt" type="button">XML</button>
+      <button class="opt" type="button" data-ok>YAML</button>
+      <button class="opt" type="button">JSON</button>
+      <button class="opt" type="button">Kotlin</button>
+    </div>
+    <div class="explain">Hujjatdagi namunalar <code>.yaml</code> (YAML) formatida yozilgan.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">YAML'dagi <code>on: push</code> nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Fayl o'chirilganda</button>
+      <button class="opt" type="button">Faqat qo'lda ishga tushadi</button>
+      <button class="opt" type="button" data-ok>Kod push qilinganda workflow ishga tushadi</button>
+      <button class="opt" type="button">Ilova yopilganda</button>
+    </div>
+    <div class="explain"><code>on</code> bo'limi workflow qaysi hodisalarda ishlashini belgilaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>run: ./gradlew build</code> qadami nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Gradle yordamida ilovani yig'adi (build)</button>
+      <button class="opt" type="button">Branch yaratadi</button>
+      <button class="opt" type="button">Parol so'raydi</button>
+      <button class="opt" type="button">Repo'ni klonlaydi</button>
+    </div>
+    <div class="explain">Bu qadam Gradle orqali Android loyihasini build qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Compose ekranlarining to'g'ri ishlashini pipeline'da qaysi test tekshiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Performance test</button>
+      <button class="opt" type="button">Unit test</button>
+      <button class="opt" type="button">Hech qaysi test</button>
+      <button class="opt" type="button" data-ok>UI test</button>
+    </div>
+    <div class="explain">Hujjat: UI test Compose elementlari yoki Activity/Fragment muloqotini sinaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">API kalit va tokenlar CI/CD'da qanday saqlanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Kodda ochiq yoziladi</button>
+      <button class="opt" type="button">YAML sarlavhasida</button>
+      <button class="opt" type="button" data-ok>Secrets bo'limida shifrlangan holda</button>
+      <button class="opt" type="button">README'da</button>
+    </div>
+    <div class="explain">Secrets maxfiy ma'lumotni shifrlab saqlaydi va repozitoriyaga tushib qolishini oldini oladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Jamoa kodni oyiga bir marta birlashtiradi va konfliktlar ko'p. CI bu muammoni qanday kamaytiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Branchlarni o'chiradi</button>
+      <button class="opt" type="button" data-ok>Kodni har kuni yoki har commitda tekshiradi, konfliktlar kichikligida topiladi</button>
+      <button class="opt" type="button">Jamoani qisqartiradi</button>
+      <button class="opt" type="button">Testlarni olib tashlaydi</button>
+    </div>
+    <div class="explain">Doimiy integratsiya mos kelmasliklarni erta aniqlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: CI va CD, pipeline, GitHub Actions YAML, test turlari va Secrets (12-dars).</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

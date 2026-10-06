@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>6-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>6-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf Kiberxavfsizlik · 2-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Xavfsizlik tafakkuri (Security Mindset) nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Har qanday tizim yoki harakatni potensial zaiflik nuqtai nazaridan baholash qobiliyati</button>
+      <button class="opt" type="button">Faqat qimmat uskuna sotib olish</button>
+      <button class="opt" type="button">Internetdan voz kechish</button>
+      <button class="opt" type="button">Faqat parolni yodlab olish</button>
+    </div>
+    <div class="explain">Xavfsizlik tafakkuri — tizimning eng zaif bo'g'inini oldindan ko'ra bilish va «nima noto'g'ri bo'lishi mumkin?» deb fikrlash qobiliyati.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">«Hujumchi kabi fikrlash, tizimni qanday buzish mumkinligini izlash» qaysi tamoyilga mos keladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Defensive thinking</button>
+      <button class="opt" type="button" data-ok>Adversarial thinking</button>
+      <button class="opt" type="button">Know your assets</button>
+      <button class="opt" type="button">Assume breach</button>
+    </div>
+    <div class="explain">Adversarial thinking — hujumchi nuqtai nazaridan tizim zaifliklarini izlash tamoyili.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Barcha mumkin bo'lgan belgilar kombinatsiyasini ketma-ket sinab ko'rish orqali parol topish usuli qanday ataladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Dictionary Attack</button>
+      <button class="opt" type="button">Phishing</button>
+      <button class="opt" type="button" data-ok>Brute-Force hujumi</button>
+      <button class="opt" type="button">ARP Spoofing</button>
+    </div>
+    <div class="explain">Brute-force — barcha mumkin bo'lgan kombinatsiyalarni ketma-ket avtomatik sinab ko'rish usuli.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">`nmap -sV -p- --open 192.168.1.100` buyrug'ida `-p-` parametri nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat 80-portni tekshiradi</button>
+      <button class="opt" type="button">Parollarni sinaydi</button>
+      <button class="opt" type="button">Serverni o'chirib qo'yadi</button>
+      <button class="opt" type="button" data-ok>1 dan 65535 gacha bo'lgan barcha portlarni tekshiradi</button>
+    </div>
+    <div class="explain">`-p-` standart 1000 ta port emas, balki barcha 65535 ta portni to'liq tekshirishni bildiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Hydra dasturidagi `-f` parametrining vazifasi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>To'g'ri parol topilishi bilan skanerlashni darhol to'xtatadi</button>
+      <button class="opt" type="button">Natijalarni faylga saqlaydi</button>
+      <button class="opt" type="button">Parollarni shifrlaydi</button>
+      <button class="opt" type="button">Internetni tezlashtiradi</button>
+    </div>
+    <div class="explain">`-f` (found) to'g'ri login-parol topilganda ortiqcha urinishlarni to'xtatib, vaqtni tejaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Masofaviy ish stoli (RDP, 3389-port) nima sababdan to'g'ridan-to'g'ri internetga ochiq qoldirilmasligi kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Chunki RDP internet tezligini sekinlashtiradi</button>
+      <button class="opt" type="button" data-ok>Chunki botlar doimiy ravishda bu portni skanerlab, parollarni sinaydi va zaifliklardan foydalanadi</button>
+      <button class="opt" type="button">Chunki RDP faqat Linuxda ishlaydi</button>
+      <button class="opt" type="button">RDP ochiq bo'lishi umuman xavfli emas</button>
+    </div>
+    <div class="explain">Ochiq RDP porti doimiy ravishda avtomatik botlar va xakerlar tomonidan kuzatiladi va hujumga uchraydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">haveibeenpwned.com sayti foydalanuvchi parolini tekshirganda, uning asl parolini saytga jo'natadimi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ha, parol to'liq yuboriladi</button>
+      <button class="opt" type="button">Yo'q, lekin login va parol ikkalasi ham yuboriladi</button>
+      <button class="opt" type="button" data-ok>Yo'q, k-Anonymity modeli orqali faqat xeshning bir qismi jo'natiladi</button>
+      <button class="opt" type="button">Sayt parolni avtomatik o'zgartiradi</button>
+    </div>
+    <div class="explain">k-Anonymity modeli orqali faqat xeshning boshlang'ich belgilari jo'natiladi, foydalanuvchi maxfiyligi saqlanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">«Ketma-ket 5 marta noto'g'ri parol kiritilganda hisob 15 daqiqaga bloklansin» qoidasi brute-force hujumini qanday befoyda qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Hujumchi hisobni butunlay o'chirib qo'yadi</button>
+      <button class="opt" type="button">Bu qoida hujumni tezlashtiradi</button>
+      <button class="opt" type="button">Bu qoidaning hech qanday ta'siri yo'q</button>
+      <button class="opt" type="button" data-ok>Ko'p parolni sinash uchun kerakli vaqt yuzlab soat yoki yillarga cho'zilib ketadi</button>
+    </div>
+    <div class="explain">Bloklash siyosati bilan ko'p urinishlarni sinash juda ko'p vaqt talab qiladi, bu hujumni amaliy jihatdan befoyda qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Parol menejerlari (Bitwarden, KeePass) nima sababdan tavsiya etiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Ular barcha parollarni shifrlangan holda saqlaydi, foydalanuvchiga faqat bitta kuchli Master parolni yodlash kifoya</button>
+      <button class="opt" type="button">Ular parollarni ochiq matnda saqlaydi</button>
+      <button class="opt" type="button">Ular internet tezligini oshiradi</button>
+      <button class="opt" type="button">Ular faqat bitta saytda ishlatiladi</button>
+    </div>
+    <div class="explain">Parol menejeri har bir sayt uchun unikal murakkab parol yaratib, shifrlangan omborda saqlaydi, inson faqat bitta Master parolni biladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">CTF (Capture The Flag) musobaqalari xavfsizlik tafakkurini shakllantirishda nima uchun samarali hisoblanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Chunki ularda faqat nazariy savollar beriladi</button>
+      <button class="opt" type="button" data-ok>Chunki ishtirokchi bir vaqtning o'zida hujumchi va himoyachi kabi real amaliy muammolarni yechadi</button>
+      <button class="opt" type="button">Chunki ular haqiqiy tizimlarga hujum qilishga ruxsat beradi</button>
+      <button class="opt" type="button">Chunki ularda baho qo'yilmaydi</button>
+    </div>
+    <div class="explain">CTF da qatnashchi amaliy zaifliklarni real sharoitda qidiradi va yechadi, bu nazariyadan ko'ra samaraliroq ko'nikma beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: xavfsizlik tafakkurining 5 tamoyili, brute-force va dictionary hujumlari, Nmap va Hydra, kuchli parol mezonlari.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

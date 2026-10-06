@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Operatorlar va ifodalar</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+      <!-- 1. SARLAVHA (HERO) -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>Operatorlar va ifodalar</h1>
+        <p class="muted">Taqqoslash, mantiqiy operatorlar (and, or, not) va a'zolik (in)</p>
+        <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">2-hafta · 4-dars</span>
+        
+      </section>
+
+      <!-- 2. Reja -->
+      <section>
+        <h2>Bugun nimalarni o‘rganamiz?</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="code-xml" data-anim="float"></i></div>
+            <h3>Ifoda nima?</h3>
+            <p>Operator va operandlar strukturasi</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="scale" data-anim="bounce"></i></div>
+            <h3>Taqqoslash</h3>
+            <p>==, !=, &lt;, &gt;, &lt;=, &gt;= operatorlari va bool natijalar</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="git-merge" data-anim="float"></i></div>
+            <h3>Mantiq &amp; A'zolik</h3>
+            <p>and, or, not va in, not in vositalari</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 3. SEC 01: IFODA VA OPERATOR -->
+      <section class="sec">
+        <div class="num">01</div>
+        <h1>Ifoda va uning tuzilishi</h1>
+        <p>Expression nimalardan tashkil topadi?</p>
+      </section>
+
+      <!-- 4. SVG 1: IFODA ANATOMIYASI -->
+      <section>
+        <h2>Ifodaning anatomiyasi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- Operand 1 -->
+            <g class="fragment">
+              <rect class="fa" x="60" y="100" width="180" height="120" rx="14"/>
+              <text class="t-head" x="150" y="155" text-anchor="middle" font-size="28">x</text>
+              <text class="t-muted" x="150" y="195" text-anchor="middle" font-size="16">Operand 1</text>
+            </g>
+
+            <!-- Operator + -->
+            <g class="fragment">
+              <circle class="fb pulse" cx="320" cy="160" r="45"/>
+              <text class="t-head" x="320" y="172" text-anchor="middle" font-size="36">+</text>
+            </g>
+
+            <!-- Operand 2 -->
+            <g class="fragment">
+              <rect class="fa" x="440" y="100" width="180" height="120" rx="14"/>
+              <text class="t-head" x="530" y="155" text-anchor="middle" font-size="28">5</text>
+              <text class="t-muted" x="530" y="195" text-anchor="middle" font-size="16">Operand 2</text>
+            </g>
+
+            <g class="fragment"><line class="la flowing" x1="640" y1="160" x2="740" y2="160"/></g>
+
+            <!-- Natija -->
+            <g class="fragment">
+              <rect class="fg" x="740" y="90" width="220" height="140" rx="16"/>
+              <text class="t-accent" x="850" y="145" text-anchor="middle" font-size="20">Natija</text>
+              <text class="t-head" x="850" y="185" text-anchor="middle" font-size="26">Qiymat</text>
+              <text class="t-muted" x="850" y="215" text-anchor="middle" font-size="15">(int / bool / str)</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 5. SEC 02: TAQQOSLASH OPERATORLARI -->
+      <section class="sec">
+        <div class="num">02</div>
+        <h1>Taqqoslash operatorlari</h1>
+        <p>Qiymatlarni solishtirish va rost/yolg'onni aniqlash</p>
+      </section>
+
+      <!-- 6. SVG 2: TAQQOSLASH OPERATORLARI -->
+      <section>
+        <h2>Asosiy taqqoslash operatorlari</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- 6 ta taqqoslash katagi -->
+            <g class="fragment">
+              <rect class="fn" x="40" y="50" width="280" height="120" rx="14"/>
+              <text class="t-accent" x="70" y="100" font-size="28">==</text>
+              <text class="t-head" x="140" y="95" font-size="20">Teng bo‘lsa</text>
+              <text class="t-muted" x="140" y="130" font-size="16">5 == 5 &rarr; True</text>
+            </g>
+            <g class="fragment">
+              <rect class="fn" x="360" y="50" width="280" height="120" rx="14"/>
+              <text class="t-accent" x="390" y="100" font-size="28">!=</text>
+              <text class="t-head" x="460" y="95" font-size="20">Teng emas</text>
+              <text class="t-muted" x="460" y="130" font-size="16">5 != 3 &rarr; True</text>
+            </g>
+            <g class="fragment">
+              <rect class="fn" x="680" y="50" width="280" height="120" rx="14"/>
+              <text class="t-accent" x="710" y="100" font-size="28">&gt;</text>
+              <text class="t-head" x="770" y="95" font-size="20">Katta</text>
+              <text class="t-muted" x="770" y="130" font-size="16">10 &gt; 7 &rarr; True</text>
+            </g>
+
+            <g class="fragment">
+              <rect class="fn" x="40" y="190" width="280" height="120" rx="14"/>
+              <text class="t-accent" x="70" y="240" font-size="28">&lt;</text>
+              <text class="t-head" x="130" y="235" font-size="20">Kichik</text>
+              <text class="t-muted" x="130" y="270" font-size="16">4 &lt; 9 &rarr; True</text>
+            </g>
+            <g class="fragment">
+              <rect class="fn" x="360" y="190" width="280" height="120" rx="14"/>
+              <text class="t-accent" x="390" y="240" font-size="28">&gt;=</text>
+              <text class="t-head" x="460" y="235" font-size="20">Katta yoki teng</text>
+              <text class="t-muted" x="460" y="270" font-size="16">60 &gt;= 60 &rarr; True</text>
+            </g>
+            <g class="fragment">
+              <rect class="fn" x="680" y="190" width="280" height="120" rx="14"/>
+              <text class="t-accent" x="710" y="240" font-size="28">&lt;=</text>
+              <text class="t-head" x="780" y="235" font-size="20">Kichik yoki teng</text>
+              <text class="t-muted" x="780" y="270" font-size="16">15 &lt;= 20 &rarr; True</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 7. KOD: TAQQOSLASH ISHLATILISHI -->
+      <section>
+        <h2>Taqqoslash operatorlari kodda</h2>
+        <pre><code class="language-python" data-line-numbers="1-3|5-7|9-10">ball = 75
+otish_bali = 60
+
+# 1. Katta yoki tenglik tekshiruvi
+natija = ball &gt;= otish_bali
+print("Imtihondan o'tdimi:", natija)  # True
+
+# 2. Tenglik va teng emaslik
+parol = "admin123"
+print(parol == "admin123")  # True
+print(parol != "12345")     # True</code></pre>
+        
+      </section>
+
+      <!-- 8. SEC 03: MANTIQIY OPERATORLAR -->
+      <section class="sec">
+        <div class="num">03</div>
+        <h1>Mantiqiy operatorlar</h1>
+        <p>and, or va not operatorlari</p>
+      </section>
+
+      <!-- 9. SVG 3: AND / OR / NOT -->
+      <section>
+        <h2>Mantiqiy operatorlar qoidasi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- and -->
+            <g class="fragment">
+              <rect class="fa" x="40" y="60" width="280" height="240" rx="16"/>
+              <text class="t-head" x="180" y="115" text-anchor="middle" font-size="28">and (VA)</text>
+              <text class="t-accent" x="180" y="160" text-anchor="middle" font-size="18">Ikkala shart ham True</text>
+              <text class="t-muted" x="180" y="200" text-anchor="middle" font-size="15">True and True &rarr; True</text>
+              <text class="t-muted" x="180" y="235" text-anchor="middle" font-size="15">True and False &rarr; False</text>
+              <text class="t-muted" x="180" y="270" text-anchor="middle" font-size="15">Qat'iy talab</text>
+            </g>
+
+            <!-- or -->
+            <g class="fragment">
+              <rect class="fb" x="360" y="60" width="280" height="240" rx="16"/>
+              <text class="t-head" x="500" y="115" text-anchor="middle" font-size="28">or (YOKI)</text>
+              <text class="t-accent" x="500" y="160" text-anchor="middle" font-size="18">Kamida bittasi True</text>
+              <text class="t-muted" x="500" y="200" text-anchor="middle" font-size="15">True or False &rarr; True</text>
+              <text class="t-muted" x="500" y="235" text-anchor="middle" font-size="15">False or False &rarr; False</text>
+              <text class="t-muted" x="500" y="270" text-anchor="middle" font-size="15">Yumshoq talab</text>
+            </g>
+
+            <!-- not -->
+            <g class="fragment">
+              <rect class="fc" x="680" y="60" width="280" height="240" rx="16"/>
+              <text class="t-head" x="820" y="115" text-anchor="middle" font-size="28">not (EMAS)</text>
+              <text class="t-accent" x="820" y="160" text-anchor="middle" font-size="18">Natijani teskarilash</text>
+              <text class="t-muted" x="820" y="200" text-anchor="middle" font-size="15">not True &rarr; False</text>
+              <text class="t-muted" x="820" y="235" text-anchor="middle" font-size="15">not False &rarr; True</text>
+              <text class="t-muted" x="820" y="270" text-anchor="middle" font-size="15">Inkor qilish</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 10. KOD: MANTIQIY OPERATORLAR -->
+      <section>
+        <h2>Mantiqiy ifodalar amalda</h2>
+        <pre><code class="language-python" data-line-numbers="1-5|7-9">yosh = 15
+tatildami = False
+
+# Maktabga borish sharti
+boradimi = (yosh &gt;= 7 and yosh &lt;= 18) and not tatildami
+print("Maktabga boradi:", boradimi)  # True
+
+# Chegirma sharti (yoki)
+talabami = True
+chegirma = (yosh &lt; 18) or talabami
+print("Chegirma beriladi:", chegirma)  # True</code></pre>
+        
+      </section>
+
+      <!-- 11. SEC 04: A'ZOLIK OPERATORI -->
+      <section class="sec">
+        <div class="num">04</div>
+        <h1>A'zolik operatori: in</h1>
+        <p>Matn va ro‘yxat ichida element bormi?</p>
+      </section>
+
+      <!-- 12. SVG 4: IN OPERATORI -->
+      <section>
+        <h2>in va not in mexanizmi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- Matn -->
+            <rect class="fn" x="80" y="80" width="360" height="200" rx="16"/>
+            <text class="t-accent" x="260" y="130" text-anchor="middle" font-size="22">Katta matn</text>
+            <text class="t-head" x="260" y="190" text-anchor="middle" font-size="32">"salom"</text>
+            <text class="t-muted" x="260" y="240" text-anchor="middle" font-size="16">Ichida 'a' bormi? 'z' bormi?</text>
+
+            <!-- 'a' in "salom" -->
+            <g class="fragment">
+              <line class="lg flowing" x1="450" y1="130" x2="600" y2="130"/>
+              <rect class="fg pulse" x="600" y="80" width="340" height="90" rx="14"/>
+              <text class="t-head" x="630" y="125" font-size="20">'a' in "salom"</text>
+              <text class="t-muted" x="630" y="152" font-size="15">&rarr; True (harf mavjud)</text>
+            </g>
+
+            <!-- 'z' in "salom" -->
+            <g class="fragment">
+              <line class="la flowing" x1="450" y1="230" x2="600" y2="230"/>
+              <rect class="fa" x="600" y="190" width="340" height="90" rx="14"/>
+              <text class="t-head" x="630" y="235" font-size="20">'z' in "salom"</text>
+              <text class="t-muted" x="630" y="262" font-size="15">&rarr; False (harf yo'q)</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 13. ODATIY XATOLAR -->
+      <section>
+        <h2>Operatorlarda uchraydigan xatolar</h2>
+        <div class="cards two">
+          <div class="card fragment">
+            <h3>Xato: = va == adashtirish</h3>
+            <pre><code class="language-python"># XATO: qiymat berish amali
+if ball = 60:
+    print("O'tdi")
+
+# TO'G'RI: taqqoslash amali
+if ball == 60:
+    print("O'tdi")</code></pre>
+          </div>
+          <div class="card fragment">
+            <h3>Xato: Matn va sonni taqqoslash</h3>
+            <pre><code class="language-python"># Ehtiyot bo'ling!
+print("10" &gt; "2")
+# Natija: False!
+# Sababi: alifbo bo'yicha '1' &lt; '2'
+# To'g'risi: int("10") &gt; int("2")</code></pre>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 14. AMALIY TOPSHIRIQ (TASK) -->
+      <section class="task">
+        <h2>Amaliy topshiriq: Ifodalar va mantiq</h2>
+        <p class="muted">Vaqt: 15 daqiqa · Darajalar bo‘yicha</p>
+        <div class="cards three">
+          <div class="card">
+            <h3>1. Oson</h3>
+            <p><code>ball = 85</code>. Uning <code>ball &gt;= 60</code> shartini tekshirib konsolga chiqaring.</p>
+          </div>
+          <div class="card">
+            <h3>2. O'rta</h3>
+            <p><code>yosh = 16</code> va <code>ruxsatnoma = True</code>. <code>and</code> orqali musobaqada qatnashish shartini tuzing.</p>
+          </div>
+          <div class="card">
+            <h3>3. Qiyin</h3>
+            <p>Parol ichida <code>"_"</code> borligi va uzunligi 8 tadan kam emasligini bitta ifodada tekshiring.</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 15. QUIZ / TEZKOR SAVOL -->
+      <section>
+        <h2>Tezkor sinov</h2>
+        <p>Quyidagi ifoda natijasi nima bo‘ladi?</p>
+        <pre><code class="language-python">x = 10
+print(x &gt; 5 and not (x == 10))</code></pre>
+        <div class="fragment callout tip">
+          <i data-ic="check"></i> <strong>Javob:</strong> <code>False</code> (chunki <code>not True</code> &rarr; <code>False</code>, va <code>True and False</code> &rarr; <code>False</code>)
+        </div>
+        
+      </section>
+
+      <!-- 16. XULOSA -->
+      <section>
+        <h2>Xulosa va asosiy fikrlar</h2>
+        <div class="cards three">
+          <div class="card fragment">
+            <h3>Taqqoslash</h3>
+            <p>==, !=, &lt;, &gt; faqat True yoki False natija qaytaradi</p>
+          </div>
+          <div class="card fragment">
+            <h3>Mantiqiy bog'lovchilar</h3>
+            <p>and (ikkalasi ham), or (kamida bittasi), not (teskarisi)</p>
+          </div>
+          <div class="card fragment">
+            <h3>A'zolik (in)</h3>
+            <p>To'plam yoki matn ichida element borligini tekshiradi</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 17. YAKUNIY SLAYD -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>Rahmat!</h1>
+        <p class="muted">Keyingi dars: Tarmoqlanuvchi algoritm (if/else)</p>
+        <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span>
+        
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

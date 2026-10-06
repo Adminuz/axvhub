@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>2-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>2-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">1-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">NewsPortal loyihasida qaysi rol faqat yangiliklar ro'yxati va maqola matnini ko'ra oladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Guest</button>
+      <button class="opt" type="button">Admin</button>
+      <button class="opt" type="button">User</button>
+      <button class="opt" type="button">Staff</button>
+    </div>
+    <div class="explain">Guest (mehmon) tizimga kirmagan, faqat o'qiy oladi. Izoh yozish uchun User bo'lish kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Virtual muhit (venv) nima uchun kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Kodni tezroq ishlatish uchun</button>
+      <button class="opt" type="button" data-ok>Loyihani izolyatsiya qilib, kutubxona versiyalari to'qnashuvini oldini olish uchun</button>
+      <button class="opt" type="button">Internetni o'chirish uchun</button>
+      <button class="opt" type="button">Kodni avtomatik tarjima qilish uchun</button>
+    </div>
+    <div class="explain">Har bir loyiha o'z kutubxonalari bilan alohida muhitda ishlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Linux/macOS da venv ni faollashtirish buyrug'i qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>python3 -m venv venv</code></button>
+      <button class="opt" type="button"><code>pip install venv</code></button>
+      <button class="opt" type="button" data-ok><code>source venv/bin/activate</code></button>
+      <button class="opt" type="button"><code>venv\Scripts\activate</code></button>
+    </div>
+    <div class="explain"><code>python3 -m venv venv</code> muhitni yaratadi, <code>source venv/bin/activate</code> esa faollashtiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">O'rnatilgan paketlar ro'yxatini <code>requirements.txt</code> ga yozish buyrug'i qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>pip list &gt; venv</code></button>
+      <button class="opt" type="button"><code>pip install requirements.txt</code></button>
+      <button class="opt" type="button"><code>python manage.py freeze</code></button>
+      <button class="opt" type="button" data-ok><code>pip freeze &gt; requirements.txt</code></button>
+    </div>
+    <div class="explain"><code>pip freeze</code> o'rnatilgan paketlar va versiyalarini chiqaradi, <code>&gt;</code> esa faylga yozadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">SECRET_KEY ni nega <code>.env</code> faylida saqlaymiz?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Kod GitHub ga chiqsa ham maxfiy kalit oshkor bo'lmasligi uchun</button>
+      <button class="opt" type="button">Fayl kichikroq bo'lishi uchun</button>
+      <button class="opt" type="button">Python buni talab qilgani uchun</button>
+      <button class="opt" type="button">Django .env siz ishlamaydi</button>
+    </div>
+    <div class="explain"><code>.env</code> <code>.gitignore</code> ga kiritiladi va omma ko'radigan omborga tushmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Post va Category o'rtasidagi bog'lanish qanday turda?</p>
+    <div class="opts">
+      <button class="opt" type="button">Many-to-Many</button>
+      <button class="opt" type="button" data-ok>One-to-Many (ForeignKey)</button>
+      <button class="opt" type="button">One-to-One</button>
+      <button class="opt" type="button">Bog'lanish yo'q</button>
+    </div>
+    <div class="explain">Bitta kategoriyada ko'p post bo'ladi, har bir post esa bitta asosiy kategoriyaga ega.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>on_delete=models.PROTECT</code> kategoriyada 50 ta maqola bo'lsa, o'chirishga urinilganda nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Maqolalarni ham o'chiradi</button>
+      <button class="opt" type="button">Maqolalarni boshqa kategoriyaga ko'chiradi</button>
+      <button class="opt" type="button" data-ok>O'chirishni taqiqlab, xatolik beradi</button>
+      <button class="opt" type="button">Hech narsa qilmaydi, kategoriya o'chadi</button>
+    </div>
+    <div class="explain">PROTECT bog'langan ma'lumot bo'lsa o'chirishga yo'l qo'ymaydi, CASCADE esa hammasini o'chiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>config/settings/</code> ichidagi qaysi fayl real server uchun sozlamalarni (DEBUG=False, PostgreSQL) saqlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>base.py</code></button>
+      <button class="opt" type="button"><code>local.py</code></button>
+      <button class="opt" type="button"><code>wsgi.py</code></button>
+      <button class="opt" type="button" data-ok><code>prod.py</code></button>
+    </div>
+    <div class="explain"><code>base.py</code> umumiy, <code>local.py</code> dasturchi kompyuteri, <code>prod.py</code> real server uchun.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">DRF ni loyihada faollashtirish uchun nima qilinadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>'rest_framework'</code> ni <code>INSTALLED_APPS</code> ga qo'shiladi</button>
+      <button class="opt" type="button"><code>'rest_framework'</code> ni <code>MIDDLEWARE</code> ga qo'shiladi</button>
+      <button class="opt" type="button"><code>.env</code> ga <code>DRF=True</code> yoziladi</button>
+      <button class="opt" type="button">Hech narsa kerak emas</button>
+    </div>
+    <div class="explain">Faqat pip install yetarli emas: ilova <code>INSTALLED_APPS</code> da ro'yxatdan o'tishi kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Comment modelidagi <code>parent = ForeignKey('self', ...)</code> nima uchun kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Izohni o'chirib bo'lmasligi uchun</button>
+      <button class="opt" type="button" data-ok>Izohga javob yozish va daraxtsimon izohlar uchun</button>
+      <button class="opt" type="button">Izoh muallifini saqlash uchun</button>
+      <button class="opt" type="button">Postga bog'lash uchun</button>
+    </div>
+    <div class="explain">To'g'ridan-to'g'ri izohda <code>parent=None</code>, javobda esa asosiy izohning <code>id</code> si turadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: venv va .env, NewsPortal rollari va ERD, PROTECT va CASCADE, INSTALLED_APPS.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

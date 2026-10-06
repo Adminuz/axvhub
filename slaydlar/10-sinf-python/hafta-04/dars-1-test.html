@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>10-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>10-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">4-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">API xavfsizligida «Authentication» qaysi savolga javob beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Nima qila olasiz?</button>
+      <button class="opt" type="button" data-ok>Siz kimsiz?</button>
+      <button class="opt" type="button">Necha marta so'rov yuborasiz?</button>
+      <button class="opt" type="button">Qaysi domendan keldingiz?</button>
+    </div>
+    <div class="explain">Authentication kimligini aniqlaydi; ruxsatlar (Permissions) esa nima qila olishini belgilaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Nima uchun Basic Authentication productionda ishlatilmaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">U juda sekin ishlaydi</button>
+      <button class="opt" type="button">U faqat mobil ilovalarda ishlaydi</button>
+      <button class="opt" type="button">U cookie talab qiladi</button>
+      <button class="opt" type="button" data-ok>Login:parol Base64 da, bu shifrlash emas</button>
+    </div>
+    <div class="explain">Base64 shunchaki kodlash: HTTPS bo'lmasa parol oson o'qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">JWT ning uchta qismi qaysi javobda to'g'ri tartibda?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Header.Payload.Signature</button>
+      <button class="opt" type="button">Payload.Header.Signature</button>
+      <button class="opt" type="button">Signature.Header.Payload</button>
+      <button class="opt" type="button">Header.Signature.Payload</button>
+    </div>
+    <div class="explain">Qismlar nuqta bilan ajratiladi: Header.Payload.Signature.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">JWT Payload qismi haqida qaysi gap to'g'ri?</p>
+    <div class="opts">
+      <button class="opt" type="button">Maxfiy kalit bilan shifrlangan</button>
+      <button class="opt" type="button">Faqat server o'qiy oladi</button>
+      <button class="opt" type="button" data-ok>Shifrlanmagan, uni istalgan odam o'qiy oladi</button>
+      <button class="opt" type="button">Parolni xavfsiz saqlash uchun mo'ljallangan</button>
+    </div>
+    <div class="explain">Payload ichiga parol yoki karta raqamini yozmang.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Access token nega qisqa muddatli bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Server xotirasini tejash uchun</button>
+      <button class="opt" type="button">Refresh token ishlashi uchun</button>
+      <button class="opt" type="button">Brauzer uni uzoq saqlay olmagani uchun</button>
+      <button class="opt" type="button" data-ok>O'g'irlansa ham tez yaroqsiz bo'ladi</button>
+    </div>
+    <div class="explain">Access 5-15 daqiqa yashaydi, har so'rovda yuboriladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Foydalanuvchi tizimga kirgan, lekin boshqa odamning postini PATCH qilmoqchi. DRF qaysi status qaytaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>403 Forbidden</button>
+      <button class="opt" type="button">401 Unauthorized</button>
+      <button class="opt" type="button">429 Too Many Requests</button>
+      <button class="opt" type="button">404 Not Found</button>
+    </div>
+    <div class="explain">Kimligi ma'lum, lekin ruxsati yo'q: 403. 401 esa kimligi noma'lum bo'lganda.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>has_object_permission</code> metodi nimani tekshiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Foydalanuvchi URL ga umuman kira oladimi</button>
+      <button class="opt" type="button">So'rovlar soni limitdan oshganmi</button>
+      <button class="opt" type="button" data-ok>Foydalanuvchi aniq bir obyektni o'zgartira oladimi</button>
+      <button class="opt" type="button">Token muddati tugaganmi</button>
+    </div>
+    <div class="explain">URL ga kirish: <code>has_permission</code>; aniq obyekt: <code>has_object_permission</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Production uchun qaysi CORS sozlamasi to'g'ri?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>CORS_ALLOW_ALL_ORIGINS = True</code></button>
+      <button class="opt" type="button" data-ok>Faqat ruxsat etilgan frontend originlar ro'yxati</button>
+      <button class="opt" type="button">CORS ni butunlay o'chirib tashlash</button>
+      <button class="opt" type="button">Faqat <code>localhost</code> ni qoldirish</button>
+    </div>
+    <div class="explain">Hamma domenga ruxsat berish xavfli; aniq originlar .env dan o'qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Faqat JWT ishlatiladigan API da CSRF himoyasi nega muammo emas?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Brauzer tokenni boshqa saytga o'zi avtomatik yubormaydi</button>
+      <button class="opt" type="button">JWT shifrlangan cookie ichida saqlanadi</button>
+      <button class="opt" type="button">JWT CSRF tokenni o'z ichiga oladi</button>
+      <button class="opt" type="button">CSRF faqat GET so'rovlarda bo'ladi</button>
+    </div>
+    <div class="explain">CSRF cookie ning avtomatik yuborilishiga tayanadi; token esa Authorization headerga qo'lda qo'shiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Login endpoint uchun nega <code>login_anon: 5/min</code> kabi qat'iy limit qo'yiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Serverga yangi foydalanuvchilarni jalb qilish uchun</button>
+      <button class="opt" type="button">JWT muddatini uzaytirish uchun</button>
+      <button class="opt" type="button" data-ok>Brute-force (parol tanlash) hujumini sekinlashtirish uchun</button>
+      <button class="opt" type="button">CORS xatolarini kamaytirish uchun</button>
+    </div>
+    <div class="explain">Bot sekundiga minglab parolni sinab ko'rishi mumkin; limit oshsa 429 qaytadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: Authentication/Authorization, JWT, Access/Refresh, permissions, throttling 429, CORS/CSRF.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

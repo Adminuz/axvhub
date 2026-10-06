@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Forma elementlari va validatsiyasi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 8-sinf · 2-hafta · 6-dars: Forma elementlari va validatsiyasi. Faqat slaydlar. -->
+
+      <!-- 1. SARLAVHA -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>Forma elementlari va validatsiyasi</h1>
+        <p class="muted">Sayt bilan muloqot: ma'lumot kiritamiz, yuboramiz va tekshiramiz</p>
+        <span class="badge">8-sinf</span><span class="badge">Web Full-stack</span><span class="badge">2-hafta · 6-dars</span>
+        
+      </section>
+
+      <!-- 2. REJA -->
+      <section>
+        <h2>Bugun nimani o'rganamiz?</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="send" data-anim="float"></i></div><h3>Forma va usullar</h3><p>&lt;form&gt;, action, GET va POST farqi</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="text-cursor-input" data-anim="pulse"></i></div><h3>Kiritish turlari</h3><p>input, label, radio, checkbox, select, textarea</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="shield-check" data-anim="draw"></i></div><h3>Validatsiya</h3><p>required, placeholder, min, max, disabled</p></div>
+        </div>
+        
+      </section>
+
+      <!-- 3. BO'LIM 01 -->
+      <section class="sec">
+        <div class="num">01</div>
+        <h1>Forma nima?</h1>
+        <p>&lt;form&gt;, action va method</p>
+      </section>
+
+      <!-- 4. SVG: forma yo'li -->
+      <section>
+        <h2>Forma ma'lumotni serverga olib boradi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 340">
+            <rect class="fa" x="30" y="30" width="290" height="285" rx="22"/>
+            <text class="t-head" x="175" y="72" text-anchor="middle" font-size="28">Forma</text>
+            <rect class="fn" x="55" y="95" width="240" height="40" rx="8"/>
+            <text x="70" y="124" font-size="22">Ism: Ali</text>
+            <rect class="fn" x="55" y="150" width="240" height="40" rx="8"/>
+            <text x="70" y="179" font-size="22">Parol: ****</text>
+            <rect class="fg pulse" x="55" y="215" width="240" height="50" rx="12"/>
+            <text class="t-head" x="175" y="249" text-anchor="middle" font-size="24">Yuborish</text>
+            <rect class="fb" x="710" y="70" width="260" height="200" rx="22"/>
+            <svg x="810" y="90" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="8" rx="2"/><rect x="2" y="13" width="20" height="8" rx="2"/><path d="M6 7h.01M6 17h.01"/></svg>
+            <text class="t-head" x="840" y="195" text-anchor="middle" font-size="28">Server</text>
+            <text class="t-muted" x="840" y="240" text-anchor="middle" font-size="22">/register</text>
+            <g class="fragment"><line class="la flowing" x1="335" y1="130" x2="690" y2="130"/><polygon class="ar-a" points="695,130 678,120 678,140"/><text class="t-accent" x="515" y="112" text-anchor="middle" font-size="24">action + method</text></g>
+            <g class="fragment"><line class="lc flowing" x1="695" y1="230" x2="340" y2="230"/><polygon class="ar-c" points="335,230 352,220 352,240"/><text x="515" y="272" text-anchor="middle" font-size="24" fill="var(--teal)">javob qaytadi</text></g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 5. KOD: form -->
+      <section>
+        <h2>Birinchi forma</h2>
+        <pre><code class="language-html" data-trim data-noescape data-line-numbers="1-5|1|2-3|4">
+&lt;form action="/login" method="POST"&gt;
+  &lt;label for="login"&gt;Login:&lt;/label&gt;
+  &lt;input type="text" id="login" name="username"&gt;
+  &lt;button type="submit"&gt;Kirish&lt;/button&gt;
+&lt;/form&gt;
+        </code></pre>
+        <div class="callout tip"><i data-ic="lightbulb"></i><code>action</code> manzilni, <code>method</code> yuborish usulini belgilaydi.</div>
+        
+      </section>
+
+      <!-- 6. SVG: GET URL anatomiyasi -->
+      <section>
+        <h2>GET: ma'lumot manzilda ko'rinadi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 280">
+            <g class="fragment" data-tip="Manzil: forma action orqali shu yerga yuboriladi."><rect class="fa" x="30" y="40" width="330" height="80" rx="16"/><text class="t-head" x="195" y="92" text-anchor="middle" font-size="28">sayt.uz/login</text></g>
+            <g class="fragment" data-tip="Birinchi qiymat: name=login, qiymati ali. Hamma ko'radi."><rect class="fc" x="370" y="40" width="300" height="80" rx="16"/><text class="t-head" x="520" y="92" text-anchor="middle" font-size="28">?login=ali</text></g>
+            <g class="fragment" data-tip="Parol manzil qatorida ochiq turibdi: tarixda va loglarda qoladi."><rect class="fb pulse" x="680" y="40" width="290" height="80" rx="16"/><text class="t-head" x="825" y="92" text-anchor="middle" font-size="28">&amp;parol=12345</text></g>
+            <text class="t-muted" x="195" y="175" text-anchor="middle" font-size="24">action manzili</text>
+            <text class="t-muted" x="520" y="175" text-anchor="middle" font-size="24">1-qiymat</text>
+            <text class="t-accent" x="825" y="175" text-anchor="middle" font-size="24">parol ochiq!</text>
+            <line class="ln" x1="195" y1="125" x2="195" y2="150"/><line class="ln" x1="520" y1="125" x2="520" y2="150"/><line class="lb" x1="825" y1="125" x2="825" y2="150"/>
+            <text class="t-head" x="500" y="245" text-anchor="middle" font-size="26">POST esa ma'lumotni so'rov tanasida yashiradi</text>
+          </svg>
+        </div>
+        <p class="small">Qismlar ustiga olib boring yoki bosing. Qidiruv uchun GET, parol uchun doim POST.</p>
+        
+      </section>
+
+      <!-- 7. QUIZ -->
+      <section>
+        <h2>Mini-test</h2>
+        <div class="quiz">
+          <p class="q">Ro'yxatdan o'tish formasi parolni qaysi usulda yuborishi kerak?</p>
+          <div class="opts">
+            <button class="opt" type="button">GET, manzil qatorida</button>
+            <button class="opt" type="button" data-ok>POST, so'rov tanasida</button>
+            <button class="opt" type="button">action orqali</button>
+            <button class="opt" type="button">label orqali</button>
+          </div>
+          <div class="explain">To'g'ri: POST. GET parolni URL da ko'rsatib qo'yadi.</div>
+        </div>
+        
+      </section>
+
+      <!-- 8. BO'LIM 02 -->
+      <section class="sec">
+        <div class="num">02</div>
+        <h1>Label va input</h1>
+        <p>Har bir maydon o'z nomiga ega bo'lsin</p>
+      </section>
+
+      <!-- 9. SVG: for = id -->
+      <section>
+        <h2>for va id: ko'rinmas ip</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 300">
+            <g class="fragment"><rect class="fa" x="40" y="50" width="380" height="90" rx="18"/><text class="t-head" x="230" y="106" text-anchor="middle" font-size="28">&lt;label for="tel"&gt;</text></g>
+            <g class="fragment"><rect class="fb" x="580" y="50" width="380" height="90" rx="18"/><text class="t-head" x="770" y="106" text-anchor="middle" font-size="28">&lt;input id="tel"&gt;</text></g>
+            <g class="fragment"><line class="lc flowing" x1="430" y1="95" x2="570" y2="95"/><text class="t-accent" x="500" y="75" text-anchor="middle" font-size="24">for = id</text></g>
+            <g class="fragment" data-tip="Bu foydalanuvchiga qulaylik (accessibility): kichik tugmalarni telefonda bosish oson."><rect class="fg" x="230" y="185" width="540" height="85" rx="18"/><text class="t-head" x="500" y="236" text-anchor="middle" font-size="26">Yozuv bosilsa, kursor maydonga o'tadi</text></g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 10. KOD: label + input -->
+      <section>
+        <h2>label va input kodi</h2>
+        <pre><code class="language-html" data-trim data-noescape data-line-numbers="1|2-5|3|4|5">
+&lt;label for="ismingiz"&gt;Ismingiz:&lt;/label&gt;
+&lt;input type="text"
+       id="ismingiz"
+       name="user_name"
+       placeholder="Masalan: Ali"&gt;
+        </code></pre>
+        <div class="chips"><span class="chip">id: label bilan ulaydi</span><span class="chip t">name: serverga nom</span><span class="chip">placeholder: maslahat</span></div>
+        
+      </section>
+
+      <!-- 11-12. AVTO-ANIMATSIYA: forma kattalashadi -->
+      <section data-auto-animate>
+        <h2>Natija brauzerda</h2>
+        <div class="browser" data-id="box" style="width:520px"><div class="bar"><i></i><i></i><i></i><span>https://sayt.uz/login</span></div><div class="page"><h3>Kirish</h3></div></div>
+      </section>
+      <section data-auto-animate>
+        <h2>Natija brauzerda</h2>
+        <div class="browser" data-id="box" style="width:1000px"><div class="bar"><i></i><i></i><i></i><span>https://sayt.uz/login</span></div><div class="page"><h3>Kirish</h3><p>Login: <input type="text" placeholder="Loginni kiriting"></p><p>Parol: <input type="password" placeholder="Kamida 8 belgi"></p><p><button type="button">Kirish</button></p></div></div>
+        
+      </section>
+
+      <!-- 13. BO'LIM 03 -->
+      <section class="sec">
+        <div class="num">03</div>
+        <h1>Input turlari</h1>
+        <p>type atributi maydonning xatti-harakatini belgilaydi</p>
+      </section>
+
+      <!-- 14. TURLAR: kartalar -->
+      <section>
+        <h2>Asosiy type qiymatlari</h2>
+        <div class="cards four">
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="type" data-anim="float"></i></div><h3>text</h3><p>Bir qatorli oddiy matn</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="lock" data-anim="pulse"></i></div><h3>password</h3><p>Belgilar yulduzcha bo'lib yashiriladi</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="mail" data-anim="bounce"></i></div><h3>email</h3><p>@ belgisini tekshiradi</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="hash" data-anim="wiggle"></i></div><h3>number</h3><p>Faqat raqam, min va max bilan</p></div>
+        </div>
+        
+      </section>
+
+      <!-- 15. FLIP kartalar -->
+      <section>
+        <h2>Yana turlar: bosing va aylantiring</h2>
+        <div class="cards three">
+          <div class="flip" style="min-height:190px"><div class="flip-in">
+            <div class="face"><div class="icon"><i data-ic="calendar"></i></div><h3>date</h3><span class="flip-hint">bosing</span></div>
+            <div class="face back"><p>Kalendar ochadi: sanani tanlash oson.</p></div>
+          </div></div>
+          <div class="flip" style="min-height:190px"><div class="flip-in">
+            <div class="face"><div class="icon"><i data-ic="upload"></i></div><h3>file</h3><span class="flip-hint">bosing</span></div>
+            <div class="face back"><p>Kompyuterdan rasm yoki hujjat yuklash.</p></div>
+          </div></div>
+          <div class="flip" style="min-height:190px"><div class="flip-in">
+            <div class="face"><div class="icon"><i data-ic="send"></i></div><h3>submit</h3><span class="flip-hint">bosing</span></div>
+            <div class="face back"><p>Formani serverga yuboradi. reset esa hammasini tozalaydi.</p></div>
+          </div></div>
+        </div>
+        
+      </section>
+
+      <!-- 16. VERTIKAL: checkbox vs radio -->
+      <section>
+        <section>
+          <h2>Checkbox va radio</h2>
+          <div class="vs">
+            <div class="side fragment"><h3>checkbox (kvadrat)</h3>Mustaqil tanlov: 0 ta, 1 ta yoki hammasi. Masalan: qaysi tillarni bilasiz?</div>
+            <div class="mid">VS</div>
+            <div class="side b fragment"><h3>radio (dumaloq)</h3>Faqat bittasi tanlanadi. Masalan: jinsingiz.</div>
+          </div>
+          <p class="small mt">Radio kodini ko'rish uchun pastga ↓</p>
+          
+        </section>
+        <section>
+          <h2>Radio kodi</h2>
+          <pre><code class="language-html" data-trim data-noescape data-line-numbers="1|2-3|5-6">
+&lt;p&gt;Jinsingizni tanlang:&lt;/p&gt;
+&lt;input type="radio" id="erkak"
+       name="jins" value="erkak"&gt;
+&lt;label for="erkak"&gt;Erkak&lt;/label&gt;
+&lt;input type="radio" id="ayol"
+       name="jins" value="ayol"&gt;
+&lt;label for="ayol"&gt;Ayol&lt;/label&gt;
+          </code></pre>
+          <div class="callout"><i data-ic="key-round"></i>Guruh uchun <code>name</code> bir xil, <code>id</code> esa har xil.</div>
+        </section>
+      </section>
+
+      <!-- 17. SVG: radio guruhi -->
+      <section>
+        <h2>name guruhni belgilaydi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 340">
+            <g data-tip="Hammasida name='til': bitta guruh, faqat bittasi tanlanadi."><rect class="fg" x="30" y="30" width="440" height="280" rx="22"/>
+              <text class="t-head" x="250" y="75" text-anchor="middle" font-size="26">name bir xil</text>
+              <circle class="ln" cx="90" cy="130" r="16"/><circle class="ar-g" cx="90" cy="130" r="8"/><text x="125" y="139" font-size="26">O'zbek tili</text>
+              <circle class="ln" cx="90" cy="190" r="16"/><text x="125" y="199" font-size="26">Rus tili</text>
+              <circle class="ln" cx="90" cy="250" r="16"/><text x="125" y="259" font-size="26">Ingliz tili</text>
+              <text class="t-accent" x="250" y="298" text-anchor="middle" font-size="22">faqat bittasi</text>
+            </g>
+            <g class="fragment" data-tip="Har birida name boshqa: brauzer ularni alohida deb biladi, ikkalasi ham tanlanadi."><rect class="fb" x="530" y="30" width="440" height="280" rx="22"/>
+              <text class="t-head" x="750" y="75" text-anchor="middle" font-size="26">name har xil</text>
+              <circle class="ln" cx="590" cy="130" r="16"/><circle class="ar-b" cx="590" cy="130" r="8"/><text x="625" y="139" font-size="26">O'zbek tili</text>
+              <circle class="ln" cx="590" cy="190" r="16"/><circle class="ar-b" cx="590" cy="190" r="8"/><text x="625" y="199" font-size="26">Rus tili</text>
+              <circle class="ln" cx="590" cy="250" r="16"/><text x="625" y="259" font-size="26">Ingliz tili</text>
+              <text class="t-accent" x="750" y="298" text-anchor="middle" font-size="22">ikkalasi tanlandi: xato</text>
+            </g>
+          </svg>
+        </div>
+        <p class="small">Chap tomon to'g'ri, o'ng tomon xato. Ustiga bosib izohni o'qing.</p>
+        
+      </section>
+
+      <!-- 18. BO'LIM 04 -->
+      <section class="sec">
+        <div class="num">04</div>
+        <h1>Boshqa elementlar</h1>
+        <p>select, textarea, button va validatsiya</p>
+      </section>
+
+      <!-- 19. KOD: select + textarea -->
+      <section>
+        <h2>select va textarea</h2>
+        <pre><code class="language-html" data-trim data-noescape data-line-numbers="1-6|2-5|7">
+&lt;label for="shahar"&gt;Shahringiz:&lt;/label&gt;
+&lt;select id="shahar" name="shahar"&gt;
+  &lt;option value="toshkent"&gt;Toshkent&lt;/option&gt;
+  &lt;option value="samarqand"&gt;Samarqand&lt;/option&gt;
+  &lt;option value="buxoro"&gt;Buxoro&lt;/option&gt;
+&lt;/select&gt;
+&lt;textarea name="xabar" rows="4" cols="50"&gt;&lt;/textarea&gt;
+        </code></pre>
+        <div class="callout tip"><i data-ic="lightbulb"></i><code>button</code> ichiga rasm yoki ikonka ham qo'yish mumkin, <code>input type="submit"</code> ga esa mumkin emas.</div>
+        
+      </section>
+
+      <!-- 20. STEPPER: validatsiya -->
+      <section>
+        <h2>Validatsiya atributlari <span class="timer"><i data-ic="timer"></i>qadam-baqadam</span></h2>
+        <div class="stepper">
+          <div class="stp on"><div class="card accent"><div class="icon"><i data-ic="shield-check" data-anim="pulse"></i></div><h3>1. required</h3><p>Maydonni to'ldirish majburiy: bo'sh holda yuborib bo'lmaydi.</p></div></div>
+          <div class="stp"><div class="card"><div class="icon"><i data-ic="hash" data-anim="float"></i></div><h3>2. min va max</h3><p>Raqam yoki sana uchun eng kichik va eng katta chegara. Masalan, yosh 10 dan 18 gacha.</p></div></div>
+          <div class="stp"><div class="card"><div class="icon"><i data-ic="eye" data-anim="blink"></i></div><h3>3. readonly</h3><p>Faqat o'qish uchun: qiymatni o'zgartirib bo'lmaydi.</p></div></div>
+          <div class="stp"><div class="card"><div class="icon"><i data-ic="toggle-left"></i></div><h3>4. disabled</h3><p>Butunlay nofaol: och kulrang bo'ladi va serverga yuborilmaydi.</p></div></div>
+        </div>
+        
+      </section>
+
+      <!-- 21. SWAP: placeholder va value -->
+      <section>
+        <h2>placeholder yoki value?</h2>
+        <div class="swap">
+          <div class="swap-tabs"><button type="button">placeholder</button><button type="button">value</button></div>
+          <div class="swap-p"><div class="card"><h3>placeholder="Ismingizni yozing"</h3><p>Och kulrang maslahat. Yozishni boshlasangiz yo'qoladi va serverga ketmaydi.</p></div></div>
+          <div class="swap-p"><div class="card accent"><h3>value="Toshkent"</h3><p>Maydon ichiga oldindan yozilgan haqiqiy matn. O'chirmasangiz, shu qiymat serverga ketadi.</p></div></div>
+        </div>
+        
+      </section>
+
+      <!-- 22. ODATIY XATOLAR -->
+      <section>
+        <h2>Odatiy xatolar</h2>
+        <pre><code class="language-html" data-trim data-noescape>
+&lt;label for="ism"&gt;Ism:&lt;/label&gt;
+&lt;input id="ismi" name="ism"&gt;
+        </code></pre>
+        <div class="callout bad fragment"><i data-ic="triangle-alert"></i><code>for</code> va <code>id</code> bir xil emas: yozuvni bossangiz, kursor maydonga o'tmaydi.</div>
+        <div class="callout warn fragment"><i data-ic="triangle-alert"></i>Radio larda <code>name</code> har xil bo'lsa, bir nechtasi tanlanadi.</div>
+        <div class="callout warn fragment"><i data-ic="triangle-alert"></i>Parol <code>GET</code> bilan yuborilsa, u manzil qatorida ko'rinadi.</div>
+        
+      </section>
+
+      <!-- 23. BILASIZMI: sanaluvchi raqamlar -->
+      <section>
+        <h2>Bilasizmi?</h2>
+        <div class="stats">
+          <div class="stat"><div class="v"><span class="count" data-to="1993" data-suf="">0</span></div><div class="l">birinchi HTML formalar paydo bo'lgan yil</div></div>
+          <div class="stat"><div class="v"><span class="count" data-to="9" data-suf="+">0</span></div><div class="l">bugun o'rgangan input turimiz</div></div>
+          <div class="stat"><div class="v"><span class="count" data-to="1" data-suf=" ta">0</span></div><div class="l">Google bosh sahifasidagi forma</div></div>
+        </div>
+        <p class="small mt">type="color" brauzerda butun ranglar palitrasini ochadi.</p>
+        
+      </section>
+
+      <!-- 24. AMALIY TOPSHIRIQ -->
+      <section>
+        <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer" data-anim="spin"></i>20 daqiqa</span></h2>
+        <div class="task"><span class="level easy">Oson</span>Login formasi: login, parol (<code>password</code>) va "Kirish" tugmasi. Ikkalasi <code>required</code>.</div>
+        <div class="task"><span class="level mid">O'rta</span>Sign Up: ism, parol, sana, jins (<code>radio</code>), viloyat (<code>select</code>), "Qoidalarga roziman" (<code>checkbox</code>).</div>
+        <div class="task"><span class="level hard">Qiyin</span>Fikr formasi: mavzu, baho (1-5, <code>number</code>) va <code>textarea</code> bilan xabar.</div>
+        
+      </section>
+
+      <!-- 25. TEZKOR NAZORAT -->
+      <section>
+        <h2>Tezkor nazorat <span class="timer"><i data-ic="timer"></i>5 daqiqa</span></h2>
+        <ol class="steps-n">
+          <li class="fragment">GET va POST ning asosiy farqi nima?</li>
+          <li class="fragment">label dagi for qaysi atribut bilan bir xil bo'ladi?</li>
+          <li class="fragment">Faqat bitta tanlov uchun qaysi type va qanday qoida?</li>
+          <li class="fragment">Ko'p qatorli matn uchun qaysi teg kerak?</li>
+          <li class="fragment">Maydonni majburiy qilish uchun qaysi atribut yoziladi?</li>
+        </ol>
+        
+      </section>
+
+      <!-- 26. XULOSA -->
+      <section>
+        <h2>Xulosa</h2>
+        <div class="cards two">
+          <div class="card"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Bugun o'rgandik</h3><p>form, GET/POST, label bilan input, input turlari, select, textarea, required va boshqa validatsiya atributlari.</p></div>
+          <div class="card"><div class="icon"><i data-ic="rocket" data-anim="float"></i></div><h3>Keyingi hafta</h3><p>Semantik teglar: header, nav, main, article, section, footer, shuningdek audio va video.</p></div>
+        </div>
+        <p class="small mt">2-hafta yakunlandi: rasmlar, ro'yxatlar, jadvallar va formalar. Endi interaktiv sahifa yarata olasiz.</p>
+        
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Dizayn Asoslari va Rang Vositalari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Dizayn Asoslari va Rang Vositalari</h1>
+  <p class="muted">Kompozitsiya, Color Picker, Eyedropper, Swatches va Gradient Tool amaliyoti</p>
+  <span class="badge">9-sinf</span><span class="badge">Game Design</span><span class="badge">3-hafta · 9-dars</span>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Dizaynning Oltin Tamoyillari</h1>
+  <p>Funksional, tushunarli va estetik o'yin tajribasini yaratish</p>
+</section>
+
+<section>
+  <h2>Dizayn Nima?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sparkles" data-anim="pulse"></i></div>
+      <h3>Estetika va Funksiya Birligi</h3>
+      <p>Dizayn — bu shunchaki bezak emas, balki muammoni estetik va qulay hal qilish san'ati.</p>
+      <p class="t-muted">O'yinchi nima qilish kerakligini bir soniyada tushunishi kerak.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="crosshair"></i></div>
+      <h3>O'yindagi Vazifalari</h3>
+      <p>Diqqatni boshqarish, xavflarni ko'rsatish va o'yin atmosferasini yaratish.</p>
+      <p class="t-muted">Yaxshi dizayn o'yin jarayonini oson va yoqimli qiladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Vizual Ierarxiya va Kontrast</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="eye"></i></div>
+      <h3>Vizual Ierarxiya</h3>
+      <p>O'yinchining nigohini eng muhim elementga yo'naltirish qoidasi.</p>
+      <p class="t-muted">1-o'rinda: Qahramon; 2-o'rinda: Dushman/Tugma; 3-o'rinda: HUD; 4-o'rinda: Fon.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sun"></i></div>
+      <h3>Kontrast Kuchlanishi</h3>
+      <p>Hajm, shakl va rang farqi orqali ob'yektni fon ustida yaqqol ko'rsatish.</p>
+      <p class="t-muted">Kontrastsiz o'yin ekrani bir tekis loyqa xamirga aylanadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Kompozitsiya va Minimalizm</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>Muvozanat (Balans)</h3>
+      <p>Ekranning chap va o'ng qismlari vizual og'irlik bo'yicha teng bo'lishi lozim.</p>
+      <p class="t-muted">Simmetrik yoki asimmetrik uyg'unlik o'yinchiga xotirjamlik beradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield"></i></div>
+      <h3>Soddalik (Minimalizm)</h3>
+      <p>Ekranni keraksiz mayda detallar va shovqin bilan to'ldirmaslik.</p>
+      <p class="t-muted">Ortiqcha har bir chiziq o'yinchining reaktsiyasini sekinlashtiradi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>O'yin Ekranida Vizual Ierarxiya</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="20" y="20" width="760" height="200" rx="8" class="fn ln"></rect>
+
+      <rect x="40" y="35" width="220" height="30" rx="4" class="fb lb"></rect>
+      <text x="150" y="55" text-anchor="middle" class="t-head">3-Daraja: HUD &amp; Jon</text>
+
+      <circle cx="400" cy="120" r="45" class="fc lc"></circle>
+      <text x="400" y="125" text-anchor="middle" class="t-head">1-DARAJA: QAHRAMON</text>
+
+      <rect x="620" y="90" width="130" height="60" rx="6" class="fa la"></rect>
+      <text x="685" y="125" text-anchor="middle" class="t-accent">2-Dushmanga Hujum</text>
+
+      <line x1="260" y1="50" x2="360" y2="100" stroke="var(--c-accent)" stroke-width="2" stroke-dasharray="4"></line>
+      <line x1="445" y1="120" x2="620" y2="120" stroke="var(--c-accent)" stroke-width="2" stroke-dasharray="4"></line>
+
+      <text x="400" y="200" text-anchor="middle" class="t-muted">4-Daraja: Orqa Fon va Manzara (Neytral va xira)</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Color Picker va Eyedropper</h1>
+  <p>Photoshopda ranglarni aniq matematik koordinatalar bilan tanlash</p>
+</section>
+
+<section>
+  <h2>Color Picker Oynasi Imkoniyatlari</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="palette" data-anim="float"></i></div>
+      <h3>4 Xil Tizim Bir Joyda</h3>
+      <p>HSB (Tus, To'yinganlik, Yorqinlik), RGB (Ekran), CMYK (Chop etish), HEX (16-lik kod).</p>
+      <p class="t-muted">Dizayner istalgan tizim bo'yicha aniq rangni kiritishi mumkin.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="hash"></i></div>
+      <h3>HEX Kiritish Maydoni</h3>
+      <p>Dasturchilar va o'yin dvijoklari uchun 6 xonali 16-lik tizim kodi.</p>
+      <p class="t-muted">Masalan: <code>FF-00-00</code> — sof qizil, <code>00-E5-FF</code> — neon firuza.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>HSB Modeli — Rassomning Tili</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="num">H</div>
+      <h3>Hue (Tus)</h3>
+      <p>Rang g'ildiragidagi 0° dan 360° gacha bo'lgan sof rang burchagi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="num">S</div>
+      <h3>Saturation (To'yinganlik)</h3>
+      <p>0% (kulrang xira) dan 100% gacha (eng shirali toza rang).</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="num">B</div>
+      <h3>Brightness (Yorqinlik)</h3>
+      <p>0% (mutlaq qorong'i qora) dan 100% gacha (yorug' nur).</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Eyedropper Tool (I) — Pipetka</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="pipette"></i></div>
+      <h3>Rangni Bir Zumda Olish</h3>
+      <p>Ekrandagi yoki referens rasmdagi ixtiyoriy piksel ustiga bosib rangni ko'chirib olish.</p>
+      <p class="t-muted">Klaviatura tezkor tugmasi: <code>I</code>. Cho'tka (B) paytida <code>Alt</code> bosilsa ham ishlaydi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+      <h3>Sample Size Sozlamasi</h3>
+      <p>Point Sample (bitta piksel) o'rniga 3x3 yoki 5x5 Average tanlash tavsiya etiladi.</p>
+      <p class="t-muted">Bu tasodifiy shovqinli piksel emas, o'rtacha toza rangni olishni ta'minlaydi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Color Picker Koordinatalar Maydoni</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 230">
+      <rect x="50" y="30" width="340" height="170" rx="6" class="fn ln"></rect>
+      <text x="220" y="60" text-anchor="middle" class="t-accent">To'yinganlik va Yorqinlik Maydoni (S x B)</text>
+      <circle cx="350" cy="80" r="10" class="fa la"></circle>
+      <text x="220" y="115" text-anchor="middle" class="t-muted">Chapga: Kulrang (0% S) → O'ngga: Shirali (100% S)</text>
+      <text x="220" y="145" text-anchor="middle" class="t-muted">Pastga: Qora (0% B) ↑ Tepaga: Yorug' (100% B)</text>
+
+      <rect x="430" y="30" width="35" height="170" rx="4" class="fc lc"></rect>
+      <text x="490" y="70" class="t-head">Hue Strip (H)</text>
+      <text x="490" y="95" class="t-muted">0° dan 360° gacha</text>
+      <text x="490" y="120" class="t-muted">Kamalak ranglari vertikali</text>
+
+      <rect x="570" y="30" width="180" height="170" rx="6" class="fn ln"></rect>
+      <text x="660" y="65" text-anchor="middle" class="t-head">Aniq Qiymatlar</text>
+      <text x="600" y="100" class="t-muted">H: 210°  S: 85%  B: 95%</text>
+      <text x="600" y="130" class="t-muted">R: 36    G: 160  B: 242</text>
+      <text x="600" y="160" class="t-accent">HEX: 24-A0-F2</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Swatches Paneli</h1>
+  <p>O'yin palitralarini saqlash, guruhlash va jamoaga eksport qilish</p>
+</section>
+
+<section>
+  <h2>Nega Swatches Paneli Zarur?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="palette"></i></div>
+      <h3>Tasodifiylikni Yo'qotish</h3>
+      <p>O'yin davomida har gal yangi rang tanlasangiz, o'yin rang-barang tartibsizlikka aylanadi.</p>
+      <p class="t-muted">Oldindan belgilangan 5 ta rang barcha qahramon va menyularga qo'llaniladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="zap"></i></div>
+      <h3>Bitta Bosishda Qo'llash</h3>
+      <p>Swatches panelidagi katakka sichqoncha bilan bitta bosish kifoya — rang tanlanadi.</p>
+      <p class="t-muted">Ish unumdorligini 3 barobarga oshiradi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>O'yin Palitrasini Yaratish Bosqichlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="num">1</div>
+      <h3>Guruh Ochish</h3>
+      <p>Swatches panelida papka belgisi bosilib, nom beriladi (<code>Desert_Level</code>).</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="num">2</div>
+      <h3>Rang Qo'shish</h3>
+      <p>Tanlangan rangni <code>+</code> tugmasi bilan papka ichiga namunaga qo'shish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="num">3</div>
+      <h3>Eksport (.aco)</h3>
+      <p>Palitrani saqlab, dasturchi yoki 3D modellashtiruvchi hamkorga yuborish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>O'yin Rang Palitrasi Tuzilishi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 230">
+      <rect x="30" y="30" width="740" height="60" rx="8" class="fn ln"></rect>
+      <rect x="30" y="30" width="444" height="60" rx="8" class="fn ln"></rect>
+      <text x="250" y="65" text-anchor="middle" class="t-head">60% — Baza Rangi (Fon, Zamin, Katta binolar)</text>
+
+      <rect x="474" y="30" width="222" height="60" class="fa la"></rect>
+      <text x="585" y="65" text-anchor="middle" class="t-head">30% — Qahramon</text>
+
+      <rect x="696" y="30" width="74" height="60" rx="8" class="fc lc"></rect>
+      <text x="733" y="65" text-anchor="middle" class="t-head">10%</text>
+
+      <circle cx="80" cy="150" r="22" class="fn ln"></circle>
+      <circle cx="160" cy="150" r="22" class="fb lb"></circle>
+      <circle cx="240" cy="150" r="22" class="fa la"></circle>
+      <circle cx="320" cy="150" r="22" class="fc lc"></circle>
+      <circle cx="400" cy="150" r="22" class="fc lc"></circle>
+      <text x="500" y="155" class="t-muted">5 ta rasmiy rangdan iborat Swatches to'plami</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Gradient Tool (G)</h1>
+  <p>5 xil gradiyent turi va Gradient Editor bilan dinamik nurlar yaratish</p>
+</section>
+
+<section>
+  <h2>Gradiyentning O'yindagi O'rni</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="blend"></i></div>
+      <h3>Mayin Rang O'tishi</h3>
+      <p>Bir rangning ikkinchi rangga tekis va jozibali oqib o'tishi.</p>
+      <p class="t-muted">Bir xil tekis rangdagi sun'iylikni yo'qotadi va hajm beradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sun" data-anim="pulse"></i></div>
+      <h3>Nurlar va Effektlar</h3>
+      <p>Osmon tongi, tuman, sehrli alanga, lazer nurlari va salomatlik panellari.</p>
+      <p class="t-muted">Gradient Tool o'yin muhitiga chuqurlik kiritadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>5 Xil Gradiyent Turi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+      <h3>1. Linear (Chiziqli)</h3>
+      <p>To'g'ri chiziq bo'ylab rang o'tishi. Osmon va HP bar uchun.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sun"></i></div>
+      <h3>2. Radial (Aylanma)</h3>
+      <p>Markazdan doira shaklida tarqaluvchi nur. Mash'ala va qalqon uchun.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="triangle"></i></div>
+      <h3>3. Angle (Burchakli)</h3>
+      <p>360° soat strelkasi bo'yicha aylanuvchi konus. Radar skaneri uchun.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Reflected va Diamond Gradiyentlar</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>4. Reflected (Akslantirilgan)</h3>
+      <p>Markaziy o'qdan ikki tomonga ko'zgu kabi simmetrik tarqaluvchi nur.</p>
+      <p class="t-muted">Qilich tig'ining metall yaltirashi va silindr naychalar uchun a'lo tanlov.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="diamond"></i></div>
+      <h3>5. Diamond (Olmos shaklli)</h3>
+      <p>Markazdan to'rtburchak romb/olmos shaklida yorug'lik taratish.</p>
+      <p class="t-muted">Qimmatbaho olmoslar, yulduzlar va sehrli kristallar yaraqlashi uchun.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>5 Xil Gradiyent Vizual Ko'rinishi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 230">
+      <rect x="20" y="30" width="130" height="150" rx="6" class="fa la"></rect>
+      <text x="85" y="165" text-anchor="middle" class="t-head">Linear</text>
+
+      <rect x="180" y="30" width="130" height="150" rx="6" class="fn ln"></rect>
+      <circle cx="245" cy="95" r="35" class="fc lc"></circle>
+      <text x="245" y="165" text-anchor="middle" class="t-head">Radial</text>
+
+      <rect x="340" y="30" width="130" height="150" rx="6" class="fn ln"></rect>
+      <path d="M 405 95 L 440 60 A 45 45 0 0 1 440 130 Z" class="fa la"></path>
+      <text x="405" y="165" text-anchor="middle" class="t-head">Angle</text>
+
+      <rect x="500" y="30" width="130" height="150" rx="6" class="fn ln"></rect>
+      <rect x="550" y="30" width="30" height="115" class="fc lc"></rect>
+      <text x="565" y="165" text-anchor="middle" class="t-head">Reflected</text>
+
+      <rect x="660" y="30" width="130" height="150" rx="6" class="fn ln"></rect>
+      <polygon points="725,60 760,95 725,130 690,95" class="fa la"></polygon>
+      <text x="725" y="165" text-anchor="middle" class="t-head">Diamond</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Interaktiv Savol: Color Banding Muammosi</h2>
+  <div class="flip">
+    <div class="flip-in">
+      <div class="face front">
+        <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+        <h3>Gradiyentda chiziq-chiziq pog'onalar paydo bo'lsa nima qilinadi?</h3>
+        <p class="t-muted">Kartanikiga bosing yoki aylantiring</p>
+      </div>
+      <div class="face back">
+        <div class="icon"><i data-ic="circle-check"></i></div>
+        <h3>1% Noise (Shovqin) Qo'shiladi!</h3>
+        <p>Katta ekranlarda rang silliq o'tmay chandiqlar (Color Banding) hosil bo'lsa, qatlamga 1% <b>Add Noise</b> filtri beriladi yoki Dither yoqiladi. Piksellar darhol tekislanadi!</p>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Dinamik Health Bar Gradiyentini Sozlash</h2>
+  <div class="stepper">
+    <div class="step fragment fade-up">
+      <div class="num">1</div>
+      <h3>0% Nuqta (Qizil)</h3>
+      <p>Gradient Editor ochiladi: chap nuqtaga xavfli qizil rang (FF-00-00) qo'yiladi.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">2</div>
+      <h3>50% Nuqta (Sariq)</h3>
+      <p>O'rtaga bitta bosilib, ogohlantiruvchi sariq rang (FF-FF-00) ulanadi.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">3</div>
+      <h3>100% Nuqta (Yashil)</h3>
+      <p>O'ng chekka nuqtaga sog'lom yashil rang (00-FF-00) qo'yiladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tezkor Savol: HSB Modeli</h2>
+  <div class="quiz">
+    <div class="q">Color Picker'da rangning xiraligini (kulrangdan to'liq sof shirali ranggacha) boshqaruvchi parametr qaysi?</div>
+    <div class="opts">
+      <div class="opt">A) Hue (Tus)</div>
+      <div class="opt" data-ok>B) Saturation (To'yinganlik)</div>
+      <div class="opt">C) Brightness (Yorqinlik)</div>
+      <div class="opt">D) Opacity (Shaffoflik)</div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Dars Xulosasi va Amaliy Vazifa</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Bugun O'rganganlarimiz</h3>
+      <p>Vizual ierarxiya va kompozitsiya qonunlari.</p>
+      <p>Color Picker (HSB, HEX), Eyedropper va Swatches.</p>
+      <p class="t-muted">5 xil gradiyent va Gradient Editor amaliyoti.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="gamepad-2"></i></div>
+      <h3>Amaliy Vazifa</h3>
+      <p>Swatches panelida 5 rangli o'yin palitrasi yig'ish.</p>
+      <p>Linear va Radial gradiyent bilan osmon va sehrli qalqon chizish.</p>
+      <p class="t-muted">Palitrani .aco formatida eksport qilish.</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

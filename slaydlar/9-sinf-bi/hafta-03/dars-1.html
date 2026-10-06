@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Ma’lumotlarni Tozalash (Data Cleaning)</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Ma’lumotlarni Tozalash (Data Cleaning)</h1>
+  <p class="muted">Nuqsonli ma'lumotlarni tozalash, matn vositalari va Power Query ETL</p>
+  <span class="badge">9-sinf</span><span class="badge">Business Intelligence</span><span class="badge">3-hafta · 7-dars</span>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Data Cleaning va Ma'lumot Sifati</h1>
+  <p>Xatoliklar, anomaliyalar va universal GIGO tamoyili</p>
+</section>
+
+<section>
+  <h2>Nega Ma'lumotlarni Tozalash Muhim?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="clock"></i></div>
+      <h3>Vaqtning 80% Qismi</h3>
+      <p>Tahlilchilar o'z ish vaqtining asosiy qismini ma'lumotlarni tozalash va tayyorlashga sarflaydi.</p>
+      <p class="t-muted">Chunki real dunyodagi xom ma'lumotlar doimo iflos va tartibsiz bo'ladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-alert" data-anim="pulse"></i></div>
+      <h3>GIGO Tamoyili</h3>
+      <p>Garbage In, Garbage Out: xato ma'lumotdan to'g'ri qaror chiqarib bo'lmaydi!</p>
+      <p class="t-muted">Toza ma'lumot — muvaffaqiyatli tahlilning 90% garovidir.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Data Cleaning jarayoni</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="30" y="80" width="180" height="90" rx="8" class="fn ln"></rect>
+      <text x="120" y="115" class="t-head" text-anchor="middle">Xom Dataset</text>
+      <text x="120" y="145" class="t-muted" text-anchor="middle">Xatolar, dublikatlar</text>
+
+      <line x1="210" y1="125" x2="310" y2="125" class="la ar-a flowing"></line>
+      <text x="260" y="110" class="t-accent" text-anchor="middle">ETL Quvuri</text>
+
+      <rect x="310" y="65" width="220" height="120" rx="8" class="fa la"></rect>
+      <text x="420" y="100" class="t-head" text-anchor="middle">Tozalash Amallari</text>
+      <text x="420" y="125" class="t-muted" text-anchor="middle">TRIM + PROPER</text>
+      <text x="420" y="150" class="t-accent" text-anchor="middle">Dublikatlarni o'chirish</text>
+
+      <line x1="530" y1="125" x2="620" y2="125" class="lg ar-g flowing"></line>
+
+      <rect x="620" y="80" width="150" height="90" rx="8" class="fg lg"></rect>
+      <text x="695" y="115" class="t-head" text-anchor="middle">Toza Baza</text>
+      <text x="695" y="145" class="t-muted" text-anchor="middle">Tahlilga tayyor</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Keng tarqalgan ma'lumot nuqsonlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="space"></i></div>
+      <h3>Ortiqcha Bo'shliqlar</h3>
+      <p>So'z boshida, oxirida yoki orasida ko'rinmas ortiqcha probellar.</p>
+      <p class="t-muted">Formula taqqoslashini buzadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="type"></i></div>
+      <h3>Harf Registri</h3>
+      <p>Bir xil so'z turli xil katta-kichik harflarda kiritilgani.</p>
+      <p class="t-muted">Guruhlashda muammo tug'diradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="copy"></i></div>
+      <h3>Dublikat Yozuvlar</h3>
+      <p>Aynan bir xil xaridor yoki buyurtmaning ikki marta yozilishi.</p>
+      <p class="t-muted">Hajmni sun'iy oshiradi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Excel Matn Vositalari</h1>
+  <p>TRIM, PROPER, Flash Fill (Ctrl+E) va Text-to-Columns</p>
+</section>
+
+<section>
+  <h2>TRIM, CLEAN va PROPER funksiyalari</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="broom-sparkles"></i></div>
+      <h3>=TRIM(text)</h3>
+      <p>So'zlar orasidagi bitta bo'shliqdan tashqari barcha ortiqcha probellarni yo'qotadi.</p>
+      <p class="t-muted">Boshidagi va oxiridagi bo'shliqlarni to'liq tozalaydi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sparkles" data-anim="pulse"></i></div>
+      <h3>=PROPER(text)</h3>
+      <p>Har bir so'zning birinchi harfini katta, qolganlarini kichik harfga aylantiradi.</p>
+      <p class="t-muted">Ism-familiyalarni chiroyli standartga keltiradi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Matn funksiyalari anatomiyasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="40" y="40" width="320" height="160" rx="8" class="fn ln"></rect>
+      <text x="200" y="75" class="t-head" text-anchor="middle">Xom qiymat (A2)</text>
+      <text x="200" y="115" class="t-muted" text-anchor="middle">"  alisher   navoiy  "</text>
+      <text x="200" y="145" class="t-accent" text-anchor="middle">(Probellar va kichik harf)</text>
+
+      <line x1="360" y1="120" x2="440" y2="120" class="la ar-a flowing"></line>
+      <text x="400" y="105" class="t-head" text-anchor="middle">Formula</text>
+
+      <rect x="440" y="40" width="320" height="160" rx="8" class="fg lg"></rect>
+      <text x="600" y="75" class="t-head" text-anchor="middle">Natija (B2)</text>
+      <text x="600" y="115" class="t-head" text-anchor="middle">"Alisher Navoiy"</text>
+      <text x="600" y="145" class="t-muted" text-anchor="middle">=PROPER(TRIM(A2))</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Flash Fill (Ctrl + E) — Aqlli to'ldirish</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="wand-sparkles" data-anim="float"></i></div>
+      <h3>Sun'iy Intellekt Tezligi</h3>
+      <p>Birinchi qatorga namunani yozasiz va <code>Ctrl + E</code> ni bosasiz.</p>
+      <p class="t-muted">Excel qolgan yuzlab qatorlarni namuna asosida o'zi ajratib beradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="list-checks"></i></div>
+      <h3>Qo'llanish sohalari</h3>
+      <ul>
+        <li>To'liq ismdan faqat familiyani ajratish</li>
+        <li>Telefon raqamlariga chiziqcha qo'shish</li>
+        <li>Email ichidan faqat domen nomini olish</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Text-to-Columns (Matnni ustunlarga bo'lish)</h2>
+  <div class="stepper">
+    <div class="stp on">
+      <div class="card">
+        <div class="icon"><i data-ic="table"></i></div>
+        <h3>1. Diapazonni tanlash</h3>
+        <p>Ajratilishi kerak bo'lgan matnli ustun belgilanadi.</p>
+      </div>
+    </div>
+    <div class="stp">
+      <div class="card">
+        <div class="icon"><i data-ic="split"></i></div>
+        <h3>2. Ajratgich (Delimiter)</h3>
+        <p>Vergul, probel, defis yoki nuqta-vergul tanlanadi.</p>
+      </div>
+    </div>
+    <div class="stp">
+      <div class="card">
+        <div class="icon"><i data-ic="circle-check"></i></div>
+        <h3>3. Tayyor ustunlar</h3>
+        <p>Bitta katakdagi matn bir nechta alohida ustunlarga tushadi.</p>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Interaktiv sinov: Vositalarni toping</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:220px">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="circle-question-mark"></i></div>
+          <h3>1-Vaziyat</h3>
+          <p>"Ism-familiya yozilgan ustundan bitta tugma bilan faqat ismlarni alohida ustunga chiqarish kerak".</p>
+          <span class="flip-hint">bosing</span>
+        </div>
+        <div class="face back">
+          <h3>Yechim: Flash Fill (Ctrl + E)</h3>
+          <p>Yangi ustunga bitta ismni yozib Ctrl+E bosilsa, qolgan barcha ismlar avtomatik to'ldiriladi.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip" style="min-height:220px">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="circle-question-mark"></i></div>
+          <h3>2-Vaziyat</h3>
+          <p>"Tovar nomlarining boshidagi va oxiridagi ko'rinmas bo'shliqlarni yo'qotish kerak".</p>
+          <span class="flip-hint">bosing</span>
+        </div>
+        <div class="face back">
+          <h3>Yechim: =TRIM()</h3>
+          <p>TRIM funksiyasi barcha ortiqcha bo'sh joylarni bitta formulada tozalab tashlaydi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Power Query Muhitida Tozalash</h1>
+  <p>Takrorlanuvchi avtomatlashtirilgan ETL bosqichlari</p>
+</section>
+
+<section>
+  <h2>Power Query Ish Oqimi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="30" y="80" width="180" height="90" rx="8" class="fn ln"></rect>
+      <text x="120" y="115" class="t-head" text-anchor="middle">Manba (Excel/CSV)</text>
+      <text x="120" y="145" class="t-muted" text-anchor="middle">Data > From Sheet</text>
+
+      <line x1="210" y1="125" x2="310" y2="125" class="la ar-a flowing"></line>
+
+      <rect x="310" y="70" width="220" height="110" rx="8" class="fa la"></rect>
+      <text x="420" y="105" class="t-head" text-anchor="middle">Power Query Editor</text>
+      <text x="420" y="130" class="t-muted" text-anchor="middle">Applied Steps (Tarix)</text>
+      <text x="420" y="155" class="t-accent" text-anchor="middle">Split, Clean, Replace</text>
+
+      <line x1="530" y1="125" x2="630" y2="125" class="lg ar-g flowing"></line>
+
+      <rect x="630" y="80" width="140" height="90" rx="8" class="fg lg"></rect>
+      <text x="700" y="115" class="t-head" text-anchor="middle">Close & Load</text>
+      <text x="700" y="145" class="t-muted" text-anchor="middle">Excelga qaytarish</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Applied Steps va Avtomatik Refresh</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="file-clock"></i></div>
+      <h3>Applied Steps (Qadamlar)</h3>
+      <p>Bajarilgan har bir tozalash amali ro'yxat bo'lib saqlanadi.</p>
+      <p class="t-muted">Istalgan qadamni bekor qilish yoki qayta sozlash mumkin.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="refresh-cw" data-anim="spin"></i></div>
+      <h3>Bir Bosishda Yangilash</h3>
+      <p>Yangi oy ma'lumotlari kelganda, faqat <code>Refresh</code> bosiladi.</p>
+      <p class="t-muted">Barcha tozalash amallari 1 soniyada avtomatik qayta ishlaydi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Sxema: Power Query amallari</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 280">
+      <g data-tip="Trim & Clean: ko'rinmas belgilar va bo'shliqlarni tozalash."><rect class="fa" x="40" y="80" width="260" height="120" rx="15"/><text class="t-head" x="170" y="145" text-anchor="middle">1. Trim & Clean</text></g>
+      <g data-tip="Replace Values: null va bo'sh qiymatlarni 0 yoki N/A ga almashtirish."><rect class="fc" x="370" y="80" width="260" height="120" rx="15"/><text class="t-head" x="500" y="145" text-anchor="middle">2. Replace Values</text></g>
+      <g data-tip="Remove Duplicates: takroriy yozuvlarni bir zumda tozalash."><rect class="fg" x="700" y="80" width="260" height="120" rx="15"/><text class="t-head" x="830" y="145" text-anchor="middle">3. Remove Duplicates</text></g>
+      <line class="la flowing" x1="300" y1="140" x2="370" y2="140"/>
+      <line class="lg flowing" x1="630" y1="140" x2="700" y2="140"/>
+    </svg>
+  </div>
+  <p class="small t-muted">Sxema bloklari ustiga sichqonchani olib boring yoki bosing.</p>
+  
+</section>
+
+<section>
+  <h2>Dublikatlarni o'chirish qoidasi</h2>
+  <div class="callout good">
+    <strong>Katta-kichik harfga sezgirlik (Case Sensitivity)</strong>
+    <p>Power Query'da standart dublikatlarni o'chirish harf registriga qaraydi. Harflarning katta-kichikligiga qaramasdan tozalash uchun formulaga <code>Comparer.OrdinalIgnoreCase</code> qo'shiladi.</p>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tezkor Sinov: TRIM funksiyasi</h2>
+  <div class="quiz">
+    <p class="q">Quyidagi matnga TRIM qo'llanganda nima hosil bo'ladi: <code>"  Toshkent   shahri  "</code>?</p>
+    <div class="opts">
+      <button class="opt" type="button">"Toshkentshahri"</button>
+      <button class="opt" type="button" data-ok>"Toshkent shahri"</button>
+      <button class="opt" type="button">"  Toshkent shahri"</button>
+      <button class="opt" type="button">"Toshkent   shahri"</button>
+    </div>
+    <div class="explain">To'g'ri javob: "Toshkent shahri"! Boshidagi va oxiridagi bo'shliqlar yo'qoladi, so'zlar orasida esa faqat 1 ta probel qoladi.</div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tezkor Sinov: Flash Fill tugmasi</h2>
+  <div class="quiz">
+    <p class="q">Excelda Flash Fill (Tezkor to'ldirish) funksiyasini ishga tushiruvchi klaviatura birikmasi qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ctrl + C</button>
+      <button class="opt" type="button">Ctrl + T</button>
+      <button class="opt" type="button" data-ok>Ctrl + E</button>
+      <button class="opt" type="button">Alt + F4</button>
+    </div>
+    <div class="explain">To'g'ri javob: Ctrl + E namunani ilg'ab butun ustunni to'ldiradi!</div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Amaliy topshiriqlar <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Ismlar ro'yxatidagi ortiqcha probellarni TRIM va PROPER orqali tozalang.</div>
+  <div class="task"><span class="level mid">O'rta</span>Flash Fill (Ctrl+E) orqali telefon raqamlaridan kompaniya kodlarini ajrating.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Text-to-Columns vositasi orqali to'liq manzillarni shahar, tuman va uy raqamiga bo'ling.</div>
+  
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Matn Vositalari</h3>
+      <ul>
+        <li>TRIM — bo'shliqlarni tozalash</li>
+        <li>PROPER — katta-kichik harflar</li>
+        <li>Flash Fill (Ctrl+E) — aqlli namuna</li>
+        <li>Text-to-Columns — ajratish</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="layers" data-anim="pulse"></i></div>
+      <h3>Power Query Kuchi</h3>
+      <ul>
+        <li>Applied Steps — qayd etilgan tarix</li>
+        <li>Replace Values — bo'sh qiymatlar</li>
+        <li>Bir bosishda avtomatik yangilash</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

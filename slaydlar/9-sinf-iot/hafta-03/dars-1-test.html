@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>7-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>7-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">IoT</span><span class="badge">3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Ikki LED ketma-ket ulanganda tok kuchi qanday bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Ikkalasida ham bir xil</button>
+      <button class="opt" type="button">Ikkiga bo'linadi</button>
+      <button class="opt" type="button">Ikki baravar oshadi</button>
+      <button class="opt" type="button">Nolga teng</button>
+    </div>
+    <div class="explain">Ketma-ketda I = I1 = I2.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Ketma-ket ulanishda kuchlanish qanday taqsimlanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Har biriga to'liq manba kuchlanishi tushadi</button>
+      <button class="opt" type="button" data-ok>Bo'linadi: U = U1 + U2</button>
+      <button class="opt" type="button">Nolga teng bo'ladi</button>
+      <button class="opt" type="button">Faqat birinchisiga tushadi</button>
+    </div>
+    <div class="explain">Kuchlanishlar yig'indisi manba kuchlanishiga teng.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Parallel ulanishda har bir tarmoqqa nima tushadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Kuchlanishning yarmi</button>
+      <button class="opt" type="button">Hech qanday kuchlanish</button>
+      <button class="opt" type="button" data-ok>To'liq manba kuchlanishi</button>
+      <button class="opt" type="button">Faqat tok</button>
+    </div>
+    <div class="explain">U = U1 = U2.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Parallel ulanishda toklar qanday?</p>
+    <div class="opts">
+      <button class="opt" type="button">Bir xil qoladi</button>
+      <button class="opt" type="button">Bir-birini yo'qotadi</button>
+      <button class="opt" type="button">Nolga teng</button>
+      <button class="opt" type="button" data-ok>Qo'shiladi: I = I1 + I2</button>
+    </div>
+    <div class="explain">Umumiy tok tarmoqlar toklarining yig'indisi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Ikki LED ni mustaqil boshqarish uchun qanday ulanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Har biri alohida raqamli pinga va alohida 220 Ω rezistorga</button>
+      <button class="opt" type="button">Ikkalasi bitta pin va bitta rezistorga ketma-ket</button>
+      <button class="opt" type="button">Ikkalasi 5V ga rezistorsiz</button>
+      <button class="opt" type="button">Ikkalasi bitta GND ga rezistorsiz</button>
+    </div>
+    <div class="explain">Alohida pin — alohida boshqaruv.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>int red = 9;</code> qatorining ma'nosi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">9 soniya kutish</button>
+      <button class="opt" type="button" data-ok>9-pinni red nomi bilan o'zgaruvchi qilib e'lon qilish</button>
+      <button class="opt" type="button">Qizil LED ni o'chirish</button>
+      <button class="opt" type="button">9 ta LED yaratish</button>
+    </div>
+    <div class="explain">O'zgaruvchi pinlarni o'qilishi oson nom bilan belgilaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Kodda yellow LED qancha vaqt yonadi? <code>red=1; delay(5000); red=0; yellow=1; delay(2000); yellow=0; delay(5000);</code></p>
+    <div class="opts">
+      <button class="opt" type="button">5 soniya</button>
+      <button class="opt" type="button">7 soniya</button>
+      <button class="opt" type="button" data-ok>2 soniya</button>
+      <button class="opt" type="button">12 soniya</button>
+    </div>
+    <div class="explain">Sariq 2000 ms yonib turadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Yuqoridagi tsikl (5000+2000+5000 ms) bir marta necha soniya davom etadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">7 soniya</button>
+      <button class="opt" type="button">10 soniya</button>
+      <button class="opt" type="button">5 soniya</button>
+      <button class="opt" type="button" data-ok>12 soniya</button>
+    </div>
+    <div class="explain">5 + 2 + 5 = 12 s.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Antifaza rejimi nimani anglatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Biri yonganda ikkinchisi o'chadi va aksincha</button>
+      <button class="opt" type="button">Ikkalasi bir vaqtda yonadi</button>
+      <button class="opt" type="button">Ikkalasi doim o'chiq</button>
+      <button class="opt" type="button">Ikkalasi tasodifiy yonadi</button>
+    </div>
+    <div class="explain">Masalan: qizil=1, sariq=0, delay; qizil=0, sariq=1, delay.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Qizil va Sariq bir vaqtda yonishi uchun kod qanday bo'lishi kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat bitta pinga 1 berib delay</button>
+      <button class="opt" type="button" data-ok>Ikkala pinga <code>digitalWrite(..., 1)</code> berib, so'ng <code>delay()</code></button>
+      <button class="opt" type="button">Ikkala pinga 0 berib delay</button>
+      <button class="opt" type="button">pinMode ni olib tashlash</button>
+    </div>
+    <div class="explain">Ikki digitalWrite ketma-ket bajarilib, bir vaqtda yonadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: Ketma-ket va parallel ulanish, mustaqil boshqaruv, svetofor mantig'i.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

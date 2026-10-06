@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>CIA buzilish ssenariylari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="Logo">
+  <h1>CIA buzilish ssenariylari</h1>
+  <p class="muted">O'rtadagi odam (MITM) hujumi, ARP Spoofing va Wireshark tahlili</p>
+  <span class="badge">10-sinf Kiberxavfsizlik · 2-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-ban" data-anim="wiggle"></i></div>
+      <h3>CIA buzilish holatlari</h3>
+      <p>Sniffing, Tampering va xizmat to'xtashi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="network" data-anim="pulse"></i></div>
+      <h3>O'rtadagi odam (MITM)</h3>
+      <p>Hujumchi qanday qilib trafik oqimiga suqilib kiradi?</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="terminal" data-anim="float"></i></div>
+      <h3>ARP Spoofing mexanizmi</h3>
+      <p>Qalbaki ARP Reply paketlari va keshni zaharlash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check" data-anim="float"></i></div>
+      <h3>Himoya strategiyalari</h3>
+      <p>HTTPS, statik ARP, DAI va VPN orqali himoyalanish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>CIA mezonlarining real buzilishi</h1>
+  <p>Sniffing, Tampering va Availability yo'qotilishi</p>
+  
+</section>
+
+<section>
+  <h2>CIA buzilish holatlari jadvali</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="eye"></i></div>
+      <h3>Konfidensiallik buzilishi</h3>
+      <p class="muted">Sniffing (O'g'irlash)</p>
+      <p>Tridi Bobning bank kartasi va parollarini ochiq Wi-Fi da tutib oladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="pencil"></i></div>
+      <h3>Yaxlitlik buzilishi</h3>
+      <p class="muted">Tampering (Soxtalashtirish)</p>
+      <p>Tridi yo'lda Bobning o'tkazma summasini 100 mingdan 10 millionga o'zgartiradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="server-off"></i></div>
+      <h3>Foydalanuvchanlik buzilishi</h3>
+      <p class="muted">DoS / Crash (To'xtatish)</p>
+      <p>Tridi paketlarni yo'q qiladi yoki serverni qotirib, Bobni tizimdan uzadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>O'rtadagi odam (MITM) hujumi</h1>
+  <p>Man-in-the-Middle arxitekturasi va xavfi</p>
+  
+</section>
+
+<section>
+  <h2>MITM arxitekturasi</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <h3>Odatiy aloqa</h3>
+        <p>Bob to'g'ridan-to'g'ri router va bank serveri bilan gaplashadi.</p>
+      </div>
+      <div class="card fragment fade-up">
+        <h3>MITM paytida</h3>
+        <p>Hujumchi o'rtaga joylashadi. Bob xabarni Tridiga beradi, Tridi o'qib, keyin serverga yuboradi!</p>
+      </div>
+    </div>
+    <div class="fragment fade-up">
+      <svg viewBox="0 0 400 280">
+        <rect x="20" y="40" width="100" height="50" rx="8" class="fc" />
+        <text x="70" y="70" text-anchor="middle" class="t-head">Bob</text>
+        <rect x="280" y="40" width="100" height="50" rx="8" class="fc" />
+        <text x="330" y="70" text-anchor="middle" class="t-head">Router</text>
+        <rect x="150" y="180" width="100" height="50" rx="8" class="fa" />
+        <text x="200" y="210" text-anchor="middle" class="t-accent">Tridi (Hujumchi)</text>
+        <line x1="70" y1="90" x2="160" y2="180" stroke="currentColor" stroke-width="2" class="t-accent" />
+        <line x1="240" y1="180" x2="330" y2="90" stroke="currentColor" stroke-width="2" class="t-accent" />
+      </svg>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>ARP Spoofing siri</h1>
+  <p>Lokal tarmoqdagi eng katta zaiflik — ARP protokoli</p>
+  
+</section>
+
+<section>
+  <h2>ARP protokoli nega zaif?</h2>
+  <div class="card fragment fade-up">
+    <div class="icon"><i data-ic="network"></i></div>
+    <h3>IP manzil -> MAC manzil</h3>
+    <p>Lokal tarmoqdagi qurilmalar bir-biri bilan faqat MAC manzil orqali gaplashadi.</p>
+  </div>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <h4>Hech qanday autentifikatsiya yo'q!</h4>
+      <p>Kompyuter kelgan har qanday «Men routerman» degan ARP xabariga ishonadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <h4>Keshni zaharlash (Poisoning)</h4>
+      <p>Hujumchi daqiqasiga o'nlab qalbaki javob yuborib, kompyuterning xotirasini buzadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Amaliy laboratoriya: Kali Linux va arpspoof</h2>
+  <pre><code class="language-bash"># 1. Paketlar uzilib qolmasligi uchun yo'naltirishni yoqamiz
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
+# 2. Qurbon (172.16.4.65) va Server (172.16.5.97) o'rtasida zaharlash
+sudo arpspoof -i eth0 -t 172.16.5.97 -r 172.16.4.65</code></pre>
+  <div class="callout fragment fade-up">
+    <p>Natija: Bobning barcha trafigi Kali Linux orqali oqib o'ta boshlaydi!</p>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Wireshark da tutib olingan parollar</h2>
+  <div class="card fragment fade-up">
+    <div class="icon"><i data-ic="terminal"></i></div>
+    <h3>Shifrlanmagan HTTP ochiq fosh bo'ladi</h3>
+    <p>Agar saytda HTTPS bo'lmasa, Wiresharkda <code>http.request.method == "POST"</code> filtri orqali login va parollar ochiq ko'rinadi:</p>
+  </div>
+  <pre class="fragment fade-up"><code class="language-txt">POST /login.php HTTP/1.1
+Host: test-bank.local
+Content-Type: application/x-www-form-urlencoded
+
+username=bob&password=Parol12345!</code></pre>
+  
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>MITM dan qanday himoyalanamiz?</h1>
+  <p>Tizimlar va foydalanuvchilar himoyasi choralari</p>
+  
+</section>
+
+<section>
+  <h2>MITM ga qarshi 4 ta asosiy qalqon</h2>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="lock"></i></div>
+      <h3>1. Faqat HTTPS va HSTS</h3>
+      <p>Tridi paketni tutib olsa ham, u TLS orqali kuchli shifrlangan, parolni o'qiy olmaydi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="globe"></i></div>
+      <h3>2. Ishonchli VPN</h3>
+      <p>Ochiq Wi-Fi da butun trafik shifrlangan tunnel orqali uzatiladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="network"></i></div>
+      <h3>3. Statik ARP jadvallari</h3>
+      <p>Shlyuz MAC manzilini qo'lda o'zgarmas qilib belgilash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>4. Dynamic ARP Inspection (DAI)</h3>
+      <p>Tarmoq switchlarida qalbaki ARP Reply larni apparat darajasida bloklash.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">05</div>
+  <h1>Amaliy topshiriqlar</h1>
+  <p>Mustaqil tahlil vazifalari</p>
+  
+</section>
+
+<section>
+  <h2>Darsning amaliy vazifalari</h2>
+  <div class="cols">
+    <div class="task fragment fade-up">
+      <span class="level easy">Oson</span>
+      <h4>1. ARP zaifligi</h4>
+      <p>Nega ARP protokoli qalbaki javoblar bilan osongina aldanishi mumkin?</p>
+    </div>
+    <div class="task fragment fade-up">
+      <span class="level easy">Oson</span>
+      <h4>2. IP Forwarding</h4>
+      <p>Kali Linuxda `ip_forward` yoqilmasa qanday natija yuz beradi?</p>
+    </div>
+    <div class="task fragment fade-up">
+      <span class="level mid">O'rta</span>
+      <h4>3. SSL ogohlantirishi</h4>
+      <p>Nega brauzer «Sertifikat ishonchsiz» degan paytda davom etish qat'iyan taqiqlanadi?</p>
+    </div>
+    <div class="task fragment fade-up">
+      <span class="level hard">Qiyin</span>
+      <h4>4. DAI texnologiyasi</h4>
+      <p>Katta korporativ tarmoqlarda switch qalbaki ARP paketlarini qanday aniqlaydi?</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Xulosa</h2>
+  <div class="card fragment fade-up">
+    <div class="icon"><i data-ic="shield-check"></i></div>
+    <h3>Xulosa: Aloqa yo'lidagi xavflar</h3>
+    <p>Tarmoq kabeli yoki Wi-Fi orqali o'tayotgan barcha ma'lumotlar ochiq bo'lishi mumkin. Faqat shifrlash ishonch beradi.</p>
+  </div>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <h4>Ochiq Wi-Fi da ehtiyot bo'ling</h4>
+      <p>Parolsiz tarmoqlarda maxfiy parollarni kiritmang yoki VPN yoqing.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <h4>SSL sertifikatini tekshiring</h4>
+      <p>Sayt manzili yonidagi «Qulf» belgisiga doimo e'tibor qarating.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="shield-check" data-anim="pulse"></i></div>
+  <h1>E'tiboringiz uchun rahmat!</h1>
+  <p class="muted">Keyingi dars: Xavfsizlik tafakkuri va parollar siyosati (Hydra, Nmap)</p>
+  <span class="badge">Savollar bormi?</span>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

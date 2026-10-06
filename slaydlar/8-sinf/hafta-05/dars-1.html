@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Flexbox</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Flexbox</h1>
+  <p class="muted">Elementlarni qatorga, ustunga va markazga joylash</p>
+  <span class="badge">8-sinf</span><span class="badge">Web Full-stack</span><span class="badge">5-hafta · 13-dars</span>
+  
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q"><code>box-sizing: border-box</code> nima beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>width</code> padding va border ni ham o'z ichiga oladi</button>
+      <button class="opt" type="button">Elementni markazlaydi</button>
+      <button class="opt" type="button">Chegarani yo'qotadi</button>
+      <button class="opt" type="button">Elementlarni yonma-yon qo'yadi</button>
+    </div>
+    <div class="explain">Quti aniq belgilangan o'lchamda qoladi. Yonma-yon qo'yish esa — bugungi mavzu.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Konteyner va element</h1>
+  <p>Ota-ona buyuradi, bolalar tiziladi</p>
+</section>
+
+<section>
+  <h2>Ota va bolalar</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <g data-tip="Flex konteyner — display: flex yozilgan ota element."><rect class="fn ln" x="80" y="40" width="840" height="220" rx="16" stroke-width="4"/><text class="t-muted" x="100" y="30" font-size="22">.qator { display: flex; }</text></g>
+      <g class="fragment" data-tip="Bevosita bolalar flex elementga aylanadi va asosiy o'q bo'yicha tiziladi."><rect class="fa la" x="120" y="80" width="200" height="140" rx="12" stroke-width="3"/><text class="t-head" x="220" y="160" text-anchor="middle" font-size="28">1</text><rect class="fb lb" x="350" y="80" width="200" height="140" rx="12" stroke-width="3"/><text class="t-head" x="450" y="160" text-anchor="middle" font-size="28">2</text><rect class="fc lc" x="580" y="80" width="200" height="140" rx="12" stroke-width="3"/><text class="t-head" x="680" y="160" text-anchor="middle" font-size="28">3</text></g>
+      <g class="fragment" data-tip="Nevara (bolaning ichidagi element) flex element emas — unga o'z ota-onasida display: flex kerak."><rect class="fg lg" x="600" y="180" width="80" height="30" rx="6" stroke-width="2"/><text class="t-accent" x="860" y="300" text-anchor="middle" font-size="22">nevara — flex emas</text><line class="lg" x1="690" y1="200" x2="820" y2="280" stroke-width="2" marker-end="url(#ar-g)"/></g>
+    </svg>
+  </div>
+</section>
+
+<section data-auto-animate>
+  <h2>Bitta qator CSS</h2>
+  <pre class="terminal" data-id="flex"><code class="language-css" data-trim data-noescape>
+.qator {
+  /* hali hech narsa */
+}
+</code></pre>
+  <div class="cards three" data-id="qutilar" style="display:block"><div class="card">1</div><div class="card">2</div><div class="card">3</div></div>
+</section>
+
+<section data-auto-animate>
+  <h2>Bitta qator CSS</h2>
+  <pre class="terminal" data-id="flex"><code class="language-css" data-trim data-noescape>
+.qator {
+  display: flex;
+  gap: 16px;
+}
+</code></pre>
+  <div class="cards three" data-id="qutilar"><div class="card">1</div><div class="card">2</div><div class="card">3</div></div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>O'qlar va tekislash</h1>
+  <p>justify — asosiy o'q, align — ko'ndalang o'q</p>
+</section>
+
+<section>
+  <h2>Ikki o'q</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <rect class="fn ln" x="120" y="40" width="760" height="230" rx="14" stroke-width="3"/>
+      <g class="fragment" data-tip="Asosiy o'q (main axis): flex-direction: row da chapdan o'ngga. justify-content shu o'q bo'yicha ishlaydi."><line class="la flowing" x1="150" y1="155" x2="850" y2="155" stroke-width="5" marker-end="url(#ar-a)"/><text class="t-accent" x="500" y="140" text-anchor="middle" font-size="24">asosiy o'q · justify-content</text></g>
+      <g class="fragment" data-tip="Ko'ndalang o'q (cross axis): asosiy o'qqa perpendikulyar. align-items shu o'q bo'yicha."><line class="lb flowing" x1="190" y1="60" x2="190" y2="255" stroke-width="5" marker-end="url(#ar-b)"/><text class="t-head" x="210" y="240" font-size="22">ko'ndalang · align-items</text></g>
+      <g class="fragment"><text class="t-muted" x="500" y="305" text-anchor="middle" font-size="22">column da o'qlar joy almashadi</text></g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2><code>flex-direction</code></h2>
+  <table>
+    <thead><tr><th>Qiymat</th><th>Asosiy o'q</th></tr></thead>
+    <tbody>
+      <tr class="fragment"><td><code>row</code> (standart)</td><td>chapdan o'ngga →</td></tr>
+      <tr class="fragment"><td><code>row-reverse</code></td><td>o'ngdan chapga ←</td></tr>
+      <tr class="fragment"><td><code>column</code></td><td>yuqoridan pastga ↓</td></tr>
+      <tr class="fragment"><td><code>column-reverse</code></td><td>pastdan yuqoriga ↑</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2><code>justify-content</code></h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 380">
+      <g data-tip="flex-start — hammasi boshida (standart)."><text class="t-muted" x="20" y="45" font-size="22">flex-start</text><rect class="ln" x="230" y="20" width="740" height="40" rx="6" stroke-width="2" fill="none"/><rect class="fa" x="235" y="25" width="80" height="30" rx="4"/><rect class="fa" x="320" y="25" width="80" height="30" rx="4"/><rect class="fa" x="405" y="25" width="80" height="30" rx="4"/></g>
+      <g class="fragment" data-tip="center — hammasi o'rtada."><text class="t-muted" x="20" y="120" font-size="22">center</text><rect class="ln" x="230" y="95" width="740" height="40" rx="6" stroke-width="2" fill="none"/><rect class="fb" x="475" y="100" width="80" height="30" rx="4"/><rect class="fb" x="560" y="100" width="80" height="30" rx="4"/><rect class="fb" x="645" y="100" width="80" height="30" rx="4"/></g>
+      <g class="fragment" data-tip="flex-end — hammasi oxirida."><text class="t-muted" x="20" y="195" font-size="22">flex-end</text><rect class="ln" x="230" y="170" width="740" height="40" rx="6" stroke-width="2" fill="none"/><rect class="fc" x="715" y="175" width="80" height="30" rx="4"/><rect class="fc" x="800" y="175" width="80" height="30" rx="4"/><rect class="fc" x="885" y="175" width="80" height="30" rx="4"/></g>
+      <g class="fragment" data-tip="space-between — chetlari devorga tegadi, oralar teng."><text class="t-muted" x="20" y="270" font-size="22">space-between</text><rect class="ln" x="230" y="245" width="740" height="40" rx="6" stroke-width="2" fill="none"/><rect class="fg" x="235" y="250" width="80" height="30" rx="4"/><rect class="fg" x="560" y="250" width="80" height="30" rx="4"/><rect class="fg" x="885" y="250" width="80" height="30" rx="4"/></g>
+      <g class="fragment" data-tip="space-around — har bir element atrofida teng joy; chetda ham bo'shliq qoladi."><text class="t-muted" x="20" y="345" font-size="22">space-around</text><rect class="ln" x="230" y="320" width="740" height="40" rx="6" stroke-width="2" fill="none"/><rect class="fa" x="313" y="325" width="80" height="30" rx="4"/><rect class="fa" x="560" y="325" width="80" height="30" rx="4"/><rect class="fa" x="807" y="325" width="80" height="30" rx="4"/></g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2><code>align-items</code> va <code>align-self</code></h2>
+  <div class="cards two">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="align-vertical-justify-center" data-anim="pulse"></i></div><h3>align-items</h3><p>Hamma elementni ko'ndalang o'qda: <code>stretch</code> (standart), <code>flex-start</code>, <code>center</code>, <code>flex-end</code>, <code>baseline</code>.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="arrow-down-to-line"></i></div><h3>align-self</h3><p>Faqat bitta element: <code>.maxsus { align-self: flex-end; }</code></p></div>
+  </div>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i>Konteynerda balandlik bo'lmasa, vertikal tekislash ko'rinmaydi.</div>
+</section>
+
+<section>
+  <h2>Markazlashning «oltin uchligi»</h2>
+  <pre class="terminal"><code class="language-css" data-trim data-noescape data-line-numbers="2|3|4|5">
+.markaz {
+  display: flex;
+  justify-content: center;  /* gorizontal */
+  align-items: center;      /* vertikal */
+  height: 300px;
+}
+</code></pre>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>flex-direction: column</code> da <code>justify-content: center</code> qaysi yo'nalishda markazlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Gorizontal</button>
+      <button class="opt" type="button" data-ok>Vertikal</button>
+      <button class="opt" type="button">Hech qanday</button>
+      <button class="opt" type="button">Diagonal</button>
+    </div>
+    <div class="explain">column da asosiy o'q yuqoridan pastga — justify shu o'q bo'yicha.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Ko'chirish va joyni bo'lish</h1>
+  <p>flex-wrap, gap, flex-grow / shrink / basis</p>
+</section>
+
+<section>
+  <h2><code>flex-wrap</code> va <code>gap</code></h2>
+  <div class="vs">
+    <div class="side fragment"><h3><i data-ic="minimize-2"></i> nowrap</h3>Standart: sig'masa ham bitta qatorda siqiladi.</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3><i data-ic="grid-3x2" data-anim="float"></i> wrap</h3>Sig'magan element keyingi qatorga ko'chadi. <code>gap: 16px</code> — oralar.</div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>grow, shrink, basis</h2>
+    <table>
+      <thead><tr><th>Xususiyat</th><th>Ma'nosi</th><th>Standart</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td><code>flex-basis</code></td><td>boshlang'ich o'lcham</td><td><code>auto</code></td></tr>
+        <tr class="fragment"><td><code>flex-grow</code></td><td>bo'sh joydan ulush</td><td><code>0</code></td></tr>
+        <tr class="fragment"><td><code>flex-shrink</code></td><td>joy yetmasa siqilish</td><td><code>1</code></td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: <code>flex: 1</code> va <code>flex: 3</code></p>
+  </section>
+  <section>
+    <h2>Joyni 1:3 bo'lish</h2>
+    <div class="stats">
+      <div class="stat"><div class="v"><span class="count" data-to="25" data-suf="%">0</span></div><div class="l">.sidebar { flex: 1 }</div></div>
+      <div class="stat"><div class="v"><span class="count" data-to="75" data-suf="%">0</span></div><div class="l">.kontent { flex: 3 }</div></div>
+    </div>
+    <p class="mt">1 + 3 = 4 ulush. <code>flex-shrink: 0</code> — logotip siqilmaydi.</p>
+  </section>
+</section>
+
+<section>
+  <h2>Ko'chadigan kartalar</h2>
+  <pre class="terminal"><code class="language-css" data-trim data-noescape data-line-numbers="1|2|3">
+.kartalar { display: flex; flex-wrap: wrap; gap: 16px; }
+.karta    { flex: 1 1 200px; padding: 20px; }
+/* boshlang'ich 200px: kengayadi, siqiladi, ko'chadi */
+</code></pre>
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Amaliyot</h1>
+  <p>Navigatsiya paneli</p>
+</section>
+
+<section>
+  <h2>Navigatsiya paneli</h2>
+  <pre class="terminal"><code class="language-css" data-trim data-noescape data-line-numbers="1-3|4|5">
+.nav   { display: flex;
+         justify-content: space-between;
+         align-items: center; height: 70px; }
+.menyu { display: flex; gap: 24px; }   /* havolalar — nevaralar! */
+.nav a { color: white; text-decoration: none; }
+</code></pre>
+  <div class="callout tip fragment"><i data-ic="lightbulb"></i>F12 → Elements: flex konteyner yonidagi <b>flex</b> belgisini bosing — o'qlar chizib ko'rsatiladi.</div>
+</section>
+
+<section>
+  <h2>Odatiy xatolar</h2>
+  <div class="cards two">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-x"></i></div><h3>Noto'g'ri joy</h3><p><code>display: flex</code> elementlarga yozilgan — konteynerga yozing.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-x"></i></div><h3>Siqilgan kartalar</h3><p><code>flex-wrap</code> unutilgan — telefonda hamma bir qatorda.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriqlar <span class="timer"><i data-ic="timer"></i>30 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>3 quti bir qatorda, markazda, oralari 20px.</div>
+  <div class="task"><span class="level mid">O'rta</span>Navigatsiya paneli: chapda logotip, o'ngda 4 havola.</div>
+  <div class="task"><span class="level hard">Qiyin</span>6 ta ko'chadigan karta + 1:3 sidebar va kontent.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Konteyner</h3><p><code>display: flex</code> ota elementga.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>O'qlar</h3><p>justify — asosiy, align — ko'ndalang.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Moslashuv</h3><p><code>wrap</code>, <code>gap</code>, <code>flex: 1</code>.</p></div>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="layout-grid" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: CSS Grid</h1>
+  <p class="muted">Satr va ustunlardan iborat to'r — butun sahifa maketi</p>
+  <span class="badge">5-hafta · 14-dars</span>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

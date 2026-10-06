@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Muloqot va jamoada ishlash</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Muloqot va jamoada ishlash</h1>
+  <p class="muted">faol tinglash, I-xabar, yozma muloqot, PR tavsifi, jamoa rollari, mini-retro, nizo, masofaviy ish</p>
+  <span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">5-hafta · 13-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimalarni o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="message-circle" data-anim="pulse"></i></div><h3>Professional muloqot</h3><p>Tinglash va fikr bildirish</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="file-text" data-anim="float"></i></div><h3>Yozma muloqot</h3><p>Kontekst, tuzilma, yakun</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="users" data-anim="blink"></i></div><h3>Jamoada hamkorlik</h3><p>Rol, xavfsizlik, nizo</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">Barcha xatolar bir xil formatda qaytishi nima deb ataladi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Error envelope</button>
+    <button class="opt" type="button">Paginatsiya</button>
+    <button class="opt" type="button">Serializatsiya</button>
+    <button class="opt" type="button">CORS</button>
+    </div>
+    <div class="explain">Error envelope: yagona xato formati.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Professional muloqot</h1>
+  <p>Tinglash va fikr bildirish</p>
+</section>
+
+<section>
+  <h2>Faol tinglash</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Eshiting</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">Qayta</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">ifodalang</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Aniqlashtiring</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Xulosalang</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Avval tushuning, keyin javob bering</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Qayta ifodalash va I-xabar</h2>
+  <pre><code class="language-text" data-trim data-line-numbers="1-3|5-9">
+Faol tinglash:
+"To'g'ri tushundimmi, checkout mobilda
+3 sekunddan tez bo'lishi birinchi ustuvor?"
+
+I-xabar (holat -&gt; ta'sir -&gt; so'rov):
+"Demoda talablar kech o'zgargani sabab (holat)
+tayyorgarlik yetarli bo'lmadi (ta'sir).
+Keyingi safar o'zgarishni 2 kun oldin
+xabar qilsak bo'ladimi? (so'rov)"
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>«Sen doim kechikasan» emas, «Kecha 3 PR kechikdi, bu relizni surdi» deb yozing: faktga qarating, shaxsga emas.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">«I-xabar» nimaga qaratilgan bo'ladi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Vaziyat va uning ta'siriga</button>
+    <button class="opt" type="button">Shaxsning xarakteriga</button>
+    <button class="opt" type="button">Faqat xatoga</button>
+    <button class="opt" type="button">Mukofotga</button>
+    </div>
+    <div class="explain">Tanqid shaxsga emas, vaziyatga qaratiladi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Yozma muloqot</h1>
+  <p>Kontekst, tuzilma, yakun</p>
+</section>
+
+<section>
+  <h2>Yaxshi xabar</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Kontekst</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">Tuzilma</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Yakun</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Deadline</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Har xabar keyingi qadamni aytsin</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>PR tavsifi (What / Why / How)</h2>
+  <pre><code class="language-text" data-trim data-line-numbers="1-2|4-5|7-10|12-13">
+## What
+/v1/payments endpointi refactor qilindi.
+
+## Why
+Kodni soddalashtirish va testlar qo'shish.
+
+## How
+1) gateway interfeysi
+2) yangi unit testlar
+3) eski field deprecate qilindi
+
+Keyingi qadam: PO refund statuslarini
+tasdiqlaydi (deadline: juma), keyin merge.
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Yomon xabar: «Endpointni o'zgartirdim, qarang.» Yaxshi xabarda kontekst, ro'yxat va yakun bor.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Yozma xabarning uch mezoni?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Kontekst, tuzilma, yakun</button>
+    <button class="opt" type="button">Salom, matn, xayr</button>
+    <button class="opt" type="button">Sarlavha, rasm, havola</button>
+    <button class="opt" type="button">Qisqa, uzun, o'rta</button>
+    </div>
+    <div class="explain">Kontekst, tuzilma, yakun.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Jamoada hamkorlik</h1>
+  <p>Rol, xavfsizlik, nizo</p>
+</section>
+
+<section>
+  <h2>Nizoni boshqarish</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Muammo</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">Ta'sir</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Variantlar</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Qaror</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Qarorni metrika bilan asoslang, ADR ga yozing</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Mini-retro va ADR</h2>
+  <pre><code class="language-text" data-trim data-line-numbers="1-5|7-11">
+Mini-retro (15 daqiqa):
+- Nima ishladi?
+- Nima to'sqinlik qildi?
+- Nimani to'xtatamiz / ko'paytiramiz?
+Action: owner + deadline
+
+ADR:
+Kontekst  -&gt; muammo va cheklovlar
+Variantlar -&gt; ko'rilgan yechimlar
+Tanlov    -&gt; nima uchun shu variant
+Oqibatlar -&gt; ijobiy va salbiy tomonlar
+  </code></pre>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i>Har retro 1–2 action chiqarsin, har biriga owner va deadline qo'ying: SMART bo'lmasa, bajarilmaydi.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Mini-retro oxirida nima bo'lishi shart?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Owner va deadline bilan action</button>
+    <button class="opt" type="button">Faqat muhokama</button>
+    <button class="opt" type="button">Ovoz berish</button>
+    <button class="opt" type="button">Hech narsa</button>
+    </div>
+    <div class="explain">Action-item, owner va deadline.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Qanday muloqot</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>Yomon</h3>«Endpointni o'zgartirdim, qarang.» «Shunaqa. Fikrlar?» Tanqid shaxsga qaratilgan</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>Yaxshi</h3>Kontekst, ro'yxat, keyingi qadam, owner va deadline; I-xabar bilan fikr</div>
+  </div>
+  <div class="card accent fragment mt"><p>Aniq muloqot qayta ishlashni va nizoni kamaytiradi.</p></div>
+</section>
+
+<section>
+  <h2>Atamalar. Bosing</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>Faol tinglash</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Eshitib, qayta ifodalab tekshirish</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>I-xabar</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Holat, ta'sir, so'rov</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>ADR</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Qaror yozuvi: kontekst, variantlar, tanlov, oqibat</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>Mini-retro</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>15 daqiqalik haftalik tahlil</p></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Xabarni yozish</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="target" data-anim="pulse"></i></div><h3>1. Kontekst</h3><p>Nima haqida va nima uchun yozayotganingizni ayting.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="list"></i></div><h3>2. Tuzilma</h3><p>Ro'yxat va havolalar bilan bo'ling.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="flag"></i></div><h3>3. Yakun</h3><p>Keyingi qadam, owner va deadline.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>Jamoa rollari</h2>
+    <table>
+      <thead><tr><th>Rol</th><th>Mas'uliyati</th><th>Misol savol</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td>PO</td><td>biznes qiymat</td><td>Nima birinchi?</td></tr>
+        <tr class="fragment"><td>Tech Lead</td><td>arxitektura</td><td>Qaysi yechim?</td></tr>
+        <tr class="fragment"><td>QA</td><td>sifat darvozasi</td><td>Test o'tdimi?</td></tr>
+        <tr class="fragment"><td>Dev</td><td>implementatsiya</td><td>Qachon tayyor?</td></tr>
+        <tr class="fragment"><td>DevOps</td><td>CI/CD va muhit</td><td>Qachon deploy?</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: tekshirish</p>
+  </section>
+  <section>
+    <h2>Mini-retro o'tkazish</h2>
+    <ol class="steps-n">
+      <li class="fragment">Har kim 1 ta «ish bergan» va 1 ta «to'sqinlik qilgan» voqeani yozadi.</li>
+      <li class="fragment">Guruh 2 ta action tanlaydi.</li>
+      <li class="fragment">Har actionga owner va deadline qo'yiladi.</li>
+    </ol>
+  </section>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">Xabarni yaxshilash</h2>
+  <pre data-id="c"><code class="language-text" data-trim>
+Endpointni o'zgartirdim, qarang.
+  </code></pre>
+</section>
+<section data-auto-animate>
+  <h2 data-id="t">Xabarni yaxshilash</h2>
+  <pre data-id="c"><code class="language-text" data-trim data-line-numbers="1|2-4">
+Payment flow da /v1/payments endpointini refactor qildim.
+Maqsad: kodni soddalashtirish va testlar qo'shish.
+Keyingi qadam: PO tasdiqlaydi (juma).
+  </code></pre>
+</section>
+
+<section>
+  <h2>Muloqot raqamlarda</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="3" data-suf="">0</span></div><div class="l"> ta mezon: kontekst, tuzilma, yakun</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="4" data-suf="">0</span></div><div class="l"> ta nizo qadami</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="15" data-suf="">0</span></div><div class="l"> daqiqalik mini-retro</div></div>
+  </div>
+  <p class="small fragment">Mini-retro 15 daqiqa: qo'llanma tavsiyasi.</p>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Qayta ifodalash: Hamkasbingiz: «Login sahifasi sekin». Faol tinglash bilan qayta ifodalang va 1 ta aniqlashtiruvchi savol bering.</div>
+  <div class="task"><span class="level mid">O'rta</span>I-xabar: Hamkasbingiz PR ni 3 kun review qilmadi. «I-xabar» formulasi bilan xabar yozing.</div>
+  <div class="task"><span class="level hard">Qiyin</span>PR tavsifi: Kutubxona API uchun <code>error envelope</code> qo'shilganini What/Why/How va keyingi qadam bilan yozing.</div>
+  <div class="task"><span class="level hard">Bonus</span>Nizo ssenariysi: «Monolit yoki mikroxizmat?» bahsini muammo, ta'sir, variantlar, qaror tuzilmasida yozing.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Muloqot</h3><p>Faol tinglash, aniq savol, I-xabar.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Yozma xabar</h3><p>Kontekst, tuzilma, yakun; PR: What/Why/How.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Jamoa</h3><p>Rollar, xavfsizlik, mini-retro, nizo va ADR.</p></div>
+  </div>
+  <p class="small fragment mt">Uyga vazifa: PR tavsifi va mini-retro yozuvi.</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="crown" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: Liderlik va vaqtni boshqarish</h1>
+  <p class="muted">ownership, delegatsiya, Eisenhower, SMART</p>
+  <span class="badge">5-hafta · 14-dars</span>
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

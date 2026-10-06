@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>IT ekotizimi va SDLC</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 1-hafta · 1-dars: IT ekotizimi, SDLC, rollar. Faqat slaydlar. -->
+
+      <!-- 1. SARLAVHA -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>IT ekotizimi va SDLC</h1>
+        <p class="muted">Ilova ortidagi qatlamlar, hayotiy sikl va jamoa: professional dasturchi xaritasi</p>
+        <span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">1-hafta · 1-dars</span>
+        
+      </section>
+
+      <!-- 2. REJA -->
+      <section>
+        <h2>Bugun nimani o'rganamiz?</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="layers" data-anim="float"></i></div><h3>IT ekotizimi</h3><p>4 qatlam va ular qanday gaplashadi</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="refresh-cw" data-anim="spin"></i></div><h3>SDLC</h3><p>6 bosqich, artefaktlar, sikl</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="users" data-anim="bounce"></i></div><h3>Jamoa va rollar</h3><p>Kim nima qiladi, yolg'iz ishlasangiz-chi?</p></div>
+        </div>
+        <div class="callout tip fragment"><i data-ic="target" data-anim="draw"></i>Natija: portfolio-loyihangiz uchun birinchi hujjat, mini-SRS.</div>
+        
+      </section>
+
+      <!-- 3. BO'LIM 01 -->
+      <section class="sec">
+        <div class="num">01</div>
+        <h1>IT ekotizimi</h1>
+        <p>Siz ko'radigan ilova — aysbergning uchi</p>
+      </section>
+
+      <!-- 4. TELEGRAM MISOLI -->
+      <section>
+        <h2>Telegram'ga rasm yuborasiz</h2>
+        <div class="quote">Bir tugma bosish, soniyaning bir bo'lagida nechta qatlam ishga tushadi?</div>
+        <div class="stepper">
+          <div class="stp on"><div class="card"><div class="icon"><i data-ic="smartphone" data-anim="float"></i></div><h3>1. Ilova</h3><p>Ilova rasmni siqadi va yuboradi</p></div></div>
+          <div class="stp"><div class="card"><div class="icon"><i data-ic="settings" data-anim="spin"></i></div><h3>2. Server</h3><p>Server so'rovni qabul qilib, kim kimga yuborayotganini tekshiradi</p></div></div>
+          <div class="stp"><div class="card"><div class="icon"><i data-ic="database" data-anim="pulse"></i></div><h3>3. Saqlash</h3><p>Xabar ma'lumotlar bazasiga, fayl saqlashga yoziladi</p></div></div>
+          <div class="stp"><div class="card"><div class="icon"><i data-ic="server" data-anim="blink"></i></div><h3>4. Ma'lumot markazi</h3><p>Hammasi ma'lumot markazidagi serverlarda ishlaydi</p></div></div>
+        </div>
+        <div class="callout warn fragment"><i data-ic="triangle-alert"></i>Soddalashtirilgan tasvir: Telegram ichki tuzilishi aynan shunday emas, g'oya muhim.</div>
+        
+      </section>
+
+      <!-- 5. ILLYUSTRATSIYA: 4 QATLAM -->
+      <section>
+        <h2>IT ekotizimining 4 qatlami</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 440">
+            <g class="fragment">
+              <rect class="fa" x="30" y="15" width="880" height="85" rx="20"/>
+              <text class="t-head" x="60" y="68" font-size="30">Klient</text>
+              <text class="t-muted" x="400" y="68" font-size="24">Web, mobil ilova, brauzer</text>
+            </g>
+            <g class="fragment">
+              <rect class="fc" x="30" y="120" width="880" height="85" rx="20"/>
+              <text class="t-head" x="60" y="173" font-size="30">Ilova</text>
+              <text class="t-muted" x="400" y="173" font-size="24">Backend, API, biznes mantiq</text>
+            </g>
+            <g class="fragment">
+              <rect class="fg" x="30" y="225" width="880" height="85" rx="20"/>
+              <text class="t-head" x="60" y="278" font-size="30">Platforma</text>
+              <text class="t-muted" x="400" y="278" font-size="24">DB, kesh (Redis), navbat, qidiruv</text>
+            </g>
+            <g class="fragment">
+              <rect class="fb pulse" x="30" y="330" width="880" height="85" rx="20"/>
+              <text class="t-head" x="60" y="383" font-size="30">Infratuzilma</text>
+              <text class="t-muted" x="400" y="383" font-size="24">Serverlar, bulut, tarmoq, OS</text>
+            </g>
+            <g class="fragment">
+              <line class="la flowing" x1="940" y1="30" x2="940" y2="395"/><polygon class="ar-a" points="940,415 927,393 953,393"/>
+              <line class="lc flowing" x1="975" y1="400" x2="975" y2="38"/><polygon class="ar-c" points="975,18 962,40 988,40"/>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 6. VERTIKAL: qatlamlar tafsiloti -->
+      <section>
+        <section>
+          <h2>Har qatlamning vazifasi</h2>
+          <div class="cards four">
+            <div class="card fragment fade-up"><div class="icon"><i data-ic="smartphone"></i></div><h3>Klient</h3><p>Foydalanuvchi bilan muloqot: tezlik, qulaylik, dizayn</p></div>
+            <div class="card fragment fade-up"><div class="icon"><i data-ic="settings"></i></div><h3>Ilova</h3><p>Tizimning «miyasi»: buyurtma, to'lov, qoidalar</p></div>
+            <div class="card fragment fade-up"><div class="icon"><i data-ic="database"></i></div><h3>Platforma</h3><p>Ma'lumot va xizmatlar: tayanch</p></div>
+            <div class="card fragment fade-up"><div class="icon"><i data-ic="server"></i></div><h3>Infratuzilma</h3><p>Poydevor: resurs, xavfsizlik, barqarorlik</p></div>
+          </div>
+          <p class="small">Qo'shimcha: restoran o'xshatishi uchun pastga ↓</p>
+        </section>
+        <section>
+          <h2>Restoran o'xshatishi</h2>
+          <div class="quote">Mehmon oshxonaga kirmaydi, oshpaz elektr simini bilmaydi. Har kim o'z qatlamida.</div>
+          <div class="chips"><span class="chip">Zal = klient</span><span class="chip t">Oshpaz = ilova</span><span class="chip">Ombor = platforma</span><span class="chip t">Bino va gaz = infratuzilma</span></div>
+          
+        </section>
+        <section>
+          <h2>3 qatlammi yoki 4?</h2>
+          <p>O'quv qo'llanma ekotizimni avval <strong>3</strong> qatlamda (infratuzilma, platforma, foydalanuvchi xizmatlari), keyin amaliy tahlilda <strong>4</strong> qatlamda beradi.</p>
+          <div class="callout"><i data-ic="lightbulb"></i>Biz 4 qatlamni olamiz: «ilova–platforma–infratuzilma» uchligi bor, ustida klient turadi. Muhimi — g'oya: mas'uliyatni ajratish.</div>
+        </section>
+      </section>
+
+      <!-- 7. ILLYUSTRATSIYA: SO'ROV YO'LI -->
+      <section>
+        <h2>So'rov qatlamlarni kesib o'tadi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 340">
+            <g data-tip="Klient: foydalanuvchi ko'radigan qism (brauzer, curl). So'rovni yuboradi.">
+            <rect class="fa" x="40" y="30" width="240" height="180" rx="22"/>
+            <text class="t-head" x="160" y="100" text-anchor="middle" font-size="30">Klient</text>
+            <text class="t-muted" x="160" y="145" text-anchor="middle" font-size="24">curl, brauzer</text>
+            </g>
+            <g data-tip="Ilova: API serveri, biznes mantiq. So'rovni qabul qilib, platformaga murojaat qiladi.">
+            <rect class="fc" x="380" y="30" width="240" height="180" rx="22"/>
+            <text class="t-head" x="500" y="100" text-anchor="middle" font-size="30">Ilova</text>
+            <text class="t-muted" x="500" y="145" text-anchor="middle" font-size="24">API serveri</text>
+            </g>
+            <g data-tip="Platforma: ma'lumotlar bazasi va kesh. Ma'lumotni saqlaydi va beradi.">
+            <rect class="fg" x="720" y="30" width="240" height="180" rx="22"/>
+            <text class="t-head" x="840" y="100" text-anchor="middle" font-size="30">Platforma</text>
+            <text class="t-muted" x="840" y="145" text-anchor="middle" font-size="24">DB, kesh</text>
+            </g>
+            <g class="fragment"><line class="la flowing" x1="290" y1="85" x2="368" y2="85"/><polygon class="ar-a" points="374,85 358,76 358,94"/></g>
+            <g class="fragment"><line class="la flowing" x1="630" y1="85" x2="708" y2="85"/><polygon class="ar-a" points="714,85 698,76 698,94"/></g>
+            <g class="fragment"><line class="lc flowing" x1="710" y1="150" x2="632" y2="150"/><polygon class="ar-c" points="626,150 642,141 642,159"/><line class="lc flowing" x1="370" y1="150" x2="292" y2="150"/><polygon class="ar-c" points="286,150 302,141 302,159"/></g>
+            <g data-tip="Infratuzilma: serverlar, bulut, OS, tarmoq. Hamma qatlam shu poydevorda turadi.">
+            <rect class="fb" x="40" y="250" width="920" height="70" rx="18"/>
+            <text class="t-head" x="500" y="294" text-anchor="middle" font-size="26">Infratuzilma: serverlar, bulut, OS, tarmoq</text>
+            </g>
+          </svg>
+        </div>
+        <p class="small">Qismning ustiga olib boring yoki bosing.</p>
+        
+      </section>
+
+      <!-- 8. TERMINAL: curl -->
+      <section>
+        <h2>Real so'rov: terminalda <span class="timer"><i data-ic="timer" data-anim="blink"></i>3 daqiqa</span></h2>
+        <pre><code class="language-bash" data-trim data-noescape data-line-numbers="1-2|4-6">
+$ curl -s https://api.github.com/zen
+Mind your words, they are important.
+
+$ curl -sI https://api.github.com | head -3
+HTTP/2 200
+date: Thu, 01 Oct 2026 ...
+        </code></pre>
+        <div class="callout tip"><i data-ic="terminal"></i>Klient — <code>curl</code>. Ilova — <code>api.github.com</code>. Qolganini siz ko'rmaysiz: bu qatlamlashning foydasi.</div>
+        
+      </section>
+
+      <!-- 9. NEGA QATLAMLASH -->
+      <section>
+        <h2>Nega qatlamlash kerak?</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="shield-check" data-anim="pulse"></i></div><h3>Izolyatsiya</h3><p>Muammo bitta qatlamda qoladi, hammasini buzmaydi</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="arrow-up-right"></i></div><h3>Kengaytirish</h3><p>Yuk oshsa, faqat kerakli qatlamni kuchaytirasiz</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="repeat"></i></div><h3>Almashtirish</h3><p>Bazani yoki serverni almashtirsangiz, klient bilmaydi</p></div>
+        </div>
+        <div class="callout fragment"><i data-ic="lightbulb"></i>Bundan tashqari: xavfsizlik, monitoring va operatsion intizom soddalashadi.</div>
+      </section>
+
+      <!-- 10. MINI-QUIZ -->
+      <section>
+        <h2>Qaysi qatlam?</h2>
+        <div class="quiz">
+          <p class="q">Redis (kesh) qaysi qatlamga kiradi?</p>
+          <div class="opts">
+            <button class="opt" type="button">Klient</button>
+            <button class="opt" type="button">Ilova</button>
+            <button class="opt" type="button" data-ok>Platforma</button>
+            <button class="opt" type="button">Infratuzilma</button>
+          </div>
+          <div class="explain">To'g'ri: Platforma. Yana: Chrome brauzeri = klient; REST API serveri = ilova; Linux serveri, AWS = infratuzilma.</div>
+        </div>
+        
+      </section>
+
+      <!-- 11. BO'LIM 02 -->
+      <section class="sec">
+        <div class="num">02</div>
+        <h1>SDLC: hayotiy sikl</h1>
+        <p>Kod yozish — ishning faqat bir bo'lagi</p>
+      </section>
+
+      <!-- 12. ILLYUSTRATSIYA: SDLC HALQA -->
+      <section>
+        <h2>SDLC: 6 bosqich, bitta sikl</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 420">
+            <ellipse class="ln flowing" cx="500" cy="215" rx="330" ry="150"/>
+            <text class="t-head" x="500" y="210" text-anchor="middle" font-size="42">SDLC</text>
+            <text class="t-muted" x="500" y="248" text-anchor="middle" font-size="24">takrorlanadigan sikl</text>
+            <g class="fragment"><rect class="fa" x="400" y="33" width="200" height="64" rx="32"/><text class="t-head" x="500" y="75" text-anchor="middle" font-size="26">1 Talab</text></g>
+            <g class="fragment"><rect class="fc" x="686" y="108" width="200" height="64" rx="32"/><text class="t-head" x="786" y="150" text-anchor="middle" font-size="26">2 Dizayn</text></g>
+            <g class="fragment"><rect class="fg" x="686" y="258" width="200" height="64" rx="32"/><text class="t-head" x="786" y="300" text-anchor="middle" font-size="26">3 Kod</text></g>
+            <g class="fragment"><rect class="fb" x="400" y="333" width="200" height="64" rx="32"/><text class="t-head" x="500" y="375" text-anchor="middle" font-size="26">4 Test</text></g>
+            <g class="fragment"><rect class="fa" x="114" y="258" width="200" height="64" rx="32"/><text class="t-head" x="214" y="300" text-anchor="middle" font-size="26">5 Deploy</text></g>
+            <g class="fragment"><rect class="fc pulse" x="84" y="108" width="260" height="64" rx="32"/><text class="t-head" x="214" y="150" text-anchor="middle" font-size="26">6 Monitoring</text></g>
+            <g class="fragment"><text class="t-accent pulse" x="500" y="22" text-anchor="middle" font-size="22">monitoring yangi talablar beradi</text></g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- YANGI: SDLC mini-test -->
+      <section>
+        <h2>Mini-test: SDLC</h2>
+        <div class="quiz">
+          <p class="q">SDLC nega «sikl» deyiladi?</p>
+          <div class="opts">
+            <button class="opt" type="button">Chunki bosqichlar bir marta o'tiladi</button>
+            <button class="opt" type="button" data-ok>Chunki monitoringdan yangi talablar keladi va aylana yopiladi</button>
+            <button class="opt" type="button">Chunki faqat kod yoziladi</button>
+          </div>
+          <div class="explain">To'g'ri: ish ekspluatatsiyada tugamaydi, monitoring yangi talab beradi.</div>
+        </div>
+      </section>
+
+      <!-- 13. BOSQICH-SAVOL-ARTEFAKT -->
+      <section>
+        <h2>Har bosqich: savol va artefakt</h2>
+        <table>
+          <tr><th>Bosqich</th><th>Asosiy savol</th><th>Artefakt</th></tr>
+          <tr class="fragment"><td>Talab</td><td>Nima qurmoqchimiz?</td><td>SRS, user stories</td></tr>
+          <tr class="fragment"><td>Dizayn</td><td>Qanday quramiz?</td><td>Arxitektura sxemasi, ERD, API spetsifikatsiya</td></tr>
+          <tr class="fragment"><td>Kod</td><td>Kodda qanday ifodalaymiz?</td><td>Kod bazasi, unit testlar</td></tr>
+          <tr class="fragment"><td>Test</td><td>Ishlayaptimi va to'g'rimi?</td><td>Test protokoli, bug-raportlar</td></tr>
+          <tr class="fragment"><td>Deploy</td><td>Qayerda va qanday ishlatamiz?</td><td>Docker image, CI/CD YAML, release note</td></tr>
+          <tr class="fragment"><td>Monitoring</td><td>Qanday ushlab turamiz?</td><td>Loglar, metrikalar, changelog</td></tr>
+        </table>
+        
+      </section>
+
+      <!-- 14. ILLYUSTRATSIYA: USER STORY ANATOMIYASI -->
+      <section>
+        <h2>Talab: user story anatomiyasi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 400">
+            <g class="fragment"><rect class="fa" x="20" y="20" width="300" height="130" rx="20"/><text class="t-accent" x="170" y="55" text-anchor="middle" font-size="22">KIM?</text><text class="t-head" x="170" y="95" text-anchor="middle" font-size="24">Tashrif buyuruvchi</text><text class="t-head" x="170" y="125" text-anchor="middle" font-size="24">sifatida</text></g>
+            <g class="fragment"><rect class="fc" x="350" y="20" width="300" height="130" rx="20"/><text class="t-accent" x="500" y="55" text-anchor="middle" font-size="22">NIMA?</text><text class="t-head" x="500" y="95" text-anchor="middle" font-size="24">loyihalar ro'yxatini</text><text class="t-head" x="500" y="125" text-anchor="middle" font-size="24">ko'rishni xohlayman</text></g>
+            <g class="fragment"><rect class="fb" x="680" y="20" width="300" height="130" rx="20"/><text class="t-accent" x="830" y="55" text-anchor="middle" font-size="22">NEGA?</text><text class="t-head" x="830" y="95" text-anchor="middle" font-size="24">shunda ishlarni</text><text class="t-head" x="830" y="125" text-anchor="middle" font-size="24">baholayman</text></g>
+            <g class="fragment">
+              <line class="lg flowing" x1="500" y1="158" x2="500" y2="198"/><polygon class="ar-g" points="500,208 489,190 511,190"/>
+              <rect class="fg" x="20" y="215" width="960" height="170" rx="20"/>
+              <text class="t-accent" x="50" y="255" font-size="24">Qabul mezoni (acceptance criteria)</text>
+              <text class="t-head" x="50" y="295" font-size="24">1. Bosh sahifada kamida 3 ta loyiha kartasi bor</text>
+              <text class="t-head" x="50" y="330" font-size="24">2. Har kartada nom, tavsif va GitHub havolasi bor</text>
+              <text class="t-head" x="50" y="365" font-size="24">3. 360 px ekranda gorizontal surish chiqmaydi</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 15-16. AVTO-ANIMATSIYA: yomon talab -> yaxshi talab -->
+      <section data-auto-animate>
+        <h2>Yomon talabdan yaxshisiga</h2>
+        <pre data-id="req"><code class="language-markdown" data-trim data-noescape>
+Talab:
+  Sayt tez va chiroyli bo'lsin
+        </code></pre>
+        <div class="callout bad"><i data-ic="circle-x"></i>Qanday tekshirasiz? «Tez» necha soniya?</div>
+      </section>
+      <section data-auto-animate>
+        <h2>Yomon talabdan yaxshisiga</h2>
+        <pre data-id="req"><code class="language-markdown" data-trim data-noescape>
+Talab:
+  Bosh sahifa oddiy aloqada 3 soniyadan
+  kam vaqtda ochiladi.
+Qabul mezoni:
+  1. Rasmlar 300 KB dan katta emas
+  2. 360 px ekranda surish chiqmaydi
+  3. Kontrast: matn o'qiladi
+        </code></pre>
+        <div class="callout tip"><i data-ic="circle-check"></i>Yaxshi talab: aniq, o'lchanadigan, testlanadigan.</div>
+        
+      </section>
+
+      <!-- 17. VERTIKAL: bosqichlar ichiga chuqurroq -->
+      <section>
+        <section>
+          <h2>Testlash piramidasi</h2>
+          <div class="illus">
+            <svg viewBox="0 0 1000 390">
+              <g class="fragment"><polygon class="fb" points="500,20 590,120 410,120"/><text class="t-head" x="500" y="100" text-anchor="middle" font-size="22">E2E</text><text class="t-muted" x="640" y="80" font-size="24">kam, sekin, qimmat</text></g>
+              <g class="fragment"><polygon class="fc" points="410,120 590,120 689,230 311,230"/><text class="t-head" x="500" y="185" text-anchor="middle" font-size="24">Integration</text><text class="t-muted" x="720" y="185" font-size="24">o'rtacha</text></g>
+              <g class="fragment"><polygon class="fg" points="311,230 689,230 788,340 212,340"/><text class="t-head" x="500" y="295" text-anchor="middle" font-size="28">Unit testlar</text><text class="t-muted" x="500" y="375" text-anchor="middle" font-size="24">ko'p, tez, arzon</text></g>
+            </svg>
+          </div>
+          <p class="small">Pastga ↓: deploy va release</p>
+        </section>
+        <section>
+          <h2>Deploy va release</h2>
+          <div class="vs">
+            <div class="side fragment"><h3>Deploy</h3>Texnik amal: artefaktni muhitga joylash (image, server, Nginx sozlamasi).</div>
+            <div class="mid">VS</div>
+            <div class="side b fragment"><h3>Release</h3>Qaror: foydalanuvchilarga qaysi versiya ko'rinadi.</div>
+          </div>
+          <div class="callout warn fragment"><i data-ic="triangle-alert"></i>Release artefaktlari: release note, versiya raqami (semver), alert, <strong>rollback rejasi</strong>.</div>
+          
+        </section>
+        <section>
+          <h2>Monitoring halqani yopadi</h2>
+          <ol class="steps-n">
+            <li class="fragment">Loglar va metrikalar: kechikish, xatolar, yuk</li>
+            <li class="fragment">Foydalanuvchi fikri: nima sekin, nima ishlatilmayapti?</li>
+            <li class="fragment">Yangi talablar → yangi sikl</li>
+          </ol>
+        </section>
+      </section>
+
+      <!-- YANGI: deploy va release mini-test -->
+      <section>
+        <h2>Mini-test: deploy yoki release?</h2>
+        <div class="quiz">
+          <p class="q">Kod serverga joylandi, lekin feature flag bilan foydalanuvchilardan yashirin. Bu nima?</p>
+          <div class="opts">
+            <button class="opt" type="button" data-ok>Deploy bo'ldi, release hali yo'q</button>
+            <button class="opt" type="button">Release bo'ldi, deploy yo'q</button>
+            <button class="opt" type="button">Ikkalasi ham bo'lmadi</button>
+          </div>
+          <div class="explain">Deploy: texnik joylash. Release: foydalanuvchilarga versiyani ochish qarori.</div>
+        </div>
+      </section>
+
+      <!-- 18. ILLYUSTRATSIYA: WATERFALL VS AGILE -->
+      <section>
+        <h2>Waterfall va Agile</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 400">
+            <text class="t-accent" x="10" y="32" font-size="28">Waterfall</text>
+            <g class="fragment">
+              <rect class="fa" x="10" y="60" width="150" height="55" rx="14"/><text class="t-head" x="85" y="96" text-anchor="middle" font-size="24">Talab</text>
+              <rect class="fc" x="75" y="125" width="150" height="55" rx="14"/><text class="t-head" x="150" y="161" text-anchor="middle" font-size="24">Dizayn</text>
+              <rect class="fg" x="140" y="190" width="150" height="55" rx="14"/><text class="t-head" x="215" y="226" text-anchor="middle" font-size="24">Kod</text>
+              <rect class="fb" x="205" y="255" width="150" height="55" rx="14"/><text class="t-head" x="280" y="291" text-anchor="middle" font-size="24">Test</text>
+              <rect class="fa" x="270" y="320" width="150" height="55" rx="14"/><text class="t-head" x="345" y="356" text-anchor="middle" font-size="24">Deploy</text>
+            </g>
+            <text class="t-accent" x="530" y="32" font-size="28">Agile</text>
+            <g class="fragment"><rect class="fc" x="530" y="60" width="130" height="315" rx="18"/><text class="t-head" x="595" y="110" text-anchor="middle" font-size="24">Sprint 1</text><text class="t-muted" x="595" y="170" text-anchor="middle" font-size="22">Talab</text><text class="t-muted" x="595" y="215" text-anchor="middle" font-size="22">Dizayn</text><text class="t-muted" x="595" y="260" text-anchor="middle" font-size="22">Kod</text><text class="t-muted" x="595" y="305" text-anchor="middle" font-size="22">Test</text><text class="t-muted" x="595" y="350" text-anchor="middle" font-size="22">Deploy</text></g>
+            <g class="fragment"><line class="lc" x1="664" y1="215" x2="682" y2="215"/><polygon class="ar-c" points="688,215 676,208 676,222"/><rect class="fc" x="690" y="60" width="130" height="315" rx="18"/><text class="t-head" x="755" y="110" text-anchor="middle" font-size="24">Sprint 2</text><text class="t-muted" x="755" y="170" text-anchor="middle" font-size="22">Talab</text><text class="t-muted" x="755" y="215" text-anchor="middle" font-size="22">Dizayn</text><text class="t-muted" x="755" y="260" text-anchor="middle" font-size="22">Kod</text><text class="t-muted" x="755" y="305" text-anchor="middle" font-size="22">Test</text><text class="t-muted" x="755" y="350" text-anchor="middle" font-size="22">Deploy</text></g>
+            <g class="fragment"><line class="lc" x1="824" y1="215" x2="842" y2="215"/><polygon class="ar-c" points="848,215 836,208 836,222"/><rect class="fc" x="850" y="60" width="130" height="315" rx="18"/><text class="t-head" x="915" y="110" text-anchor="middle" font-size="24">Sprint 3</text><text class="t-muted" x="915" y="170" text-anchor="middle" font-size="22">Talab</text><text class="t-muted" x="915" y="215" text-anchor="middle" font-size="22">Dizayn</text><text class="t-muted" x="915" y="260" text-anchor="middle" font-size="22">Kod</text><text class="t-muted" x="915" y="305" text-anchor="middle" font-size="22">Test</text><text class="t-muted" x="915" y="350" text-anchor="middle" font-size="22">Deploy</text></g>
+          </svg>
+        </div>
+        <div class="callout fragment"><i data-ic="lightbulb"></i>Bosqichlar o'sha-o'sha, farq — qanday tashkil etilishida. Agile/Scrum: 49-darsda.</div>
+        
+      </section>
+
+      <!-- 19. BO'LIM 03 -->
+      <section class="sec">
+        <div class="num">03</div>
+        <h1>Jamoa va rollar</h1>
+        <p>SDLC faqat texnika emas, odamlar ham</p>
+      </section>
+
+      <!-- 20. ROLLAR -->
+      <section>
+        <h2>Kim nima qiladi? <span class="small">(kartani bosing)</span></h2>
+        <div class="cards three">
+          <div class="flip" style="min-height:190px"><div class="flip-in">
+            <div class="face front"><div class="icon"><i data-ic="target"></i></div><h3>Product owner</h3><span class="flip-hint">bosing</span></div>
+            <div class="face back"><p>Nima qurilishi va nima muhimligini hal qiladi</p></div>
+          </div></div>
+          <div class="flip" style="min-height:190px"><div class="flip-in">
+            <div class="face front"><div class="icon"><i data-ic="clipboard-list"></i></div><h3>Biznes analitik</h3><span class="flip-hint">bosing</span></div>
+            <div class="face back"><p>Talablarni yig'adi va hujjatlaydi</p></div>
+          </div></div>
+          <div class="flip" style="min-height:190px"><div class="flip-in">
+            <div class="face front"><div class="icon"><i data-ic="layers"></i></div><h3>Arxitektor</h3><span class="flip-hint">bosing</span></div>
+            <div class="face back"><p>Qatlam va texnologiyalarni tanlaydi</p></div>
+          </div></div>
+          <div class="flip" style="min-height:190px"><div class="flip-in">
+            <div class="face front"><div class="icon"><i data-ic="code-xml"></i></div><h3>Developer</h3><span class="flip-hint">bosing</span></div>
+            <div class="face back"><p>Kod yozadi, bir-birining kodini review qiladi</p></div>
+          </div></div>
+          <div class="flip" style="min-height:190px"><div class="flip-in">
+            <div class="face front"><div class="icon"><i data-ic="bug" data-anim="wiggle"></i></div><h3>QA</h3><span class="flip-hint">bosing</span></div>
+            <div class="face back"><p>Sifatni tekshiradi, testlarni avtomatlashtiradi</p></div>
+          </div></div>
+          <div class="flip" style="min-height:190px"><div class="flip-in">
+            <div class="face front"><div class="icon"><i data-ic="server-cog" data-anim="spin"></i></div><h3>DevOps / SRE</h3><span class="flip-hint">bosing</span></div>
+            <div class="face back"><p>Deploy, infratuzilma, monitoring, ishonchlilik</p></div>
+          </div></div>
+        </div>
+        
+      </section>
+
+      <!-- 21. YOLG'IZ ISHLASANGIZ -->
+      <section>
+        <h2>Yolg'iz ishlasangiz-chi?</h2>
+        <div class="quote">Freelance'da va portfolio-loyihada siz bir o'zingiz butun jamoasiz.</div>
+        <div class="flow">
+          <div class="step fragment"><span class="icon"><i data-ic="target"></i></span>Siz — PO: nima qurasiz</div>
+          <div class="arrow"><i data-ic="arrow-right"></i></div>
+          <div class="step fragment"><span class="icon"><i data-ic="code-xml"></i></span>Siz — developer</div>
+          <div class="arrow"><i data-ic="arrow-right"></i></div>
+          <div class="step fragment"><span class="icon"><i data-ic="bug"></i></span>Siz — QA</div>
+          <div class="arrow"><i data-ic="arrow-right"></i></div>
+          <div class="step fragment"><span class="icon"><i data-ic="server-cog"></i></span>Siz — DevOps</div>
+        </div>
+        <div class="callout tip fragment"><i data-ic="lightbulb"></i>Shuning uchun hujjat va tartib muhim: ertaga o'zingiz ham o'z kodingizni unutasiz.</div>
+      </section>
+
+      <!-- 22. BO'LIM 04 -->
+      <section class="sec">
+        <div class="num">04</div>
+        <h1>Amaliyot</h1>
+        <p>Portfolio-loyihangiz boshlanadi</p>
+      </section>
+
+      <!-- 23. KURS YO'LI -->
+      <section>
+        <h2>Portfolio shu kursda o'sadi</h2>
+        <div class="stats">
+          <div class="stat fragment"><div class="v"><span class="count" data-to="51">0</span></div><div class="l">dars</div></div>
+          <div class="stat fragment"><div class="v"><span class="count" data-to="17">0</span></div><div class="l">hafta</div></div>
+          <div class="stat fragment"><div class="v"><span class="count" data-to="4">0</span></div><div class="l">bob</div></div>
+        </div>
+        <div class="timeline">
+          <div class="tl fragment"><b>1-hafta.</b> Talab (SRS), Git, GitHub</div>
+          <div class="tl fragment"><b>8–9-hafta.</b> CI: avtomatik testlar</div>
+          <div class="tl fragment"><b>10–13-hafta.</b> Deploy va bulut</div>
+          <div class="tl fragment"><b>15-hafta.</b> Portfolio va case study</div>
+        </div>
+        
+      </section>
+
+      <!-- 24. AMALIY TOPSHIRIQ -->
+      <section>
+        <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>22 daqiqa</span></h2>
+        <div class="task"><span class="level easy">Oson</span>Sevimli ilovangizning 4 qatlamli xaritasi: har qatlamga 2 komponent (taxminni «?» bilan belgilang)</div>
+        <div class="task"><span class="level mid">O'rta</span><code>SRS-mini.md</code>: maqsad, 5 user story, har birida 2+ qabul mezoni, 3 cheklov</div>
+        <div class="task"><span class="level hard">Qiyin</span>3 voqea (mijoz «so'ramagan edim» dedi; 100 foydalanuvchida qulash; eskisiga qaytib bo'lmadi): qaysi bosqichda nima yetishmagan?</div>
+        
+      </section>
+
+      <!-- 25. 2-DARSGA TAYYORGARLIK -->
+      <section>
+        <h2>2-darsga tayyorgarlik: Git bormi?</h2>
+        <pre><code class="language-bash" data-trim data-noescape>
+$ git --version
+git version 2.50.1
+        </code></pre>
+        <div class="cards three">
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="monitor"></i></div><h3>macOS</h3><p>xcode-select --install</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="laptop"></i></div><h3>Windows</h3><p>Git for Windows (git-scm.com)</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="terminal"></i></div><h3>Linux</h3><p>sudo apt install git</p></div>
+        </div>
+        
+      </section>
+
+      <!-- 26. ODATIY XATOLAR -->
+      <section>
+        <h2>Odatiy xatolar</h2>
+        <div class="callout bad fragment"><i data-ic="circle-x"></i>«Dasturchi = kod yozuvchi». Real vaqtning katta qismi talab, review, test va muloqotga ketadi.</div>
+        <div class="callout bad fragment"><i data-ic="circle-x"></i>Talabni tashlab, darrov kodlash: eng qimmat xato kech topiladi.</div>
+        <div class="callout warn fragment"><i data-ic="triangle-alert"></i>SDLC ni «bir marta o'tiladigan yo'l» deb bilish. Ish ekspluatatsiyada tugamaydi.</div>
+        <div class="callout warn fragment"><i data-ic="triangle-alert"></i>Mavhum mezon: «tez», «chiroyli», «qulay». Son va tekshiriladigan shart yozing.</div>
+      </section>
+
+      <!-- 27. TEZKOR NAZORAT -->
+      <section>
+        <h2>Tezkor nazorat <span class="timer"><i data-ic="timer"></i>5 daqiqa</span></h2>
+        <ol class="steps-n">
+          <li class="fragment">4 qatlamni ayting <span class="muted">(klient, ilova, platforma, infratuzilma)</span></li>
+          <li class="fragment">Qatlamlashning 2 ta foydasi? <span class="muted">(izolyatsiya, almashtirish/kengaytirish)</span></li>
+          <li class="fragment">SDLC nega «sikl»? <span class="muted">(monitoringdan yangi talab keladi)</span></li>
+          <li class="fragment">Deploy va release farqi? <span class="muted">(texnik joylash / versiyani ochish qarori)</span></li>
+          <li class="fragment">Yaxshi talab qanday? <span class="muted">(aniq, o'lchanadigan, testlanadigan)</span></li>
+        </ol>
+      </section>
+
+      <!-- 28. XULOSA -->
+      <section>
+        <h2>Xulosa</h2>
+        <div class="cards three">
+          <div class="card"><div class="icon"><i data-ic="circle-check"></i></div><h3>Bugun o'rgandik</h3><p>4 qatlam, SDLC 6 bosqich, artefaktlar, rollar</p></div>
+          <div class="card"><div class="icon"><i data-ic="book-open"></i></div><h3>Uyga vazifa</h3><p>SRS-mini.md ni yakunlash, ilova xaritasi, <code>git --version</code></p></div>
+          <div class="card"><div class="icon"><i data-ic="git-branch"></i></div><h3>Keyingi dars</h3><p>Git: repository, commit, branch, merge</p></div>
+        </div>
+        
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

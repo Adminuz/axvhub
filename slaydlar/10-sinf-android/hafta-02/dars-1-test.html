@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>4-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>4-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">2-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Tranzitiv bog'liqlik (Transitive Dependency) nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Siz ulagan kutubxona talab qilib, loyihaga avtomatik qo'shiladigan yordamchi kutubxonalar</button>
+      <button class="opt" type="button">Faqat test kutubxonalari</button>
+      <button class="opt" type="button">Dasturchi qo'lda yozgan modul</button>
+      <button class="opt" type="button">Gradle ning eski versiyasi</button>
+    </div>
+    <div class="explain">Masalan, Retrofit ulansa, uning orqasidan OkHttp, so'ng Okio avtomatik keladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Faqat Retrofit ulangan. Nega loyihada OkHttp ham paydo bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Android Studio uni o'zi qo'shadi</button>
+      <button class="opt" type="button" data-ok>Retrofit unga tayanadi va u zanjir tarzida avtomatik yuklanadi</button>
+      <button class="opt" type="button"><code>settings.gradle</code> talab qiladi</button>
+      <button class="opt" type="button">Bu xato</button>
+    </div>
+    <div class="explain">Kutubxonalar o'z faoliyati uchun boshqa kutubxonalarga tayanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Kutubxona A <code>OkHttp 3.14.9</code>, B esa <code>OkHttp 4.12.0</code> talab qilsa, Gradle standart holda qaysini tanlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">3.14.9 (eng past versiya)</button>
+      <button class="opt" type="button">Ikkalasini ham ulaydi</button>
+      <button class="opt" type="button" data-ok>4.12.0 (eng yuqori versiya)</button>
+      <button class="opt" type="button">Xato berib to'xtaydi</button>
+    </div>
+    <div class="explain">Standart strategiya: Newest Version Wins.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Newest Version Wins strategiyasining xavfi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Kompilyatsiya umuman ishlamaydi</button>
+      <button class="opt" type="button">APK hajmi nolga tushadi</button>
+      <button class="opt" type="button">Git konflikt chiqadi</button>
+      <button class="opt" type="button" data-ok>Eski kutubxona yangi versiya bilan mos kelmay, runtime da <code>NoSuchMethodError</code> berishi mumkin</button>
+    </div>
+    <div class="explain">Yangi versiyada ba'zi metodlar o'chirilgan bo'lishi mumkin.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Bog'liqliklar daraxtini ko'rsatuvchi buyruq qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>./gradlew app:dependencies</code></button>
+      <button class="opt" type="button"><code>./gradlew clean</code></button>
+      <button class="opt" type="button"><code>./gradlew app:tree</code></button>
+      <button class="opt" type="button"><code>git log</code></button>
+    </div>
+    <div class="explain">U kutubxonalar zanjirini va ziddiyatlarni daraxt ko'rinishida chiqaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Daraxtda <code>okhttp:3.14.9 -&gt; 4.12.0</code> yozuvi nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Kutubxona o'chirilgan</button>
+      <button class="opt" type="button" data-ok>Gradle eski versiyani yangisiga ko'targan</button>
+      <button class="opt" type="button">Versiya 3.14.9 tanlangan</button>
+      <button class="opt" type="button">Xatolik yuz bergan</button>
+    </div>
+    <div class="explain">Strelka ziddiyat hal qilinib, yakuniy versiya 4.12.0 bo'lganini ko'rsatadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>exclude group: ..., module: ...</code> nima uchun ishlatiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Loyihani o'chirish uchun</button>
+      <button class="opt" type="button">Versiyani majburlash uchun</button>
+      <button class="opt" type="button" data-ok>Tranzitiv kutubxonadan keraksiz yoki ziddiyatli modulni chiqarib tashlash uchun</button>
+      <button class="opt" type="button">Test yozish uchun</button>
+    </div>
+    <div class="explain">Masalan, Retrofit o'zining OkHttp ini yuklamaydi, loyihadagi asosiy OkHttp ishlatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>resolutionStrategy { force '...okhttp:4.12.0' }</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat bitta modulni o'chiradi</button>
+      <button class="opt" type="button">OkHttp ni olib tashlaydi</button>
+      <button class="opt" type="button">Versiyani kamaytiradi</button>
+      <button class="opt" type="button" data-ok>Butun loyiha uchun shu versiyani majburiy qiladi</button>
+    </div>
+    <div class="explain"><code>force</code> barcha modul va tranzitiv bog'liqliklar uchun versiyani qat'iy belgilaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Firebase BOM nima uchun ishlatiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Modullarning bir-biriga mos versiyalarini yagona to'plamda tanlash uchun</button>
+      <button class="opt" type="button">Ilovani chalkashtirish uchun</button>
+      <button class="opt" type="button">Git bilan ishlash uchun</button>
+      <button class="opt" type="button">APK ni imzolash uchun</button>
+    </div>
+    <div class="explain">BOM da <code>implementation platform('...firebase-bom:32.7.0')</code> yoziladi, modullarda esa versiya ko'rsatilmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Retrofit dan OkHttp <code>exclude</code> qilindi, loyihada esa boshqa OkHttp yo'q. Ilova ochilganda nima bo'lishi mumkin?</p>
+    <div class="opts">
+      <button class="opt" type="button">Hech narsa o'zgarmaydi</button>
+      <button class="opt" type="button" data-ok><code>NoClassDefFoundError</code>, chunki zarur modul yo'q</button>
+      <button class="opt" type="button">Gradle avtomatik qaytaradi</button>
+      <button class="opt" type="button">Ilova tezlashadi</button>
+    </div>
+    <div class="explain"><code>exclude</code> dan keyin albatta mos versiya loyihada borligiga ishonch hosil qilish kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: Tranzitiv bog'liqliklar, versiya ziddiyati, <code>exclude</code>, <code>force</code> va BOM.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

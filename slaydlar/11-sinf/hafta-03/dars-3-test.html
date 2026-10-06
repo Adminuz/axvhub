@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>9-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>9-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Design Patterns (loyihalash andozalari) nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Tez uchraydigan arxitektura muammolarining sinalgan, qayta ishlatiladigan yechimlari</button>
+      <button class="opt" type="button">Dasturlash tili</button>
+      <button class="opt" type="button">Kutubxona nomi</button>
+      <button class="opt" type="button">Test turi</button>
+    </div>
+    <div class="explain">Andozalar GoF bo'yicha uchga bo'linadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Andozalarning 3 toifasi qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Tez, sekin, o'rta</button>
+      <button class="opt" type="button" data-ok>Yaratuvchi, strukturaviy, xulq-atvor</button>
+      <button class="opt" type="button">Frontend, backend, DB</button>
+      <button class="opt" type="button">Sinf, funksiya, modul</button>
+    </div>
+    <div class="explain">Creational, Structural, Behavioral.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Factory, Singleton qaysi toifaga kiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Strukturaviy</button>
+      <button class="opt" type="button">Xulq-atvor</button>
+      <button class="opt" type="button" data-ok>Yaratuvchi (Creational)</button>
+      <button class="opt" type="button">Hech qaysisi</button>
+    </div>
+    <div class="explain">Ular obyektlarni yaratish jarayonini boshqaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Singleton maqsadi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Sinfni ko'paytirish</button>
+      <button class="opt" type="button">Obyektni o'chirish</button>
+      <button class="opt" type="button">Faqat o'qish uchun fayl ochish</button>
+      <button class="opt" type="button" data-ok>Sinfning faqat bitta nusxasi va yagona kirish nuqtasi bo'lishi</button>
+    </div>
+    <div class="explain">Misol: ulanishlar puli, ConfigManager, Logger.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Factory Method nimaga xizmat qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Obyekt yaratishni markazlashtirib, mijozni aniq sinflardan ajratadi</button>
+      <button class="opt" type="button">Obyektni o'chiradi</button>
+      <button class="opt" type="button">Bazani tozalaydi</button>
+      <button class="opt" type="button">Test yozadi</button>
+    </div>
+    <div class="explain">Yangi tur qo'shilganda mijoz kodi o'zgarmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Python Singleton'ida <code>__new__</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Har safar yangi obyekt yaratadi</button>
+      <button class="opt" type="button" data-ok>Nusxa bor bo'lsa uni qaytaradi, yo'q bo'lsa yangisini yaratadi</button>
+      <button class="opt" type="button">Obyektni o'chiradi</button>
+      <button class="opt" type="button">Atributlarni shifrlaydi</button>
+    </div>
+    <div class="explain"><code>_instance</code> tekshiriladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>db1 is db2</code> natijasi Singleton uchun nima bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>False</code></button>
+      <button class="opt" type="button">Xato</button>
+      <button class="opt" type="button" data-ok><code>True</code></button>
+      <button class="opt" type="button"><code>None</code></button>
+    </div>
+    <div class="explain">Ikkala o'zgaruvchi xotiradagi aynan bitta obyektga ishora qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Singleton nega ba'zan anti-pattern deyiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Juda sekin ishlaydi</button>
+      <button class="opt" type="button">Python'da ishlamaydi</button>
+      <button class="opt" type="button">Xotirani yutib yuboradi</button>
+      <button class="opt" type="button" data-ok>Global holat va yashirin bog'liqlik yaratadi, testlarni qiyinlashtiradi</button>
+    </div>
+    <div class="explain">Bitta test holatni o'zgartirsa, keyingi testlarga ta'sir qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>PaymentFactory.create_payment("visa")</code> chaqirildi, lug'atda <code>visa</code> yo'q. Nima bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>ValueError</code> ko'tariladi</button>
+      <button class="opt" type="button"><code>UzcardPayment</code> qaytadi</button>
+      <button class="opt" type="button">Dastur jim ishlaydi</button>
+      <button class="opt" type="button">Obyekt <code>None</code> bo'ladi</button>
+    </div>
+    <div class="explain">Kodda <code>creator</code> topilmasa <code>ValueError</code> tashlanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Loyihada oddiy vazifa uchun Factory, Singleton, Observer hammasi qo'shildi. Bu qanday holat?</p>
+    <div class="opts">
+      <button class="opt" type="button">Eng yaxshi amaliyot</button>
+      <button class="opt" type="button" data-ok>Over-engineering; avval muammo, so'ng minimal sodda yechim (KISS)</button>
+      <button class="opt" type="button">YAGNI ning talabi</button>
+      <button class="opt" type="button">SOLID talabi</button>
+    </div>
+    <div class="explain">Andoza muammo bo'lgandagina ishlatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: andozalar toifalari, Factory Method, Singleton va uning xatarlari, over-engineering.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

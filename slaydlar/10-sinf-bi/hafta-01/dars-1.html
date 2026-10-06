@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Ma’lumotlar Muhandisligiga Kirish</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 1-dars: Ma’lumotlar muhandisligiga kirish (Data Engineering asoslari) -->
+
+<!-- 1. SARLAVHA -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Ma’lumotlar Muhandisligiga Kirish</h1>
+  <p class="muted">Data davrining yangi kasbi: DIKW piramidasi, Data Pipeline va «Data to Decision»</p>
+  <span class="badge">10-sinf</span><span class="badge">BI &amp; ML</span><span class="badge">1-hafta · 1-dars</span>
+  
+</section>
+
+<!-- 2. BUGUN NIMANI O'RGANAMIZ? -->
+<section>
+  <h2>Bugun nimani o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="database" data-anim="pulse"></i></div>
+      <h3>DIKW Piramidasi</h3>
+      <p>Xom ma'lumot (Data) qanday qilib qimmatli donolik (Wisdom) va qarorga aylanadi</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu" data-anim="float"></i></div>
+      <h3>Data Engineer Roli</h3>
+      <p>Nima uchun Data Engineering barcha AI, Machine Learning va BI ning poydevori</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers" data-anim="draw"></i></div>
+      <h3>Data Pipeline</h3>
+      <p>Netflix va YouTube misolida ma'lumotlar quvuri bosqichlari va real keyslar</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 3. YANGI DAVR: MA'LUMOT — YANGI NEFT -->
+<section>
+  <h2>Raqamli davr: «Ma'lumot — yangi neft»</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="chart-column-increasing"></i></div>
+      <h3>Ulkan ma'lumotlar oqimi</h3>
+      <p>Har kuni dunyoda trillionlab gigabayt raqamli izlar hosil bo'ladi: bank to'lovlari, kliklar, GPS va sensorlar.</p>
+      <p>Lekin xom neft kabi, xom ma'lumot ham qayta ishlanmasa va tozalanmasa hech qanday foyda bermaydi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="boxes"></i></div>
+      <h3>Qayta ishlash zavodi</h3>
+      <p>Data Engineer — bu xom neftni qimmatbaho yoqilg'iga aylantiruvchi zamonaviy muhandisdir.</p>
+      <p class="t-accent">Tozalangan ma'lumot biznes va davlat boshqaruvida to'g'ri qarorlar qabul qilishga xizmat qiladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 4. SVG 1: DIKW PIRAMIDASI -->
+<section>
+  <h2>DIKW Piramidasi: Ma'lumotdan Donolikkacha</h2>
+  <div class="illus">
+    <svg viewBox="0 0 920 360" width="100%" height="300">
+      <!-- Piramida darajalari -->
+      <!-- Wisdom (Tepa) -->
+      <polygon points="460,30 380,100 540,100" class="fg" />
+      <text x="460" y="75" text-anchor="middle" class="fn" font-size="14" font-weight="700">WISDOM (Qaror)</text>
+      
+      <!-- Knowledge (2-qatlam) -->
+      <polygon points="380,105 300,175 620,175 540,105" class="fb" />
+      <polygon points="380,105 300,175 620,175 540,105" class="la" fill="none" stroke-width="1.5" />
+      <text x="460" y="145" text-anchor="middle" class="t-accent" font-size="14" font-weight="700">KNOWLEDGE (Bilim &amp; Tahlil)</text>
+      
+      <!-- Information (3-qatlam) -->
+      <polygon points="300,180 220,250 700,250 620,180" class="fb" />
+      <polygon points="300,180 220,250 700,250 620,180" class="la" fill="none" stroke-width="1.5" />
+      <text x="460" y="220" text-anchor="middle" class="t-head" font-size="14" font-weight="700">INFORMATION (Axborot)</text>
+
+      <!-- Data (Asos) -->
+      <polygon points="220,255 140,325 780,325 700,255" class="fa" />
+      <polygon points="220,255 140,325 780,325 700,255" class="la" fill="none" stroke-width="1.5" />
+      <text x="460" y="295" text-anchor="middle" class="t-muted" font-size="15" font-weight="700">DATA (Xom ma'lumot: sonlar, loglar)</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 5. DATA VS INFORMATION -->
+<section>
+  <h2>Data (Ma'lumot) vs Information (Axborot)</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="database"></i></div>
+      <h3>Data (Xom faktlar)</h3>
+      <p>Kontekstga ega bo'lmagan quruq raqamlar va belgilar.</p>
+      <pre><code>38.5, 36.6, 39.2, 36.4, 40.1</code></pre>
+      <p class="t-muted">Bu raqamlar kimniki? Nimani bildiradi? Hali noma'lum.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="file-text"></i></div>
+      <h3>Information (Axborot)</h3>
+      <p>Qayta ishlangan, ma'no va kontekstga ega bo'lgan ko'rinish.</p>
+      <p class="t-accent">«10-sinfdagi 30 nafar o'quvchidan 3 nafarida tana harorati 38.5°C dan yuqori»</p>
+      <p>«Kim? Nima? Qachon? Qayerda?» savollariga aniq javob beradi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 6. KNOWLEDGE VS WISDOM -->
+<section>
+  <h2>Knowledge (Bilim) va Wisdom (Donolik)</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="chart-column"></i></div>
+      <h3>Knowledge (Bilim)</h3>
+      <p>Axborotni tahlil qilib qonuniyatlarni topish: «Nega?» va «Qanday?» savollari.</p>
+      <p class="t-head">«Oxirgi 3 kunda yuqori haroratli o'quvchilar soni 15% ga oshdi — bu mavsumiy gripp tarqalayotganidan dalolat beradi.»</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Wisdom (To'g'ri qaror)</h3>
+      <p>Bilim asosida strategik, samarali harakatni amalga oshirish.</p>
+      <p class="t-accent">«Maktabda darslarni 3 kunga onlayn formatga o'tkazish va binoni to'liq dezinfeksiya qilish to'g'risida buyruq chiqarish.»</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 7. SVG 2: DATA ROLLAR XARITASI -->
+<section>
+  <h2>Data Ekotizimidagi 3 Asosiy Mutaxassis</h2>
+  <div class="illus">
+    <svg viewBox="0 0 920 320" width="100%" height="260">
+      <!-- 1. Data Engineer -->
+      <g transform="translate(40, 50)">
+        <rect x="0" y="0" width="240" height="200" rx="14" class="fb" />
+        <rect x="0" y="0" width="240" height="200" rx="14" class="la" fill="none" stroke-width="2" />
+        <text x="120" y="40" text-anchor="middle" class="t-accent" font-size="16" font-weight="700">Data Engineer</text>
+        <text x="120" y="65" text-anchor="middle" class="t-muted" font-size="11">«Arxitektor va Santexnik»</text>
+        <rect x="20" y="85" width="200" height="95" rx="8" class="fa" />
+        <text x="35" y="115" class="t-head" font-size="12">• Quvurlar (Pipelines)</text>
+        <text x="35" y="140" class="t-head" font-size="12">• Omborlar (DWH/Lake)</text>
+        <text x="35" y="165" class="t-head" font-size="12">• Tozalash va xavfsizlik</text>
+      </g>
+
+      <!-- 2. Data Analyst / BI -->
+      <g transform="translate(340, 50)">
+        <rect x="0" y="0" width="240" height="200" rx="14" class="fb" />
+        <rect x="0" y="0" width="240" height="200" rx="14" class="la" fill="none" stroke-width="1.5" />
+        <text x="120" y="40" text-anchor="middle" class="t-head" font-size="16" font-weight="700">BI Developer</text>
+        <text x="120" y="65" text-anchor="middle" class="t-muted" font-size="11">«Tahlilchi va Vizualizator»</text>
+        <rect x="20" y="85" width="200" height="95" rx="8" class="fa" />
+        <text x="35" y="115" class="t-head" font-size="12">• Dashboardlar (BI)</text>
+        <text x="35" y="140" class="t-head" font-size="12">• KPI ko'rsatkichlar</text>
+        <text x="35" y="165" class="t-head" font-size="12">• Trendlar va hisobot</text>
+      </g>
+
+      <!-- 3. Data Scientist / ML -->
+      <g transform="translate(640, 50)">
+        <rect x="0" y="0" width="240" height="200" rx="14" class="fg" />
+        <text x="120" y="40" text-anchor="middle" class="fn" font-size="16" font-weight="700">Data Scientist</text>
+        <text x="120" y="65" text-anchor="middle" class="fn" font-size="11" opacity="0.9">«Olim va Bashoratchi»</text>
+        <rect x="20" y="85" width="200" height="95" rx="8" class="fa" />
+        <text x="35" y="115" class="t-head" font-size="12">• ML modellar</text>
+        <text x="35" y="140" class="t-head" font-size="12">• Kelajakni bashorat</text>
+        <text x="35" y="165" class="t-head" font-size="12">• AI algoritmlar</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 8. DATA ENGINEER VAZIFASI -->
+<section>
+  <h2>Data Engineer kim va nima ish qiladi?</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>Asosiy vazifalar</h3>
+      <p>Turli manbalardan (ilova, veb, sensorlar, bank) keluvchi ma'lumotlarni yig'ish;</p>
+      <p>Katta hajmdagi ma'lumotlarni tozalash, sifatini tekshirish va filtrdan o'tkazish;</p>
+      <p>Har kuni avtomatik ishlaydigan ma'lumotlar quvurlarini (Data Pipelines) sozlash.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>Ish qurollari</h3>
+      <p><b>Dasturlash:</b> Python, Scala, SQL</p>
+      <p><b>Katta ma'lumotlar:</b> Apache Spark, Hadoop</p>
+      <p><b>Avtomatlashtirish:</b> Apache Airflow, dbt</p>
+      <p><b>Bulutli omborlar:</b> BigQuery, Snowflake, AWS</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 9. GARBAGE IN, GARBAGE OUT -->
+<section>
+  <h2>«Garbage In, Garbage Out» qoidasi</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="triangle-alert" data-anim="bounce"></i></div>
+      <h3>Iflos ma'lumot halokati</h3>
+      <p>Agar ma'lumotlar bazasida xatolar, takrorlanishlar (duplikatlar) yoki bo'sh joylar (null) ko'p bo'lsa:</p>
+      <p>Tahliliy dashboardlar rahbarlarga noto'g'ri raqamlarni ko'rsatadi;</p>
+      <p>Sun'iy intellekt modeli mutlaqo teskari va xato bashorat beradi!</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Data Engineering mas'uliyati</h3>
+      <p>Data Engineer ma'lumotlarni qat'iy tekshiruvdan o'tkazadi (Data Quality):</p>
+      <p class="t-accent">To'liq (Completeness), Aniq (Accuracy), Yagona standartda (Consistency) va O'z vaqtida (Timeliness)!</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 10. BO'LIM 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Data Pipeline Arxitekturasi</h1>
+  <p>Ingest, Transform, Store va Serve bosqichlari</p>
+</section>
+
+<!-- 11. SVG 3: DATA PIPELINE SXEMASI -->
+<section>
+  <h2>Data Pipeline: Ma'lumotlar Quvuri Qanday Ishlaydi?</h2>
+  <div class="illus">
+    <svg viewBox="0 0 920 320" width="100%" height="260">
+      <!-- 1. Manbalar -->
+      <g transform="translate(30, 70)">
+        <rect x="0" y="0" width="170" height="150" rx="12" class="fb" />
+        <rect x="0" y="0" width="170" height="150" rx="12" class="la" fill="none" stroke-width="1.5" />
+        <text x="85" y="40" text-anchor="middle" class="t-head" font-size="14" font-weight="700">1. SOURCE</text>
+        <text x="85" y="70" text-anchor="middle" class="t-muted" font-size="11">Mobil Ilovalar</text>
+        <text x="85" y="95" text-anchor="middle" class="t-muted" font-size="11">Veb-sayt Loglari</text>
+        <text x="85" y="120" text-anchor="middle" class="t-muted" font-size="11">Sensorlar &amp; API</text>
+      </g>
+
+      <line x1="210" y1="145" x2="250" y2="145" class="la" stroke-width="2.5" />
+
+      <!-- 2. Qayta ishlash -->
+      <g transform="translate(260, 70)">
+        <rect x="0" y="0" width="170" height="150" rx="12" class="fb" />
+        <rect x="0" y="0" width="170" height="150" rx="12" class="la" fill="none" stroke-width="1.5" />
+        <text x="85" y="40" text-anchor="middle" class="t-accent" font-size="14" font-weight="700">2. PROCESS</text>
+        <text x="85" y="70" text-anchor="middle" class="t-muted" font-size="11">Tozalash (Clean)</text>
+        <text x="85" y="95" text-anchor="middle" class="t-muted" font-size="11">Filtrlash</text>
+        <text x="85" y="120" text-anchor="middle" class="t-muted" font-size="11">Agregatsiya</text>
+      </g>
+
+      <line x1="440" y1="145" x2="480" y2="145" class="la" stroke-width="2.5" />
+
+      <!-- 3. Saqlash -->
+      <g transform="translate(490, 70)">
+        <rect x="0" y="0" width="170" height="150" rx="12" class="fb" />
+        <rect x="0" y="0" width="170" height="150" rx="12" class="la" fill="none" stroke-width="1.5" />
+        <text x="85" y="40" text-anchor="middle" class="t-head" font-size="14" font-weight="700">3. STORAGE</text>
+        <text x="85" y="70" text-anchor="middle" class="t-muted" font-size="11">Data Lake</text>
+        <text x="85" y="95" text-anchor="middle" class="t-muted" font-size="11">Data Warehouse</text>
+        <text x="85" y="120" text-anchor="middle" class="t-muted" font-size="11">Parquet / SQL</text>
+      </g>
+
+      <line x1="670" y1="145" x2="710" y2="145" class="la" stroke-width="2.5" />
+
+      <!-- 4. Iste'mol -->
+      <g transform="translate(720, 70)">
+        <rect x="0" y="0" width="170" height="150" rx="12" class="fg" />
+        <text x="85" y="40" text-anchor="middle" class="fn" font-size="14" font-weight="700">4. SERVING</text>
+        <text x="85" y="70" text-anchor="middle" class="fn" font-size="11">BI Dashboardlar</text>
+        <text x="85" y="95" text-anchor="middle" class="fn" font-size="11">ML Tavsiyalar</text>
+        <text x="85" y="120" text-anchor="middle" class="fn" font-size="11">To'g'ri Qarorlar</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 12. DATA PIPELINE BOSQICHLARI -->
+<section>
+  <h2>Quvur bosqichlari mohiyati</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="database"></i></div>
+      <h3>Ingest va Process</h3>
+      <p><b>Ingest:</b> Har xil formatdagi ma'lumotlarni qabul qilish (fayl yuklash, API chaqiriqlari).</p>
+      <p><b>Process:</b> Null qiymatlarni tozalash, matnlarni standartlashtirish va sana formatlarini to'g'rilash.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="chart-column"></i></div>
+      <h3>Store va Serve</h3>
+      <p><b>Store:</b> Tezkor va xavfsiz saqlash (ustunli Parquet yoki PostgreSQL ombori).</p>
+      <p><b>Serve:</b> Rahbariyat uchun PowerBI/Tableau grafiklari hamda ML algoritmlari uchun taqdim etish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 13. STEPPER: DATA TO DECISION -->
+<section>
+  <h2>«Data to Decision» — Qaror qabul qilish zanjiri</h2>
+  <div class="stepper">
+    <div class="step fragment">
+      <div class="num">1</div>
+      <h3>Hodisa yuz beradi</h3>
+      <p>Mijoz ilovada mahsulotni savatchaga qo'shadi, lekin xarid qilmay chiqib ketadi.</p>
+    </div>
+    <div class="step fragment">
+      <div class="num">2</div>
+      <h3>Pipeline yig'adi</h3>
+      <p>Data Engineer quvuri bu hodisani soniyalar ichida omborga yozadi va tahlilga tayyorlaydi.</p>
+    </div>
+    <div class="step fragment">
+      <div class="num">3</div>
+      <h3>Tahlil qilinadi</h3>
+      <p>BI analitik savatlarning 40% i yetkazib berish narxi sababli tashlab ketilganini aniqlaydi.</p>
+    </div>
+    <div class="step fragment">
+      <div class="num">4</div>
+      <h3>Qaror qabul qilinadi</h3>
+      <p>Rahbariyat «Katta buyurtmalarga bepul yetkazib berish» aksiyasini yoqadi va savdo 2 barobar oshadi!</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 14. BO'LIM 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Real Dunyo Keyslari</h1>
+  <p>Netflix va YouTube tavsiya tizimlari qanday ishlaydi?</p>
+</section>
+
+<!-- 15. NETFLIX KEYSI -->
+<section>
+  <h2>Netflix qanday qilib filmlarni tavsiya qiladi?</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="play"></i></div>
+      <h3>Har bir harakat — ma'lumot</h3>
+      <p>Siz kinoni qachon pauza qildingiz? Qaysi sahnani qayta ko'rdingiz? Hafta oxirida qaysi janrni ko'ryapsiz?</p>
+      <p>Netflix soniyasiga <b>500 milliarddan ortiq</b> voqealarni (events) qayta ishlaydi!</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>Tavsiya mo'jizasi</h3>
+      <p>Data Engineerlar Apache Kafka va Spark orqali bu ma'lumotlarni yig'ib beradi.</p>
+      <p>Machine Learning modeli esa har bir foydalanuvchining shaxsiy didiga mos filmlar lentasini shakllantiradi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 16. YOUTUBE KEYSI -->
+<section>
+  <h2>YouTube: Tomoshabin e'tiborini ushlab qolish</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="laptop"></i></div>
+      <h3>Watch Time (Ko'rish vaqti)</h3>
+      <p>YouTube uchun eng muhim ko'rsatkich — foydalanuvchining videoda qancha vaqt ushlanib qolishi.</p>
+      <p>Algoritm qaysi video tomoshabinni platformada uzoqroq ushlab turishini doimiy hisoblab boradi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="chart-column"></i></div>
+      <h3>Creator Studio analitikasi</h3>
+      <p>Video muallifiga ko'rishlar soni, auditoriya yoshi, geografiyasi va qaysi soniyada videodan chiqib ketilgani bo'yicha batafsil BI grafiklari taqdim etiladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 17. SVG 4: MAKTAB PLATFORMASI MODELI -->
+<section>
+  <h2>Maktab Tahliliy Platformasi Loyihasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 920 320" width="100%" height="260">
+      <g transform="translate(40, 50)">
+        <rect x="0" y="0" width="230" height="200" rx="14" class="fb" />
+        <rect x="0" y="0" width="230" height="200" rx="14" class="la" fill="none" stroke-width="1.5" />
+        <text x="115" y="35" text-anchor="middle" class="t-head" font-size="15" font-weight="700">1. Xom Manbalar</text>
+        <rect x="15" y="55" width="200" height="125" rx="8" class="fa" />
+        <text x="25" y="85" class="t-accent" font-size="11">• maktablar_soni.csv</text>
+        <text x="25" y="110" class="t-accent" font-size="11">• oquvchilar.csv</text>
+        <text x="25" y="135" class="t-accent" font-size="11">• oqituvchilar.json</text>
+        <text x="25" y="160" class="t-accent" font-size="11">• bitiruvchilar.csv</text>
+      </g>
+
+      <line x1="285" y1="150" x2="335" y2="150" class="la" stroke-width="3" />
+
+      <g transform="translate(350, 40)">
+        <rect x="0" y="0" width="220" height="220" rx="14" class="fg" />
+        <text x="110" y="35" text-anchor="middle" class="fn" font-size="15" font-weight="700">Data Engineering</text>
+        <rect x="15" y="55" width="190" height="145" rx="8" class="fa" />
+        <text x="25" y="85" class="t-head" font-size="11">• Null/Duplicate check</text>
+        <text x="25" y="110" class="t-head" font-size="11">• Hudud nomlari tozalash</text>
+        <text x="25" y="135" class="t-head" font-size="11">• Parquet konvertatsiya</text>
+        <text x="25" y="160" class="t-head" font-size="11">• Yuklama hisobi:</text>
+        <text x="35" y="180" class="t-muted" font-size="10">o'quvchi / o'qituvchi</text>
+      </g>
+
+      <line x1="585" y1="150" x2="635" y2="150" class="la" stroke-width="3" />
+
+      <g transform="translate(650, 50)">
+        <rect x="0" y="0" width="230" height="200" rx="14" class="fb" />
+        <rect x="0" y="0" width="230" height="200" rx="14" class="la" fill="none" stroke-width="2" />
+        <text x="115" y="35" text-anchor="middle" class="t-head" font-size="15" font-weight="700">3. Dashboard &amp; Qaror</text>
+        <rect x="15" y="55" width="200" height="125" rx="8" class="fa" />
+        <text x="25" y="85" class="t-head" font-size="11"><b>Direktor:</b> Resurs bosimi</text>
+        <text x="25" y="115" class="t-head" font-size="11"><b>Analitik:</b> Reyting (RANK)</text>
+        <text x="25" y="145" class="t-head" font-size="11"><b>Kadrlar:</b> Shtat ehtiyoji</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 18. FOYDALANUVCHI ROLLARI -->
+<section>
+  <h2>Platforma foydalanuvchilari kimlar?</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="users"></i></div>
+      <h3>Rahbar va Analitik</h3>
+      <p><b>Direktor / MMTB rahbari:</b> Hududlar bo'yicha o'quvchi/o'qituvchi yuklamasini ko'radi, qaysi maktabga qo'shimcha bino kerakligini hal qiladi.</p>
+      <p><b>Analitik:</b> Yillik o'sish trendlarini (YoY) va hududlar reytingini hisoblaydi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="terminal"></i></div>
+      <h3>Data Operator va Metodist</h3>
+      <p><b>Data Operator (Admin):</b> Fayllarni yuklaydi, xatoliklarni tekshiradi va quvurlarni yangilab turadi.</p>
+      <p><b>O'qituvchi / Metodist:</b> Resurs taqsimoti bo'yicha ta'lim sifatini yaxshilash takliflarini beradi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 19. INTERAKTIV FLIP KARTALAR -->
+<section>
+  <h2>Data sirlari (Kartalarni bosing)</h2>
+  <div class="cards three mt">
+    <div class="flip" style="min-height:210px">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="database"></i></div>
+          <h3>Ma'lumot vaqti</h3>
+          <span class="flip-hint">bosing</span>
+        </div>
+        <div class="face back">
+          <p><b>Timeliness:</b> Kechikib kelgan ma'lumot o'z qadrini yo'qotadi. Kechagi ob-havo bugun hech kimga kerak emas!</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip" style="min-height:210px">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="triangle-alert"></i></div>
+          <h3>Duplikat xavfi</h3>
+          <span class="flip-hint">bosing</span>
+        </div>
+        <div class="face back">
+          <p><b>Duplicates:</b> Bitta mijoz ma'lumotlar bazasida 2 marta yozilsa, savdo hisoboti va statistika 2 barobar yolg'on ko'rsatadi.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip" style="min-height:210px">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="cpu"></i></div>
+          <h3>Pipeline kuchi</h3>
+          <span class="flip-hint">bosing</span>
+        </div>
+        <div class="face back">
+          <p><b>Avtomatika:</b> Data Pipeline minglab soatlik insoniy zerikarli mehnatni bir necha soniyada avtomatlashtiradi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 20. ASOSIY ATAMALAR LUG'ATI -->
+<section>
+  <h2>Darsning asosiy atamalari</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="database"></i></div>
+      <h3>Arxitektura atamalari</h3>
+      <p><b>Data Engineering:</b> Ma'lumotlarni yig'ish, tozalash va uzatish infratuzilmasi.</p>
+      <p><b>Data Pipeline:</b> Manbadan tahlilgacha bo'lgan avtomatlashgan ma'lumotlar quvuri.</p>
+      <p><b>DIKW:</b> Data → Information → Knowledge → Wisdom zanjiri.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="chart-column"></i></div>
+      <h3>Tahliliy atamalar</h3>
+      <p><b>GIGO:</b> Garbage In, Garbage Out (Iflos kelsa — iflos chiqadi).</p>
+      <p><b>Data Quality:</b> Ma'lumotning to'liqligi, aniqligi va mosligi mezonlari.</p>
+      <p><b>Serving:</b> Tayyor ma'lumotlarni tahlil va AI uchun taqdim etish qatlami.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 21. QUIZ -->
+<section>
+  <h2>Tezkor bilim sinovi</h2>
+  <div class="quiz">
+    <div class="q">DIKW piramidasida xom raqamlardan kelib chiqib qabul qilinadigan eng oliy bosqich nima deb ataladi?</div>
+    <div class="opts">
+      <div class="opt">Information (Axborot)</div>
+      <div class="opt">Knowledge (Bilim)</div>
+      <div class="opt" data-ok>Wisdom (Donolik / To'g'ri qaror)</div>
+      <div class="opt">Raw Data (Xom ma'lumot)</div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 22. LABORATORIYA AMALIYOTI -->
+<section>
+  <h2>Sinfdagi amaliy mashg'ulot</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="terminal"></i></div>
+      <h3>1. Python bilan xom ma'lumotni tahlil qilish</h3>
+      <p>O'quvchilar baholarining xom ro'yxatini olib, o'rtacha ball va qoniqarsiz baholarni ajratib oling.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="folder-check"></i></div>
+      <h3>2. YouTube Pipeline chizmasini tuzish</h3>
+      <p>Video ko'rish jarayonining 4 bosqichli ma'lumotlar oqimini daftaringizga chizing.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 23. XULOSA -->
+<section>
+  <h2>Darsning 4 oltin qoidasi</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>1. Xom ma'lumot — qiymatsiz</h3>
+      <p>Data faqat to'g'ri qayta ishlanganda va axborotga aylanganda foyda beradi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>2. Sifat birinchi o'rinda</h3>
+      <p>Iflos ma'lumot bilan ishlaydigan eng zo'r sun'iy intellekt ham xato qiladi (GIGO).</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>3. Quvurlarni avtomatlashtiring</h3>
+      <p>Data Pipeline jarayonlarni uzluksiz va ishonchli ishlashini ta'minlaydi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="users"></i></div>
+      <h3>4. Maqsad — to'g'ri qaror</h3>
+      <p>Har qanday ma'lumotlar tizimining yakuniy maqsadi — to'g'ri qaror qabul qilishdir.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 24. UYGA VAZIFA VA KEYINGI DARS -->
+<section>
+  <h2>Uyga vazifa va anons</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="database"></i></div>
+      <h3>1. DIKW misolini yozish</h3>
+      <p>Kundalik hayotingizdagi bitta jarayonni DIKW ning 4 pog'onasi bo'yicha tahlil qiling.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>2. Kasblar jadvali</h3>
+      <p>Data Engineer, Data Analyst va Data Scientist rollarining farqini yozing.</p>
+    </div>
+  </div>
+  <p class="muted mt">Keyingi dars: Ma'lumotlar arxitekturasi va ma'lumotlar hayot sikli (Data Lifecycle)!</p>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

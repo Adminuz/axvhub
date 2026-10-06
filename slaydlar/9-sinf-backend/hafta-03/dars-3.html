@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Tanlash operatori: match / case</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+      <!-- 1. SARLAVHA (HERO) -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>Tanlash operatori: match / case</h1>
+        <p class="muted">Python 3.10+ Pattern Matching va rasmiy amaliy topshiriqlar</p>
+        <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">3-hafta · 9-dars</span>
+        
+      </section>
+
+      <!-- 2. Reja -->
+      <section>
+        <h2>Bugun nimalarni o‘rganamiz?</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="list-filter" data-anim="float"></i></div>
+            <h3>match / case nima?</h3>
+            <p>1.46-rasm: Tanlash operatorining umumiy sintaksisi</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="calendar" data-anim="bounce"></i></div>
+            <h3>Menyu &amp; Kunlar</h3>
+            <p>1.47 va 1.48-rasmlar: 1–7 kunlar va boshqaruv menyusi</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="check-check" data-anim="float"></i></div>
+            <h3>3 ta amaliy topshiriq</h3>
+            <p>3 ga karralilar (for/while) va 12 ta oy nomlari dasturi</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 3. NEGA MATCH / CASE? -->
+      <section>
+        <h2>Nega match / case kiritildi?</h2>
+        <div class="cards two">
+          <div class="card fragment">
+            <h3>Eski usul (if / elif)</h3>
+            <p>Har bir qatorda o'zgaruvchini qayta yozish kerak: <code>if x == 1: elif x == 2:</code></p>
+            <p class="muted">Variantlar ko'paysa o'qish qiyinlashadi</p>
+          </div>
+          <div class="card fragment">
+            <h3>Yangi usul (match / case)</h3>
+            <p>Bitta <code>match x:</code> orqali barcha variantlar qatorlarga ajratiladi</p>
+            <p class="muted">Ixcham, tushunarli va tezkor</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 4. SEC 01: SINTAKSIS VA ANATOMIYA -->
+      <section class="sec">
+        <div class="num">01</div>
+        <h1>match / case sintaksisi</h1>
+        <p>1.46-rasm: Qiymat, variantlar va boshqa holatlar (_)</p>
+      </section>
+
+      <!-- 5. SVG 1: MATCH-CASE XARITASI -->
+      <section>
+        <h2>match / case tuzilishi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- match qiymat -->
+            <rect class="fa pulse" x="60" y="50" width="260" height="80" rx="14"/>
+            <text class="t-head" x="190" y="95" text-anchor="middle" font-size="22">match tanlov:</text>
+            <text class="t-muted" x="190" y="118" text-anchor="middle" font-size="13">Tekshiriluvchi qiymat</text>
+
+            <line class="la flowing" x1="320" y1="90" x2="440" y2="90"/>
+
+            <!-- Tarmoqlar -->
+            <g class="fragment">
+              <rect class="fn" x="440" y="30" width="480" height="60" rx="10"/>
+              <text class="t-head" x="460" y="67" font-size="18">case 1:  print("Dastur boshlandi")</text>
+            </g>
+
+            <g class="fragment">
+              <rect class="fn" x="440" y="100" width="480" height="60" rx="10"/>
+              <text class="t-head" x="460" y="137" font-size="18">case 2:  print("Sozlamalar ochildi")</text>
+            </g>
+
+            <g class="fragment">
+              <rect class="fn" x="440" y="170" width="480" height="60" rx="10"/>
+              <text class="t-head" x="460" y="207" font-size="18">case 3:  print("Dastur yopildi")</text>
+            </g>
+
+            <g class="fragment">
+              <rect class="fb" x="440" y="240" width="480" height="60" rx="10"/>
+              <text class="t-head" x="460" y="277" font-size="18">case _:  print("Noto'g'ri tanlov")</text>
+              <text class="t-muted" x="800" y="277" font-size="14">(else kabi)</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 6. KOD: SODDA MENYU (1.47-RASM) -->
+      <section>
+        <h2>Dastur menyusi kodi (1.47-rasm)</h2>
+        <pre><code class="language-python" data-line-numbers="1-2|4-12">tanlov = int(input("Tanlovni kiriting (1-3): "))
+
+match tanlov:
+    case 1:
+        print("Dastur boshlandi")
+    case 2:
+        print("Sozlamalar ochildi")
+    case 3:
+        print("Dastur yopildi")
+    case _:
+        print("Noto'g'ri tanlov")</code></pre>
+        
+      </section>
+
+      <!-- 7. SEC 02: HAFTA KUNI TANLASH -->
+      <section class="sec">
+        <div class="num">02</div>
+        <h1>Hafta kunini tanlash</h1>
+        <p>1.48-rasm: 1 dan 7 gacha raqamlar bo‘yicha tanlov</p>
+      </section>
+
+      <!-- 8. KOD: HAFTA KUNLARI (1.48-RASM) -->
+      <section>
+        <h2>Hafta kunlari dasturi kodi</h2>
+        <pre><code class="language-python" data-line-numbers="1-2|4-11|12-13">kun = int(input("Hafta kunini kiriting (1-7): "))
+
+match kun:
+    case 1: print("Dushanba")
+    case 2: print("Seshanba")
+    case 3: print("Chorshanba")
+    case 4: print("Payshanba")
+    case 5: print("Juma")
+    case 6: print("Shanba")
+    case 7: print("Yakshanba")
+    case _:
+        print("Xato! 1–7 oralig'ida kiriting")</code></pre>
+        
+      </section>
+
+      <!-- 9. SEC 03: RASMIY AMALIY TOPSHIRIQLAR -->
+      <section class="sec">
+        <div class="num">03</div>
+        <h1>Rasmiy amaliy topshiriqlar</h1>
+        <p>3 ga karrali sonlar va 12 ta oy nomlari</p>
+      </section>
+
+      <!-- 10. SVG 3: 3 GA KARRALI SONLAR FILTRI -->
+      <section>
+        <h2>Topshiriq 2: 3 ga karrali sonlar süzgichi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- [1, n] ketma-ketlik -->
+            <rect class="fn" x="40" y="110" width="220" height="140" rx="14"/>
+            <text class="t-head" x="150" y="160" text-anchor="middle" font-size="22">Sonlar: 1..N</text>
+            <text class="t-muted" x="150" y="195" text-anchor="middle" font-size="15">for yoki while</text>
+
+            <line class="la" x1="260" y1="180" x2="390" y2="180"/>
+
+            <!-- Shart süzgichi -->
+            <g class="fragment">
+              <polygon class="fa pulse" points="500,100 620,180 500,260 380,180"/>
+              <text class="t-head" x="500" y="175" text-anchor="middle" font-size="20">i % 3 == 0 ?</text>
+              <text class="t-muted" x="500" y="200" text-anchor="middle" font-size="14">3 ga bo‘linadimi?</text>
+            </g>
+
+            <line class="lg flowing" x1="620" y1="180" x2="740" y2="180"/>
+
+            <!-- Chiqadigan sonlar -->
+            <g class="fragment">
+              <rect class="fg" x="740" y="100" width="220" height="160" rx="14"/>
+              <text class="t-head" x="850" y="150" text-anchor="middle" font-size="22">3, 6, 9, 12...</text>
+              <text class="t-muted" x="850" y="190" text-anchor="middle" font-size="16">Faqat 3 ga</text>
+              <text class="t-muted" x="850" y="215" text-anchor="middle" font-size="16">karrali sonlar</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 11. KOD: 3 GA KARRALILAR (FOR VA WHILE) -->
+      <section>
+        <h2>3 ga karralilar: for va while</h2>
+        <div class="cards two">
+          <div class="card">
+            <h3>for sikli bilan</h3>
+            <pre><code class="language-python">n = 20
+for i in range(1, n + 1):
+    if i % 3 == 0:
+        print(i, end=" ")
+# 3 6 9 12 15 18</code></pre>
+          </div>
+          <div class="card">
+            <h3>while sikli bilan</h3>
+            <pre><code class="language-python">n = 20
+i = 1
+while i &lt;= n:
+    if i % 3 == 0:
+        print(i, end=" ")
+    i += 1
+# 3 6 9 12 15 18</code></pre>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 12. SVG 4: 12 OY VA FASLLAR -->
+      <section>
+        <h2>Topshiriq 3: 12 oy va fasllar guruhi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- 4 ta fasl doirasi -->
+            <g class="fragment">
+              <rect class="fa" x="40" y="80" width="200" height="200" rx="16"/>
+              <text class="t-head" x="140" y="130" text-anchor="middle" font-size="24">Qish</text>
+              <text class="t-muted" x="140" y="170" text-anchor="middle" font-size="16">12, 1, 2</text>
+              <text class="t-accent" x="140" y="210" text-anchor="middle" font-size="14">Dek, Yan, Fev</text>
+            </g>
+
+            <g class="fragment">
+              <rect class="fg" x="280" y="80" width="200" height="200" rx="16"/>
+              <text class="t-head" x="380" y="130" text-anchor="middle" font-size="24">Bahor</text>
+              <text class="t-muted" x="380" y="170" text-anchor="middle" font-size="16">3, 4, 5</text>
+              <text class="t-accent" x="380" y="210" text-anchor="middle" font-size="14">Mar, Apr, May</text>
+            </g>
+
+            <g class="fragment">
+              <rect class="fb pulse" x="520" y="80" width="200" height="200" rx="16"/>
+              <text class="t-head" x="620" y="130" text-anchor="middle" font-size="24">Yoz</text>
+              <text class="t-muted" x="620" y="170" text-anchor="middle" font-size="16">6, 7, 8</text>
+              <text class="t-accent" x="620" y="210" text-anchor="middle" font-size="14">Iyun, Iyul, Avg</text>
+            </g>
+
+            <g class="fragment">
+              <rect class="fc" x="760" y="80" width="200" height="200" rx="16"/>
+              <text class="t-head" x="860" y="130" text-anchor="middle" font-size="24">Kuz</text>
+              <text class="t-muted" x="860" y="170" text-anchor="middle" font-size="16">9, 10, 11</text>
+              <text class="t-accent" x="860" y="210" text-anchor="middle" font-size="14">Sen, Okt, Noy</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 13. KOD: 12 TA OY DASTURI -->
+      <section>
+        <h2>Oy nomlari dasturi (match/case)</h2>
+        <pre><code class="language-python" data-line-numbers="1-2|4-10|11-13">oy = int(input("Oy raqamini kiriting (1-12): "))
+
+match oy:
+    case 1: print("Yanvar")
+    case 2: print("Fevral")
+    case 3: print("Mart")
+    case 4: print("Aprel")
+    case 5: print("May")
+    case 6: print("Iyun")
+    # ... qolgan oylar
+    case _:
+        print("Xato! 1–12 oralig'ida kiriting")</code></pre>
+        
+      </section>
+
+      <!-- 14. AMALIY TOPSHIRIQ (TASK) -->
+      <section class="task">
+        <h2>Amaliy topshiriq: 3-hafta loyihalari</h2>
+        <p class="muted">Vaqt: 20 daqiqa · Darajalar bo‘yicha</p>
+        <div class="cards three">
+          <div class="card">
+            <h3>1. Oson</h3>
+            <p>1 dan 7 gacha kiritilgan songa qarab hafta kunini <code>match/case</code> da chiqaring.</p>
+          </div>
+          <div class="card">
+            <h3>2. O'rta</h3>
+            <p><code>[1, 30]</code> oralig‘idagi 3 ga karrali sonlarni <code>for</code> va <code>while</code> da chiqaring.</p>
+          </div>
+          <div class="card">
+            <h3>3. Qiyin</h3>
+            <p>1 dan 12 gacha songa qarab fasl nomini <code>case 12 | 1 | 2:</code> usulida aniqlang.</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 15. QUIZ / TEZKOR SAVOL -->
+      <section>
+        <h2>Tezkor sinov</h2>
+        <p>Quyidagi match/case blokida x = 7 bo‘lsa nima chiqadi?</p>
+        <pre><code class="language-python">x = 7
+match x:
+    case 1 | 3 | 5: print("Toq 1")
+    case 2 | 4 | 6: print("Juft")
+    case _: print("Boshqa son")</code></pre>
+        <div class="fragment callout tip">
+          <i data-ic="check"></i> <strong>Javob:</strong> <code>Boshqa son</code> (chunki 7 variantlarda yo'q va case _ ga tushadi)
+        </div>
+        
+      </section>
+
+      <!-- 16. 3-HAFTA YAKUNIY XULOSASI -->
+      <section>
+        <h2>1–3 haftalar davomida o‘rganilganlar</h2>
+        <div class="cards three">
+          <div class="card fragment">
+            <h3>Asoslar</h3>
+            <p>Python o‘rnatish, toifalar (int, float, str, bool), o‘zgaruvchilar</p>
+          </div>
+          <div class="card fragment">
+            <h3>Shartlar</h3>
+            <p>Taqqoslash, mantiqiy operatorlar, if/else va elif</p>
+          </div>
+          <div class="card fragment">
+            <h3>Sikllar &amp; Match</h3>
+            <p>for, range(), while, break, continue va match/case</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 17. YAKUNIY SLAYD -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>1–3 haftalar yakunlandi!</h1>
+        <p class="muted">Keyingi hafta: Ma’lumotlar tuzilmalari: string va list</p>
+        <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span>
+        
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

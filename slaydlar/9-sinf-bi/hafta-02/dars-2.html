@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Professional Jadval va Tidy Data</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Professional Jadval va Tidy Data</h1>
+  <p class="muted">Ma'lumotlarni to'g'ri strukturalash, gigiyena va rasmiy Excel Table (Ctrl+T)</p>
+  <span class="badge">9-sinf</span><span class="badge">Business Intelligence</span><span class="badge">2-hafta · 5-dars</span>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Professional Jadval va Tidy Data</h1>
+  <p>Inson ko'zi uchun emas, tahliliy dasturlar uchun optimallashtirilgan tuzilma</p>
+</section>
+
+<section>
+  <h2>Oddiy Jadval vs Professional Jadval</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="table"></i></div>
+      <h3>Oddiy Elektron Jadval</h3>
+      <p>Faqat inson ko'zi uchun chiroyli ko'rinishga mo'ljallangan.</p>
+      <p class="t-muted">Kataklar birlashtirilgan (Merged), sarlavhalar bir nechta qavat, hisoblash qiyin.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sparkles" data-anim="pulse"></i></div>
+      <h3>Professional Tahliliy Jadval</h3>
+      <p>Algoritmlar (SQL, Power BI, Python) tahlili uchun optimallashtirilgan.</p>
+      <p class="t-muted">Qat'iy Tidy Data standartlari, har bir ustun aniq bitta atributni ifodalaydi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tidy Data (Tartibli Ma'lumot) Tamoyillari</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="40" y="40" width="220" height="160" rx="8" class="fa la"></rect>
+      <text x="150" y="75" class="t-head" text-anchor="middle">1. Ustun (Column)</text>
+      <text x="150" y="115" class="t-muted" text-anchor="middle">Har bir ustun —</text>
+      <text x="150" y="145" class="t-accent" text-anchor="middle">bitta o'zgaruvchi</text>
+      <text x="150" y="175" class="t-muted" text-anchor="middle">(Variable)</text>
+
+      <rect x="290" y="40" width="220" height="160" rx="8" class="fc lc"></rect>
+      <text x="400" y="75" class="t-head" text-anchor="middle">2. Qator (Row)</text>
+      <text x="400" y="115" class="t-muted" text-anchor="middle">Har bir qator —</text>
+      <text x="400" y="145" class="t-accent" text-anchor="middle">bitta kuzatuv</text>
+      <text x="400" y="175" class="t-muted" text-anchor="middle">(Observation)</text>
+
+      <rect x="540" y="40" width="220" height="160" rx="8" class="fg lg"></rect>
+      <text x="650" y="75" class="t-head" text-anchor="middle">3. Katak (Cell)</text>
+      <text x="650" y="115" class="t-muted" text-anchor="middle">Har bir katak —</text>
+      <text x="650" y="145" class="t-accent" text-anchor="middle">bitta aniq qiymat</text>
+      <text x="650" y="175" class="t-muted" text-anchor="middle">(Single Value)</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Katta Taqiq: Birlashtirilgan Kataklar</h2>
+  <div class="callout bad">
+    <strong>Merged Cells (Birlashtirilgan kataklar) qat'iyan taqiqlanadi!</strong>
+    <p>Agar siz 3 ta qatorni bitta katak qilib birlashtirsangiz, kompyuter faqat 1-qatorni ko'radi, qolgan 2 tasi bo'sh (NULL) bo'lib qoladi. Saralash va filtrlash butunlay ishdan chiqadi!</p>
+  </div>
+  <div class="callout good">
+    <strong>To'g'ri qoida: Har bir satrda qiymatni takrorlash</strong>
+    <p>Har bir qatorda tegishli toifa nomi to'liq yozilishi kerak. Tahliliy dasturlar faqat to'liq jadvallar bilan to'g'ri ishlaydi.</p>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Ustun nomlash gigiyenasi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Tavsiya etiladi</h3>
+      <ul>
+        <li>1-qatorda aniq va qisqa sarlavha</li>
+        <li><code>snake_case</code> usuli: <code>savdo_summasi</code></li>
+        <li>Maxsus belgilarsiz (faqat harf va raqam)</li>
+        <li>Bitta ustunda faqat bitta ma'lumot turi</li>
+      </ul>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-x"></i></div>
+      <h3>Taqiqlanadi</h3>
+      <ul>
+        <li>Bo'sh sarlavhalar qoldirish</li>
+        <li>Ikki qavatli murakkab sarlavha</li>
+        <li>Jadval o'rtasida bo'sh qatorlar</li>
+        <li>Jami (Total) qatorini jadval o'rtasiga yozish</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Rasmiy Excel Table (Ctrl + T)</h1>
+  <p>Oddiy diapazondan dinamik intellektual jadvalga o'tish</p>
+</section>
+
+<section>
+  <h2>Oddiy Diapazon vs Excel Table</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="50" y="40" width="320" height="160" rx="8" class="fn ln"></rect>
+      <text x="210" y="75" class="t-head" text-anchor="middle">Oddiy Diapazon (Range)</text>
+      <text x="210" y="105" class="t-muted" text-anchor="middle">Yangi qatorda formula ko'chmaydi</text>
+      <text x="210" y="135" class="t-muted" text-anchor="middle">Formula: =B2*C2 (noaniq)</text>
+      <text x="210" y="165" class="t-accent" text-anchor="middle">Statik chegara</text>
+
+      <rect x="430" y="40" width="320" height="160" rx="8" class="fg lg"></rect>
+      <text x="590" y="75" class="t-head" text-anchor="middle">Excel Table (Ctrl + T)</text>
+      <text x="590" y="105" class="t-muted" text-anchor="middle">Avtomatik kengayadi</text>
+      <text x="590" y="135" class="t-muted" text-anchor="middle">Formula: =[@Narx]*[@Miqdor]</text>
+      <text x="590" y="165" class="t-accent" text-anchor="middle">O'rnatilgan Total Row</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Strukturali havolalar (Structured References)</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="binary"></i></div>
+      <h3>Oddiy Formula</h3>
+      <p><code>=B2 * C2</code></p>
+      <p class="t-muted">Katak manzillari nimani anglatishini faqat jadvalga qarab tushunish mumkin.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sparkles" data-anim="pulse"></i></div>
+      <h3>Strukturali Formula</h3>
+      <p><code>=[@Narx] * [@Miqdor]</code></p>
+      <p class="t-muted">Formula inson tili kabi tushunarli. Yangi qator qo'shilganda avtomatik o'zi to'ldiriladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Total Row va Slicer imkoniyatlari</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sigma"></i></div>
+      <h3>Total Row (Jami Qatori)</h3>
+      <p>Bitta belgi bilan jadval ostida avtomatik hisob-kitoblar paydo bo'ladi.</p>
+      <p class="t-muted">Har bir ustun ostida Sum, Average, Count funksiyalarini menyudan tanlash mumkin.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers" data-anim="float"></i></div>
+      <h3>Slicer (Kesuvchi) ulash</h3>
+      <p>Jadvalga zamonaviy interaktiv filtr tugmalarini ulash imkoniyati.</p>
+      <p class="t-muted">Filtrlashni bitta bosishda vizual boshqarish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Sxema: Excel Table anatomiyasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 280">
+      <g data-tip="Header Row: ustun sarlavhalari doim 1-qatorda joylashadi."><rect class="fa" x="50" y="40" width="900" height="50" rx="6"/><text class="t-head" x="500" y="72" text-anchor="middle">Sarlavha Qatori (Header Row)</text></g>
+      <g data-tip="Data Rows: har bir qator alohida bitta kuzatuvni ifodalaydi."><rect class="fn" x="50" y="95" width="900" height="90" rx="6"/><text class="t-head" x="500" y="145" text-anchor="middle">Ma'lumotlar Qatorlari (Data Rows: dinamik kengayadi)</text></g>
+      <g data-tip="Total Row: avtomatik yig'indi va statistik hisob-kitoblar qatori."><rect class="fg" x="50" y="190" width="900" height="50" rx="6"/><text class="t-head" x="500" y="222" text-anchor="middle">Jami Qatori (Total Row: Sum, Average)</text></g>
+    </svg>
+  </div>
+  <p class="small t-muted">Sxema qismlari ustiga sichqonchani olib boring yoki bosing.</p>
+  
+</section>
+
+<section>
+  <h2>Ma'lumotlar yaxlitligi: Data Validation</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Xatolardan Himoya</h3>
+      <p>Katakka faqat ruxsat etilgan qiymatlar (masalan, 1 dan 100 gacha sonlar yoki sanalar) kiritilishini cheklaydi.</p>
+      <p class="t-muted">Noto'g'ri matn yoki manfiy son kiritilsa, tizim ogohlantirish chiqaradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="list"></i></div>
+      <h3>Ochiluvchi Ro'yxat (Dropdown)</h3>
+      <p>Viloyat yoki toifa nomlarini qo'lda xato yozmaslik uchun tanlov menyusi yaratadi.</p>
+      <p class="t-muted">Data > Data Validation > List orqali qulay tanlov ro'yxati ulanadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Wide Format vs Long Format</h1>
+  <p>Tahlil uchun qaysi format eng to'g'ri tanlov?</p>
+</section>
+
+<section>
+  <h2>Wide (Keng) va Long (Uzun) Format</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="50" y="40" width="320" height="160" rx="8" class="fb lb"></rect>
+      <text x="210" y="75" class="t-head" text-anchor="middle">Wide Format (Inson uchun)</text>
+      <text x="210" y="105" class="t-muted" text-anchor="middle">Mahsulot | Yan | Fev | Mar</text>
+      <text x="210" y="135" class="t-muted" text-anchor="middle">Oylar ustunlarga aylanib ketgan</text>
+      <text x="210" y="165" class="t-accent" text-anchor="middle">Tahlil qilish qiyin</text>
+
+      <rect x="430" y="40" width="320" height="160" rx="8" class="fg lg"></rect>
+      <text x="590" y="75" class="t-head" text-anchor="middle">Long Format (Tidy / Mashina)</text>
+      <text x="590" y="105" class="t-muted" text-anchor="middle">Mahsulot | Oy | Summa</text>
+      <text x="590" y="135" class="t-muted" text-anchor="middle">Har bir oy alohida qator</text>
+      <text x="590" y="165" class="t-accent" text-anchor="middle">PivotTable va SQL uchun tayyor</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Nega Long Format Tahlilda Ustun?</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3><i data-ic="circle-x"></i> Wide Format Kamchiligi</h3>
+      <ul>
+        <li>Yangi oy kelsa yangi ustun ochish kerak</li>
+        <li>Formulalarni har safar qayta yozish</li>
+        <li>PivotTable'da guruhlab bo'lmaydi</li>
+      </ul>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3><i data-ic="circle-check"></i> Long Format Afzalligi</h3>
+      <ul>
+        <li>Cheksiz yangi ma'lumot qo'shish oson</li>
+        <li>Formulalar bir marta yoziladi</li>
+        <li>Pivot va Power BI bilan 100% mos</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Kataklarni birlashtirish oqibatlari</h2>
+  <div class="flip" style="min-height:220px">
+    <div class="flip-in">
+      <div class="face front">
+        <div class="icon"><i data-ic="circle-question-mark"></i></div>
+        <h3>Savolni o'ylang</h3>
+        <p>"Agar 4 ta qator birlashtirilsa (Merge Cells), saralash (Sort) bosilganda nima yuz beradi?"</p>
+        <span class="flip-hint">bosing</span>
+      </div>
+      <div class="face back">
+        <h3>Xatolik yuz beradi!</h3>
+        <p>Excel: "To do this, all the merged cells need to be the same size" xabarini chiqaradi va saralashni butunlay to'xtatadi.</p>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tezkor Sinov: Tidy Data qoidasi</h2>
+  <div class="quiz">
+    <p class="q">Tidy Data tamoyiliga ko'ra har bir qator (Row) nimani ifodalashi kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">O'zgaruvchi turini</button>
+      <button class="opt" type="button" data-ok>Bitta alohida kuzatuvni (Observation)</button>
+      <button class="opt" type="button">Jami hisoblangan formulani</button>
+      <button class="opt" type="button">Kompaniya logotipini</button>
+    </div>
+    <div class="explain">To'g'ri javob: Bitta kuzatuvni! Har bir tranzaksiya yoki hodisa alohida bitta qatorda bo'ladi.</div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tezkor Sinov: Excel Table qisqa tugmasi</h2>
+  <div class="quiz">
+    <p class="q">Oddiy ma'lumotlar diapazonini rasmiy Excel Table formatiga o'tkazuvchi tezkor tugma qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ctrl + S</button>
+      <button class="opt" type="button" data-ok>Ctrl + T</button>
+      <button class="opt" type="button">Ctrl + Shift + L</button>
+      <button class="opt" type="button">Alt + F4</button>
+    </div>
+    <div class="explain">To'g'ri javob: Ctrl + T (yoki Ctrl + L) jadval yaratish muloqot oynasini ochadi!</div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Amaliy topshiriqlar <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Savdo ro'yxatini Ctrl+T orqali rasmiy jadvalga aylantiring va Total Row qo'shing.</div>
+  <div class="task"><span class="level mid">O'rta</span>Strukturali havola orqali yangi ustunda Jami = [@Narx]*[@Miqdor] formulasini hisoblang.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Oylar bo'yicha tuzilgan keng (Wide) hisobotni Tidy (Long) formatga keltiring va Slicer ulang.</div>
+  
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Tidy Data Gigiyenasi</h3>
+      <ul>
+        <li>Ustun = O'zgaruvchi, Qator = Kuzatuv</li>
+        <li>Merged Cells qat'iyan taqiqlanadi</li>
+        <li>Sarlavhalar standart va bo'sh joysiz</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="table" data-anim="pulse"></i></div>
+      <h3>Excel Table kuchi</h3>
+      <ul>
+        <li>Ctrl + T bilan dinamik jadval</li>
+        <li>Strukturali formulalar: <code>[@Narx]</code></li>
+        <li>Total Row va Slicerlar</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

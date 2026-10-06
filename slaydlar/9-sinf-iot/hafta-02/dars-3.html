@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Elektron Sxema Asosida Bitta LED Ulanishi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Elektron Sxema Asosida Bitta LED Ulanishi</h1>
+  <p class="muted">Arduino Uno platasi, raqamli GPIO pinlar, Om qonuni hisobi va C++ dasturi (Blink)</p>
+  <span class="badge">9-sinf</span><span class="badge">IoT</span><span class="badge">2-hafta · 6-dars</span>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Arduino Uno Arxitekturasi</h1>
+  <p>Dunyodagi eng ommabop ochiq kodli mikrokontroller platasi</p>
+</section>
+
+<section>
+  <h2>Arduino Uno R3 Asosiy Ko'rsatkichlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu" data-anim="pulse"></i></div>
+      <h3 class="t-head">ATmega328P Chip</h3>
+      <p>8-bitli AVR protsessor, 16 MGts takt chastotasi.</p>
+      <p class="t-muted">Sekundiga 16 million buyruq bajarish quvvatiga ega.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="database"></i></div>
+      <h3>Xotira Hajmi</h3>
+      <p>32 KB Flash dastur xotirasi;</p>
+      <p>2 KB SRAM (tezkor o'zgaruvchilar);</p>
+      <p class="t-muted">1 KB EEPROM doimiy xotirasi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="zap" data-anim="bounce"></i></div>
+      <h3>Quvvat Ta'minoti</h3>
+      <p>USB kabeli (5V) yoki DC raz'yomi (7–12V).</p>
+      <p class="t-muted">Platada 5V, 3.3V va 3 ta GND pinlari mavjud.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Arduino Uno Pinlar Anatomiyasi</h2>
+  <div class="fragment fade-up">
+    <svg viewBox="0 0 900 320" width="100%" height="250" style="display:block; margin:auto;">
+      <!-- Main board rectangle -->
+      <rect x="180" y="30" width="540" height="260" rx="16" class="la" stroke-width="3" fill="none"/>
+      
+      <!-- MCU Chip -->
+      <rect x="360" y="110" width="180" height="70" rx="4" class="lc" stroke-width="2" fill="none"/>
+      <text x="450" y="150" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">ATmega328P (16 MHz)</text>
+
+      <!-- USB & Power Jack -->
+      <rect x="130" y="60" width="70" height="50" rx="4" class="fb" fill="none" stroke="currentColor"/>
+      <text x="165" y="90" text-anchor="middle" class="t-head" font-size="12">USB</text>
+      <rect x="130" y="180" width="60" height="60" rx="4" class="fa" fill="none" stroke="currentColor"/>
+      <text x="160" y="215" text-anchor="middle" class="t-head" font-size="12">DC 9V</text>
+
+      <!-- Top Header: Digital Pins -->
+      <rect x="320" y="35" width="370" height="25" rx="3" class="fg" fill="none" stroke="currentColor"/>
+      <text x="505" y="52" text-anchor="middle" class="t-head" font-size="13" font-weight="bold">14 ta Raqamli GPIO Pin (0–13, shu jumladan PWM: 3, 5, 6, 9, 10, 11)</text>
+
+      <!-- Bottom Left: Power Pins -->
+      <rect x="320" y="260" width="160" height="25" rx="3" class="fa" fill="none" stroke="currentColor"/>
+      <text x="400" y="277" text-anchor="middle" class="t-accent" font-size="12">Power (5V, 3.3V, GND)</text>
+
+      <!-- Bottom Right: Analog Pins -->
+      <rect x="520" y="260" width="170" height="25" rx="3" class="fb" fill="none" stroke="currentColor"/>
+      <text x="605" y="277" text-anchor="middle" class="t-head" font-size="12">Analog Kirishlar (A0–A5)</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>GPIO Pinlar Nima?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="log-in"></i></div>
+      <h3>INPUT (Kirish Rejimi)</h3>
+      <p>Tashqi sensorlar va tugmalardan signallarni o'qiydi.</p>
+      <p>Tugma bosildimi? Harorat oshdimi? Xonada harakat bormi?</p>
+      <p class="t-muted">Pin o'zidan tok chiqarmaydi, faqat kuchlanishni tekshiradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="log-out"></i></div>
+      <h3 class="t-head">OUTPUT (Chiqish Rejimi)</h3>
+      <p>Ijrochi organlar (LED, rele, motor, buzzer)ga elektr toki yuboradi.</p>
+      <p><strong>HIGH (1):</strong> 5V kuchlanish uzatiladi (LED yonadi);</p>
+      <p><strong>LOW (0):</strong> 0V kuchlanish (LED o'chadi).</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>LED Fizikasi va Om Qonuni</h1>
+  <p>Yarimo'tkazgich nurlanishi va 220 Om rezistor hisobi</p>
+</section>
+
+<section>
+  <h2>LED Qanday Qilib Nur Taratadi?</h2>
+  <div class="fragment fade-up">
+    <svg viewBox="0 0 880 260" width="100%" height="200" style="display:block; margin:auto;">
+      <!-- P region -->
+      <rect x="180" y="60" width="220" height="140" rx="8" class="la" stroke-width="2" fill="none"/>
+      <text x="290" y="95" text-anchor="middle" class="t-accent" font-size="18" font-weight="bold">p-soha (Kovaklar +)</text>
+      <circle cx="240" cy="140" r="14" class="fn" fill="currentColor"/>
+      <circle cx="290" cy="140" r="14" class="fn" fill="currentColor"/>
+      <circle cx="340" cy="140" r="14" class="fn" fill="currentColor"/>
+
+      <!-- N region -->
+      <rect x="480" y="60" width="220" height="140" rx="8" class="lb" stroke-width="2" fill="none"/>
+      <text x="590" y="95" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">n-soha (Elektronlar -)</text>
+      <circle cx="530" cy="140" r="14" class="fg" fill="currentColor"/>
+      <circle cx="580" cy="140" r="14" class="fg" fill="currentColor"/>
+      <circle cx="630" cy="140" r="14" class="fg" fill="currentColor"/>
+
+      <!-- Center Junction & Photon release -->
+      <path d="M 400 130 L 480 130" stroke="currentColor" stroke-width="3" stroke-dasharray="4,4" class="t-muted"/>
+      <path d="M 440 120 L 440 40" stroke="currentColor" stroke-width="4" class="fg"/>
+      <text x="440" y="30" text-anchor="middle" class="t-head" font-size="14" font-weight="bold">Fotonlar (Yorug'lik)</text>
+      <text x="440" y="170" text-anchor="middle" class="t-accent" font-size="13">Rekombinatsiya</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Nega 220 Om Rezistor? (Om Qonuni Hisobi)</h2>
+  <div class="fragment fade-up">
+    <svg viewBox="0 0 900 280" width="100%" height="220" style="display:block; margin:auto;">
+      <rect x="40" y="30" width="820" height="220" rx="14" class="la" stroke-width="2" fill="none"/>
+      
+      <text x="450" y="70" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Om Qonuni: R = U / I</text>
+      
+      <text x="100" y="120" class="t-muted" font-size="16">1. Arduino pini kuchlanishi:</text>
+      <text x="350" y="120" class="t-accent" font-size="16" font-weight="bold">U_pin = 5V</text>
+
+      <text x="100" y="155" class="t-muted" font-size="16">2. Qizil LED kuchlanish tushuvi:</text>
+      <text x="350" y="155" class="t-head" font-size="16" font-weight="bold">U_led = 2V</text>
+
+      <text x="100" y="190" class="t-muted" font-size="16">3. Rezistorda qolgan kuchlanish:</text>
+      <text x="350" y="190" class="t-head" font-size="16" font-weight="bold">U_R = 5V - 2V = 3V</text>
+
+      <text x="100" y="225" class="t-muted" font-size="16">4. Xavfsiz nominal tok kuchi:</text>
+      <text x="350" y="225" class="t-muted" font-size="16" font-weight="bold">I = 15 mA = 0.015 A</text>
+
+      <rect x="520" y="100" width="310" height="120" rx="8" class="fb" fill="none" stroke="currentColor"/>
+      <text x="675" y="140" text-anchor="middle" class="t-head" font-size="16">Qarshilik formulasi:</text>
+      <text x="675" y="175" text-anchor="middle" class="t-accent" font-size="20" font-weight="bold">R = 3V / 0.015A = 200 Om</text>
+      <text x="675" y="205" text-anchor="middle" class="t-muted" font-size="14">Standart nominal: 220 Om!</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Sxemani Yig'ish va C++ Kodi</h1>
+  <p>Arduino 9-piniga LED ulash va Blink dasturi</p>
+</section>
+
+<section>
+  <h2>Elektron Sxemaning Bog'lanish Sxemasi</h2>
+  <div class="fragment fade-up">
+    <svg viewBox="0 0 900 280" width="100%" height="220" style="display:block; margin:auto;">
+      <!-- Arduino Pin 9 -->
+      <rect x="60" y="100" width="140" height="80" rx="8" class="la" stroke-width="2" fill="none"/>
+      <text x="130" y="145" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">Pin D9 (5V)</text>
+
+      <line x1="200" y1="140" x2="280" y2="140" stroke="currentColor" stroke-width="4" class="t-accent"/>
+
+      <!-- Resistor -->
+      <rect x="280" y="115" width="140" height="50" rx="6" class="fb" stroke-width="2" fill="none"/>
+      <text x="350" y="145" text-anchor="middle" class="t-head" font-size="14" font-weight="bold">Rezistor 220 Om</text>
+
+      <line x1="420" y1="140" x2="500" y2="140" stroke="currentColor" stroke-width="4" class="t-accent"/>
+
+      <!-- LED -->
+      <circle cx="540" cy="140" r="35" class="fn" fill="none" stroke="currentColor" stroke-width="3"/>
+      <text x="540" y="145" text-anchor="middle" class="t-head" font-size="14" font-weight="bold">LED (Qizil)</text>
+
+      <line x1="575" y1="140" x2="680" y2="140" stroke="currentColor" stroke-width="4" class="t-head"/>
+
+      <!-- Arduino GND -->
+      <rect x="680" y="100" width="140" height="80" rx="8" class="lc" stroke-width="2" fill="none"/>
+      <text x="750" y="145" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">Arduino GND</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Arduino C++ Dastur Arxitekturasi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="settings"></i></div>
+      <h3>void setup() { ... }</h3>
+      <p>Mikrokontroller yoqilganda faqat <strong>1 marta</strong> ishga tushadi.</p>
+      <p>Dastlabki sozlamalar: qaysi pin kirish va qaysi pin chiqish ekanligi belgilanadi.</p>
+      <p class="t-muted">Masalan: <code>pinMode(9, OUTPUT);</code></p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="rotate-cw" data-anim="spin"></i></div>
+      <h3 class="t-head">void loop() { ... }</h3>
+      <p><code>setup()</code> tugagach, doimiy va <strong>cheksiz takrorlanuvchi</strong> tsikl.</p>
+      <p>Asosiy algoritm mantiqi: yoqish, kutish, o'chirish, yana kutish shu yerda aylanadi.</p>
+      <p class="t-muted">Quvvat uzilguncha to'xtovsiz ishlaydi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>To'liq C++ Dastur Kodi (Blink)</h2>
+  <div class="fragment fade-up">
+    <pre><code class="language-cpp">int LED = 9; // LED ulangan raqamli pin
+
+void setup() {
+  pinMode(LED, OUTPUT); // 9-pinni chiqish qilib sozlaymiz
+}
+
+void loop() {
+  digitalWrite(LED, 1); // LEDni yoqish (5V signal)
+  delay(2000);          // 2000 millisekund (2 soniya) kutish
+  digitalWrite(LED, 0); // LEDni o'chirish (0V signal)
+  delay(1000);          // 1000 millisekund (1 soniya) kutish
+}</code></pre>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Asosiy Funksiyalar Izohi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+      <h3>pinMode(pin, rejim)</h3>
+      <p>Pinni <code>OUTPUT</code> (chiqish) yoki <code>INPUT</code> (kirish) qilib dasturiy sozlaydi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="zap"></i></div>
+      <h3>digitalWrite(pin, holat)</h3>
+      <p>Pinga <code>HIGH</code> (1 — 5V) yoki <code>LOW</code> (0 — 0V) mantiqiy signal uzatadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="clock"></i></div>
+      <h3>delay(vaqt_ms)</h3>
+      <p>Mikrokontroller ishini ko'rsatilgan millisekund davomida to'xtatib turadi (1000 ms = 1 s).</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Interaktiv Kartochkalar</h2>
+  <div class="cards two">
+    <div class="flip fragment fade-up">
+      <div class="flip-in">
+        <div class="face front fa">
+          <h3><i data-ic="circle-question-mark"></i> void loop() funksiyasi necha marta bajariladi?</h3>
+          <p class="t-muted">Javobni ko'rish uchun aylantiring</p>
+        </div>
+        <div class="face back fb">
+          <h3>Cheksiz Takrorlanadi</h3>
+          <p>setup() 1 marta bajarilgach, loop() mikrokontroller quvvati uzilmaguncha to'xtovsiz aylanadi.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip fragment fade-up">
+      <div class="flip-in">
+        <div class="face front fa">
+          <h3><i data-ic="circle-question-mark"></i> delay(2500) kodi necha soniya kutadi?</h3>
+          <p class="t-muted">Javobni ko'rish uchun aylantiring</p>
+        </div>
+        <div class="face back fg">
+          <h3>2.5 Soniya</h3>
+          <p>1000 ms = 1 soniya bo'lgani uchun, 2500 ms = 2.5 soniya tanaffus beradi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tezkor Test Savoli</h2>
+  <div class="quiz">
+    <div class="q">Arduino platasida LED ulangan raqamli 9-pinni elektr toki yuborish rejimiga sozlash uchun qaysi buyruq to'g'ri yozilgan?</div>
+    <div class="opts">
+      <div class="opt">A) digitalRead(9, INPUT);</div>
+      <div class="opt">B) digitalWrite(9, HIGH);</div>
+      <div class="opt" data-ok>C) pinMode(9, OUTPUT);</div>
+      <div class="opt">D) delay(9000);</div>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Xulosa va Keyingi Qadam</h1>
+  <p>2-hafta 6-dars yakunlari</p>
+</section>
+
+<section>
+  <h2>Bugungi Darsda Nimani O'rgandik?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>Arduino Uno</h3>
+      <p>ATmega328P chipi, 16 MGts chastota va 14 ta raqamli GPIO pinlari bilan tanishdik.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="calculator"></i></div>
+      <h3>Om Qonuni</h3>
+      <p>LED uchun 220 Om himoya rezistorini hisoblash formulasini o'zlashtirdik.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="file-code"></i></div>
+      <h3>C++ Dasturi</h3>
+      <p><code>pinMode()</code>, <code>digitalWrite()</code> va <code>delay()</code> yordamida birinchi Blink loyihasini yozdik.</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

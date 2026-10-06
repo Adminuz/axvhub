@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Android tizimi va uning arxitekturasi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Android tizimi va uning arxitekturasi</h1>
+  <p class="muted">Linux yadrosidan mobil ilovalargacha: ko'p qatlamli platforma anatomiyasi</p>
+  <span class="badge">9-sinf</span>
+  <span class="badge">Android dasturlash</span>
+  <span class="badge">1-hafta · 2-dars</span>
+</section>
+
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>5 ta qatlam</h3>
+      <p>Linux Kernel, HAL, Runtime, Framework va Applications.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>ART va Dalvik</h3>
+      <p>AOT va JIT kompilyatsiyasi, .dex fayllar va tezlik.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="database"></i></div>
+      <h3>Ma'lumotlar saqlash</h3>
+      <p>SharedPreferences, SQLite, Room va Firebase.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Vertikal arxitektura</h1>
+  <p>Androidning ko'p qatlamli modulli tuzilishi</p>
+</section>
+
+<section>
+  <h2>Arxitektura pog'onalari</h2>
+  <div class="timeline">
+    <div class="tl fragment"><b>5. Applications:</b> Tizimli va foydalanuvchi ilovalari (Phone, Telegram, Click).</div>
+    <div class="tl fragment"><b>4. Java API Framework:</b> Activity Manager, View System, Content Providers, Notification Manager.</div>
+    <div class="tl fragment"><b>3. ART & Native Libraries:</b> Android Runtime, SQLite, WebKit, Media Framework, libc.</div>
+    <div class="tl fragment"><b>2. Hardware Abstraction Layer (HAL):</b> Kamera, Bluetooth, Audio apparat interfeyslari.</div>
+    <div class="tl fragment"><b>1. Linux Kernel:</b> Xotira, protsessor, quvvat va drayverlar boshqaruvi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Linux Kernel va HAL</h1>
+  <p>Apparat ta'minoti bilan to'g'ridan-to'g'ri aloqa</p>
+</section>
+
+<section>
+  <h2>1-qatlam: Linux Kernel</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>Resurslar boshqaruvi</h3>
+      <p>Virtual xotira (RAM) boshqaruvi, CPU vaqtini rejalashtirish va quvvat tejash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Drayverlar va xavfsizlik</h3>
+      <p>Kamera, Wi-Fi, audio drayverlari va ilovalarni UID orqali izolyatsiyalash.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>2-qatlam: Hardware Abstraction Layer (HAL)</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <h3>Apparatni yashirish qatlami</h3>
+        <p>Turli ishlab chiqaruvchilar (Samsung, Xiaomi, Sony) har xil apparat qismlaridan foydalanadi.</p>
+        <p class="muted">HAL Java kodiga yagona standart C/C++ interfeysini beradi.</p>
+      </div>
+    </div>
+    <div>
+      <div class="callout good fragment fade-up">
+        <h4>Dasturchiga qulaylik:</h4>
+        <p>Bitta Camera API kodi yoziladi va u barcha telefon kameralarida birdek ishlaydi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>ART va Native kutubxonalar</h1>
+  <p>Kodning mashina tiliga aylanish mexanizmi</p>
+</section>
+
+<section>
+  <h2>Native C/C++ kutubxonalari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="database"></i></div>
+      <h3>SQLite</h3>
+      <p>Ilova ichida ishlaydigan engil va tezkor reliesion ma'lumotlar bazasi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="monitor"></i></div>
+      <h3>Surface Manager</h3>
+      <p>2D va 3D grafika qatlamlarini ekranda silliq birlashtirib chizish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="play"></i></div>
+      <h3>Media Framework</h3>
+      <p>MP3, MP4, AAC va boshqa audio-video formatlarni ijro etish va yozish.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Dalvik va ART taqqoslashi</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>Dalvik (JIT)</h3>
+      <p>Android 4.4 gacha bo'lgan eski tizim.</p>
+      <p>Kodni ilova ochilgan paytda (Just-in-Time) mashina tiliga o'giradi.</p>
+      <p class="muted">Ilovalar sekinroq ochilar edi.</p>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>ART (AOT)</h3>
+      <p>Android 5.0 dan boshlab zamonaviy tizim.</p>
+      <p>Kodni ilova o'rnatilayotganda (Ahead-of-Time) to'liq tayyorlab qo'yadi.</p>
+      <p class="good">Bir zumda ochiladi, batareyani tejaydi.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Java API Framework</h1>
+  <p>Dasturchilar ishlatadigan asosiy tizim xizmatlari</p>
+</section>
+
+<section>
+  <h2>Frameworkning asosiy xizmatlari</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layout-grid"></i></div>
+      <h3>Activity Manager</h3>
+      <p>Ilovalarning hayotiy sikli (Lifecycle), ekranning ochilishi va orqaga qaytish steki.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="smartphone"></i></div>
+      <h3>View System</h3>
+      <p>Tugmalar (Button), matnlar (TextView), rasmlar (ImageView) va ro'yxatlar.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Framework xizmatlari (davomi)</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="bell"></i></div>
+      <h3>Notification Manager</h3>
+      <p>Yuqori panelda foydalanuvchiga muhim bildirishnomalarni ko'rsatish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="share-2"></i></div>
+      <h3>Content Providers</h3>
+      <p>Ilovalar o'rtasida ma'lumot almashish (masalan, telefon kontaktlarini o'qish).</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">05</div>
+  <h1>Xavfsizlik: Application Sandbox</h1>
+  <p>Har bir ilova alohida izolyatsiyalangan muhitda</p>
+</section>
+
+<section>
+  <h2>Sandbox qanday ishlaydi?</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <h3>UID izolyatsiyasi</h3>
+        <p>Har bir yangi ilovaga alohida Linux foydalanuvchi identifikatori (UID) beriladi.</p>
+        <p class="muted">Hech bir ilova boshqasining xotirasini yoki shaxsiy fayllarini o'qiy olmaydi.</p>
+      </div>
+    </div>
+    <div>
+      <div class="callout warn fragment fade-up">
+        <h4>Ruxsatlar tizimi (Permissions):</h4>
+        <p>Agar ilova kameraga yoki mikrafonga kirmoqchi bo'lsa, tizim foydalanuvchidan rasman ruxsat so'raydi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">06</div>
+  <h1>Ma'lumotlarni saqlash</h1>
+  <p>Qayerda va qanday usulda saqlaymiz?</p>
+</section>
+
+<section>
+  <h2>Androidda ma'lumot saqlash turlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="settings"></i></div>
+      <h3>SharedPreferences / DataStore</h3>
+      <p>Kichik sozlamalar: til, qorong'u rejim, kirish seansi (Key-Value).</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="database"></i></div>
+      <h3>SQLite va Room</h3>
+      <p>Katta hajmdagi reliesion jadvallar, qidiruv va filtrlash imkoniyati.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cloud"></i></div>
+      <h3>Firebase Firestore</h3>
+      <p>Internet orqali real vaqt rejimida barcha qurilmalar bilan sinxronlanadigan bulutli baza.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>15 daqiqa</span></h2>
+  <div class="task">
+    <span class="level easy">Oson</span>
+    Androidning 5 ta qatlamini tartib bilan daftarga yozing.
+  </div>
+  <div class="task">
+    <span class="level mid">O'rta</span>
+    Dalvik (JIT) va ART (AOT) farqini ko'rsatuvchi taqqoslash jadvali tuzing.
+  </div>
+  <div class="task">
+    <span class="level hard">Qiyin</span>
+    Nega bir ilova boshqa ilovaning parolini o'g'irlay olmasligini Sandbox modeli asosida asoslang.
+  </div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Bugun o'rgandik</h3>
+      <p>Android 5 qatlamli vertikal arxitekturaga ega. Linux yadrosi xavfsizlik va drayverlarni, ART ilovalar tezligini, Framework esa dasturchi xizmatlarini boshqaradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="book-open"></i></div>
+      <h3>Keyingi dars</h3>
+      <p>3-dars: Androidning imkoniyatlari va qo‘llanilish sohalari: Wear OS, Android Auto, Android TV va IoT.</p>
+    </div>
+  </div>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

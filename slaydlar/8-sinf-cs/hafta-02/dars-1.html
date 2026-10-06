@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Kompyuterning asosiy va qo‘shimcha qurilmalari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+      <!-- 1. SARLAVHA -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>Kompyuterning asosiy va qo‘shimcha qurilmalari</h1>
+        <p class="muted">Tizim bloki, monitor, periferiya qurilmalari, ulanish portlari va drayverlar</p>
+        <span class="badge">8-sinf</span><span class="badge">Foundation</span><span class="badge">2-hafta · 4-dars</span>
+        
+      </section>
+
+      <!-- 2. Reja -->
+      <section>
+        <h2>Bugun nimalarni o'rganamiz?</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="monitor" data-anim="float"></i></div>
+            <h3>Asosiy qurilmalar</h3>
+            <p>Tizim bloki, monitor, klaviatura va sichqoncha</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="printer" data-anim="pulse"></i></div>
+            <h3>Periferiya qurilmalari</h3>
+            <p>Printer, skaner, veb-kamera, proyektor va tashqi xotira</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="plug" data-anim="spin"></i></div>
+            <h3>Portlar va Drayverlar</h3>
+            <p>USB, HDMI, Device Manager va xavfsiz ulanish</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Savol -->
+      <section>
+        <h2>Kompyuteringizga nechta qurilma ulangan?</h2>
+        <div class="chips">
+          <span class="chip fragment">Klaviatura</span>
+          <span class="chip t fragment">Sichqoncha</span>
+          <span class="chip fragment">Naushnik / Kolonka</span>
+          <span class="chip t fragment">Printer</span>
+          <span class="chip fragment">Veb-kamera</span>
+          <span class="chip t fragment">Fleshka</span>
+        </div>
+        <div class="callout tip fragment">
+          <i data-ic="sparkles"></i>
+          Ushbu qurilmalarning har biri kompyuter bilan maxsus portlar va drayver dasturlari orqali muloqot qiladi!
+        </div>
+      </section>
+
+      <!-- 4. SEC 01 -->
+      <section class="sec">
+        <div class="num">01</div>
+        <h1>Asosiy kompyuter qurilmalari</h1>
+        <p>Ishlash uchun shart bo'lgan minimal to'plam</p>
+      </section>
+
+      <!-- 5. 4 ta asosiy qurilma -->
+      <section>
+        <h2>4 ta tayanch asosiy qurilma</h2>
+        <div class="cards four">
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="layers" data-anim="float"></i></div>
+            <h3>Tizim bloki</h3>
+            <p>Barcha hisoblash va ma'lumot saqlash joyi: CPU, RAM, ona plata, SSD</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="monitor" data-anim="float"></i></div>
+            <h3>Monitor</h3>
+            <p>Matn, rasm, video va oynalarni ko'rsatuvchi asosiy vizual chiqarish ekrani</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="keyboard" data-anim="pulse"></i></div>
+            <h3>Klaviatura</h3>
+            <p>Matn, sonlar va boshqaruv buyruqlarini kirituvchi asosiy vosita</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="mouse" data-anim="pulse"></i></div>
+            <h3>Sichqoncha</h3>
+            <p>Kursor orqali dasturlar va grafikalarni oson boshqaruvchi kiritish qurilmasi</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. SVG ILLUS 1: Asosiy va Periferiya ekotizimi -->
+      <section>
+        <h2>Qurilmalar ekotizimi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- Markaz: Tizim bloki -->
+            <rect class="fa pulse" x="380" y="110" width="240" height="140" rx="16"/>
+            <text class="t-head" x="500" y="170" text-anchor="middle" font-size="24">Tizim bloki</text>
+            <text class="t-muted" x="500" y="200" text-anchor="middle" font-size="16">CPU + RAM + SSD</text>
+
+            <!-- Atrofdagi qurilmalar -->
+            <!-- Monitor -->
+            <g class="fragment">
+              <rect class="fc" x="400" y="20" width="200" height="60" rx="10"/>
+              <text class="t-head" x="500" y="55" text-anchor="middle" font-size="18">Monitor (HDMI)</text>
+              <line class="la flowing" x1="500" y1="80" x2="500" y2="110"/>
+            </g>
+
+            <!-- Klaviatura & Sichqoncha -->
+            <g class="fragment">
+              <rect class="fn" x="400" y="280" width="200" height="60" rx="10"/>
+              <text class="t-head" x="500" y="315" text-anchor="middle" font-size="18">Klaviatura + Sichqoncha</text>
+              <line class="la flowing" x1="500" y1="280" x2="500" y2="250"/>
+            </g>
+
+            <!-- Chap: Kiritish periferiyasi -->
+            <g class="fragment">
+              <rect class="fb" x="60" y="140" width="220" height="80" rx="12"/>
+              <text class="t-head" x="170" y="175" text-anchor="middle" font-size="18">Skaner / Veb-kamera</text>
+              <text class="t-muted" x="170" y="200" text-anchor="middle" font-size="14">Kiritish periferiyasi</text>
+              <line class="la flowing" x1="280" y1="180" x2="380" y2="180"/>
+            </g>
+
+            <!-- O'ng: Chiqarish periferiyasi -->
+            <g class="fragment">
+              <rect class="fg" x="720" y="140" width="220" height="80" rx="12"/>
+              <text class="t-head" x="830" y="175" text-anchor="middle" font-size="18">Printer / Dinamiklar</text>
+              <text class="t-muted" x="830" y="200" text-anchor="middle" font-size="14">Chiqarish periferiyasi</text>
+              <line class="la flowing" x1="620" y1="180" x2="720" y2="180"/>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <!-- 7. Flip karta: Periferiya ta'rifi -->
+      <section>
+        <h2>Asosiy atama: Periferiya qurilmalari</h2>
+        <div class="flip">
+          <div class="flip-in">
+            <div class="face front">
+              <i data-ic="printer" data-anim="pulse"></i>
+              <h3>Periferiya qurilmalari nima?</h3>
+              <p class="muted">Kartani bosib ta'rifni oching</p>
+            </div>
+            <div class="face back">
+              <h3>Tashqi qo'shimcha asboblar</h3>
+              <p>Kompyuterning asosiy korpusiga tashqi tomondan ulanadigan va uning imkoniyatlarini kengaytiradigan barcha kiritish, chiqarish hamda saqlash vositalari.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. SEC 02 -->
+      <section class="sec">
+        <div class="num">02</div>
+        <h1>Kiritish va chiqarish turlari</h1>
+        <p>Inson va kompyuter o'rtasidagi ma'lumot almashinuvi</p>
+      </section>
+
+      <!-- 9. Kiritish va Chiqarish kartalari -->
+      <section>
+        <h2>Ikki yo'nalishli axborot oqimi</h2>
+        <div class="cards two">
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="camera" data-anim="float"></i></div>
+            <h3>Kiritish qurilmalari (Input)</h3>
+            <p>Klaviatura, sichqoncha, skaner, mikrofon, veb-kamera, grafik planshet. Inson axborotini raqamli kodga aylantiradi.</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="printer" data-anim="float"></i></div>
+            <h3>Chiqarish qurilmalari (Output)</h3>
+            <p>Monitor, printer, proyektor, dinamiklar, naushniklar. Kompyuter natijasini insonga ko'rinadigan yoki eshitiladigan shaklda beradi.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. SVG ILLUS 2: Axborot oqimi -->
+      <section>
+        <h2>Axborotning to'liq aylanishi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 340">
+            <!-- Kiritish -->
+            <rect class="fn" x="60" y="80" width="240" height="180" rx="14"/>
+            <text class="t-accent" x="180" y="125" text-anchor="middle" font-size="20">Kiritish (Input)</text>
+            <text class="t-head" x="180" y="165" text-anchor="middle" font-size="16">Skaner (Hujjat)</text>
+            <text class="t-head" x="180" y="200" text-anchor="middle" font-size="16">Mikrofon (Ovoz)</text>
+
+            <line class="la flowing" x1="300" y1="170" x2="380" y2="170"/>
+            <polygon class="ar-a" points="380,170 365,162 365,178"/>
+
+            <!-- Qayta ishlash -->
+            <rect class="fa" x="380" y="80" width="240" height="180" rx="14"/>
+            <text class="t-accent" x="500" y="125" text-anchor="middle" font-size="20">Qayta ishlash</text>
+            <text class="t-head" x="500" y="165" text-anchor="middle" font-size="17">CPU + RAM</text>
+            <text class="t-muted" x="500" y="200" text-anchor="middle" font-size="14">Raqamli tahlil</text>
+
+            <line class="la flowing" x1="620" y1="170" x2="700" y2="170"/>
+            <polygon class="ar-a" points="700,170 685,162 685,178"/>
+
+            <!-- Chiqarish -->
+            <rect class="fc" x="700" y="80" width="240" height="180" rx="14"/>
+            <text class="t-accent" x="820" y="125" text-anchor="middle" font-size="20">Chiqarish (Output)</text>
+            <text class="t-head" x="820" y="165" text-anchor="middle" font-size="16">Monitor (Tasvir)</text>
+            <text class="t-head" x="820" y="200" text-anchor="middle" font-size="16">Printer (Qog'oz)</text>
+          </svg>
+        </div>
+      </section>
+
+      <!-- 11. TAQQOSLASH: Lazerli va Purkagichli printerlar -->
+      <section>
+        <h2>Lazerli va Purkagichli printerlar</h2>
+        <div class="vs">
+          <div class="side fragment">
+            <h3>Lazerli printer (Laser)</h3>
+            <p>Quruq kukun (toner) ishlatadi. O'ta tez chop etadi, matnli hujjatlar uchun eng arzon va tejamkor texnologiya.</p>
+          </div>
+          <div class="mid">VS</div>
+          <div class="side b fragment">
+            <h3>Purkagichli printer (Inkjet)</h3>
+            <p>Suyuq rangli siyoh purkaydi. Rangli fotosuratlar va yorqin grafikalarni ajoyib sifatda chiqaradi.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12. Statistika (.stats) -->
+      <section>
+        <h2>Periferiya tezliklari va ko'rsatkichlari</h2>
+        <div class="stats">
+          <div class="stat">
+            <div class="v"><span class="count" data-to="50" data-suf=" bet/daq">0</span></div>
+            <div class="l">Lazerli printer chop etish tezligi</div>
+          </div>
+          <div class="stat">
+            <div class="v"><span class="count" data-to="10" data-suf=" Gbps">0</span></div>
+            <div class="l">USB 3.2 ma'lumot uzatish tezligi</div>
+          </div>
+          <div class="stat">
+            <div class="v"><span class="count" data-to="4" data-suf="K 60Hz">0</span></div>
+            <div class="l">HDMI 2.0 video uzatish standarti</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 13. SEC 03 -->
+      <section class="sec">
+        <div class="num">03</div>
+        <h1>Ulanish portlari va Drayverlar</h1>
+        <p>Qurilmalarni kompyuterga to'g'ri ulash</p>
+      </section>
+
+      <!-- 14. Portlar kartalari -->
+      <section>
+        <h2>Zamonaviy ulanish portlari</h2>
+        <div class="cards two">
+          <div class="card fragment fade-up">
+            <h3>USB Type-A va Type-C</h3>
+            <p>Klaviatura, sichqoncha, fleshka, smartfon va tashqi disklarni ulash uchun eng universal standart.</p>
+          </div>
+          <div class="card fragment fade-up">
+            <h3>HDMI va DisplayPort</h3>
+            <p>Monitor va proyektorlarga yuqori sifatli raqamli video hamda audio tovush uzatuvchi portlar.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 15. SVG ILLUS 3: Portlar xaritasi -->
+      <section>
+        <h2>Asosiy portlar ko'rinishi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 340">
+            <!-- USB Type-A -->
+            <rect class="fn fragment" x="60" y="80" width="160" height="180" rx="14"/>
+            <text class="t-accent fragment" x="140" y="130" text-anchor="middle" font-size="18">USB Type-A</text>
+            <text class="t-head fragment" x="140" y="170" text-anchor="middle" font-size="16">Klassik to'rtburchak</text>
+            <text class="t-muted fragment" x="140" y="210" text-anchor="middle" font-size="13">Fleshka, sichqoncha</text>
+
+            <!-- USB Type-C -->
+            <rect class="fa fragment" x="240" y="80" width="160" height="180" rx="14"/>
+            <text class="t-accent fragment" x="320" y="130" text-anchor="middle" font-size="18">USB Type-C</text>
+            <text class="t-head fragment" x="320" y="170" text-anchor="middle" font-size="16">Ikki tomonlama oval</text>
+            <text class="t-muted fragment" x="320" y="210" text-anchor="middle" font-size="13">O'ta tezkor, quvvatli</text>
+
+            <!-- HDMI -->
+            <rect class="fc fragment" x="420" y="80" width="160" height="180" rx="14"/>
+            <text class="t-accent fragment" x="500" y="130" text-anchor="middle" font-size="18">HDMI</text>
+            <text class="t-head fragment" x="500" y="170" text-anchor="middle" font-size="16">Video + Audio</text>
+            <text class="t-muted fragment" x="500" y="210" text-anchor="middle" font-size="13">Monitor, televizor</text>
+
+            <!-- Ethernet -->
+            <rect class="fb fragment" x="600" y="80" width="160" height="180" rx="14"/>
+            <text class="t-accent fragment" x="680" y="130" text-anchor="middle" font-size="18">Ethernet (RJ-45)</text>
+            <text class="t-head fragment" x="680" y="170" text-anchor="middle" font-size="16">Tarmoq porti</text>
+            <text class="t-muted fragment" x="680" y="210" text-anchor="middle" font-size="13">Simli internet</text>
+
+            <!-- Audio 3.5mm -->
+            <rect class="fn fragment" x="780" y="80" width="160" height="180" rx="14"/>
+            <text class="t-accent fragment" x="860" y="130" text-anchor="middle" font-size="18">Audio 3.5 mm</text>
+            <text class="t-head fragment" x="860" y="170" text-anchor="middle" font-size="16">Jack tirqish</text>
+            <text class="t-muted fragment" x="860" y="210" text-anchor="middle" font-size="13">Naushnik, mikrofon</text>
+          </svg>
+        </div>
+      </section>
+
+      <!-- 16. STEPPER: Qurilmani ishga tushirish zanjiri -->
+      <section>
+        <h2>Yangi qurilma qanday ishga tushadi?</h2>
+        <div class="stepper">
+          <div class="stp on">
+            <h3>1. Qurilma portga ulanadi</h3>
+            <p>USB kabel yoki simsiz Bluetooth orqali qurilma kompyuterga tutashtiriladi.</p>
+          </div>
+          <div class="stp">
+            <h3>2. Tizim yangi apparatni aniqlaydi</h3>
+            <p>Windows «Yangi qurilma topildi» (Plug and Play) xabarini chiqaradi.</p>
+          </div>
+          <div class="stp">
+            <h3>3. Drayver ishga tushadi</h3>
+            <p>Operatsion tizim ichidagi yoki internetdan yuklangan drayver orqali boshqaruv o'rnatiladi.</p>
+          </div>
+          <div class="stp">
+            <h3>4. Foydalanishga tayyor!</h3>
+            <p>Device Manager ro'yxatida qurilma yashil belgilanadi va to'liq quvvatda ishlaydi.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 17. SWAP: Type-A vs Type-C -->
+      <section>
+        <h2>USB Type-A va USB Type-C</h2>
+        <div class="swap">
+          <div class="swap-tabs">
+            <button type="button">USB Type-A</button>
+            <button type="button">USB Type-C</button>
+          </div>
+          <div class="swap-p">
+            <div class="callout tip">
+              <h3>Klassik USB Type-A</h3>
+              <p>Faqat bitta to'g'ri tomondan ulanadi (teskari tiqib bo'lmaydi). Deyarli barcha an'anaviy kompyuter va klaviaturalarda mavjud.</p>
+            </div>
+          </div>
+          <div class="swap-p">
+            <div class="callout tip">
+              <h3>Zamonaviy USB Type-C</h3>
+              <p>Simmetrik oval shakl: har ikki tomondan birdek ulanadi. Katta hajmdagi ma'lumot, 4K video va 100W gacha elektr quvvatini bir vaqtda uzata oladi!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 18. SVG ILLUS 4: Xavfsiz ajratish jarayoni -->
+      <section>
+        <h2>Fleshkani xavfsiz ajratish mexanizmi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 340">
+            <!-- 1-qadam -->
+            <g class="fragment">
+              <rect class="fn" x="80" y="80" width="240" height="180" rx="14"/>
+              <text class="t-accent" x="200" y="125" text-anchor="middle" font-size="20">1. Keshdagi ma'lumot</text>
+              <text class="t-head" x="200" y="165" text-anchor="middle" font-size="16">Fayl RAM keshida</text>
+              <text class="t-muted" x="200" y="200" text-anchor="middle" font-size="14">Yozish tugallanmoqda</text>
+            </g>
+            <line class="la flowing" x1="320" y1="170" x2="400" y2="170"/>
+
+            <!-- 2-qadam -->
+            <g class="fragment">
+              <rect class="fa" x="400" y="80" width="240" height="180" rx="14"/>
+              <text class="t-accent" x="520" y="125" text-anchor="middle" font-size="20">2. Eject buyrug'i</text>
+              <text class="t-head" x="520" y="165" text-anchor="middle" font-size="16">«Safely Remove»</text>
+              <text class="t-muted" x="520" y="200" text-anchor="middle" font-size="14">Yozish to'liq yopiladi</text>
+            </g>
+            <line class="la flowing" x1="640" y1="170" x2="720" y2="170"/>
+
+            <!-- 3-qadam -->
+            <g class="fragment">
+              <rect class="fc" x="720" y="80" width="240" height="180" rx="14"/>
+              <text class="t-accent" x="840" y="125" text-anchor="middle" font-size="20">3. Xavfsiz sug'urish</text>
+              <text class="t-head" x="840" y="165" text-anchor="middle" font-size="16">Xotira butun qoladi</text>
+              <text class="t-muted" x="840" y="200" text-anchor="middle" font-size="14">Fayllar shikastlanmaydi</text>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <!-- 19. Odatiy xato -->
+      <section>
+        <h2>Xavfli odat: Fleshkani tortib olish</h2>
+        <div class="callout bad">
+          <i data-ic="triangle-alert"></i>
+          Fleshkani «Eject» qilmasdan to'satdan sug'ursangiz, keshdagi fayllar chala yoziladi va fleshka «format talab qiladigan» bo'lib qoladi!
+        </div>
+        <div class="callout tip fragment">
+          <i data-ic="circle-check"></i>
+          Doimo vazifalar panelining o'ng quyi burchagidagi strelkadan fleshka belgisini bosib, <strong>Eject</strong> amalini bajaring!
+        </div>
+      </section>
+
+      <!-- 20. Device Manager kartalari -->
+      <section>
+        <h2>Qurilmalarni boshqarish vositalari</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up">
+            <h3>Win + X → Device Manager</h3>
+            <p>Barcha ulangan apparat vositalari, drayverlar holati va nosozliklarni ko'rsatadi.</p>
+          </div>
+          <div class="card fragment fade-up">
+            <h3>Bluetooth & devices</h3>
+            <p>Settings (Win + I) orqali simsiz quloqchin, sichqoncha va printerlarni sozlash darchasi.</p>
+          </div>
+          <div class="card fragment fade-up">
+            <h3>Printers & scanners</h3>
+            <p>Ofis printerlariga chop etish navbatini ko'rish va yangi skanerni sozlash markazi.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 21. QUIZ -->
+      <section>
+        <h2>Tezkor sinov</h2>
+        <div class="quiz">
+          <p class="q">Qog'ozdagi fotosurat yoki rasmni kompyuterga raqamli fayl sifatida kiritish uchun qaysi periferiya qurilmasi ishlatiladi?</p>
+          <div class="opts">
+            <button class="opt" type="button">Printer</button>
+            <button class="opt" type="button" data-ok>Skaner</button>
+            <button class="opt" type="button">Proyektor</button>
+            <button class="opt" type="button">Monitor</button>
+          </div>
+          <div class="explain">To'g'ri! Skaner — kiritish qurilmasi bo'lib, u qog'ozdagi tasvirni raqamli rasmga aylantiradi. Printer esa chiqarish qurilmasidir.</div>
+        </div>
+      </section>
+
+      <!-- 22. Amaliy vazifa -->
+      <section class="task">
+        <div class="badge">Amaliy topshiriq · 15 daqiqa</div>
+        <h2>Kompyuteringiz qurilmalarini tekshiring</h2>
+        <ol>
+          <li><code>Win + X</code> orqali Device Manager'ni oching.</li>
+          <li>Klaviatura va videokarta modelingizni aniqlang.</li>
+          <li>Kompyuteringizdagi USB Type-A, Type-C va HDMI portlarini sanang.</li>
+          <li>Fleshkani ulab, uni <code>Eject</code> buyrug'i bilan xavfsiz ajrating.</li>
+        </ol>
+      </section>
+
+      <!-- 23. Xulosa -->
+      <section>
+        <h2>Bugungi dars xulosasi</h2>
+        <div class="cards two">
+          <div class="card">
+            <h3>Biz o'rgandik:</h3>
+            <ul>
+              <li>Asosiy qurilmalar: Tizim bloki, monitor, klaviatura, sichqoncha</li>
+              <li>Periferiya qurilmalari: printer, skaner, veb-kamera</li>
+              <li>Portlar (USB, HDMI) va drayverlar mohiyati</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Keyingi dars:</h3>
+            <p><strong>5-dars:</strong> Internet, brauzerlar va elektron pochta bilan ishlash. Chrome, Edge, qidiruv tizimlari va xavfsiz email yozishmalari.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Pagination va Throttling</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 1-slayd: Sarlavha -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Pagination va Throttling</h1>
+  <p class="muted">Katta hajmdagi ma'lumotlarni sahifalash va API-ni ortiqcha yuklamalardan himoyalash</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">3-hafta &middot; 7-dars</span>
+  
+</section>
+
+<!-- 2-slayd: Dars rejasi -->
+<section>
+  <h2>Dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers" data-anim="pulse"></i></div>
+      <h3>Pagination Zarurati</h3>
+      <p>Server xotirasini tejash va PageNumberPagination orqali ma'lumotlarni bo'lib berish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield" data-anim="float"></i></div>
+      <h3>Throttling Himoyasi</h3>
+      <p>Rate limiting, DoS va brute-force hujumlarini to'xtatish, 429 status kodi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="terminal" data-anim="spin"></i></div>
+      <h3>Sozlash va Testlash</h3>
+      <p>apps/common/pagination.py va accounts/throttles.py amaliyotlari.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3-slayd: Bo'lim 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Pagination mexanizmi</h1>
+  <p>Katta hajmdagi ma'lumotlarni bo'laklab uzatish</p>
+</section>
+
+<!-- 4-slayd: SVG Sxema: Pagination muammosi -->
+<section>
+  <h2>Nega Pagination shart?</h2>
+  <p>50 000 ta postni birdaniga yuklash xavfi</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300" width="100%" height="300">
+      <!-- Paginatsiyasiz (Yomon) -->
+      <rect x="50" y="50" width="410" height="220" rx="14" class="fn"></rect>
+      <text x="255" y="90" text-anchor="middle" class="t-accent" font-size="20" font-weight="bold">Paginatsiyasiz (50 000 post)</text>
+      <text x="255" y="130" text-anchor="middle" class="t-muted" font-size="15">JSON hajmi: ~80 MB</text>
+      <text x="255" y="165" text-anchor="middle" class="t-muted" font-size="14">Server RAM to'ladi, DB sekinlashadi</text>
+      <text x="255" y="195" text-anchor="middle" class="t-accent" font-size="14">Mobil trafik 1 daqiqada tugaydi</text>
+      <text x="255" y="230" text-anchor="middle" class="t-accent" font-size="14">Brauzer qotib qoladi (Crash)</text>
+
+      <!-- Paginatsiya bilan (Yaxshi) -->
+      <rect x="540" y="50" width="410" height="220" rx="14" class="fg"></rect>
+      <text x="745" y="90" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Paginatsiya bilan (10 tadan)</text>
+      <text x="745" y="130" text-anchor="middle" class="t-head" font-size="15">JSON hajmi: ~15 KB (Yengil!)</text>
+      <text x="745" y="165" text-anchor="middle" class="t-muted" font-size="14">Server yuki minimal (LIMIT 10 OFFSET 0)</text>
+      <text x="745" y="195" text-anchor="middle" class="t-head" font-size="14">Sahifa 50 ms da bir zumda ochiladi</text>
+      <text x="745" y="230" text-anchor="middle" class="t-head" font-size="14">Foydalanuvchi tajribasi a'lo</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 5-slayd: SVG Sxema: JSON Javob strukturasi -->
+<section>
+  <h2>Pagination JSON strukturasi</h2>
+  <p>DRF qaytaradigan 4 ta asosiy qatlam</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300" width="100%" height="300">
+      <!-- count -->
+      <rect x="50" y="70" width="180" height="160" rx="12" class="fa"></rect>
+      <text x="140" y="120" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">"count"</text>
+      <text x="140" y="160" text-anchor="middle" class="t-accent" font-size="18">57 ta</text>
+      <text x="140" y="195" text-anchor="middle" class="t-muted" font-size="13">Barcha postlar soni</text>
+
+      <!-- next -->
+      <rect x="260" y="70" width="220" height="160" rx="12" class="fb"></rect>
+      <text x="370" y="120" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">"next"</text>
+      <text x="370" y="160" text-anchor="middle" class="t-accent" font-size="14">?page=2</text>
+      <text x="370" y="195" text-anchor="middle" class="t-muted" font-size="13">Keyingi sahifa havolasi</text>
+
+      <!-- previous -->
+      <rect x="510" y="70" width="200" height="160" rx="12" class="fc"></rect>
+      <text x="610" y="120" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">"previous"</text>
+      <text x="610" y="160" text-anchor="middle" class="t-accent" font-size="14">null / ?page=1</text>
+      <text x="610" y="195" text-anchor="middle" class="t-muted" font-size="13">Oldingi sahifa havolasi</text>
+
+      <!-- results -->
+      <rect x="740" y="70" width="210" height="160" rx="12" class="fg"></rect>
+      <text x="845" y="120" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">"results"</text>
+      <text x="845" y="160" text-anchor="middle" class="t-accent" font-size="14">[ {...}, {...} ]</text>
+      <text x="845" y="195" text-anchor="middle" class="t-muted" font-size="13">10 ta maqola ro'yxati</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 6-slayd: Pagination kodi -->
+<section>
+  <h2>src/apps/common/pagination.py</h2>
+  <pre><code class="language-python" data-trim data-noescape data-line-numbers="1-12|4|5|6">from rest_framework.pagination import PageNumberPagination
+
+class DefaultPageNumberPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = "page_size"
+    max_page_size = 100</code></pre>
+  <div class="callout tip">
+    <i data-ic="circle-check"></i>
+    <code>max_page_size = 100</code> parametri xaker ataylab <code>?page_size=1000000</code> deb serverni qotirib qo'yishining oldini oladi.
+  </div>
+</section>
+
+<!-- 7-slayd: Bo'lim 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Throttling (Rate Limiting)</h1>
+  <p>So'rovlar oqimini cheklash va serverni himoya qilish</p>
+</section>
+
+<!-- 8-slayd: SVG Sxema: Throttling qalqoni -->
+<section>
+  <h2>Throttling qanday ishlaydi?</h2>
+  <p>Ortiqcha so'rovlar darhol 429 Too Many Requests bilan to'xtatiladi</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300" width="100%" height="300">
+      <!-- Bot so'rovi -->
+      <rect x="40" y="60" width="250" height="180" rx="14" class="fa"></rect>
+      <text x="165" y="105" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Kiberbot / So'rovlar</text>
+      <text x="165" y="145" text-anchor="middle" class="t-accent" font-size="15">70 ta so'rov / daqiqa</text>
+      <text x="165" y="180" text-anchor="middle" class="t-muted" font-size="14">Limit: 60/min</text>
+
+      <!-- Throttling Qalqoni -->
+      <rect x="360" y="40" width="280" height="220" rx="16" class="fb"></rect>
+      <text x="500" y="85" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">DRF Throttling</text>
+      <text x="500" y="125" text-anchor="middle" class="t-muted" font-size="14">Keshda IP hisoblanadi</text>
+      <text x="500" y="160" text-anchor="middle" class="t-head" font-size="14">1..60: 200 OK &rarr; O'tadi</text>
+      <text x="500" y="195" text-anchor="middle" class="t-accent" font-size="14">61+: To'xtatiladi!</text>
+
+      <!-- Natija -->
+      <rect x="710" y="60" width="250" height="180" rx="14" class="fn"></rect>
+      <text x="835" y="110" text-anchor="middle" class="t-accent" font-size="20" font-weight="bold">429 Status</text>
+      <text x="835" y="150" text-anchor="middle" class="t-muted" font-size="14">Too Many Requests</text>
+      <text x="835" y="185" text-anchor="middle" class="t-head" font-size="13">Retry-After: 60s</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 9-slayd: Throttling turlari -->
+<section>
+  <h2>DRF dagi asosiy Throttle klasslari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="globe"></i></div>
+      <h3>AnonRateThrottle</h3>
+      <p>Tizimga kirmagan mehmonlar uchun (IP bo'yicha hisoblaydi, masalan: <code>60/min</code>).</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="user-check"></i></div>
+      <h3>UserRateThrottle</h3>
+      <p>Ro'yxatdan o'tgan foydalanuvchilar uchun (User ID bo'yicha, masalan: <code>300/min</code>).</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield"></i></div>
+      <h3>ScopedRateThrottle</h3>
+      <p>Alohida nozik endpointlar uchun (masalan, login uchun qat'iy: <code>10/min</code>).</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10-slayd: settings/base.py kodi -->
+<section>
+  <h2>settings/base.py sozlamalari</h2>
+  <pre><code class="language-python" data-trim data-noescape data-line-numbers="1-15|2-5|7-14">REST_FRAMEWORK = {
+    # Global Pagination
+    "DEFAULT_PAGINATION_CLASS": 
+        "apps.common.pagination.DefaultPageNumberPagination",
+    "PAGE_SIZE": 10,
+
+    # Global Throttling
+    "DEFAULT_THROTTLE_CLASSES": (
+        "rest_framework.throttling.AnonRateThrottle",
+        "rest_framework.throttling.UserRateThrottle",
+    ),
+    "DEFAULT_THROTTLE_RATES": {
+        "anon": "60/min",
+        "user": "300/min",
+        "login_anon": "10/min",
+    },
+}</code></pre>
+</section>
+
+<!-- 11-slayd: Interaktiv Stepper -->
+<section>
+  <h2>Throttling qanday tekshiriladi?</h2>
+  <div class="stepper">
+    <div class="stp on">
+      <h3>1-qadam: Oddiy so'rovlar</h3>
+      <p>Brauzerda <code>GET /api/v1/posts/</code> chaqiriladi &mdash; server xotirasida soniya hisoblagich boshlanadi.</p>
+    </div>
+    <div class="stp">
+      <h3>2-qadam: Limitga yetish</h3>
+      <p>1 daqiqa ichida so'rovlar soni 60 taga yetganda, kesh chegarasi to'ladi.</p>
+    </div>
+    <div class="stp">
+      <h3>3-qadam: 429 Blokirovkasi</h3>
+      <p>61-so'rovdan boshlab <code>{"detail": "Request was throttled. Expected available in 55 seconds."}</code> qaytadi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 12-slayd: Interaktiv Flip Card -->
+<section>
+  <h2>Atamalarni eslab qolamiz</h2>
+  <div class="cards three">
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="layers"></i></div>
+          <h3>Pagination</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Sahifalash</h3>
+          <p>Katta ma'lumotlarni server xotirasini qiynamasdan bo'lib berish.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="shield"></i></div>
+          <h3>Throttling</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Tezlik chegarasi</h3>
+          <p>Daqiqasiga keladigan so'rovlar sonini me'yorga solish va botlardan himoya.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="clock"></i></div>
+          <h3>429 Status</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Juda ko'p so'rov</h3>
+          <p>Limitdan oshganda qaytariladigan "Iltimos, biroz kuting" xabari.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13-slayd: Mini-test Quiz -->
+<section>
+  <h2>Tezkor bilim tekshiruvi</h2>
+  <div class="quiz">
+    <p class="q">Nima uchun pagination sozlamasida max_page_size berilishi shart?</p>
+    <div class="opts">
+      <button class="opt" type="button">Sahifalar rangini to'g'ri ko'rsatish uchun</button>
+      <button class="opt" type="button" data-ok>Xaker ?page_size=1000000 deb so'rov yuborib serverni qotirib qo'ymasligi uchun</button>
+      <button class="opt" type="button">Faqat 10 ta post yaratishga ruxsat berish uchun</button>
+    </div>
+    <div class="explain">
+      To'g'ri! Agar maksimal hajm cheklanmasa, foydalanuvchi ulkan son kiritib yana xuddi paginatsiyasiz kabi server xotirasini to'ldirib qo'yishi mumkin.
+    </div>
+  </div>
+</section>
+
+<!-- 14-slayd: Odatiy xato -->
+<section>
+  <h2>Dasturchilar ko'p yo'l qo'yadigan xatolar</h2>
+  <div class="callout bad">
+    <i data-ic="circle-alert"></i>
+    Xato: Login sahifasiga umumiy rate limit qo'yish (xakerlar soniyasiga o'nlab parollarni sinab ko'rishi mumkin).
+  </div>
+  <div class="callout tip">
+    <i data-ic="circle-check"></i>
+    To'g'ri: Login endpointiga <code>LoginAnonThrottle (10/min)</code> kabi qat'iy cheklov o'rnating.
+  </div>
+</section>
+
+<!-- 15-slayd: Amaliy topshiriq -->
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>15 daqiqa</span></h2>
+  <div class="task">
+    <span class="level easy">Oson</span>
+    <code>apps/common/pagination.py</code> da <code>DefaultPageNumberPagination</code> klassini yozing.
+  </div>
+  <div class="task">
+    <span class="level mid">O'rta</span>
+    <code>settings/base.py</code> ga pagination va throttling parametrlarini qo'shing.
+  </div>
+  <div class="task">
+    <span class="level hard">Qiyin</span>
+    Brauzerda <code>?page=2&amp;page_size=5</code> ni sinang va 429 xatosini olishni tekshiring.
+  </div>
+</section>
+
+<!-- 16-slayd: Xulosa -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h2>Darsni yakunlaymiz</h2>
+  <p class="muted">Keyingi darsda: Statik va Media fayllar, rasmlarni yuklash (Multipart upload) va FileResponse!</p>
+  <div class="chips">
+    <span class="chip">PageNumberPagination</span>
+    <span class="chip">Throttling (Rate Limit)</span>
+    <span class="chip">429 Status</span>
+    <span class="chip">Brute-Force Himoyasi</span>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

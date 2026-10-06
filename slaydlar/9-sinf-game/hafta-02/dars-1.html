@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>O‘yin Loyihalash va Ssenariy</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>O‘yin Loyihalash va Ssenariy</h1>
+  <p class="muted">G'oyadan interaktiv hikoyagacha, qahramonlar arxitekturasi va syujet</p>
+  <span class="badge">9-sinf</span><span class="badge">Game Design</span><span class="badge">2-hafta · 4-dars</span>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>O'yin Loyihalash Asoslari</h1>
+  <p>High Concept, maqsadli auditoriya va bosh g'oya</p>
+</section>
+
+<section>
+  <h2>High Concept nima?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="scroll-text" data-anim="pulse"></i></div>
+      <h3>2 Jumlalik Bosh G'oya</h3>
+      <p>O'yin nima haqida ekanini bir daqiqada tushuntirib bera oladigan qisqa va aniq ta'rif.</p>
+      <p class="t-muted">Bosh qahramon, asosiy maqsad va unga to'siq bo'layotgan kuch aks etadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="compass"></i></div>
+      <h3>Setting (Muhit va Davr)</h3>
+      <p>Voqealar qayerda va qachon yuz beradi: Kiberpank shahar, o'rta asrlar yoki begona sayyora.</p>
+      <p class="t-muted">Atmosfera, ranglar gammasi va o'yin qoidalarining poydevori.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>O'yin Ssenariysi Tuzilishi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="30" y="65" width="200" height="110" rx="8" class="fn ln"></rect>
+      <text x="130" y="100" class="t-head" text-anchor="middle">High Concept</text>
+      <text x="130" y="125" class="t-muted" text-anchor="middle">G'oya va auditoriya</text>
+      <text x="130" y="150" class="t-accent" text-anchor="middle">Bosh maqsad</text>
+
+      <line x1="230" y1="120" x2="310" y2="120" class="la ar-a flowing"></line>
+      <text x="270" y="105" class="t-accent" text-anchor="middle">Syujet</text>
+
+      <rect x="310" y="45" width="220" height="150" rx="8" class="fa la"></rect>
+      <text x="420" y="80" class="t-head" text-anchor="middle">Narrativ Tizim</text>
+      <text x="420" y="105" class="t-muted" text-anchor="middle">Protagonist &amp; Antagonist</text>
+      <text x="420" y="130" class="t-accent" text-anchor="middle">Konflikt va sinovlar</text>
+      <text x="420" y="155" class="t-muted" text-anchor="middle">Voqealar ketma-ketligi</text>
+
+      <line x1="530" y1="120" x2="610" y2="120" class="lg ar-g flowing"></line>
+
+      <rect x="610" y="65" width="160" height="110" rx="8" class="fg lg"></rect>
+      <text x="690" y="100" class="t-head" text-anchor="middle">Mexanika</text>
+      <text x="690" y="125" class="t-muted" text-anchor="middle">Gameplay bilan</text>
+      <text x="690" y="150" class="t-accent" text-anchor="middle">100% uyg'unlik</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Kino vs O'yin Ssenariysi</h1>
+  <p>Passiv tomoshabindan faol bosh qahramongacha bo'lgan inqilob</p>
+</section>
+
+<section>
+  <h2>Interaktiv hikoyaning kuchi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="book-open"></i></div>
+      <h3>Kino va Kitob (Passiv)</h3>
+      <p>Muallif nima yozgan bo'lsa, tomoshabin faqat o'shani ko'radi. Qahramonga yordam bera olmaydi.</p>
+      <p class="t-muted">Bir tomonlama, qat'iy belgilangan hikoya.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="gamepad-2"></i></div>
+      <h3>O'yin Ssenariysi (Interaktiv)</h3>
+      <p>O'yinchi bosh qahramonning o'zidir. Uning qarorlari va xatti-harakatlari syujet yo'lini o'zgartiradi.</p>
+      <p class="t-muted">O'yinchi o'z tarixini o'zi yozadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Chiziqli va Tarmoqlanuvchi Ssenariy</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="scroll"></i></div>
+      <h3>Chiziqli (Linear)</h3>
+      <p>Barcha o'yinchilar bir xil bosqichlarni bosib o'tadi va bitta yakuniy finalga yetib keladi.</p>
+      <p class="t-muted">Rejissyorlik nazorati yuqori bo'lgan kinoga o'xshash ssenariy.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="git-branch" data-anim="pulse"></i></div>
+      <h3>Tarmoqlanuvchi (Branching)</h3>
+      <p>Har bir tanlov yangi voqealar zanjirini ochadi. Bir nechta turli yakunlar (Multiple Endings) mavjud.</p>
+      <p class="t-muted">O'yinchi qilgan axloqiy tanlovlar o'yin dunyosiga ta'sir qiladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tarmoqlanuvchi Ssenariy Daraxti</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="30" y="95" width="140" height="50" rx="6" class="fn ln"></rect>
+      <text x="100" y="125" class="t-head" text-anchor="middle">Boshlanish</text>
+
+      <line x1="170" y1="120" x2="260" y2="70" class="la ar-a flowing"></line>
+      <line x1="170" y1="120" x2="260" y2="170" class="la ar-a flowing"></line>
+
+      <rect x="260" y="45" width="160" height="50" rx="6" class="fa la"></rect>
+      <text x="340" y="75" class="t-head" text-anchor="middle">A: Tinch Yo'l</text>
+
+      <rect x="260" y="145" width="160" height="50" rx="6" class="fb lb"></rect>
+      <text x="340" y="175" class="t-head" text-anchor="middle">B: Jangovar Yo'l</text>
+
+      <line x1="420" y1="70" x2="520" y2="40" class="la ar-a flowing"></line>
+      <line x1="420" y1="70" x2="520" y2="100" class="la ar-a flowing"></line>
+      <line x1="420" y1="170" x2="520" y2="140" class="la ar-a flowing"></line>
+      <line x1="420" y1="170" x2="520" y2="200" class="la ar-a flowing"></line>
+
+      <rect x="520" y="20" width="160" height="40" rx="6" class="fg lg"></rect>
+      <text x="600" y="45" class="t-head" text-anchor="middle">1-Yakun (Yaxshi)</text>
+
+      <rect x="520" y="80" width="160" height="40" rx="6" class="fc lc"></rect>
+      <text x="600" y="105" class="t-head" text-anchor="middle">2-Yakun (Neytral)</text>
+
+      <rect x="520" y="140" width="160" height="40" rx="6" class="fb lb"></rect>
+      <text x="600" y="165" class="t-head" text-anchor="middle">3-Yakun (Yomon)</text>
+
+      <rect x="520" y="195" width="160" height="40" rx="6" class="fa la"></rect>
+      <text x="600" y="220" class="t-head" text-anchor="middle">4-Yakun (Yashirin)</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>"Qahramon Yo'li" (Hero's Journey)</h2>
+  <div class="stepper">
+    <div class="step fragment fade-up">
+      <div class="num">1</div>
+      <h3>Oddiy Dunyo</h3>
+      <p>Qahramon o'zining tinch hayotida. Ammo nimadir yetishmaydi.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">2</div>
+      <h3>Chaqiruv (Inciting Incident)</h3>
+      <p>Kutilmagan fojia yoki yo'qotish uni xavfli sarguzashtga otlanishga majbur qiladi.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">3</div>
+      <h3>Sinovlar va Dushmanlar</h3>
+      <p>Bosqichlar osha yangi kuchlar to'playdi, do'stlar va xiyonatlarni boshdan kechiradi.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">4</div>
+      <h3>Bosh Jang va O'zgarish</h3>
+      <p>Bosh dushmanni yengadi va butunlay ulg'aygan yangi shaxs sifatida uyiga qaytadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Qahramonlar va Konflikt</h1>
+  <p>Protagonist, Antagonist va o'yinni harakatga keltiruvchi qarama-qarshilik</p>
+</section>
+
+<section>
+  <h2>Qahramonlar xarakteri</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="swords" data-anim="pulse"></i></div>
+      <h3>Protagonist: Bosh Qahramon</h3>
+      <p>O'yinchi uning qiyofasiga kiradi. Uning maqsadi va eng muhimi — insoniy kamchiligi (Flaw) bo'lishi kerak.</p>
+      <p class="t-muted">Mukammal qahramon zerikarli bo'ladi; kamchilik uni tirik qiladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield"></i></div>
+      <h3>Antagonist: Bosh To'siq</h3>
+      <p>Dushman shunchaki yovuz bo'lishi kam. Uning ham o'ziga xos mantiqiy maqsadi bo'lishi kerak.</p>
+      <p class="t-muted">Yaxshi antagonist bosh qahramonning o'sishiga turtki bo'ladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Atrof-Muhit Orqali Hikoya Qilish</h1>
+  <p>Environmental Storytelling va Ludonarrativ uyg'unlik</p>
+</section>
+
+<section>
+  <h2>So'zsiz hikoya qilish san'ati</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="eye" data-anim="pulse"></i></div>
+      <h3>Atrof-Muhit Detallari</h3>
+      <p>Devorlardagi yozuvlar, to'ntarilgan stul, yerga sachragan qon yoki buzilgan robot.</p>
+      <p class="t-muted">O'yinchi hech qanday so'zsiz bu yerda nima yuz berganini o'zi tushunib oladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="wand-sparkles"></i></div>
+      <h3>Dark Souls &amp; BioShock</h3>
+      <p>Uzun roliklar o'rniga dunyo xarobalarining o'zi hikoyani so'zlab beradi.</p>
+      <p class="t-muted">O'yinchida kashfiyotchi zavqi uyg'onadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Environmental Storytelling Mexanikasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="30" y="65" width="200" height="110" rx="8" class="fn ln"></rect>
+      <text x="130" y="100" class="t-head" text-anchor="middle">Vizual Dalil</text>
+      <text x="130" y="125" class="t-muted" text-anchor="middle">Xonadagi singan oyna</text>
+      <text x="130" y="150" class="t-accent" text-anchor="middle">Qopdagi non qoldiqlari</text>
+
+      <line x1="230" y1="120" x2="330" y2="120" class="la ar-a flowing"></line>
+      <text x="280" y="105" class="t-accent" text-anchor="middle">Kuzatish</text>
+
+      <rect x="330" y="50" width="220" height="140" rx="8" class="fa la"></rect>
+      <text x="440" y="85" class="t-head" text-anchor="middle">O'yinchi Tafakkuri</text>
+      <text x="440" y="115" class="t-muted" text-anchor="middle">"Bu yerda kimdir yashiringan!"</text>
+      <text x="440" y="145" class="t-accent" text-anchor="middle">Detektiv xulosa</text>
+      <text x="440" y="170" class="t-muted" text-anchor="middle">Ichki xavf hissi</text>
+
+      <line x1="550" y1="120" x2="630" y2="120" class="lg ar-g flowing"></line>
+
+      <rect x="630" y="65" width="145" height="110" rx="8" class="fg lg"></rect>
+      <text x="702" y="100" class="t-head" text-anchor="middle">Hayajon</text>
+      <text x="702" y="130" class="t-accent" text-anchor="middle">Immersiya</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Ludonarrativ Uyg'unlik</h2>
+  <div class="flip">
+    <div class="flip-in">
+      <div class="face front">
+        <div class="icon"><i data-ic="swords"></i></div>
+        <h3>Ludonarrativ Ziddiyat</h3>
+        <p>Ssenariyda qahramon muloyim deyiladi, o'yinda esa sababsiz hamma narsani yoqib yuradi.</p>
+        <p class="t-muted">O'yinchi qahramonga ishonmay qo'yadi!</p>
+      </div>
+      <div class="face back">
+        <div class="icon"><i data-ic="wand-sparkles"></i></div>
+        <h3>To'liq Uyg'unlik (Harmoniya)</h3>
+        <p>Qahramon qo'rquvda bo'lsa, o'yin mexanikasi ham qochish va yashirinishga quriladi.</p>
+        <p class="t-accent">Hikoya va o'yin mexanikasi bir yurak kabi uradi!</p>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">05</div>
+  <h1>GDD (Game Design Document)</h1>
+  <p>O'yin yaratuvchilar jamoasining bosh konstitutsiyasi</p>
+</section>
+
+<section>
+  <h2>GDD tarkibiy qismlari</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="30" y="30" width="340" height="90" rx="8" class="fa la"></rect>
+      <text x="50" y="60" class="t-head">1. O'yin Pasporti</text>
+      <text x="50" y="85" class="t-muted">High Concept, janr, platforma, auditoriya</text>
+
+      <rect x="420" y="30" width="340" height="90" rx="8" class="fb lb"></rect>
+      <text x="440" y="60" class="t-head">2. Ssenariy va Olam</text>
+      <text x="440" y="85" class="t-muted">Qahramonlar, dunyo tarixi, voqealar zanjiri</text>
+
+      <rect x="30" y="135" width="340" height="90" rx="8" class="fc lc"></rect>
+      <text x="50" y="165" class="t-head">3. Gameplay &amp; Mexanika</text>
+      <text x="50" y="190" class="t-muted">Boshqaruv, qoidalar, jang tizimi, balans</text>
+
+      <rect x="420" y="135" width="340" height="90" rx="8" class="fg lg"></rect>
+      <text x="440" y="165" class="t-head">4. San'at &amp; Audio (Art Bible)</text>
+      <text x="440" y="190" class="t-muted">Vizual uslub, ranglar palitrasi, saundtrek</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Bilimingizni sinang</h2>
+  <div class="quiz">
+    <div class="q">O'yinchining tanloviga qarab turli yo'nalishlarga bo'linuvchi ssenariy qanday ataladi?</div>
+    <div class="opts">
+      <div class="opt">Chiziqli (Linear) ssenariy</div>
+      <div class="opt" data-ok>Tarmoqlanuvchi (Branching) ssenariy</div>
+      <div class="opt">Statik ssenariy</div>
+      <div class="opt">Passiv ssenariy</div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Amaliy topshiriqlar</h2>
+  <div class="task fragment fade-up">
+    <span class="level easy">Oson</span>
+    <p>O'zingiz o'ylab topgan o'yin uchun 2 jumlalik High Concept yozing.</p>
+  </div>
+  <div class="task fragment fade-up">
+    <span class="level mid">O'rta</span>
+    <p>Bosh qahramonning yo'l ayrosidagi 2 ta tanlovi va uning 4 ta oqibatini daraxt shaklida chizing.</p>
+  </div>
+  <div class="task fragment fade-up">
+    <span class="level hard">Qiyin</span>
+    <p>Tashlandiq xonada Environmental Storytelling usulida 3 ta sirli detalni loyihalang.</p>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="book-open"></i></div>
+      <h3>Bugun Nimalarni O'rgandik?</h3>
+      <p>High Concept va o'yin loyihalash bosqichlari.</p>
+      <p class="t-muted">Kino va o'yin ssenariysi farqi: Interaktivlik va Branching.</p>
+      <p class="t-muted">Environmental Storytelling va Ludonarrativ uyg'unlik.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="trophy"></i></div>
+      <h3>Uyga Vazifa</h3>
+      <p>Yangi o'yiningiz uchun to'liq Qahramon Pasportini tuzish.</p>
+      <p class="t-accent">Keyingi dars: II bob — 2D grafika asoslari va Photoshop!</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

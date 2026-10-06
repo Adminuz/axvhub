@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Shart operatorlari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 11-dars. Shart operatorlari va mantiqiy ifodalar -->
+
+
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Shart operatorlari</h1>
+  <p class="muted">if/elif/else, test, [[ ]] va arifmetik amallar</p>
+  <span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">4-hafta · 11-dars</span>
+</section>
+
+<section>
+  <h2>Bugungi dars maqsadlari</h2>
+<div class="cards three">
+ <div class="card fragment fade-up"><div class="icon"><i data-ic="circle-check" data-anim="float"></i></div><h3>Chiqish kodi</h3><p>Har buyruq <code>0</code> (muvaffaqiyat) yoki boshqa son qaytaradi: <code>$?</code>.</p></div>
+ <div class="card fragment fade-up"><div class="icon"><i data-ic="git-branch" data-anim="pulse"></i></div><h3>if / elif / else</h3><p>Skript qaror qabul qiladi: <code>test</code>, <code>[ ]</code>, <code>[[ ]]</code>.</p></div>
+ <div class="card fragment fade-up"><div class="icon"><i data-ic="calculator" data-anim="float"></i></div><h3>Arifmetika</h3><p><code>$(( ))</code> va <code>(( ))</code>: qo'shish, bo'lish, qoldiq.</p></div>
+</div>
+  
+</section>
+
+<section>
+  <h2>Dars raqamlarda</h2>
+<div class="stats">
+ <div class="stat fragment"><div class="v"><span class="count" data-to="0" data-suf=" = OK">0</span></div><div class="l">chiqish kodi 0: muvaffaqiyat</div></div>
+ <div class="stat fragment"><div class="v"><span class="count" data-to="3" data-suf=" tur">0</span></div><div class="l">tekshiruv: son, matn, fayl</div></div>
+ <div class="stat fragment"><div class="v"><span class="count" data-to="6" data-suf=" ta">0</span></div><div class="l">son operatorlari: -eq -ne -lt -le -gt -ge</div></div>
+</div>
+<div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Qo'llanmada: <code>apt update &amp;&amp; apt upgrade -y</code>, ikkinchi buyruq birinchisi muvaffaqiyatli bo'lsa ishlaydi.</div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Chiqish kodi va test</h1>
+  <p>Shart aslida nimani tekshiradi?</p>
+</section>
+
+<section>
+  <h2>Chiqish kodi: buyruqning "hisoboti"</h2>
+<div class="illus">
+<svg viewBox="0 0 1000 310">
+<g data-tip="Istalgan buyruq: ls, mkdir, grep..."><rect class="fa" x="30" y="60" width="230" height="120" rx="14"/><text class="t-head" x="145.0" y="116.0" text-anchor="middle" font-size="24">buyruq</text><text class="t-muted" x="145.0" y="146.0" text-anchor="middle" font-size="22">ls /tmp</text></g><g><line class="la flowing" x1="260" y1="120" x2="354" y2="120"/><polygon class="ar-a" points="360,120 347,125 347,115"/></g><g class="fragment" data-tip="Shell buyruqni ishga tushiradi."><rect class="fb" x="370" y="60" width="230" height="120" rx="14"/><text class="t-head" x="485.0" y="128.0" text-anchor="middle" font-size="24">bajariladi</text></g><g class="fragment"><line class="lb flowing" x1="600" y1="120" x2="694" y2="120"/><polygon class="ar-b" points="700,120 687,125 687,115"/></g><g class="fragment" data-tip="0 shellda &quot;rost&quot; hisoblanadi."><rect class="fg" x="710" y="20" width="260" height="100" rx="14"/><text class="t-head" x="840.0" y="66.0" text-anchor="middle" font-size="24">0 = OK</text><text class="t-muted" x="840.0" y="96.0" text-anchor="middle" font-size="22">muvaffaqiyat</text></g><g class="fragment" data-tip="Xato kodlari: 0 dan boshqa har qanday son."><rect class="fn" x="710" y="140" width="260" height="100" rx="14"/><text class="t-head" x="840.0" y="198.0" text-anchor="middle" font-size="24">1, 2... = xato</text></g><text class="t-accent" x="500" y="285" text-anchor="middle" font-size="26">Natija: echo $?</text>
+</svg>
+</div><p class="small">Qismlar ustiga bosing.</p>
+  
+</section>
+
+<section>
+  <h2>$? ni ko'ramiz</h2>
+<div class="terminal"><div class="bar">Terminal</div><pre><code class="language-bash">$ ls /tmp
+$ echo $?
+0
+$ ls /yoq_papka
+ls: /yoq_papka: No such file or directory
+$ echo $?
+1</code></pre></div>
+<div class="callout tip"><i data-ic="lightbulb"></i><code>$?</code> faqat <b>oxirgi</b> buyruq kodini beradi. Keyingi buyruqdan keyin u o'zgaradi.</div>
+  
+</section>
+
+<section>
+  <h2>Uch yozuv, bir ma'no</h2>
+<div class="illus">
+<svg viewBox="0 0 1000 300">
+<g data-tip="Qavs, bo&#x27;sh joy, o&#x27;zgaruvchi, operator, qiymat, bo&#x27;sh joy, qavs."><rect class="fa" x="30" y="40" width="940" height="80" rx="14"/><text class="t-head" x="500.0" y="88.0" text-anchor="middle" font-size="30">[ "$A" -eq 5 ]</text></g><g class="fragment" data-tip="test buyrug&#x27;ining boshqacha yozilishi."><rect class="fb" x="30" y="140" width="300" height="80" rx="14"/><text class="t-head" x="180.0" y="176.0" text-anchor="middle" font-size="24">[ ... ]</text><text class="t-muted" x="180.0" y="206.0" text-anchor="middle" font-size="22">sodda, hamma shellda</text></g><g class="fragment" data-tip="Naqsh va &amp;&amp; || bilan ishlaydi."><rect class="fc" x="350" y="140" width="300" height="80" rx="14"/><text class="t-head" x="500.0" y="176.0" text-anchor="middle" font-size="24">[[ ... ]]</text><text class="t-muted" x="500.0" y="206.0" text-anchor="middle" font-size="22">Bash kengaytmasi</text></g><g class="fragment" data-tip="[ ] bilan bir xil."><rect class="fg" x="670" y="140" width="300" height="80" rx="14"/><text class="t-head" x="820.0" y="176.0" text-anchor="middle" font-size="24">test ...</text><text class="t-muted" x="820.0" y="206.0" text-anchor="middle" font-size="22">asl buyruq</text></g><text class="t-accent" x="500" y="270" text-anchor="middle" font-size="26">Qavs ichida va atrofida BO'SH JOY shart!</text>
+</svg>
+</div><p class="small">Ustiga bosing yoki olib boring.</p>
+  
+</section>
+
+<section>
+  <h2>Operatorlar: uch guruh</h2>
+<div class="cards three"><div class="flip"><div class="flip-in"><div class="face front"><div class="icon"><i data-ic="hash" data-anim="float"></i></div><h3>Son</h3><span class="flip-hint">bosing</span></div><div class="face back"><p><code>-eq -ne -lt -le -gt -ge</code><br>teng, teng emas, kichik, kichik/teng, katta, katta/teng</p></div></div></div><div class="flip"><div class="flip-in"><div class="face front"><div class="icon"><i data-ic="file-text" data-anim="float"></i></div><h3>Matn</h3><span class="flip-hint">bosing</span></div><div class="face back"><p><code>= (==) != -z -n</code><br><code>-z</code> bo'sh, <code>-n</code> bo'sh emas</p></div></div></div><div class="flip"><div class="flip-in"><div class="face front"><div class="icon"><i data-ic="folder" data-anim="float"></i></div><h3>Fayl</h3><span class="flip-hint">bosing</span></div><div class="face back"><p><code>-e -f -d -r -w -x</code><br>bor, fayl, papka, o'qish, yozish, bajarish</p></div></div></div></div>
+  
+</section>
+
+<section>
+  <h2>Misollar</h2>
+<div class="swap">
+ <div class="swap-tabs"><button type="button">Son</button><button type="button">Matn</button><button type="button">Fayl</button></div>
+ <div class="swap-p"><pre><code class="language-bash" data-trim>[ "$S" -gt 10 ] &amp;&amp; echo "katta"
+[ "$S" -eq 0 ] &amp;&amp; echo "nol"</code></pre></div>
+ <div class="swap-p"><pre><code class="language-bash" data-trim>[ "$ISM" = "Ali" ] &amp;&amp; echo "salom, Ali"
+[ -z "$X" ] &amp;&amp; echo "X bo'sh"</code></pre></div>
+ <div class="swap-p"><pre><code class="language-bash" data-trim>[ -f /etc/hosts ] &amp;&amp; echo "fayl bor"
+[ -d /tmp ] &amp;&amp; echo "papka bor"</code></pre></div>
+</div>
+  
+</section>
+
+<section>
+  <h2>Tezkor bilim sinovi</h2>
+<div class="quiz">
+  <p class="q">Qaysi yozuv to'g'ri?</p>
+  <div class="opts">
+    <button class="opt" type="button"><code>[$A -eq 5]</code></button>
+    <button class="opt" type="button" data-ok><code>[ $A -eq 5 ]</code></button>
+    <button class="opt" type="button"><code>[ $A = = 5 ]</code></button>
+    <button class="opt" type="button"><code>if $A -eq 5</code></button>
+  </div>
+  <div class="explain"><code>[</code> alohida buyruq, shuning uchun uning atrofida bo'sh joy shart.</div>
+</div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>if / elif / else</h1>
+  <p>Skript yo'l tanlaydi</p>
+</section>
+
+<section>
+  <h2>Tarmoqlanish sxemasi</h2>
+<div class="illus">
+<svg viewBox="0 0 1000 300">
+<g data-tip="if birinchi shartni tekshiradi."><rect class="fa" x="380" y="10" width="240" height="70" rx="14"/><text class="t-head" x="500.0" y="53.0" text-anchor="middle" font-size="24">if shart 1?</text></g><text class="t-accent" x="240" y="60" text-anchor="middle" font-size="24">ha</text><g class="fragment" data-tip="Shart rost: blok bajariladi va if tugaydi."><rect class="fg" x="30" y="100" width="260" height="70" rx="14"/><text class="t-head" x="160.0" y="143.0" text-anchor="middle" font-size="24">1-blok</text></g><g class="fragment" data-tip="Birinchi yolg&#x27;on bo&#x27;lsa, keyingisi tekshiriladi."><rect class="fb" x="380" y="110" width="240" height="70" rx="14"/><text class="t-head" x="500.0" y="153.0" text-anchor="middle" font-size="24">elif shart 2?</text></g><g class="fragment" data-tip="elif rost bo&#x27;lsa shu blok."><rect class="fg" x="710" y="200" width="260" height="70" rx="14"/><text class="t-head" x="840.0" y="243.0" text-anchor="middle" font-size="24">2-blok</text></g><g class="fragment" data-tip="Hech bir shart rost bo&#x27;lmasa."><rect class="fn" x="380" y="210" width="240" height="70" rx="14"/><text class="t-head" x="500.0" y="241.0" text-anchor="middle" font-size="24">else</text><text class="t-muted" x="500.0" y="271.0" text-anchor="middle" font-size="22">hech biri emas</text></g><line class="la flowing" x1="500" y1="80" x2="500" y2="104"/><polygon class="ar-a" points="500,110 495,97 505,97"/><line class="la" x1="380" y1="45" x2="290" y2="125"/><line class="lb" x1="620" y1="145" x2="710" y2="225"/><line class="ln flowing" x1="500" y1="180" x2="500" y2="204"/><polygon class="ar-b" points="500,210 495,197 505,197"/>
+</svg>
+</div><p class="small">Shartlar yuqoridan pastga tekshiriladi.</p>
+  
+</section>
+
+<section>
+  <h2>son.sh</h2>
+<pre><code class="language-bash" data-trim data-noescape data-line-numbers="1-9|3-4|5-6|7-8|9">
+#!/bin/bash
+read -p "Son: " S
+if [ "$S" -lt 0 ]; then
+  echo "manfiy"
+elif [ "$S" -eq 0 ]; then
+  echo "nol"
+else
+  echo "musbat"
+fi
+</code></pre>
+<div class="callout tip"><i data-ic="circle-check"></i><code>then</code> alohida qatorda yoki <code>;</code> dan keyin. Blok <code>fi</code> bilan yopiladi.</div>
+  
+</section>
+
+<section data-auto-animate>
+  <h2>Tipik xato: o'zgaruvchi bo'sh bo'lsa</h2>
+<pre><code class="language-bash" data-trim data-noescape data-line-numbers="1-4">
+A=""
+if [ $A -eq 5 ]; then
+  echo "besh"
+fi
+</code></pre>
+<p class="small">Natija: <code>[: -eq: unary operator expected</code></p>
+  
+</section>
+
+<section data-auto-animate>
+  <h2>Tipik xato: o'zgaruvchi bo'sh bo'lsa</h2>
+<pre><code class="language-bash" data-trim data-noescape data-line-numbers="1-4">
+A=""
+if [ "$A" -eq 5 ]; then
+  echo "besh"
+fi
+</code></pre>
+<p class="small">Tirnoq bilan xato kamayadi; <code>[[ ]]</code> da esa tirnoq shart emas.</p>
+</section>
+
+<section>
+  <section>
+    <h2>[ ] va [[ ]]</h2>
+    <div class="vs">
+     <div class="side"><h3>[ ]</h3>Hamma shellda ishlaydi. O'zgaruvchi atrofida tirnoq kerak. <code>-a</code>, <code>-o</code> o'rniga ikkita qavs.</div>
+     <div class="mid">VS</div>
+     <div class="side b"><h3>[[ ]]</h3>Bash kengaytmasi. <code>&amp;&amp;</code>, <code>||</code> ichida ishlaydi, naqsh: <code>== *.txt</code>.</div>
+    </div>
+    <p class="muted">Pastga bosing: misol.</p>
+  </section>
+  <section>
+    <h2>Qo'shimcha: naqsh bilan solishtirish</h2>
+    <pre><code class="language-bash" data-trim>F="hisobot.txt"
+[[ $F == *.txt ]] &amp;&amp; echo "matn fayl"
+[[ $F == a* || $F == h* ]] &amp;&amp; echo "a yoki h"</code></pre>
+    
+  </section>
+</section>
+
+<section>
+  <h2>&amp;&amp; va ||: qisqa zanjirlar</h2>
+<div class="illus">
+<svg viewBox="0 0 1000 290">
+<g data-tip="Birinchi buyruq."><rect class="fa" x="30" y="40" width="290" height="90" rx="14"/><text class="t-head" x="175.0" y="81.0" text-anchor="middle" font-size="24">A</text><text class="t-muted" x="175.0" y="111.0" text-anchor="middle" font-size="22">buyruq 1</text></g><g class="fragment"><line class="la flowing" x1="320" y1="85" x2="414" y2="85"/><polygon class="ar-a" points="420,85 407,90 407,80"/></g><g class="fragment" data-tip="A muvaffaqiyatli (0) bo&#x27;lsa B ishlaydi."><rect class="fg" x="430" y="40" width="250" height="90" rx="14"/><text class="t-head" x="555.0" y="81.0" text-anchor="middle" font-size="24">&amp;&amp;</text><text class="t-muted" x="555.0" y="111.0" text-anchor="middle" font-size="22">ha: B</text></g><g data-tip="Birinchi buyruq."><rect class="fa" x="30" y="170" width="290" height="90" rx="14"/><text class="t-head" x="175.0" y="211.0" text-anchor="middle" font-size="24">A</text><text class="t-muted" x="175.0" y="241.0" text-anchor="middle" font-size="22">buyruq 1</text></g><g class="fragment"><line class="lb flowing" x1="320" y1="215" x2="414" y2="215"/><polygon class="ar-b" points="420,215 407,220 407,210"/></g><g class="fragment" data-tip="A xato bersa B ishlaydi."><rect class="fb" x="430" y="170" width="250" height="90" rx="14"/><text class="t-head" x="555.0" y="211.0" text-anchor="middle" font-size="24">||</text><text class="t-muted" x="555.0" y="241.0" text-anchor="middle" font-size="22">yo'q: B</text></g><text class="t-muted" x="830" y="90" text-anchor="middle" font-size="22">apt update &amp;&amp; apt upgrade -y</text><text class="t-muted" x="830" y="225" text-anchor="middle" font-size="22">[ -f x ] || echo yo'q</text>
+</svg>
+</div><p class="small">Ustiga bosing.</p>
+  
+</section>
+
+<section>
+  <h2>Idempotent skript</h2>
+<div class="vs">
+ <div class="side fragment"><h3>Oddiy</h3><pre><code class="language-bash" data-trim>mkdir backup</code></pre>2-marta ishga tushsa: <code>File exists</code> xatosi.</div>
+ <div class="mid">VS</div>
+ <div class="side b fragment"><h3>Shart bilan</h3><pre><code class="language-bash" data-trim>[ -d backup ] || mkdir backup</code></pre>Necha marta ishga tushirsangiz ham natija bir xil.</div>
+</div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Arifmetik amallar</h1>
+  <p>Bash da hisob-kitob</p>
+</section>
+
+<section>
+  <h2>Bo'lish butun songa bo'linadi</h2>
+<div class="illus">
+<svg viewBox="0 0 1000 300">
+<text class="t-head" x="500" y="50" text-anchor="middle" font-size="34">echo $(( 7 / 2 ))</text><g class="fragment"><rect class="fa" x="60" y="90" width="200" height="100" rx="14"/><text class="t-head" x="160.0" y="136.0" text-anchor="middle" font-size="24">7</text><text class="t-muted" x="160.0" y="166.0" text-anchor="middle" font-size="22">son 1</text></g><g class="fragment"><rect class="fb" x="300" y="90" width="200" height="100" rx="14"/><text class="t-head" x="400.0" y="136.0" text-anchor="middle" font-size="24">2</text><text class="t-muted" x="400.0" y="166.0" text-anchor="middle" font-size="22">son 2</text></g><g class="fragment" data-tip="Kasr qismi tashlanadi. Qoldiq: 7 % 2 = 1."><rect class="fg" x="560" y="90" width="380" height="100" rx="14"/><text class="t-head" x="750.0" y="136.0" text-anchor="middle" font-size="24">3</text><text class="t-muted" x="750.0" y="166.0" text-anchor="middle" font-size="22">butun bo'lish</text></g><text class="t-accent" x="180" y="235" text-anchor="start" font-size="26">+  -  *  /  %  **</text><text class="t-muted" x="180" y="275" text-anchor="start" font-size="24">7/2=3   7%2=1   2**5=32</text>
+</svg>
+</div><p class="small">Natijani bosing.</p>
+  
+</section>
+
+<section>
+  <h2>Hisob-kitob kodi</h2>
+<pre><code class="language-bash" data-trim data-noescape data-line-numbers="1-6|3|4|5|6">
+A=17
+B=5
+echo $((A + B))      # 22
+echo $((A / B))      # 3
+echo $((A % B))      # 2
+(( A % 2 == 0 )) &amp;&amp; echo juft || echo toq
+</code></pre>
+<div class="callout tip"><i data-ic="lightbulb"></i><code>$(( ))</code> ichida o'zgaruvchiga <code>$</code> shart emas. <code>(( ))</code> shartda ishlatiladi.</div>
+  
+</section>
+
+<section>
+  <h2>Odatiy xatolar</h2>
+<ul class="steps-n">
+ <li class="fragment"><code>[$A -eq 5]</code>: qavs atrofida bo'sh joy yo'q.</li>
+ <li class="fragment"><code>[ $A -eq 5 ]</code> da <code>A</code> bo'sh: tirnoq unutilgan.</li>
+ <li class="fragment">Son uchun <code>=</code> yoki matn uchun <code>-eq</code>.</li>
+ <li class="fragment"><code>fi</code> unutilgan yoki <code>then</code> yo'q.</li>
+ <li class="fragment"><code>$((7/2))</code> dan 3.5 kutish.</li>
+</ul>
+</section>
+
+<section>
+  <h2>Tezkor bilim sinovi</h2>
+<div class="quiz">
+  <p class="q"><code>echo $((17 % 5))</code> nima chiqaradi?</p>
+  <div class="opts">
+    <button class="opt" type="button">3</button>
+    <button class="opt" type="button" data-ok>2</button>
+    <button class="opt" type="button">3.4</button>
+    <button class="opt" type="button">12</button>
+  </div>
+  <div class="explain"><code>%</code> bo'lishdan qoldiq: 17 = 3*5 + 2, qoldiq 2.</div>
+</div>
+  
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>25 daqiqa</span></h2>
+<div class="task"><span class="level easy">Oson</span><code>juft.sh</code>: son kiriting, juft yoki toqligini ayting.</div>
+<div class="task"><span class="level mid">O'rta</span><code>tekshir.sh</code>: argument fayl, papka yoki yo'qligini aytsin; argument bo'lmasa yordam matni.</div>
+<div class="task"><span class="level hard">Qiyin</span><code>baho.sh</code>: ball bo'yicha 5/4/3/2 baho; 0-100 dan tashqarisi xato.</div>
+</section>
+
+<section>
+  <h2>Bugungi dars xulosasi</h2>
+<div class="cards three">
+ <div class="card fragment fade-up"><div class="icon"><i data-ic="circle-check" data-anim="float"></i></div><h3>O'rgandik</h3><p><code>$?</code>, <code>[ ]</code>, <code>[[ ]]</code>, <code>if/elif/else</code>, <code>&amp;&amp;</code>, <code>||</code>, <code>$(( ))</code>.</p></div>
+ <div class="card fragment fade-up"><div class="icon"><i data-ic="book-open" data-anim="float"></i></div><h3>Uyga vazifa</h3><p><code>tekshir.sh</code>: fayl turi va ruxsatlar (uyga-vazifa.md).</p></div>
+ <div class="card fragment fade-up"><div class="icon"><i data-ic="rocket" data-anim="float"></i></div><h3>Keyingi dars</h3><p>Sikllar: <code>for</code>, <code>while</code>, <code>until</code>.</p></div>
+</div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

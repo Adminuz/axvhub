@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Tugma Orqali LED Holatini Boshqarish</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Tugma Orqali LED Holatini Boshqarish</h1>
+  <p class="muted">Holat, millis(), heartbeat va bitta tugma bilan 4 ta rejim</p>
+  <span class="badge">9-sinf</span><span class="badge">IoT</span><span class="badge">4-hafta · 10-dars</span>
+</section>
+
+<section>
+  <h2>Takrorlash: 8–9-darslar</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="arrow-up-from-line"></i></div><h3>INPUT_PULLUP</h3><p>Bosilmaganda <code>HIGH</code>, bosilganda <code>LOW</code>.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="toggle-right" data-anim="pulse"></i></div><h3>Toggle</h3><p>Bir bosish — yoniq qoladi, yana bosish — o'chadi.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="activity"></i></div><h3>Debounce</h3><p>Kontakt 5–20 ms dirillaydi — soxta impulslarni filtrlaymiz.</p></div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Holat va dastur tuzilishi</h1>
+  <p>Kirish → hodisa → holat → chiqish</p>
+</section>
+
+<section>
+  <h2>Holat (state) nima?</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 220">
+      <g class="fragment" data-tip="Kirish: digitalRead(2) — tugmaning ayni paytdagi signali.">
+        <rect class="fa la" x="20" y="60" width="200" height="90" rx="16" stroke-width="3"/>
+        <text class="t-head" x="120" y="113" text-anchor="middle" font-size="26">Kirish</text>
+      </g>
+      <g class="fragment" data-tip="Hodisa: HIGH dan LOW ga o'tish — tugma aynan hozir bosildi.">
+        <line class="la flowing" x1="225" y1="105" x2="265" y2="105" stroke-width="4"/><polygon class="ar-a" points="278,105 262,95 262,115"/>
+        <rect class="fb lb" x="280" y="60" width="200" height="90" rx="16" stroke-width="3"/>
+        <text class="t-head" x="380" y="113" text-anchor="middle" font-size="26">Hodisa</text>
+      </g>
+      <g class="fragment" data-tip="Holat: ledState yoki mode — o'zgaruvchida saqlanadi.">
+        <line class="la flowing" x1="485" y1="105" x2="525" y2="105" stroke-width="4"/><polygon class="ar-a" points="538,105 522,95 522,115"/>
+        <rect class="fc lc" x="540" y="60" width="200" height="90" rx="16" stroke-width="3"/>
+        <text class="t-head" x="640" y="113" text-anchor="middle" font-size="26">Holat</text>
+      </g>
+      <g class="fragment" data-tip="Chiqish: digitalWrite(9, ...) — LED holatga qarab yonadi.">
+        <line class="lc flowing" x1="745" y1="105" x2="785" y2="105" stroke-width="4"/><polygon class="ar-c" points="798,105 782,95 782,115"/>
+        <rect class="fg lg" x="800" y="60" width="180" height="90" rx="16" stroke-width="3"/>
+        <text class="t-head" x="890" y="113" text-anchor="middle" font-size="26">Chiqish</text>
+      </g>
+    </svg>
+  </div>
+  <div class="callout tip"><i data-ic="lightbulb"></i>Holat faqat <b>hodisa</b> bo'lganda o'zgaradi — tugma bosib turilsa ham bir marta.</div>
+</section>
+
+<section>
+  <h2>O'qiluvchan kod</h2>
+  <pre class="terminal"><code class="language-cpp" data-trim data-noescape>
+#define Pressed  LOW    // tugma bosilgan
+#define Released HIGH   // qo'yib yuborilgan
+
+const byte switchOne = 7;   // 1-tugma pini
+const byte LED_One   = 10;  // 1-LED pini
+</code></pre>
+  <div class="cards two">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="tag"></i></div><h3>#define</h3><p><code>if (holat == Pressed)</code> — <code>== LOW</code> dan tushunarliroq.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="cpu"></i></div><h3>const byte</h3><p>1 bayt (0–255). UNO'da atigi 2 KB SRAM.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Active-LOW: diqqat</h2>
+  <div class="vs">
+    <div class="side fragment"><h3><i data-ic="arrow-down"></i> Bizning sxema</h3>Pin → rezistor → LED → GND. Yoqish — <code>HIGH</code>.</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3><i data-ic="arrow-up"></i> Uslubiy kod</h3>5V → LED → pin. <code>#define LEDon LOW</code> — yoqish <code>LOW</code>.</div>
+  </div>
+  <div class="callout warn mt"><i data-ic="triangle-alert"></i>Sxemaga mos HIGH/LOW tanlang, aks holda LED teskari ishlaydi.</div>
+</section>
+
+<section>
+  <h2>Yordamchi funksiya</h2>
+  <pre class="terminal"><code class="language-cpp" data-trim data-noescape>
+bool checkSwitch(byte pin, byte &amp;lastState) {
+  byte current = digitalRead(pin);
+  if (current != lastState) {     // holat o'zgardimi?
+    lastState = current;          // eslab qolamiz
+    if (current == Pressed) return true;
+  }
+  return false;
+}
+</code></pre>
+  <p class="small">Funksiya <code>true</code> ni faqat bosilgan <b>lahzada</b> qaytaradi.</p>
+</section>
+
+<section>
+  <h2>Nega &amp; belgisi?</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="copy"></i></div><h3>byte lastState</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Nusxa uzatiladi. Funksiyadan chiqqach o'zgarish unutiladi — tugma har safar «yangi bosildi».</p></div>
+    </div></div>
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="link" data-anim="pulse"></i></div><h3>byte &amp;lastState</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Havola: funksiya asl o'zgaruvchini yangilaydi. Holat saqlanadi.</p></div>
+    </div></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>delay() o'rniga millis()</h1>
+  <p>Bir vaqtda bir nechta ish</p>
+</section>
+
+<section>
+  <h2>delay() muammosi</h2>
+  <div class="vs">
+    <div class="side fragment"><h3><i data-ic="hourglass"></i> delay(700)</h3>Arduino 0,7 s hech narsa qilmaydi. Shu paytda bosilgan tugma yo'qoladi.</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3><i data-ic="timer"></i> millis()</h3>Faqat vaqtni tekshiradi. <code>loop()</code> to'xtamaydi, tugma darhol seziladi.</div>
+  </div>
+  <div class="stats mt">
+    <div class="stat fragment"><div class="v"><span class="count" data-to="16" data-suf=" mln">0</span></div><div class="l">amal sekundiga (UNO)</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="50" data-suf=" ms">0</span></div><div class="l">tugma so'rovi oralig'i</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="700" data-suf=" ms">0</span></div><div class="l">heartbeat</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>millis() andozasi</h2>
+  <pre class="terminal"><code class="language-cpp" data-trim data-noescape>
+unsigned long oxirgiVaqt = 0;
+const unsigned long INTERVAL = 700;
+
+void loop() {
+  if (millis() - oxirgiVaqt &gt;= INTERVAL) {
+    oxirgiVaqt = millis();
+    digitalWrite(13, !digitalRead(13));   // heartbeat
+  }
+  // boshqa ishlar to'xtovsiz
+}
+</code></pre>
+  <div class="callout warn"><i data-ic="triangle-alert"></i>Vaqt o'zgaruvchisi faqat <code>unsigned long</code>: <code>int</code> 33 soniyada to'lib ketadi.</div>
+</section>
+
+<section>
+  <h2>Heartbeat LED</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="heart-pulse" data-anim="pulse"></i></div><h3>Nima?</h3><p>13-pindagi LED har 700 ms da almashadi.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="circle-check"></i></div><h3>Bir tekis</h3><p>Dastur «tirik», <code>loop()</code> qotmagan.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="circle-alert" data-anim="blink"></i></div><h3>To'xtadi</h3><p>Dastur qayerdadir bloklangan — <code>delay()</code> yoki cheksiz sikl.</p></div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">millis() qiymatini qaysi turdagi o'zgaruvchida saqlash kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">int</button>
+      <button class="opt" type="button">byte</button>
+      <button class="opt" type="button" data-ok>unsigned long</button>
+      <button class="opt" type="button">bool</button>
+    </div>
+    <div class="explain">millis() juda katta sonlar qaytaradi; int 32 767 da to'lib, manfiy bo'ladi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Rejimlar</h1>
+  <p>Bitta tugma — 4 ta holat</p>
+</section>
+
+<section>
+  <h2>Holat mashinasi</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="power-off"></i></div><h3>0 · O'CHIQ</h3><p>LED doim o'chiq.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="lightbulb"></i></div><h3>1 · YONIQ</h3><p>LED doim yoniq.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="sun-dim"></i></div><h3>2 · SEKIN</h3><p>500 ms da almashadi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="zap"></i></div><h3>3 · TEZ</h3><p>100 ms da almashadi, so'ng yana 0.</p></div></div>
+  </div>
+  <p class="small mt"><code>mode = (mode + 1) % 4;</code> — 3 dan keyin qoldiq 0.</p>
+</section>
+
+<section>
+  <h2>switch / case</h2>
+  <pre class="terminal"><code class="language-cpp" data-trim data-noescape>
+switch (mode) {
+  case 0: digitalWrite(LED, LOW);  break;
+  case 1: digitalWrite(LED, HIGH); break;
+  case 2: miltilla(500);           break;
+  case 3: miltilla(100);           break;
+}
+</code></pre>
+  <div class="callout tip"><i data-ic="lightbulb"></i><code>miltilla()</code> ichida ham <code>millis()</code> — tugma miltillash paytida ham seziladi.</div>
+</section>
+
+<section>
+  <h2>Serial Monitor</h2>
+  <div class="flow">
+    <div class="step"><span class="icon"><i data-ic="mouse-pointer-click" data-anim="bounce"></i></span>Tugma bosildi</div>
+    <div class="arrow"><i data-ic="arrow-right"></i></div>
+    <div class="step"><span class="icon"><i data-ic="refresh-cw" data-anim="spin"></i></span>mode o'zgardi</div>
+    <div class="arrow"><i data-ic="arrow-right"></i></div>
+    <div class="step"><span class="icon"><i data-ic="monitor"></i></span>Rejim: SEKIN</div>
+  </div>
+  <div class="callout warn mt"><i data-ic="triangle-alert"></i>Har aylanishda emas — faqat holat o'zgarganda yozing.</div>
+</section>
+
+<section>
+  <h2>Uslubiy qo'llanma sxemasi</h2>
+  <table>
+    <thead><tr><th>Element</th><th>Pin</th><th>Vazifa</th></tr></thead>
+    <tbody>
+      <tr class="fragment"><td>switchOne</td><td>7</td><td>LED_One ni almashtiradi</td></tr>
+      <tr class="fragment"><td>switchTwo</td><td>8</td><td>LED_One va LED_Two</td></tr>
+      <tr class="fragment"><td>switchThree</td><td>9</td><td>LED_Two va LED_Three</td></tr>
+      <tr class="fragment"><td>LED_One/Two/Three</td><td>10/11/12</td><td>holat indikatorlari</td></tr>
+      <tr class="fragment"><td>heartBeatLED</td><td>13</td><td>700 ms miltillash</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">mode = 3 bo'lganda <code>mode = (mode + 1) % 4;</code> dan keyin mode nechaga teng?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>0</button>
+      <button class="opt" type="button">4</button>
+      <button class="opt" type="button">1</button>
+      <button class="opt" type="button">3</button>
+    </div>
+    <div class="explain">4 % 4 = 0 — rejim yana boshidan boshlanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriqlar <span class="timer"><i data-ic="timer"></i>30 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Bitta tugma bilan Qizil va Yashil LEDni almashib yoqing.</div>
+  <div class="task"><span class="level mid">O'rta</span>4 rejimli chiroq + Serial Monitor, <code>delay()</code> siz.</div>
+  <div class="task"><span class="level mid">O'rta</span>Heartbeat (13-pin) va Toggle (9-pin) bir vaqtda, <code>checkSwitch()</code> bilan.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Uslubiy sxema: 3-tugma — Reset, Serial'ga <code>LED: 1 0 1</code>.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Holat</h3><p>Hodisa bo'lganda o'zgaradi, o'zgaruvchida saqlanadi.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>millis()</h3><p>Bloklamaydigan kod, heartbeat, 50 ms debounce.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Rejimlar</h3><p><code>% 4</code> va <code>switch/case</code>.</p></div>
+  </div>
+  <p class="small mt">Uyga vazifa: 4 rejimli chiroq va heartbeat, Tinkercad'da.</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="toggle-left" data-anim="float"></i></div>
+  <h1>Keyingi dars: DIP switch</h1>
+  <p class="muted">Breadboardda DIP switch (DPST) va LED bilan oddiy elektron sikl</p>
+  <span class="badge">4-hafta · 11-dars</span>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

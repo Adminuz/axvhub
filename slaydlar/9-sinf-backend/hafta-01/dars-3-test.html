@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>3-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>3-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">1-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">O'zgaruvchi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Xotiradagi ma'lumotga berilgan nom (yorliqli quti)</button>
+      <button class="opt" type="button">Faqat sonlarni saqlaydigan funksiya</button>
+      <button class="opt" type="button">Terminal buyrug'i</button>
+      <button class="opt" type="button">Faylning kengaytmasi</button>
+    </div>
+    <div class="explain">O'zgaruvchi nomi orqali ichidagi qiymatdan dastur davomida foydalanamiz.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q"><code>yosh = 15</code> qatorida <code>=</code> belgisi nima vazifani bajaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ikki qiymatni taqqoslaydi</button>
+      <button class="opt" type="button" data-ok>Qiymatni o'zgaruvchiga yuklaydi (o'zlashtirish)</button>
+      <button class="opt" type="button">Ikkalasini qo'shadi</button>
+      <button class="opt" type="button">Matn chiqaradi</button>
+    </div>
+    <div class="explain"><code>=</code> o'ng tomondagi qiymatni chap tomondagi o'zgaruvchiga beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi nom o'zgaruvchi nomi sifatida to'g'ri?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>1_user</code></button>
+      <button class="opt" type="button"><code>9-sinf</code></button>
+      <button class="opt" type="button" data-ok><code>user_1</code></button>
+      <button class="opt" type="button"><code>foydalanuvchi yoshi</code></button>
+    </div>
+    <div class="explain">Nom harf yoki <code>_</code> bilan boshlanadi, probel va maxsus belgilar bo'lmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>yosh</code>, <code>Yosh</code> va <code>YOSH</code> haqida qaysi gap to'g'ri?</p>
+    <div class="opts">
+      <button class="opt" type="button">Bitta o'zgaruvchining 3 xil yozilishi</button>
+      <button class="opt" type="button">Faqat birinchisi ishlaydi</button>
+      <button class="opt" type="button">Xato beradi</button>
+      <button class="opt" type="button" data-ok>Bu 3 ta alohida o'zgaruvchi</button>
+    </div>
+    <div class="explain">Python katta-kichik harflarni farqlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">snake_case uslubiga mos nom qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>server_porti</code></button>
+      <button class="opt" type="button"><code>ServerPorti</code></button>
+      <button class="opt" type="button"><code>server-porti</code></button>
+      <button class="opt" type="button"><code>SERVER PORTI</code></button>
+    </div>
+    <div class="explain">Kichik harflar va orasida tagchiziq <code>_</code> ishlatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Kod natijasi? <code>x = 10</code> keyin <code>x = "O'n"</code> keyin <code>print(type(x))</code></p>
+    <div class="opts">
+      <button class="opt" type="button"><code>&lt;class 'int'&gt;</code></button>
+      <button class="opt" type="button" data-ok><code>&lt;class 'str'&gt;</code></button>
+      <button class="opt" type="button">Xato: tur o'zgartirib bo'lmaydi</button>
+      <button class="opt" type="button"><code>&lt;class 'float'&gt;</code></button>
+    </div>
+    <div class="explain">Pythonda tur qiymatga qarab aniqlanadi (dinamik tiplashtirish); oxirgi qiymat matn.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Kod natijasi? <code>hisob = 50000</code>; <code>hisob = hisob + 20000</code>; <code>hisob += 15000</code>; <code>print(hisob)</code></p>
+    <div class="opts">
+      <button class="opt" type="button"><code>70000</code></button>
+      <button class="opt" type="button"><code>65000</code></button>
+      <button class="opt" type="button" data-ok><code>85000</code></button>
+      <button class="opt" type="button"><code>15000</code></button>
+    </div>
+    <div class="explain">50000 + 20000 = 70000, so'ng += 15000 bilan 85000.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>non_narxi = 3000</code> va <code>sut_narxi = 12500.5</code> bo'lsa, <code>non_narxi + sut_narxi</code> qaysi toifada bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>int</code></button>
+      <button class="opt" type="button"><code>str</code></button>
+      <button class="opt" type="button"><code>bool</code></button>
+      <button class="opt" type="button" data-ok><code>float</code>, chunki bittasi kasr son</button>
+    </div>
+    <div class="explain">Python natijani avtomatik <code>float</code> ga o'tkazadi: <code>15500.5</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>port = 8080</code> bo'lsa, <code>f"Port: {port}"</code> qanday natija beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>Port: 8080</code></button>
+      <button class="opt" type="button"><code>Port: {port}</code></button>
+      <button class="opt" type="button"><code>Port: port</code></button>
+      <button class="opt" type="button">Xato beradi</button>
+    </div>
+    <div class="explain">f-string ichidagi <code>{port}</code> o'zgaruvchi qiymati bilan almashtiriladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>a = 10</code>, <code>b = 20</code> berilgan. Qo'shimcha o'zgaruvchisiz qiymatlarni almashtirish uchun nima yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>a = b</code>; <code>b = a</code></button>
+      <button class="opt" type="button" data-ok><code>a, b = b, a</code></button>
+      <button class="opt" type="button"><code>a == b</code></button>
+      <button class="opt" type="button"><code>a + b = b + a</code></button>
+    </div>
+    <div class="explain">Tuple unpacking bilan almashtirish bo'ladi; <code>a = b</code> keyin <code>b = a</code> ikkalasini ham 20 qilib qo'yadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: o'zgaruvchi va <code>=</code>, nomlash qoidalari va snake_case, dinamik tiplashtirish, <code>+=</code>, f-string.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

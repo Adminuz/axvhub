@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Responsiv dizayn</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Responsiv dizayn</h1>
+  <p class="muted">Media so'rovlar: bitta sahifa — telefon, planshet va kompyuterda</p>
+  <span class="badge">8-sinf</span><span class="badge">Web Full-stack</span><span class="badge">5-hafta · 15-dars</span>
+  
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q"><code>grid-column: 1 / -1</code> nima beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat 1-ustun</button>
+      <button class="opt" type="button" data-ok>Butun kenglik (birinchidan oxirgi chiziqqacha)</button>
+      <button class="opt" type="button">Element yashiriladi</button>
+      <button class="opt" type="button">Teskari tartib</button>
+    </div>
+    <div class="explain">−1 — har doim oxirgi chiziq.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Responsiv dizayn nima?</h1>
+  <p>Sahifa — suvga o'xshaydi: idish shaklini oladi</p>
+</section>
+
+<section>
+  <h2>Bitta sahifa — uch ekran</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <g data-tip="Telefon: 1 ustun, kattaroq tugmalar, menyu ustun ko'rinishida."><rect class="fn ln" x="60" y="40" width="160" height="280" rx="20" stroke-width="4"/><rect class="fa" x="80" y="70" width="120" height="60" rx="6"/><rect class="fa" x="80" y="140" width="120" height="60" rx="6"/><rect class="fa" x="80" y="210" width="120" height="60" rx="6"/><text class="t-muted" x="140" y="30" text-anchor="middle" font-size="22">&lt; 768px</text></g>
+      <g class="fragment" data-tip="Planshet: 2 ustun."><rect class="fn ln" x="290" y="60" width="260" height="250" rx="16" stroke-width="4"/><rect class="fb" x="310" y="85" width="105" height="90" rx="6"/><rect class="fb" x="425" y="85" width="105" height="90" rx="6"/><rect class="fb" x="310" y="190" width="105" height="90" rx="6"/><rect class="fb" x="425" y="190" width="105" height="90" rx="6"/><text class="t-muted" x="420" y="50" text-anchor="middle" font-size="22">≥ 768px</text></g>
+      <g class="fragment" data-tip="Kompyuter: 3 ustun, keng maket."><rect class="fn ln" x="610" y="70" width="340" height="210" rx="10" stroke-width="4"/><rect class="fc" x="630" y="95" width="92" height="70" rx="6"/><rect class="fc" x="734" y="95" width="92" height="70" rx="6"/><rect class="fc" x="838" y="95" width="92" height="70" rx="6"/><rect class="fc" x="630" y="180" width="92" height="70" rx="6"/><rect class="fc" x="734" y="180" width="92" height="70" rx="6"/><rect class="fc" x="838" y="180" width="92" height="70" rx="6"/><text class="t-muted" x="780" y="60" text-anchor="middle" font-size="22">≥ 992px</text></g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Nega kerak?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="code-xml"></i></div><h3>Bitta kod</h3><p>Barcha qurilmalar uchun bitta sahifa.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="smartphone" data-anim="float"></i></div><h3>Telefon</h3><p>Tashriflarning yarmidan ko'pi — mobil qurilmalardan.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="search"></i></div><h3>Qidiruv</h3><p>Google mobilga mos saytlarni yuqoriroq ko'rsatadi.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Viewport meta tegi</h2>
+  <pre class="terminal"><code class="language-html" data-trim data-noescape>
+&lt;head&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;/head&gt;
+</code></pre>
+  <div class="callout bad fragment"><i data-ic="circle-x"></i>Tegsiz telefon sahifani «kompyuter kengligida» chizib kichraytiradi — media so'rovlar to'g'ri ishlamaydi.</div>
+</section>
+
+<section>
+  <h2>Fluid layout</h2>
+  <div class="vs">
+    <div class="side fragment"><h3><i data-ic="ruler"></i> Qat'iy</h3><code>width: 1000px</code> — telefonda gorizontal aylantirish.</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3><i data-ic="scaling" data-anim="pulse"></i> Oquvchan</h3><code>width: 90%; max-width: 1000px; margin: 0 auto;</code></div>
+  </div>
+  <p class="small mt">Nisbiy birliklar: <code>%</code>, <code>fr</code>, <code>vw</code>, <code>rem</code>.</p>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Media so'rovlar</h1>
+  <p>@media, breakpoint, min va max</p>
+</section>
+
+<section data-auto-animate>
+  <h2>Sintaksis</h2>
+  <pre class="terminal" data-id="media"><code class="language-css" data-trim data-noescape>
+body { background: lightyellow; }
+</code></pre>
+</section>
+
+<section data-auto-animate>
+  <h2>Sintaksis</h2>
+  <pre class="terminal" data-id="media"><code class="language-css" data-trim data-noescape data-line-numbers="1|2|3-5">
+body { background: lightyellow; }
+/* shart bajarilsa — pastdagi qoida ustun keladi */
+@media (min-width: 768px) {
+  body { background: lightblue; }
+}
+</code></pre>
+</section>
+
+<section>
+  <h2><code>min-width</code> yoki <code>max-width</code>?</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:180px"><div class="flip-in"><div class="face front"><h3><code>(min-width: 768px)</code></h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Ekran <b>kamida</b> 768px — ya'ni 768 va undan keng.</p></div></div></div>
+    <div class="flip" style="min-height:180px"><div class="flip-in"><div class="face front"><h3><code>(max-width: 767px)</code></h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Ekran <b>ko'pi bilan</b> 767px — ya'ni 767 va undan tor.</p></div></div></div>
+  </div>
+  <p class="small mt">Oraliq: <code>@media (min-width: 768px) and (max-width: 991px)</code> — faqat planshet.</p>
+</section>
+
+<section>
+  <section>
+    <h2>Breakpointlar</h2>
+    <table>
+      <thead><tr><th>Kenglik</th><th>Qurilma</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td>&lt; 576px</td><td>telefon (tik)</td></tr>
+        <tr class="fragment"><td>≥ 576px</td><td>katta telefon</td></tr>
+        <tr class="fragment"><td>≥ 768px</td><td>planshet</td></tr>
+        <tr class="fragment"><td>≥ 992px</td><td>noutbuk</td></tr>
+        <tr class="fragment"><td>≥ 1200px</td><td>katta monitor</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: qoida</p>
+  </section>
+  <section>
+    <h2>Breakpointni qayerga qo'yish?</h2>
+    <div class="callout tip"><i data-ic="lightbulb"></i>Qurilma nomiga emas — dizayn «buzilgan» kenglikka. Oynani asta toraytiring: qayerda noqulay bo'lsa, o'sha yerda breakpoint.</div>
+    <p class="mt">Bu raqamlar Bootstrap'da ham aynan shunday — keyingi mavzularda ko'rasiz.</p>
+  </section>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Ekran 600px. Qaysi qoida ishlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>@media (min-width: 768px)</code></button>
+      <button class="opt" type="button" data-ok><code>@media (max-width: 767px)</code></button>
+      <button class="opt" type="button"><code>@media (min-width: 992px)</code></button>
+      <button class="opt" type="button">Hech biri</button>
+    </div>
+    <div class="explain">600 ≤ 767 — max-width sharti bajariladi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Mobile-first</h1>
+  <p>Avval telefon, keyin kattaroq ekranlar</p>
+</section>
+
+<section>
+  <h2>Ikki yondashuv</h2>
+  <table>
+    <thead><tr><th></th><th>Mobile-first</th><th>Desktop-first</th></tr></thead>
+    <tbody>
+      <tr class="fragment"><td>Asosiy CSS</td><td>telefon uchun</td><td>kompyuter uchun</td></tr>
+      <tr class="fragment"><td>Media so'rov</td><td><code>min-width</code></td><td><code>max-width</code></td></tr>
+      <tr class="fragment"><td>Afzallik</td><td>sodda asos, zamonaviy standart</td><td>eski saytni moslashda qulay</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>1 → 2 → 3 ustun</h2>
+  <pre class="terminal"><code class="language-css" data-trim data-noescape data-line-numbers="1|2-4|5-7">
+.kartalar { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 768px) {
+  .kartalar { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 992px) {
+  .kartalar { grid-template-columns: repeat(3, 1fr); }
+}
+</code></pre>
+</section>
+
+<section>
+  <h2>Rasmlarni moslashtirish</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="image" data-anim="pulse"></i></div><h3>Toshmasin</h3><p><code>img { max-width: 100%; height: auto; }</code> — nisbat saqlanadi.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="crop"></i></div><h3>object-fit</h3><p><code>cover</code> — kesib to'ldiradi; <code>contain</code> — to'liq ko'rsatadi.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>DevTools'da tekshirish</h2>
+  <ol class="steps-n">
+    <li class="fragment">F12 — asboblar oynasi</li>
+    <li class="fragment">Ctrl+Shift+M — Toggle device toolbar</li>
+    <li class="fragment">iPhone / iPad tanlang yoki kenglikni sudrang</li>
+    <li class="fragment">Har bir breakpointda dizaynni kuzating</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Odatiy xatolar</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-x"></i></div><h3>Viewport yo'q</h3><p>Telefonda sahifa mayda.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-x"></i></div><h3>Qavs yo'q</h3><p><code>@media min-width: 768px</code> — ishlamaydi.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-x"></i></div><h3>Tartib</h3><p>@media asosiy qoidadan yuqorida — bosib o'tiladi.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriqlar <span class="timer"><i data-ic="timer"></i>30 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Fon telefonda sariq, 768px dan kengda ko'k.</div>
+  <div class="task"><span class="level mid">O'rta</span>6 ta karta: 1 → 2 → 3 ustun (mobile-first), rasmlar toshmasin.</div>
+  <div class="task"><span class="level hard">Qiyin</span>14-darsdagi maketni moslang: telefonda 1 ustun, menyu ustun.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Asos</h3><p>Viewport tegi va fluid layout.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>@media</h3><p>Breakpointlar, <code>min-width</code> / <code>max-width</code>.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Mobile-first</h3><p>Avval telefon; rasmlar <code>max-width: 100%</code>.</p></div>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="pen-tool" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: Responsiv maket va Figma</h1>
+  <p class="muted">Dizayn maketidan o'lcham, rang va shriftlarni olish</p>
+  <span class="badge">6-hafta · 16-dars</span>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

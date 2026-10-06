@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>3-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>3-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">IoT</span><span class="badge">1-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi simsiz texnologiya 10–15 km gacha qamrovga va juda past energiya sarfiga ega?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>LoRaWAN</button>
+      <button class="opt" type="button">Wi-Fi</button>
+      <button class="opt" type="button">Bluetooth (BLE)</button>
+      <button class="opt" type="button">ZigBee</button>
+    </div>
+    <div class="explain">LoRaWAN uzoq masofali monitoring uchun, batareya 5–10 yil yetadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Aqlli soat va tibbiy sensorlar uchun qaysi aloqa turi mos?</p>
+    <div class="opts">
+      <button class="opt" type="button">LoRaWAN — 15 km qamrov</button>
+      <button class="opt" type="button" data-ok>Bluetooth (BLE) — juda past energiya sarfi</button>
+      <button class="opt" type="button">Wi-Fi — eng yuqori energiya sarfi bilan</button>
+      <button class="opt" type="button">Hech qaysisi</button>
+    </div>
+    <div class="explain">BLE kam energiya sarflaydi va telefon bilan oson ulanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">MQTT protokoli nima uchun yaratilgan?</p>
+    <div class="opts">
+      <button class="opt" type="button">Yuqori sifatli video uzatish uchun</button>
+      <button class="opt" type="button">Katta fayllarni saqlash uchun</button>
+      <button class="opt" type="button" data-ok>Cheklangan resursli qurilmalar va zaif tarmoqlar uchun yengil ma'lumot uzatish</button>
+      <button class="opt" type="button">Veb-sahifa chizish uchun</button>
+    </div>
+    <div class="explain">MQTT — IoT ning eng yengil protokoli.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">MQTT da Broker nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Sensor ma'lumotini o'lchaydi</button>
+      <button class="opt" type="button">Faqat ma'lumotni ekranda ko'rsatadi</button>
+      <button class="opt" type="button">Aktuatorni quvvat bilan ta'minlaydi</button>
+      <button class="opt" type="button" data-ok>Barcha xabarlarni qabul qilib, kerakli obunachilarga yo'naltiradi</button>
+    </div>
+    <div class="explain">Broker (masalan Mosquitto) — markaziy server, pochta bo'limiga o'xshaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">MQTT da Publisher kim?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Ma'lumotni biror mavzuga (Topic) jo'natuvchi qurilma</button>
+      <button class="opt" type="button">Mavzuni tinglovchi smartfon ilova</button>
+      <button class="opt" type="button">Markaziy server</button>
+      <button class="opt" type="button">Wi-Fi router</button>
+    </div>
+    <div class="explain">Masalan, gaz sensori «uy/oshxona/gaz» mavzusiga qiymat yuboradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>maktab/3-bino/14-xona/harorat</code> — bu nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Wi-Fi tarmog'ining paroli</button>
+      <button class="opt" type="button" data-ok>MQTT Topic (daraxtsimon mavzu manzili)</button>
+      <button class="opt" type="button">Fayl nomi emas, IP-manzil</button>
+      <button class="opt" type="button">Broker dasturining nomi</button>
+    </div>
+    <div class="explain">Topic slashlar bilan ajratilgan ierarxik manzil.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Edge Computing ning asosiy afzalligi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ma'lumotlar uzoq serverda yillab saqlanadi</button>
+      <button class="opt" type="button">Sun'iy intellekt tahlili uchun eng kuchli server</button>
+      <button class="opt" type="button" data-ok>Internet o'chsa ham tizim ishlaydi, qaror ~1 ms da qabul qilinadi</button>
+      <button class="opt" type="button">Hech qanday qurilma talab qilinmaydi</button>
+    </div>
+    <div class="explain">Qaror qurilmaning o'zida yoki Gateway da qabul qilinadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Cloud Computing qaysi vazifa uchun ayniqsa qulay?</p>
+    <div class="opts">
+      <button class="opt" type="button">Gaz sizganda 1 ms ichida klapanni yopish</button>
+      <button class="opt" type="button">Internetsiz ishlash</button>
+      <button class="opt" type="button">Sensor signalini elektr signaliga aylantirish</button>
+      <button class="opt" type="button" data-ok>Yillik statistika saqlash, AI tahlili va global boshqaruv</button>
+    </div>
+    <div class="explain">Bulut kuchli serverlar beradi, lekin internetga bog'liq.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">IoT Dashboard nima vazifani bajaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Sensor raqamlarini grafik va boshqaruv tugmalariga aylantirib ko'rsatadi</button>
+      <button class="opt" type="button">Sensorni apparat jihatdan ishlab chiqaradi</button>
+      <button class="opt" type="button">Wi-Fi signalini kuchaytiradi</button>
+      <button class="opt" type="button">Mikrokontrollerni o'chiradi</button>
+    </div>
+    <div class="explain">Dashboard (Blynk, ThingsBoard, Home Assistant) real vaqt ko'rsatkichlari va ogohlantirishlar beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Aqlli avtomobilda to'siqni ko'rib tormoz berish qarori qayerda qabul qilinishi kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Cloud: uzoq serverda, internet orqali</button>
+      <button class="opt" type="button" data-ok>Edge: qurilmaning o'zida, kechikishsiz</button>
+      <button class="opt" type="button">Foydalanuvchi telefonida, qo'lda</button>
+      <button class="opt" type="button">Broker da, kuniga bir marta</button>
+    </div>
+    <div class="explain">Bunday qaror millisekundlarda kerak, internet uzilishi xavfli.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: Simsiz texnologiyalar, MQTT (Broker, Publisher, Topic), Edge va Cloud, Dashboard.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

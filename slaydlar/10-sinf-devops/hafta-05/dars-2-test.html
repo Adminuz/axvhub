@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Test: 14-dars. cron, at va monitoring</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Test: 14-dars. cron, at va monitoring</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">5-hafta · 14-dars</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q"><code>ps aux</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faylni o'chiradi</button>
+      <button class="opt" type="button">Tarmoqni tekshiradi</button>
+      <button class="opt" type="button" data-ok>Barcha jarayonlarni ko'rsatadi</button>
+      <button class="opt" type="button">Vaqtni o'rnatadi</button>
+    </div>
+    <div class="explain"><code>ps aux</code> jarayonlar ro'yxati.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Disk yuklamasini qaysi vosita ko'rsatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">ls</button>
+      <button class="opt" type="button">cd</button>
+      <button class="opt" type="button">mkdir</button>
+      <button class="opt" type="button" data-ok>iotop</button>
+    </div>
+    <div class="explain"><code>iotop</code> disk I/O monitoringi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>htop</code> da jarayonni to'xtatish tugmasi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>F9</button>
+      <button class="opt" type="button">F1</button>
+      <button class="opt" type="button">F10</button>
+      <button class="opt" type="button">Esc</button>
+    </div>
+    <div class="explain"><code>F9</code> signal yuboradi (kill).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>crontab -e</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Cron ni o'chiradi</button>
+      <button class="opt" type="button">Vazifani bajaradi</button>
+      <button class="opt" type="button">Faylni nusxalaydi</button>
+      <button class="opt" type="button" data-ok>Cron vazifalarini tahrirlaydi</button>
+    </div>
+    <div class="explain"><code>-e</code> edit, tahrirlash.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Cron qatorida nechta vaqt maydoni bor?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>5</button>
+      <button class="opt" type="button">3</button>
+      <button class="opt" type="button">7</button>
+      <button class="opt" type="button">4</button>
+    </div>
+    <div class="explain">Daqiqa, soat, kun, oy, hafta kuni.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>*/10 * * * *</code> nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Har 10 daqiqa</button>
+      <button class="opt" type="button">Har 10 soat</button>
+      <button class="opt" type="button">Har 10 kun</button>
+      <button class="opt" type="button">Har 10 oy</button>
+    </div>
+    <div class="explain">Birinchi maydon daqiqa: har 10 da.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>0 9 * * 1-5</code> qachon ishlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Har kuni 09:00 da</button>
+      <button class="opt" type="button">Faqat dushanba 09:05</button>
+      <button class="opt" type="button">Har oy 9-kuni</button>
+      <button class="opt" type="button" data-ok>Ish kunlari 09:00 da</button>
+    </div>
+    <div class="explain">Hafta kuni 1-5: dushanbadan jumagacha.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Bir martalik vazifa uchun buyruq?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>at</button>
+      <button class="opt" type="button">cron</button>
+      <button class="opt" type="button">htop</button>
+      <button class="opt" type="button">top</button>
+    </div>
+    <div class="explain"><code>at</code> vazifani bir marta bajaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>atq</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Vazifani o'chiradi</button>
+      <button class="opt" type="button">Cron ni yoqadi</button>
+      <button class="opt" type="button">Disk tekshiradi</button>
+      <button class="opt" type="button" data-ok>At navbatini ko'rsatadi</button>
+    </div>
+    <div class="explain"><code>atq</code> kutayotgan at vazifalari.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Cron skriptini nega to'liq yo'l bilan yozamiz?</p>
+    <div class="opts">
+      <button class="opt" type="button">Tezroq ishlashi uchun</button>
+      <button class="opt" type="button">Rang uchun</button>
+      <button class="opt" type="button" data-ok>Cron da PATH qisqa bo'ladi</button>
+      <button class="opt" type="button">Parol uchun</button>
+    </div>
+    <div class="explain">Nisbiy yo'l topilmasligi mumkin.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: 14-dars konspekti va slaydlari</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

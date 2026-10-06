@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>SQL: NULL va ma'lumot turlari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>SQL: NULL va ma'lumot turlari</h1>
+  <p class="muted">NULL, IS NULL, ISNULL, COALESCE, INT, DECIMAL, NVARCHAR, DATE, BIT, CAST</p>
+  <span class="badge">9-sinf</span><span class="badge">Business Intelligence</span><span class="badge">5-hafta · 15-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimalarni o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="circle-slash" data-anim="pulse"></i></div><h3>NULL va IS NULL</h3><p>Qiymat yo'q degani nol emas</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="replace" data-anim="float"></i></div><h3>ISNULL va COALESCE</h3><p>NULL ni almashtirish</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="database" data-anim="blink"></i></div><h3>Ma'lumot turlari</h3><p>Ustun uchun to'g'ri tur</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q"><code>ORDER BY Narx DESC</code> bilan <code>TOP 1</code> qaysi mahsulotni beradi (eng qimmati Noutbuk)?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Noutbuk</button>
+    <button class="opt" type="button">Sichqoncha</button>
+    <button class="opt" type="button">Monitor</button>
+    <button class="opt" type="button">Planshet</button>
+    </div>
+    <div class="explain"><code>DESC</code> bo'yicha birinchi — eng katta narx.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>NULL va IS NULL</h1>
+  <p>Qiymat yo'q degani nol emas</p>
+</section>
+
+<section>
+  <h2>NULL tekshiruvi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Telefon = NULL</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">Natija:</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">noma'lum</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">IS NULL</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">TRUE: qator</text><text class="t-head" x="875" y="171" text-anchor="middle" font-size="22">qoladi</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">NULL ni faqat IS NULL bilan tekshiring</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>IS NULL va IS NOT NULL</h2>
+  <pre><code class="language-sql" data-trim data-line-numbers="1-2|4-5|7-8">
+SELECT Ism FROM Mijozlar
+WHERE Telefon IS NULL;
+
+SELECT Ism FROM Mijozlar
+WHERE Telefon IS NOT NULL;
+
+SELECT Ism FROM Mijozlar
+WHERE Telefon = NULL;
+  </code></pre>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i><code>IS NULL</code> — Vali, Dilnoza (2 qator). <code>IS NOT NULL</code> — Ali, Sana, Jasur (3 qator). <code>= NULL</code> — 0 qator!</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>WHERE Telefon = NULL</code> nechta qator qaytaradi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Hech qanday (0)</button>
+    <button class="opt" type="button">2 ta</button>
+    <button class="opt" type="button">3 ta</button>
+    <button class="opt" type="button">Hammasini</button>
+    </div>
+    <div class="explain"><code>= NULL</code> hech qachon <code>TRUE</code> bermaydi; <code>IS NULL</code> kerak.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>ISNULL va COALESCE</h1>
+  <p>NULL ni almashtirish</p>
+</section>
+
+<section>
+  <h2>COALESCE tartibi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Telefon bormi?</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">Yo'q: Email</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">bormi?</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Yo'q: matn</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">Birinchi</text><text class="t-head" x="875" y="171" text-anchor="middle" font-size="22">mavjud qiymat</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">COALESCE birinchi NULL bo'lmaganini oladi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>ISNULL va COALESCE</h2>
+  <pre><code class="language-sql" data-trim data-line-numbers="1-4|6-7">
+SELECT Ism,
+       ISNULL(Telefon, N'Yo''q') AS Tel,
+       COALESCE(Telefon, Email, N'Aloqa yo''q') AS Aloqa
+FROM Mijozlar;
+
+SELECT Ism FROM Mijozlar
+WHERE Telefon &lt;&gt; N'901234567';
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Ikkinchi so'rov faqat Sana va Jasur ni qaytaradi: <code>NULL</code> telefonli Vali va Dilnoza ham chiqmaydi. Ularni ham olish uchun <code>OR Telefon IS NULL</code> qo'shing.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>COALESCE(NULL, NULL, N'C', N'D')</code> nimani qaytaradi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok><code>C</code></button>
+    <button class="opt" type="button"><code>NULL</code></button>
+    <button class="opt" type="button"><code>D</code></button>
+    <button class="opt" type="button">Xato</button>
+    </div>
+    <div class="explain">Birinchi <code>NULL</code> bo'lmagan qiymat: <code>C</code>.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Ma'lumot turlari</h1>
+  <p>Ustun uchun to'g'ri tur</p>
+</section>
+
+<section>
+  <h2>Qiymatga mos tur</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Butun: INT</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">Pul: DECIMAL</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Matn: NVARCHAR</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">Sana:</text><text class="t-head" x="875" y="171" text-anchor="middle" font-size="22">DATE, BIT</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">To'g'ri tur xotirani va aniqlikni himoya qiladi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>CAST va sana filtri</h2>
+  <pre><code class="language-sql" data-trim data-line-numbers="1-3|5-6|8-10">
+SELECT Ism, RoyxatSana
+FROM Mijozlar
+WHERE RoyxatSana &gt;= '2025-01-01';
+
+SELECT Ism FROM Mijozlar
+WHERE Faol = 1;
+
+SELECT CAST(7 AS DECIMAL(5,2)) / 2 AS Natija,
+       CAST(Narx AS INT) AS ButunNarx
+FROM Mahsulotlar;
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Sana <code>YYYY-MM-DD</code> formatida yoziladi. <code>RoyxatSana &gt;= '2025-01-01'</code> — Sana, Dilnoza, Jasur. <code>Faol = 1</code> — Ali, Vali, Dilnoza. <code>CAST(7 AS DECIMAL(5,2)) / 2</code> natijasi 3.50.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Pul miqdori uchun qaysi tur mos?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok><code>DECIMAL(12,2)</code></button>
+    <button class="opt" type="button"><code>BIT</code></button>
+    <button class="opt" type="button"><code>DATE</code></button>
+    <button class="opt" type="button"><code>NVARCHAR(10)</code></button>
+    </div>
+    <div class="explain"><code>DECIMAL</code> aniq o'nlik sonlarni saqlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>NULL va 0 / bo'sh matn</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>0 yoki ''</h3>Qiymat bor: nol yoki bo'sh matn sifatida kiritilgan</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>NULL</h3>Qiymat yo'q yoki noma'lum</div>
+  </div>
+  <div class="card accent fragment mt"><p><code>NULL</code> ni <code>= 0</code> yoki <code>= ''</code> bilan topib bo'lmaydi: <code>IS NULL</code> kerak.</p></div>
+</section>
+
+<section>
+  <h2>NULL atamalari. Bosing</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>IS NULL</h3><span class="flip-hint">bosing</span></div><div class="face back"><p><code>NULL</code> bo'lgan qatorlarni topadi</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>IS NOT NULL</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Qiymati bor qatorlarni topadi</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>ISNULL</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Ikki parametrli almashtirish (SQL Server)</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>COALESCE</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Birinchi <code>NULL</code> bo'lmagan qiymat (standart)</p></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>NULL bilan ishlash bosqichlari</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="search" data-anim="pulse"></i></div><h3>1. Aniqlang</h3><p><code>IS NULL</code> bilan bo'sh qatorlarni toping.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="replace"></i></div><h3>2. Almashtiring</h3><p><code>ISNULL</code> yoki <code>COALESCE</code> bilan ko'rinadigan qiymat bering.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="shield-check"></i></div><h3>3. Tekshiring</h3><p><code>&lt;&gt;</code> va <code>=</code> natijalarida NULL qatorlari yo'qolmaganini kuzating.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>Turlar yonma-yon</h2>
+    <table>
+      <thead><tr><th>Tur</th><th>Nima saqlaydi</th><th>Misol</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td><code>INT</code></td><td>butun son</td><td><code>25</code></td></tr>
+        <tr class="fragment"><td><code>DECIMAL(12,2)</code></td><td>aniq o'nlik son</td><td><code>80000.50</code></td></tr>
+        <tr class="fragment"><td><code>NVARCHAR(30)</code></td><td>unicode matn</td><td><code>N'Ali'</code></td></tr>
+        <tr class="fragment"><td><code>DATE</code></td><td>sana</td><td><code>'2025-01-10'</code></td></tr>
+        <tr class="fragment"><td><code>BIT</code></td><td>0 yoki 1</td><td><code>1</code></td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: tanlash qoidalari</p>
+  </section>
+  <section>
+    <h2>Tur tanlash qoidalari</h2>
+    <ol class="steps-n">
+      <li class="fragment">Hisoblanadigan butun sonlar uchun <code>INT</code>.</li>
+      <li class="fragment">Pul va aniq o'nlik sonlar uchun <code>DECIMAL</code>.</li>
+      <li class="fragment">Matn uchun <code>NVARCHAR</code>, sana uchun <code>DATE</code>, ha/yo'q uchun <code>BIT</code>.</li>
+    </ol>
+  </section>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">NULL ni ko'rinadigan qilamiz</h2>
+  <pre data-id="c"><code class="language-sql" data-trim>
+SELECT Ism, Telefon
+FROM Mijozlar;
+  </code></pre>
+</section>
+<section data-auto-animate>
+  <h2 data-id="t">NULL ni ko'rinadigan qilamiz</h2>
+  <pre data-id="c"><code class="language-sql" data-trim data-line-numbers="1-2|3-4">
+SELECT Ism,
+       ISNULL(Telefon, N'Yo''q') AS Tel
+FROM Mijozlar;
+  </code></pre>
+</section>
+
+<section>
+  <h2>Mijozlar jadvali raqamlarda</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="5" data-suf="">0</span></div><div class="l">mijoz jadvalda</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="2" data-suf="">0</span></div><div class="l">telefoni NULL</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="0" data-suf="">0</span></div><div class="l">'= NULL' topadigan qator</div></div>
+  </div>
+  <p class="small fragment"><code>IS NULL</code> 2 ta qatorni topadi, <code>= NULL</code> — hech qaysini.</p>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>NULL telefonlar: Telefoni kiritilmagan mijozlarni toping.</div>
+  <div class="task"><span class="level easy">Oson</span>Aloqa bor mijozlar: Telefoni bor mijozlarni <code>IS NOT NULL</code> bilan chiqaring.</div>
+  <div class="task"><span class="level mid">O'rta</span>Almashtirish: Har bir mijoz uchun telefonni, telefon yo'q bo'lsa emailni, ikkalasi ham yo'q bo'lsa «Aloqa yo'q» matnini chiqaring.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Tuzoqni toping: <code>WHERE Telefon &lt;&gt; N'901234567'</code> nechta qator beradi? Nega Vali va Dilnoza chiqmaydi? Ularni ham olish uchun so'rovni tuzating.</div>
+  <div class="task"><span class="level hard">Bonus</span>Turlar va CAST: 2025-yildan keyin ro'yxatdan o'tgan faol mijozlar ismini chiqaring va <code>Mahsulotlar</code> narxini <code>CAST</code> bilan butun songa aylantiring.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>NULL</h3><p>Qiymat yo'q; <code>IS NULL</code> / <code>IS NOT NULL</code>.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>ISNULL / COALESCE</h3><p>NULL ni almashtirish.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Turlar</h3><p><code>INT</code>, <code>DECIMAL</code>, <code>NVARCHAR</code>, <code>DATE</code>, <code>BIT</code>, <code>CAST</code>.</p></div>
+  </div>
+  <p class="small fragment mt">Uyga vazifa: Mijozlar jadvalida NULL va tur so'rovlari.</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="sigma" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: Aggregatsiya funksiyalari</h1>
+  <p class="muted">COUNT, SUM, AVG, MIN, MAX</p>
+  <span class="badge">6-hafta · 16-dars</span>
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

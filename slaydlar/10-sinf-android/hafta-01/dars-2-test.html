@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>2-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>2-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">1-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Google Play'ga yuklanadigan yakuniy versiya qaysi build turida yig'iladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Release</button>
+      <button class="opt" type="button">Debug</button>
+      <button class="opt" type="button">Staging</button>
+      <button class="opt" type="button">Test</button>
+    </div>
+    <div class="explain">Release oxirgi foydalanuvchiga mo'ljallangan: kod optimallashtiriladi, debug taqiqlanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Release da <code>minifyEnabled true</code> yoqilsa nima bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Barcha loglar ko'payadi</button>
+      <button class="opt" type="button" data-ok>R8 ishga tushib, ishlatilmagan kodni o'chiradi va qisqartiradi</button>
+      <button class="opt" type="button">Ilova faqat debug rejimida ishlaydi</button>
+      <button class="opt" type="button">Rasmlar kattalashadi</button>
+    </div>
+    <div class="explain"><code>minifyEnabled true</code> R8 optimallashtiruvchisini yoqadi: ortiqcha kod o'chiriladi, nomlar chalkashtiriladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Obfuscation (kodni chalkashtirish) nimani qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Kodni shifrlab parol qo'yadi</button>
+      <button class="opt" type="button">Rasmlarni siqadi</button>
+      <button class="opt" type="button" data-ok>Klass va funksiya nomlarini <code>a</code>, <code>b</code>, <code>c</code> kabi qisqa harflarga almashtiradi</button>
+      <button class="opt" type="button">Kutubxonalarni yuklaydi</button>
+    </div>
+    <div class="explain">Bu ilovani dekompilyatsiya qilib o'qishni qiyinlashtiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Debug da <code>applicationIdSuffix ".debug"</code> nima uchun foydali?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ilova tezroq ishlaydi</button>
+      <button class="opt" type="button">Ilova hajmi kichrayadi</button>
+      <button class="opt" type="button">Google Play talab qiladi</button>
+      <button class="opt" type="button" data-ok>Debug va Release ilovalarni bir telefonga birga o'rnatish mumkin bo'ladi</button>
+    </div>
+    <div class="explain">Paket nomi farq qilgani uchun tizim ularni ikki alohida ilova deb biladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Product Flavors qaysi muammoni hal qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Bitta kod bazasidan bir nechta versiya (free/paid) chiqarish</button>
+      <button class="opt" type="button">Ilovani tezroq kompilyatsiya qilish</button>
+      <button class="opt" type="button">Git konfliktlarini hal qilish</button>
+      <button class="opt" type="button">Kutubxona versiyalarini yangilash</button>
+    </div>
+    <div class="explain">Copy-paste qilingan ikki loyihaning o'rniga bitta loyiha ichida variantlar yoziladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">3 ta Product Flavor va 2 ta Build Type bo'lsa, nechta Build Variant hosil bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">5</button>
+      <button class="opt" type="button" data-ok>6</button>
+      <button class="opt" type="button">3</button>
+      <button class="opt" type="button">2</button>
+    </div>
+    <div class="explain">Build Variants = Flavorlar soni x Build Types soni = 3 x 2 = 6.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>free</code> flavor va <code>release</code> build type kombinatsiyasi qanday variant nomini beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>releaseFree</code></button>
+      <button class="opt" type="button"><code>free_release_app</code></button>
+      <button class="opt" type="button" data-ok><code>freeRelease</code></button>
+      <button class="opt" type="button"><code>freeDebug</code></button>
+    </div>
+    <div class="explain">Variant nomi flavor nomi bilan build type nomi birikmasidan tuziladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Kodda <code>BuildConfig.IS_PAID</code> ni tekshirish nima beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Foydalanuvchi to'lov qilganini serverda tekshirish</button>
+      <button class="opt" type="button">Ilovani avtomatik o'chirish</button>
+      <button class="opt" type="button">Yangi flavor yaratish</button>
+      <button class="opt" type="button" data-ok>Kodni o'zgartirmay, faqat variantni almashtirib ilova xulqini o'zgartirish</button>
+    </div>
+    <div class="explain"><code>buildConfigField</code> qiymatlari yig'ish vaqtida <code>BuildConfig</code> ga yoziladi va variantga qarab o'zgaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi yozuv to'g'ri? Maqsad: <code>String</code> turidagi <code>URL</code> maydoni.</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>buildConfigField "String", "URL", "\"https://api.uz/\""</code></button>
+      <button class="opt" type="button"><code>buildConfigField "String", "URL", "https://api.uz/"</code></button>
+      <button class="opt" type="button"><code>buildConfigField "URL", "String", "api"</code></button>
+      <button class="opt" type="button"><code>buildConfigField String URL https://api.uz/</code></button>
+    </div>
+    <div class="explain">String qiymati ekranlangan qo'shtirnoqlar <code>\"</code> bilan o'ralishi shart, aks holda xato beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>productFlavors</code> yozildi, lekin <code>flavorDimensions</code> e'lon qilinmadi. Natija?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ilova oddiy yig'iladi</button>
+      <button class="opt" type="button" data-ok>Gradle xato beradi: flavorlar nomlangan dimension'ga tegishli bo'lishi kerak</button>
+      <button class="opt" type="button">Faqat Debug variant ishlaydi</button>
+      <button class="opt" type="button">Flavorlar e'tiborsiz qoldiriladi</button>
+    </div>
+    <div class="explain">Xato matni: «All flavors must now belong to a named flavor dimension».</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: Debug/Release, R8 minify, Product Flavors, Build Variants soni, BuildConfig.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

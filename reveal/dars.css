@@ -1,0 +1,371 @@
+/* Dars slaydlari va sayt uchun umumiy dizayn.
+   Asosiy mavzu: VS Code Dark+ (qorong'i). Yorug' mavzu: <html data-theme="light"> (tema.js tugmasi bilan almashadi). */
+:root {
+  /* VS Code "Dark+" ranglari */
+  --bg: #1e1e1e;
+  --bg2: #252526;
+  --card: rgba(255, 255, 255, 0.035);
+  --card-hi: rgba(255, 255, 255, 0.065);
+  --line: #3c3c3c;
+  --text: #d4d4d4;
+  --head: #ffffff;
+  --muted: #b0b0b0;
+  --accent: #58a6ff;      /* keyword ko'k */
+  --accent-soft: rgba(88, 166, 255, 0.15);
+  --accent2: #ce9178;     /* string to'q sariq */
+  --accent2-soft: rgba(206, 145, 120, 0.15);
+  --teal: #4ec9b0;        /* type feruza */
+  --teal-soft: rgba(78, 201, 176, 0.15);
+  --purple: #c586c0;
+  --good: #89d185;
+  --warn: #dcdcaa;
+  --bad: #f48771;
+  --grad: linear-gradient(135deg, #4fc1ff, #c586c0);
+  --btn: #0e639c;
+  --glow1: rgba(55, 148, 255, 0.08);
+  --glow2: rgba(197, 134, 192, 0.05);
+  --code-bg: #181818;
+  --code-fg: #d4d4d4;
+  --tk-kw: #58a6ff; --tk-str: #ce9178; --tk-num: #b5cea8; --tk-com: #85c46e; --tk-tag: #58a6ff;
+  --tk-attr: #9cdcfe; --tk-fn: #dcdcaa; --tk-type: #4ec9b0; --tk-ctl: #c586c0; --tk-punct: #b0b0b0;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+
+  /* Reveal.js o'zgaruvchilarini ham boshqarish */
+  --r-background: #1e1e1e;
+  --r-background-color: #1e1e1e;
+  --r-main-color: #d4d4d4;
+  --r-heading-color: #ffffff;
+  --r-link-color: #58a6ff;
+}
+:root[data-theme="light"], body[data-theme="light"] {
+  /* VS Code "Light+" ranglari */
+  --bg: #ffffff;
+  --bg2: #f3f3f3;
+  --card: rgba(0, 0, 0, 0.025);
+  --card-hi: rgba(0, 0, 0, 0.045);
+  --line: #d4d4d4;
+  --text: #333333;
+  --head: #1f1f1f;
+  --muted: #6e6e6e;
+  --accent: #0066b8;
+  --accent-soft: rgba(0, 102, 184, 0.10);
+  --accent2: #a31515;
+  --accent2-soft: rgba(163, 21, 21, 0.08);
+  --teal: #267f99;
+  --teal-soft: rgba(38, 127, 153, 0.10);
+  --purple: #af00db;
+  --good: #2e7d32;
+  --warn: #795e26;
+  --bad: #cd3131;
+  --grad: linear-gradient(135deg, #0066b8, #af00db);
+  --btn: #007acc;
+  --glow1: rgba(0, 102, 184, 0.05);
+  --glow2: rgba(175, 0, 219, 0.03);
+  --code-bg: #f5f5f5;
+  --code-fg: #333333;
+  --tk-kw: #0000ff; --tk-str: #a31515; --tk-num: #098658; --tk-com: #008000; --tk-tag: #800000;
+  --tk-attr: #e50000; --tk-fn: #795e26; --tk-type: #267f99; --tk-ctl: #af00db; --tk-punct: #6e6e6e;
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+
+  /* Reveal.js o'zgaruvchilarini ham boshqarish */
+  --r-background: #ffffff;
+  --r-background-color: #ffffff;
+  --r-main-color: #333333;
+  --r-heading-color: #1f1f1f;
+  --r-link-color: #0066b8;
+}
+
+/* ===== Reveal asosi ===== */
+.reveal-viewport {
+  background-color: var(--bg);
+  background:
+    radial-gradient(900px 600px at 0% 0%, var(--glow1), transparent 60%),
+    radial-gradient(900px 600px at 100% 100%, var(--glow2), transparent 60%),
+    var(--bg);
+}
+.reveal { font-size: 28px; color: var(--text); }
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 { text-transform: none; letter-spacing: -0.01em; color: var(--head); }
+.reveal h1 { font-size: 2.1em; }
+.reveal h2 { font-size: 1.5em; margin-bottom: 0.5em; }
+.reveal h2::after { content: ""; display: block; width: 90px; height: 5px; margin-top: 12px; border-radius: 3px; background: var(--grad); }
+.reveal section { text-align: left; }
+.reveal p, .reveal li { line-height: 1.35; }
+.reveal ul, .reveal ol { margin-left: 0.8em; }
+.reveal li { margin: 0.3em 0; }
+.reveal li::marker { color: var(--accent); }
+.reveal strong { color: var(--accent); }
+.reveal em { color: var(--teal); font-style: normal; font-weight: 600; }
+.reveal code { color: var(--warn); }
+.reveal a { color: var(--accent); }
+.reveal .small { font-size: 0.65em; color: var(--muted); }
+.reveal .muted { color: var(--muted); }
+.reveal .center { text-align: center; }
+.reveal .mt { margin-top: 0.8em; }
+.reveal .progress { color: var(--accent); }
+.reveal .controls { color: var(--accent); }
+
+/* ===== Ikonkalar: oddiy chiziqli, fonsiz (Lucide, ikon_yigish.py) ===== */
+svg.ic { width: 1.05em; height: 1.05em; vertical-align: -0.16em; margin-right: 0.3em; stroke: currentColor; flex: none; }
+.reveal .icon, .reveal .big-icon { color: var(--accent); }
+.card .icon, .flow .step .icon { display: inline-flex; font-size: 1.9em; line-height: 1; margin-bottom: 6px; background: none; box-shadow: none; }
+.card .icon svg.ic, .flow .step .icon svg.ic { width: 1em; height: 1em; margin: 0; vertical-align: 0; stroke-width: 1.7; }
+.big-icon { display: inline-flex; font-size: 3.2em; line-height: 1; margin-bottom: 0.15em; }
+.big-icon svg.ic { width: 1em; height: 1em; margin: 0; stroke-width: 1.5; }
+.callout svg.ic { color: var(--accent); }
+.callout.tip svg.ic { color: var(--good); }
+.callout.warn svg.ic { color: var(--warn); }
+.callout.bad svg.ic { color: var(--bad); }
+
+/* ===== Logo va tema tugmasi ===== */
+.slide-logo { position: absolute; top: 20px; right: 26px; height: 44px; opacity: 0.95; z-index: 30; pointer-events: none; }
+.reveal .logo-big { height: 150px; margin-bottom: 0.3em; }
+.theme-toggle {
+  position: fixed; top: 16px; left: 22px; z-index: 100; width: 40px; height: 40px; border-radius: 12px;
+  display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
+  background: var(--card-hi); border: 1px solid var(--line); color: var(--accent);
+}
+.theme-toggle:hover { border-color: var(--accent); }
+.theme-toggle svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.theme-toggle .moon { display: none; }
+.theme-toggle .sun { display: block; }
+:root[data-theme="light"] .theme-toggle .sun { display: none; }
+:root[data-theme="light"] .theme-toggle .moon { display: block; }
+.theme-toggle.in-page { position: static; }
+
+/* ===== Sarlavha va bo'lim slaydlari ===== */
+.reveal section.hero { text-align: center; }
+.reveal .hero h1 { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: var(--accent); -webkit-text-fill-color: transparent; font-size: 2.3em; }
+.badge { display: inline-block; padding: 0.15em 0.7em; border-radius: 999px; font-size: 0.55em; background: var(--card-hi); border: 1px solid var(--line); color: var(--text); margin: 0.2em; }
+.reveal section.sec { text-align: left; }
+.reveal .sec .num { font-size: 7em; line-height: 0.9; font-weight: 800; color: var(--accent); -webkit-text-fill-color: transparent; -webkit-text-stroke: 3px var(--accent); opacity: 0.9; }
+.reveal .sec h1 { font-size: 2em; margin-top: 0.1em; }
+.reveal .sec p { color: var(--muted); font-size: 0.8em; }
+
+/* ===== Kartalar ===== */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; margin-top: 0.6em; }
+.cards.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cards.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.cards.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.card { background: linear-gradient(180deg, var(--card-hi), var(--card)); border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px; box-shadow: var(--shadow); color: var(--text); }
+.card h3 { font-size: 0.85em; margin: 0 0 6px; color: var(--accent); }
+.card p { font-size: 0.62em; margin: 0; color: var(--text); }
+.card li { font-size: 0.62em; color: var(--text); }
+.card.accent { border-color: var(--accent); background: var(--accent-soft); }
+.card.accent2 { border-color: var(--accent2); background: var(--accent2-soft); }
+.card.teal { border-color: var(--teal); background: var(--teal-soft); }
+
+/* ===== Statistika (katta raqam) ===== */
+.stats { display: flex; gap: 22px; margin-top: 0.8em; }
+.stat { flex: 1; text-align: center; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px 10px; }
+.stat .v { font-size: 2.3em; font-weight: 800; line-height: 1; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: var(--accent); -webkit-text-fill-color: transparent; }
+.stat .l { font-size: 0.55em; color: var(--muted); margin-top: 6px; }
+
+/* ===== Ketma-ketlik (flow), vaqt chizig'i, raqamli qadamlar ===== */
+.flow { display: flex; align-items: stretch; justify-content: center; gap: 10px; margin-top: 0.8em; }
+.flow .step { flex: 1; text-align: center; background: linear-gradient(180deg, var(--card-hi), var(--card)); border: 1px solid var(--line); border-radius: 16px; padding: 16px 8px; font-size: 0.6em; }
+.flow .step .icon { display: flex; justify-content: center; font-size: 2em; margin: 0 auto 6px; }
+.flow .arrow { align-self: center; color: var(--accent); display: flex; }
+.flow .arrow svg.ic { width: 1.4em; height: 1.4em; margin: 0; }
+.timeline { position: relative; margin: 0.6em 0 0 14px; padding-left: 30px; border-left: 3px solid var(--line); }
+.timeline .tl { position: relative; margin: 0 0 16px; font-size: 0.78em; }
+.timeline .tl::before { content: ""; position: absolute; left: -41px; top: 0.35em; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px var(--accent-soft); }
+.timeline .tl b { color: var(--accent); }
+.steps-n { counter-reset: n; list-style: none; margin: 0.6em 0 0 !important; padding: 0; }
+.steps-n li { counter-increment: n; display: flex; gap: 16px; align-items: center; margin: 0.45em 0; font-size: 0.8em; }
+.steps-n li::before { content: counter(n); flex: none; width: 1.7em; height: 1.7em; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: var(--btn); color: #fff; font-weight: 800; }
+
+/* ===== Taqqoslash (vs), iqtibos, chip ===== */
+.vs { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 18px; align-items: stretch; margin-top: 0.6em; }
+.vs .side { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 16px 20px; font-size: 0.72em; color: var(--text); }
+.vs .side h3 { margin: 0 0 6px; font-size: 1.05em; color: var(--accent); }
+.vs .side.b h3 { color: var(--teal); }
+.vs .side p, .vs .side li { color: var(--text); }
+.vs .mid { align-self: center; font-weight: 800; color: var(--muted); font-size: 0.9em; }
+.quote { border-left: 6px solid var(--accent); padding: 0.3em 0 0.3em 1em; font-size: 1.05em; font-style: italic; color: var(--head); }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 0.6em; }
+.chip { display: inline-flex; align-items: center; background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 0.1em 0.8em; font-size: 0.6em; font-weight: 600; }
+.chip.t { background: var(--teal-soft); color: var(--teal); border-color: var(--teal); }
+
+/* ===== Ikki ustun, izoh bloklari ===== */
+.cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; align-items: center; }
+.callout { border-left: 6px solid var(--accent); background: var(--accent-soft); padding: 0.5em 0.9em; border-radius: 0 12px 12px 0; font-size: 0.72em; margin-top: 0.7em; color: var(--text); }
+.callout.tip { border-color: var(--good); background: rgba(139, 209, 124, 0.12); }
+.callout.warn { border-color: var(--warn); background: rgba(242, 193, 78, 0.12); }
+.callout.bad { border-color: var(--bad); background: rgba(239, 123, 106, 0.12); }
+
+/* ===== Terminal, telefon ekrani va rang palitrasi maketlari (DevOps / UX-UI darslari uchun) ===== */
+.terminal { border: 1px solid var(--line); border-radius: 12px; background: #0c0c0c; color: #cccccc; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.6em; box-shadow: var(--shadow); max-width: 100%; text-align: left; }
+.terminal .bar { background: #2d2d2d; color: #aaaaaa; padding: 6px 14px; border-radius: 12px 12px 0 0; font-size: 0.9em; }
+.terminal pre, .terminal .lines { margin: 0; padding: 12px 16px; white-space: pre-wrap; background: transparent; box-shadow: none; border: 0; font-size: 1em; color: inherit; width: auto; }
+.terminal .p { color: #4ec9b0; } .terminal .c { color: #dcdcaa; } .terminal .o { color: #9cdcfe; } .terminal .e { color: #f48771; } .terminal .ok { color: #89d185; }
+.phone { width: 230px; border: 6px solid var(--line); border-radius: 30px; background: var(--card-hi); padding: 18px 12px; margin: 0 auto; box-shadow: var(--shadow); font-size: 0.55em; text-align: center; }
+.phone .scr-bar { height: 6px; width: 40%; background: var(--line); border-radius: 4px; margin: 0 auto 12px; }
+.phone .scr-btn { display: block; background: var(--btn); color: #fff; border-radius: 10px; padding: 8px; margin-top: 10px; }
+.swatches { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 0.6em; }
+.swatches .sw { flex: 1; min-width: 90px; border-radius: 14px; padding: 36px 8px 8px; font-size: 0.5em; color: #fff; text-align: center; border: 1px solid var(--line); }
+
+/* ===== Kod, brauzer maketi, jadval ===== */
+.reveal pre { width: 100%; font-size: 0.75em; border-radius: 14px; box-shadow: var(--shadow); border: 1px solid var(--line); background: var(--code-bg); }
+.reveal pre code, .reveal pre code.hljs { max-height: 480px; padding: 16px 20px; background: transparent; color: var(--code-fg); }
+.browser { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: #fff; color: #1f1f1f; font-size: 0.6em; box-shadow: var(--shadow); max-width: 100%; }
+.browser .bar { background: #e6e6e6; padding: 8px 14px; display: flex; gap: 8px; align-items: center; }
+.browser .bar i { width: 11px; height: 11px; border-radius: 50%; background: #ef7b6a; display: inline-block; }
+.browser .bar i:nth-child(2) { background: #f2c14e; }
+.browser .bar i:nth-child(3) { background: #8bd17c; }
+.browser .bar span { background: #fff; border-radius: 8px; padding: 2px 12px; margin-left: 10px; flex: 1; color: #616161; }
+.browser .page { padding: 16px 20px; }
+.browser .page, .browser .page * { color: #1f1f1f; }
+.browser .page h1, .browser .page h2, .browser .page h3, .browser .page h4, .browser .page p { color: #1f1f1f; }
+.browser .page .t-head, .browser .page .t-muted, .browser .page .t-accent { color: #1f1f1f !important; fill: #1f1f1f !important; }
+.browser .page button, .browser .page .btn { color: #ffffff !important; }
+.reveal table { font-size: 0.6em; border-collapse: collapse; margin-top: 0.6em; }
+.reveal table th { color: var(--accent); border-bottom: 2px solid var(--line); text-align: left; padding: 8px 14px; }
+.reveal table td { border-bottom: 1px solid var(--line); padding: 8px 14px; }
+
+/* ===== Topshiriq slaydi ===== */
+.task { border: 2px dashed var(--accent2); border-radius: 18px; padding: 14px 22px; margin-top: 0.5em; background: var(--accent2-soft); }
+.task .level { display: inline-block; font-size: 0.55em; padding: 0.1em 0.7em; border-radius: 999px; margin-right: 8px; font-weight: 700; color: #1e1e1e; }
+.level.easy { background: var(--good); }
+.level.mid { background: var(--warn); }
+.level.hard { background: var(--bad); }
+.timer { font-size: 0.6em; color: var(--muted); font-weight: 400; }
+
+/* ===== Illyustratsiya va SVG sinflari (rang almashganda ham mos tushadi) ===== */
+.illus { display: flex; justify-content: center; margin-top: 0.4em; }
+.illus svg { width: 100%; max-height: 520px; }
+.reveal svg text { fill: var(--text); font-family: inherit; }
+svg .t-muted { fill: var(--muted); }
+svg .t-accent { fill: var(--accent); font-weight: 700; }
+svg .t-head { fill: var(--head); font-weight: 700; }
+svg .fa  { fill: var(--accent-soft);  stroke: var(--accent);  stroke-width: 2.5; }
+svg .fb  { fill: var(--accent2-soft); stroke: var(--accent2); stroke-width: 2.5; }
+svg .fc  { fill: var(--teal-soft);    stroke: var(--teal);    stroke-width: 2.5; }
+svg .fg  { fill: rgba(139, 209, 124, 0.14); stroke: var(--good); stroke-width: 2.5; }
+svg .fn  { fill: var(--card-hi); stroke: var(--line); stroke-width: 2; }
+svg .la  { stroke: var(--accent);  stroke-width: 3; fill: none; }
+svg .lb  { stroke: var(--accent2); stroke-width: 3; fill: none; }
+svg .lc  { stroke: var(--teal);    stroke-width: 3; fill: none; }
+svg .lg  { stroke: var(--good);    stroke-width: 3; fill: none; }
+svg .ln  { stroke: var(--muted);   stroke-width: 2; fill: none; }
+svg .ar-a { fill: var(--accent); } svg .ar-b { fill: var(--accent2); } svg .ar-c { fill: var(--teal); } svg .ar-g { fill: var(--good); }
+svg .ic-s { stroke: var(--accent); fill: none; stroke-linecap: round; stroke-linejoin: round; }
+@keyframes dash-flow { to { stroke-dashoffset: -24; } }
+svg .flowing { stroke-dasharray: 8 8; animation: dash-flow 1.2s linear infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+svg .pulse { animation: pulse 1.6s ease-in-out infinite; }
+
+/* ===== Kod sintaksisi: VS Code ranglari (highlight.js sinflari) ===== */
+.reveal .hljs-tag { color: var(--tk-punct); }
+.reveal .hljs-name, .reveal .hljs-keyword, .reveal .hljs-selector-tag, .reveal .hljs-literal, .reveal .hljs-doctag { color: var(--tk-kw); }
+.reveal .hljs-attr, .reveal .hljs-attribute, .reveal .hljs-variable, .reveal .hljs-property, .reveal .hljs-params { color: var(--tk-attr); }
+.reveal .hljs-string, .reveal .hljs-regexp, .reveal .hljs-meta .hljs-string { color: var(--tk-str); }
+.reveal .hljs-number, .reveal .hljs-symbol, .reveal .hljs-bullet { color: var(--tk-num); }
+.reveal .hljs-comment, .reveal .hljs-quote { color: var(--tk-com); font-style: normal; }
+.reveal .hljs-title, .reveal .hljs-function .hljs-title, .reveal .hljs-section { color: var(--tk-fn); }
+.reveal .hljs-built_in, .reveal .hljs-type, .reveal .hljs-class .hljs-title, .reveal .hljs-selector-class, .reveal .hljs-selector-id { color: var(--tk-type); }
+.reveal .hljs-meta, .reveal .hljs-meta .hljs-keyword { color: var(--tk-kw); }
+.reveal .hljs-subst, .reveal .hljs-punctuation { color: var(--code-fg); }
+
+/* Telefonda sxemani surish haqida eslatma (tema.js qo'shadi) */
+.illus-hint { display: none; text-align: center; color: var(--muted); font-size: 0.5em; margin-top: 4px; }
+
+/* ===== Telefon va tor ekranlar (vertikal): slayd mantiqiy 760 px kenglikda, bloklar ustun bo'lib joylashadi ===== */
+@media (max-aspect-ratio: 1/1) {
+  .reveal h1 { font-size: 1.7em; }
+  .reveal h2 { font-size: 1.35em; }
+  .reveal .hero h1 { font-size: 1.9em; }
+  .reveal .logo-big { height: 110px; }
+  .reveal .sec .num { font-size: 4.6em; }
+  .slide-logo { height: 32px; top: 12px; right: 14px; }
+  .theme-toggle { top: 8px; left: 12px; width: 34px; height: 34px; }
+  .cards, .cards.two, .cards.three, .cards.four { grid-template-columns: 1fr; gap: 12px; }
+  .stats { flex-direction: column; gap: 12px; }
+  .vs { grid-template-columns: 1fr; gap: 10px; }
+  .vs .mid { text-align: center; }
+  .cols { grid-template-columns: 1fr; gap: 16px; }
+  .flow { flex-direction: column; gap: 6px; }
+  .flow .arrow { transform: rotate(90deg); justify-content: center; }
+  .reveal pre { font-size: 0.6em; }
+  .reveal pre code { max-height: 560px; padding: 12px 14px; }
+  .reveal table { font-size: 0.55em; }
+  .reveal table th, .reveal table td { padding: 6px 8px; }
+  .illus { overflow-x: auto; justify-content: flex-start; -webkit-overflow-scrolling: touch; }
+  .illus svg { min-width: 1150px; }
+  .timeline .tl { font-size: 0.72em; }
+  .task { padding: 10px 14px; }
+  .reveal li, .reveal p { line-height: 1.3; }
+}
+
+/* ===== Mustahkamlik: katta rasm/kod/jadval kartadan chiqib ketmasin; matn juda kichik bo'lmasin ===== */
+.reveal section img { max-width: 100%; max-height: 520px; }
+.reveal section.hero img.logo-big { max-height: 160px; }
+.card pre, .side pre, .vs pre { white-space: pre-wrap; word-break: break-word; font-size: 0.7em; }
+.reveal pre { overflow: auto; }
+.reveal table { font-size: max(0.62em, 16px); }
+.reveal .small, .card p, .vs .side { font-size: max(0.62em, 16px); }
+
+/* ===== Animatsiyali ikonkalar: <i data-ic="rocket" data-anim="float"></i> =====
+   data-anim: float | pulse | spin | bounce | wiggle | blink | draw (kontur chiziladi, slayd ochilganda) */
+@keyframes ax-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-0.18em); } }
+@keyframes ax-pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.14); opacity: 0.8; } }
+@keyframes ax-spin { to { transform: rotate(360deg); } }
+@keyframes ax-bounce { 0%, 100% { transform: translateY(0); } 30% { transform: translateY(-0.28em); } 55% { transform: translateY(0); } 70% { transform: translateY(-0.1em); } }
+@keyframes ax-wiggle { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-12deg); } 75% { transform: rotate(12deg); } }
+@keyframes ax-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+@keyframes ax-draw { to { stroke-dashoffset: 0; } }
+svg.ic.anim-float { animation: ax-float 3s ease-in-out infinite; }
+svg.ic.anim-pulse { animation: ax-pulse 1.8s ease-in-out infinite; }
+svg.ic.anim-spin { animation: ax-spin 6s linear infinite; }
+svg.ic.anim-bounce { animation: ax-bounce 2.2s ease-in-out infinite; }
+svg.ic.anim-wiggle { animation: ax-wiggle 2.4s ease-in-out infinite; transform-origin: 50% 50%; }
+svg.ic.anim-blink { animation: ax-blink 1.6s ease-in-out infinite; }
+svg.ic.anim-draw * { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.present svg.ic.anim-draw * { animation: ax-draw 1.6s ease forwards; }
+.icon:hover svg.ic, .step:hover svg.ic { animation: ax-wiggle 0.6s ease 1; }
+@media (prefers-reduced-motion: reduce) { svg.ic, svg.ic * { animation: none !important; stroke-dashoffset: 0 !important; } }
+
+/* ===== Interaktiv bloklar (reveal/interaktiv.js) ===== */
+.flip { perspective: 900px; cursor: pointer; min-height: 5em; outline: none; }
+.flip .flip-in { position: relative; height: 100%; min-height: inherit; transition: transform 0.6s; transform-style: preserve-3d; }
+.flip.flipped .flip-in { transform: rotateY(180deg); }
+.flip .face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 14px 16px; border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(180deg, var(--card-hi), var(--card)); box-shadow: var(--shadow); font-size: 0.8em; }
+.flip .face.front { z-index: 1; }
+.flip .face.back { transform: rotateY(180deg); border-color: var(--accent); background: var(--accent-soft); }
+.flip:focus-visible .face { outline: 2px solid var(--accent); }
+.flip-hint, .hint { color: var(--muted); font-size: 0.6em; margin-top: 0.6em; }
+
+.quiz { margin-top: 0.6em; }
+.quiz .q { font-size: 0.85em; font-weight: 600; color: var(--head); margin: 0 0 0.5em; }
+.quiz .opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.quiz .opt { font: inherit; font-size: 0.68em; text-align: left; color: var(--text); background: var(--card); border: 2px solid var(--line); border-radius: 14px; padding: 0.7em 1em; cursor: pointer; transition: 0.15s; }
+.quiz .opt:hover { border-color: var(--accent); background: var(--accent-soft); }
+.quiz.done .opt { cursor: default; pointer-events: none; opacity: 0.6; }
+.quiz .opt.good { opacity: 1; border-color: var(--good); background: rgba(139, 209, 124, 0.16); }
+.quiz .opt.bad { opacity: 1; border-color: var(--bad); background: rgba(239, 123, 106, 0.16); }
+.quiz .explain { display: none; margin-top: 0.7em; font-size: 0.62em; padding: 0.6em 0.9em; border-left: 5px solid var(--good); background: rgba(139, 209, 124, 0.12); border-radius: 0 12px 12px 0; }
+.quiz .explain.show { display: block; }
+
+.stepper { margin-top: 0.5em; }
+.stepper .stp { display: none; }
+.stepper .stp.on { display: block; animation: ax-in 0.35s ease; }
+@keyframes ax-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.stepper .stp-nav { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 0.8em; }
+.stepper .sp-dots { display: inline-flex; gap: 8px; }
+.stepper .sp-dots i { width: 12px; height: 12px; border-radius: 50%; background: var(--line); transition: 0.2s; }
+.stepper .sp-dots i.on { background: var(--accent); transform: scale(1.25); }
+.btn-s { font: inherit; font-size: 0.6em; font-weight: 700; color: #fff; background: var(--btn); border: 0; border-radius: 10px; padding: 0.55em 1.1em; cursor: pointer; }
+.btn-s:hover { filter: brightness(1.15); }
+.btn-s[disabled] { opacity: 0.35; cursor: default; }
+
+.swap .swap-tabs { display: inline-flex; gap: 6px; padding: 4px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 0.7em; }
+.swap .swap-tabs button { font: inherit; font-size: 0.6em; font-weight: 700; color: var(--muted); background: transparent; border: 0; border-radius: 9px; padding: 0.45em 1.1em; cursor: pointer; }
+.swap .swap-tabs button.on { background: var(--accent-soft); color: var(--accent); }
+.swap .swap-p { display: none; }
+.swap .swap-p.on { display: block; animation: ax-in 0.35s ease; }
+
+svg .hot, .hot { cursor: pointer; outline: none; }
+svg .hot:hover > *, svg .hot:focus > *, svg .hot.on > * { filter: brightness(1.25); }
+.tipbox { position: absolute; z-index: 40; max-width: 360px; padding: 0.6em 0.9em; font-size: 0.55em; line-height: 1.35; color: var(--text); background: var(--bg2); border: 1px solid var(--accent); border-radius: 12px; box-shadow: var(--shadow); pointer-events: none; opacity: 0; transition: opacity 0.15s; }
+.tipbox.show { opacity: 1; }
+.count { font-variant-numeric: tabular-nums; }
+@media (max-aspect-ratio: 1/1) { .quiz .opts { grid-template-columns: 1fr; } }

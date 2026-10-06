@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Fayl ruxsatlari va matn muharrirlari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 2-dars. Fayl ruxsatlari tizimi va matn tahrirlash vositalari (Nano, Vim) -->
+
+<!-- 1. SARLAVHA -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Fayl ruxsatlari va matn muharrirlari</h1>
+  <p class="muted">Linux xavfsizlik modeli (chmod, chown) va server muharrirlari (Nano, Vim)</p>
+  <span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">1-hafta · 2-dars</span>
+</section>
+
+<!-- 2. MAQSADLAR KARTALARI -->
+<section>
+  <h2>Bugungi dars maqsadlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check" data-anim="float"></i></div>
+      <h3>Ruxsatlar tizimi</h3>
+      <p>User, Group, Others toifalari va rwx bitlari ma'nosi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu" data-anim="pulse"></i></div>
+      <h3>Oktal hisoblash</h3>
+      <p>4, 2, 1 qoidasi: 755, 644, 600 qiymatlarini belgilash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="file-code" data-anim="spin"></i></div>
+      <h3>Server muharrirlari</h3>
+      <p>Nano soddaligi va Vim professional rejimlari.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 3. STATISTIKA: XAVFSIZLIK VA XATOLAR -->
+<section>
+  <h2>Nega ruxsatlar muhim?</h2>
+  <div class="stats">
+    <div class="stat fragment"><div class="v"><span class="count" data-to="70" data-suf="%">0</span></div><div class="l">server buzilishlari xato ruxsatlar tufayli</div></div>
+    <div class="stat fragment"><div class="v">777</div><div class="l">eng xavfli ruxsat (taqiqlangan)</div></div>
+    <div class="stat fragment"><div class="v">600</div><div class="l">SSH maxfiy kalitlari standarti</div></div>
+  </div>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i>«Least Privilege» qoidasi: faylga faqat unga zarur bo'lgan minimal huquqni bering.</div>
+</section>
+
+<!-- 4. BO'LIM 01: RUXSATLAR ANATOMIYASI -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Ruxsatlar tuzilishi</h1>
+  <p>ls -l qatori va uning 10 ta sirli belgisi</p>
+</section>
+
+<!-- 5. SVG ILLYUSTRATSIYA 1: RUXSATLAR ANATOMIYASI -->
+<section>
+  <h2>Ruxsatlar qatori anatomiyasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <g data-tip="1-belgi: Obyekt turi (- fayl, d katalog, l havola)"><rect class="fn" x="40" y="80" width="80" height="90" rx="12"/><text class="t-head" x="80" y="135" text-anchor="middle" font-size="32">-</text><text class="t-muted" x="80" y="210" text-anchor="middle" font-size="16">Fayl turi</text></g>
+      
+      <g data-tip="2-4 belgilar: User (fayl egasining huquqlari)"><rect class="fa" x="140" y="80" width="260" height="90" rx="12"/><text class="t-head" x="270" y="135" text-anchor="middle" font-size="32">r w x</text><text class="t-accent" x="270" y="210" text-anchor="middle" font-size="18">User (Egasi)</text></g>
+
+      <g data-tip="5-7 belgilar: Group (guruh a'zolari huquqlari)"><rect class="fb" x="420" y="80" width="260" height="90" rx="12"/><text class="t-head" x="550" y="135" text-anchor="middle" font-size="32">r - x</text><text class="t-accent" x="550" y="210" text-anchor="middle" font-size="18">Group (Guruh)</text></g>
+
+      <g data-tip="8-10 belgilar: Others (qolgan barcha begona foydalanuvchilar)"><rect class="fc" x="700" y="80" width="260" height="90" rx="12"/><text class="t-head" x="830" y="135" text-anchor="middle" font-size="32">r - -</text><text class="t-accent" x="830" y="210" text-anchor="middle" font-size="18">Others (Boshqalar)</text></g>
+    </svg>
+  </div>
+  <p class="small">Har bir blok ustiga bosib yoki olib borib uning vazifasini o'rganing.</p>
+  
+</section>
+
+<!-- 6. BO'LIM 02: OKTAL HISOBLASH -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Raqamli (Oktal) usul</h1>
+  <p>4, 2, 1 qoidasi va matematik hisob-kitob</p>
+</section>
+
+<!-- 7. SVG ILLYUSTRATSIYA 2: OKTAL HISOBLASH -->
+<section>
+  <h2>Oktal hisoblash formulasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <rect class="fa" x="80" y="70" width="240" height="150" rx="16"/>
+      <text class="t-head" x="200" y="120" text-anchor="middle" font-size="28">Read (r)</text>
+      <text class="t-accent" x="200" y="170" text-anchor="middle" font-size="36">4</text>
+      <text class="t-muted" x="200" y="200" text-anchor="middle" font-size="16">O'qish huquqi</text>
+
+      <rect class="fb" x="380" y="70" width="240" height="150" rx="16"/>
+      <text class="t-head" x="500" y="120" text-anchor="middle" font-size="28">Write (w)</text>
+      <text class="t-accent" x="500" y="170" text-anchor="middle" font-size="36">2</text>
+      <text class="t-muted" x="500" y="200" text-anchor="middle" font-size="16">Yozish / O'chirish</text>
+
+      <rect class="fc" x="680" y="70" width="240" height="150" rx="16"/>
+      <text class="t-head" x="800" y="120" text-anchor="middle" font-size="28">Execute (x)</text>
+      <text class="t-accent" x="800" y="170" text-anchor="middle" font-size="36">1</text>
+      <text class="t-muted" x="800" y="200" text-anchor="middle" font-size="16">Ishga tushirish</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 8. AYLANADIGAN KARTALAR: STANDART QIYMATLAR -->
+<section>
+  <h2>Eng ko'p ishlatiladigan qiymatlar</h2>
+  <div class="cards three">
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="file-code"></i></div><h3>755</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Egasi: rwx (7), Guruh: r-x (5), Boshqalar: r-x (5). Dasturlar va skriptlar standarti.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="file-text"></i></div><h3>644</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Egasi: rw- (6), Guruh: r-- (4), Boshqalar: r-- (4). Konfiguratsiya va statik fayllar.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="shield"></i></div><h3>600</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Faqat egasi: rw- (6). Boshqa hech kimga ruxsat yo'q. SSH kalitlari va parollar.</p></div>
+    </div></div>
+  </div>
+</section>
+
+<!-- 9. KOD: CHMOD VA CHOWN AMALIYOTI -->
+<section>
+  <h2>chmod va chown buyruqlari</h2>
+  <pre><code class="language-bash" data-trim data-noescape data-line-numbers="1-6|1-2|4-5">
+# Skriptga bajarish huquqini berish (755)
+chmod 755 deploy.sh
+
+# Maxfiy kalitni faqat egasiga qulflash (600)
+chmod 600 ~/.ssh/id_rsa
+
+# Fayl egasi va guruhini o'zgartirish
+sudo chown www-data:www-data /var/www/html -R
+  </code></pre>
+  <div class="callout tip"><i data-ic="circle-check"></i><code>-R</code> bayrog'i papka va uning barcha ichki fayllarini rekursiv o'zgartiradi.</div>
+</section>
+
+<!-- 10. BO'LIM 03: SERVER MATN MUHARRIRLARI -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Server matn muharrirlari</h1>
+  <p>Grafiksiz muhitda fayllarni qulay tahrirlash: Nano va Vim</p>
+</section>
+
+<!-- 11. TAQQOSLASH (SWAP): NANO vs VIM -->
+<section>
+  <h2>Nano va Vim taqqosi</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">Nano</button><button type="button">Vim</button></div>
+    <div class="swap-p">
+      <div class="card">
+        <h3>Nano muharriri</h3>
+        <p>Boshlang'ich daraja uchun sodda va tushunarli.</p>
+        <p>Pastda yordamchi buyruqlar doim ko'rinadi (Ctrl+O, Ctrl+X).</p>
+        <p>Tezkor kichik tahrirlar uchun qulay.</p>
+      </div>
+    </div>
+    <div class="swap-p">
+      <div class="card accent">
+        <h3>Vim muharriri</h3>
+        <p>Professional server muhandislarining asosiy tanlovi.</p>
+        <p>Modal tizim: Normal, Insert va Command rejimlari.</p>
+        <p>Tezkor, kuchli va skriptlar bilan avtomatlashadi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. SVG ILLYUSTRATSIYA 3: VIM REJIMLARI -->
+<section>
+  <h2>Vim'ning 3 ta asosiy rejimi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <g data-tip="Normal mode: kursor harakati, qator o'chirish (dd), nusxalash (yy)"><rect class="fa" x="370" y="30" width="260" height="90" rx="14"/><text class="t-head" x="500" y="75" text-anchor="middle" font-size="24">Normal Mode</text><text class="t-muted" x="500" y="102" text-anchor="middle" font-size="15">Standart ochilish rejimi</text></g>
+      
+      <line class="la flowing" x1="420" y1="125" x2="220" y2="210"/><polygon class="ar-a" points="215,212 225,202 232,216"/>
+      <text class="t-accent" x="280" y="160" font-size="16">i / a</text>
+      
+      <line class="lc flowing" x1="260" y1="210" x2="440" y2="125"/><polygon class="ar-c" points="445,123 435,133 428,119"/>
+      <text class="t-muted" x="380" y="180" font-size="16">Esc</text>
+
+      <g data-tip="Insert mode: bevosita yangi matn kiritish"><rect class="fb" x="80" y="210" width="260" height="90" rx="14"/><text class="t-head" x="210" y="255" text-anchor="middle" font-size="24">Insert Mode</text><text class="t-muted" x="210" y="282" text-anchor="middle" font-size="15">Matn yozish (-- INSERT --)</text></g>
+
+      <line class="la flowing" x1="580" y1="125" x2="760" y2="210"/><polygon class="ar-a" points="765,212 755,202 748,216"/>
+      <text class="t-accent" x="700" y="160" font-size="16">:</text>
+
+      <line class="lc flowing" x1="740" y1="210" x2="560" y2="125"/><polygon class="ar-c" points="555,123 565,133 572,119"/>
+      <text class="t-muted" x="620" y="180" font-size="16">Enter / Esc</text>
+
+      <g data-tip="Command mode: :wq saqlash, :q! bekor qilish"><rect class="fc" x="660" y="210" width="260" height="90" rx="14"/><text class="t-head" x="790" y="255" text-anchor="middle" font-size="24">Command Mode</text><text class="t-muted" x="790" y="282" text-anchor="middle" font-size="15">:w, :q, :wq, :q!</text></g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 13. STEPPER: VIM'DA FAYL TAHRIRLASH BOSQICHLARI -->
+<section>
+  <h2>Vim'da ishlash algoritmi</h2>
+  <div class="stepper">
+    <div class="stp on">
+      <div class="card">
+        <div class="icon"><i data-ic="terminal" data-anim="float"></i></div>
+        <h3>1. Faylni ochish</h3>
+        <p><code>vim config.env</code> deb kirasiz. Siz Normal rejimdasiz.</p>
+      </div>
+    </div>
+    <div class="stp">
+      <div class="card">
+        <div class="icon"><i data-ic="file-pen" data-anim="pulse"></i></div>
+        <h3>2. Yozish rejimiga o'tish</h3>
+        <p><code>i</code> tugmasini bosing va kerakli matnni kiriting.</p>
+      </div>
+    </div>
+    <div class="stp">
+      <div class="card">
+        <div class="icon"><i data-ic="shield-check" data-anim="draw"></i></div>
+        <h3>3. Saqlab chiqish</h3>
+        <p><code>Esc</code> bosing, so'ng <code>:wq</code> yozib Enter bosing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14. SVG ILLYUSTRATSIYA 4: LEAST PRIVILEGE PIRAMIDASI -->
+<section>
+  <h2>Least Privilege: Xavfsizlik piramidasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+      <polygon class="fg" points="500,30 350,110 650,110"/>
+      <text class="t-head" x="500" y="80" text-anchor="middle" font-size="20">600 (Maxfiy kalitlar)</text>
+
+      <polygon class="fa" points="350,115 650,115 730,195 270,195"/>
+      <text class="t-head" x="500" y="160" text-anchor="middle" font-size="20">644 (Konfiguratsiyalar)</text>
+
+      <polygon class="fb" points="270,200 730,200 810,280 190,280"/>
+      <text class="t-head" x="500" y="245" text-anchor="middle" font-size="20">755 (Skriptlar va Dasturlar)</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 15. ODATIY XATO: 777 GA YO'L QO'YMASLIK -->
+<section>
+  <h2>Odatiy xato: chmod 777</h2>
+  <div class="callout bad">
+    <i data-ic="triangle-alert"></i>
+    <strong>Xato:</strong> «Ishlamayapti, 777 berib yuboraylik!»
+  </div>
+  <p class="mt">Bu server eshigini ochib qo'yish bilan teng. Natijada:</p>
+  <ul class="steps-n mt">
+    <li class="fragment">Har qanday dastur faylni buzishi mumkin.</li>
+    <li class="fragment">Buzg'unchi serverga troyan kiritishi mumkin.</li>
+    <li class="fragment">CI/CD pipeline xavfsizlik tekshiruvlaridan o'tmaydi.</li>
+  </ul>
+</section>
+
+<!-- 16. MINI TEST (QUIZ) -->
+<section>
+  <h2>Tezkor bilim sinovi</h2>
+  <div class="quiz">
+    <p class="q">Fayl egasi uchun to'liq (rwx), guruh va boshqalar uchun esa faqat o'qish va bajarish (r-x) huquqini qaysi oktal raqam beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">644</button>
+      <button class="opt" type="button">777</button>
+      <button class="opt" type="button" data-ok>755</button>
+      <button class="opt" type="button">700</button>
+    </div>
+    <div class="explain">To'g'ri: 4+2+1=7 (User), 4+1=5 (Group), 4+1=5 (Others). Jami: 755!</div>
+  </div>
+</section>
+
+<!-- 17. AMALIY TOPSHIRIQ -->
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span><code>touch run.sh</code> qiling va <code>chmod 755 run.sh</code> bering.</div>
+  <div class="task"><span class="level mid">O'rta</span><code>vim server.conf</code> ochib, ichiga <code>PORT=3000</code> yozing va <code>:wq</code> bilan saqlang.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Maxfiy faylga <code>chmod 600</code> bering va boshqa ruxsatlarni sinab ko'ring.</div>
+</section>
+
+<!-- 18. XULOSA -->
+<section>
+  <h2>Bugungi dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>O'rganilgan mavzular</h3>
+      <p>Linux ruxsatlar modeli (ugo/rwx), 4-2-1 oktal formulasi, chmod, chown hamda Vim muharriri rejimlari.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="book-open"></i></div>
+      <h3>Uyga vazifa</h3>
+      <p>Skriptlar katalogini yaratish, ularga 750 ruxsatini biriktirish va Vim'da konfiguratsiyalar yozish.</p>
+    </div>
+  </div>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

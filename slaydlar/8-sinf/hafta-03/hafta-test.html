@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>3-hafta testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>3-hafta testi</h1>
+  <p class="muted">20 ta savol &middot; taxminan 18 daqiqa</p>
+  <span class="badge">8-sinf</span><span class="badge">Web Full-stack</span><span class="badge">3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/20</h2>
+  <div class="quiz">
+    <p class="q">Mustaqil blok sifatida boshqa saytga ko'chirilganda ham ma'nosini yo'qotmaydigan mazmun qaysi tegga mos?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>&lt;article&gt;</code></button>
+      <button class="opt" type="button"><code>&lt;nav&gt;</code></button>
+      <button class="opt" type="button"><code>&lt;footer&gt;</code></button>
+      <button class="opt" type="button"><code>&lt;aside&gt;</code></button>
+    </div>
+    <div class="explain">Blog posti, yangilik, mahsulot kartochkasi, sharh — <code>article</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/20</h2>
+  <div class="quiz">
+    <p class="q"><code>&lt;main&gt;</code> qayerda joylashishi mumkin emas?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>&lt;body&gt;</code> ichida</button>
+      <button class="opt" type="button" data-ok><code>&lt;footer&gt;</code> ichida</button>
+      <button class="opt" type="button"><code>&lt;header&gt;</code> va <code>&lt;footer&gt;</code> orasida</button>
+      <button class="opt" type="button"><code>&lt;html&gt;</code> ichida, <code>&lt;body&gt;</code> ning bolasi sifatida</button>
+    </div>
+    <div class="explain"><code>main</code> <code>header</code>, <code>footer</code> yoki <code>aside</code> ichida turmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/20</h2>
+  <div class="quiz">
+    <p class="q">HTML4 davrida veb-sahifa bloklari qaysi teg bilan yasalgan?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>&lt;article&gt;</code> bilan</button>
+      <button class="opt" type="button"><code>&lt;main&gt;</code> bilan</button>
+      <button class="opt" type="button" data-ok>Faqat <code>&lt;div&gt;</code> bilan</button>
+      <button class="opt" type="button"><code>&lt;aside&gt;</code> bilan</button>
+    </div>
+    <div class="explain">HTML5 da <code>div</code> o'rniga mazmunli semantik teglar paydo bo'ldi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/20</h2>
+  <div class="quiz">
+    <p class="q">Har bir <code>&lt;article&gt;</code> ichida o'zining kichik <code>&lt;header&gt;</code>i bo'lishi mumkinmi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Yo'q, <code>header</code> faqat bitta</button>
+      <button class="opt" type="button">Faqat <code>&lt;footer&gt;</code> ichida</button>
+      <button class="opt" type="button">Faqat <code>&lt;aside&gt;</code> da</button>
+      <button class="opt" type="button" data-ok>Ha, mumkin</button>
+    </div>
+    <div class="explain"><code>header</code> sahifada ham, bo'lim va maqolada ham bo'lishi mumkin.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/20</h2>
+  <div class="quiz">
+    <p class="q">Blog sahifasi skeletida <code>main</code> ichida nima turadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Maqolalar (<code>article</code>) va yon panel (<code>aside</code>)</button>
+      <button class="opt" type="button">Faqat <code>footer</code></button>
+      <button class="opt" type="button">Sayt menyusi <code>nav</code> (sahifa bosh qismi)</button>
+      <button class="opt" type="button"><code>&lt;!DOCTYPE&gt;</code></button>
+    </div>
+    <div class="explain">Header va footer <code>main</code> dan tashqarida, asosiy kontent esa <code>main</code> ichida.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/20</h2>
+  <div class="quiz">
+    <p class="q">Reklama bannerlari yoki o'xshash maqolalar ro'yxati odatda qaysi tegga o'raladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>&lt;main&gt;</code></button>
+      <button class="opt" type="button" data-ok><code>&lt;aside&gt;</code></button>
+      <button class="opt" type="button"><code>&lt;header&gt;</code></button>
+      <button class="opt" type="button"><code>&lt;title&gt;</code></button>
+    </div>
+    <div class="explain"><code>aside</code> — qo'shimcha yon panel.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/20</h2>
+  <div class="quiz">
+    <p class="q">HTML5 gacha videoni ko'rsatish uchun nima kerak edi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Hech narsa kerak emas edi</button>
+      <button class="opt" type="button">Faqat <code>&lt;img&gt;</code></button>
+      <button class="opt" type="button" data-ok>Uchinchi tomon plagini (masalan, Flash Player)</button>
+      <button class="opt" type="button">Faqat CSS</button>
+    </div>
+    <div class="explain">HTML5 da video va audio brauzerning o'zida plaginlarsiz ishlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/20</h2>
+  <div class="quiz">
+    <p class="q"><code>&lt;source&gt;</code> tegi <code>&lt;video&gt;</code> ichida nima uchun bir nechta yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Videoni takrorlash uchun</button>
+      <button class="opt" type="button">Sarlavha yozish uchun</button>
+      <button class="opt" type="button">Videoni yashirish uchun</button>
+      <button class="opt" type="button" data-ok>Turli formatlar (mp4, webm) berish uchun</button>
+    </div>
+    <div class="explain">Brauzer qo'llab-quvvatlaydigan formatni tanlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/20</h2>
+  <div class="quiz">
+    <p class="q"><code>&lt;figure&gt;</code> ning <code>&lt;img&gt;</code> dan farqi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Rasm va uning izohini bitta semantik blokka birlashtiradi</button>
+      <button class="opt" type="button">Rasmni kattalashtiradi</button>
+      <button class="opt" type="button">Faqat video uchun</button>
+      <button class="opt" type="button">Rasmning manzilini beradi</button>
+    </div>
+    <div class="explain"><code>figcaption</code> izoh bo'lib, <code>figure</code> bilan bog'liq bo'ladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/20</h2>
+  <div class="quiz">
+    <p class="q"><code>&lt;mark&gt;</code> teg matnni qanday ajratadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Pastki indeks bilan</button>
+      <button class="opt" type="button" data-ok>Sariq fon bilan</button>
+      <button class="opt" type="button">Rasm bilan</button>
+      <button class="opt" type="button">Havola qiladi</button>
+    </div>
+    <div class="explain"><code>mark</code> qidirilgan yoki e'tibor qaratilishi kerak bo'lgan so'zni ajratadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 11/20</h2>
+  <div class="quiz">
+    <p class="q"><code>&lt;progress value="70" max="100"&gt;</code> da <code>max</code> nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Minimal qiymat</button>
+      <button class="opt" type="button">Qiymatning rangi</button>
+      <button class="opt" type="button" data-ok>Eng katta qiymat, ya'ni to'liq holat</button>
+      <button class="opt" type="button">Ovoz balandligi</button>
+    </div>
+    <div class="explain"><code>value</code> joriy, <code>max</code> esa 100% ga to'g'ri keladigan qiymat.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 12/20</h2>
+  <div class="quiz">
+    <p class="q"><code>title</code> global atributi nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Sahifa nomini o'zgartiradi</button>
+      <button class="opt" type="button">Elementni yashiradi</button>
+      <button class="opt" type="button">Elementni tahrirlanadigan qiladi</button>
+      <button class="opt" type="button" data-ok>Kursor element ustida turganda kichik izoh chiqaradi</button>
+    </div>
+    <div class="explain"><code>title</code> — tooltip.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 13/20</h2>
+  <div class="quiz">
+    <p class="q"><code>class</code> atributiga «btn katta» deb yozildi (bo'sh joy bilan). Nechta sinf berilgan?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Ikkita</button>
+      <button class="opt" type="button">Bitta</button>
+      <button class="opt" type="button">Nol</button>
+      <button class="opt" type="button">Uchta</button>
+    </div>
+    <div class="explain">Sinf nomlari bo'sh joy bilan ajratiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 14/20</h2>
+  <div class="quiz">
+    <p class="q">Quyidagilardan qaysi biri <code>data-*</code> atributiga misol?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>datauser="77"</code></button>
+      <button class="opt" type="button" data-ok><code>data-user-id="77"</code></button>
+      <button class="opt" type="button"><code>user-data="77"</code></button>
+      <button class="opt" type="button"><code>data_id</code></button>
+    </div>
+    <div class="explain">Nomi <code>data-</code> bilan boshlanadi, davomiga istalgan so'z yoziladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 15/20</h2>
+  <div class="quiz">
+    <p class="q"><code>type="date"</code> nima ochadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Rang palitrasini</button>
+      <button class="opt" type="button">Slayderni</button>
+      <button class="opt" type="button" data-ok>Kalendardan sana tanlash oynasini</button>
+      <button class="opt" type="button">Fayl tanlashni</button>
+    </div>
+    <div class="explain"><code>date</code> sana, <code>color</code> rang, <code>range</code> slayder.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 16/20</h2>
+  <div class="quiz">
+    <p class="q"><code>&lt;h2 contenteditable="true"&gt;</code> yozilsa, foydalanuvchi nima qila oladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Sarlavhani yashira oladi</button>
+      <button class="opt" type="button">Sarlavhani rasmga aylantira oladi</button>
+      <button class="opt" type="button">Hech narsa o'zgarmaydi</button>
+      <button class="opt" type="button" data-ok>Sarlavha matnini brauzerda o'chirib, o'zgartira oladi</button>
+    </div>
+    <div class="explain">Atribut matnni Word'dagi kabi to'g'ridan-to'g'ri tahrirlashga imkon beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 17/20</h2>
+  <div class="quiz">
+    <p class="q">I bob yakuniy loyihasi «Interaktiv portfolio» uchun sahifaning asosiy bo'limlari qaysi teglar bilan tuziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>footer</code></button>
+      <button class="opt" type="button">Faqat <code>div</code></button>
+      <button class="opt" type="button">Faqat <code>table</code></button>
+      <button class="opt" type="button">Faqat <code>form</code></button>
+    </div>
+    <div class="explain">Semantik tuzilma loyihaning skeleti bo'ladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 18/20</h2>
+  <div class="quiz">
+    <p class="q">Portfoliodagi «Mening ko'nikmalarim» jadvali va savol-javoblar qaysi teglar bilan beriladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>ul</code> va <code>audio</code></button>
+      <button class="opt" type="button" data-ok><code>table</code> va <code>details</code>/<code>summary</code></button>
+      <button class="opt" type="button"><code>meter</code> va <code>form</code></button>
+      <button class="opt" type="button"><code>nav</code> va <code>video</code></button>
+    </div>
+    <div class="explain">Jadval — 5-dars, <code>details</code> — 8-dars mavzusi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 19/20</h2>
+  <div class="quiz">
+    <p class="q">Portfolioda bog'lanish formasida rang tanlash va sana kerak. Qaysi <code>input</code> turlari?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>radio</code> va <code>file</code></button>
+      <button class="opt" type="button"><code>password</code> va <code>range</code></button>
+      <button class="opt" type="button" data-ok><code>color</code> va <code>date</code></button>
+      <button class="opt" type="button"><code>submit</code> va <code>reset</code></button>
+    </div>
+    <div class="explain">Rang va sana uchun HTML5 ning yangi <code>input</code> turlari ishlatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 20/20</h2>
+  <div class="quiz">
+    <p class="q">Yon panelda foydalanuvchi kartochkasi bor, unga <code>data-status="active"</code> berilgan. Bu nima uchun kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Elementni yashirish uchun</button>
+      <button class="opt" type="button">Rasm qo'yish uchun</button>
+      <button class="opt" type="button">Havola yasash uchun</button>
+      <button class="opt" type="button" data-ok>Elementga ma'lumotni HTML ichida biriktirish uchun</button>
+    </div>
+    <div class="explain"><code>data-*</code> HTML ichida shaxsiy ma'lumotlarni saqlaydi, <code>aside</code> esa yon panel ma'nosini beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>20 dan 18+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>20 dan 12-17</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>11 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: semantik teglar (7-dars), multimedia va interaktiv teglar (8-dars), global atributlar va yangi forma imkoniyatlari (9-dars).</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

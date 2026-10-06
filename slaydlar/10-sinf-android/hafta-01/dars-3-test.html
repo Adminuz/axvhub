@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>3-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>3-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">1-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Dependency (bog'liqlik) nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Dasturchi ulaydigan tayyor tashqi kutubxona yoki modul</button>
+      <button class="opt" type="button">Telefon xotirasidagi fayl</button>
+      <button class="opt" type="button">Gradle ning eski versiyasi</button>
+      <button class="opt" type="button">Emulyator sozlamasi</button>
+    </div>
+    <div class="explain">Retrofit, Room, Coil kabi kutubxonalar dependency deb ataladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q"><code>com.squareup.retrofit2:retrofit:2.9.0</code> da <code>com.squareup.retrofit2</code> nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Artifact ID</button>
+      <button class="opt" type="button" data-ok>Group ID</button>
+      <button class="opt" type="button">Version</button>
+      <button class="opt" type="button">Repository nomi</button>
+    </div>
+    <div class="explain">Format: <code>groupId:artifactId:version</code>. Group ID tashkilot domeniga mos keladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Android SDK, Jetpack va Material kutubxonalari qaysi ombordan olinadi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>mavenCentral()</code></button>
+      <button class="opt" type="button"><code>localhost()</code></button>
+      <button class="opt" type="button" data-ok><code>google()</code></button>
+      <button class="opt" type="button"><code>jcenter()</code></button>
+    </div>
+    <div class="explain"><code>google()</code> Google Maven omborini bildiradi, <code>mavenCentral()</code> esa umumiy ochiq Java/Kotlin omborini.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>implementation</code> bilan ulangan kutubxona boshqa modullarga qanday ko'rinadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Barcha modullarga ochiq</button>
+      <button class="opt" type="button">Faqat test modullarga ochiq</button>
+      <button class="opt" type="button">Faqat Release da ko'rinadi</button>
+      <button class="opt" type="button" data-ok>Ko'rinmaydi, faqat joriy modul ichida ishlatiladi</button>
+    </div>
+    <div class="explain">Bu inkapsulyatsiyani saqlaydi va qayta kompilyatsiya vaqtini tejaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>api</code> konfiguratsiyasining kamchiligi qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Kutubxona yangilansa, bog'liq modullar qayta yig'ilib, yig'ish vaqti ortadi</button>
+      <button class="opt" type="button">U kutubxonani APK ga kiritmaydi</button>
+      <button class="opt" type="button">Faqat test uchun ishlaydi</button>
+      <button class="opt" type="button">Internet talab qiladi</button>
+    </div>
+    <div class="explain"><code>api</code> kutubxonani tranzitiv ochadi, shu sabab o'zgarish ko'p modulga ta'sir qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">JUnit va Mockito kabi lokal unit-test kutubxonalari qaysi konfiguratsiya bilan ulanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>androidTestImplementation</code></button>
+      <button class="opt" type="button" data-ok><code>testImplementation</code></button>
+      <button class="opt" type="button"><code>compileOnly</code></button>
+      <button class="opt" type="button"><code>runtimeOnly</code></button>
+    </div>
+    <div class="explain"><code>androidTestImplementation</code> esa qurilma/emulyatorda ishlaydigan UI testlar (Espresso) uchun.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Versiyalarni boshqarish evolyutsiyasining hozirgi standarti qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Hardcoded stringlar</button>
+      <button class="opt" type="button"><code>ext</code> bloklari</button>
+      <button class="opt" type="button" data-ok>Version Catalog (<code>libs.versions.toml</code>)</button>
+      <button class="opt" type="button"><code>buildSrc</code> papkasi</button>
+    </div>
+    <div class="explain">Version Catalog Android Studio Flamingo va keyingi versiyalarda rasmiy standart bo'lgan.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>libs.versions.toml</code> ning to'g'ri 4 ta bloki qaysi qatorda?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>[versions]</code>, <code>[modules]</code>, <code>[tasks]</code>, <code>[plugins]</code></button>
+      <button class="opt" type="button"><code>[libs]</code>, <code>[bundles]</code>, <code>[tasks]</code>, <code>[flavors]</code></button>
+      <button class="opt" type="button"><code>[versions]</code>, <code>[repositories]</code>, <code>[bundles]</code>, <code>[types]</code></button>
+      <button class="opt" type="button" data-ok><code>[versions]</code>, <code>[libraries]</code>, <code>[bundles]</code>, <code>[plugins]</code></button>
+    </div>
+    <div class="explain">Versiyalar, kutubxonalar, to'plamlar (bundle) va plaginlar alohida bloklarda e'lon qilinadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>[bundles]</code> bo'limi nima uchun kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Bir nechta kutubxonani bitta nom ostida guruhlab, 1 qatorda ulash uchun</button>
+      <button class="opt" type="button">Plaginlarni o'chirish uchun</button>
+      <button class="opt" type="button">Versiyani yashirish uchun</button>
+      <button class="opt" type="button">APK hajmini kamaytirish uchun</button>
+    </div>
+    <div class="explain">Masalan, <code>implementation libs.bundles.networking</code> Retrofit, Gson va OkHttp ni birga ulaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">TOML da <code>retrofit-converter-gson</code> deb e'lon qilingan kutubxona <code>build.gradle</code> da qanday chaqiriladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>libs.retrofit-converter-gson</code></button>
+      <button class="opt" type="button" data-ok><code>libs.retrofit.converter.gson</code></button>
+      <button class="opt" type="button"><code>libs.retrofitConverterGson.toml</code></button>
+      <button class="opt" type="button"><code>libs/retrofit/converter/gson</code></button>
+    </div>
+    <div class="explain">Chiziqchalar <code>build.gradle</code> da nuqtaga aylanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: Dependency konfiguratsiyalari (implementation/api), repozitoriylar, Version Catalog va bundle.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

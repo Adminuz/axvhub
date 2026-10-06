@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Kotlin: val, var va ma’lumot turlari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+      <!-- 1. SARLAVHA -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>Kotlin: val, var va ma’lumot turlari</h1>
+        <p class="muted">O‘zgaruvchilar, turlar, String shablonlari va konvertatsiya</p>
+        <span class="badge">9-sinf</span><span class="badge">Android dasturlash</span><span class="badge">4-hafta · 11-dars</span>
+        
+      </section>
+
+      <!-- 2. REJA -->
+      <section>
+        <h2>Bugun nimalarni o‘rganamiz?</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="lock" data-anim="pulse"></i></div><h3><code>val</code> va <code>var</code></h3><p>O‘zgarmas va o‘zgaruvchan</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="shapes" data-anim="float"></i></div><h3>6 ta tur</h3><p><code>Int</code>, <code>Double</code>, <code>Float</code>, <code>Boolean</code>, <code>Char</code>, <code>String</code></p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="text-cursor" data-anim="bounce"></i></div><h3>Shablon va konvertatsiya</h3><p><code>$ism</code>, <code>${a + b}</code>, <code>toInt()</code></p></div>
+        </div>
+      </section>
+
+      <!-- 3. SEC 01 -->
+      <section class="sec">
+        <div class="num">01</div>
+        <h1>Kotlin nega 1-o‘rinda?</h1>
+        <p>JetBrains yaratdi, Google 2017-yilda tavsiya qildi</p>
+      </section>
+
+      <!-- 4. KOTLIN AFZALLIKLARI + count -->
+      <section>
+        <h2>Kotlinning 3 afzalligi</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="scissors"></i></div><h3>Qisqa</h3><p>Java’dagi 20 qator - Kotlinda 5 qator</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="shield-check" data-anim="pulse"></i></div><h3>Null-safety</h3><p><code>NullPointerException</code> xatosining oldini oladi</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="link"></i></div><h3>Java bilan mos</h3><p>Bitta loyihada ikkala til birga ishlaydi</p></div>
+        </div>
+        <div class="stats mt">
+          <div class="stat"><div class="v"><span class="count" data-to="2017">0</span></div><div class="l">Google tavsiyasi</div></div>
+          <div class="stat"><div class="v"><span class="count" data-to="100">0</span>%</div><div class="l">Java bilan moslik</div></div>
+        </div>
+      </section>
+
+      <!-- 5. SEC 02 -->
+      <section class="sec">
+        <div class="num">02</div>
+        <h1>val va var</h1>
+        <p>Qutini muhrlaymizmi yoki ochiq qoldiramizmi?</p>
+      </section>
+
+      <!-- 6. SVG 1: QUTILAR -->
+      <section>
+        <h2>O‘zgaruvchi - nomli quti</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <g data-tip="val - muhrlangan quti: qiymat bir marta beriladi">
+              <rect class="fa" x="80" y="80" width="340" height="200" rx="20"/>
+              <text class="t-accent" x="250" y="60" text-anchor="middle" font-size="28">val pi</text>
+              <text class="t-head" x="250" y="195" text-anchor="middle" font-size="44">3.14159</text>
+              <rect class="fb" x="215" y="250" width="70" height="55" rx="10"/>
+              <text class="t-muted" x="250" y="340" text-anchor="middle" font-size="22">o‘zgarmas (read-only)</text>
+            </g>
+            <g class="fragment" data-tip="var - ochiq quti: qiymatni almashtirish mumkin">
+              <rect class="fc" x="580" y="80" width="340" height="200" rx="20"/>
+              <text class="t-accent" x="750" y="60" text-anchor="middle" font-size="28">var ball</text>
+              <text class="t-muted" x="680" y="195" text-anchor="middle" font-size="40" text-decoration="line-through">85</text>
+              <text class="t-head" x="820" y="195" text-anchor="middle" font-size="44">92</text>
+              <line class="lc flowing" x1="715" y1="180" x2="775" y2="180"/>
+              <text class="t-muted" x="750" y="340" text-anchor="middle" font-size="22">o‘zgaruvchan (mutable)</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 7. KOD: auto-animate -->
+      <section data-auto-animate>
+        <h2>val va var: kodda</h2>
+        <pre data-id="vv"><code class="language-kotlin" data-trim>
+val pi = 3.14159
+var ball = 85
+        </code></pre>
+      </section>
+      <section data-auto-animate>
+        <h2>val va var: kodda</h2>
+        <pre data-id="vv"><code class="language-kotlin" data-trim data-line-numbers="1-2|3|4">
+val pi = 3.14159
+var ball = 85
+// pi = 3.14   -> XATO: Val cannot be reassigned
+ball = 92      // to'g'ri: var o'zgaradi
+        </code></pre>
+      </section>
+
+      <!-- 8. STEPPER: QAYSI BIRINI TANLASH -->
+      <section>
+        <h2>Qaysi birini tanlaymiz?</h2>
+        <div class="stepper">
+          <div class="stp on"><div class="card"><div class="icon"><i data-ic="lock" data-anim="pulse"></i></div><h3>Avval <code>val</code></h3><p>Har doim <code>val</code> dan boshlang: tasodifiy o‘zgarishlar bo‘lmaydi</p></div></div>
+          <div class="stp"><div class="card"><div class="icon"><i data-ic="refresh-cw" data-anim="spin"></i></div><h3>Kerak bo‘lsa <code>var</code></h3><p>Qiymat haqiqatan o‘zgaradigan bo‘lsa: ball, hisoblagich, quvvat foizi</p></div></div>
+          <div class="stp"><div class="card"><div class="icon"><i data-ic="circle-check"></i></div><h3>Natija</h3><p>Dastur xavfsizroq, xatolar kamroq</p></div></div>
+        </div>
+      </section>
+
+      <!-- 9. MINI-TEST 1 -->
+      <section>
+        <h2>Mini-test</h2>
+        <div class="quiz">
+          <p class="q">Qaysi qiymat uchun <code>var</code> kerak?</p>
+          <div class="opts">
+            <button class="opt" type="button">Tug‘ilgan yil</button>
+            <button class="opt" type="button" data-ok>Telefon quvvati foizi</button>
+            <button class="opt" type="button">Pi soni</button>
+            <button class="opt" type="button">O‘quvchi ismi</button>
+          </div>
+          <div class="explain">Quvvat foizi doim o‘zgarib turadi - <code>var</code>. Qolganlari o‘zgarmaydi - <code>val</code>.</div>
+        </div>
+      </section>
+
+      <!-- 10. SEC 03 -->
+      <section class="sec">
+        <div class="num">03</div>
+        <h1>Ma’lumot turlari</h1>
+        <p>Kotlinda hamma tur katta harf bilan boshlanadi</p>
+      </section>
+
+      <!-- 11. SVG 2: TURLAR -->
+      <section>
+        <h2>6 ta asosiy tur</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 380">
+            <g class="fragment" data-tip="Butun sonlar"><rect class="fa" x="30" y="30" width="300" height="140" rx="16"/><text class="t-accent" x="180" y="85" text-anchor="middle" font-size="32">Int</text><text class="t-muted" x="180" y="130" text-anchor="middle" font-size="22">val yosh = 15</text></g>
+            <g class="fragment" data-tip="Haqiqiy o'nlik sonlar"><rect class="fa" x="350" y="30" width="300" height="140" rx="16"/><text class="t-accent" x="500" y="85" text-anchor="middle" font-size="32">Double</text><text class="t-muted" x="500" y="130" text-anchor="middle" font-size="22">12500.50</text></g>
+            <g class="fragment" data-tip="Kichikroq o'nlik son, oxirida f"><rect class="fc" x="670" y="30" width="300" height="140" rx="16"/><text class="t-accent" x="820" y="85" text-anchor="middle" font-size="32">Float</text><text class="t-muted" x="820" y="130" text-anchor="middle" font-size="22">4.5f</text></g>
+            <g class="fragment" data-tip="Mantiqiy qiymat: true yoki false"><rect class="fb" x="30" y="200" width="300" height="140" rx="16"/><text class="t-accent" x="180" y="255" text-anchor="middle" font-size="32">Boolean</text><text class="t-muted" x="180" y="300" text-anchor="middle" font-size="22">true / false</text></g>
+            <g class="fragment" data-tip="Bitta belgi, bitta tirnoqda"><rect class="fb" x="350" y="200" width="300" height="140" rx="16"/><text class="t-accent" x="500" y="255" text-anchor="middle" font-size="32">Char</text><text class="t-muted" x="500" y="300" text-anchor="middle" font-size="22">'A'</text></g>
+            <g class="fragment" data-tip="Matn, qo'shtirnoqda"><rect class="fg" x="670" y="200" width="300" height="140" rx="16"/><text class="t-accent" x="820" y="255" text-anchor="middle" font-size="32">String</text><text class="t-muted" x="820" y="300" text-anchor="middle" font-size="22">"Android"</text></g>
+          </svg>
+        </div>
+      </section>
+
+      <!-- 12. VS: aniq tur va inference -->
+      <section>
+        <h2>Turni yozamizmi?</h2>
+        <div class="vs">
+          <div class="side fragment"><h3>Aniq tur</h3><code>val yosh: Int = 15</code><br><code>val nom: String = "Android"</code></div>
+          <div class="mid">VS</div>
+          <div class="side b fragment"><h3>Type inference</h3><code>val shahar = "Toshkent"</code> -&gt; String<br><code>val yil = 2026</code> -&gt; Int</div>
+        </div>
+        <p class="small mt fragment">Kotlin qiymatga qarab turni o‘zi aniqlaydi. Tur keyin o‘zgarmaydi.</p>
+      </section>
+
+      <!-- 13. FLIP -->
+      <section>
+        <h2>Turini toping. Bosing</h2>
+        <div class="cards three">
+          <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3><code>9.99</code></h3><span class="flip-hint">bosing</span></div><div class="face back"><p><code>Double</code></p></div></div></div>
+          <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3><code>'7'</code></h3><span class="flip-hint">bosing</span></div><div class="face back"><p><code>Char</code> - son emas, belgi</p></div></div></div>
+          <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3><code>"7"</code></h3><span class="flip-hint">bosing</span></div><div class="face back"><p><code>String</code> - matn</p></div></div></div>
+        </div>
+      </section>
+
+      <!-- 14. SEC 04 -->
+      <section class="sec">
+        <div class="num">04</div>
+        <h1>String shablonlari</h1>
+        <p>Matn ichiga qiymat joylash: <code>$</code></p>
+      </section>
+
+      <!-- 15. SVG 3: SHABLON -->
+      <section>
+        <h2>Shablon qanday ishlaydi?</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 300">
+            <rect class="fn" x="30" y="40" width="940" height="80" rx="14"/>
+            <text class="t-head" x="500" y="92" text-anchor="middle" font-size="28">"Ismim $ism, kelasi yil ${yosh + 1} yoshda"</text>
+            <g class="fragment"><line class="la flowing" x1="330" y1="120" x2="250" y2="200"/><rect class="fa" x="130" y="200" width="240" height="70" rx="12"/><text class="t-accent" x="250" y="245" text-anchor="middle" font-size="26">Sanjar</text></g>
+            <g class="fragment"><line class="lb flowing" x1="640" y1="120" x2="720" y2="200"/><rect class="fb" x="600" y="200" width="240" height="70" rx="12"/><text class="t-accent" x="720" y="245" text-anchor="middle" font-size="26">16 + 1 = 17</text></g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 16. KOD: SHABLON -->
+      <section>
+        <h2>Shablon: kodda</h2>
+        <pre><code class="language-kotlin" data-trim data-line-numbers="1-2|3|4">
+val ism = "Sanjar"
+val yosh = 16
+println("Mening ismim $ism, yoshim $yosh da.")
+println("Kelasi yili men ${yosh + 1} yoshga to'laman.")
+        </code></pre>
+      </section>
+
+      <!-- 17. MINI-TEST 2 -->
+      <section>
+        <h2>Bashorat qiling</h2>
+        <div class="quiz">
+          <p class="q"><code>val a = 7; val b = 3</code><br><code>println("$a + $b")</code> nima chiqaradi?</p>
+          <div class="opts">
+            <button class="opt" type="button"><code>10</code></button>
+            <button class="opt" type="button"><code>$a + $b</code></button>
+            <button class="opt" type="button" data-ok><code>7 + 3</code></button>
+            <button class="opt" type="button">Xato</button>
+          </div>
+          <div class="explain">Har bir o‘zgaruvchi alohida qo‘yildi. Yig‘indi uchun <code>${a + b}</code> kerak.</div>
+        </div>
+      </section>
+
+      <!-- 18. KONVERTATSIYA -->
+      <section>
+        <h2>Turlarni aylantirish</h2>
+        <pre><code class="language-kotlin" data-trim data-line-numbers="1-2|3-4|5|6">
+val matn1 = "45"
+val matn2 = "12"
+val son1 = matn1.toInt()
+val son2 = matn2.toInt()
+println(son1 + son2)       // 57
+println(matn1 + matn2)     // 4512 - matnlar ulandi
+        </code></pre>
+        <div class="cards three mt">
+          <div class="card fragment fade-up"><h3><code>toInt()</code></h3><p>matn -&gt; butun son</p></div>
+          <div class="card fragment fade-up"><h3><code>toDouble()</code></h3><p>-&gt; o‘nlik son</p></div>
+          <div class="card fragment fade-up"><h3><code>toString()</code></h3><p>-&gt; matn</p></div>
+        </div>
+      </section>
+
+      <!-- 19. ODATIY XATOLAR -->
+      <section>
+        <h2>Odatiy xatolar</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="triangle-alert" data-anim="wiggle"></i></div><h3><code>val</code> ni o‘zgartirish</h3><p><code>Val cannot be reassigned</code></p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="type"></i></div><h3>Kichik harf</h3><p><code>int</code> emas, <code>Int</code></p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="bug"></i></div><h3><code>"abc".toInt()</code></h3><p><code>NumberFormatException</code></p></div>
+        </div>
+      </section>
+
+      <!-- 20. AMALIYOT -->
+      <section>
+        <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>15 daqiqa</span></h2>
+        <div class="task"><span class="level easy">Oson</span>Ism (<code>val</code>), yosh (<code>var</code>), bo‘y (<code>Double</code>), <code>Boolean</code> - bitta <code>println</code> bilan chiqaring.</div>
+        <div class="task"><span class="level mid">O'rta</span><code>val ball = 70; ball = ball + 15</code> - xatoni tuzating.</div>
+        <div class="task"><span class="level hard">Qiyin</span><code>"45"</code> va <code>"12"</code> ni songa o‘tkazib, yig‘indi va ko‘paytmani chiqaring.</div>
+      </section>
+
+      <!-- 21. XULOSA -->
+      <section>
+        <h2>Xulosa</h2>
+        <div class="cards two">
+          <div class="card"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Bugun o‘rgandik</h3><p><code>val</code> va <code>var</code>, 6 ta tur, type inference, <code>$</code> shablonlari, <code>toInt()</code>, <code>toDouble()</code>, <code>toString()</code>.</p></div>
+          <div class="card"><div class="icon"><i data-ic="book-open"></i></div><h3>Uyga vazifa</h3><p>Smartfon ma’lumotlari, o‘rtacha baho, 12% QQS hisoblash.</p></div>
+        </div>
+        <p class="fragment mt">Keyingi dars: <b><code>if</code> va <code>when</code></b> shart operatorlari.</p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

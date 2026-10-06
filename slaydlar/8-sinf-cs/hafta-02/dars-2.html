@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Internet, brauzerlar va elektron pochta</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- SLIDE 1: Hero -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Internet, brauzerlar va elektron pochta</h1>
+  <p class="muted">Global tarmoq tamoyillari, samarali qidiruv va elektron muloqot madaniyati</p>
+  <span class="badge">8-sinf</span><span class="badge">Foundation</span><span class="badge">2-hafta · 5-dars</span>
+  
+</section>
+
+<!-- SLIDE 2: Dars rejasi -->
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="globe" data-anim="float"></i></div>
+      <h3>01. Internet va WWW</h3>
+      <p>Global tarmoq arxitekturasi va Mijoz-Server modeli qanday ishlashi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="search" data-anim="pulse"></i></div>
+      <h3>02. Brauzer va Qidiruv</h3>
+      <p>Chrome, Edge sozlamalari, kesh, kuki va Google operatorlari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="mail" data-anim="wiggle"></i></div>
+      <h3>03. Email va Xavfsizlik</h3>
+      <p>Elektron xat anatomiyasi (Cc/Bcc) va fishing hujumlaridan himoya.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 3: Bo'lim 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Internet va World Wide Web</h1>
+  <p>Dunyo bo'ylab kompyuterlarni bog'lagan global o'rgimchak to'ri</p>
+  
+</section>
+
+<!-- SLIDE 4: Internet vs WWW taqqoslash -->
+<section>
+  <h2>Internet va WWW: Farqi nimada?</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3><i data-ic="globe"></i> Internet</h3>
+      <p><strong>Jismoniy infratuzilma:</strong> Butun dunyodagi milliardlab kompyuterlar, serverlar, suvosti kabellari va routerlarni bog'lovchi ulkan global tarmoq.</p>
+      <div class="callout tip">Magistral yo'llar va ko'priklar tarmog'i</div>
+    </div>
+    <div class="side b fragment">
+      <h3><i data-ic="file-text"></i> World Wide Web (WWW)</h3>
+      <p><strong>Axborot xizmati:</strong> Internet tarmog'ida joylashgan, brauzer orqali ko'rish mumkin bo'lgan veb-sahifalar, saytlar va gipermatnlar to'plami.</p>
+      <div class="callout tip">Yo'lda harakatlanayotgan avtomashinalar</div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 5: SVG 1 - Client-Server modeli -->
+<section>
+  <h2>Mijoz va Server aloqasi (Client-Server)</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- Client box -->
+      <g class="fragment" data-tip="Mijoz (Client): Foydalanuvchi kompyuteri yoki brauzeri">
+        <rect x="50" y="70" width="220" height="160" rx="14" class="fa la" stroke-width="2"/>
+        <text x="160" y="130" text-anchor="middle" class="t-head" font-size="22" font-weight="bold">Mijoz (Client)</text>
+        <text x="160" y="165" text-anchor="middle" class="t-muted" font-size="16">Foydalanuvchi brauzeri</text>
+        <text x="160" y="195" text-anchor="middle" class="t-accent" font-size="15">So'rov yuboruvchi</text>
+      </g>
+
+      <!-- Network cloud in middle -->
+      <g class="fragment" data-tip="Internet tarmog'i va DNS: Manzilni aniqlab ma'lumotni yetkazadi">
+        <rect x="370" y="85" width="220" height="130" rx="20" class="fn ln" stroke-width="2"/>
+        <text x="480" y="140" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Internet Tarmog'i</text>
+        <text x="480" y="170" text-anchor="middle" class="t-muted" font-size="15">Routerlar va DNS</text>
+      </g>
+
+      <!-- Server box -->
+      <g class="fragment" data-tip="Server: Sayt fayllarini saqlovchi va xizmat ko'rsatuvchi kuchli kompyuter">
+        <rect x="690" y="70" width="220" height="160" rx="14" class="fb lb" stroke-width="2"/>
+        <text x="800" y="130" text-anchor="middle" class="t-head" font-size="22" font-weight="bold">Veb-Server</text>
+        <text x="800" y="165" text-anchor="middle" class="t-muted" font-size="16">Google, UzEdu serveri</text>
+        <text x="800" y="195" text-anchor="middle" class="t-accent" font-size="15">Javob qaytaruvchi</text>
+      </g>
+
+      <!-- Request arrow -->
+      <path d="M 270 120 L 370 120 M 590 120 L 690 120" class="la flowing" stroke-width="3" fill="none" marker-end="url(#ar-a)"/>
+      <text x="320" y="105" text-anchor="middle" class="t-accent" font-size="14">1. So'rov (Request)</text>
+
+      <!-- Response arrow -->
+      <path d="M 690 180 L 590 180 M 370 180 L 270 180" class="lg flowing" stroke-width="3" fill="none" marker-end="url(#ar-g)"/>
+      <text x="640" y="205" text-anchor="middle" class="t-accent" font-size="14">2. Javob (Response)</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 6: Global statistika -->
+<section>
+  <h2>Global internet raqamlarda</h2>
+  <div class="stats">
+    <div class="stat">
+      <div class="v"><span class="count" data-to="5" data-suf=" mlrd+">0</span></div>
+      <div class="l">Dunyo bo'ylab internet foydalanuvchilari</div>
+    </div>
+    <div class="stat">
+      <div class="v"><span class="count" data-to="105" data-suf=" ming">0</span></div>
+      <div class="l">Har bir soniyada Google so'rovlari</div>
+    </div>
+    <div class="stat">
+      <div class="v"><span class="count" data-to="345" data-suf=" mlrd">0</span></div>
+      <div class="l">Kuniga yuboriladigan elektron xatlar</div>
+    </div>
+  </div>
+  <div class="callout tip fragment fade-up">
+    Dunyodagi barcha ma'lumotlarning 90 foizidan ortig'i so'nggi yillarda yaratilgan!
+  </div>
+  
+</section>
+
+<!-- SLIDE 7: Bo'lim 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Veb-brauzerlar va ularning tuzilishi</h1>
+  <p>Internet olamiga ochiladigan asosiy darcha</p>
+  
+</section>
+
+<!-- SLIDE 8: Mashhur brauzerlar -->
+<section>
+  <h2>Yetakchi veb-brauzerlar</h2>
+  <div class="cards four">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="globe"></i></div>
+      <h3>Google Chrome</h3>
+      <p>Eng keng tarqalgan brauzer (~65% bozor ulushi). Tezkor va kengaytmalarga boy.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="laptop"></i></div>
+      <h3>Microsoft Edge</h3>
+      <p>Windows 10/11 ichiga o'rnatilgan. Chromium dvigatelida ishlaydi, resurs tejovchi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Mozilla Firefox</h3>
+      <p>Mustaqil, ochiq kodli va maxfiylikka yuqori darajada e'tibor qaratuvchi brauzer.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="compass"></i></div>
+      <h3>Apple Safari</h3>
+      <p>macOS va iOS qurilmalari uchun maxsus moslashtirilgan, energiya tejamkor brauzer.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 9: SVG 2 - Brauzer ichki arxitekturasi -->
+<section>
+  <h2>Brauzer sahifani qanday yuklaydi?</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 320">
+      <!-- Step 1 -->
+      <g class="fragment">
+        <rect x="30" y="80" width="190" height="150" rx="12" class="fa la" stroke-width="2"/>
+        <text x="125" y="125" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">1. URL kiritish</text>
+        <text x="125" y="160" text-anchor="middle" class="t-muted" font-size="14">https://kun.uz</text>
+        <text x="125" y="190" text-anchor="middle" class="t-accent" font-size="13">Manzil satri</text>
+      </g>
+
+      <path d="M 220 155 L 270 155" class="la flowing" stroke-width="3" fill="none" marker-end="url(#ar-a)"/>
+
+      <!-- Step 2 -->
+      <g class="fragment">
+        <rect x="270" y="80" width="190" height="150" rx="12" class="fc lc" stroke-width="2"/>
+        <text x="365" y="125" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">2. Serverdan yuklash</text>
+        <text x="365" y="160" text-anchor="middle" class="t-muted" font-size="14">HTML, CSS, JS</text>
+        <text x="365" y="190" text-anchor="middle" class="t-accent" font-size="13">Birlamchi kodlar</text>
+      </g>
+
+      <path d="M 460 155 L 510 155" class="lc flowing" stroke-width="3" fill="none" marker-end="url(#ar-c)"/>
+
+      <!-- Step 3 -->
+      <g class="fragment">
+        <rect x="510" y="80" width="190" height="150" rx="12" class="fb lb" stroke-width="2"/>
+        <text x="605" y="125" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">3. Dvigatel (Render)</text>
+        <text x="605" y="160" text-anchor="middle" class="t-muted" font-size="14">Kodlarni tahlil qilish</text>
+        <text x="605" y="190" text-anchor="middle" class="t-accent" font-size="13">DOM &amp; CSSOM</text>
+      </g>
+
+      <path d="M 700 155 L 750 155" class="lb flowing" stroke-width="3" fill="none" marker-end="url(#ar-b)"/>
+
+      <!-- Step 4 -->
+      <g class="fragment">
+        <rect x="750" y="80" width="180" height="150" rx="12" class="fg lg" stroke-width="2"/>
+        <text x="840" y="125" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">4. Tayyor sahifa</text>
+        <text x="840" y="160" text-anchor="middle" class="t-muted" font-size="14">Vizual interfeys</text>
+        <text x="840" y="190" text-anchor="middle" class="t-accent" font-size="13">Foydalanuvchi ko'radi</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 10: Interaktiv Swap: Oddiy vs Inkognito -->
+<section>
+  <h2>Oddiy rejim va Inkognito rejimi</h2>
+  <div class="swap">
+    <div class="swap-tabs">
+      <button class="on" type="button"><i data-ic="eye"></i> Oddiy rejim</button>
+      <button type="button"><i data-ic="eye-off"></i> Inkognito rejimi</button>
+    </div>
+    <div class="swap-p on">
+      <div class="cards two">
+        <div class="card">
+          <h3>Tarix va Kesh saqlanadi</h3>
+          <p>Kirilgan barcha veb-saytlar tarixi (History), qidiruv so'rovlari va yuklangan fayllar xotirada qoladi.</p>
+        </div>
+        <div class="card">
+          <h3>Avtomatik kirish (Auto-login)</h3>
+          <p>Kukilar orqali pochtangiz, ijtimoiy tarmoqlar qayta parol so'ramasdan darhol ochiladi.</p>
+        </div>
+      </div>
+    </div>
+    <div class="swap-p">
+      <div class="cards two">
+        <div class="card">
+          <h3>Tarix o'chiriladi</h3>
+          <p>Oyna yopilgach, kirilgan saytlar, qidiruvlar va forma ma'lumotlari butunlay tozalanadi.</p>
+        </div>
+        <div class="card">
+          <h3>Begona qurilmalar uchun qulay</h3>
+          <p>Boshqa birovning yoki maktab kompyuterida o'z hisobingizga kirishda xavfsizlik beradi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 11: Kesh va Kukilar -->
+<section>
+  <h2>Kesh va Kuki nima uchun kerak?</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="refresh-cw"></i></div>
+      <h3>Kesh (Cache)</h3>
+      <p>Saytning doimiy qismlari (logotiplar, fon rasmlari, stillar) kompyuter diskiga saqlanadi. Maqsad — saytni keyingi safar 10 barobar tezroq ochish.</p>
+      <div class="callout tip">Tozalash: <code>Ctrl + Shift + Delete</code></div>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="key"></i></div>
+      <h3>Kukilar (Cookies)</h3>
+      <p>Sayt tomonidan yuboriladigan kichik ma'lumotlar. Sayt tili, profil identifikatori, internet-do'kondagi savat ma'lumotlarini eslab qoladi.</p>
+      <div class="callout tip">Xavfsizlik: Begona kompyuterda saytlardan «Chiqish» qiling</div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 12: Bo'lim 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Google qidiruvini professional boshqarish</h1>
+  <p>Internetda har qanday ma'lumotni 5 soniyada topish sirlari</p>
+  
+</section>
+
+<!-- SLIDE 13: SVG 3 - Qidiruv operatorlari -->
+<section>
+  <h2>Professional qidiruv operatorlari</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- Card 1: Quotes -->
+      <g class="fragment">
+        <rect x="40" y="40" width="200" height="220" rx="14" class="fa la" stroke-width="2"/>
+        <text x="140" y="80" text-anchor="middle" class="t-accent" font-size="28" font-weight="bold">""</text>
+        <text x="140" y="115" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Aniq ibora</text>
+        <text x="140" y="150" text-anchor="middle" class="t-muted" font-size="14">So'zlarni aynan</text>
+        <text x="140" y="175" text-anchor="middle" class="t-muted" font-size="14">shu tartibda topish</text>
+        <rect x="55" y="200" width="170" height="40" rx="8" class="fn ln"/>
+        <text x="140" y="225" text-anchor="middle" class="t-accent" font-size="13">"al-Xorazmiy"</text>
+      </g>
+
+      <!-- Card 2: Minus -->
+      <g class="fragment">
+        <rect x="265" y="40" width="200" height="220" rx="14" class="fb lb" stroke-width="2"/>
+        <text x="365" y="80" text-anchor="middle" class="t-accent" font-size="28" font-weight="bold">-</text>
+        <text x="365" y="115" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Istisno qilish</text>
+        <text x="365" y="150" text-anchor="middle" class="t-muted" font-size="14">Natijalardan so'zni</text>
+        <text x="365" y="175" text-anchor="middle" class="t-muted" font-size="14">chiqarib tashlash</text>
+        <rect x="280" y="200" width="170" height="40" rx="8" class="fn ln"/>
+        <text x="365" y="225" text-anchor="middle" class="t-accent" font-size="13">jaguar -hayvon</text>
+      </g>
+
+      <!-- Card 3: site: -->
+      <g class="fragment">
+        <rect x="495" y="40" width="200" height="220" rx="14" class="fc lc" stroke-width="2"/>
+        <text x="595" y="80" text-anchor="middle" class="t-accent" font-size="24" font-weight="bold">site:</text>
+        <text x="595" y="115" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Muayyan sayt</text>
+        <text x="595" y="150" text-anchor="middle" class="t-muted" font-size="14">Faqat berilgan</text>
+        <text x="595" y="175" text-anchor="middle" class="t-muted" font-size="14">domendan qidirish</text>
+        <rect x="510" y="200" width="170" height="40" rx="8" class="fn ln"/>
+        <text x="595" y="225" text-anchor="middle" class="t-accent" font-size="13">dars site:edu.uz</text>
+      </g>
+
+      <!-- Card 4: filetype: -->
+      <g class="fragment">
+        <rect x="720" y="40" width="200" height="220" rx="14" class="fg lg" stroke-width="2"/>
+        <text x="820" y="80" text-anchor="middle" class="t-accent" font-size="22" font-weight="bold">filetype:</text>
+        <text x="820" y="115" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Fayl formati</text>
+        <text x="820" y="150" text-anchor="middle" class="t-muted" font-size="14">Faqat pdf, docx</text>
+        <text x="820" y="175" text-anchor="middle" class="t-muted" font-size="14">yoki pptx fayllar</text>
+        <rect x="735" y="200" width="170" height="40" rx="8" class="fn ln"/>
+        <text x="820" y="225" text-anchor="middle" class="t-accent" font-size="13">dastur filetype:pdf</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 14: Stepper - Qidiruvni toraytirish bosqichlari -->
+<section>
+  <h2>Qidiruv natijasini toraytirish amaliyoti</h2>
+  <div class="stepper">
+    <div class="stp on">
+      <h3>1-bosqich: Oddiy so'rov</h3>
+      <pre><code>python darslari</code></pre>
+      <p class="muted">Natija: 50 milliondan ortiq har xil sahifalar, videolar, reklamalar.</p>
+    </div>
+    <div class="stp">
+      <h3>2-bosqich: Aniq domenni belgilash</h3>
+      <pre><code>python darslari site:edu.uz</code></pre>
+      <p class="muted">Natija: Faqat O'zbekiston ta'lim portallaridagi sahifalar saralanadi.</p>
+    </div>
+    <div class="stp">
+      <h3>3-bosqich: Fayl formati va iqtibos</h3>
+      <pre><code>"python asoslari" site:edu.uz filetype:pdf</code></pre>
+      <div class="callout tip">Natija: Faqat rasmiy ta'limiy PDF o'quv qo'llanmalari bir soniyada topiladi!</div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 15: Bo'lim 4 -->
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Elektron pochta (Email) madaniyati</h1>
+  <p>Zamonaviy xizmat muloqoti va xat yozish etiketi</p>
+  
+</section>
+
+<!-- SLIDE 16: SVG 4 - Email xatining anatomiyasi -->
+<section>
+  <h2>Elektron xatning anatomiyasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 320">
+      <!-- Main window frame -->
+      <rect x="60" y="30" width="840" height="260" rx="14" class="fn ln" stroke-width="2"/>
+      
+      <!-- Header bar -->
+      <rect x="60" y="30" width="840" height="35" rx="14" class="fa la" stroke-width="1"/>
+      <text x="85" y="54" class="t-head" font-size="15" font-weight="bold">Yangi xat yozish (New Message)</text>
+
+      <!-- Fields -->
+      <!-- To -->
+      <g class="fragment">
+        <text x="90" y="95" class="t-accent" font-size="16" font-weight="bold">To (Kimga):</text>
+        <rect x="200" y="78" width="670" height="26" rx="6" class="fn ln"/>
+        <text x="215" y="96" class="t-head" font-size="14">ustoz@maktab.uz</text>
+      </g>
+
+      <!-- Subject -->
+      <g class="fragment">
+        <text x="90" y="135" class="t-accent" font-size="16" font-weight="bold">Subject (Mavzu):</text>
+        <rect x="200" y="118" width="670" height="26" rx="6" class="fn ln"/>
+        <text x="215" y="136" class="t-head" font-size="14">8-sinf CS amaliy vazifasi - Alimov Jasur</text>
+      </g>
+
+      <!-- Body -->
+      <g class="fragment">
+        <rect x="90" y="160" width="780" height="75" rx="8" class="fn ln"/>
+        <text x="110" y="185" class="t-muted" font-size="14">Assalomu alaykum ustoz, uyga vazifa faylini ilova qildim...</text>
+      </g>
+
+      <!-- Attachment bar -->
+      <g class="fragment">
+        <rect x="90" y="245" width="220" height="32" rx="6" class="fc lc"/>
+        <text x="115" y="266" class="t-accent" font-size="13">amaliy_ish.pdf (2.4 MB)</text>
+      </g>
+
+      <g class="fragment">
+        <rect x="770" y="245" width="100" height="32" rx="6" class="fg lg"/>
+        <text x="820" y="266" text-anchor="middle" class="t-head" font-size="14" font-weight="bold">Send</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 17: Cc va Bcc taqqoslash -->
+<section>
+  <h2>Cc va Bcc: Qaysi birini qachon ishlatamiz?</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3><i data-ic="mail"></i> Cc (Carbon Copy / Nusxa)</h3>
+      <p><strong>Ochiq xabardor qilish:</strong> Xatning asosiy nusxasi jo'natiladi. Barcha qabul qiluvchilar kimga nusxa borganini ko'radi.</p>
+      <div class="callout tip">Guruhdagi tengdoshlar yoki jamoa a'zolari uchun</div>
+    </div>
+    <div class="side b fragment">
+      <h3><i data-ic="shield-check"></i> Bcc (Blind Carbon Copy)</h3>
+      <p><strong>Maxfiy nusxa:</strong> Xat yetib boradi, ammo boshqa hech bir oluvchi bu manzilni ko'ra olmaydi.</p>
+      <div class="callout tip">Ommaviy xat yozishda boshqalarning shaxsiy pochtasini himoyalash uchun</div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 18: Flip card: Email etiketi -->
+<section>
+  <h2>Professional elektron pochta etiketi</h2>
+  <div class="cards two">
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="file-text"></i></div>
+          <h3>Mavzu (Subject) bo'sh bo'lmasin</h3>
+          <p class="muted">Bosganda qoidani ko'ring</p>
+        </div>
+        <div class="face back">
+          <h3>Qoida</h3>
+          <p>Mavzusi yo'q xat ko'pincha spamga tushadi yoki ochilmasdan o'chiriladi. Har doim 3-5 so'z bilan mohiyatni yozing.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="paperclip"></i></div>
+          <h3>Fayl hajmi 25 MB dan oshmasin</h3>
+          <p class="muted">Bosganda qoidani ko'ring</p>
+        </div>
+        <div class="face back">
+          <h3>Qoida</h3>
+          <p>Pochta serverlari 25 MB gacha fayl qabul qiladi. Katta video yoki arxivlarni Google Drive yuklab havolasini yuboring.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 19: Bo'lim 5 -->
+<section class="sec">
+  <div class="num">05</div>
+  <h1>Internet va pochtada xavfsizlik</h1>
+  <p>Fishing, spam va zararli fayllardan himoyalanish</p>
+  
+</section>
+
+<!-- SLIDE 20: Xavf turlari -->
+<section>
+  <h2>Asosiy kiber xatarlar</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="triangle-alert"></i></div>
+      <h3>Fishing (Phishing)</h3>
+      <p>Bank yoki ijtimoiy tarmoq nomidan soxta xat yuborib, parol va karta ma'lumotlarini o'g'irlash.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="mail"></i></div>
+      <h3>Spam</h3>
+      <p>Foydalanuvchi so'ramagan ommaviy reklama va shubhali takliflar yozilgan keraksiz xabarlar.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shield-alert"></i></div>
+      <h3>Zararli ilovalar</h3>
+      <p>Xatga biriktirilgan <code>.exe</code>, <code>.bat</code> yoki <code>.vbs</code> fayllar ochilsa kompyuterga virus yuqadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 21: Quiz -->
+<section>
+  <h2>O'zingizni sinab ko'ring</h2>
+  <div class="quiz">
+    <p class="q">Google qidiruvida faqat ta'limiy saytlardagi PDF o'quv qo'llanmalarni topish uchun qaysi so'rov to'g'ri?</p>
+    <div class="opts">
+      <button class="opt" type="button">kitob site:edu.uz docx</button>
+      <button class="opt" type="button" data-ok>kitob site:edu.uz filetype:pdf</button>
+      <button class="opt" type="button">kitob -edu.uz +pdf</button>
+    </div>
+    <div class="explain">
+      <code>site:edu.uz</code> faqat rasmiy ta'lim saytlarini filtrlaydi, <code>filetype:pdf</code> esa faqat PDF formatidagi fayllarni ko'rsatadi.
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 22: Amaliy topshiriq -->
+<section class="task">
+  <div class="badge">Amaliy topshiriq · 20 daqiqa</div>
+  <h2>Internet va Email amaliyoti</h2>
+  <ol>
+    <li>Brauzerda 3 ta tab oching va xatcho'plarga saqlang.</li>
+    <li>Google'da <code>site:edu.uz filetype:pdf</code> orqali darslik qidiring.</li>
+    <li>Inkognito rejimini ochib, tarix saqlanmaganini tekshiring.</li>
+    <li>Mentorga mavzu, to'g'ri matn va biriktirilgan fayl bilan xat tayyorlang.</li>
+  </ol>
+  
+</section>
+
+<!-- SLIDE 23: Dars xulosasi -->
+<section>
+  <h2>Bugungi dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <h3>Biz o'rgandik:</h3>
+      <ul>
+        <li>Internet va WWW o'rtasidagi farq</li>
+        <li>Mijoz-Server aloqa modeli</li>
+        <li>Kesh, kuki va inkognito rejimi</li>
+        <li>Google professional operatorlari</li>
+        <li>Email anatomiyasi (Cc, Bcc, Subject)</li>
+      </ul>
+    </div>
+    <div class="card fragment">
+      <h3>Keyingi dars:</h3>
+      <p><strong>6-dars:</strong> Kompyuter xavfsizligi va antivirus dasturlari. Zararli dasturlar turlari (virus, trojan, ransomware), parollar xavfsizligi va 2FA himoyasi.</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

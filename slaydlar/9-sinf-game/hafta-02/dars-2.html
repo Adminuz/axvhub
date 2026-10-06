@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>2D Grafika va Photoshop Interfeysi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>2D Grafika va Photoshop Interfeysi</h1>
+  <p class="muted">Spraytlar, tayllar, parallaks manzaralari va kompyuter grafikasi turlari</p>
+  <span class="badge">9-sinf</span><span class="badge">Game Design</span><span class="badge">2-hafta · 5-dars</span>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>2D Grafikaning O'yindagi O'rni</h1>
+  <p>Ikki o'lchamli fazoda virtual olam yaratish asoslari</p>
+</section>
+
+<section>
+  <h2>2D Grafika nima?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="image" data-anim="pulse"></i></div>
+      <h3>X va Y O'qlari Tekisligi</h3>
+      <p>Kenglik va balandlikdan iborat tekis tasvirlar san'ati.</p>
+      <p class="t-muted">Pikselli retro o'yinlardan to zamonaviy chizilgan san'at asarlarigacha.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>O'yin Elementlari</h3>
+      <p>Spraytlar, tayl xaritalari, fon manzaralari va foydalanuvchi interfeysi (UI).</p>
+      <p class="t-muted">Har bir element o'yin dvijogida qatlamlar ko'rinishida yig'iladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Spraytlar va Tayl Xaritalari</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="file-image"></i></div>
+      <h3>Spraytlar (Sprites)</h3>
+      <p>Qahramon, dushmanlar, qurollar va tangalarning 2D rasmlari.</p>
+      <p class="t-muted">Alohida kadrlardan tuzilib, harakatli animatsiyalarga aylanadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="grid-2x2"></i></div>
+      <h3>Tayllar (Tiles &amp; Tilemaps)</h3>
+      <p>Xaritalarni mozaika kabi terish uchun kichik kvadrat bloklar (32x32 px).</p>
+      <p class="t-muted">Bir necha megabayt xotira evaziga ulkan o'yin olamlarini qurish imkoni.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>2D O'yin Sahnasi Tuzilishi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="20" y="30" width="760" height="40" rx="6" class="fn ln"></rect>
+      <text x="60" y="55" class="t-muted">4-Qatlam: Uzoq Osmon va Bulutlar (Harakatsiz)</text>
+
+      <rect x="20" y="75" width="760" height="40" rx="6" class="fb lb"></rect>
+      <text x="60" y="100" class="t-head">3-Qatlam: Uzoqdagi Tog'lar va O'rmon (Sekin harakat)</text>
+
+      <rect x="20" y="120" width="760" height="45" rx="6" class="fa la"></rect>
+      <text x="60" y="148" class="t-accent">2-Qatlam: O'yin Maydoni (Qahramon va Dushmanlar sprayti)</text>
+
+      <rect x="20" y="170" width="760" height="40" rx="6" class="fg lg"></rect>
+      <text x="60" y="195" class="t-head">1-Qatlam: Oldingi Dekoratsiyalar va HUD (Tez harakat)</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Grafika Turlari</h1>
+  <p>Rastr, Vektor va Fraktal grafika taqqoslanishi</p>
+</section>
+
+<section>
+  <h2>Rastr grafikasi (Raster)</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="image" data-anim="pulse"></i></div>
+      <h3>Piksellar To'ri</h3>
+      <p>Tasvir rangli nuqtalar (piksellar) mozaikasidan iborat.</p>
+      <p class="t-muted">Millionlab rang tuslari, soyalar va fotografik detallar.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="zoom-in"></i></div>
+      <h3>Masshtablash Cheklovi</h3>
+      <p>Kattalashtirilganda (zoom) piksellar bo'rtib chiqadi va tasvir xiralashadi.</p>
+      <p class="t-accent">Asosiy formatlar: PNG, JPEG, PSD, WebP.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Vektor grafikasi (Vector)</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sparkles"></i></div>
+      <h3>Matematik Formulalar</h3>
+      <p>Nuqtalar, to'g'ri va egri chiziqlar formulasiga asoslangan geometrik shakllar.</p>
+      <p class="t-muted">Kompyuter har safar tasvirni formuladan qayta chizadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="grid-2x2"></i></div>
+      <h3>Cheksiz Masshtab</h3>
+      <p>Qanchalik kattalashtirsangiz ham sifati mutlaqo buzilmaydi, o'lchami juda ixcham.</p>
+      <p class="t-accent">Asosiy formatlar: SVG, AI, EPS.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Rastr vs Vektor Mikroskop Ostida</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="40" y="40" width="320" height="150" rx="8" class="fa la"></rect>
+      <text x="200" y="70" class="t-head" text-anchor="middle">Rastr (PNG / JPEG)</text>
+      <rect x="150" y="90" width="20" height="20" class="fc lc"></rect>
+      <rect x="170" y="90" width="20" height="20" class="fb lb"></rect>
+      <rect x="190" y="90" width="20" height="20" class="fa la"></rect>
+      <rect x="210" y="90" width="20" height="20" class="fg lg"></rect>
+      <rect x="150" y="110" width="20" height="20" class="fa la"></rect>
+      <rect x="170" y="110" width="20" height="20" class="fg lg"></rect>
+      <rect x="190" y="110" width="20" height="20" class="fc lc"></rect>
+      <rect x="210" y="110" width="20" height="20" class="fb lb"></rect>
+      <text x="200" y="165" class="t-muted" text-anchor="middle">Kattalashtirilganda kataklar ko'rinadi</text>
+
+      <rect x="440" y="40" width="320" height="150" rx="8" class="fb lb"></rect>
+      <text x="600" y="70" class="t-head" text-anchor="middle">Vektor (SVG / AI)</text>
+      <circle cx="600" cy="110" r="30" class="fg lg"></circle>
+      <text x="600" y="165" class="t-accent" text-anchor="middle">Chiziqlar doimo 100% silliq va o'tkir</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Rastr vs Vektor</h2>
+  <div class="flip">
+    <div class="flip-in">
+      <div class="face front">
+        <div class="icon"><i data-ic="image"></i></div>
+        <h3>Rastr Grafikasi</h3>
+        <p>Piksellar to'ri. Ranglar va soyalarga boy.</p>
+        <p class="t-muted">Masshtablanganda xiralashadi. Fotosuratlar va o'yin spraytlari.</p>
+      </div>
+      <div class="face back">
+        <div class="icon"><i data-ic="sparkles"></i></div>
+        <h3>Vektor Grafikasi</h3>
+        <p>Matematik chiziqlar. Cheksiz masshtablanadi.</p>
+        <p class="t-accent">Ikonkalar, logotiplar va shriftlar uchun ideal tanlov!</p>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Adobe Photoshop Interfeysi</h1>
+  <p>Professional rassom va o'yin dizayneri ish muhiti</p>
+</section>
+
+<section>
+  <h2>Photoshop Ishchi Muhiti</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="30" y="20" width="740" height="30" rx="4" class="fn ln"></rect>
+      <text x="50" y="40" class="t-head">Menu Bar: File | Edit | Image | Layer | Filter</text>
+
+      <rect x="30" y="55" width="740" height="25" rx="4" class="fa la"></rect>
+      <text x="50" y="72" class="t-accent">Options Bar: Joriy vosita xususiyatlari (Size, Opacity, Hardness)</text>
+
+      <rect x="30" y="85" width="70" height="135" rx="4" class="fb lb"></rect>
+      <text x="65" y="130" class="t-head" text-anchor="middle">Tools</text>
+      <text x="65" y="160" class="t-muted" text-anchor="middle">V, B, E, P</text>
+
+      <rect x="105" y="85" width="510" height="135" rx="6" class="fc lc"></rect>
+      <text x="360" y="145" class="t-head" text-anchor="middle">CANVAS (Ishchi Xolst: 1920 x 1080)</text>
+      <text x="360" y="170" class="t-accent" text-anchor="middle">Chizish va dizayn maydoni</text>
+
+      <rect x="620" y="85" width="150" height="135" rx="4" class="fg lg"></rect>
+      <text x="695" y="125" class="t-head" text-anchor="middle">LAYERS</text>
+      <text x="695" y="150" class="t-muted" text-anchor="middle">Qatlamlar</text>
+      <text x="695" y="175" class="t-accent" text-anchor="middle">Ierarxiya</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Canvas Parametrlari</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layout-grid"></i></div>
+      <h3>Full HD O'lchami</h3>
+      <p>Zamonaviy ekranlar uchun kenglik 1920 px, balandlik 1080 px tanlanadi.</p>
+      <p class="t-muted">Pikselli (Pixel Art) o'yinlar uchun esa 320x180 px kabi ixcham hajm olinadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="palette"></i></div>
+      <h3>72 DPI va RGB Rang</h3>
+      <p>Elektron displeylar uchun 72 DPI (Pixels/Inch) to'liq yetarli.</p>
+      <p class="t-muted">Rang rejimi doimo RGB (Red, Green, Blue) bo'lishi shart.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Asosiy Vositalar (Tools)</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="brush"></i></div>
+      <h3>Move Tool (V)</h3>
+      <p>Obyektlar va qatlamlarni maydon bo'ylab erkin siljitish vositasi.</p>
+      <p class="t-muted">Eng ko'p ishlatiladigan tugma.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="brush" data-anim="pulse"></i></div>
+      <h3>Brush Tool (B)</h3>
+      <p>Chizish mo'yqalami: spraytlar, to'qimalar va illyustratsiyalar yaratish.</p>
+      <p class="t-muted">O'lcham va qattiqlik sozlamasi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>Eraser Tool (E)</h3>
+      <p>O'chirish uskunasi: xatolarni tozalash va ortiqcha foni yo'qotish.</p>
+      <p class="t-muted">Shaffoflikni tiklash.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Asset Yaratish Bosqichlari</h2>
+  <div class="stepper">
+    <div class="step fragment fade-up">
+      <div class="num">1</div>
+      <h3>Canvas Ochish (Ctrl+N)</h3>
+      <p>O'yin talabiga mos piksellar o'lchami, 72 DPI va shaffof fon tanlanadi.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">2</div>
+      <h3>Yangi Qatlam Olish</h3>
+      <p>Hech qachon asosiy fonga chizilmaydi: har bir detal alohida qatlamda turadi.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">3</div>
+      <h3>Chizish va Detallashtirish</h3>
+      <p>Brush va Shape vositalari bilan sprayt chiziladi, soyalar beriladi.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">4</div>
+      <h3>PNG Eksport Qilish</h3>
+      <p>Shaffoflikni saqlagan holda o'yin dvijogi uchun PNG formatida saqlanadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Parallaks Fon Arxitekturasi</h1>
+  <p>2D o'yinlarda 3D chuqurlik illyuziyasini yaratish siri</p>
+</section>
+
+<section>
+  <h2>Parallaks Harakat Modeli</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="40" y="40" width="180" height="140" rx="8" class="fn ln"></rect>
+      <text x="130" y="70" class="t-head" text-anchor="middle">Uzoq Osmon</text>
+      <text x="130" y="105" class="t-muted" text-anchor="middle">Tezlik: 0.1x</text>
+      <text x="130" y="145" class="t-accent" text-anchor="middle">Harakatsiz</text>
+
+      <line x1="220" y1="110" x2="310" y2="110" class="la ar-a flowing"></line>
+
+      <rect x="310" y="40" width="180" height="140" rx="8" class="fb lb"></rect>
+      <text x="400" y="70" class="t-head" text-anchor="middle">O'rta Tog'lar</text>
+      <text x="400" y="105" class="t-muted" text-anchor="middle">Tezlik: 0.4x</text>
+      <text x="400" y="145" class="t-accent" text-anchor="middle">Sekin siljish</text>
+
+      <line x1="490" y1="110" x2="580" y2="110" class="lg ar-g flowing"></line>
+
+      <rect x="580" y="40" width="180" height="140" rx="8" class="fa la"></rect>
+      <text x="670" y="70" class="t-head" text-anchor="middle">Oldingi Daraxt</text>
+      <text x="670" y="105" class="t-muted" text-anchor="middle">Tezlik: 1.0x</text>
+      <text x="670" y="145" class="t-accent" text-anchor="middle">To'liq tezlik</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Bilimingizni sinang</h2>
+  <div class="quiz">
+    <div class="q">Qaysi grafika turi matematik formulalarga tayanib, cheksiz masshtablanganda ham sifatini yo'qotmaydi?</div>
+    <div class="opts">
+      <div class="opt">Rastr grafikasi</div>
+      <div class="opt" data-ok>Vektor grafikasi</div>
+      <div class="opt">Piksel grafikasi</div>
+      <div class="opt">Voksel grafikasi</div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Amaliy topshiriqlar</h2>
+  <div class="task fragment fade-up">
+    <span class="level easy">Oson</span>
+    <p>Rastr va vektor grafikasi o'rtasidagi 2 ta eng muhim farqni ayting.</p>
+  </div>
+  <div class="task fragment fade-up">
+    <span class="level mid">O'rta</span>
+    <p>O'yin xaritasi uchun 32x32 pikselli tayllardan foydalanishning texnik foydasini tushuntiring.</p>
+  </div>
+  <div class="task fragment fade-up">
+    <span class="level hard">Qiyin</span>
+    <p>Photoshopda 1920x1080 px o'lchamli yangi loyiha oching va 3 qatlamli Parallaks fon eskizini chizing.</p>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="image"></i></div>
+      <h3>Bugun Nimalarni Bildik?</h3>
+      <p>2D grafika elementlari: Sprayt, Tayl, Parallaks fon.</p>
+      <p class="t-muted">Grafika turlari: Rastr, Vektor, Fraktal.</p>
+      <p class="t-muted">Photoshop interfeysi, Canvas va Layers paneli.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="trophy"></i></div>
+      <h3>Uyga Vazifa</h3>
+      <p>Rastr va vektor solishtirma jadvalini tuzish hamda parallaks fon rejasini chizish.</p>
+      <p class="t-accent">Keyingi dars: Photoshop vositalari — Tanlash, Qatlamlar va Maskalar!</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

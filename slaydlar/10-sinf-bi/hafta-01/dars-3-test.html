@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>3-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>3-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">BI &amp; ML</span><span class="badge">1-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">CSV formati qanday ma'lumot saqlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Jadval ma'lumotini oddiy matn ko'rinishida</button>
+      <button class="opt" type="button">Ikkilik ustunli bloklarni</button>
+      <button class="opt" type="button">Faqat ichma-ich obyektlarni</button>
+      <button class="opt" type="button">Faqat rasm va audio</button>
+    </div>
+    <div class="explain">CSV - satrlarga bo'lingan, ajratgich bilan ustunlarga ajratilgan plain text.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">CSV da ma'lumot turlari (integer, date) nega saqlanmaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Chunki u juda katta</button>
+      <button class="opt" type="button" data-ok>Chunki u oddiy matn fayli va metadata yo'q</button>
+      <button class="opt" type="button">Chunki Excel buni taqiqlaydi</button>
+      <button class="opt" type="button">Chunki faqat vergul ishlatiladi</button>
+    </div>
+    <div class="explain">Faylda faqat belgilar bor, qaysi ustun qanday turda ekanini bildiruvchi schema yo'q.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">JSON ning CSV dan asosiy afzalligi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Hajmi har doim kichik</button>
+      <button class="opt" type="button">BI vositalariga tekislashsiz mos</button>
+      <button class="opt" type="button" data-ok>Ichma-ich (nested) ierarxik tuzilmani saqlay oladi</button>
+      <button class="opt" type="button">Ma'lumot turlari qat'iy</button>
+    </div>
+    <div class="explain">JSON obyekt ichida obyekt va massivlarni erkin saqlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi papkada tozalangan, standartlashtirilgan (Parquet/CSV) fayllar turadi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>data/raw/</code></button>
+      <button class="opt" type="button"><code>data/gold/</code></button>
+      <button class="opt" type="button"><code>logs/</code></button>
+      <button class="opt" type="button" data-ok><code>data/silver/</code></button>
+    </div>
+    <div class="explain">Silver - tozalangan va normalizatsiya qilingan zona.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>pd.json_normalize()</code> ning vazifasi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Ichma-ich JSON ni tekis jadvalga aylantirish</button>
+      <button class="opt" type="button">CSV ni JSON ga yozish</button>
+      <button class="opt" type="button">Fayl kodlashini aniqlash</button>
+      <button class="opt" type="button">Duplikatlarni o'chirish</button>
+    </div>
+    <div class="explain">Daraxtsimon JSON obyektlari satr va ustunli jadval shakliga keltiriladi (flattening).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>101;"1-maktab, Toshkent";1250;2024</code> satri to'g'ri o'qilishi uchun nima yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>pd.read_csv('fayl.csv')</code> yetarli</button>
+      <button class="opt" type="button" data-ok><code>pd.read_csv('fayl.csv', sep=';')</code></button>
+      <button class="opt" type="button"><code>pd.read_csv('fayl.csv', encoding=';')</code></button>
+      <button class="opt" type="button"><code>pd.read_json('fayl.csv')</code></button>
+    </div>
+    <div class="explain">Ajratgich nuqta-vergul; standart <code>read_csv</code> esa vergul qidiradi, shuning uchun <code>sep=';'</code> ko'rsatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>pd.read_csv(..., encoding="utf-8")</code> <code>UnicodeDecodeError</code> berdi. Qanday chora ko'riladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faylni o'chirib tashlash</button>
+      <button class="opt" type="button">Pandas ni qayta o'rnatish</button>
+      <button class="opt" type="button" data-ok><code>cp1251</code> kodlashida qayta o'qishga urinish (<code>try-except</code>)</button>
+      <button class="opt" type="button"><code>sep=';'</code> ni qo'shish</button>
+    </div>
+    <div class="explain">Eski yoki Excel fayllar ko'pincha <code>cp1251</code> da bo'ladi; <code>except UnicodeDecodeError</code> da shu kodlash sinaladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Bosh direktor uchun tayyor <code>monthly_revenue_kpi.csv</code> qaysi papkaga tegishli?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>data/raw/</code></button>
+      <button class="opt" type="button"><code>data/bronze/</code></button>
+      <button class="opt" type="button"><code>src/</code></button>
+      <button class="opt" type="button" data-ok><code>data/gold/</code></button>
+    </div>
+    <div class="explain">Gold - yakuniy hisoblangan tahliliy jadvallar va KPI zonasi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>{"ism": "Jasur", "kontakt": {"shahar": "Buxoro"}}</code> json_normalize dan keyin qanday ustun nomi chiqadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>kontakt.shahar</code></button>
+      <button class="opt" type="button"><code>shahar.kontakt</code></button>
+      <button class="opt" type="button"><code>kontakt_shahar_ism</code></button>
+      <button class="opt" type="button">Ustun hosil bo'lmaydi</button>
+    </div>
+    <div class="explain">Ichki kalitlar nuqta bilan birlashtiriladi: <code>kontakt.shahar</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">API loglarini saqlashda nega ko'pincha JSON tanlanadi, BI uchun esa qanday muammo bor?</p>
+    <div class="opts">
+      <button class="opt" type="button">JSON eng kichik hajm beradi, BI uchun muammo yo'q</button>
+      <button class="opt" type="button" data-ok>JSON moslashuvchan, lekin BI uchun tekislash (normalize) talab qiladi</button>
+      <button class="opt" type="button">JSON faqat jadval saqlaydi, shuning uchun BIga mos</button>
+      <button class="opt" type="button">JSON da kalitlar yo'q, shuning uchun tekislash kerak</button>
+    </div>
+    <div class="explain">JSON web va API standarti, ammo Power BI va SQL tekis jadvalni yoqtiradi; kalit nomlari takror yozilib hajm ham oshadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: CSV va JSON farqi, Medallion papkalari, encoding va delimiter xatolari, json_normalize.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

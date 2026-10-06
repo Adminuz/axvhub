@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Test: 13-dars. Kimball, Star va Snowflake</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Test: 13-dars. Kimball, Star va Snowflake</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">BI &amp; ML</span><span class="badge">5-hafta · 13-dars</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Kundalik yozish va o'zgartirish amallari uchun qaysi model mos?</p>
+    <div class="opts">
+      <button class="opt" type="button">OLAP</button>
+      <button class="opt" type="button">Star</button>
+      <button class="opt" type="button">Snowflake</button>
+      <button class="opt" type="button" data-ok>OLTP</button>
+    </div>
+    <div class="explain">OLTP — operatsion model.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Ko'p qatorni jamlaydigan tahliliy so'rovlar uchun model?</p>
+    <div class="opts">
+      <button class="opt" type="button">OLTP</button>
+      <button class="opt" type="button">Faqat 3NF</button>
+      <button class="opt" type="button">Excel</button>
+      <button class="opt" type="button" data-ok>OLAP</button>
+    </div>
+    <div class="explain">OLAP tahlilga mo'ljallangan.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Kimball metodologiyasining birinchi qadami?</p>
+    <div class="opts">
+      <button class="opt" type="button">Fact yaratish</button>
+      <button class="opt" type="button" data-ok>Biznes jarayonni tanlash</button>
+      <button class="opt" type="button">Indeks yaratish</button>
+      <button class="opt" type="button">Dimension yaratish</button>
+    </div>
+    <div class="explain">So'ng grain, dimension, fact.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Grain nimani aniqlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Jadvallar sonini</button>
+      <button class="opt" type="button" data-ok>Fakt qatori nimani anglatishini</button>
+      <button class="opt" type="button">Indeks turini</button>
+      <button class="opt" type="button">DBMS turini</button>
+    </div>
+    <div class="explain">Masalan, hudud x yil.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Star Schema markazida nima turadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Fact jadval</button>
+      <button class="opt" type="button">Dimension jadval</button>
+      <button class="opt" type="button">View</button>
+      <button class="opt" type="button">Indeks</button>
+    </div>
+    <div class="explain">Atrofida dimension jadvallar joylashadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Dimension jadvalda nima saqlanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Tavsiflovchi atributlar (hudud, yil)</button>
+      <button class="opt" type="button">Faqat raqamli o'lchovlar</button>
+      <button class="opt" type="button">Loglar</button>
+      <button class="opt" type="button">Parollar</button>
+    </div>
+    <div class="explain">Dimension — tavsif.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Fakt jadvalda odatda nima bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Raqamli o'lchovlar va dimension FK lari</button>
+      <button class="opt" type="button">Faqat matn</button>
+      <button class="opt" type="button">Parollar</button>
+      <button class="opt" type="button">Rasmlar</button>
+    </div>
+    <div class="explain">Masalan, <code>oquvchilar_soni</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Snowflake Schema da nima normallashtiriladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Fact jadval</button>
+      <button class="opt" type="button" data-ok>Dimension jadvallar</button>
+      <button class="opt" type="button">Indekslar</button>
+      <button class="opt" type="button">Ma'lumot turlari</button>
+    </div>
+    <div class="explain">Dimension bir necha jadvalga bo'linadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Star ning afzalligi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Joy tejash</button>
+      <button class="opt" type="button">Ko'proq JOIN</button>
+      <button class="opt" type="button" data-ok>Sodda so'rovlar, kam JOIN</button>
+      <button class="opt" type="button">Faqat OLTP uchun</button>
+    </div>
+    <div class="explain">BI uchun qulay.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">5 hudud va 3 yil, grain <code>hudud x yil</code> bo'lsa, fakt jadvalda nechta qator?</p>
+    <div class="opts">
+      <button class="opt" type="button">8</button>
+      <button class="opt" type="button">5</button>
+      <button class="opt" type="button">3</button>
+      <button class="opt" type="button" data-ok>15</button>
+    </div>
+    <div class="explain">5 x 3 = 15.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: 13-dars konspekti va slaydlari</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

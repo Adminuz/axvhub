@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>5-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>5-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">2-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q"><code>df -h</code> buyrug'i nimani ko'rsatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Fayl tizimlaridagi bo'sh va band joyni inson o'qiy oladigan birliklarda</button>
+      <button class="opt" type="button">Papka hajmini</button>
+      <button class="opt" type="button">Ulangan disklar daraxtini</button>
+      <button class="opt" type="button">O'rnatilgan paketlar ro'yxatini</button>
+    </div>
+    <div class="explain"><code>df</code> (disk free) bo'lim darajasida ishlaydi, <code>-h</code> GB/MB ko'rinishini beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q"><code>du -sh /var/log</code> nimani ko'rsatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Diskdagi bo'sh joyni</button>
+      <button class="opt" type="button" data-ok><code>/var/log</code> papkasining umumiy hajmini</button>
+      <button class="opt" type="button"><code>/var/log</code> dagi fayllar sonini</button>
+      <button class="opt" type="button">Loglarning yaratilgan sanasini</button>
+    </div>
+    <div class="explain"><code>du</code> (disk usage) papka egallagan joyni hisoblaydi; <code>-s</code> yig'indi, <code>-h</code> o'qiladigan birlik.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Disklar va ularning bo'limlari daraxtini ko'rsatuvchi buyruq qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>mount</code></button>
+      <button class="opt" type="button"><code>apt list</code></button>
+      <button class="opt" type="button" data-ok><code>lsblk</code></button>
+      <button class="opt" type="button"><code>ss -tulpn</code></button>
+    </div>
+    <div class="explain"><code>lsblk</code> (list block devices) disklar va bo'limlarni ierarxik ko'rsatadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>/dev/nvme0n1</code> qanday qurilma?</p>
+    <div class="opts">
+      <button class="opt" type="button">Birinchi SATA disk bo'limi</button>
+      <button class="opt" type="button">Virtual xotira (swap) fayli</button>
+      <button class="opt" type="button">Tarmoq interfeysi</button>
+      <button class="opt" type="button" data-ok>Zamonaviy yuqori tezlikdagi NVMe SSD</button>
+    </div>
+    <div class="explain"><code>/dev/sda</code> — SATA/SCSI disk, <code>/dev/nvme0n1</code> — NVMe drayv.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Swap nima vazifani bajaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>RAM to'lganda kam ishlatiladigan sahifalarni vaqtincha diskda saqlaydi</button>
+      <button class="opt" type="button">Disk bo'limlarini shifrlaydi</button>
+      <button class="opt" type="button">Paketlar indeksini saqlaydi</button>
+      <button class="opt" type="button">Fayllar nusxasini zaxiralaydi</button>
+    </div>
+    <div class="explain">Swap — operativ xotira o'rnini qisman bosuvchi disk bo'limi yoki fayli.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>sudo mount /dev/sdb1 /mnt/backup</code> buyrug'ida <code>/mnt/backup</code> nima deyiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Qurilma fayli</button>
+      <button class="opt" type="button" data-ok>Ulanish nuqtasi (mount point)</button>
+      <button class="opt" type="button">Fayl tizimi turi</button>
+      <button class="opt" type="button">Bo'lim jadvali</button>
+    </div>
+    <div class="explain">Disk fayl tizimi daraxtidagi biror katalogga biriktiriladi, u mount point deyiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Doimiy avtomatik ulanish sozlamalari qaysi faylda saqlanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>/etc/mount</code></button>
+      <button class="opt" type="button"><code>/dev/fstab</code></button>
+      <button class="opt" type="button" data-ok><code>/etc/fstab</code></button>
+      <button class="opt" type="button"><code>/var/disks</code></button>
+    </div>
+    <div class="explain"><code>/etc/fstab</code> tizim yuklanganda qaysi disk qayerga ulanishini belgilaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Paket menejeri <code>sudo apt install nginx</code> da dasturdan tashqari yana nimani qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Eski versiyalarni o'chiradi</button>
+      <button class="opt" type="button">Tizimni qayta yuklaydi</button>
+      <button class="opt" type="button">Disk bo'limini formatlaydi</button>
+      <button class="opt" type="button" data-ok>Kerakli bog'liqliklarni (dependencies) avtomatik o'rnatadi</button>
+    </div>
+    <div class="explain">Paket menejeri bog'liq kutubxonalarni ham repozitoriydan yuklab o'rnatadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Red Hat oilasi (RHEL, CentOS, Fedora) uchun qaysi juftlik to'g'ri?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>.rpm</code> va DNF/YUM</button>
+      <button class="opt" type="button"><code>.deb</code> va APT</button>
+      <button class="opt" type="button"><code>.apk</code> va APT</button>
+      <button class="opt" type="button"><code>.exe</code> va DNF</button>
+    </div>
+    <div class="explain">Debian/Ubuntu — <code>.deb</code> + APT, RHEL oilasi — <code>.rpm</code> + DNF/YUM, Alpine — <code>.apk</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>df -h</code> da ildiz (<code>/</code>) bo'limi 100% band. Qaysi papka ko'p joy olayotganini qanday aniqlaysiz?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>lsblk</code></button>
+      <button class="opt" type="button" data-ok><code>sudo du -sh /var/* | sort -h</code></button>
+      <button class="opt" type="button"><code>sudo apt update</code></button>
+      <button class="opt" type="button"><code>sudo fdisk -l</code></button>
+    </div>
+    <div class="explain"><code>df</code> muammoni ko'rsatadi, <code>du -sh</code> esa aynan qaysi papka katta ekanini topadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: <code>df</code>/<code>du</code>, <code>lsblk</code>, mount va <code>/etc/fstab</code>, paket menejerlari (APT, DNF, APK).</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

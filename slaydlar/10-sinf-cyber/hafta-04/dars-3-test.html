@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>12-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>12-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf Kiberxavfsizlik · 4-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz"><p class="q">ping buyrug'i nimani yuboradi?</p><div class="opts"><button class="opt" type="button">Fayl nusxasini</button><button class="opt" type="button">Parolni</button><button class="opt" type="button" data-ok>Kichik echo paketini</button><button class="opt" type="button">Dasturni o'rnatadigan paketni</button></div><div class="explain">Ping echo paketini yuborib, javob vaqtini o'lchaydi.</div></div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz"><p class="q">RTT nimani anglatadi?</p><div class="opts"><button class="opt" type="button" data-ok>Borib-kelish vaqti (Round-trip time)</button><button class="opt" type="button">Router tezligi</button><button class="opt" type="button">Qaytish tezligi testi</button><button class="opt" type="button">Kabelning nominal tezligi</button></div><div class="explain">RTT paket borib, javob qaytguncha ketgan vaqt.</div></div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz"><p class="q">Ping 0% yo'qotish ko'rsatdi. Bu nima?</p><div class="opts"><button class="opt" type="button">Hamma paket yo'qoldi</button><button class="opt" type="button">Server o'chiq</button><button class="opt" type="button">Hujum bo'layapti</button><button class="opt" type="button" data-ok>Barcha xabarlar yetib bordi, aloqa barqaror</button></div><div class="explain">0% packet loss: barcha paketlarga javob keldi.</div></div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz"><p class="q">Windows serveri boshlang'ich TTL qiymati nechta (qo'llanma)?</p><div class="opts"><button class="opt" type="button">64</button><button class="opt" type="button" data-ok>128</button><button class="opt" type="button">32</button><button class="opt" type="button">255</button></div><div class="explain">Windows 128, Linux 64 qiymat bilan jo'natadi.</div></div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz"><p class="q">Ping javobida TTL=105 bo'lsa (Windows), hop soni nechta?</p><div class="opts"><button class="opt" type="button">105</button><button class="opt" type="button" data-ok>23</button><button class="opt" type="button">128</button><button class="opt" type="button">233</button></div><div class="explain">128 - 105 = 23.</div></div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz"><p class="q">Windowsda marshrutni kuzatish buyrug'i qaysi?</p><div class="opts"><button class="opt" type="button">traceroute</button><button class="opt" type="button">ping6</button><button class="opt" type="button">route-trace</button><button class="opt" type="button" data-ok>tracert</button></div><div class="explain">Windowsda tracert, Linux/Mac da traceroute.</div></div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz"><p class="q">Traceroute da hop nima?</p><div class="opts"><button class="opt" type="button" data-ok>Yo'ldagi router: paketni keyingi bosqichga yuboradi</button><button class="opt" type="button">Foydalanuvchi parol</button><button class="opt" type="button">Brauzer oynasi</button><button class="opt" type="button">Kabelning uzunligi</button></div><div class="explain">Har bir hop - router yoki marshrutlovchi.</div></div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz"><p class="q">tracert -d nima qiladi?</p><div class="opts"><button class="opt" type="button">Hop sonini cheklaydi</button><button class="opt" type="button">Faqat IPv6 ishlatadi</button><button class="opt" type="button" data-ok>DNS nomlarini izlamaydi, faqat IP ko'rsatadi</button><button class="opt" type="button">Kutish vaqtini o'zgartiradi</button></div><div class="explain">-d bayrog'i DNS izlamasdan tezroq natija beradi.</div></div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz"><p class="q">tracert da 5-18 hoplarda * * * chiqdi, oxirida server javob berdi. To'g'ri xulosa?</p><div class="opts"><button class="opt" type="button">Server hujumga uchragan</button><button class="opt" type="button">Internet butunlay uzilgan</button><button class="opt" type="button">Kompyuteringizda virus</button><button class="opt" type="button" data-ok>Routerlar ICMP ga javob bermagan, odatiy holat</button></div><div class="explain">Ko'p provayderlar traceroute so'rovini bloklaydi.</div></div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz"><p class="q">ping daryo.uz da 25% yo'qotish. Eng to'g'ri izoh?</p><div class="opts"><button class="opt" type="button">Sayt hakerlar qo'lida</button><button class="opt" type="button" data-ok>ICMP qisman bloklangan bo'lishi mumkin, xavfli emas</button><button class="opt" type="button">Kabel uzilgan</button><button class="opt" type="button">Kompyuter buzilgan</button></div><div class="explain">Sayt «men tirikman» xabariga javob bermasligi mumkin.</div></div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>9+ to'g'ri</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>6-8 to'g'ri</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: ping, RTT, TTL, tracert, hop, * * *, flaglar.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

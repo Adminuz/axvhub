@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>2-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>2-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">IoT</span><span class="badge">1-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">IoT ning 4 qatlamli arxitekturasida eng pastki qatlam qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Qurilmalar qatlami (sensor, mikrokontroller, aktuator)</button>
+      <button class="opt" type="button">Ilova qatlami</button>
+      <button class="opt" type="button">Qayta ishlash qatlami</button>
+      <button class="opt" type="button">Tarmoq qatlami</button>
+    </div>
+    <div class="explain">Pastdan yuqoriga: Qurilmalar, Tarmoq, Qayta ishlash, Ilova.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Quyidagilardan qaysi biri analog sensor?</p>
+    <div class="opts">
+      <button class="opt" type="button">PIR harakat datchigi</button>
+      <button class="opt" type="button" data-ok>LDR fotorezistor</button>
+      <button class="opt" type="button">Tugma (Button)</button>
+      <button class="opt" type="button">Servomotor</button>
+    </div>
+    <div class="explain">LDR yorug'likka qarab uzluksiz o'zgaruvchi kuchlanish beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">PIR harakat datchigi qanday signal beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Uzluksiz o'zgaruvchi 0–5 V analog signal</button>
+      <button class="opt" type="button">Faqat tovush signali</button>
+      <button class="opt" type="button" data-ok>Raqamli: harakat bor (1) yoki yo'q (0)</button>
+      <button class="opt" type="button">Hech qanday signal bermaydi</button>
+    </div>
+    <div class="explain">Raqamli sensorlar ikki holatni (0 yoki 1) yoki raqamli paket uzatadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Rele modulining asosiy vazifasi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Kuchlanishni 5V dan 220V gacha oshirish</button>
+      <button class="opt" type="button">Ma'lumotlarni Wi-Fi orqali uzatish</button>
+      <button class="opt" type="button">Haroratni o'lchash</button>
+      <button class="opt" type="button" data-ok>5V mikrokontroller signali bilan 220V yuklamani xavfsiz yoqib-o'chirish</button>
+    </div>
+    <div class="explain">Rele elektron kalit: past kuchlanishli Arduinoni yuqori kuchlanishdan ajratib turadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Servomotorning DC dvigateldan asosiy farqi nimada?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>O'qini berilgan aniq burchakka (masalan 0°–180°) buradi</button>
+      <button class="opt" type="button">Faqat to'xtovsiz aylanadi</button>
+      <button class="opt" type="button">220V tarmoqdan to'g'ridan-to'g'ri ishlaydi</button>
+      <button class="opt" type="button">Faqat tovush chiqaradi</button>
+    </div>
+    <div class="explain">Servo aniq burchakka buriladi (aqlli qulf, robot qo'li), DC motor esa uzluksiz aylanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">ESP32 ning Arduino Uno dan asosiy ustunligi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Bir platalik kompyuter bo'lib, Linux ishlatadi</button>
+      <button class="opt" type="button" data-ok>Wi-Fi va Bluetooth o'rnatilgan</button>
+      <button class="opt" type="button">Faqat 5V da ishlaydi</button>
+      <button class="opt" type="button">Xotirasi umuman yo'q</button>
+    </div>
+    <div class="explain">ESP32 — IoT mikrokontrolleri, aqlli uy va bulutli qurilmalar uchun mos.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Raspberry Pi qaysi turdagi qurilma?</p>
+    <div class="opts">
+      <button class="opt" type="button">Oddiy 8-bitli mikrokontroller</button>
+      <button class="opt" type="button">Analog sensor</button>
+      <button class="opt" type="button" data-ok>To'liq Linux OT li bir platalik kompyuter (SBC)</button>
+      <button class="opt" type="button">Rele moduli</button>
+    </div>
+    <div class="explain">Raspberry Pi da HDMI, USB va 1–8 GB RAM bor; server va AI loyihalari uchun mos.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Arduino Uno qaysi mikrokontroller asosida qurilgan va nimaga ega emas?</p>
+    <div class="opts">
+      <button class="opt" type="button">ESP32; Wi-Fi bor</button>
+      <button class="opt" type="button">Raspberry Pi; Linux bor</button>
+      <button class="opt" type="button">ATmega328P; 240 MHz chastota</button>
+      <button class="opt" type="button" data-ok>ATmega328P; o'rnatilgan Wi-Fi tarmog'i yo'q</button>
+    </div>
+    <div class="explain">Arduino Uno: 16 MHz, 32 KB Flash, 5V, tarmoqsiz.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Faqat qorong'i tushganda va odam yaqinlashganda yonadigan ko'cha chirog'i uchun qaysi to'plam mos?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>LDR + PIR (sensorlar), mikrokontroller, rele yoki LED (aktuator)</button>
+      <button class="opt" type="button">Faqat servomotor va buzzer</button>
+      <button class="opt" type="button">Faqat DHT22 va solenoid klapan</button>
+      <button class="opt" type="button">Faqat Raspberry Pi, sensorsiz</button>
+    </div>
+    <div class="explain">Qorong'ilikni LDR, odamni PIR sezadi; mikrokontroller qaror qiladi, aktuator chiroqni yoqadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Katta servo yoki suv nasosi nega mikrokontrolleringning o'zidan emas, tashqi manbadan quvvatlanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Mikrokontrollerda hech qanday quvvat chiqishi yo'q</button>
+      <button class="opt" type="button" data-ok>Katta tok mikrokontrollerni qizdirib, buzishi yoki qayta ishga tushirishi mumkin</button>
+      <button class="opt" type="button">Tashqi manba signalni tezlashtiradi</button>
+      <button class="opt" type="button">Bu faqat chiroyli ko'rinish uchun</button>
+    </div>
+    <div class="explain">Pin chiqarishi mumkin bo'lgan tok cheklangan, quvvatli yuklamalar uchun alohida manba kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: 4 qatlam, analog va raqamli sensorlar, rele va servo, Arduino/ESP32/Raspberry Pi.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

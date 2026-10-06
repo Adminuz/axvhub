@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>12-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>12-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">4-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">FastAPI ga qaysi turdagi server kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat WSGI server (Gunicorn)</button>
+      <button class="opt" type="button" data-ok>ASGI server (masalan, Uvicorn)</button>
+      <button class="opt" type="button">FTP server</button>
+      <button class="opt" type="button">Faqat Nginx</button>
+    </div>
+    <div class="explain">FastAPI asinxron (async/await) ishlagani uchun ASGI server kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Virtual muhit (venv) nima uchun kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Python tezroq ishlashi uchun</button>
+      <button class="opt" type="button">Internetsiz ishlash uchun</button>
+      <button class="opt" type="button">Kodni shifrlash uchun</button>
+      <button class="opt" type="button" data-ok>Loyihalar kutubxona versiyalari to'qnashmasligi uchun</button>
+    </div>
+    <div class="explain">Har loyiha uchun alohida izolyatsiyalangan kutubxonalar to'plami.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">TT (texnik topshiriq) ning MVP qismi nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Asosiy funksiyalarning eng kichik ishlaydigan to'plamini</button>
+      <button class="opt" type="button">Loyihaning to'liq yakuniy variantini</button>
+      <button class="opt" type="button">Faqat dizaynni</button>
+      <button class="opt" type="button">Faqat baza parolini</button>
+    </div>
+    <div class="explain">MVP: avval eng zarur funksiyalar, qolgani keyingi iteratsiyalarda.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Guest roli E-Library da nimani qila oladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Kitob qo'shadi</button>
+      <button class="opt" type="button">Hamma kitobni o'chiradi</button>
+      <button class="opt" type="button" data-ok>Faqat is_published=True kitoblarni ko'radi</button>
+      <button class="opt" type="button">Fayl yuklaydi</button>
+    </div>
+    <div class="explain">Guest autentifikatsiyasiz: faqat chop etilgan kitoblarni ko'rish.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Qatlamli arxitekturada biznes mantiq (ruxsat, validatsiya) qaysi papkada?</p>
+    <div class="opts">
+      <button class="opt" type="button">routes/</button>
+      <button class="opt" type="button">schemas/</button>
+      <button class="opt" type="button">models/</button>
+      <button class="opt" type="button" data-ok>services/</button>
+    </div>
+    <div class="explain">routes: HTTP qatlami; schemas: Pydantic; services: biznes mantiq; models: ORM.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>users (1) - (N) books</code> bog'lanishida Foreign Key qayerda?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>books jadvalidagi owner_id da</button>
+      <button class="opt" type="button">users jadvalidagi book_id da</button>
+      <button class="opt" type="button">Ikkala jadvalda ham id sifatida</button>
+      <button class="opt" type="button">Alohida .env faylda</button>
+    </div>
+    <div class="explain">Ko'p tomondagi jadval (books) bir tomonga (users) ishora qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Many-to-Many (M:N) bog'lanish qanday amalga oshiriladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ikkita Primary Key bilan</button>
+      <button class="opt" type="button">Faqat bitta Foreign Key bilan</button>
+      <button class="opt" type="button" data-ok>Uchinchi (bog'lovchi) jadval orqali</button>
+      <button class="opt" type="button">Bog'lanish yaratib bo'lmaydi</button>
+    </div>
+    <div class="explain">Talabalar va fanlar misolida: ular orasida bog'lovchi jadval turadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>pydantic-settings</code> da <code>.env</code> dagi o'zgaruvchi unutilsa nima bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Qiymat avtomatik tasodifiy bo'ladi</button>
+      <button class="opt" type="button" data-ok>Dastur ishga tushmaydi va xato beradi</button>
+      <button class="opt" type="button">Dastur jim ishlayveradi</button>
+      <button class="opt" type="button">Qiymat bo'sh satr bo'ladi</button>
+    </div>
+    <div class="explain">Bu usulning afzalligi: konfiguratsiya xatosi darrov ko'rinadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>engine</code> va <code>AsyncSessionLocal</code> farqi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>engine — bazaga aloqa kanali, session — har so'rov uchun vaqtinchalik muloqot</button>
+      <button class="opt" type="button">Ular bir xil narsa</button>
+      <button class="opt" type="button">engine — jadval, session — ustun</button>
+      <button class="opt" type="button">engine faqat Alembic uchun</button>
+    </div>
+    <div class="explain">get_db() har so'rovga yangi sessiya beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Alembic ning vazifasi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Parollarni xeshlash</button>
+      <button class="opt" type="button">Swagger hujjatini yaratish</button>
+      <button class="opt" type="button" data-ok>Ma'lumotlar bazasi migratsiyalarini boshqarish</button>
+      <button class="opt" type="button">Docker image yig'ish</button>
+    </div>
+    <div class="explain">Ustun qo'shilsa ham eski ma'lumotlar o'chmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: ASGI/Uvicorn, venv, TT/MVP, qatlamlar, ER va FK, config, session, Alembic.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

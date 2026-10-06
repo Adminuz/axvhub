@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Build variantlar: debug va release</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Build variantlar: debug va release</h1>
+  <p class="muted">buildTypes, debug, release, R8, buildConfigField, productFlavors</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">5-hafta · 14-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimalarni o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="bug" data-anim="pulse"></i></div><h3>Debug va Release</h3><p>Ishlab chiqish va nashr uchun</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="sliders-horizontal" data-anim="float"></i></div><h3>buildConfigField</h3><p>Variantga mos qiymat</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="layers" data-anim="blink"></i></div><h3>productFlavors</h3><p>Bir loyiha, ko'p versiya</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">Ilovaning noyob nomi qaysi parametrda beriladi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok><code>applicationId</code></button>
+    <button class="opt" type="button"><code>versionName</code></button>
+    <button class="opt" type="button"><code>minSdk</code></button>
+    <button class="opt" type="button"><code>compileSdk</code></button>
+    </div>
+    <div class="explain"><code>applicationId</code> — <code>defaultConfig</code> ichidagi noyob identifikator.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Debug va Release</h1>
+  <p>Ishlab chiqish va nashr uchun</p>
+</section>
+
+<section>
+  <h2>Qaysi build qachon</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Kod yozish</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">Debug: sinov</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Release: nashr</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Foydalanuvchi</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Debug dasturchiga, release foydalanuvchiga</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Ikki build turi</h2>
+  <pre><code class="language-kotlin" data-trim data-line-numbers="3-6|7-13">
+android {
+    buildTypes {
+        debug {
+            applicationIdSuffix = ".debug"
+            isDebuggable = true
+        }
+        release {
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+}
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i><code>isMinifyEnabled = true</code> bo'lgach R8 ishlaydi. Manba hujjatda Groovy yozuvi <code>minifyEnabled true</code>, Kotlin DSL da esa <code>isMinifyEnabled = true</code> yoziladi.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Qaysi build turida R8 kodni qisqartiradi va optimallashtiradi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Release</button>
+    <button class="opt" type="button">Debug</button>
+    <button class="opt" type="button">Ikkalasida doim</button>
+    <button class="opt" type="button">Hech birida</button>
+    </div>
+    <div class="explain">Release da <code>isMinifyEnabled = true</code> yoqiladi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>buildConfigField</h1>
+  <p>Variantga mos qiymat</p>
+</section>
+
+<section>
+  <h2>BuildConfig yo'li</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="145" text-anchor="middle" font-size="22">Gradle:</text><text class="t-head" x="125" y="171" text-anchor="middle" font-size="22">buildConfigField</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">BuildConfig</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">yaratiladi</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Kodda BASE_URL</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">Variantga</text><text class="t-head" x="875" y="171" text-anchor="middle" font-size="22">mos qiymat</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Bir kod, ikki xil manzil</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>BASE_URL har variantda</h2>
+  <pre><code class="language-kotlin" data-trim data-line-numbers="2|4-6|7-10|13-14">
+android {
+    buildFeatures { buildConfig = true }
+    buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://test.api.com\"")
+        }
+        release {
+            buildConfigField("String", "BASE_URL", "\"https://prod.api.com\"")
+            isMinifyEnabled = true
+        }
+    }
+}
+
+// Kotlin kodida
+val url = BuildConfig.BASE_URL
+  </code></pre>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i>Qiymat ichidagi tirnoqlar <code>\"</code> bilan yoziladi, chunki Gradle uni kod sifatida yaratadi. Debug da test, release da prod manzil chiqadi.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>BuildConfig.BASE_URL</code> debug build da nimaga teng (yuqoridagi sozlama bilan)?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok><code>https://test.api.com</code></button>
+    <button class="opt" type="button"><code>https://prod.api.com</code></button>
+    <button class="opt" type="button"><code>null</code></button>
+    <button class="opt" type="button">Xato</button>
+    </div>
+    <div class="explain">Debug blokida test manzili berilgan.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>productFlavors</h1>
+  <p>Bir loyiha, ko'p versiya</p>
+</section>
+
+<section>
+  <h2>Variantlar ko'paytmasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="145" text-anchor="middle" font-size="22">Flavor:</text><text class="t-head" x="125" y="171" text-anchor="middle" font-size="22">free, paid</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">Type: debug,</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">release</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Variant: 2 x 2</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">freeDebug</text><text class="t-head" x="875" y="171" text-anchor="middle" font-size="22">va boshqalar</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">2 flavor va 2 type 4 ta variant beradi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Flavor va variantlar</h2>
+  <pre><code class="language-kotlin" data-trim data-line-numbers="2|4-7|8-11|14">
+android {
+    flavorDimensions += "tarif"
+    productFlavors {
+        create("free") {
+            dimension = "tarif"
+            applicationIdSuffix = ".free"
+        }
+        create("paid") {
+            dimension = "tarif"
+            applicationIdSuffix = ".paid"
+        }
+    }
+}
+// Variantlar: freeDebug, freeRelease, paidDebug, paidRelease
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Ikki <code>flavor</code> va ikki <code>build type</code> — jami 4 variant. Variant tanlash: <code>View &gt; Tool Windows &gt; Build Variants</code>.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">2 ta flavor (<code>free</code>, <code>paid</code>) va 2 ta build type (<code>debug</code>, <code>release</code>) bo'lsa, nechta variant hosil bo'ladi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>4</button>
+    <button class="opt" type="button">2</button>
+    <button class="opt" type="button">3</button>
+    <button class="opt" type="button">6</button>
+    </div>
+    <div class="explain">2 x 2 = 4: freeDebug, freeRelease, paidDebug, paidRelease.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Debug va Release</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>Debug</h3>Xatolar ochiq, tez yig'iladi, debug kaliti, optimallashtirishsiz</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>Release</h3>R8 optimallashtiradi, o'z kaliti bilan imzolanadi, nashrga tayyor</div>
+  </div>
+  <div class="card accent fragment mt"><p>Sinov uchun debug, foydalanuvchiga release beriladi.</p></div>
+</section>
+
+<section>
+  <h2>Atamalar. Bosing</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>Build type</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Qurilish turi: <code>debug</code>, <code>release</code></p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>Flavor</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Ilovaning versiyasi: <code>free</code>, <code>paid</code></p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>R8</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Kodni qisqartiruvchi va optimallashtiruvchi vosita</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>BuildConfig</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Gradle yaratadigan konstantalar sinfi</p></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Variant yaratish bosqichlari</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="settings-2" data-anim="pulse"></i></div><h3>1. buildTypes</h3><p><code>debug</code> va <code>release</code> sozlamalarini yozing.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="tag"></i></div><h3>2. Konstantalar</h3><p><code>buildConfigField</code> bilan <code>BASE_URL</code> bering.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="play"></i></div><h3>3. Variant tanlang</h3><p>Build Variants oynasidan tanlab ishga tushiring.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>Debug va Release farqi</h2>
+    <table>
+      <thead><tr><th>Xususiyat</th><th>Debug</th><th>Release</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td>Maqsad</td><td>dasturchi uchun</td><td>foydalanuvchi uchun</td></tr>
+        <tr class="fragment"><td>R8 / minify</td><td>o'chiq</td><td>yoqilgan</td></tr>
+        <tr class="fragment"><td>Imzo</td><td>debug kaliti</td><td>o'z kaliti (keystore)</td></tr>
+        <tr class="fragment"><td>Tezlik</td><td>oddiy</td><td>optimallashtirilgan</td></tr>
+        <tr class="fragment"><td>Logcat</td><td>to'liq loglar</td><td>kamroq ma'lumot</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: release oldidan</p>
+  </section>
+  <section>
+    <h2>Release oldidan tekshiruv</h2>
+    <ol class="steps-n">
+      <li class="fragment"><code>BASE_URL</code> prod manzilga ishora qilishini tekshiring.</li>
+      <li class="fragment">R8 yoqilgan release ni real telefonda sinab ko'ring.</li>
+      <li class="fragment"><code>versionCode</code> oshirilganini va imzo kaliti tayyorligini tasdiqlang.</li>
+    </ol>
+  </section>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">Release ga o'tkazamiz</h2>
+  <pre data-id="c"><code class="language-kotlin" data-trim>
+buildTypes {
+    release {
+    }
+}
+  </code></pre>
+</section>
+<section data-auto-animate>
+  <h2 data-id="t">Release ga o'tkazamiz</h2>
+  <pre data-id="c"><code class="language-kotlin" data-trim data-line-numbers="1-2|3">
+buildTypes {
+    release {
+        isMinifyEnabled = true
+    }
+}
+  </code></pre>
+</section>
+
+<section>
+  <h2>Variantlar raqamlarda</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="2" data-suf="">0</span></div><div class="l">asosiy build type: debug, release</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="2" data-suf="">0</span></div><div class="l">flavor namunada: free, paid</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="4" data-suf="">0</span></div><div class="l">jami variant: 2 x 2</div></div>
+  </div>
+  <p class="small fragment">Variantlar soni flavor va type ko'paytmasiga teng.</p>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Farqlar: Debug va release farqini 3 ta xususiyat bo'yicha yozing.</div>
+  <div class="task"><span class="level mid">O'rta</span>buildTypes yozish: <code>debug</code> ga <code>applicationIdSuffix = ".debug"</code>, <code>release</code> ga <code>isMinifyEnabled = true</code> qo'shing.</div>
+  <div class="task"><span class="level mid">O'rta</span>BASE_URL: Debug da <code>https://test.api.com</code>, release da <code>https://prod.api.com</code> manzillarini <code>buildConfigField</code> bilan bering.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Flavor qo'shish: <code>free</code> va <code>paid</code> flavorlarini yarating. Hosil bo'lgan 4 ta variant nomini yozing.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Xatoni toping: <code>BuildConfig.BASE_URL</code> da <code>Unresolved reference</code> xatosi chiqdi. 2 ta sababni yozing.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Debug va Release</h3><p>Sinov uchun va nashr uchun.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>buildConfigField</h3><p>Variantga mos konstantalar: <code>BuildConfig</code>.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Flavor</h3><p><code>free</code>/<code>paid</code>; variant = flavor + type.</p></div>
+  </div>
+  <p class="small fragment mt">Uyga vazifa: debug va release sozlamasi, BASE_URL va flavor.</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="library" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: Kutubxonalar va versiyalar</h1>
+  <p class="muted">dependencies, version catalog, versiya boshqaruvi</p>
+  <span class="badge">5-hafta · 15-dars</span>
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

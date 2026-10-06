@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>1-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>1-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">IoT</span><span class="badge">4-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">INPUT_PULLUP rejimida tugma bosilganda pin nima o'qiydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">HIGH</button>
+      <button class="opt" type="button">Doim 1</button>
+      <button class="opt" type="button" data-ok>LOW</button>
+      <button class="opt" type="button">Tasodifiy qiymat</button>
+    </div>
+    <div class="explain">Bosilmaganda HIGH, bosilganda pin GND ga ulanadi — LOW.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">LED holati (state) qachon o'zgaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Hodisa bo'lganda — tugma bosilgan lahzada</button>
+      <button class="opt" type="button">loop() ning har aylanishida</button>
+      <button class="opt" type="button">Faqat setup() da</button>
+      <button class="opt" type="button">Hech qachon</button>
+    </div>
+    <div class="explain">Holat o'zgaruvchida saqlanadi va faqat hodisaga javoban o'zgaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">#define Pressed LOW nima beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Xotirani 2 barobar oshiradi</button>
+      <button class="opt" type="button" data-ok>Kodni o'qiluvchan qiladi: == Pressed deb yozish mumkin</button>
+      <button class="opt" type="button">Tugmani tezlashtiradi</button>
+      <button class="opt" type="button">Pinni chiqishga sozlaydi</button>
+    </div>
+    <div class="explain">Kompilyatsiyadan oldin Pressed so'zi LOW bilan almashtiriladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">checkSwitch(byte pin, byte &lastState) da & nima uchun kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ikki sonni qo'shish uchun</button>
+      <button class="opt" type="button">Pinni o'chirish uchun</button>
+      <button class="opt" type="button">Mantiqiy VA amali</button>
+      <button class="opt" type="button" data-ok>Funksiya asl o'zgaruvchini yangilashi uchun (havola)</button>
+    </div>
+    <div class="explain">& bo'lmasa nusxa uzatiladi va holat saqlanmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">delay(700) ning kamchiligi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>0,7 s davomida Arduino tugmani sezmaydi</button>
+      <button class="opt" type="button">LED yonmaydi</button>
+      <button class="opt" type="button">Kod kompilyatsiya bo'lmaydi</button>
+      <button class="opt" type="button">Xotira to'ladi</button>
+    </div>
+    <div class="explain">delay() loop() ni bloklaydi; millis() esa bloklamaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">millis() qiymati qaysi turda saqlanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">int</button>
+      <button class="opt" type="button" data-ok>unsigned long</button>
+      <button class="opt" type="button">byte</button>
+      <button class="opt" type="button">bool</button>
+    </div>
+    <div class="explain">int 32 767 dan oshganda manfiy bo'ladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">To'g'ri millis() andozasi qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">if (millis() == 700) { ... }</button>
+      <button class="opt" type="button">delay(millis());</button>
+      <button class="opt" type="button" data-ok>if (millis() - oxirgi >= interval) { oxirgi = millis(); ... }</button>
+      <button class="opt" type="button">while (millis()) { }</button>
+    </div>
+    <div class="explain">Ayirma va >= ishlatiladi, so'ng oxirgi vaqt yangilanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Heartbeat LED nimani ko'rsatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Dastur ishlab turganini (loop qotmaganini)</button>
+      <button class="opt" type="button">Batareya zaryadini</button>
+      <button class="opt" type="button">Tugma bosilganini</button>
+      <button class="opt" type="button">Wi-Fi ulanishini</button>
+    </div>
+    <div class="explain">U bir tekis miltillasa — dastur tirik.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">mode = 3 bo'lsa, mode = (mode + 1) % 4 dan keyin mode = ?</p>
+    <div class="opts">
+      <button class="opt" type="button">4</button>
+      <button class="opt" type="button" data-ok>0</button>
+      <button class="opt" type="button">1</button>
+      <button class="opt" type="button">3</button>
+    </div>
+    <div class="explain">4 % 4 = 0 — rejim yana boshidan.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Rejim nomini Serial Monitor'ga qachon chiqarish kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">loop() ning har aylanishida</button>
+      <button class="opt" type="button">Faqat setup() da</button>
+      <button class="opt" type="button">Hech qachon</button>
+      <button class="opt" type="button" data-ok>Faqat rejim o'zgarganda</button>
+    </div>
+    <div class="explain">Aks holda monitor sekundiga minglab qator bilan to'lib ketadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: holat va hodisa, #define, checkSwitch() va &, millis(), heartbeat, rejimlar va switch/case.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

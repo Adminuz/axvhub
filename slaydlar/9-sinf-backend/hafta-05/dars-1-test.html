@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>13-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>13-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">5-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Tuple qanday tuzilma?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Tartibli va o'zgarmas elementlar to'plami</button>
+      <button class="opt" type="button">Takrorlanmaydigan elementlar to'plami</button>
+      <button class="opt" type="button">Kalit-qiymat juftliklari</button>
+      <button class="opt" type="button">Faqat sonlardan iborat ro'yxat</button>
+    </div>
+    <div class="explain">Tuple tartibli (ordered) va o'zgarmas (immutable).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Tuple bilan list'ning eng katta farqi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Tuple'da indeks yo'q</button>
+      <button class="opt" type="button">Tuple faqat son saqlaydi</button>
+      <button class="opt" type="button" data-ok>Tuple o'zgarmas, list o'zgaruvchan</button>
+      <button class="opt" type="button">List'da tartib yo'q</button>
+    </div>
+    <div class="explain">Tuple elementlarini yaratilgandan keyin o'zgartirib bo'lmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Tuple qaysi qavslar bilan yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>[ ]</code></button>
+      <button class="opt" type="button" data-ok><code>( )</code></button>
+      <button class="opt" type="button"><code>{ }</code></button>
+      <button class="opt" type="button"><code>&lt; &gt;</code></button>
+    </div>
+    <div class="explain">Tuple dumaloq qavs va elementlar orasidagi vergul bilan yaratiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>x = (5)</code> bo'lsa, <code>type(x)</code> nima?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>&lt;class 'tuple'&gt;</code></button>
+      <button class="opt" type="button"><code>&lt;class 'list'&gt;</code></button>
+      <button class="opt" type="button"><code>&lt;class 'set'&gt;</code></button>
+      <button class="opt" type="button" data-ok><code>&lt;class 'int'&gt;</code></button>
+    </div>
+    <div class="explain">Vergulsiz <code>(5)</code> oddiy son. Tuple uchun <code>(5,)</code> kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi holatda tuple eng mos?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Toshkent koordinatasi <code>(41.31, 69.28)</code></button>
+      <button class="opt" type="button">Har kuni o'zgaradigan xaridlar ro'yxati</button>
+      <button class="opt" type="button">Takrorsiz mehmonlar ro'yxati</button>
+      <button class="opt" type="button">Kalit bo'yicha kontaktlar</button>
+    </div>
+    <div class="explain">O'zgarmas ma'lumot (koordinata, rang, config) uchun tuple ishlatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>t = (10, 20, 30, 40)</code> bo'lsa, <code>t[1:3]</code> nima?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>(10, 20)</code></button>
+      <button class="opt" type="button"><code>(20, 30, 40)</code></button>
+      <button class="opt" type="button" data-ok><code>(20, 30)</code></button>
+      <button class="opt" type="button"><code>[20, 30]</code></button>
+    </div>
+    <div class="explain">Slicing 1- va 2-indekslarni oladi, natija ham tuple.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>t = (1, 2, 3)</code>; <code>t[0] = 9</code> nima beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>(9, 2, 3)</code></button>
+      <button class="opt" type="button" data-ok><code>TypeError</code></button>
+      <button class="opt" type="button"><code>KeyError</code></button>
+      <button class="opt" type="button"><code>(1, 2, 3, 9)</code></button>
+    </div>
+    <div class="explain">Tuple o'zgarmas: element o'zlashtirish qo'llanmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Tuple'ni «o'zgartirish» uchun to'g'ri yo'l?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>t.append(x)</code></button>
+      <button class="opt" type="button"><code>t.update(x)</code></button>
+      <button class="opt" type="button"><code>del t[0]</code></button>
+      <button class="opt" type="button" data-ok><code>list()</code> -&gt; o'zgartirish -&gt; <code>tuple()</code></button>
+    </div>
+    <div class="explain">Rasmiy qo'llanmadagi yo'l: listga aylantirib, o'zgartirib, yana tuple qilish.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>(5, 4, 5, 3, 5).count(5)</code> nimaga teng?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>3</code></button>
+      <button class="opt" type="button"><code>0</code></button>
+      <button class="opt" type="button"><code>2</code></button>
+      <button class="opt" type="button"><code>5</code></button>
+    </div>
+    <div class="explain"><code>count()</code> element necha marta uchrashini sanaydi: 5 uch marta.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>(10, 20, 30, 20).index(20)</code> nimaga teng?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>3</code></button>
+      <button class="opt" type="button"><code>2</code></button>
+      <button class="opt" type="button" data-ok><code>1</code></button>
+      <button class="opt" type="button"><code>20</code></button>
+    </div>
+    <div class="explain"><code>index()</code> birinchi uchragan joyni qaytaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: tuple ta'rifi, <code>(5,)</code> qoidasi, indeks va slicing, list orqali o'zgartirish, <code>count()</code> va <code>index()</code>.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>2-hafta testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>2-hafta testi</h1>
+  <p class="muted">20 ta savol &middot; taxminan 18 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">BI &amp; ML</span><span class="badge">2-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/20</h2>
+  <div class="quiz">
+    <p class="q">Parquet faylining boshidagi 4 baytlik sehrli belgi qanday?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>PAR1</code></button>
+      <button class="opt" type="button"><code>AVRO</code></button>
+      <button class="opt" type="button"><code>JSON</code></button>
+      <button class="opt" type="button"><code>CSV1</code></button>
+    </div>
+    <div class="explain">File Header faylning Parquet ekanini bildiruvchi <code>PAR1</code> belgisini saqlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/20</h2>
+  <div class="quiz">
+    <p class="q">Row Group nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Bitta ustun nomi</button>
+      <button class="opt" type="button" data-ok>Katta datasetning mantiqiy satr guruhi (odatda 128-512 MB)</button>
+      <button class="opt" type="button">Faylning oxirgi qismi</button>
+      <button class="opt" type="button">Siqish algoritmi</button>
+    </div>
+    <div class="explain">Har bir Row Group ichida har ustun uchun alohida Column Chunk bo'ladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/20</h2>
+  <div class="quiz">
+    <p class="q">Siqish va shifrlash Parquet'da qaysi darajada bajariladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">File Header darajasida</button>
+      <button class="opt" type="button">Faqat Footer darajasida</button>
+      <button class="opt" type="button" data-ok>Page darajasida</button>
+      <button class="opt" type="button">Row darajasida, qator bo'yicha</button>
+    </div>
+    <div class="explain">Column Chunk sahifalarga (Data Page, Dictionary Page) bo'linadi, siqish shu yerda.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/20</h2>
+  <div class="quiz">
+    <p class="q">Parquet'da standart siqish turi qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Gzip</button>
+      <button class="opt" type="button">Siqishsiz</button>
+      <button class="opt" type="button">ZIP</button>
+      <button class="opt" type="button" data-ok>Snappy</button>
+    </div>
+    <div class="explain">Snappy tez ishlagani uchun default hisoblanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/20</h2>
+  <div class="quiz">
+    <p class="q">Parquet bir xil turdagi qiymatlarni yonma-yon saqlaydi. Bu nimani beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Yuqori siqilishni (fayl hajmi 70-85% gacha kamayishi)</button>
+      <button class="opt" type="button">Faylni inson o'qishini</button>
+      <button class="opt" type="button">Qator qo'shishni tezlatishni</button>
+      <button class="opt" type="button">Sxemasiz ishlashni</button>
+    </div>
+    <div class="explain">Bir xil tur ma'lumotlar siqish algoritmlariga qulay.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/20</h2>
+  <div class="quiz">
+    <p class="q">Qaysi holatda satrli (row-based) saqlash ortiqcha disk I/O sarflaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Yangi qator qo'shilganda</button>
+      <button class="opt" type="button" data-ok>50 ustunli jadvaldan faqat bitta ustun o'rtachasi kerak bo'lganda</button>
+      <button class="opt" type="button">Bitta yozuv to'liq o'qilganda</button>
+      <button class="opt" type="button">Jadval kichik bo'lganda</button>
+    </div>
+    <div class="explain">Faqat bitta ustun kerak bo'lsa ham barcha ustunlar diskdan o'qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/20</h2>
+  <div class="quiz">
+    <p class="q">Avro qaysi dasturlash tillari o'rtasida ma'lumotni bir xil qat'iyat bilan almashishga yordam beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat Python</button>
+      <button class="opt" type="button">Faqat Java</button>
+      <button class="opt" type="button" data-ok>Java, Python, C++, Go va boshqalar</button>
+      <button class="opt" type="button">Faqat SQL</button>
+    </div>
+    <div class="explain">Avro ning maqsadi - tillar o'rtasida ma'lumot almashish.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/20</h2>
+  <div class="quiz">
+    <p class="q">Forward Compatibility nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Yangi sxema eski ma'lumotni o'qiy oladi</button>
+      <button class="opt" type="button">Sxema o'zgarmas</button>
+      <button class="opt" type="button">Ma'lumot siqilmaydi</button>
+      <button class="opt" type="button" data-ok>Eski sxema bilan yangi kod yozgan ma'lumotni o'qish mumkin</button>
+    </div>
+    <div class="explain">Oldinga moslik - yangi maydonlar e'tiborga olinmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/20</h2>
+  <div class="quiz">
+    <p class="q">Avro jadvaldagi qaysi jihat bo'yicha eng yaxshi natija ko'rsatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Yozish tezligi (append-only) va Schema Evolution</button>
+      <button class="opt" type="button">Tahlil tezligi (OLAP)</button>
+      <button class="opt" type="button">Inson o'qiy olishi</button>
+      <button class="opt" type="button">Ustunli siqish</button>
+    </div>
+    <div class="explain">Avro yozishda o'ta tez va schema evolution'da juda mukammal; OLAP da Parquet kuchli.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/20</h2>
+  <div class="quiz">
+    <p class="q">Quyidagi formatlardan qaysi birining sxemasi ixtiyoriy yoki noaniq?</p>
+    <div class="opts">
+      <button class="opt" type="button">Avro</button>
+      <button class="opt" type="button" data-ok>JSON</button>
+      <button class="opt" type="button">Parquet</button>
+      <button class="opt" type="button">Ichki sxemali har qanday format</button>
+    </div>
+    <div class="explain">JSON da sxema ixtiyoriy/noaniq, Avro va Parquet da qat'iy.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 11/20</h2>
+  <div class="quiz">
+    <p class="q">Do'kon mahsulotlari Avro sxemasida <code>izoh</code> ixtiyoriy matn maydoni sifatida qanday e'lon qilinadi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>{'name': 'izoh', 'type': 'int'}</code></button>
+      <button class="opt" type="button"><code>{'name': 'izoh'}</code>, turisiz</button>
+      <button class="opt" type="button" data-ok><code>{'name': 'izoh', 'type': ['null', 'string'], 'default': None}</code></button>
+      <button class="opt" type="button"><code>{'type': 'izoh'}</code>, nomisiz</button>
+    </div>
+    <div class="explain">Union tur <code>['null','string']</code> va default maydonni ixtiyoriy qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 12/20</h2>
+  <div class="quiz">
+    <p class="q">Quyidagi hajm tartibi (kattadan kichikka) odatda qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Parquet, Avro, CSV, JSON</button>
+      <button class="opt" type="button">CSV, JSON, Parquet, Avro</button>
+      <button class="opt" type="button">Avro, Parquet, JSON, CSV</button>
+      <button class="opt" type="button" data-ok>JSON, CSV, Avro, Parquet</button>
+    </div>
+    <div class="explain">JSON kalit nomlarini takrorlaydi, Parquet ustunli siqish tufayli eng kichik.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 13/20</h2>
+  <div class="quiz">
+    <p class="q">Qaysi cheklovlar orqali RDBMS ustunga noto'g'ri qiymat kiritilishiga yo'l qo'ymaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>CHECK</code>, <code>NOT NULL</code>, <code>UNIQUE</code></button>
+      <button class="opt" type="button"><code>SELECT</code>, <code>JOIN</code>, <code>LIMIT</code></button>
+      <button class="opt" type="button">Faqat <code>COMMIT</code></button>
+      <button class="opt" type="button">Faqat <code>PRAGMA</code></button>
+    </div>
+    <div class="explain">RDBMS data integrity ni cheklovlar orqali ta'minlaydi, CSV da esa matn yozib qo'yish mumkin.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 14/20</h2>
+  <div class="quiz">
+    <p class="q">ACID dagi "D" (Durability) nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Tranzaksiyalar bir-biridan ajralgan</button>
+      <button class="opt" type="button" data-ok>COMMIT dan keyin server o'chsa ham ma'lumot diskda qoladi</button>
+      <button class="opt" type="button">Faqat qoidalarga mos o'zgarish qabul qilinadi</button>
+      <button class="opt" type="button">Tranzaksiya bo'linmaydi</button>
+    </div>
+    <div class="explain">Muvaffaqiyatli yakunlangan operatsiya saqlanib qoladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 15/20</h2>
+  <div class="quiz">
+    <p class="q">Bitta o'quvchi ko'p to'garakka qatnashadi, to'garakda ko'p o'quvchi. Bu qaysi munosabat?</p>
+    <div class="opts">
+      <button class="opt" type="button">1:1</button>
+      <button class="opt" type="button">1:N</button>
+      <button class="opt" type="button" data-ok>M:N</button>
+      <button class="opt" type="button">N:1, faqat bitta tomonlama</button>
+    </div>
+    <div class="explain">Ikki tomonlama ko'pga-ko'p bog'lanish M:N.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 16/20</h2>
+  <div class="quiz">
+    <p class="q">B-Tree indekslarning vazifasi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Parolni shifrlash</button>
+      <button class="opt" type="button">Faylni siqish</button>
+      <button class="opt" type="button">Jadvalni nusxalash</button>
+      <button class="opt" type="button" data-ok>Milliardlab qator ichidan yozuvni millisekundlarda topish</button>
+    </div>
+    <div class="explain">Indekslar tufayli katta hajmda tezkor qidiruv mumkin.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 17/20</h2>
+  <div class="quiz">
+    <p class="q"><code>INNER JOIN</code> so'rovida <code>orders.customer_id = customers.customer_id</code> sharti nimani bajaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Buyurtmalarni ularga tegishli mijozlar bilan bog'laydi</button>
+      <button class="opt" type="button">Mijozlarni o'chiradi</button>
+      <button class="opt" type="button">Jadval yaratadi</button>
+      <button class="opt" type="button">Narxni hisoblaydi</button>
+    </div>
+    <div class="explain">JOIN FK va PK bo'yicha jadvallarni bog'lab, birlashtirilgan natija qaytaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 18/20</h2>
+  <div class="quiz">
+    <p class="q">Bank tizimida Kafka orqali tranzaksiyalar (Avro) oqib keladi, keyin ular nima uchun RDBMS'ga yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Avro ni JSON ga aylantirish uchun</button>
+      <button class="opt" type="button" data-ok>Ishonchli saqlash (ACID), yaxlitlik va parallel foydalanish uchun</button>
+      <button class="opt" type="button">Ustunli siqish uchun</button>
+      <button class="opt" type="button">Fayl hajmini oshirish uchun</button>
+    </div>
+    <div class="explain">Avro uzatish uchun, RDBMS tranzaksion ishonchlilik uchun; ikkalasi pipeline ning turli bosqichlari.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 19/20</h2>
+  <div class="quiz">
+    <p class="q">Raw eksport, streaming va analitik ombor uchun mos formatlar qatori qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Parquet, CSV, Avro</button>
+      <button class="opt" type="button">Avro, Parquet, CSV</button>
+      <button class="opt" type="button" data-ok>CSV, Avro, Parquet</button>
+      <button class="opt" type="button">JSON, JSON, JSON</button>
+    </div>
+    <div class="explain">CSV - raw/eksport, Avro - Kafka/streaming, Parquet - Data Lake Silver/Gold va DWH.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 20/20</h2>
+  <div class="quiz">
+    <p class="q">CSV da yetim yozuvlar (orphan records) paydo bo'lishi mumkin. Nima uchun Parquet yoki Avro bunga qarshi chora emas?</p>
+    <div class="opts">
+      <button class="opt" type="button">Parquet FK ni avtomatik tekshiradi</button>
+      <button class="opt" type="button">Avro orphan yozuvlarni o'chiradi</button>
+      <button class="opt" type="button">CSV FK ni qo'llab-quvvatlaydi</button>
+      <button class="opt" type="button" data-ok>Faqat RDBMS ning FK cheklovi mavjud bo'lmagan ID ni rad etadi; fayl formatlari bog'lanishni tekshirmaydi</button>
+    </div>
+    <div class="explain">Referential Integrity - ma'lumotlar bazasi xususiyati; fayl formatlari faqat saqlash usulini belgilaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>20 dan 18+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>20 dan 12-17</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>10 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: Parquet ichki tuzilishi, Avro va schema evolution, formatlarni tanlash, RDBMS va ACID.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

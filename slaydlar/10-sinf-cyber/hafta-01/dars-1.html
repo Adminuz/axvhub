@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Kiberxavfsizlik asoslari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="Logo">
+  <h1>Kiberxavfsizlik asoslari</h1>
+  <p class="muted">Axborot xavfsizligi, kiberjinoyat, kiberqonun, inson omili va aktivlar</p>
+  <span class="badge">10-sinf Kiberxavfsizlik · 1-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check" data-anim="pulse"></i></div>
+      <h3>Axborot va Kiberxavfsizlik</h3>
+      <p>Tushunchalar, farqlar va raqamli makon daxlsizligi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="user-shield" data-anim="float"></i></div>
+      <h3>Alisa, Bob va Tridi</h3>
+      <p>Kiberxavfsizlikning klassik timsollari va AOB ssenariysi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="triangle-alert" data-anim="wiggle"></i></div>
+      <h3>Inson omili va xatolar</h3>
+      <p>Nima uchun inson eng zaif zanjir hisoblanadi?</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="network" data-anim="float"></i></div>
+      <h3>5 ta xavfsizlik sohasi</h3>
+      <p>Tarmoq, ilova, ma'lumot, qurilma va bulut himoyasi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Axborot xavfsizligi va Kiberxavfsizlik</h1>
+  <p>Tushunchalar, chegaralar va munosabatlar</p>
+  
+</section>
+
+<section>
+  <h2>Axborot xavfsizligi vs Kiberxavfsizlik</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <h3>Axborot xavfsizligi</h3>
+        <p class="muted">Axborotning har qanday shaklini himoya qilish:</p>
+        <p>Qog'oz hujjatlar, arxivlar, audio yozuvlar, xodimlar suhbati va elektron ma'lumotlar.</p>
+      </div>
+      <div class="card fragment fade-up">
+        <h3>Kiberxavfsizlik</h3>
+        <p class="muted">Kibermakondagi elektron tizimlar himoyasi:</p>
+        <p>Serverlar, tarmoqlar, mobil ilovalar, bulutli omborlar va axborot infratuzilmasi.</p>
+      </div>
+    </div>
+    <div class="fragment fade-up">
+      <svg viewBox="0 0 400 300">
+        <rect x="20" y="20" width="360" height="260" rx="16" class="fb" />
+        <text x="200" y="55" text-anchor="middle" class="t-accent">Axborot xavfsizligi (Umumiy)</text>
+        <rect x="50" y="80" width="300" height="180" rx="12" class="fc" />
+        <text x="200" y="115" text-anchor="middle" class="t-head">Kiberxavfsizlik</text>
+        <rect x="75" y="140" width="115" height="50" rx="8" class="fa" />
+        <text x="132" y="170" text-anchor="middle" class="t-muted">Tarmoq</text>
+        <rect x="210" y="140" width="115" height="50" rx="8" class="fa" />
+        <text x="267" y="170" text-anchor="middle" class="t-muted">Dastur</text>
+        <rect x="142" y="200" width="115" height="50" rx="8" class="fa" />
+        <text x="200" y="230" text-anchor="middle" class="t-muted">Bulut</text>
+      </svg>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tayanch atamalar</h2>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="database"></i></div>
+      <h3>Aktiv (Asset)</h3>
+      <p>Tashkilot uchun qimmatli bo'lgan barcha ma'lumotlar, dasturlar, uskunalar va intellektual mulk.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="bug"></i></div>
+      <h3>Zaiflik (Vulnerability)</h3>
+      <p>Tizimda yoki tashkiliy boshqaruvda mavjud bo'lgan, hujumga imkon beruvchi kamchilik yoki tuynuk.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="triangle-alert"></i></div>
+      <h3>Tahdid (Threat)</h3>
+      <p>Aktivlarga zarar yetkazishi mumkin bo'lgan har qanday potensial xavf yoki g'arazli omil.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-alert"></i></div>
+      <h3>Kiberhujum (Attack)</h3>
+      <p>Zaifliklardan foydalanib, aktivlarni egallash yoki tizimni ishdan chiqarishga qaratilgan qasddan harakat.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Axborot xavfsizligining timsollari</h1>
+  <p>Alisa, Bob va Tridi modeli hamda AOB ssenariysi</p>
+  
+</section>
+
+<section>
+  <h2>Klassik model: Alisa, Bob va Tridi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="user-check"></i></div>
+      <h3>Alisa (Alice)</h3>
+      <p class="muted">Tizim egasi / Yuboruvchi</p>
+      <p>Onlayn bank egasi. Tizim xavfsiz va ishonchli ishlashidan manfaatdor.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="user"></i></div>
+      <h3>Bob (Bob)</h3>
+      <p class="muted">Qonuniy mijoz / Qabul qiluvchi</p>
+      <p>Bank xizmatidan foydalanuvchi. O'z balansi va pullari daxlsiz bo'lishini xohlaydi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-ban"></i></div>
+      <h3>Tridi (Trudy)</h3>
+      <p class="muted">Buzg'unchi / Hujumchi</p>
+      <p>Alisa va Bob o'rtasidagi ma'lumotlarni o'g'irlash, o'zgartirish yoki xalaqit berishga intiladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Alisaning Onlayn Banki (AOB) ssenariysi</h2>
+  <div class="callout fragment fade-up">
+    <p><strong>Bob Alisaning bankiga kirib balansini tekshirmoqda:</strong></p>
+  </div>
+  <div class="timeline">
+    <div class="tl fragment"><b>1. Bobning xavfsizlik manfaati:</b> Mening hisobimdagi mablag'ni va parollarimni Tridi ko'ra olmasin va o'g'irlamasin.</div>
+    <div class="tl fragment"><b>2. Alisaning xavfsizlik manfaati:</b> Mening serverlarim uzluksiz ishlasin, Tridi hisob raqamlarni soxtalashtira olmasin.</div>
+    <div class="tl fragment"><b>3. Tridining buzg'unchi harakati:</b> Aloqani tutib olish (MITM), parollarni o'g'irlash yoki bank veb-saytini to'xtatib qo'yish (DoS).</div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Inson omili va xavfsizlik madaniyati</h1>
+  <p>Eng zaif bo'g'in — inson omili muammosi</p>
+  
+</section>
+
+<section>
+  <h2>Inson omili: Eng zaif zanjir</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <h3>Mukammal texnologiya</h3>
+        <p>AES-256 shifrlash, qimmatbaho tarmoqlararo ekranlar, biometrik datchiklar.</p>
+      </div>
+      <div class="card fragment fade-up">
+        <h3>Oddiy inson xatosi</h3>
+        <p>«Parolni darhol yangilang» degan fishing xatiga ishonib, parolni begona saytga kiritish.</p>
+      </div>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-alert" data-anim="pulse"></i></div>
+      <h3>95% kiberhujumlar</h3>
+      <p class="muted">Statistik ma'lumotlarga ko'ra, kiberxavfsizlik insidentlarining 95 foizi aynan inson xatosi yoki hushyorsizligi sababli yuz beradi.</p>
+      <p>«Xavfsizlik tizimidan inson xatosini chiqarib tashlash — asosiy vazifadir.»</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Inson omili keltirib chiqaradigan xavflar</h2>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="key"></i></div>
+      <h3>Zaif va takroriy parollar</h3>
+      <p>«123456», «password», «qwerty» kabi oson parollar yoki barcha saytlar uchun bitta parol ishlatish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="mail"></i></div>
+      <h3>Fishing xabarlariga aldanish</h3>
+      <p>Shubhali elektron xat yoki Telegram havolasini tekshirmasdan bosish va fayllarni yuklash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-minus"></i></div>
+      <h3>Ogohlantirishlarni e'tiborsiz qoldirish</h3>
+      <p>Brauzer «Sertifikat xavfli!» deb ogohlantirganda ham «Baribir o'tish» tugmasini bosish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="lock"></i></div>
+      <h3>Ekranni qulflamaslik</h3>
+      <p>Ish stolidan uzoqlashganda kompyuterni ochiq qoldirish (Win+L bosmaslik).</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Qonunchilik va Javobgarlik</h1>
+  <p>O'zbekiston Respublikasining «Kiberxavfsizlik to'g'risida»gi Qonuni</p>
+  
+</section>
+
+<section>
+  <h2>O'RQ-764: Kiberxavfsizlik to'g'risidagi Qonun</h2>
+  <div class="card fragment fade-up">
+    <div class="icon"><i data-ic="shield-check"></i></div>
+    <h3>2022-yil 15-aprelda qabul qilingan</h3>
+    <p>O'zbekiston Respublikasi hududida kibermakondagi munosabatlarni tartibga soluvchi asosiy normativ-huquqiy hujjat.</p>
+  </div>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <h4>Asosiy vazifalari</h4>
+      <p>Kibermakon daxlsizligi, davlat organlari va banklar tizimlarini himoyalash, kiberjinoyatchilikka qarshi kurashish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <h4>Kiberjinoyat uchun jazo</h4>
+      <p>Ruxsatsiz kirish, ma'lumotlarni o'g'irlash yoki tizimlarni ishdan chiqarish jinoiy javobgarlikka olib keladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">05</div>
+  <h1>Axborot xavfsizligining 5 ta sohasi</h1>
+  <p>Zamonaviy xavfsizlik arxitekturasi qismlari</p>
+  
+</section>
+
+<section>
+  <h2>5 ta asosiy xavfsizlik sohasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="network"></i></div>
+      <h3>Tarmoq (Network)</h3>
+      <p>Firewall, IDS/IPS, VPN, marshrutlash filtrlari va tarmoq trafigi tahlili.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="terminal"></i></div>
+      <h3>Ilova (Application)</h3>
+      <p>Xavfsiz kod yozish, pentest, OWASP zaifliklarini bartaraf etish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="database"></i></div>
+      <h3>Ma'lumot (Data)</h3>
+      <p>Shifrlash (AES), ma'lumotlar bazasi himoyasi, DLP (sizib chiqishni oldini olish).</p>
+    </div>
+  </div>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>Qurilma (Endpoint)</h3>
+      <p>Ishchi kompyuterlar, smartfonlar, antivirus va EDR tizimlari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="globe"></i></div>
+      <h3>Bulut (Cloud)</h3>
+      <p>Bulutli infratuzilma, IAM (kirish nazorati) va xizmatlar izolatsiyasi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Kiberhujumchilarning asosiy motivatsiyalari</h2>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="banknote-check"></i></div>
+      <h3>1. Moliyaviy foyda</h3>
+      <p>Bank hisoblarini o'g'irlash, ransomware orqali tovon puli talab qilish (eng katta ulush).</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-alert"></i></div>
+      <h3>2. Kiberjosuslik</h3>
+      <p>Raqobatchi kompaniyalar sirlarini yoki davlat axborotlarini yashirin o'g'irlash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="triangle-alert"></i></div>
+      <h3>3. Xaktivizm (Siyosiy sabablar)</h3>
+      <p>Siyosiy g'oyalarni bildirish, veb-saytlarni buzib shiorlar qoldirish (defacing).</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="user"></i></div>
+      <h3>4. Shaxsiy obro' va qiziqish</h3>
+      <p>O'z texnik mahoratini namoyish qilish yoki tizim zaifliklarini sinab ko'rish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">06</div>
+  <h1>Amaliy tahlil va keyslar</h1>
+  <p>Tashkilot aktivlari matritsasini ishlab chiqish</p>
+  
+</section>
+
+<section>
+  <h2>Amaliy keys: Aktivlar va xavflar tahlili</h2>
+  <table class="fragment fade-up">
+      <thead>
+        <tr>
+          <th>Aktiv nomi</th>
+          <th>Aktiv turi</th>
+          <th>Tahdid</th>
+          <th>Himoya chorasi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mijozlar parollari</td>
+          <td>Ma'lumot</td>
+          <td>Baza sizib chiqishi</td>
+          <td>Argon2/bcrypt xeshlash</td>
+        </tr>
+        <tr>
+          <td>Bank veb-serveri</td>
+          <td>Apparat-dastur</td>
+          <td>DoS/DDoS hujumi</td>
+          <td>Rate limit, Cloudflare WAF</td>
+        </tr>
+        <tr>
+          <td>Buxgalter noutbuki</td>
+          <td>Qurilma</td>
+          <td>Fishing orqali troyan</td>
+          <td>EDR, xavfsizlik madaniyati</td>
+        </tr>
+      </tbody>
+    </table>
+  
+</section>
+
+<section>
+  <h2>Darsning amaliy topshiriqlari</h2>
+  <div class="cols">
+    <div class="task fragment fade-up">
+      <span class="level easy">Oson</span>
+      <h4>1. Atamalar tahlili</h4>
+      <p>Kompaniya arxivi qulflangan, ammo Wi-Fi parolsiz. Qaysi xavfsizlik qanday ta'minlangan?</p>
+    </div>
+    <div class="task fragment fade-up">
+      <span class="level easy">Oson</span>
+      <h4>2. Alisa, Bob, Tridi</h4>
+      <p>Tridi Bobning buyurtma manzilini almashtirdi. Qanday xavfsizlik xususiyati buzildi?</p>
+    </div>
+    <div class="task fragment fade-up">
+      <span class="level mid">O'rta</span>
+      <h4>3. Inson omili</h4>
+      <p>Qimmatbaho Firewall bo'lishiga qaramay buxgalter kompyuteri zararlanishi sababi.</p>
+    </div>
+    <div class="task fragment fade-up">
+      <span class="level hard">Qiyin</span>
+      <h4>4. Audit so'rovnomasi</h4>
+      <p>Kompaniya xodimlari xavfsizlik madaniyatini tekshirish uchun 5 ta nazorat savoli tuzing.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Xulosa va asosiy xulosalar</h2>
+  <div class="card fragment fade-up">
+    <div class="icon"><i data-ic="shield-check"></i></div>
+    <h3>Xavfsizlik — bu jarayon, mahsulot emas</h3>
+    <p>Hech bir tizim 100% xavfsiz bo'la olmaydi. Himoya uzluksiz yangilanishi va kuzatib borilishi lozim.</p>
+  </div>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <h4>Inson — eng asosiy himoyachi</h4>
+      <p>Xodimlarning hushyorligi va xavfsizlik madaniyati eng ilg'or texnologiyalar kabi muhim.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <h4>Qonun va axloq</h4>
+      <p>Kiberxavfsizlik ko'nikmalari faqat ezgu maqsadlarda va qonun doirasida qo'llanilishi shart.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="shield-check" data-anim="pulse"></i></div>
+  <h1>E'tiboringiz uchun rahmat!</h1>
+  <p class="muted">Keyingi dars: Kibertahdidlarning turlari (Zararli dasturlar va DoS)</p>
+  <span class="badge">Savollar bormi?</span>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>4-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>4-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">2-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Foydalanuvchi saytga o'z emailini kiritib «Mening emailim ali@mail.uz» dedi. Bu qaysi tushuncha?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Identifikatsiya: tizimga o'zini tanishtirish</button>
+      <button class="opt" type="button">Autentifikatsiya: shaxsni isbotlash</button>
+      <button class="opt" type="button">Avtorizatsiya: huquqni tekshirish</button>
+      <button class="opt" type="button">Refresh: tokenni yangilash</button>
+    </div>
+    <div class="explain">Identifikatsiya «Siz kimsiz?» savoliga javob: login yoki email.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Kiritilgan parol bazadagi shifrlangan hesh bilan solishtirilmoqda. Bu qaysi bosqich?</p>
+    <div class="opts">
+      <button class="opt" type="button">Identifikatsiya</button>
+      <button class="opt" type="button" data-ok>Autentifikatsiya</button>
+      <button class="opt" type="button">Avtorizatsiya</button>
+      <button class="opt" type="button">Serializatsiya</button>
+    </div>
+    <div class="explain">Autentifikatsiya shaxsning haqiqiyligini tekshiradi: «Haqiqatan ham sizmisiz?».</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">«Ali oddiy foydalanuvchi, u boshqa birovning maqolasini o'chira olmaydi» qaysi tushunchaga misol?</p>
+    <div class="opts">
+      <button class="opt" type="button">Identifikatsiya</button>
+      <button class="opt" type="button">Autentifikatsiya</button>
+      <button class="opt" type="button" data-ok>Avtorizatsiya</button>
+      <button class="opt" type="button">Normalizatsiya</button>
+    </div>
+    <div class="explain">Avtorizatsiya foydalanuvchining qaysi amallarga huquqi borligini aniqlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">JWT nuqta bilan ajratilgan qaysi 3 qismdan iborat?</p>
+    <div class="opts">
+      <button class="opt" type="button">Header, Body, Footer</button>
+      <button class="opt" type="button">Login, Parol, Token</button>
+      <button class="opt" type="button">Access, Refresh, Session</button>
+      <button class="opt" type="button" data-ok>Header, Payload, Signature</button>
+    </div>
+    <div class="explain">JWT ko'rinishi <code>xxxxx.yyyyy.zzzzz</code>: sarlavha, ma'lumotlar va raqamli imzo.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Himoyalangan endpointga JWT access token qaysi sarlavhada yuboriladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>Authorization: Bearer &lt;access_token&gt;</code></button>
+      <button class="opt" type="button"><code>Token: &lt;access_token&gt;</code></button>
+      <button class="opt" type="button"><code>Content-Type: &lt;access_token&gt;</code></button>
+      <button class="opt" type="button"><code>Cookie: &lt;access_token&gt;</code> (faqat shunday)</button>
+    </div>
+    <div class="explain">Access token har bir API so'rovida <code>Authorization: Bearer ...</code> shaklida yuboriladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Refresh token nima uchun kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Parolni bazada saqlash uchun</button>
+      <button class="opt" type="button" data-ok>Access token eskirganda yangi access token olish uchun</button>
+      <button class="opt" type="button">Foydalanuvchi rolini o'zgartirish uchun</button>
+      <button class="opt" type="button">Serverni qayta ishga tushirish uchun</button>
+    </div>
+    <div class="explain">Refresh uzoq yashaydi va foydalanuvchini har safar qayta parol terishga majburlamaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Session asosidagi autentifikatsiyaning asosiy kamchiligi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Sessiyani bekor qilib bo'lmaydi</button>
+      <button class="opt" type="button">Har doim imzo kerak bo'lmaydi</button>
+      <button class="opt" type="button" data-ok>Server xotirasini band qiladi, mobil ilovalar uchun noqulay</button>
+      <button class="opt" type="button">Faqat Android'da ishlaydi</button>
+    </div>
+    <div class="explain">Session serverda saqlanadi (stateful), tokenni bekor qilish esa oson bo'ladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Nega standart Django User o'rniga Custom User yaratish tavsiya etiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Chunki standart User umuman parol saqlamaydi</button>
+      <button class="opt" type="button">Chunki Django User'ni qo'llab-quvvatlamaydi</button>
+      <button class="opt" type="button">Chunki Custom User tezroq ishlaydi</button>
+      <button class="opt" type="button" data-ok>Email/telefon bilan kirish va avatar kabi maydonlarni erkin qo'shish uchun</button>
+    </div>
+    <div class="explain">Custom User <code>AbstractBaseUser</code> va <code>PermissionsMixin</code> asosida loyiha boshidanoq yaratiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>USERNAME_FIELD = "email"</code> va <code>email = models.EmailField(unique=True)</code> birgalikda nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Tizimga kirish email orqali bo'ladi va email takrorlanmas</button>
+      <button class="opt" type="button">Username maydoni majburiy bo'ladi</button>
+      <button class="opt" type="button">Email faqat admin uchun ishlaydi</button>
+      <button class="opt" type="button">Parol email ichida saqlanadi</button>
+    </div>
+    <div class="explain"><code>USERNAME_FIELD</code> login sifatida ishlatiladigan maydonni belgilaydi, <code>unique=True</code> esa takrorlanishni taqiqlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Xaker JWT payload'ini o'zgartirib, <code>user_id</code> ni 1 ga almashtirdi, imzoni o'zgartirmadi. Nima bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Server yangi payload'ni qabul qiladi</button>
+      <button class="opt" type="button" data-ok>Imzo buziladi va server so'rovni rad etadi</button>
+      <button class="opt" type="button">Token avtomatik yangilanadi</button>
+      <button class="opt" type="button">Faqat muddati (exp) tekshiriladi</button>
+    </div>
+    <div class="explain">Signature server <code>SECRET_KEY</code> bilan Header va Payload'dan hosil qiladi; o'zgartirilsa imzo mos kelmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: identifikatsiya, autentifikatsiya va avtorizatsiya farqi, JWT qismlari, Access va Refresh token, Custom User.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

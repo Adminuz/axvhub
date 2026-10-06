@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>IoT Arxitekturasi: Sensorlar va Aktuatorlar</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>IoT Arxitekturasi: Sensorlar va Aktuatorlar</h1>
+  <p class="muted">4 qatlamli model, apparat ta'minoti fizikasi, sensorlar va ijrochi mexanizmlar</p>
+  <span class="badge">9-sinf</span><span class="badge">IoT</span><span class="badge">1-hafta · 2-dars</span>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>IoT ning 4 Qatlamli Modeli</h1>
+  <p>Qurilmalardan to bulut va ilovalargacha bo'lgan arxitektura</p>
+</section>
+
+<section>
+  <h2>4 Qatlamli Arxitektura</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu" data-anim="pulse"></i></div>
+      <h3>1. Qurilmalar Qatlami (Device)</h3>
+      <p>Sensorlar, mikrokontrollerlar va aktuatorlar joylashgan apparat qismi.</p>
+      <p class="t-muted">Fizik olam bilan to'g'ridan-to'g'ri muloqot qiluvchi birlamchi poydevor.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="network"></i></div>
+      <h3>2. Tarmoq Qatlami (Network)</h3>
+      <p>Wi-Fi, Bluetooth, LoRaWAN, GSM shlyuzlari (Gateway).</p>
+      <p class="t-muted">Qurilmalar to'plagan ma'lumotlarni bulutga xavfsiz yetkazish ko'prigi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Yuqori Qatlamlar: Bulut va Ilova</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cloud"></i></div>
+      <h3>3. Qayta Ishlash (Cloud / Processing)</h3>
+      <p>Bulutli serverlar, ma'lumotlar bazasi, filtrlash va tahlil algoritmlari.</p>
+      <p class="t-muted">Milliardlab o'lchovlarni saqlaydi va sun'iy intellekt bilan tahlil qiladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="smartphone"></i></div>
+      <h3>4. Ilova Qatlami (Application)</h3>
+      <p>Foydalanuvchi ko'radigan mobil ilova, veb-dashboard va avtomatik boshqaruv.</p>
+      <p class="t-muted">Inson tizimni kuzatishi va kerak bo'lsa masofadan buyruq berishi mumkin.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>4 Qatlamli IoT Piramidasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="150" y="20" width="500" height="42" rx="6" class="fn ln"></rect>
+      <text x="400" y="47" text-anchor="middle" class="t-accent">4. Ilova Qatlami (Smartfon, Veb-Dashboard)</text>
+
+      <rect x="110" y="72" width="580" height="42" rx="6" class="fa la"></rect>
+      <text x="400" y="99" text-anchor="middle" class="t-head">3. Qayta Ishlash Qatlami (Bulutli Serverlar, Tahlil)</text>
+
+      <rect x="70" y="124" width="660" height="42" rx="6" class="fb lb"></rect>
+      <text x="400" y="151" text-anchor="middle" class="t-head">2. Tarmoq Qatlami (Wi-Fi, Bluetooth, LoRaWAN, 4G/5G)</text>
+
+      <rect x="30" y="176" width="740" height="42" rx="6" class="fc lc"></rect>
+      <text x="400" y="203" text-anchor="middle" class="t-head">1. Qurilmalar Qatlami (Sensorlar, Aktuatorlar, Mikrokontrollerlar)</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Sensorlar (Datchiklar)</h1>
+  <p>Atrof-muhitni sezish va elektr signallariga aylantirish fizikasi</p>
+</section>
+
+<section>
+  <h2>Sensor Nima?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="eye" data-anim="float"></i></div>
+      <h3>Fizikadan Elektrga</h3>
+      <p>Harorat, bosim, yorug'lik yoki harakat kabi fizik kattaliklarni elektr signaliga aylantiradi.</p>
+      <p class="t-muted">IoT qurilmasining "ko'zi va qulog'i" vazifasini o'taydi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="activity"></i></div>
+      <h3>Energiya Samaradorligi</h3>
+      <p>Zamonaviy sensorlar mikroamper darajasida kam energiya sarflaydi.</p>
+      <p class="t-muted">Kichik batareya bilan yillab uzluksiz ishlash imkonini beradi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Analog Sensorlar</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+      <h3>Uzluksiz O'zgaruvchi Signal</h3>
+      <p>Kuchlanish 0V dan 5V gacha uzluksiz oqimda o'zgarib turadi.</p>
+      <p class="t-muted">TMP36 (harorat), LDR (yorug'lik), MQ-2 (gaz konsentratsiyasi).</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>ADC (Analog-to-Digital Converter)</h3>
+      <p>Mikrokontroller analog kuchlanishni 0 dan 1023 gacha bo'lgan raqamga aylantiradi.</p>
+      <p class="t-muted">Masalan: 2.5V kuchlanish = 512 raqamli qiymat.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Raqamli Sensorlar</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="zap"></i></div>
+      <h3>Faqat 2 Xil Holat (0 yoki 1)</h3>
+      <p>Kuchlanish yoki 0V (LOW), yoki 5V (HIGH) bo'ladi.</p>
+      <p class="t-muted">PIR harakat datchigi: "Harakat bor" (1) yoki "Harakat yo'q" (0).</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Shovqinga Chidamlilik</h3>
+      <p>Raqamli signallarga tashqi elektromagnit shovqinlar deyarli ta'sir qilmaydi.</p>
+      <p class="t-muted">DHT11/DHT22 raqamli protokoli orqali harorat va namlik paketlari uzatiladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Ommabop IoT Sensorlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sun"></i></div>
+      <h3>LDR Fotorezistor</h3>
+      <p>Yorug'likka qarab qarshiligi o'zgaradi. Tong va tunni aniqlash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="flame"></i></div>
+      <h3>TMP36 / DS18B20</h3>
+      <p>Haroratni o'lchovchi datchiklar. Issiqxona va sovitkichlar uchun.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="navigation"></i></div>
+      <h3>HC-SR04 Masofa</h3>
+      <p>Ultratovush orqali to'siqqacha bo'lgan masofani santimetrlarda hisoblaydi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Analog vs Raqamli Signal To'lqinlari</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 230">
+      <rect x="30" y="30" width="350" height="170" rx="8" class="fn ln"></rect>
+      <text x="205" y="65" text-anchor="middle" class="t-accent">Analog Signal (Uzluksiz to'lqin)</text>
+      <path d="M 60 125 Q 110 75 160 125 T 260 125 T 360 125" stroke="var(--c-accent)" stroke-width="3" fill="none"></path>
+      <text x="205" y="165" text-anchor="middle" class="t-muted">0V dan 5V gacha cheksiz qiymatlar</text>
+      <text x="205" y="185" text-anchor="middle" class="t-head">Harorat, tovush, yorug'lik</text>
+
+      <rect x="420" y="30" width="350" height="170" rx="8" class="fn ln"></rect>
+      <text x="595" y="65" text-anchor="middle" class="t-accent">Raqamli Signal (0 va 1)</text>
+      <path d="M 450 145 L 490 145 L 490 95 L 540 95 L 540 145 L 590 145 L 590 95 L 640 95 L 640 145 L 680 145" stroke="var(--c-accent)" stroke-width="3" fill="none"></path>
+      <text x="595" y="165" text-anchor="middle" class="t-muted">Faqat 0 (LOW) va 1 (HIGH)</text>
+      <text x="595" y="185" text-anchor="middle" class="t-head">Tugma, harakat sensori, rele</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Aktuatorlar (Ijrochi Vositalar)</h1>
+  <p>Elektr quvvatini jismoniy harakat va himoyaga aylantirish</p>
+</section>
+
+<section>
+  <h2>Aktuator Nima?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="power" data-anim="pulse"></i></div>
+      <h3>Tizimning "Ijrochi Qo'li"</h3>
+      <p>Mikrokontroller buyrug'i asosida jismoniy harakat yoki signal hosil qiladi.</p>
+      <p class="t-muted">Sensor his qiladi, mikrokontroller o'ylaydi, aktuator bajaradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>Keng Turdagi Mexanizmlar</h3>
+      <p>Elektromagnit relelar, servomotorlar, klapanlar, nasoslar va chiroqlar.</p>
+      <p class="t-muted">Kichik o'yinchoqdan to ulkan zavod kranlarigacha aktuator bilan boshqariladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Rele Moduli (Relay) — Xavfsiz Ko'prik</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Galvanik Izolyatsiya</h3>
+      <p>Past kuchlanishli (5V) Arduinoni yuqori kuchlanishli (220V) zanjirdan ajratadi.</p>
+      <p class="t-muted">Mikrokontrollerga yuqori tok urishining oldini oladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="zap"></i></div>
+      <h3>Elektromagnit Kalit</h3>
+      <p>5V signal kelganda magnit tortilib, 220V kontaktlarni jismonan ulaydi.</p>
+      <p class="t-muted">Xona qandili, isitgich yoki suv nasosini masofadan yoqish/o'chirish kaliti.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Servomotorlar (Servo)</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-dot"></i></div>
+      <h3>Aniq Burchak Nazorati</h3>
+      <p>O'z o'qini berilgan aniq burchakka (0° dan 180° gacha) buradi va ushlab turadi.</p>
+      <p class="t-muted">Oddiy motor kabi tinimsiz aylanmaydi, balki aniq pozitsiyada to'xtaydi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="maximize-2"></i></div>
+      <h3>O'yindagi Vazifalari</h3>
+      <p>Aqlli eshik qulfini burash, robot qo'lini harakatlantirish, darchani ochish.</p>
+      <p class="t-muted">PWM signallari yordamida burchak aniq boshqariladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Indikatorlar: LED va Buzzer</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sun"></i></div>
+      <h3>Svetodiod (LED &amp; RGB LED)</h3>
+      <p>Holatni vizual ko'rsatish: Yashil — xavfsiz, Sariq — ogohlantirish, Qizil — xavf.</p>
+      <p class="t-muted">RGB LED bitta korpusda millionlab ranglarni namoyish eta oladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="bell"></i></div>
+      <h3>Pyezo Buzzer (Ovozli signal)</h3>
+      <p>Turli chastotadagi tovush va ohanglarni chiqarish.</p>
+      <p class="t-muted">Gaz qochishi, harakat sezilishi yoki budilnikda baland signal beradi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Rele Bilan 220V Boshqarish Sxemasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 230">
+      <rect x="30" y="40" width="180" height="140" rx="8" class="fn ln"></rect>
+      <text x="120" y="75" text-anchor="middle" class="t-accent">Arduino Uno</text>
+      <text x="120" y="105" text-anchor="middle" class="t-muted">Chiqish pini:</text>
+      <text x="120" y="130" text-anchor="middle" class="t-head">5V / 20mA</text>
+      <text x="120" y="155" text-anchor="middle" class="t-muted">(Past kuchlanish)</text>
+
+      <line x1="220" y1="110" x2="310" y2="110" stroke="var(--c-accent)" stroke-width="3"></line>
+
+      <rect x="320" y="40" width="200" height="140" rx="8" class="fa la"></rect>
+      <text x="420" y="75" text-anchor="middle" class="t-head">RELE MODULI</text>
+      <circle cx="390" cy="110" r="14" class="fc lc"></circle>
+      <circle cx="450" cy="110" r="14" class="fc lc"></circle>
+      <line x1="390" y1="110" x2="445" y2="100" stroke="var(--c-accent)" stroke-width="3"></line>
+      <text x="420" y="155" text-anchor="middle" class="t-head">Magnit kontakt kaliti</text>
+
+      <line x1="530" y1="110" x2="600" y2="110" stroke="var(--c-accent)" stroke-width="3"></line>
+
+      <rect x="610" y="40" width="160" height="140" rx="8" class="fb lb"></rect>
+      <text x="690" y="75" text-anchor="middle" class="t-head">220V CHIRIQ</text>
+      <circle cx="690" cy="115" r="25" class="fc lc"></circle>
+      <text x="690" y="160" text-anchor="middle" class="t-head">Tarmoqdan yonadi</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Mikrokontrollerlar</h1>
+  <p>Tizim miyasi: Arduino Uno, ESP32 va Raspberry Pi taqqosi</p>
+</section>
+
+<section>
+  <h2>Mikrokontroller Nima?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>Bitta Chipdagi Kompyuter</h3>
+      <p>Protsessor (CPU), RAM, Flash xotira va kirish-chiqish (I/O) portlari bitta mikrosxemada.</p>
+      <p class="t-muted">Belgilangan dastur kodini cheksiz siklda (Loop) uzluksiz bajaradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+      <h3>Real Vaqtda Ishlash</h3>
+      <p>Operatsion tizim kutishlarisiz, mikrosekundlarda signallarga javob qaytaradi.</p>
+      <p class="t-muted">Kam quvvat sarflaydi va qotib qolmasdan ishonchli ishlaydi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Arduino Uno vs ESP32 vs Raspberry Pi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>Arduino Uno</h3>
+      <p>16 MHz, 32 KB xotira, 5V. Tarmoq yo'q.</p>
+      <p class="t-muted">Elektronika o'rganish va boshlang'ich sxemalar uchun a'lo.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="wifi"></i></div>
+      <h3>ESP32 (IoT Standarti)</h3>
+      <p>240 MHz, 4 MB xotira, 3.3V.</p>
+      <p class="t-muted">O'rnatilgan <b>Wi-Fi va Bluetooth</b>. Haqiqiy IoT uchun eng yaxshi tanlov.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="monitor"></i></div>
+      <h3>Raspberry Pi</h3>
+      <p>To'liq mini-kompyuter (Linux).</p>
+      <p class="t-muted">Kameralar, videoni sun'iy intellekt bilan tahlil qilish va katta serverlar.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Mikrokontroller Ichki Arxitekturasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 230">
+      <rect x="50" y="30" width="700" height="170" rx="8" class="fn ln"></rect>
+      <text x="400" y="60" text-anchor="middle" class="t-accent">Mikrokontroller Chipining Ichki Tuzilishi (SoC)</text>
+
+      <rect x="80" y="80" width="120" height="90" rx="6" class="fa la"></rect>
+      <text x="140" y="115" text-anchor="middle" class="t-head">CPU</text>
+      <text x="140" y="140" text-anchor="middle" class="t-muted">Protsessor</text>
+
+      <rect x="220" y="80" width="120" height="90" rx="6" class="fb lb"></rect>
+      <text x="280" y="115" text-anchor="middle" class="t-head">RAM / Flash</text>
+      <text x="280" y="140" text-anchor="middle" class="t-muted">Xotira</text>
+
+      <rect x="360" y="80" width="120" height="90" rx="6" class="fc lc"></rect>
+      <text x="420" y="115" text-anchor="middle" class="t-head">ADC / PWM</text>
+      <text x="420" y="140" text-anchor="middle" class="t-muted">Konverterlar</text>
+
+      <rect x="500" y="80" width="120" height="90" rx="6" class="fn ln"></rect>
+      <text x="560" y="115" text-anchor="middle" class="t-head">I/O Pinlar</text>
+      <text x="560" y="140" text-anchor="middle" class="t-muted">Kirish/Chiqish</text>
+
+      <rect x="640" y="80" width="90" height="90" rx="6" class="fa la"></rect>
+      <text x="685" y="115" text-anchor="middle" class="t-head">Wi-Fi</text>
+      <text x="685" y="140" text-anchor="middle" class="t-muted">(ESP32)</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Interaktiv Savol: Motorlarni Quvvatlash</h2>
+  <div class="flip">
+    <div class="flip-in">
+      <div class="face front">
+        <div class="icon"><i data-ic="power"></i></div>
+        <h3>Kuchli motorlarni to'g'ridan-to'g'ri Arduino piniga ulasa bo'ladimi?</h3>
+        <p class="t-muted">Kartanikiga bosing yoki aylantiring</p>
+      </div>
+      <div class="face back">
+        <div class="icon"><i data-ic="circle-check"></i></div>
+        <h3>Qat'iyan Mumkin Emas!</h3>
+        <p>Arduino pini maksimal 20–40 mA tok bera oladi. Motorlar esa 500–1000 mA talab qiladi. To'g'ridan-to'g'ri ulasangiz Arduino yonib ketadi. Motorlar har doim drayver (L298N) va tashqi quvvat manbaiga ulanadi!</p>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Aqlli Shlagbaum Ishlash Algoritmi</h2>
+  <div class="stepper">
+    <div class="step fragment fade-up">
+      <div class="num">1</div>
+      <h3>Masofani O'lchash</h3>
+      <p>HC-SR04 ultratovush sensori avtomobil yaqinlashganini sezadi (Masofa &lt;= 100 sm).</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">2</div>
+      <h3>To'siqni Ochish</h3>
+      <p>Arduino yashil LED ni yoqadi va servomotorni 90 gradusga buradi.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">3</div>
+      <h3>Avtomatik Yopish</h3>
+      <p>Avtomobil o'tib ketgach, 5 soniyadan so'ng servo 0 gradusga qaytadi va qizil LED yonadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tezkor Savol: Sensorlar Turi</h2>
+  <div class="quiz">
+    <div class="q">Quyidagilardan qaysi biri uzluksiz o'zgaruvchi analog signal beruvchi sensor hisoblanadi?</div>
+    <div class="opts">
+      <div class="opt">A) Oddiy tugma (Push-button)</div>
+      <div class="opt" data-ok>B) LDR fotorezistor (Yorug'lik datchigi)</div>
+      <div class="opt">C) PIR harakat sensori (Faqat 0 va 1)</div>
+      <div class="opt">D) Elektromagnit rele</div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Dars Xulosasi va Amaliy Vazifa</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Bugun O'rganganlarimiz</h3>
+      <p>4 qatlamli IoT modeli va apparat qatlami.</p>
+      <p>Analog va raqamli sensorlar farqi.</p>
+      <p class="t-muted">Rele, servomotorlar va mikrokontrollerlar (Arduino vs ESP32).</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>Amaliy Vazifa</h3>
+      <p>Avtoturargoh shlagbaumi yoki aqlli chiroq sxemasini chizish.</p>
+      <p>Sensor va aktuator pinlari ulanishini rejalashtirish.</p>
+      <p class="t-muted">Keyingi darsda tarmoq va bulut qatlamiga tayyorgarlik ko'rish.</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

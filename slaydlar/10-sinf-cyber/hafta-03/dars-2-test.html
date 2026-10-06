@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>8-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>8-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf Kiberxavfsizlik · 3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">STRIDE modeli nima maqsadda ishlatiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Tizim loyihalashda tahdidlarni oldindan tizimli aniqlash (Threat Modeling) uchun</button>
+      <button class="opt" type="button">Dasturlash tilini o'rganish uchun</button>
+      <button class="opt" type="button">Faqat parollarni shifrlash uchun</button>
+      <button class="opt" type="button">Internetga ulanish tezligini oshirish uchun</button>
+    </div>
+    <div class="explain">STRIDE — Microsoft ishlab chiqqan, tizim qurilishidan oldin 6 ta tahdid toifasini xaritalashga yordam beruvchi model.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">O'quvchi o'qituvchi nomidan tizimga kirsa, bu STRIDE ning qaysi toifasiga kiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Tampering</button>
+      <button class="opt" type="button" data-ok>Spoofing</button>
+      <button class="opt" type="button">Repudiation</button>
+      <button class="opt" type="button">Denial of Service</button>
+    </div>
+    <div class="explain">Boshqa shaxs nomidan tizimga kirish — Spoofing (Identifikatorni soxtalashtirish) tahdidiga misol.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Xodim pul o'tkazmasini bajarib, «men qilmadim» deb da'vo qilsa, bunga qarshi qanday himoya zarur?</p>
+    <div class="opts">
+      <button class="opt" type="button">Internetni o'chirib qo'yish</button>
+      <button class="opt" type="button">Xodimni ishdan bo'shatish</button>
+      <button class="opt" type="button" data-ok>O'zgartirib bo'lmaydigan, raqamli imzo bilan tasdiqlangan audit jurnali (logging)</button>
+      <button class="opt" type="button">Parolni o'chirib tashlash</button>
+    </div>
+    <div class="explain">Repudiation (inkor etish) tahdidiga qarshi o'chmas, vaqt tamg'asi bilan qayd etiladigan audit loglari kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Barcha xodimlarga ehtiyot shart deb «Administrator» huquqi berilsa, bu STRIDE ning qaysi tahdidlariga eshik ochadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat Spoofing ga</button>
+      <button class="opt" type="button">Faqat Denial of Service ga</button>
+      <button class="opt" type="button">Hech qaysisiga</button>
+      <button class="opt" type="button" data-ok>Tampering, Information Disclosure va Elevation of Privilege ga</button>
+    </div>
+    <div class="explain">Ortiqcha imtiyoz berish ma'lumotlarni o'zgartirish, oshkor qilish va imtiyozlarni noqonuniy oshirish xavfini kuchaytiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Red Team va Blue Team ning asosiy farqi nimada?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Red Team hujumchi, Blue Team esa himoyachi rolini o'ynaydi</button>
+      <button class="opt" type="button">Ikkalasi ham bir xil vazifani bajaradi</button>
+      <button class="opt" type="button">Red Team faqat qog'ozda ishlaydi</button>
+      <button class="opt" type="button">Blue Team hujum qiladi, Red Team himoyalanadi</button>
+    </div>
+    <div class="explain">Red Team real buzg'unchi kabi zaifliklarni qidiradi, Blue Team esa monitoring va himoya bilan shug'ullanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Purple Team nima uchun joriy etiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat rang tanlash uchun</button>
+      <button class="opt" type="button" data-ok>Red va Blue Team birgalikda ishlab, hujum va himoya tajribasini almashishi uchun</button>
+      <button class="opt" type="button">Faqat yangi dasturchilarni o'qitish uchun</button>
+      <button class="opt" type="button">Serverlarni o'chirib qo'yish uchun</button>
+    </div>
+    <div class="explain">Alohida ishlasa, tajriba almashinmaydi; Purple Team formatida ikkala jamoa birgalikda tahlil qilib, himoyani kuchaytiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">CTF musobaqalarida «Forensics» yo'nalishi nima bilan shug'ullanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Shifrlarni ochish</button>
+      <button class="opt" type="button">Veb-sayt zaifliklarini topish</button>
+      <button class="opt" type="button" data-ok>Disk obrazlari yoki tarmoq fayllaridan yashirin ma'lumotlarni qidirish</button>
+      <button class="opt" type="button">Dasturlarni dekompilyatsiya qilish</button>
+    </div>
+    <div class="explain">Forensics — raqamli iz (disk, pcap fayl, xotira dumpi) ichidan yashirilgan ma'lumotlarni topish yo'nalishi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">2017-yilgi WannaCry hujumi bir necha soatda butun dunyoga qanday tarqaldi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat fishing xatlari orqali, odam ishtirokida</button>
+      <button class="opt" type="button">Faqat USB fleshkalar orqali</button>
+      <button class="opt" type="button">Faqat ijtimoiy tarmoqlar orqali</button>
+      <button class="opt" type="button" data-ok>Qurt (Worm) mexanizmi orqali, EternalBlue (SMBv1) zaifligidan odam ishtirokisiz foydalanib</button>
+    </div>
+    <div class="explain">WannaCry qurt sifatida SMBv1 protokolidagi EternalBlue zaifligi orqali tarmoqdagi ochiq portlarga avtomatik tarqaldi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Base64 nima sababdan shifrlash (encryption) emas, kodlash (encoding) hisoblanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Chunki unda maxfiy kalit yo'q, istalgan odam algoritmni bilib parolsiz ochadi</button>
+      <button class="opt" type="button">Chunki u faqat rasm fayllari uchun ishlatiladi</button>
+      <button class="opt" type="button">Chunki u internetsiz ishlamaydi</button>
+      <button class="opt" type="button">Chunki u faqat raqamlarni kodlaydi</button>
+    </div>
+    <div class="explain">Base64 — kalit talab qilmaydigan oddiy format o'zgartirish, shuning uchun u kodlash, shifrlash emas.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Onlayn ta'lim platformasida o'quvchi o'zini o'qituvchi statusiga o'tkazib olsa, bu STRIDE ning qaysi tahdidi va unga qarshi qanday himoya kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Tampering; parolni almashtirish kerak</button>
+      <button class="opt" type="button" data-ok>Elevation of Privilege; rolli kirish boshqaruvi (RBAC) kerak</button>
+      <button class="opt" type="button">Spoofing; internetni o'chirish kerak</button>
+      <button class="opt" type="button">Denial of Service; serverni qayta yuklash kerak</button>
+    </div>
+    <div class="explain">Imtiyozlarni noqonuniy oshirish — Elevation of Privilege, unga qarshi Rolli kirish boshqaruvi (RBAC) va Least Privilege qo'llanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: STRIDE 6 toifasi, Red/Blue/Purple Team, CTF yo'nalishlari, WannaCry va Base64.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

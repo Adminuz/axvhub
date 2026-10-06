@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>O'yin Menyulari Dizayni</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>O'yin Menyulari Dizayni</h1>
+  <p class="muted">UI dizayn: tugmalar, menyular, HUD (2-qism) — bosh menyu, sozlamalar, pauza</p>
+  <span class="badge">9-sinf</span><span class="badge">Game Design</span><span class="badge">5-hafta · 15-dars</span>
+  
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">Pressed holatini qaysi belgilar bilan ko'rsatamiz?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>To'qroq rang, soya yo'q, 2–4 px pastga</button>
+      <button class="opt" type="button">Ochroq rang va Outer Glow</button>
+      <button class="opt" type="button">Kulrang, bosib bo'lmaydi</button>
+      <button class="opt" type="button">Tugma yo'qoladi</button>
+    </div>
+    <div class="explain">Ochroq rang va glow — Hover; kulrang — Disabled.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Menyu nima?</h1>
+  <p>Interfeysning tashkiliy va navigatsion qismi</p>
+</section>
+
+<section>
+  <h2>Ta'rif</h2>
+  <div class="quote">Menyu — foydalanuvchi o'yin imkoniyatlari orasida tanlov qiladigan tuzilma. U o'yinchi uchun boshqaruv tizimini ta'minlaydi.</div>
+  <div class="cards three mt">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="house" data-anim="float"></i></div><h3>Main Menu</h3><p>O'yinni boshlash, Sozlamalar, Chiqish.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="settings" data-anim="spin"></i></div><h3>Settings Menu</h3><p>Tovush, grafika, boshqaruv variantlari.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="pause" data-anim="pulse"></i></div><h3>Pause Menu</h3><p>O'yin jarayonida pauza va davom ettirish.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Menyular xaritasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 360">
+      <g data-tip="Bosh menyu — o'yin ishga tushganda birinchi ekran."><rect class="fa la" x="40" y="40" width="240" height="90" rx="14" stroke-width="3"/><text class="t-head" x="160" y="95" text-anchor="middle" font-size="26">Bosh menyu</text></g>
+      <g class="fragment"><line class="la flowing" x1="280" y1="85" x2="420" y2="85" stroke-width="4" marker-end="url(#ar-a)"/><rect class="fg lg" x="430" y="40" width="200" height="90" rx="14" stroke-width="3"/><text class="t-head" x="530" y="95" text-anchor="middle" font-size="26">O'yin</text></g>
+      <g class="fragment" data-tip="Esc yoki pauza tugmasi — Pause Menu."><line class="lb flowing" x1="630" y1="85" x2="740" y2="85" stroke-width="4" marker-end="url(#ar-b)"/><rect class="fb lb" x="750" y="40" width="210" height="90" rx="14" stroke-width="3"/><text class="t-head" x="855" y="95" text-anchor="middle" font-size="26">Pauza</text><text class="t-muted" x="685" y="70" text-anchor="middle" font-size="22">Esc</text></g>
+      <g class="fragment" data-tip="Sozlamalarga ikkala menyudan kiriladi; «Ortga» tugmasi qaytaradi."><rect class="fc lc" x="380" y="240" width="260" height="90" rx="14" stroke-width="3"/><text class="t-head" x="510" y="295" text-anchor="middle" font-size="26">Sozlamalar</text>
+        <line class="lc flowing" x1="160" y1="130" x2="380" y2="270" stroke-width="3" marker-end="url(#ar-c)"/><line class="lc flowing" x1="855" y1="130" x2="640" y2="270" stroke-width="3" marker-end="url(#ar-c)"/></g>
+      <g class="fragment"><text class="t-accent" x="510" y="215" text-anchor="middle" font-size="22">har ekranda «Ortga» yo'li</text></g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">«Grafika sifati» bandi qaysi menyuda bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Pause Menu</button>
+      <button class="opt" type="button">HUD</button>
+      <button class="opt" type="button" data-ok>Settings Menu</button>
+      <button class="opt" type="button">Main Menu'ning o'zida</button>
+    </div>
+    <div class="explain">Sozlamalar menyusida tovush, grafika va boshqaruv variantlari bo'ladi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Joylashuv va uslub</h1>
+  <p>Vertikal, gorizontal, ikonka + matn</p>
+</section>
+
+<section>
+  <h2>Vertikal va gorizontal</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <g data-tip="Vertikal: tepadan pastga o'qiladi, eng muhimi tepada. Bosh menyu va pauza uchun.">
+        <rect class="fg lg" x="120" y="40" width="260" height="64" rx="14" stroke-width="3"/><text class="t-head" x="250" y="82" text-anchor="middle" font-size="24">START</text>
+        <rect class="fn ln" x="120" y="124" width="260" height="64" rx="14" stroke-width="3"/><text class="t-head" x="250" y="166" text-anchor="middle" font-size="24">Sozlamalar</text>
+        <rect class="fb lb" x="120" y="208" width="260" height="64" rx="14" stroke-width="3"/><text class="t-head" x="250" y="250" text-anchor="middle" font-size="24">Chiqish</text>
+        <text class="t-muted" x="250" y="320" text-anchor="middle" font-size="22">vertikal</text>
+      </g>
+      <g class="fragment" data-tip="Gorizontal: bir darajadagi bo'limlar — tablar. Faol tab ajralib turadi.">
+        <rect class="fa la" x="480" y="124" width="150" height="64" rx="12" stroke-width="4"/><text class="t-head" x="555" y="166" text-anchor="middle" font-size="22">Tovush</text>
+        <rect class="fn ln" x="640" y="124" width="150" height="64" rx="12" stroke-width="2"/><text class="t-muted" x="715" y="166" text-anchor="middle" font-size="22">Grafika</text>
+        <rect class="fn ln" x="800" y="124" width="170" height="64" rx="12" stroke-width="2"/><text class="t-muted" x="885" y="166" text-anchor="middle" font-size="22">Boshqaruv</text>
+        <text class="t-muted" x="725" y="320" text-anchor="middle" font-size="22">gorizontal (tablar)</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Ikonka va matn uyg'unligi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="shapes"></i></div><h3>Bitta uslub</h3><p>11-dars to'plamidan: bir xil kontur va palitra.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="align-center-vertical"></i></div><h3>Joylashuv</h3><p>Ikonka matndan chapda, vertikal markazda.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="move-horizontal"></i></div><h3>Teng oraliq</h3><p>Ikonka–matn masofasi barcha tugmalarda bir xil.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="badge-check"></i></div><h3>Tanish belgilar</h3><p>Tishli g'ildirak — sozlamalar, uy — bosh menyu.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Rang va effektlar</h2>
+  <div class="swatches">
+    <div class="sw fragment" style="background:midnightblue">Fon · sokin</div>
+    <div class="sw fragment" style="background:seagreen">START · eng yorqin</div>
+    <div class="sw fragment" style="background:slategray">Sozlamalar · neytral</div>
+    <div class="sw fragment" style="background:crimson">Chiqish · qizil</div>
+  </div>
+  <div class="callout tip mt"><i data-ic="lightbulb"></i>Effektlar me'yorida: Drop Shadow, Outer Glow, gradient — 2–3 ta.</div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Bosh menyu: Photoshop</h1>
+  <p>Uslubiy ko'rsatma, 1.88–1.106-rasmlar</p>
+</section>
+
+<section>
+  <h2>Tugmalarni ko'paytirish</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="mouse-pointer-2"></i></div><h3>1. Belgilash</h3><p>Shakl va matn qatlamini <code>Shift</code> bilan birga tanlang.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="copy"></i></div><h3>2. Dublikat</h3><p>Move Tool (V), <code>Shift + Alt</code> bosib pastga suring.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="type"></i></div><h3>3. Matn</h3><p>Ikki marta bosib «Sozlamalar» deb yozing, o'lchamni kichraytiring.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="paint-bucket"></i></div><h3>4. Chiqish</h3><p>Yana dublikat: «Chiqish», rangi qizil.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="align-vertical-space-around"></i></div><h3>5. Tekislash</h3><p>Vertikal, bir xil masofada.</p></div></div>
+  </div>
+</section>
+
+<section data-auto-animate>
+  <h2>Qatlamlar</h2>
+  <pre class="terminal"><code data-trim data-noescape>
+START          (shakl + matn)
+Sozlamalar     (shakl + matn)
+Chiqish        (shakl + matn, qizil)
+</code></pre>
+</section>
+
+<section data-auto-animate>
+  <h2>Qatlamlar</h2>
+  <pre class="terminal"><code data-trim data-noescape>
+Main Menu (Group, Ctrl+G)
+  MENU         sarlavha: START matni Ctrl+J, kattaroq
+  START        (shakl + matn)
+  Sozlamalar   (shakl + matn)
+  Chiqish      (shakl + matn, qizil)
+bezak_doira x2 Ellipse Tool + Shift, Alt bilan nusxa
+Solid Color    fon — eng pastda
+</code></pre>
+</section>
+
+<section>
+  <h2>Tayyor bosh menyu</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 400">
+      <rect class="fa la" x="150" y="10" width="700" height="380" rx="12" stroke-width="3"/>
+      <g class="fragment" data-tip="Ellipse Tool bezaklari: fon rangidan biroz ochroq, Alt bilan nusxalangan."><circle class="fc lc" cx="230" cy="320" r="60" stroke-width="2"/><circle class="fc lc" cx="780" cy="80" r="45" stroke-width="2"/></g>
+      <g class="fragment" data-tip="MENU sarlavhasi: START matnining nusxasi, katta o'lcham."><text class="t-head" x="500" y="90" text-anchor="middle" font-size="56">MENU</text></g>
+      <g class="fragment" data-tip="START — Primary, eng yorqin.">
+        <rect class="fg lg" x="370" y="130" width="260" height="66" rx="20" stroke-width="3"/><text class="t-head" x="500" y="173" text-anchor="middle" font-size="26">START</text></g>
+      <g class="fragment"><rect class="fn ln" x="390" y="214" width="220" height="58" rx="18" stroke-width="3"/><text class="t-head" x="500" y="252" text-anchor="middle" font-size="24">Sozlamalar</text></g>
+      <g class="fragment" data-tip="Chiqish — qizil, eng pastda."><rect class="fb lb" x="390" y="290" width="220" height="58" rx="18" stroke-width="3"/><text class="t-head" x="500" y="328" text-anchor="middle" font-size="24">Chiqish</text></g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Eksport</h2>
+  <div class="vs">
+    <div class="side fragment"><h3><i data-ic="image"></i> JPG</h3>Hajm kichik — menyuni taqdimot, ko'rsatma yoki baholash uchun namoyish qilish.</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3><i data-ic="image"></i> PNG</h3>Shaffof fon — o'yin ichidagi alohida tugma va panellar uchun.</div>
+  </div>
+  <p class="small mt">File → Export → Export As… → format → Export.</p>
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Pauza va sozlamalar</h1>
+  <p>O'yin ichidagi menyular</p>
+</section>
+
+<section>
+  <section>
+    <h2>Pauza menyusi</h2>
+    <div class="illus">
+      <svg viewBox="0 0 1000 380">
+        <g data-tip="Orqada o'yin sahnasi — qorong'ilashtirilgan (qora qatlam, Opacity 60%)."><rect class="fn ln" x="60" y="10" width="880" height="360" rx="12" stroke-width="2"/><text class="t-muted" x="120" y="350" font-size="22">o'yin sahnasi (xira)</text></g>
+        <g class="fragment" data-tip="Panel: yumaloq burchak, stroke, Drop Shadow."><rect class="fa la" x="330" y="40" width="340" height="300" rx="20" stroke-width="4"/><text class="t-head" x="500" y="95" text-anchor="middle" font-size="34">PAUZA</text></g>
+        <g class="fragment" data-tip="Davom etish — Primary, eng tepada."><rect class="fg lg" x="370" y="125" width="260" height="56" rx="16" stroke-width="3"/><text class="t-head" x="500" y="162" text-anchor="middle" font-size="22">Davom etish</text></g>
+        <g class="fragment"><rect class="fn ln" x="370" y="195" width="260" height="56" rx="16" stroke-width="3"/><text class="t-head" x="500" y="232" text-anchor="middle" font-size="22">Sozlamalar</text></g>
+        <g class="fragment" data-tip="Bosh menyuga — qizil, pastda: tasodifan bosilmasin."><rect class="fb lb" x="370" y="265" width="260" height="56" rx="16" stroke-width="3"/><text class="t-head" x="500" y="302" text-anchor="middle" font-size="22">Bosh menyuga</text></g>
+      </svg>
+    </div>
+    <p class="small">Pastga bosing: sozlamalar ekrani</p>
+  </section>
+  <section>
+    <h2>Sozlamalar ekrani</h2>
+    <div class="cards three">
+      <div class="card"><div class="icon"><i data-ic="volume-2"></i></div><h3>Tovush</h3><p>Musiqa va Effektlar slayderlari.</p></div>
+      <div class="card"><div class="icon"><i data-ic="monitor"></i></div><h3>Grafika</h3><p>Sifat: Past / O'rta / Yuqori, to'liq ekran.</p></div>
+      <div class="card"><div class="icon"><i data-ic="gamepad-2"></i></div><h3>Boshqaruv</h3><p>Tugmalar sxemasi, sezgirlik.</p></div>
+    </div>
+    <p class="small mt">Pastda: «Ortga» (Secondary) va «Saqlash» (Primary).</p>
+  </section>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Pauza menyusida orqa fon qanday bo'lgani ma'qul?</p>
+    <div class="opts">
+      <button class="opt" type="button">Butunlay oq</button>
+      <button class="opt" type="button">Yorqin naqshli rasm</button>
+      <button class="opt" type="button">Fon yo'q, faqat tugmalar</button>
+      <button class="opt" type="button" data-ok>O'yin sahnasi, qorong'ilashtirilgan yoki xira</button>
+    </div>
+    <div class="explain">O'yinchi qayerda to'xtaganini ko'radi, menyu esa oldinda aniq ajralib turadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriqlar <span class="timer"><i data-ic="timer"></i>40 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>6 ta tugmani menyu turlariga ajrating.</div>
+  <div class="task"><span class="level easy">Oson</span>START, Sozlamalar, Chiqish — vertikal menyu.</div>
+  <div class="task"><span class="level mid">O'rta</span>Solid Color fon, MENU sarlavhasi, bezaklar, guruh, PNG.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Pauza menyusi: xira sahna, panel, 3 tugma ikonka bilan.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>3 tur</h3><p>Main, Settings, Pause.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Joylashuv</h3><p>Vertikal — menyular, gorizontal — tablar.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Photoshop</h3><p>Dublikat, Solid Color, Ctrl+G, Export As.</p></div>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="heart-pulse" data-anim="pulse"></i></div>
+  <h1>Keyingi hafta: HUD</h1>
+  <p class="muted">Ekran usti interfeysi: sog'liq paneli, ballar, mini-xarita</p>
+  <span class="badge">6-hafta · 16-dars</span>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

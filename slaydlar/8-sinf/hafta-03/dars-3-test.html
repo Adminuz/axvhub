@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>9-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>9-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">8-sinf</span><span class="badge">Web Full-stack</span><span class="badge">3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Global atribut nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Istisnosiz barcha HTML teglarida ishlatilishi mumkin bo'lgan atribut</button>
+      <button class="opt" type="button">Faqat <code>&lt;a&gt;</code> da ishlaydigan atribut</button>
+      <button class="opt" type="button">Faqat <code>&lt;head&gt;</code> dagi atribut</button>
+      <button class="opt" type="button">Faqat formada ishlaydigan atribut</button>
+    </div>
+    <div class="explain"><code>href</code> faqat <code>&lt;a&gt;</code> da, <code>id</code> esa barcha teglarda ishlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Bir sahifada <code>id</code> qiymati qanday bo'lishi kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Hamma elementda bir xil</button>
+      <button class="opt" type="button" data-ok>Takrorlanmas (yagona)</button>
+      <button class="opt" type="button">Faqat raqam</button>
+      <button class="opt" type="button">Bo'sh</button>
+    </div>
+    <div class="explain"><code>id</code> bitta elementni aniqlaydi, shuning uchun sahifada faqat bir marta uchraydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Bir nechta elementni umumiy guruhga birlashtirish uchun qaysi atribut?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>id</code></button>
+      <button class="opt" type="button"><code>hidden</code></button>
+      <button class="opt" type="button" data-ok><code>class</code></button>
+      <button class="opt" type="button"><code>tabindex</code></button>
+    </div>
+    <div class="explain">Bitta elementda bir nechta class bo'sh joy bilan yozilishi mumkin.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>hidden</code> atributli element nima bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Qalin ko'rinadi</button>
+      <button class="opt" type="button">Tahrirlanadigan bo'ladi</button>
+      <button class="opt" type="button">Yangi tabda ochiladi</button>
+      <button class="opt" type="button" data-ok>Brauzer uni sahifada ko'rsatmaydi</button>
+    </div>
+    <div class="explain"><code>hidden</code> CSS dagi <code>display: none</code> ga teng.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Foydalanuvchi sarlavhani Word kabi to'g'ridan-to'g'ri brauzerda o'zgartira olishi uchun qaysi atribut?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>contenteditable="true"</code></button>
+      <button class="opt" type="button"><code>readonly</code></button>
+      <button class="opt" type="button"><code>tabindex="1"</code></button>
+      <button class="opt" type="button"><code>data-edit</code></button>
+    </div>
+    <div class="explain"><code>contenteditable</code> elementni tahrirlanadigan qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>tabindex</code> nimani belgilaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Matn rangini</button>
+      <button class="opt" type="button" data-ok><code>Tab</code> bosilganda kursor sakrash tartibini</button>
+      <button class="opt" type="button">Rasm o'lchamini</button>
+      <button class="opt" type="button">Jadval qatorlari sonini</button>
+    </div>
+    <div class="explain"><code>tabindex="1"</code>, <code>"2"</code> klaviatura bilan o'tish ketma-ketligini beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>data-*</code> atributlari nima uchun kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Rasm yuklash uchun</button>
+      <button class="opt" type="button">Sahifani shifrlash uchun</button>
+      <button class="opt" type="button" data-ok>HTML ichida dasturchining shaxsiy ma'lumotlarini saqlash uchun</button>
+      <button class="opt" type="button">Faqat jadvalda ishlatiladi</button>
+    </div>
+    <div class="explain">Masalan <code>data-id="101"</code>, yulduzcha o'rniga istalgan so'z yoziladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Rang tanlash palitrasini ochuvchi <code>input</code> turi qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>type="range"</code></button>
+      <button class="opt" type="button"><code>type="date"</code></button>
+      <button class="opt" type="button"><code>type="number"</code></button>
+      <button class="opt" type="button" data-ok><code>type="color"</code></button>
+    </div>
+    <div class="explain"><code>color</code> palitrani, <code>range</code> slayderni ochadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">O'ngga-chapga suriladigan slayder yaratish uchun qaysi tur?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>type="range"</code> (<code>min</code>, <code>max</code> bilan)</button>
+      <button class="opt" type="button"><code>type="color"</code></button>
+      <button class="opt" type="button"><code>type="file"</code></button>
+      <button class="opt" type="button"><code>type="email"</code></button>
+    </div>
+    <div class="explain"><code>range</code> qiymatni sudrab o'zgartirishga imkon beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Quyidagi kodda qanday muammo bor?
+<code>&lt;p id="a"&gt;1&lt;/p&gt;&lt;p id="a"&gt;2&lt;/p&gt;</code></p>
+    <div class="opts">
+      <button class="opt" type="button"><code>p</code> yopilmagan</button>
+      <button class="opt" type="button" data-ok>Bir xil <code>id</code> ikki marta ishlatilgan</button>
+      <button class="opt" type="button"><code>id</code> faqat <code>h1</code> da bo'ladi</button>
+      <button class="opt" type="button">Muammo yo'q</button>
+    </div>
+    <div class="explain"><code>id</code> bitta sahifada faqat 1 marta kelishi shart; umumiy guruh uchun <code>class</code> ishlatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: global atributlar (<code>id</code>, <code>class</code>, <code>title</code>, <code>data-*</code>, <code>hidden</code>, <code>contenteditable</code>, <code>tabindex</code>) va yangi <code>input</code> turlari.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

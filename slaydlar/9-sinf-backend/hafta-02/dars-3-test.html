@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>6-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>6-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">2-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q"><code>elif</code> so'zi qaysi iboraning qisqartmasi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>else if</code> (aks holda agar)</button>
+      <button class="opt" type="button"><code>end if</code></button>
+      <button class="opt" type="button"><code>else for</code></button>
+      <button class="opt" type="button"><code>each if</code></button>
+    </div>
+    <div class="explain"><code>elif</code> — qo'shimcha shart tekshiruvchi tarmoq.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Bitta shartli konstruksiyada nechta <code>elif</code> yozish mumkin?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat bitta</button>
+      <button class="opt" type="button" data-ok>Xohlagancha ko'p</button>
+      <button class="opt" type="button">Ko'pi bilan ikkita</button>
+      <button class="opt" type="button">Faqat uchta</button>
+    </div>
+    <div class="explain"><code>elif</code> lar soni cheklanmagan.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>if</code> - <code>elif</code> - <code>else</code> zanjirida bir nechta shart <code>True</code> bo'lsa nima bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Hamma <code>True</code> bloklar bajariladi</button>
+      <button class="opt" type="button">Oxirgisi bajariladi</button>
+      <button class="opt" type="button" data-ok>Birinchi <code>True</code> bo'lgan blok bajariladi, qolganlari tashlab o'tiladi</button>
+      <button class="opt" type="button">Xato beradi</button>
+    </div>
+    <div class="explain">Tekshiruv yuqoridan pastga, birinchi mos blokdan keyin to'xtaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>ball = 78</code>. <code>&gt;= 86</code> bo'lsa 5, <code>&gt;= 71</code> bo'lsa 4, <code>&gt;= 56</code> bo'lsa 3, aks holda 2. Natija?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>Baho: 5</code></button>
+      <button class="opt" type="button"><code>Baho: 3</code></button>
+      <button class="opt" type="button"><code>Baho: 2</code></button>
+      <button class="opt" type="button" data-ok><code>Baho: 4</code></button>
+    </div>
+    <div class="explain">78 &gt;= 86 yolg'on, 78 &gt;= 71 rost.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>son = int(input(...))</code> dagi <code>int(...)</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Kiritilgan matnni butun songa aylantiradi</button>
+      <button class="opt" type="button">Sonni matnga aylantiradi</button>
+      <button class="opt" type="button">Sonni kvadratga oshiradi</button>
+      <button class="opt" type="button">Dasturni to'xtatadi</button>
+    </div>
+    <div class="explain">Foydalanuvchi kiritganini son sifatida solishtirish uchun <code>int</code> ishlatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>yosh = 14</code>, <code>tatil = False</code>. <code>if yosh &gt;= 7 and yosh &lt;= 18 and not tatil:</code> bo'lsa <code>Maktabga boradi</code>, aks holda <code>Uyda qoladi</code>. Natija?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>Uyda qoladi</code></button>
+      <button class="opt" type="button" data-ok><code>Maktabga boradi</code></button>
+      <button class="opt" type="button">Ikkalasi</button>
+      <button class="opt" type="button">Xato</button>
+    </div>
+    <div class="explain">Uchala shart ham rost (<code>not False</code> = <code>True</code>).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Nega <code>if ball = 60:</code> yozib bo'lmaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>ball</code> nomi mumkin emas</button>
+      <button class="opt" type="button"><code>60</code> butun son emas</button>
+      <button class="opt" type="button" data-ok><code>=</code> qiymat berish, taqqoslash uchun <code>==</code> kerak</button>
+      <button class="opt" type="button"><code>if</code> faqat matn bilan ishlaydi</button>
+    </div>
+    <div class="explain">To'g'ri yozuv: <code>if ball == 60:</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>son = -8</code>. <code>&gt; 0</code> bo'lsa <code>Musbat son</code>, <code>&lt; 0</code> bo'lsa <code>Manfiy son</code>, aks holda <code>Nolga teng</code>. Natija?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>Musbat son</code></button>
+      <button class="opt" type="button"><code>Nolga teng</code></button>
+      <button class="opt" type="button">Hech narsa</button>
+      <button class="opt" type="button" data-ok><code>Manfiy son</code></button>
+    </div>
+    <div class="explain">-8 &lt; 0, ikkinchi shart rost.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>harorat = 20</code>. <code>&lt; 0</code> Sovuq, <code>&lt;= 20</code> Salqin, aks holda Issiq. Natija?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>Salqin</code></button>
+      <button class="opt" type="button"><code>Sovuq, qalin kiyining</code></button>
+      <button class="opt" type="button"><code>Issiq</code></button>
+      <button class="opt" type="button">Xato</button>
+    </div>
+    <div class="explain">20 &lt; 0 yolg'on, <code>20 &lt;= 20</code> rost.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>ball = 70</code> bo'lsa (86 dan 5, 71 dan 4, 56 dan 3, aks holda 2), o'quvchi 4 olmadi. Nega?</p>
+    <div class="opts">
+      <button class="opt" type="button">70 ga 5 baho beriladi</button>
+      <button class="opt" type="button" data-ok>70 &gt;= 71 yolg'on, 70 &gt;= 56 rost, baho 3</button>
+      <button class="opt" type="button">70 &gt;= 86 rost bo'ladi</button>
+      <button class="opt" type="button">Dastur xato beradi</button>
+    </div>
+    <div class="explain">Chegaradan bir ball past: <code>&gt;= 71</code> bajarilmaydi, keyingi <code>&gt;= 56</code> ishlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: <code>elif</code> va ko'p tarmoqli shart, baholash tizimi, <code>int(input())</code>, odatiy xatolar (<code>=</code> va <code>==</code>, <code>:</code>, chekinish).</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

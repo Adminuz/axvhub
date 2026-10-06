@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Formalar va validatsiya</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Formalar va validatsiya</h1>
+  <p class="muted">form, label, input turlari, validatsiya, xato xabarlari, button va a</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced UX/UI</span><span class="badge">5-hafta · 14-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimalarni o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="clipboard-list" data-anim="pulse"></i></div><h3>Forma tuzilmasi</h3><p>form, label, input</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="list-checks" data-anim="float"></i></div><h3>Input va validatsiya</h3><p>type va atributlar</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="circle-alert" data-anim="blink"></i></div><h3>Xatolar va tugmalar</h3><p>UX va semantika</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">Boshqa sahifaga o'tkazuvchi element qaysi teg?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok><code>a</code></button>
+    <button class="opt" type="button"><code>button</code></button>
+    <button class="opt" type="button"><code>div</code></button>
+    <button class="opt" type="button"><code>span</code></button>
+    </div>
+    <div class="explain"><code>a</code> havola: sahifaga o'tish uchun.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Forma tuzilmasi</h1>
+  <p>form, label, input</p>
+</section>
+
+<section>
+  <h2>Forma bo'laklari</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">form</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">fieldset</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">+ legend</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">label + input</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">button</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Har maydon: label + input juftligi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Label va input</h2>
+  <pre><code class="language-html" data-trim data-line-numbers="1|2-3|4-5|7">
+&lt;form action="/qabul" method="post"&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;O'quvchi ma'lumotlari&lt;/legend&gt;
+    &lt;label for="ism"&gt;Ism&lt;/label&gt;
+    &lt;input type="text" id="ism" name="ism"&gt;
+  &lt;/fieldset&gt;
+  &lt;button type="submit"&gt;Yuborish&lt;/button&gt;
+&lt;/form&gt;
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i><code>for</code> va <code>id</code> bir xil bo'lishi shart. <code>name</code> esa serverga yuboriladigan maydon nomi.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>label</code> ning <code>for</code> atributi nimaga teng bo'ladi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok><code>input</code> ning <code>id</code> siga</button>
+    <button class="opt" type="button"><code>name</code> ga</button>
+    <button class="opt" type="button"><code>type</code> ga</button>
+    <button class="opt" type="button"><code>class</code> ga</button>
+    </div>
+    <div class="explain"><code>for</code> = <code>id</code>: ular shunday bog'lanadi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Input va validatsiya</h1>
+  <p>type va atributlar</p>
+</section>
+
+<section>
+  <h2>Validatsiya yo'li</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="145" text-anchor="middle" font-size="22">Foydalanuvchi</text><text class="t-head" x="125" y="171" text-anchor="middle" font-size="22">yozadi</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">Brauzer</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">tekshiradi</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="145" text-anchor="middle" font-size="22">Xato bo'lsa</text><text class="t-head" x="625" y="171" text-anchor="middle" font-size="22">xabar</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">To'g'ri bo'lsa</text><text class="t-head" x="875" y="171" text-anchor="middle" font-size="22">yuboriladi</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Server tekshiruvi baribir kerak</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Validatsiyali maydonlar</h2>
+  <pre><code class="language-html" data-trim data-line-numbers="1-2|4-5|7-8">
+&lt;label for="email"&gt;Email&lt;/label&gt;
+&lt;input type="email" id="email" name="email" required autocomplete="email"&gt;
+
+&lt;label for="tel"&gt;Telefon&lt;/label&gt;
+&lt;input type="tel" id="tel" name="tel" pattern="\+998[0-9]{9}" required&gt;
+
+&lt;label for="sinf"&gt;Sinf&lt;/label&gt;
+&lt;input type="number" id="sinf" name="sinf" min="1" max="11"&gt;
+  </code></pre>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i><code>pattern="\+998[0-9]{9}"</code> +998 va 9 raqamni talab qiladi. Foydalanuvchiga <code>title</code> yoki matn bilan formatni ko'rsating.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Majburiy maydon uchun qaysi atribut?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok><code>required</code></button>
+    <button class="opt" type="button"><code>pattern</code></button>
+    <button class="opt" type="button"><code>min</code></button>
+    <button class="opt" type="button"><code>name</code></button>
+    </div>
+    <div class="explain"><code>required</code> bo'sh qoldirishga yo'l qo'ymaydi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Xatolar va tugmalar</h1>
+  <p>UX va semantika</p>
+</section>
+
+<section>
+  <h2>Yaxshi xato xabari</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Maydon yonida</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">Nima xato</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="145" text-anchor="middle" font-size="22">Qanday</text><text class="t-head" x="625" y="171" text-anchor="middle" font-size="22">tuzatish</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">aria-describedby</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Xabar tushunarli va bog'langan bo'lsin</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Xato xabari</h2>
+  <pre><code class="language-html" data-trim data-line-numbers="1-3|4|6|7">
+&lt;label for="tel"&gt;Telefon&lt;/label&gt;
+&lt;input type="tel" id="tel" name="tel"
+       aria-describedby="tel-xato" required&gt;
+&lt;p id="tel-xato"&gt;Telefon +998 bilan boshlanib, 9 raqam bo'lsin.&lt;/p&gt;
+
+&lt;button type="submit"&gt;Yuborish&lt;/button&gt;
+&lt;a href="/qabul"&gt;Qabul qoidalari&lt;/a&gt;
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i><code>aria-describedby</code> qiymati xabar elementining <code>id</code> si. <code>button</code> ichidagi <code>type="button"</code> formani yubormaydi.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Xato xabarini maydon bilan nima bog'laydi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok><code>aria-describedby</code></button>
+    <button class="opt" type="button"><code>for</code></button>
+    <button class="opt" type="button"><code>src</code></button>
+    <button class="opt" type="button"><code>href</code></button>
+    </div>
+    <div class="explain"><code>aria-describedby</code> xabarning <code>id</code> siga ishora qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Yomon va yaxshi forma</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>Yomon forma</h3>Faqat <code>placeholder</code>, <code>label</code> yo'q, xato: «Noto'g'ri», rang bilan ajratilgan</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>Yaxshi forma</h3><code>label</code>, to'g'ri <code>type</code>, <code>required</code>, aniq xato xabari va <code>aria-describedby</code></div>
+  </div>
+  <div class="card accent fragment mt"><p>Forma tushunarli bo'lsa, ko'proq odam uni to'ldirib bo'ladi.</p></div>
+</section>
+
+<section>
+  <h2>Atamalar. Bosing</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>label</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Maydon nomi, <code>for</code> bilan bog'lanadi</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>fieldset</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Bog'liq maydonlar guruhi</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>pattern</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Muntazam ifoda bilan tekshiruv</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>aria-describedby</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Maydonga qo'shimcha izoh bog'laydi</p></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Forma yaratish</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="list" data-anim="pulse"></i></div><h3>1. Maydonlar</h3><p>Qaysi ma'lumot kerakligini aniqlang.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="type"></i></div><h3>2. Turlar</h3><p>Har maydonga to'g'ri <code>type</code> va <code>label</code> yozing.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="shield-check"></i></div><h3>3. Validatsiya</h3><p><code>required</code>, <code>pattern</code> va xato xabarini qo'shing.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>Input turlari</h2>
+    <table>
+      <thead><tr><th>Type</th><th>Nima uchun</th><th>Misol</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td><code>text</code></td><td>oddiy matn</td><td>ism</td></tr>
+        <tr class="fragment"><td><code>email</code></td><td>elektron pochta</td><td>ali@maktab.uz</td></tr>
+        <tr class="fragment"><td><code>tel</code></td><td>telefon</td><td>+998901234567</td></tr>
+        <tr class="fragment"><td><code>number</code></td><td>son</td><td>sinf: 9</td></tr>
+        <tr class="fragment"><td><code>date</code></td><td>sana</td><td>tug'ilgan kun</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: tekshirish</p>
+  </section>
+  <section>
+    <h2>Formani tekshirish</h2>
+    <ol class="steps-n">
+      <li class="fragment">Barcha maydonlarni bo'sh qoldirib yuboring.</li>
+      <li class="fragment">Noto'g'ri email va telefon kiriting.</li>
+      <li class="fragment">Faqat klaviatura (Tab, Enter) bilan to'ldiring.</li>
+    </ol>
+  </section>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">Placeholder dan label ga</h2>
+  <pre data-id="c"><code class="language-html" data-trim>
+&lt;input type="text" placeholder="Ism"&gt;
+  </code></pre>
+</section>
+<section data-auto-animate>
+  <h2 data-id="t">Placeholder dan label ga</h2>
+  <pre data-id="c"><code class="language-html" data-trim data-line-numbers="1|2-3">
+&lt;label for="ism"&gt;Ism&lt;/label&gt;
+&lt;input type="text" id="ism" name="ism"&gt;
+  </code></pre>
+</section>
+
+<section>
+  <h2>Forma raqamlarda</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="4" data-suf="">0</span></div><div class="l"> ta asosiy validatsiya atributi</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="5" data-suf="">0</span></div><div class="l"> ta tez-tez ishlatiladigan type</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="2" data-suf="">0</span></div><div class="l"> ta joyda tekshiruv: brauzer va server</div></div>
+  </div>
+  <p class="small fragment">Brauzer tekshiruvi serverni almashtirmaydi.</p>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Label bog'lang: <code>&lt;input type="text" id="ism"&gt;</code> ga <code>label</code> qo'shing, matn bosilganda maydon faollashsin.</div>
+  <div class="task"><span class="level mid">O'rta</span>To'g'ri type: Email, telefon, sinf (1–11) va tug'ilgan sana maydonlarini mos <code>type</code> va atributlar bilan yozing.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Qabul formasi: Maktab qabul formasini yozing: fieldset ichida ism, email, telefon (pattern), sinf, rozilik (checkbox), <code>submit</code> tugmasi, xato xabarlari.</div>
+  <div class="task"><span class="level hard">Bonus</span>Server tekshiruvi: Nima uchun faqat brauzer validatsiyasi yetarli emas? 2 jumlada yozing.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Forma tuzilmasi</h3><p><code>form</code>, <code>label</code> + <code>for</code>/<code>id</code>, <code>fieldset</code>.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Validatsiya</h3><p><code>type</code>, <code>required</code>, <code>pattern</code>, <code>min</code>/<code>max</code>.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Xato va tugma</h3><p>Aniq xabar, <code>aria-describedby</code>, <code>button type</code>.</p></div>
+  </div>
+  <p class="small fragment mt">Uyga vazifa: maktab qabul formasi.</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="search" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: SEO va meta teglar</h1>
+  <p class="muted">title, description, viewport, Open Graph</p>
+  <span class="badge">5-hafta · 15-dars</span>
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

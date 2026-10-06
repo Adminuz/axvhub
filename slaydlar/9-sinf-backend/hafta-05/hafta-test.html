@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>5-hafta testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>5-hafta testi</h1>
+  <p class="muted">20 ta savol &middot; taxminan 15 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">5-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/20</h2>
+  <div class="quiz">
+    <p class="q">Qaysi tuzilma o'zgarmas?</p>
+    <div class="opts">
+      <button class="opt" type="button">list</button>
+      <button class="opt" type="button">set</button>
+      <button class="opt" type="button">dict</button>
+      <button class="opt" type="button" data-ok>tuple</button>
+    </div>
+    <div class="explain">Beshlikdan string va tuple o'zgarmas; bu yerda faqat tuple.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/20</h2>
+  <div class="quiz">
+    <p class="q"><code>t = ("a",)</code> nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Bitta elementli tuple</button>
+      <button class="opt" type="button">Satr</button>
+      <button class="opt" type="button">Xato yozuv</button>
+      <button class="opt" type="button">Bitta elementli list</button>
+    </div>
+    <div class="explain">Vergul tuple yaratadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/20</h2>
+  <div class="quiz">
+    <p class="q"><code>(1, 2, 3, 4, 5)[-2]</code> nimaga teng?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>2</code></button>
+      <button class="opt" type="button" data-ok><code>4</code></button>
+      <button class="opt" type="button"><code>5</code></button>
+      <button class="opt" type="button"><code>3</code></button>
+    </div>
+    <div class="explain">Manfiy indeks oxiridan: -1 = 5, -2 = 4.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/20</h2>
+  <div class="quiz">
+    <p class="q">Tuple'da qaysi metodlar bor?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>append</code>, <code>pop</code></button>
+      <button class="opt" type="button"><code>add</code>, <code>remove</code></button>
+      <button class="opt" type="button" data-ok><code>count</code>, <code>index</code></button>
+      <button class="opt" type="button"><code>get</code>, <code>update</code></button>
+    </div>
+    <div class="explain">Tupleda metodlar kam: <code>count()</code> va <code>index()</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/20</h2>
+  <div class="quiz">
+    <p class="q"><code>r = list((1, 2))</code>; <code>r[0] = 5</code>; <code>tuple(r)</code> natijasi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>(1, 2)</code></button>
+      <button class="opt" type="button"><code>TypeError</code></button>
+      <button class="opt" type="button"><code>[5, 2]</code></button>
+      <button class="opt" type="button" data-ok><code>(5, 2)</code></button>
+    </div>
+    <div class="explain">List orqali o'zgartirib, yana tuple qilindi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/20</h2>
+  <div class="quiz">
+    <p class="q">Rang <code>(255, 0, 0)</code> uchun tuple tanlashning sababi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Qiymat o'zgarmasligi kerak</button>
+      <button class="opt" type="button">Tez qidirish uchun</button>
+      <button class="opt" type="button">Takrorlarni yo'qotish uchun</button>
+      <button class="opt" type="button">Kalit kerakligi uchun</button>
+    </div>
+    <div class="explain">O'zgarmas ma'lumot (ranglar, koordinata, config) - tuple.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/20</h2>
+  <div class="quiz">
+    <p class="q">Set xususiyati EMAS:</p>
+    <div class="opts">
+      <button class="opt" type="button">Takror element yo'q</button>
+      <button class="opt" type="button" data-ok>Indeks orqali murojaat</button>
+      <button class="opt" type="button"><code>in</code> juda tez</button>
+      <button class="opt" type="button">Mutable</button>
+    </div>
+    <div class="explain">Set'da indeks yo'q, <code>s[0]</code> ishlamaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/20</h2>
+  <div class="quiz">
+    <p class="q"><code>s = {"a"}</code>; <code>s.add("a")</code>; <code>len(s)</code>?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>2</code></button>
+      <button class="opt" type="button"><code>0</code></button>
+      <button class="opt" type="button" data-ok><code>1</code></button>
+      <button class="opt" type="button">Xato</button>
+    </div>
+    <div class="explain">Bor element qayta qo'shilmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/20</h2>
+  <div class="quiz">
+    <p class="q"><code>len(set(["Ali", "Vali", "Ali"]))</code>?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>2</code></button>
+      <button class="opt" type="button"><code>3</code></button>
+      <button class="opt" type="button"><code>1</code></button>
+      <button class="opt" type="button"><code>0</code></button>
+    </div>
+    <div class="explain">Takrorlar olib tashlangach Ali va Vali qoladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/20</h2>
+  <div class="quiz">
+    <p class="q">Set'dan elementni o'chiruvchi metod?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>pop(0)</code></button>
+      <button class="opt" type="button"><code>del s[0]</code></button>
+      <button class="opt" type="button"><code>clear(x)</code></button>
+      <button class="opt" type="button" data-ok><code>remove(x)</code></button>
+    </div>
+    <div class="explain"><code>remove(x)</code> berilgan elementni o'chiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 11/20</h2>
+  <div class="quiz">
+    <p class="q"><code>print(type(set()))</code>?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>&lt;class 'dict'&gt;</code></button>
+      <button class="opt" type="button" data-ok><code>&lt;class 'set'&gt;</code></button>
+      <button class="opt" type="button"><code>&lt;class 'tuple'&gt;</code></button>
+      <button class="opt" type="button"><code>&lt;class 'list'&gt;</code></button>
+    </div>
+    <div class="explain"><code>set()</code> - bo'sh set yaratishning yagona yo'li.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 12/20</h2>
+  <div class="quiz">
+    <p class="q">Python 3.7+ da dict haqida to'g'ri:</p>
+    <div class="opts">
+      <button class="opt" type="button">Kalitlar takrorlanadi</button>
+      <button class="opt" type="button">Indeks bilan olinadi</button>
+      <button class="opt" type="button" data-ok>Kiritilgan tartib saqlanadi</button>
+      <button class="opt" type="button">O'zgarmas</button>
+    </div>
+    <div class="explain">Python 3.7 dan boshlab dict kiritilgan tartibni saqlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 13/20</h2>
+  <div class="quiz">
+    <p class="q"><code>d = {"x": 1}</code>; <code>d["x"] = 5</code>; <code>print(d)</code>?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>{'x': 5}</code></button>
+      <button class="opt" type="button"><code>{'x': 1, 'x': 5}</code></button>
+      <button class="opt" type="button"><code>{'x': 6}</code></button>
+      <button class="opt" type="button"><code>KeyError</code></button>
+    </div>
+    <div class="explain">Kalit unikal: qiymat yangilanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 14/20</h2>
+  <div class="quiz">
+    <p class="q">Kalit bo'lmasligi mumkin bo'lsa qaysi usul xavfsiz?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>d[key]</code></button>
+      <button class="opt" type="button" data-ok><code>d.get(key, standart)</code></button>
+      <button class="opt" type="button"><code>d.index(key)</code></button>
+      <button class="opt" type="button"><code>d.count(key)</code></button>
+    </div>
+    <div class="explain"><code>get()</code> xato bermasdan standart qiymat qaytaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 15/20</h2>
+  <div class="quiz">
+    <p class="q"><code>user["phone"] = "+99890"</code> (kalit yo'q edi) nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Xato beradi</button>
+      <button class="opt" type="button">Hech narsa</button>
+      <button class="opt" type="button">Eski qiymatni o'chiradi</button>
+      <button class="opt" type="button" data-ok>Yangi juftlik qo'shadi</button>
+    </div>
+    <div class="explain">Yangi kalit va qiymat - yangi element.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 16/20</h2>
+  <div class="quiz">
+    <p class="q">Uzun <code>if/elif</code> zanjiri o'rniga til tanlashda nima qulay?</p>
+    <div class="opts">
+      <button class="opt" type="button">set</button>
+      <button class="opt" type="button">tuple</button>
+      <button class="opt" type="button" data-ok>dict</button>
+      <button class="opt" type="button">list</button>
+    </div>
+    <div class="explain">Kalit bo'yicha matnni darhol olamiz: <code>texts[til]</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 17/20</h2>
+  <div class="quiz">
+    <p class="q">Takrorsiz va tartiblangan baholar: <code>sorted(set([5, 3, 5, 4]))</code>?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>[3, 4, 5]</code></button>
+      <button class="opt" type="button"><code>{3, 4, 5}</code></button>
+      <button class="opt" type="button"><code>[5, 5, 4, 3]</code></button>
+      <button class="opt" type="button"><code>(3, 4, 5)</code></button>
+    </div>
+    <div class="explain">set takrorni olib tashlaydi, sorted list qaytaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 18/20</h2>
+  <div class="quiz">
+    <p class="q">Fanlar ro'yxati (yangi fan qo'shiladi) uchun mos tuzilma?</p>
+    <div class="opts">
+      <button class="opt" type="button">tuple</button>
+      <button class="opt" type="button" data-ok>list</button>
+      <button class="opt" type="button">set</button>
+      <button class="opt" type="button">string</button>
+    </div>
+    <div class="explain">Tartibli va o'zgaradigan ro'yxat - list, <code>append()</code> bilan.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 19/20</h2>
+  <div class="quiz">
+    <p class="q"><code>talaba = {"shaxsiy": (2011, "AB1")}</code>; <code>talaba["shaxsiy"][0]</code>?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>"AB1"</code></button>
+      <button class="opt" type="button"><code>KeyError</code></button>
+      <button class="opt" type="button"><code>(2011, "AB1")</code></button>
+      <button class="opt" type="button" data-ok><code>2011</code></button>
+    </div>
+    <div class="explain">Avval kalit bilan tuple olinadi, keyin indeks 0.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 20/20</h2>
+  <div class="quiz">
+    <p class="q">Qaysi juftlik noto'g'ri?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>{}</code> - bo'sh dict</button>
+      <button class="opt" type="button"><code>set()</code> - bo'sh set</button>
+      <button class="opt" type="button" data-ok><code>(5)</code> - bitta elementli tuple</button>
+      <button class="opt" type="button"><code>[]</code> - bo'sh list</button>
+    </div>
+    <div class="explain"><code>(5)</code> - oddiy int; tuple uchun <code>(5,)</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>20 dan 18+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>20 dan 12-17</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>11 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: tuple, set va dict farqlari, bo'sh tuzilmalar yaratish, <code>count</code>/<code>index</code>, <code>add</code>/<code>remove</code>, <code>get()</code>, tuzilma tanlash.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

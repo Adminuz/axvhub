@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>3-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>3-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">1-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Git va GitHub o'rtasidagi farq qaysi javobda to'g'ri?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Git lokal dastur, GitHub repolarni saqlovchi va hamkorlik uchun veb-xizmat</button>
+      <button class="opt" type="button">Ikkalasi bir xil narsa</button>
+      <button class="opt" type="button">GitHub dastur, Git veb-sayt</button>
+      <button class="opt" type="button">Git faqat internetda ishlaydi</button>
+    </div>
+    <div class="explain">Git internet siz ishlaydi. GitHub unga Issues, Pull Request va review kabi hamkorlikni qo'shadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Masofaviy repoga odatiy nom nima?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>master</code></button>
+      <button class="opt" type="button" data-ok><code>origin</code></button>
+      <button class="opt" type="button"><code>remote1</code></button>
+      <button class="opt" type="button"><code>upstream-main</code></button>
+    </div>
+    <div class="explain"><code>origin</code> — masofaviy repo havolasiga beriladigan odatiy nom.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>git fetch</code> va <code>git pull</code> farqi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>fetch</code> yuboradi, <code>pull</code> o'chiradi</button>
+      <button class="opt" type="button">Ikkalasi bir xil</button>
+      <button class="opt" type="button" data-ok><code>fetch</code> faqat yuklaydi, <code>pull</code> yuklab, birlashtiradi ham</button>
+      <button class="opt" type="button"><code>pull</code> faqat yuklaydi, <code>fetch</code> birlashtiradi</button>
+    </div>
+    <div class="explain"><code>pull</code> = <code>fetch</code> + merge. <code>fetch</code> ishchi fayllarni o'zgartirmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi fayl SSH kalitining ochiq qismi va GitHub'ga qo'yiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>id_ed25519</code></button>
+      <button class="opt" type="button"><code>known_hosts</code></button>
+      <button class="opt" type="button"><code>.env</code></button>
+      <button class="opt" type="button" data-ok><code>id_ed25519.pub</code></button>
+    </div>
+    <div class="explain"><code>.pub</code> ochiq kalit. <code>id_ed25519</code> esa maxfiy kalit, uni hech kimga yubormang.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>.gitignore</code> ga eng avval nimalarni kiritish kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Sirlar (<code>.env</code>, kalitlar) va chiqindilar (<code>__pycache__/</code>, <code>node_modules/</code>)</button>
+      <button class="opt" type="button">Barcha <code>.py</code> fayllar</button>
+      <button class="opt" type="button">README.md</button>
+      <button class="opt" type="button">Butun <code>src/</code> papkasi</button>
+    </div>
+    <div class="explain">Sirlar tarixga kirmasligi va keraksiz chiqindilar repoga tushmasligi uchun.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Commit xabarida <code>Closes #1</code> yozilsa nima bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Repo o'chiriladi</button>
+      <button class="opt" type="button" data-ok>Commit asosiy shoxga yetgach, 1-raqamli Issue avtomatik yopiladi</button>
+      <button class="opt" type="button">Issue o'chiriladi</button>
+      <button class="opt" type="button">Hech narsa, bu oddiy matn</button>
+    </div>
+    <div class="explain">GitHub <code>Closes</code>/<code>Fixes</code> kalit so'zlarini tanib, bog'langan issue'ni yopadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Yangi GitHub repo yaratayotganda, lokal repo allaqachon bor bo'lsa, README/.gitignore ni belgilash nega xato?</p>
+    <div class="opts">
+      <button class="opt" type="button">GitHub bunga ruxsat bermaydi</button>
+      <button class="opt" type="button">Repo pullik bo'lib qoladi</button>
+      <button class="opt" type="button" data-ok>Ikkala tomonda tarix ajralib ketadi va <code>push</code> rad etiladi</button>
+      <button class="opt" type="button">Lokal fayllar o'chib ketadi</button>
+    </div>
+    <div class="explain">Masofada sizda yo'q commit paydo bo'ladi, shu sabab push non-fast-forward bilan rad etiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>.env</code> fayli allaqachon commit qilingan. <code>.gitignore</code> ga qo'shish yetadimi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ha, avtomatik o'chadi</button>
+      <button class="opt" type="button">Ha, lekin faqat push'dan keyin</button>
+      <button class="opt" type="button">Yo'q, repoga qaytib bo'lmaydi</button>
+      <button class="opt" type="button" data-ok>Yo'q, <code>.gitignore</code> faqat kuzatilmayotgan fayllarga ta'sir qiladi; <code>git rm --cached</code> kerak</button>
+    </div>
+    <div class="explain">Kuzatilayotgan faylni <code>git rm --cached</code> bilan kuzatuvdan chiqarish kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Token tasodifan GitHub'ga commit bo'ldi. Birinchi qadam nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Tokenni darhol bekor qilish (revoke) va almashtirish</button>
+      <button class="opt" type="button">Faylni o'chirib yangi commit qilish</button>
+      <button class="opt" type="button">Repoga yangi nom berish</button>
+      <button class="opt" type="button">Hech narsa qilmaslik</button>
+    </div>
+    <div class="explain">Tarixga tushgan sir yo'qolmaydi. Avval sirni bekor qiling, keyin tarixni tozalash haqida o'ylang.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>git push</code> rad etildi: «rejected, non-fast-forward». To'g'ri harakat qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>git push --force</code> ishlatish</button>
+      <button class="opt" type="button" data-ok>Avval <code>git pull</code> qilib, keyin qayta push qilish</button>
+      <button class="opt" type="button">Reponi o'chirib qayta yaratish</button>
+      <button class="opt" type="button"><code>.git</code> papkasini o'chirish</button>
+    </div>
+    <div class="explain">Masofada sizda yo'q commit bor. Force push boshqalar ishini o'chirib yuborishi mumkin.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: Git va GitHub farqi, fetch va pull, SSH kalitlari, <code>.gitignore</code>, <code>Closes #</code> qoidasi, sirlar bilan ishlash.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

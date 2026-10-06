@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Tarmoqlanuvchi algoritm: if va else</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+      <!-- 1. SARLAVHA (HERO) -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>Tarmoqlanuvchi algoritm: if va else</h1>
+        <p class="muted">Shartli o‘tishlar, bloklar va tabulyatsiya (chekinish) qoidalari</p>
+        <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">2-hafta · 5-dars</span>
+        
+      </section>
+
+      <!-- 2. Reja -->
+      <section>
+        <h2>Bugun nimalarni o‘rganamiz?</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="split" data-anim="float"></i></div>
+            <h3>Tarmoqlanish nima?</h3>
+            <p>Hayotiy misollar va qaror qabul qilish mexanizmi</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="list-indent-increase" data-anim="bounce"></i></div>
+            <h3>if / else sintaksisi</h3>
+            <p>Ikki nuqta (:) va 4 ta bo‘sh joy (chekinish) qoidasi</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="check-check" data-anim="float"></i></div>
+            <h3>Amaliy tekshiruvlar</h3>
+            <p>O‘tdi/o‘tmadi va juft/toqlikni aniqlash</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 3. HAYOTIY MISOLLAR -->
+      <section>
+        <h2>Hayotiy tanlovlar</h2>
+        <div class="cards two">
+          <div class="card fragment">
+            <h3>Agar yomg‘ir yog‘sa</h3>
+            <p class="stat">&rarr; Soyabon olamiz</p>
+            <p class="muted">Shart rost (True) bo'lgandagi harakat</p>
+          </div>
+          <div class="card fragment">
+            <h3>Aks holda (yog‘masa)</h3>
+            <p class="stat">&rarr; Soyabonsiz chiqamiz</p>
+            <p class="muted">Shart yolg'on (False) bo'lgandagi harakat</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 4. SEC 01: BLOK-SXEMA -->
+      <section class="sec">
+        <div class="num">01</div>
+        <h1>Tarmoqlanish blok-sxemasi</h1>
+        <p>Shart tekshiruvi qanday yo‘naltiriladi?</p>
+      </section>
+
+      <!-- 5. SVG 1: IF-ELSE BLOK-SXEMASI -->
+      <section>
+        <h2>if / else mantiqiy sxemasi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- Boshlanish -->
+            <rect class="fn" x="400" y="30" width="200" height="60" rx="12"/>
+            <text class="t-head" x="500" y="67" text-anchor="middle" font-size="20">Boshlanish</text>
+
+            <line class="la" x1="500" y1="90" x2="500" y2="130"/>
+
+            <!-- Romb: Shart -->
+            <polygon class="fa pulse" points="500,130 630,190 500,250 370,190"/>
+            <text class="t-head" x="500" y="195" text-anchor="middle" font-size="20">Shart?</text>
+
+            <!-- True yo'li -->
+            <g class="fragment">
+              <line class="lg flowing" x1="630" y1="190" x2="760" y2="190"/>
+              <text class="t-accent" x="690" y="180" font-size="16">Ha (True)</text>
+              <rect class="fg" x="760" y="145" width="200" height="90" rx="14"/>
+              <text class="t-head" x="860" y="190" text-anchor="middle" font-size="18">Amal 1</text>
+              <text class="t-muted" x="860" y="215" text-anchor="middle" font-size="14">(if qismi)</text>
+            </g>
+
+            <!-- False yo'li -->
+            <g class="fragment">
+              <line class="la flowing" x1="370" y1="190" x2="240" y2="190"/>
+              <text class="t-accent" x="290" y="180" font-size="16">Yo‘q (False)</text>
+              <rect class="fa" x="40" y="145" width="200" height="90" rx="14"/>
+              <text class="t-head" x="140" y="190" text-anchor="middle" font-size="18">Amal 2</text>
+              <text class="t-muted" x="140" y="215" text-anchor="middle" font-size="14">(else qismi)</text>
+            </g>
+
+            <!-- Birlashish -->
+            <g class="fragment">
+              <line class="ln" x1="860" y1="235" x2="860" y2="310"/>
+              <line class="ln" x1="140" y1="235" x2="140" y2="310"/>
+              <line class="ln" x1="140" y1="310" x2="860" y2="310"/>
+              <line class="ln" x1="500" y1="310" x2="500" y2="340"/>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 6. SEC 02: SINTAKSIS VA CHEKINISH -->
+      <section class="sec">
+        <div class="num">02</div>
+        <h1>Sintaksis va Indentatsiya</h1>
+        <p>Ikki nuqta (:) va 4 ta bo‘sh joy siri</p>
+      </section>
+
+      <!-- 7. SVG 2: CHEKINISH ANATOMIYASI -->
+      <section>
+        <h2>Chekinish (Indentation) qoidasi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- Kod foni -->
+            <rect class="fn" x="60" y="40" width="880" height="280" rx="16"/>
+
+            <!-- 1-qator: if shart: -->
+            <text class="t-accent" x="100" y="90" font-size="24">if</text>
+            <text class="t-head" x="140" y="90" font-size="24">ball &gt;= 60</text>
+            <text class="t-accent" x="280" y="90" font-size="28">:</text>
+            <text class="t-muted" x="350" y="90" font-size="16">&larr; Ikki nuqta qo‘yilishi shart!</text>
+
+            <!-- 2-qator: 4 probel surilish -->
+            <g class="fragment">
+              <rect class="fa" x="100" y="115" width="80" height="40" rx="6"/>
+              <text class="t-head" x="140" y="142" text-anchor="middle" font-size="15">4 space</text>
+              <text class="t-head" x="200" y="145" font-size="24">print("O'tdi")</text>
+            </g>
+
+            <!-- 3-qator: else: -->
+            <g class="fragment">
+              <text class="t-accent" x="100" y="210" font-size="24">else</text>
+              <text class="t-accent" x="160" y="210" font-size="28">:</text>
+              <text class="t-muted" x="220" y="210" font-size="16">&larr; Aks holda</text>
+            </g>
+
+            <!-- 4-qator: 4 probel surilish -->
+            <g class="fragment">
+              <rect class="fb" x="100" y="235" width="80" height="40" rx="6"/>
+              <text class="t-head" x="140" y="262" text-anchor="middle" font-size="15">4 space</text>
+              <text class="t-head" x="200" y="265" font-size="24">print("O'tmadi")</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 8. KOD: IF/ELSE SODDA MISOL -->
+      <section>
+        <h2>Ball tekshiruvi kodi</h2>
+        <p>Rasmiy qo'llanmadagi 1.27-rasm misoli</p>
+        <pre><code class="language-python" data-line-numbers="1-2|4-7">ball = 65
+
+# Agar ball 60 dan katta yoki teng bo'lsa
+if ball &gt;= 60:
+    print("O'tdi")
+else:
+    print("O'tmadi")
+# Natija: O'tdi</code></pre>
+        <div class="callout tip fragment">
+          <i data-ic="check"></i> <code>ball = 45</code> bo'lsa, konsolda <code>O'tmadi</code> xabari chiqadi.
+        </div>
+        
+      </section>
+
+      <!-- 9. SEC 03: JUFT VA TOQLIK TEKSHIRUVI -->
+      <section class="sec">
+        <div class="num">03</div>
+        <h1>Qoldiq bilan if/else</h1>
+        <p>Sonni juft yoki toqlikka tekshirish</p>
+      </section>
+
+      <!-- 10. SVG 3: JUFT/TOQ OQIMI -->
+      <section>
+        <h2>Juft va toqlikni tekshirish algoritmi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- Son -->
+            <rect class="fn" x="60" y="130" width="180" height="100" rx="14"/>
+            <text class="t-head" x="150" y="175" text-anchor="middle" font-size="24">son = 14</text>
+            <text class="t-muted" x="150" y="205" text-anchor="middle" font-size="15">Tekshiriluvchi</text>
+
+            <line class="la" x1="240" y1="180" x2="360" y2="180"/>
+
+            <!-- Romb shart -->
+            <polygon class="fb pulse" points="480,110 600,180 480,250 360,180"/>
+            <text class="t-head" x="480" y="175" text-anchor="middle" font-size="18">son % 2 == 0 ?</text>
+            <text class="t-muted" x="480" y="198" text-anchor="middle" font-size="13">Qoldiq 0 mi?</text>
+
+            <!-- Ha -> Juft -->
+            <g class="fragment">
+              <line class="lg flowing" x1="600" y1="180" x2="740" y2="120"/>
+              <rect class="fg" x="740" y="70" width="220" height="90" rx="14"/>
+              <text class="t-head" x="850" y="115" text-anchor="middle" font-size="20">"Juft son"</text>
+              <text class="t-muted" x="850" y="142" text-anchor="middle" font-size="14">(Qoldiq 0 bo‘lsa)</text>
+            </g>
+
+            <!-- Yo'q -> Toq -->
+            <g class="fragment">
+              <line class="la flowing" x1="600" y1="180" x2="740" y2="240"/>
+              <rect class="fa" x="740" y="200" width="220" height="90" rx="14"/>
+              <text class="t-head" x="850" y="245" text-anchor="middle" font-size="20">"Toq son"</text>
+              <text class="t-muted" x="850" y="272" text-anchor="middle" font-size="14">(Qoldiq 1 bo‘lsa)</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 11. KOD: JUFT/TOQ DASTURI -->
+      <section>
+        <h2>Juft va toqlik dasturi kodi</h2>
+        <pre><code class="language-python" data-line-numbers="1-2|4-8">son = 14
+
+# Qoldiq 0 ga tengmi?
+if son % 2 == 0:
+    print("Juft")
+else:
+    print("Toq")
+# Natija: Juft</code></pre>
+        
+      </section>
+
+      <!-- 12. PAROL TEKSHIRISH KEYS -->
+      <section>
+        <h2>Keys: Parol mosligi tekshiruvi</h2>
+        <pre><code class="language-python" data-line-numbers="1-3|5-9">haqiqiy_parol = "admin2026"
+kiritilgan_parol = "admin2026"
+
+if kiritilgan_parol == haqiqiy_parol:
+    print("Muvaffaqiyatli kirdingiz!")
+    print("Boshqaruv paneli yuklanmoqda...")
+else:
+    print("Xato parol!")
+    print("Qaytadan urinib ko'ring.")</code></pre>
+        
+      </section>
+
+      <!-- 13. ODATIY XATOLAR: INDENTATION -->
+      <section>
+        <h2>Eng ko‘p uchraydigan 2 ta xato</h2>
+        <div class="cards two">
+          <div class="card fragment">
+            <h3>Xato: Ikki nuqtani unutish</h3>
+            <pre><code class="language-python"># Xato
+if ball &gt;= 60
+    print("O'tdi")
+
+# To'g'ri:
+if ball &gt;= 60:
+    print("O'tdi")</code></pre>
+          </div>
+          <div class="card fragment">
+            <h3>Xato: IndentationError</h3>
+            <pre><code class="language-python"># Xato (surilmadi)
+if ball &gt;= 60:
+print("O'tdi")
+
+# To'g'ri (4 space)
+if ball &gt;= 60:
+    print("O'tdi")</code></pre>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 14. AMALIY TOPSHIRIQ (TASK) -->
+      <section class="task">
+        <h2>Amaliy topshiriq: if/else sinovi</h2>
+        <p class="muted">Vaqt: 15 daqiqa · Darajalar bo‘yicha</p>
+        <div class="cards three">
+          <div class="card">
+            <h3>1. Oson</h3>
+            <p><code>ball = 55</code>. 60 dan kam bo'lsa "O'tmadi" deb chiqaruvchi shart yozing.</p>
+          </div>
+          <div class="card">
+            <h3>2. O'rta</h3>
+            <p>Berilgan son juft yoki toqligini <code>% 2 == 0</code> orqali aniqlang.</p>
+          </div>
+          <div class="card">
+            <h3>3. Qiyin</h3>
+            <p>Xarid 100 000 so'mdan oshsa 10% chegirma hisoblab to'lovni chiqaring.</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 15. QUIZ / TEZKOR SAVOL -->
+      <section>
+        <h2>Tezkor sinov</h2>
+        <p>Quyidagi kod ekranga nima chiqaradi?</p>
+        <pre><code class="language-python">yosh = 16
+if yosh &gt;= 18:
+    print("Katta")
+else:
+    print("Kichik")</code></pre>
+        <div class="fragment callout tip">
+          <i data-ic="check"></i> <strong>Javob:</strong> <code>Kichik</code> (chunki 16 &gt;= 18 &rarr; False)
+        </div>
+        
+      </section>
+
+      <!-- 16. XULOSA -->
+      <section>
+        <h2>Xulosa va asosiy fikrlar</h2>
+        <div class="cards three">
+          <div class="card fragment">
+            <h3>Qaror qabul qilish</h3>
+            <p>if shart to'g'ri bo'lganda, else aks holda ishlaydi</p>
+          </div>
+          <div class="card fragment">
+            <h3>Ikki nuqta (:)</h3>
+            <p>Har bir if va else qatoridan keyin majburiy qo'yiladi</p>
+          </div>
+          <div class="card fragment">
+            <h3>Indentatsiya</h3>
+            <p>4 ta bo'sh joy bloklarni ko'rsatishning yagona yo'lidir</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 17. YAKUNIY SLAYD -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>Rahmat!</h1>
+        <p class="muted">Keyingi dars: elif operatori va rasmiy amaliy topshiriqlar</p>
+        <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span>
+        
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

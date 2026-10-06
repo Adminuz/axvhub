@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>1-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>1-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">1-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Gradle Android ekotizimida qanday vazifani bajaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Kod, resurs va kutubxonalarni yig'ib, tayyor APK/AAB yaratadi (Build Automation)</button>
+      <button class="opt" type="button">Faqat ilova dizaynini chizadi</button>
+      <button class="opt" type="button">Ilovani Google Play'ga avtomatik yuklaydi</button>
+      <button class="opt" type="button">Kotlin kodini yozib beradi</button>
+    </div>
+    <div class="explain">Gradle kompilyatsiya, resurslarni siqish, kutubxonalarni yuklash va paketlashni avtomatik boshqaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Loyiha tarkibidagi modullar (<code>:app</code>, <code>:core-network</code>) ro'yxati qaysi faylda beriladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>gradle.properties</code></button>
+      <button class="opt" type="button" data-ok><code>settings.gradle</code></button>
+      <button class="opt" type="button"><code>gradle-wrapper.properties</code></button>
+      <button class="opt" type="button"><code>AndroidManifest.xml</code></button>
+    </div>
+    <div class="explain"><code>settings.gradle</code> da <code>include ':app'</code> kabi qatorlar orqali modullar ro'yxatga olinadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>compileSdk 34</code> nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ilova faqat Android 14 da ishlashini</button>
+      <button class="opt" type="button">Google Play uchun versiya raqamini</button>
+      <button class="opt" type="button" data-ok>Kompilyatsiya paytida Android 14 (API 34) dagi yangi klasslardan foydalanish mumkinligini</button>
+      <button class="opt" type="button">Ilova hajmining 34 MB ekanini</button>
+    </div>
+    <div class="explain"><code>compileSdk</code> kod tekshiriladigan va baytkodga aylantiriladigan SDK versiyasini belgilaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Avvalgi yig'ilgan kesh va <code>build/</code> papkalarini tozalovchi buyruq qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>./gradlew tasks</code></button>
+      <button class="opt" type="button"><code>./gradlew --version</code></button>
+      <button class="opt" type="button"><code>./gradlew assembleDebug</code></button>
+      <button class="opt" type="button" data-ok><code>./gradlew clean</code></button>
+    </div>
+    <div class="explain"><code>clean</code> eski build natijalarini o'chiradi; <code>tasks</code> esa vazifalar ro'yxatini chiqaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Google Play yangilanishni qaysi parametr bo'yicha tekshiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>versionCode</code> (butun son)</button>
+      <button class="opt" type="button"><code>versionName</code> (matn)</button>
+      <button class="opt" type="button"><code>minSdk</code></button>
+      <button class="opt" type="button"><code>applicationId</code></button>
+    </div>
+    <div class="explain">Do'kon faqat <code>versionCode</code> ga qaraydi, u har yangilanishda oshishi shart. <code>versionName</code> esa foydalanuvchi ko'radigan matn.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Gradle Build Lifecycle bosqichlari to'g'ri tartibda qaysi qatorda?</p>
+    <div class="opts">
+      <button class="opt" type="button">Execution, Initialization, Configuration</button>
+      <button class="opt" type="button" data-ok>Initialization, Configuration, Execution</button>
+      <button class="opt" type="button">Configuration, Initialization, Execution</button>
+      <button class="opt" type="button">Initialization, Execution, Configuration</button>
+    </div>
+    <div class="explain">Avval modullar aniqlanadi, so'ng skriptlar bajarilib vazifalar grafigi tuziladi, oxirida vazifalar bajariladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Configuration bosqichida nima sodir bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Kod kompilyatsiya qilinadi va APK yaratiladi</button>
+      <button class="opt" type="button">Faqat <code>settings.gradle</code> o'qiladi</button>
+      <button class="opt" type="button" data-ok><code>build.gradle</code> fayllari bajarilib, vazifalar grafigi (DAG) tuziladi</button>
+      <button class="opt" type="button">Ilova emulyatorda ishga tushadi</button>
+    </div>
+    <div class="explain">Kompilyatsiya bu bosqichda hali boshlanmaydi; u Execution bosqichida bajariladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>gradle-wrapper.properties</code> fayli nimani kafolatlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Kutubxonalarning eng yangi versiyasini</button>
+      <button class="opt" type="button">Ilova xotirasi hajmini</button>
+      <button class="opt" type="button">Ilovaning Android versiyasi mosligini</button>
+      <button class="opt" type="button" data-ok>Loyiha hammada bir xil Gradle versiyasida yig'ilishini, o'rnatilmagan bo'lsa ham</button>
+    </div>
+    <div class="explain">Wrapper loyiha uchun kerakli Gradle versiyasini (masalan, <code>gradle-8.7-bin.zip</code>) o'zi belgilaydi va yuklaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Google Play joriy versiyasi <code>versionCode 5</code>, <code>versionName "1.2.0"</code>. Dasturchi faqat <code>versionName "1.2.1"</code> qilib yukladi va rad etildi. Nega?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>versionCode</code> oshirilmagan, u avvalgisidan katta bo'lishi shart</button>
+      <button class="opt" type="button"><code>versionName</code> da nuqta ko'p</button>
+      <button class="opt" type="button"><code>minSdk</code> kichik</button>
+      <button class="opt" type="button"><code>compileSdk</code> yangilanmagan</button>
+    </div>
+    <div class="explain">Yechim: <code>versionCode 6</code> va <code>versionName "1.2.1"</code>. Do'kon yangilanishni faqat <code>versionCode</code> bo'yicha tan oladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Ilova Android 14 API laridan foydalansin, lekin Android 7.0 da ham o'rnatilsin. Qaysi sozlama to'g'ri?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>compileSdk 24</code>, <code>minSdk 34</code></button>
+      <button class="opt" type="button" data-ok><code>compileSdk 34</code>, <code>minSdk 24</code></button>
+      <button class="opt" type="button"><code>compileSdk 34</code>, <code>minSdk 34</code></button>
+      <button class="opt" type="button"><code>compileSdk 24</code>, <code>minSdk 24</code></button>
+    </div>
+    <div class="explain"><code>compileSdk</code> yangi API ni kodda ishlatishga, <code>minSdk</code> esa eng quyi qo'llab-quvvatlanadigan versiyaga javob beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: Gradle faylari va SDK versiyalari, versionCode, Build Lifecycle, Gradle buyruqlari.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

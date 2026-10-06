@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Test: 15-dars. SQL: NULL va ma'lumot turlari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Test: 15-dars. SQL: NULL va ma'lumot turlari</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">Business Intelligence</span><span class="badge">5-hafta · 15-dars</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q"><code>NULL</code> nimani anglatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Qiymat yo'q yoki noma'lum</button>
+      <button class="opt" type="button">Nol</button>
+      <button class="opt" type="button">Bo'sh matn</button>
+      <button class="opt" type="button"><code>FALSE</code></button>
+    </div>
+    <div class="explain"><code>NULL</code> na <code>0</code>, na <code>''</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q"><code>NULL</code> ni tekshirish uchun to'g'ri shart?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>IS NULL</code></button>
+      <button class="opt" type="button"><code>= NULL</code></button>
+      <button class="opt" type="button"><code>== NULL</code></button>
+      <button class="opt" type="button"><code>LIKE NULL</code></button>
+    </div>
+    <div class="explain"><code>= NULL</code> hech qachon <code>TRUE</code> bermaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>WHERE Telefon IS NOT NULL</code> kimni qoldiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Telefoni yo'qlarni</button>
+      <button class="opt" type="button">Hammasini</button>
+      <button class="opt" type="button">Hech kimni</button>
+      <button class="opt" type="button" data-ok>Telefoni kiritilganlarni</button>
+    </div>
+    <div class="explain">Qiymati bor qatorlar.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>5 + NULL</code> natijasi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>5</code></button>
+      <button class="opt" type="button"><code>0</code></button>
+      <button class="opt" type="button" data-ok><code>NULL</code></button>
+      <button class="opt" type="button">Xato</button>
+    </div>
+    <div class="explain">NULL qatnashgan arifmetika NULL beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>ISNULL(Telefon, N'Yo''q')</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>NULL</code> bo'lsa «Yo'q» beradi</button>
+      <button class="opt" type="button">Telefonni o'chiradi</button>
+      <button class="opt" type="button"><code>NULL</code> ni tekshirib qator o'chiradi</button>
+      <button class="opt" type="button">Matnni <code>NULL</code> qiladi</button>
+    </div>
+    <div class="explain"><code>ISNULL</code> NULL ni almashtiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>COALESCE(NULL, NULL, N'C')</code> natijasi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>NULL</code></button>
+      <button class="opt" type="button" data-ok><code>C</code></button>
+      <button class="opt" type="button"><code>0</code></button>
+      <button class="opt" type="button">Xato</button>
+    </div>
+    <div class="explain">Birinchi NULL bo'lmagan qiymat.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>ISNULL</code> va <code>COALESCE</code> o'rtasidagi farq?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>COALESCE</code> standart va ko'p parametrli</button>
+      <button class="opt" type="button">Ular bir xil, farq yo'q</button>
+      <button class="opt" type="button"><code>ISNULL</code> ko'p parametrli</button>
+      <button class="opt" type="button"><code>COALESCE</code> faqat sonlar uchun</button>
+    </div>
+    <div class="explain"><code>ISNULL</code> SQL Server ga xos va ikki parametrli.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Pul miqdori uchun mos tur?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>BIT</code></button>
+      <button class="opt" type="button"><code>DATE</code></button>
+      <button class="opt" type="button" data-ok><code>DECIMAL(12,2)</code></button>
+      <button class="opt" type="button"><code>NVARCHAR</code></button>
+    </div>
+    <div class="explain">Aniq o'nlik uchun <code>DECIMAL</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>BIT</code> turi nimani saqlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Matn</button>
+      <button class="opt" type="button">Sana</button>
+      <button class="opt" type="button" data-ok>0 yoki 1 (mantiqiy qiymat)</button>
+      <button class="opt" type="button">O'nlik son</button>
+    </div>
+    <div class="explain">Ha/yo'q holatlar uchun.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>7 / 2</code> SQL Server da nimaga teng?</p>
+    <div class="opts">
+      <button class="opt" type="button">3.5</button>
+      <button class="opt" type="button">4</button>
+      <button class="opt" type="button">Xato</button>
+      <button class="opt" type="button" data-ok>3</button>
+    </div>
+    <div class="explain">Butun sonlarni bo'lish butun natija beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: 15-dars konspekti va slaydlari</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

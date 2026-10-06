@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>UI kit amaliyoti</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>UI kit amaliyoti</h1>
+  <p class="muted">«E-kutubxona»: header va kategoriya paneli</p>
+  <span class="badge">9-sinf</span><span class="badge">UX/UI dizayn</span><span class="badge">5-hafta · 15-dars</span>
+  
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">Twitter dasturchilari yaratgan, responsiv dizaynga kuchli kit?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ant Design</button>
+      <button class="opt" type="button">Apple HIG</button>
+      <button class="opt" type="button" data-ok>Bootstrap</button>
+      <button class="opt" type="button">Material UI</button>
+    </div>
+    <div class="explain">Bootstrap — HTML, CSS, JS; container → row → col.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Bugun nimani yig'amiz?</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 380">
+      <rect class="fn ln" x="20" y="10" width="960" height="360" rx="12" stroke-width="2"/>
+      <g data-tip="Header — yuqori panel: qidiruv, Kirish, profil, savat"><rect class="fa la" x="20" y="10" width="960" height="80" rx="12" stroke-width="2"/><text class="t-head" x="70" y="58" font-size="22">Logo</text></g>
+      <g class="fragment" data-tip="Qidiruv maydoni: oq, radius 25"><rect class="fb lb" x="260" y="28" width="380" height="44" rx="22" stroke-width="3"/><text class="t-muted" x="290" y="57" font-size="18">Kitob qidirish...</text></g>
+      <g class="fragment" data-tip="Qidiruv tugmasi: 50 × 50, sariq, radius 25"><circle class="fc lc pulse" cx="618" cy="50" r="22" stroke-width="3"/><circle class="lc" cx="614" cy="46" r="8" fill="none" stroke-width="3"/><line class="lc" x1="620" y1="52" x2="628" y2="60" stroke-width="3"/></g>
+      <g class="fragment" data-tip="Kirish (Inter 25 px), profil 38 × 38, savat"><text class="t-head" x="740" y="58" font-size="22">Kirish</text><circle class="fg lg" cx="850" cy="50" r="19" stroke-width="3"/><rect class="fg lg" x="895" y="33" width="36" height="34" rx="6" stroke-width="3"/></g>
+      <g class="fragment" data-tip="Line: qora, 2 px, Center"><line class="ln" x1="20" y1="92" x2="980" y2="92" stroke-width="4"/></g>
+      <g class="fragment" data-tip="Kategoriya paneli: oq, stroke 1 px Inside, Drop shadow"><rect class="fb lb" x="50" y="120" width="260" height="230" rx="10" stroke-width="3"/><text class="t-head" x="70" y="152" font-size="20">Kategoriya</text>
+        <line class="lb" x1="70" y1="168" x2="290" y2="168" stroke-width="2"/><text class="t-muted" x="70" y="192" font-size="16">Maktab darsliklari</text>
+        <line class="lb" x1="70" y1="204" x2="290" y2="204" stroke-width="2"/><text class="t-muted" x="70" y="228" font-size="16">Badiiy adabiyot</text>
+        <line class="lb" x1="70" y1="240" x2="290" y2="240" stroke-width="2"/><text class="t-muted" x="70" y="264" font-size="16">Ilmiy-ommabop</text>
+        <line class="lb" x1="70" y1="276" x2="290" y2="276" stroke-width="2"/><text class="t-accent" x="70" y="330" font-size="16">more categories</text></g>
+      <g class="fragment" data-tip="Keyingi bosqich: banner va kitob kartalari"><rect class="fn ln" x="340" y="120" width="610" height="230" rx="10" stroke-width="2" stroke-dasharray="8 6"/><text class="t-muted" x="645" y="240" text-anchor="middle" font-size="20">kontent (keyingi darslar)</text></g>
+    </svg>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Design paneli</h1>
+  <p>Har bir qiymat — aniq raqam</p>
+</section>
+
+<section>
+  <h2>Design paneli xaritasi</h2>
+  <table>
+    <thead><tr><th>Bo'lim</th><th>Nima sozlanadi</th></tr></thead>
+    <tbody>
+      <tr class="fragment"><td>W / H</td><td>eni va bo'yi</td></tr>
+      <tr class="fragment"><td>X / Y</td><td>sahifadagi joylashuv</td></tr>
+      <tr class="fragment"><td>Corner radius</td><td>burchak silliqligi</td></tr>
+      <tr class="fragment"><td>Fill</td><td>rang yoki rasm (Image)</td></tr>
+      <tr class="fragment"><td>Stroke</td><td>chegara: rang, qalinlik, joylashuv</td></tr>
+      <tr class="fragment"><td>Effects</td><td>Drop shadow, Blur</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Foydali tugmalar</h2>
+  <div class="chips">
+    <span class="chip fragment"><b>R</b> — Rectangle</span>
+    <span class="chip fragment"><b>L</b> — Line</span>
+    <span class="chip fragment"><b>T</b> — Text</span>
+    <span class="chip fragment"><b>Alt</b> — red guides</span>
+    <span class="chip fragment"><b>Ctrl+Alt+K</b> — komponent</span>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Header</h1>
+  <p>Qidiruv, Kirish, profil, savat</p>
+</section>
+
+<section>
+  <h2>Qidiruv maydoni</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="square"></i></div><h3>1. Rectangle</h3><p>Header markazida: <b>R</b> tugmasi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="ruler"></i></div><h3>2. W / H, X / Y</h3><p>Masalan, 600 × 50, aniq koordinatalar.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="paint-bucket"></i></div><h3>3. Fill</h3><p>Oq rang — toza va neytral.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="square-round-corner"></i></div><h3>4. Corner radius 25</h3><p>Yumaloq «pill» shakl.</p></div></div>
+  </div>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">Radius siri</h2>
+  <p>Balandlik <b>50 px</b>, radius <b>8</b> → oddiy yumaloq burchak.</p>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">Radius siri</h2>
+  <p>Balandlik <b>50 px</b>, radius <b>25</b> (yarmi) → burchaklar yarim doira, to'liq «pill».</p>
+  <div class="callout tip"><i data-ic="lightbulb"></i>Qoida: to'liq yumaloq uchun radius = balandlik / 2.</div>
+</section>
+
+<section>
+  <h2>Qidiruv tugmasi</h2>
+  <div class="stats">
+    <div class="stat fragment"><div class="v"><span class="count" data-to="50" data-suf=" px">0</span></div><div class="l">eni va bo'yi</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="47" data-suf="%">0</span></div><div class="l">sariq rang opacity</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="25" data-suf="">0</span></div><div class="l">corner radius</div></div>
+  </div>
+  <div class="callout tip mt fragment"><i data-ic="image"></i>Lupa: <b>Fill → Image</b> → rasm yuklash → <b>Crop</b> bilan moslash.</div>
+</section>
+
+<section>
+  <h2>Kirish, profil, savat</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="type"></i></div><h3>«Kirish»</h3><p>Inter, 25 px — tizimga kirish.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="circle-user" data-anim="float"></i></div><h3>Profil</h3><p>Image, 38 × 38 px, Exposure.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="shopping-cart" data-anim="pulse"></i></div><h3>Savat</h3><p>Image + Exposure — fonga uyg'un.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Ikonka yorug'ligini fonga moslash uchun qaysi sozlama?</p>
+    <div class="opts">
+      <button class="opt" type="button">Corner radius</button>
+      <button class="opt" type="button" data-ok>Exposure</button>
+      <button class="opt" type="button">Stroke</button>
+      <button class="opt" type="button">Crop</button>
+    </div>
+    <div class="explain">Exposure — rasm yorug'ligi. Crop esa o'lcham va joylashuvni moslaydi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Kategoriya paneli</h1>
+  <p>Soya, stroke, chiziqlar, guides</p>
+</section>
+
+<section>
+  <section>
+    <h2>Line va stroke</h2>
+    <ol class="steps-n">
+      <li class="fragment">Pastki panel: <b>Shape tools</b> → Rectangle, Line, Arrow, Ellipse, Polygon, Star</li>
+      <li class="fragment"><b>Line</b>: rang qora, <b>2 px</b>, <b>Center</b></li>
+      <li class="fragment">Header ostida — bo'limlarni ajratish</li>
+    </ol>
+    <p class="small">Pastga bosing: stroke joylashuvi</p>
+  </section>
+  <section>
+    <h2>Inside · Center · Outside</h2>
+    <div class="cards three">
+      <div class="card"><h3>Inside</h3><p>chiziq ichda — o'lcham o'zgarmaydi</p></div>
+      <div class="card"><h3>Center</h3><p>yarmi ichda, yarmi tashqarida</p></div>
+      <div class="card"><h3>Outside</h3><p>tashqarida — element vizual kattalashadi</p></div>
+    </div>
+  </section>
+</section>
+
+<section>
+  <h2>Yon panel</h2>
+  <div class="vs">
+    <div class="side fragment"><h3><i data-ic="square"></i> Soyasiz</h3>Panel fonga «yopishib» qoladi, chegarasi sezilmaydi.</div>
+    <div class="mid">vs</div>
+    <div class="side b fragment"><h3><i data-ic="layers"></i> Drop shadow</h3>Fill oq, Stroke qora 1 px Inside, Opacity 100% — chuqurlik hissi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Kategoriyalar</h2>
+  <div class="chips">
+    <span class="chip fragment">Maktab darsliklari</span>
+    <span class="chip fragment">Badiiy adabiyot</span>
+    <span class="chip fragment">Ilmiy-ommabop</span>
+    <span class="chip fragment">Bolalar adabiyoti</span>
+    <span class="chip fragment">Chet tillar</span>
+  </div>
+  <div class="callout tip mt fragment"><i data-ic="ruler"></i><b>Red guides:</b> elementni tanlab, <b>Alt</b> bosib boshqasiga olib boring — masofa ko'rinadi. Oraliqlar teng bo'lsin.</div>
+  <p class="small fragment">Pastda — «more categories» havolasi.</p>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Panel o'lchami o'zgarmasligi uchun stroke qaysi joylashuvda?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Inside</button>
+      <button class="opt" type="button">Outside</button>
+      <button class="opt" type="button">Center</button>
+      <button class="opt" type="button">Farqi yo'q</button>
+    </div>
+    <div class="explain">Inside — chiziq shakl ichida chiziladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Yagona uslub</h2>
+  <div class="callout warn"><i data-ic="triangle-alert"></i>Har bir yangi element 13-darsdagi <b>Color/Text styles</b>, bir xil radius va 8-point grid oraliqlaridan foydalansin.</div>
+  <div class="callout tip mt fragment"><i data-ic="component"></i>Qidiruv bloki → <b>Ctrl/Cmd + Alt + K</b> → <code>Search/Default</code> — UI kitingizning birinchi molekulasi.</div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriqlar <span class="timer"><i data-ic="timer"></i>45 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Qidiruv maydoni 600 × 50, radius 25 va sariq 50 × 50 tugma.</div>
+  <div class="task"><span class="level mid">O'rta</span>To'liq header: lupa, «Kirish», profil, savat, 2 px Line.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Kategoriya paneli + «more categories» + Search komponenti + yangi tugma.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Header</h3><p>Qidiruv, tugma, Kirish, ikonkalar.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Panel</h3><p>Soya, Inside stroke, chiziqlar.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Uslub</h3><p>Stillar, guides, komponent.</p></div>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="pen-tool" data-anim="pulse"></i></div>
+  <h1>Keyingi hafta: Figma chuqurroq</h1>
+  <p class="muted">Frame, komponentlar va prototiplash</p>
+  <span class="badge">6-hafta</span>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

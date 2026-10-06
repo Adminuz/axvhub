@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>9-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>9-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">IPv4 manzil nechta bitdan iborat va qanday yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>32 bit; 4 ta oktet nuqta bilan ajratib</button>
+      <button class="opt" type="button">128 bit; ikki nuqta bilan ajratib</button>
+      <button class="opt" type="button">16 bit; 2 ta blok</button>
+      <button class="opt" type="button">64 bit; 8 ta blok</button>
+    </div>
+    <div class="explain">Har bir oktet 0 dan 255 gacha qiymat oladi, masalan <code>192.168.1.1</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi manzil RFC 1918 bo'yicha xususiy (Private) hisoblanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>8.8.8.8</code></button>
+      <button class="opt" type="button" data-ok><code>172.20.5.4</code></button>
+      <button class="opt" type="button"><code>172.32.0.1</code></button>
+      <button class="opt" type="button"><code>193.168.1.1</code></button>
+    </div>
+    <div class="explain">Xususiy diapazonlar: <code>10.0.0.0/8</code>, <code>172.16.0.0 – 172.31.255.255</code>, <code>192.168.0.0/16</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Xususiy IP li kompyuter Internetga chiqishi uchun routerda qaysi texnologiya ishlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">ICMP</button>
+      <button class="opt" type="button">DNS</button>
+      <button class="opt" type="button" data-ok>NAT</button>
+      <button class="opt" type="button">CRC</button>
+    </div>
+    <div class="explain">NAT xususiy manzilni yagona ommaviy IP ga aylantiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Subnet mask <code>255.255.255.0</code> CIDR ko'rinishida qanday yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>/8</code></button>
+      <button class="opt" type="button"><code>/16</code></button>
+      <button class="opt" type="button"><code>/32</code></button>
+      <button class="opt" type="button" data-ok><code>/24</code></button>
+    </div>
+    <div class="explain">Maskada 24 ta bir bor, shuning uchun <code>/24</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>/16</code> tarmoqdagi xostlar soni nechta?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>65534</button>
+      <button class="opt" type="button">65536</button>
+      <button class="opt" type="button">254</button>
+      <button class="opt" type="button">16</button>
+    </div>
+    <div class="explain">H = 32 − 16 = 16 bit, 2^16 − 2 = 65534.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">IPv6 manzillari nechta bitli?</p>
+    <div class="opts">
+      <button class="opt" type="button">32 bit</button>
+      <button class="opt" type="button" data-ok>128 bit</button>
+      <button class="opt" type="button">64 bit</button>
+      <button class="opt" type="button">256 bit</button>
+    </div>
+    <div class="explain">IPv6 16-lik sanoq tizimida yoziladi va ikki nuqta bilan ajratiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>ping</code> natijasidagi «RTT» nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Paketlar umumiy hajmini</button>
+      <button class="opt" type="button">Routerlar sonini</button>
+      <button class="opt" type="button" data-ok>Paket borib kelguncha ketgan kechikish vaqtini</button>
+      <button class="opt" type="button">Xizmat portini</button>
+    </div>
+    <div class="explain">RTT — round-trip time; <code>packet loss</code> esa yo'qolgan paketlar foizi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>traceroute</code> nimani aniqlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Serverdagi ochiq portlarni</button>
+      <button class="opt" type="button">Veb-sahifaning HTML kodini</button>
+      <button class="opt" type="button">Disk bo'sh joyini</button>
+      <button class="opt" type="button" data-ok>Paket manzilgacha o'tgan oraliq routerlarni (hops)</button>
+    </div>
+    <div class="explain">U TTL asosida ishlaydi va uzilish qayerda ekanini ko'rsatadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>curl -I https://google.com</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Sahifani yuklamay, faqat HTTP sarlavhalari va status kodini ko'rsatadi</button>
+      <button class="opt" type="button">Sahifani to'liq faylga saqlaydi</button>
+      <button class="opt" type="button">Server portlarini skanerlaydi</button>
+      <button class="opt" type="button">Faqat SSL sertifikatini yangilaydi</button>
+    </div>
+    <div class="explain">Status kodlari: 200 OK, 301, 404, 500.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>192.168.10.45/26</code> manzili uchun efir (Broadcast) manzili qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>192.168.10.255</code></button>
+      <button class="opt" type="button" data-ok><code>192.168.10.63</code></button>
+      <button class="opt" type="button"><code>192.168.10.64</code></button>
+      <button class="opt" type="button"><code>192.168.10.62</code></button>
+    </div>
+    <div class="explain">Blok hajmi 64, 45 birinchi blokda (.0 – .63); oxirgi manzil broadcast, <code>.62</code> — oxirgi xost.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: IPv4 va oktetlar, xususiy IP va NAT, CIDR hamda xostlar hisobi, <code>ping</code>, <code>traceroute</code>, <code>curl -I</code>.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

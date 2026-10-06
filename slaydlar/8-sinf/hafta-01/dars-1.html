@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Internet qanday ishlaydi?</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+      <!-- 1. SARLAVHA -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>Internet qanday ishlaydi?</h1>
+        <p class="muted">DNS, domain, hosting, front-end va back-end: sayt manzilini yozganda ekran ortida nima bo'ladi</p>
+        <span class="badge">8-sinf</span><span class="badge">Web Full-stack</span><span class="badge">1-hafta · 1-dars</span>
+        
+      </section>
+
+      <!-- 2. Reja -->
+      <section>
+        <h2>Bugun nimani o'rganamiz?</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="globe" data-anim="float"></i></div><h3>Internet, IP, DNS</h3><p>Qurilmalar bir-birini qanday topadi</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="store" data-anim="bounce"></i></div><h3>Domain va hosting</h3><p>Saytning nomi va uning «binosi»</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="layers" data-anim="float"></i></div><h3>Front-end / Back-end</h3><p>Ko'rinadigan va ko'rinmaydigan qism</p></div>
+        </div>
+        
+      </section>
+
+      <!-- 3. Tanishuv -->
+      <section>
+        <h2>Bugun ertalab internetdan nima uchun foydalandingiz?</h2>
+        <div class="chips">
+          <span class="chip fragment">YouTube</span><span class="chip t fragment">Telegram</span><span class="chip fragment">O'yin</span><span class="chip t fragment">Dars uchun qidiruv</span><span class="chip fragment">Instagram</span>
+        </div>
+        <div class="callout tip fragment"><i data-ic="lightbulb"></i>Internet sizga tanish. Bugun uning ichida nima borligini ochamiz.</div>
+        
+      </section>
+
+      <!-- 4. SEC 01 -->
+      <section class="sec">
+        <div class="num">01</div>
+        <h1>Internet va IP manzil</h1>
+        <p>Millionlab qurilma bir tarmoqda</p>
+      </section>
+
+      <!-- 5. ILLUSTRATSIYA: internet tarmoq -->
+      <section>
+        <h2>Internet: ulkan tarmoq</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 400">
+            <g class="fragment"><line class="ln flowing" x1="290" y1="90" x2="430" y2="165"/></g>
+            <g class="fragment"><line class="ln flowing" x1="290" y1="310" x2="430" y2="235"/></g>
+            <g class="fragment"><line class="ln flowing" x1="710" y1="90" x2="570" y2="165"/></g>
+            <g class="fragment"><line class="ln flowing" x1="710" y1="310" x2="570" y2="235"/></g>
+            <circle class="fa pulse" cx="500" cy="200" r="78"/>
+            <text class="t-head" x="500" y="195" text-anchor="middle" font-size="30">Internet</text>
+            <text class="t-muted" x="500" y="225" text-anchor="middle" font-size="19">tarmoq</text>
+            <g class="fragment">
+              <rect class="fn" x="40" y="45" width="250" height="90" rx="18"/>
+              <svg x="60" y="65" width="50" height="50" viewBox="0 0 24 24" class="ic-s" stroke-width="1.6"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+              <text class="t-head" x="130" y="98" font-size="26">Telefon</text>
+            </g>
+            <g class="fragment">
+              <rect class="fn" x="40" y="265" width="250" height="90" rx="18"/>
+              <svg x="60" y="285" width="50" height="50" viewBox="0 0 24 24" class="ic-s" stroke-width="1.6"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg>
+              <text class="t-head" x="130" y="318" font-size="26">Noutbuk</text>
+            </g>
+            <g class="fragment">
+              <rect class="fb" x="710" y="45" width="250" height="90" rx="18"/>
+              <svg x="730" y="65" width="50" height="50" viewBox="0 0 24 24" class="ic-s" stroke-width="1.6"><rect x="2" y="3" width="20" height="8" rx="2"/><rect x="2" y="13" width="20" height="8" rx="2"/><path d="M6 7h.01M6 17h.01"/></svg>
+              <text class="t-head" x="800" y="98" font-size="26">Server</text>
+            </g>
+            <g class="fragment">
+              <rect class="fb" x="710" y="265" width="250" height="90" rx="18"/>
+              <svg x="730" y="285" width="50" height="50" viewBox="0 0 24 24" class="ic-s" stroke-width="1.6"><rect x="2" y="3" width="20" height="8" rx="2"/><rect x="2" y="13" width="20" height="8" rx="2"/><path d="M6 7h.01M6 17h.01"/></svg>
+              <text class="t-head" x="800" y="318" font-size="26">Server</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 6. Raqamlar -->
+      <section>
+        <h2>Raqamlarda internet</h2>
+        <div class="stats">
+          <div class="stat fragment"><div class="v"><span class="count" data-to="5" data-suf=" mlrd+">0</span></div><div class="l">internet foydalanuvchisi</div></div>
+          <div class="stat fragment"><div class="v">~2 mlrd</div><div class="l">veb-sayt</div></div>
+          <div class="stat fragment"><div class="v">24/7</div><div class="l">serverlar to'xtamay ishlaydi</div></div>
+        </div>
+        <p class="small mt">Taxminiy, so'nggi yillardagi umumiy ko'rsatkichlar.</p>
+      </section>
+
+      <!-- 7. Klient va server -->
+      <section>
+        <h2>Ikki rol: klient va server</h2>
+        <div class="cards two">
+          <div class="flip" style="min-height:220px"><div class="flip-in">
+            <div class="face front"><div class="icon"><i data-ic="laptop" data-anim="float"></i></div><h3>Klient (mijoz)</h3><span class="flip-hint">bosing</span></div>
+            <div class="face back"><p>So'rov yuboradi. Sizning telefoningiz yoki kompyuteringiz, aniqrog'i brauzer: Chrome, Safari, Firefox.</p></div>
+          </div></div>
+          <div class="flip" style="min-height:220px"><div class="flip-in">
+            <div class="face front"><div class="icon"><i data-ic="server" data-anim="pulse"></i></div><h3>Server</h3><span class="flip-hint">bosing</span></div>
+            <div class="face back"><p>Doim yoqilgan, internetga ulangan kompyuter. Saytning fayllarini saqlaydi va so'rov kelganda jo'natadi.</p></div>
+          </div></div>
+        </div>
+        
+      </section>
+
+      <!-- 8. IP manzil anatomiyasi -->
+      <section>
+        <h2>IP manzil: qurilmaning «uy manzili»</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 380">
+            <text class="t-muted" x="500" y="40" text-anchor="middle" font-size="24">Uy manzili</text>
+            <rect class="fn" x="110" y="55" width="780" height="70" rx="16"/>
+            <text class="t-head" x="500" y="102" text-anchor="middle" font-size="30">Toshkent sh., Navoiy ko'chasi, 12-uy</text>
+            <g class="fragment">
+              <svg x="475" y="140" width="50" height="50" viewBox="0 0 24 24" class="ic-s" stroke-width="1.6"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+              <text class="t-muted" x="500" y="225" text-anchor="middle" font-size="24">Qurilmaning manzili: IP</text>
+            </g>
+            <g class="fragment">
+              <rect class="fa" x="60" y="245" width="200" height="90" rx="16"/>
+              <rect class="fa" x="280" y="245" width="200" height="90" rx="16"/>
+              <rect class="fa" x="520" y="245" width="200" height="90" rx="16"/>
+              <rect class="fa" x="740" y="245" width="200" height="90" rx="16"/>
+              <text class="t-head" x="160" y="303" text-anchor="middle" font-size="44">142</text>
+              <text class="t-head" x="380" y="303" text-anchor="middle" font-size="44">250</text>
+              <text class="t-head" x="620" y="303" text-anchor="middle" font-size="44">185</text>
+              <text class="t-head" x="840" y="303" text-anchor="middle" font-size="44">78</text>
+              <text class="t-accent" x="270" y="318" text-anchor="middle" font-size="48">.</text>
+              <text class="t-accent" x="500" y="318" text-anchor="middle" font-size="48">.</text>
+              <text class="t-accent" x="730" y="318" text-anchor="middle" font-size="48">.</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 9. SEC 02 -->
+      <section class="sec">
+        <div class="num">02</div>
+        <h1>DNS: internetning «telefon kitobi»</h1>
+        <p>Nom bor, ammo kompyuter raqam bilan ishlaydi</p>
+      </section>
+
+      <!-- 10. DNS ILLUSTRATSIYA -->
+      <section>
+        <h2>DNS nomni raqamga aylantiradi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 380">
+            <rect class="fa" x="30" y="110" width="250" height="170" rx="22"/>
+            <svg x="125" y="125" width="60" height="60" viewBox="0 0 24 24" class="ic-s" stroke-width="1.6"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg>
+            <text class="t-head" x="155" y="225" text-anchor="middle" font-size="28">Brauzer</text>
+            <text class="t-muted" x="155" y="260" text-anchor="middle" font-size="20">youtube.com</text>
+            <rect class="fc" x="720" y="110" width="250" height="170" rx="22"/>
+            <svg x="815" y="125" width="60" height="60" viewBox="0 0 24 24" class="ic-s" stroke-width="1.6"><path d="M15 13a3 3 0 1 0-6 0"/><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><circle cx="12" cy="8" r="2"/></svg>
+            <text class="t-head" x="845" y="225" text-anchor="middle" font-size="28">DNS</text>
+            <text class="t-muted" x="845" y="260" text-anchor="middle" font-size="20">telefon kitobi</text>
+            <g class="fragment"><line class="la flowing" x1="295" y1="170" x2="700" y2="170"/><polygon class="ar-a" points="705,170 688,160 688,180"/><text class="t-accent" x="500" y="150" text-anchor="middle" font-size="24">youtube.com IP si nima?</text></g>
+            <g class="fragment"><line class="lc flowing" x1="705" y1="230" x2="300" y2="230"/><polygon class="ar-c" points="295,230 312,220 312,240"/><text x="500" y="270" text-anchor="middle" font-size="24" fill="var(--teal)">142.250.185.78</text></g>
+            <g class="fragment"><rect class="fg pulse" x="330" y="310" width="340" height="52" rx="14"/><text class="t-head" x="500" y="346" text-anchor="middle" font-size="24">Endi brauzer manzilni biladi</text></g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 11. Vertikal: DNS + nslookup -->
+      <section>
+        <section>
+          <h2>DNS bo'lmasa-chi?</h2>
+          <div class="quote">DNS — internetning «telefon kitobi»: nomni raqamga aylantiradi.</div>
+          <ol class="steps-n mt">
+            <li class="fragment">Siz <code>youtube.com</code> deb yozasiz</li>
+            <li class="fragment">DNS raqamli IP manzilni topadi</li>
+            <li class="fragment">Brauzer shu manzilga boradi</li>
+          </ol>
+          <p class="small mt">Qiziqqanlar uchun pastga ↓ (nslookup)</p>
+        </section>
+        <section>
+          <h2>DNS'ni o'zimiz ko'ramiz</h2>
+          <pre><code class="language-bash" data-trim data-noescape data-line-numbers="1|2-5">
+nslookup google.com
+# Natija (taxminan):
+# Name:    google.com
+# Address: 142.250.185.78
+# (IP har joyda har xil bo'lishi mumkin)
+          </code></pre>
+          <div class="callout"><i data-ic="search"></i>Terminal ixtiyoriy: mentor ekranda ko'rsatadi.</div>
+        </section>
+      </section>
+
+      <!-- 12. SEC 03 -->
+      <section class="sec">
+        <div class="num">03</div>
+        <h1>Domain va hosting</h1>
+        <p>Saytning nomi va saytning «binosi»</p>
+      </section>
+
+      <!-- 13. Domen anatomiyasi -->
+      <section>
+        <h2>Domen anatomiyasi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 380">
+            <rect class="fn" x="40" y="70" width="920" height="110" rx="22"/>
+            <g class="fragment">
+              <rect class="fc" x="70" y="90" width="200" height="70" rx="14"/>
+              <text class="t-head" x="170" y="138" text-anchor="middle" font-size="38">www</text>
+              <line class="lc" x1="170" y1="180" x2="170" y2="250"/><polygon class="ar-c" points="170,255 160,238 180,238"/>
+              <text class="t-head" x="170" y="290" text-anchor="middle" font-size="26">subdomen</text>
+              <text class="t-muted" x="170" y="322" text-anchor="middle" font-size="20">sayt bo'limi</text>
+            </g>
+            <text class="t-accent" x="290" y="138" text-anchor="middle" font-size="44">.</text>
+            <g class="fragment">
+              <rect class="fa" x="310" y="90" width="340" height="70" rx="14"/>
+              <text class="t-head" x="480" y="138" text-anchor="middle" font-size="38">mysite</text>
+              <line class="la" x1="480" y1="180" x2="480" y2="250"/><polygon class="ar-a" points="480,255 470,238 490,238"/>
+              <text class="t-head" x="480" y="290" text-anchor="middle" font-size="26">asosiy nom</text>
+              <text class="t-muted" x="480" y="322" text-anchor="middle" font-size="20">siz tanlaysiz va sotib olasiz</text>
+            </g>
+            <text class="t-accent" x="670" y="138" text-anchor="middle" font-size="44">.</text>
+            <g class="fragment">
+              <rect class="fb" x="690" y="90" width="240" height="70" rx="14"/>
+              <text class="t-head" x="810" y="138" text-anchor="middle" font-size="38">uz</text>
+              <line class="lb" x1="810" y1="180" x2="810" y2="250"/><polygon class="ar-b" points="810,255 800,238 820,238"/>
+              <text class="t-head" x="810" y="290" text-anchor="middle" font-size="26">yuqori daraja</text>
+              <text class="t-muted" x="810" y="322" text-anchor="middle" font-size="20">mamlakat yoki tur: uz, com</text>
+            </g>
+            <text class="t-muted" x="500" y="50" text-anchor="middle" font-size="22">Domen: saytning internetdagi nomi</text>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 14. Domen va hosting + vertikal -->
+      <section>
+        <section>
+          <h2>Domen va hosting: ikkalasi ham kerak</h2>
+          <div class="vs">
+            <div class="side fragment"><h3><i data-ic="link"></i>Domen</h3>Do'konning <em>manzili va nomi</em>. Odamlar sizni shu nom bilan topadi.</div>
+            <div class="mid">+</div>
+            <div class="side b fragment"><h3><i data-ic="store"></i>Hosting</h3>Do'konning <em>o'zi, binosi</em>. Kod, rasm va ma'lumot saqlanadigan server.</div>
+          </div>
+          <div class="callout tip fragment"><i data-ic="lightbulb"></i>Nomi bor, binosi yo'q do'kon — bo'sh manzil. Binosi bor, nomi yo'q do'konni hech kim topmaydi.</div>
+          <p class="small mt">Hosting turlari uchun pastga ↓</p>
+        </section>
+        <section>
+          <h2>Hosting turlari</h2>
+          <div class="chips">
+            <span class="chip fragment">Shared hosting</span><span class="chip t fragment">VPS</span><span class="chip fragment">Cloud</span><span class="chip t fragment">Static hosting: Netlify, Vercel</span>
+          </div>
+          <div class="callout"><i data-ic="book-open"></i>Hozircha nomini bilish yetarli. Keyinroq chuqur o'tamiz.</div>
+        </section>
+      </section>
+
+      <!-- 15. SEC 04 -->
+      <section class="sec">
+        <div class="num">04</div>
+        <h1>Sahifa brauzerga qanday keladi?</h1>
+        <p>Enter bosilgandan sahifa chizilgunga qadar</p>
+      </section>
+
+      <!-- 16. So'rov yo'li ILLUSTRATSIYA -->
+      <section>
+        <h2>So'rov yo'li</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 400">
+            <g data-tip="Brauzer: so'rov yuboradi va olingan fayllardan sahifani chizadi."><rect class="fa" x="30" y="30" width="230" height="340" rx="24"/>
+            <svg x="105" y="60" width="80" height="80" viewBox="0 0 24 24" class="ic-s" stroke-width="1.5"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg>
+            <text class="t-head" x="145" y="190" text-anchor="middle" font-size="30">Brauzer</text>
+            <text class="t-muted" x="145" y="225" text-anchor="middle" font-size="20">mysite.uz</text></g>
+            <g class="fragment"><text class="t-accent" x="145" y="330" text-anchor="middle" font-size="24">5. Sahifani chizadi</text></g>
+            <g data-tip="DNS: sayt nomini IP manzilga aylantiradi."><rect class="fc" x="740" y="30" width="230" height="140" rx="24"/>
+            <text class="t-head" x="855" y="110" text-anchor="middle" font-size="32">DNS</text></g>
+            <g data-tip="Server: sayt fayllarini saqlaydi va so'rovga javob beradi."><rect class="fb" x="740" y="230" width="230" height="140" rx="24"/>
+            <text class="t-head" x="855" y="310" text-anchor="middle" font-size="32">Server</text></g>
+            <g class="fragment"><line class="la flowing" x1="275" y1="75" x2="720" y2="75"/><polygon class="ar-a" points="725,75 708,65 708,85"/><text class="t-accent" x="500" y="58" text-anchor="middle" font-size="22">1. mysite.uz IP si?</text></g>
+            <g class="fragment"><line class="lc flowing" x1="725" y1="125" x2="280" y2="125"/><polygon class="ar-c" points="275,125 292,115 292,135"/><text x="500" y="156" text-anchor="middle" font-size="22" fill="var(--teal)">2. IP manzil</text></g>
+            <g class="fragment"><line class="lb flowing" x1="275" y1="275" x2="720" y2="275"/><polygon class="ar-b" points="725,275 708,265 708,285"/><text class="t-accent" x="500" y="258" text-anchor="middle" font-size="22">3. So'rov: sahifani ber</text></g>
+            <g class="fragment"><line class="lg flowing" x1="725" y1="325" x2="280" y2="325"/><polygon class="ar-g" points="275,325 292,315 292,335"/><text x="500" y="356" text-anchor="middle" font-size="22" fill="var(--good)">4. Javob: HTML, CSS, JS, rasm</text></g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 17. Vaqt chizig'i -->
+      <section>
+        <h2>Beshta qadam</h2>
+        <div class="stepper">
+          <div class="stp on"><div class="card"><div class="icon"><i data-ic="laptop" data-anim="float"></i></div><h3>1. So'rov: IP kerak</h3><p>Brauzer DNS'dan <code>mysite.uz</code> ning IP manzilini so'raydi.</p></div></div>
+          <div class="stp"><div class="card"><div class="icon"><i data-ic="satellite-dish" data-anim="pulse"></i></div><h3>2. DNS javob beradi</h3><p>DNS IP manzilni qaytaradi.</p></div></div>
+          <div class="stp"><div class="card"><div class="icon"><i data-ic="send"></i></div><h3>3. So'rov (request)</h3><p>Brauzer shu IP dagi serverga <em>so'rov (request)</em> yuboradi.</p></div></div>
+          <div class="stp"><div class="card"><div class="icon"><i data-ic="server"></i></div><h3>4. Javob (response)</h3><p>Server fayllarni <em>javob (response)</em> sifatida qaytaradi.</p></div></div>
+          <div class="stp"><div class="card"><div class="icon"><i data-ic="rocket" data-anim="bounce"></i></div><h3>5. Sahifa chiziladi</h3><p>Brauzer fayllarni o'qib, sahifani ekranda chizadi.</p></div></div>
+        </div>
+      </section>
+
+      <!-- 18-19. AVTO-ANIMATSIYA: brauzer kattalashadi -->
+      <section data-auto-animate>
+        <h2>Natija ekranda</h2>
+        <div class="browser" data-id="box" style="width:520px"><div class="bar"><i></i><i></i><i></i><span>https://mysite.uz</span></div><div class="page"><h3>Yuklanmoqda...</h3></div></div>
+      </section>
+      <section data-auto-animate>
+        <h2>Natija ekranda</h2>
+        <div class="browser" data-id="box" style="width:1000px"><div class="bar"><i></i><i></i><i></i><span>https://mysite.uz</span></div><div class="page"><h3>Salom, internet!</h3><p>Brauzer olingan fayllardan sahifani shunday yig'adi.</p></div></div>
+        
+      </section>
+
+      <!-- 20. HTTP vs HTTPS -->
+      <section>
+        <h2>HTTP va HTTPS</h2>
+        <div class="vs">
+          <div class="side fragment"><h3><i data-ic="send"></i>HTTP</h3>Brauzer va server o'rtasidagi «muloqot qoidalari».</div>
+          <div class="mid">VS</div>
+          <div class="side b fragment"><h3><i data-ic="lock" data-anim="draw"></i>HTTPS</h3>Himoyalangan variant: ma'lumot shifrlanadi. Manzil yonida qulf belgisi turadi.</div>
+        </div>
+        <div class="callout warn fragment"><i data-ic="triangle-alert"></i>Parol yoki karta kiritiladigan joyda faqat HTTPS bo'lishi kerak.</div>
+        
+      </section>
+
+      <!-- 21. SEC 05 -->
+      <section class="sec">
+        <div class="num">05</div>
+        <h1>Front-end va Back-end</h1>
+        <p>Ko'rinadigan va ko'rinmaydigan qism</p>
+      </section>
+
+      <!-- 22. Restoran ILLUSTRATSIYA -->
+      <section>
+        <h2>Restoran o'xshatishi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 400">
+            <rect class="fa" x="30" y="40" width="420" height="320" rx="24"/>
+            <text class="t-head" x="240" y="90" text-anchor="middle" font-size="32">Zal: front-end</text>
+            <svg x="195" y="110" width="90" height="90" viewBox="0 0 24 24" class="ic-s" stroke-width="1.5"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
+            <text class="t-muted" x="240" y="250" text-anchor="middle" font-size="24">menyu, stol, ofitsiant</text>
+            <text class="t-muted" x="240" y="290" text-anchor="middle" font-size="24">mijoz hammasini ko'radi</text>
+            <g class="fragment">
+              <rect class="fb" x="550" y="40" width="420" height="320" rx="24"/>
+              <text class="t-head" x="760" y="90" text-anchor="middle" font-size="32">Oshxona: back-end</text>
+              <svg x="715" y="110" width="90" height="90" viewBox="0 0 24 24" class="ic-s" stroke-width="1.5"><path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589 5 5 0 0 0-9.186 0 4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1Z"/><path d="M6 17h12"/></svg>
+              <text class="t-muted" x="760" y="250" text-anchor="middle" font-size="24">oshpaz, ombor, hisob-kitob</text>
+              <text class="t-muted" x="760" y="290" text-anchor="middle" font-size="24">mijoz ko'rmaydi</text>
+            </g>
+            <g class="fragment"><line class="la flowing" x1="465" y1="170" x2="535" y2="170"/><polygon class="ar-a" points="540,170 524,160 524,180"/><line class="lg flowing" x1="535" y1="240" x2="465" y2="240"/><polygon class="ar-g" points="460,240 476,230 476,250"/></g>
+            <g class="fragment"><text class="t-accent" x="500" y="392" text-anchor="middle" font-size="22">Buyurtma kirdi, ovqat chiqdi</text></g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 23. Front vs back + vertikal full-stack -->
+      <section>
+        <section>
+          <h2>Front-end va back-end</h2>
+          <table>
+            <tr><th></th><th>Front-end</th><th>Back-end</th></tr>
+            <tr class="fragment"><td>Qayerda ishlaydi</td><td>Foydalanuvchi brauzerida</td><td>Serverda</td></tr>
+            <tr class="fragment"><td>Vazifasi</td><td>Interfeys, dizayn, interaktivlik</td><td>Ma'lumot saqlash, hisoblash, foydalanuvchini tekshirish</td></tr>
+            <tr class="fragment"><td>Texnologiya</td><td>HTML, CSS, JavaScript</td><td>Python (Django), ma'lumotlar bazasi</td></tr>
+          </table>
+          <p class="small mt">Full-stack nima? Pastga ↓</p>
+        </section>
+        <section>
+          <h2>Full-stack: ikkalasini biladi</h2>
+          <div class="flow">
+            <div class="step"><span class="icon"><i data-ic="palette"></i></span>Front-end<br>HTML, CSS, JS</div>
+            <div class="arrow"><i data-ic="plus"></i></div>
+            <div class="step"><span class="icon"><i data-ic="database"></i></span>Back-end<br>Python, baza</div>
+            <div class="arrow"><i data-ic="arrow-right"></i></div>
+            <div class="step"><span class="icon"><i data-ic="rocket" data-anim="bounce"></i></span>Full-stack<br>to'liq ilova</div>
+          </div>
+          <div class="callout tip"><i data-ic="target"></i>Kursda avval front-end (HTML, CSS, JS), keyin back-end o'rganiladi.</div>
+        </section>
+      </section>
+
+      <!-- 24. Quiz: kim qaysi tomonda -->
+      <section>
+        <h2>Savol: front-end yoki back-end?</h2>
+        <div class="quiz">
+          <p class="q">Tugma rangini kim belgilaydi?</p>
+          <div class="opts"><button class="opt" type="button">Back-end</button><button class="opt" type="button" data-ok>Front-end</button><button class="opt" type="button">Ma'lumotlar bazasi</button></div>
+          <div class="explain">To'g'ri: front-end, u ko'rinadigan qism.</div>
+        </div>
+        
+      </section>
+      <section>
+        <h2>Savol: front-end yoki back-end?</h2>
+        <div class="quiz">
+          <p class="q">Parolni kim tekshiradi?</p>
+          <div class="opts"><button class="opt" type="button">Front-end</button><button class="opt" type="button" data-ok>Back-end</button><button class="opt" type="button">Brauzer rangi</button></div>
+          <div class="explain">To'g'ri: back-end, serverda, ko'rinmaydi.</div>
+        </div>
+      </section>
+
+      <!-- 25. Birinchi HTML -->
+      <section>
+        <h2>Birinchi sahifa: salom.html</h2>
+        <pre><code class="language-html" data-trim data-noescape data-line-numbers="1-7|4|5">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Salom, internet!&lt;/h1&gt;
+    &lt;p&gt;Bu mening birinchi sahifam.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+        </code></pre>
+        <div class="callout"><i data-ic="file-code"></i>Struktura 2-darsda batafsil o'tiladi. Bugun faqat «ko'rish uchun».</div>
+        
+      </section>
+
+      <!-- 26. Amaliy topshiriq -->
+      <section>
+        <h2>Amaliyot <span class="timer"><i data-ic="timer"></i>25 daqiqa</span></h2>
+        <div class="task"><span class="level easy">Oson</span>Daftarga chizing: Brauzer, DNS, Server, Brauzer. Har bir o'qqa nima yuborilishini yozing.</div>
+        <div class="task"><span class="level mid">O'rta</span>Rolli o'yin (Brauzer, DNS, Server), so'ng <code>F12</code> → Network: nechta fayl yuklandi?</div>
+        <div class="task"><span class="level hard">Qiyin</span>Sevimli saytingiz: domeni, 3 ta front-end va 3 ta back-end funksiyasi.</div>
+        
+      </section>
+
+      <!-- 27. Tezkor nazorat -->
+      <section>
+        <h2>Tezkor nazorat</h2>
+        <div class="quiz">
+          <p class="q">DNS nima qiladi?</p>
+          <div class="opts"><button class="opt" type="button">Fayllarni saqlaydi</button><button class="opt" type="button" data-ok>Domen nomini IP manzilga aylantiradi</button><button class="opt" type="button">Sahifani chizadi</button></div>
+          <div class="explain">To'g'ri: DNS nomni IP manzilga aylantiradi.</div>
+        </div>
+        
+
+      </section>
+      <section>
+        <h2>Tezkor nazorat</h2>
+        <div class="quiz">
+          <p class="q">Domen va hosting farqi nima?</p>
+          <div class="opts"><button class="opt" type="button" data-ok>Domen: nom/manzil, hosting: fayllar saqlanadigan server</button><button class="opt" type="button">Ikkalasi bir xil narsa</button><button class="opt" type="button">Domen: server, hosting: manzil</button></div>
+          <div class="explain">To'g'ri: domen manzil, hosting esa saytning «binosi».</div>
+        </div>
+      </section>
+      <section>
+        <h2>Tezkor nazorat</h2>
+        <div class="quiz">
+          <p class="q">HTTPS HTTP dan nimasi bilan farq qiladi?</p>
+          <div class="opts"><button class="opt" type="button">Rasm ko'rsatadi</button><button class="opt" type="button" data-ok>Ma'lumotni shifrlaydi, himoyalangan</button><button class="opt" type="button">Sayt tezroq yaratiladi</button></div>
+          <div class="explain">To'g'ri: HTTPS shifrlaydi va himoya qiladi.</div>
+        </div>
+      </section>
+
+      <!-- 28. Xulosa -->
+      <section>
+        <h2>Xulosa</h2>
+        <div class="cards two">
+          <div class="card"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Bugun o'rgandik</h3><p>Internet, IP, DNS, domain, hosting, HTTP/HTTPS, front-end va back-end</p></div>
+          <div class="card"><div class="icon"><i data-ic="book-open"></i></div><h3>Uyga vazifa</h3><p>Sevimli saytning «so'rov yo'li»ni chizib keling (20–30 daqiqa)</p></div>
+        </div>
+        
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

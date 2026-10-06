@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>UI kit va dizayn tizimi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>UI kit va dizayn tizimi</h1>
+  <p class="muted">Tayyor bo'laklar, yagona uslub va jamoaviy qoidalar</p>
+  <span class="badge">9-sinf</span><span class="badge">UX/UI dizayn</span><span class="badge">5-hafta · 13-dars</span>
+  
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">60-30-10 qoidasida 10% qaysi elementga beriladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Fon</button>
+      <button class="opt" type="button">Karta foni</button>
+      <button class="opt" type="button" data-ok>Yorqin CTA tugma</button>
+      <button class="opt" type="button">Matn</button>
+    </div>
+    <div class="explain">10% — urg'u: asosiy harakat tugmasi. Bugun shu ranglarni «qoida»ga aylantiramiz.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>UI Kit</h1>
+  <p>Dizayner uchun vizual «konstruktor»</p>
+</section>
+
+<section>
+  <h2>Muammo: 4 xil ko'k</h2>
+  <div class="swatches">
+    <div class="sw fragment" style="background:royalblue">royalblue</div>
+    <div class="sw fragment" style="background:dodgerblue">dodgerblue</div>
+    <div class="sw fragment" style="background:steelblue">steelblue</div>
+    <div class="sw fragment" style="background:navy">navy</div>
+  </div>
+  <div class="callout bad mt fragment"><i data-ic="circle-x"></i>5 dizayner — 5 xil tugma. Foydalanuvchi «tartibsizlik»ni sezadi, dasturchi har birini alohida kodlaydi.</div>
+</section>
+
+<section>
+  <h2>UI Kit nima?</h2>
+  <div class="quote fragment">UI Kit — dizaynerlar va dasturchilar uchun <b>tayyor va qayta ishlatiladigan</b> interfeys komponentlari to'plami.</div>
+  <div class="chips mt">
+    <span class="chip fragment">tugmalar</span>
+    <span class="chip fragment">ikonalar</span>
+    <span class="chip fragment">formalar</span>
+    <span class="chip fragment">navigatsiya panellari</span>
+    <span class="chip fragment">modal oynalar</span>
+  </div>
+</section>
+
+<section>
+  <h2>4 afzallik</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="timer" data-anim="pulse"></i></div><h3>Vaqtni tejash</h3><p>Elementni noldan yaratish shart emas.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="palette"></i></div><h3>Vizual uyg'unlik</h3><p>Barcha komponentlar bir-biriga mos.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="sliders-horizontal"></i></div><h3>Moslashuvchanlik</h3><p>Kitni o'z brendingizga moslaysiz.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="users"></i></div><h3>Jamoaviy ishlash</h3><p>Dizayner va dasturchi uchun yagona vizual til.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">UI Kit'ning asosiy maqsadi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Vaqtni tejash va loyihalashni soddalashtirish</button>
+      <button class="opt" type="button">Kodni yashirish</button>
+      <button class="opt" type="button">Rasmlarni siqish</button>
+      <button class="opt" type="button">Foydalanuvchi tadqiqoti o'tkazish</button>
+    </div>
+    <div class="explain">Shu bilan birga brendning vizual tilini saqlaydi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Dizayn tizimi</h1>
+  <p>Komponentlar + qoidalar + hujjatlar</p>
+</section>
+
+<section>
+  <h2>Dizayn tizimining 5 qismi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <g data-tip="Dizayn tizimi — butun mahsulot uchun yagona konseptual tizim."><circle class="fa la pulse" cx="500" cy="170" r="80" stroke-width="4"/><text class="t-head" x="500" y="162" text-anchor="middle" font-size="24">Dizayn</text><text class="t-head" x="500" y="192" text-anchor="middle" font-size="24">tizimi</text></g>
+      <g class="fragment" data-tip="Komponentlar (UI Elements): tugma, input, karta, menyu."><line class="lb" x1="430" y1="130" x2="300" y2="70" stroke-width="3"/><rect class="fb lb" x="90" y="40" width="210" height="56" rx="10" stroke-width="3"/><text class="t-head" x="195" y="76" text-anchor="middle" font-size="22">Komponentlar</text></g>
+      <g class="fragment" data-tip="Vizual uslublar / tokenlar: ranglar, tipografiya, bo'shliqlar."><line class="lb" x1="420" y1="190" x2="300" y2="230" stroke-width="3"/><rect class="fb lb" x="60" y="205" width="240" height="56" rx="10" stroke-width="3"/><text class="t-head" x="180" y="241" text-anchor="middle" font-size="22">Tokenlar</text></g>
+      <g class="fragment" data-tip="Shablonlar (Templates / Layouts): tayyor sahifa tuzilmalari."><line class="lc" x1="570" y1="130" x2="700" y2="70" stroke-width="3"/><rect class="fc lc" x="700" y="40" width="210" height="56" rx="10" stroke-width="3"/><text class="t-head" x="805" y="76" text-anchor="middle" font-size="22">Shablonlar</text></g>
+      <g class="fragment" data-tip="Prinsip va qo'llanmalar: qachon, qanday va nega ishlatiladi."><line class="lc" x1="580" y1="190" x2="700" y2="230" stroke-width="3"/><rect class="fc lc" x="700" y="205" width="240" height="56" rx="10" stroke-width="3"/><text class="t-head" x="820" y="241" text-anchor="middle" font-size="22">Qoidalar</text></g>
+      <g class="fragment" data-tip="Hujjatlashtirish: butun jamoa uchun yozma tavsif."><line class="lg" x1="500" y1="250" x2="500" y2="275" stroke-width="3"/><rect class="fg lg" x="390" y="278" width="220" height="50" rx="10" stroke-width="3"/><text class="t-head" x="500" y="311" text-anchor="middle" font-size="22">Hujjatlar</text></g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>UI Kit va dizayn tizimi</h2>
+  <div class="vs">
+    <div class="side fragment"><h3><i data-ic="blocks"></i> UI Kit</h3>LEGO bo'laklari qutisi: «Nima bor?»</div>
+    <div class="mid">⊂</div>
+    <div class="side b fragment"><h3><i data-ic="book-open" data-anim="float"></i> Dizayn tizimi</h3>Quti + yo'riqnoma + qoidalar: «Nima bor, qachon va nega?»</div>
+  </div>
+  <p class="small mt">UI Kit — dizayn tizimining bir qismi.</p>
+</section>
+
+<section>
+  <section>
+    <h2>Dizayn tokenlari</h2>
+    <table>
+      <thead><tr><th>Token</th><th>Qiymat</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td><code>color-primary</code></td><td>ko'k (HEX 2563EB)</td></tr>
+        <tr class="fragment"><td><code>font-heading</code></td><td>Poppins 24 / SemiBold</td></tr>
+        <tr class="fragment"><td><code>font-body</code></td><td>Inter 16 / Regular</td></tr>
+        <tr class="fragment"><td><code>space-s · m · l</code></td><td>8 · 16 · 24 px</td></tr>
+        <tr class="fragment"><td><code>radius-m</code></td><td>8 px</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: nega nom kerak?</p>
+  </section>
+  <section>
+    <h2>Nega nom kerak?</h2>
+    <div class="callout tip"><i data-ic="lightbulb"></i>Token o'zgarsa — u ishlatilgan barcha joy avtomatik yangilanadi. Figma'da: <b>Styles</b> va <b>Variables</b>.</div>
+  </section>
+</section>
+
+<section>
+  <h2>Kichikdan kattaga</h2>
+  <ol class="steps-n">
+    <li class="fragment"><b>Atom</b> — rang, shrift, ikonka, tugma</li>
+    <li class="fragment"><b>Molekula</b> — qidiruv maydoni: input + tugma + lupa</li>
+    <li class="fragment"><b>Organizm</b> — header: logotip + qidiruv + profil + savat</li>
+    <li class="fragment"><b>Sahifa</b> — header + banner + kartalar + menyu</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Qidiruv maydoni (input + tugma + ikonka) qaysi daraja?</p>
+    <div class="opts">
+      <button class="opt" type="button">Atom</button>
+      <button class="opt" type="button" data-ok>Molekula</button>
+      <button class="opt" type="button">Organizm</button>
+      <button class="opt" type="button">Token</button>
+    </div>
+    <div class="explain">Bir nechta atomdan iborat kichik guruh — molekula.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Figma amaliyoti</h1>
+  <p>«E-kutubxona» uchun mini UI kit</p>
+</section>
+
+<section>
+  <h2>UI kit sahifasi</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="file-plus"></i></div><h3>1. Sahifa</h3><p>Pages → <b>+</b> → nom: <code>UI Kit</code>.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="palette"></i></div><h3>2. Colors</h3><p>5 ta 80 × 80 kvadrat → Fill → Style → <b>+</b> → <code>Primary/500</code>.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="type"></i></div><h3>3. Typography</h3><p>H1, H2, Body, Caption → Text style.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="square-mouse-pointer"></i></div><h3>4. Buttons</h3><p>Primary, Secondary, Disabled: 160 × 48, radius 8 — faqat stillardan.</p></div></div>
+  </div>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">Token sinovi</h2>
+  <p>Primary tugma: <code>Primary/500 = ko'k</code></p>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">Token sinovi</h2>
+  <p>Stilni <code>binafsha</code> ga o'zgartiring → <b>barcha</b> Primary elementlar avtomatik yangilanadi.</p>
+  <div class="callout warn"><i data-ic="triangle-alert"></i>HEX qiymatni qo'lda yozgan joylar yangilanmaydi — shuning uchun faqat stillardan foydalaning.</div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriqlar <span class="timer"><i data-ic="timer"></i>30 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>UI Kit yoki dizayn tizimi? 3 ta misolni ajrating.</div>
+  <div class="task"><span class="level mid">O'rta</span>E-kutubxona token jadvali: 5 rang, 3 matn uslubi, 4 bo'shliq.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Figma'da UI Kit sahifasi: Colors, Typography, Buttons.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>UI Kit</h3><p>Tayyor komponentlar; 4 afzallik.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Dizayn tizimi</h3><p>5 qism: komponent, token, shablon, qoida, hujjat.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Figma</h3><p>Color va Text styles — tokenlar.</p></div>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="layout-grid" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: Mashhur UI kitlar</h1>
+  <p class="muted">Apple HIG, Ant Design, Bootstrap, Figma UI Kit, Material UI</p>
+  <span class="badge">5-hafta · 14-dars</span>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

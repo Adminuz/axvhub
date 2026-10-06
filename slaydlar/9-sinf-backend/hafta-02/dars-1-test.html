@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>4-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>4-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">2-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q"><code>a + b</code> ifodasida <code>a</code> va <code>b</code> nima deb ataladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Operandlar</button>
+      <button class="opt" type="button">Operatorlar</button>
+      <button class="opt" type="button">Funksiyalar</button>
+      <button class="opt" type="button">Kalit so'zlar</button>
+    </div>
+    <div class="explain">Operator (<code>+</code>) ustida amal bajariladigan qiymatlar operand deyiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Taqqoslash operatorlari (<code>==</code>, <code>&lt;</code>, <code>&gt;=</code> ...) qanday toifadagi natija qaytaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>int</code></button>
+      <button class="opt" type="button" data-ok><code>bool</code> (<code>True</code> yoki <code>False</code>)</button>
+      <button class="opt" type="button"><code>str</code></button>
+      <button class="opt" type="button"><code>float</code></button>
+    </div>
+    <div class="explain">Taqqoslash har doim mantiqiy natija beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>=</code> va <code>==</code> farqi nimada?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>=</code> taqqoslaydi, <code>==</code> qiymat beradi</button>
+      <button class="opt" type="button">Farqi yo'q</button>
+      <button class="opt" type="button" data-ok><code>=</code> qiymat beradi, <code>==</code> taqqoslaydi</button>
+      <button class="opt" type="button"><code>==</code> faqat matnlar uchun</button>
+    </div>
+    <div class="explain">Bitta tenglik o'zlashtirish, ikkita tenglik taqqoslash amalidir.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>10 != 5</code> ifodasining natijasi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>False</code></button>
+      <button class="opt" type="button"><code>5</code></button>
+      <button class="opt" type="button"><code>None</code></button>
+      <button class="opt" type="button" data-ok><code>True</code></button>
+    </div>
+    <div class="explain"><code>!=</code> qiymatlar teng bo'lmasa <code>True</code> beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>len("python")</code> ifodasi qanday natija qaytaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>6</code></button>
+      <button class="opt" type="button"><code>"python"</code></button>
+      <button class="opt" type="button"><code>True</code></button>
+      <button class="opt" type="button"><code>5</code></button>
+    </div>
+    <div class="explain">Funksiyali ifoda: <code>len</code> matndagi belgilar sonini qaytaradi, "python" 6 ta harf.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>True and False</code> natijasi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>True</code></button>
+      <button class="opt" type="button" data-ok><code>False</code></button>
+      <button class="opt" type="button"><code>None</code></button>
+      <button class="opt" type="button">Xato</button>
+    </div>
+    <div class="explain"><code>and</code> uchun barcha shartlar <code>True</code> bo'lishi kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>not (10 &gt; 5)</code> natijasi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>True</code></button>
+      <button class="opt" type="button"><code>10</code></button>
+      <button class="opt" type="button" data-ok><code>False</code></button>
+      <button class="opt" type="button"><code>5</code></button>
+    </div>
+    <div class="explain"><code>10 &gt; 5</code> rost, <code>not True</code> esa <code>False</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>"a" in "salom"</code> nima qaytaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>False</code></button>
+      <button class="opt" type="button"><code>"a"</code></button>
+      <button class="opt" type="button"><code>1</code></button>
+      <button class="opt" type="button" data-ok><code>True</code></button>
+    </div>
+    <div class="explain"><code>in</code> element matn ichida bor-yo'qligini tekshiradi; "salom" ichida <code>a</code> bor.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>yosh = 16</code> bo'lsa, <code>yosh &gt;= 7 and yosh &lt;= 18</code> natijasi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>True</code></button>
+      <button class="opt" type="button"><code>False</code></button>
+      <button class="opt" type="button"><code>16</code></button>
+      <button class="opt" type="button"><code>7</code></button>
+    </div>
+    <div class="explain">Ikkala shart ham rost, shuning uchun <code>and</code> natijasi <code>True</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>parol = "admin_2026"</code>. <code>len(parol) &gt;= 8 and ("_" in parol) and ("admin" not in parol)</code> natijasi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>True</code></button>
+      <button class="opt" type="button" data-ok><code>False</code></button>
+      <button class="opt" type="button"><code>8</code></button>
+      <button class="opt" type="button">Xato beradi</button>
+    </div>
+    <div class="explain">Birinchi ikki shart rost, lekin <code>"admin" not in parol</code> yolg'on (parolda <code>admin</code> bor), shuning uchun natija <code>False</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: operator va operand, taqqoslash (<code>==</code>, <code>!=</code>), mantiqiy <code>and</code>/<code>or</code>/<code>not</code>, <code>in</code> va <code>not in</code>.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>CSS Box model</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+      <!-- 1. SARLAVHA -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>CSS Box model</h1>
+        <p class="muted">Har bir element - quti: content, padding, border, margin</p>
+        <span class="badge">8-sinf</span><span class="badge">Web Full-stack</span><span class="badge">4-hafta · 12-dars</span>
+        
+      </section>
+
+      <!-- 2. REJA -->
+      <section>
+        <h2>Bugun nimalarni o‘rganamiz?</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="box" data-anim="float"></i></div><h3>Quti modeli</h3><p>4 qatlam: ichkaridan tashqariga</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="move" data-anim="bounce"></i></div><h3>Padding va margin</h3><p>Ichki va tashqi masofa, qisqa yozuv</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="ruler" data-anim="pulse"></i></div><h3>O‘lcham</h3><p><code>width</code>, <code>height</code>, <code>box-sizing</code></p></div>
+        </div>
+      </section>
+
+      <!-- 3. TAKRORLASH -->
+      <section>
+        <h2>Takrorlash: o‘tgan dars</h2>
+        <div class="quiz">
+          <p class="q">Qaysi xususiyat ota-elementdan bola elementga <b>meros bo‘lib o‘tmaydi</b>?</p>
+          <div class="opts">
+            <button class="opt" type="button"><code>color</code></button>
+            <button class="opt" type="button"><code>font-family</code></button>
+            <button class="opt" type="button" data-ok><code>border</code></button>
+            <button class="opt" type="button"><code>line-height</code></button>
+          </div>
+          <div class="explain">Matn xususiyatlari meros bo‘ladi. Chegara, fon va masofalar - yo‘q. Bugun aynan shular haqida.</div>
+        </div>
+      </section>
+
+      <!-- 4. SEC 01 -->
+      <section class="sec">
+        <div class="num">01</div>
+        <h1>Box model nima?</h1>
+        <p>Brauzer uchun har bir element - to‘rtburchak quti</p>
+      </section>
+
+      <!-- 5. SVG 1: 4 QATLAM -->
+      <section>
+        <h2>Qutining 4 qatlami</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 420">
+            <g class="fragment" data-tip="margin - chegaradan tashqaridagi bo'sh joy, shaffof">
+              <rect class="ln" x="60" y="20" width="880" height="380" rx="14" stroke-dasharray="10 8"/>
+              <text class="t-muted" x="500" y="50" text-anchor="middle" font-size="24">margin (tashqi masofa)</text>
+            </g>
+            <g class="fragment" data-tip="border - qutining chegara chizig'i">
+              <rect class="fb" x="150" y="70" width="700" height="290" rx="12"/>
+              <text class="t-accent" x="500" y="100" text-anchor="middle" font-size="24">border (chegara)</text>
+            </g>
+            <g class="fragment" data-tip="padding - mazmun va chegara orasidagi ichki masofa">
+              <rect class="fc" x="210" y="115" width="580" height="210" rx="10"/>
+              <text class="t-muted" x="500" y="145" text-anchor="middle" font-size="24">padding (ichki masofa)</text>
+            </g>
+            <g data-tip="content - matn yoki rasm">
+              <rect class="fa pulse" x="300" y="165" width="400" height="120" rx="10"/>
+              <text class="t-head" x="500" y="225" text-anchor="middle" font-size="30">content</text>
+              <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">matn, rasm</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 6. O'XSHATISH -->
+      <section>
+        <h2>O‘xshatish: sovg‘a qutisi</h2>
+        <div class="cards two">
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="gift" data-anim="bounce"></i></div><h3>Content</h3><p>Sovg‘aning o‘zi</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="layers"></i></div><h3>Padding</h3><p>Qutidagi yumshoq qog‘oz</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="square"></i></div><h3>Border</h3><p>Qutining devori</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="move"></i></div><h3>Margin</h3><p>Javondagi qo‘shni qutilargacha bo‘sh joy</p></div>
+        </div>
+      </section>
+
+      <!-- 7. KOD (auto-animate) -->
+      <section data-auto-animate>
+        <h2>Birinchi quti</h2>
+        <pre data-id="bx"><code class="language-css" data-trim>
+.karta {
+  width: 300px;
+}
+        </code></pre>
+      </section>
+      <section data-auto-animate>
+        <h2>Birinchi quti</h2>
+        <pre data-id="bx"><code class="language-css" data-trim data-line-numbers="2|3|4|5">
+.karta {
+  width: 300px;
+  padding: 20px;
+  border: 2px solid navy;
+  margin: 15px;
+}
+        </code></pre>
+        <p class="small">Har qatordan keyin quti qanday o‘zgarishini o‘quvchilardan so‘rang.</p>
+      </section>
+
+      <!-- 8. SEC 02 -->
+      <section class="sec">
+        <div class="num">02</div>
+        <h1>Padding va margin</h1>
+        <p>Ichki va tashqi masofa</p>
+      </section>
+
+      <!-- 9. VS -->
+      <section>
+        <h2>Padding yoki margin?</h2>
+        <div class="vs">
+          <div class="side fragment"><h3>padding</h3>Chegara <b>ichidagi</b> masofa<br>Fon rangi uni ham qoplaydi</div>
+          <div class="mid">VS</div>
+          <div class="side b fragment"><h3>margin</h3>Chegaradan <b>tashqaridagi</b> masofa<br>Shaffof: fon yo‘q</div>
+        </div>
+      </section>
+
+      <!-- 10. SVG 2: QISQA YOZUV -->
+      <section>
+        <h2>Qisqa yozuv: 1, 2 va 4 qiymat</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 380">
+            <g data-tip="Bitta qiymat: to'rt tomonga bir xil">
+              <rect class="fn" x="30" y="60" width="280" height="220" rx="12"/>
+              <rect class="fa" x="80" y="110" width="180" height="120" rx="8"/>
+              <text class="t-accent" x="170" y="40" text-anchor="middle" font-size="22">padding: 10px</text>
+              <text class="t-muted" x="170" y="320" text-anchor="middle" font-size="20">to‘rt tomon: 10</text>
+            </g>
+            <g class="fragment" data-tip="Ikki qiymat: tepa-past | chap-o'ng">
+              <rect class="fn" x="360" y="60" width="280" height="220" rx="12"/>
+              <rect class="fc" x="440" y="100" width="120" height="140" rx="8"/>
+              <text class="t-accent" x="500" y="40" text-anchor="middle" font-size="22">padding: 10px 20px</text>
+              <text class="t-muted" x="500" y="320" text-anchor="middle" font-size="20">tepa-past 10 | chap-o‘ng 20</text>
+            </g>
+            <g class="fragment" data-tip="To'rt qiymat: soat mili bo'yicha - tepa, o'ng, past, chap">
+              <rect class="fn" x="690" y="60" width="280" height="220" rx="12"/>
+              <rect class="fb" x="720" y="80" width="200" height="170" rx="8"/>
+              <text class="t-accent" x="830" y="40" text-anchor="middle" font-size="22">10px 20px 5px 0</text>
+              <text class="t-muted" x="830" y="320" text-anchor="middle" font-size="20">tepa, o‘ng, past, chap</text>
+              <path class="la flowing" d="M 830 150 m -40 0 a 40 40 0 1 1 80 0"/>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 11. FLIP -->
+      <section>
+        <h2>Yozuvni o‘qing. Bosing</h2>
+        <div class="cards three">
+          <div class="flip" style="min-height:160px"><div class="flip-in"><div class="face front"><h3><code>margin: 20px</code></h3><span class="flip-hint">bosing</span></div><div class="face back"><p>to‘rt tomondan 20px</p></div></div></div>
+          <div class="flip" style="min-height:160px"><div class="flip-in"><div class="face front"><h3><code>padding: 5px 15px</code></h3><span class="flip-hint">bosing</span></div><div class="face back"><p>tepa-past 5px, chap-o‘ng 15px</p></div></div></div>
+          <div class="flip" style="min-height:160px"><div class="flip-in"><div class="face front"><h3><code>margin-top: 30px</code></h3><span class="flip-hint">bosing</span></div><div class="face back"><p>faqat tepadan 30px</p></div></div></div>
+        </div>
+      </section>
+
+      <!-- 12. MINI-TEST 1 -->
+      <section>
+        <h2>Mini-test</h2>
+        <div class="quiz">
+          <p class="q"><code>padding: 10px 20px 5px 0;</code> - chap tomondagi ichki masofa qancha?</p>
+          <div class="opts">
+            <button class="opt" type="button"><code>10px</code></button>
+            <button class="opt" type="button"><code>20px</code></button>
+            <button class="opt" type="button"><code>5px</code></button>
+            <button class="opt" type="button" data-ok><code>0</code></button>
+          </div>
+          <div class="explain">Soat mili bo‘yicha: tepa 10, o‘ng 20, past 5, chap 0.</div>
+        </div>
+      </section>
+
+      <!-- 13. SEC 03 -->
+      <section class="sec">
+        <div class="num">03</div>
+        <h1>Border</h1>
+        <p>Qalinlik, tur, rang</p>
+      </section>
+
+      <!-- 14. SVG 3: BORDER TURLARI -->
+      <section>
+        <h2>Chegara turlari</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 300">
+            <g class="fragment"><rect class="fn" x="30" y="40" width="170" height="120" rx="4" stroke-width="6"/><text class="t-head" x="115" y="110" text-anchor="middle" font-size="24">solid</text></g>
+            <g class="fragment"><rect class="fn" x="225" y="40" width="170" height="120" rx="4" stroke-width="6" stroke-dasharray="18 10"/><text class="t-head" x="310" y="110" text-anchor="middle" font-size="24">dashed</text></g>
+            <g class="fragment"><rect class="fn" x="420" y="40" width="170" height="120" rx="4" stroke-width="6" stroke-dasharray="3 9" stroke-linecap="round"/><text class="t-head" x="505" y="110" text-anchor="middle" font-size="24">dotted</text></g>
+            <g class="fragment"><rect class="fn" x="615" y="40" width="170" height="120" rx="4" stroke-width="3"/><rect class="ln" x="625" y="50" width="150" height="100" rx="2" stroke-width="3"/><text class="t-head" x="700" y="110" text-anchor="middle" font-size="24">double</text></g>
+            <g class="fragment"><rect class="fa" x="810" y="40" width="170" height="120" rx="30"/><text class="t-head" x="895" y="110" text-anchor="middle" font-size="22">radius</text></g>
+            <text class="t-accent" x="500" y="230" text-anchor="middle" font-size="28">border: 3px solid crimson;</text>
+            <text class="t-muted" x="500" y="270" text-anchor="middle" font-size="22">qalinlik · tur · rang</text>
+          </svg>
+        </div>
+      </section>
+
+      <!-- 15. BORDER KOD -->
+      <section>
+        <h2>Border: kodda</h2>
+        <pre><code class="language-css" data-trim data-line-numbers="1|2|3">
+border: 3px solid crimson;       /* qalinlik, tur, rang */
+border-radius: 12px;             /* yumaloq burchaklar */
+border-bottom: 1px dashed gray;  /* faqat bitta tomon */
+        </code></pre>
+        <div class="card accent fragment mt"><p><code>border: 3px crimson;</code> - turi (<code>solid</code>) yo‘q, chegara <b>chizilmaydi</b>.</p></div>
+      </section>
+
+      <!-- 16. SEC 04 -->
+      <section class="sec">
+        <div class="num">04</div>
+        <h1>O‘lcham va box-sizing</h1>
+        <p>Quti aslida qancha joy egallaydi?</p>
+      </section>
+
+      <!-- 17. SVG 4: HISOB -->
+      <section>
+        <h2>content-box: jami kenglik</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 300">
+            <rect class="fb" x="40" y="60" width="16" height="140"/>
+            <rect class="fc" x="56" y="60" width="80" height="140"/>
+            <rect class="fa" x="136" y="60" width="728" height="140"/>
+            <rect class="fc" x="864" y="60" width="80" height="140"/>
+            <rect class="fb" x="944" y="60" width="16" height="140"/>
+            <text class="t-head" x="500" y="140" text-anchor="middle" font-size="30">width: 300px</text>
+            <g class="fragment"><text class="t-muted" x="96" y="240" text-anchor="middle" font-size="22">20</text><text class="t-muted" x="904" y="240" text-anchor="middle" font-size="22">20</text><text class="t-muted" x="96" y="40" text-anchor="middle" font-size="20">padding</text><text class="t-muted" x="904" y="40" text-anchor="middle" font-size="20">padding</text></g>
+            <g class="fragment"><text class="t-muted" x="48" y="270" text-anchor="middle" font-size="20">2</text><text class="t-muted" x="952" y="270" text-anchor="middle" font-size="20">2</text></g>
+            <g class="fragment"><text class="t-accent" x="500" y="285" text-anchor="middle" font-size="28">300 + 2·20 + 2·2 = 344px</text></g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 18. SWAP: content-box vs border-box -->
+      <section>
+        <h2>box-sizing: ikki rejim</h2>
+        <div class="swap">
+          <div class="swap-tabs"><button type="button">content-box</button><button type="button">border-box</button></div>
+          <div class="swap-p"><div class="card"><h3>Odatiy holat</h3><p><code>width</code> = faqat content. Padding va border <b>qo‘shiladi</b>: 300px yozdik - 344px chiqdi.</p></div></div>
+          <div class="swap-p"><div class="card accent"><h3><code>* { box-sizing: border-box; }</code></h3><p><code>width</code> padding va borderni ham o‘z ichiga oladi: quti aniq <b>300px</b>.</p></div></div>
+        </div>
+      </section>
+
+      <!-- 19. STEPPER: HISOBLASH -->
+      <section>
+        <h2>Hisoblaymiz: 3-topshiriq</h2>
+        <p class="small"><code>width: 200px; padding: 10px; border: 5px solid; margin: 20px;</code></p>
+        <div class="stepper">
+          <div class="stp on"><div class="card"><div class="icon"><i data-ic="calculator" data-anim="pulse"></i></div><h3>content-box: ko‘rinadigan</h3><p>200 + 2·10 + 2·5 = <b>230px</b></p></div></div>
+          <div class="stp"><div class="card"><div class="icon"><i data-ic="move"></i></div><h3>content-box: margin bilan</h3><p>230 + 2·20 = <b>270px</b></p></div></div>
+          <div class="stp"><div class="card"><div class="icon"><i data-ic="circle-check"></i></div><h3>border-box</h3><p>ko‘rinadigan <b>200px</b>, margin bilan <b>240px</b></p></div></div>
+        </div>
+      </section>
+
+      <!-- 20. MARGIN AUTO -->
+      <section>
+        <h2>Blokni markazlash: <code>margin: 0 auto</code></h2>
+        <pre><code class="language-css" data-trim data-line-numbers="2|3">
+.konteyner {
+  width: 600px;
+  margin: 0 auto;   /* tepa-past 0, chap-o'ng teng */
+}
+        </code></pre>
+        <div class="card fragment mt"><div class="icon"><i data-ic="triangle-alert" data-anim="wiggle"></i></div><p><code>width</code> berilmasa, blok butun qatorni egallaydi va markazlanmaydi.</p></div>
+      </section>
+
+      <!-- 21. MINI-TEST 2 -->
+      <section>
+        <h2>Bashorat qiling</h2>
+        <div class="quiz">
+          <p class="q"><code>* { box-sizing: border-box; }</code> va <code>.k { width: 250px; padding: 25px; border: 5px solid; }</code>. Ko‘rinadigan kenglik?</p>
+          <div class="opts">
+            <button class="opt" type="button"><code>310px</code></button>
+            <button class="opt" type="button" data-ok><code>250px</code></button>
+            <button class="opt" type="button"><code>300px</code></button>
+            <button class="opt" type="button"><code>200px</code></button>
+          </div>
+          <div class="explain"><code>border-box</code>: padding va border <code>width</code> ichida. Quti aniq 250px.</div>
+        </div>
+      </section>
+
+      <!-- 22. DEVTOOLS + XATOLAR -->
+      <section>
+        <h2>F12 va odatiy xatolar</h2>
+        <div class="cards two">
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="search" data-anim="pulse"></i></div><h3>DevTools (F12)</h3><p>Elementni tanlang: «Computed» bo‘limida qutining 4 qatlami raqamlari bilan ko‘rinadi.</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="triangle-alert" data-anim="wiggle"></i></div><h3>Xatolar</h3><p><code>margin</code> va <code>padding</code> ni almashtirish; <code>box-sizing</code> yozmaslik; chegarada turini unutish.</p></div>
+        </div>
+        <div class="stats mt">
+          <div class="stat"><div class="v"><span class="count" data-to="4">0</span></div><div class="l">qatlam</div></div>
+          <div class="stat"><div class="v"><span class="count" data-to="5">0</span></div><div class="l">chegara turi</div></div>
+        </div>
+      </section>
+
+      <!-- 23. AMALIYOT -->
+      <section>
+        <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>30 daqiqa</span></h2>
+        <div class="task"><span class="level easy">Oson</span><code>div</code> ga padding, border, margin bering va F12 da quti rasmini ko‘ring.</div>
+        <div class="task"><span class="level mid">O'rta</span>Karta maketi: kenglik 300px, ichki masofa 20px, yumaloq burchak, kartalar orasida 15px.</div>
+        <div class="task"><span class="level hard">Qiyin</span>content-box va border-box da qutining jami o‘lchamini hisoblang va DevTools bilan tekshiring.</div>
+      </section>
+
+      <!-- 24. XULOSA -->
+      <section>
+        <h2>Xulosa</h2>
+        <div class="cards two">
+          <div class="card"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Bugun o‘rgandik</h3><p>Content, padding, border, margin. Qisqa yozuv, chegara turlari, <code>box-sizing: border-box</code>, <code>margin: 0 auto</code>.</p></div>
+          <div class="card"><div class="icon"><i data-ic="book-open"></i></div><h3>Uyga vazifa</h3><p>Uchta kartali sahifa: har bir kartaga padding, border, radius va margin.</p></div>
+        </div>
+        <p class="fragment mt">Keyingi dars: <b>Flexbox</b> - qutilarni qatorga terish.</p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Foydalanuvchi Tadqiqot Usullari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 4-dars: Foydalanuvchi tadqiqot usullari: intervyu, so‘rovnoma, kuzatish -->
+
+<!-- 1. SARLAVHA -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Foydalanuvchi Tadqiqot Usullari</h1>
+  <p class="muted">Intervyu, so‘rovnoma, kuzatish va axborot arxitekturasi</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced UX/UI</span><span class="badge">2-hafta · 4-dars</span>
+</section>
+
+<!-- 2. BUGUN NIMANI O'RGANAMIZ? -->
+<section>
+  <h2>Bugun nimani o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="compass" data-anim="float"></i></div>
+      <h3>Tadqiqotning 3 o'qi</h3>
+      <p>Sifat vs Miqdoriy, Munosabat vs Xulq-atvor, Generativ vs Baholovchi</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="message-square" data-anim="pulse"></i></div>
+      <h3>Asosiy metodlar</h3>
+      <p>1-on-1 intervyu, kuzatuv (field studies) va so'rovnomalar (surveys)</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layout-grid" data-anim="draw"></i></div>
+      <h3>Karta tartiblash</h3>
+      <p>Card sorting orqali intuitiv menyu va 5 soniyalik test o'tkazish</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. BO'LIM 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>UX Tadqiqoti mohiyati</h1>
+  <p>Taxminlar bilan emas, real insonlar ehtiyojlari bilan ishlash</p>
+</section>
+
+<!-- 4. NEGA TADQIQOT ZARUR? -->
+<section>
+  <h2>Nega UX Tadqiqot o'tkaziladi?</h2>
+  <div class="quote">
+    «Foydalanuvchilarni tinglamasdan qilingan dizayn — bu shunchaki qimmatbaho taxmindir.»
+  </div>
+  <div class="cards two mt">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="users"></i></div>
+      <h3>Kim uchun yaratyapmiz?</h3>
+      <p>Haqiqiy maqsadli auditoriyaning kundalik muammolari va og'riqli nuqtalarini (pain points) aniqlash.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="chart-bar" data-anim="pulse"></i></div>
+      <h3>Resurslarni tejash</h3>
+      <p>Foydalanuvchiga kerak bo'lmagan ortiqcha funksiyalarni dasturlashga ketadigan oylik mehnatni asrab qolish.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. ILLYUSTRATSIYA 1: TADQIQOTNING 3 O'QI -->
+<section>
+  <h2>Illyustratsiya: UX Tadqiqotining 3 O'qi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <!-- 1-o'q: Sifat vs Miqdoriy -->
+      <rect class="fa" x="40" y="40" width="280" height="120" rx="16"/>
+      <text class="t-head" x="180" y="85" text-anchor="middle" font-size="20" font-weight="bold">Sifat vs Miqdoriy</text>
+      <text class="t-accent" x="180" y="115" text-anchor="middle" font-size="16">Qualitative vs Quantitative</text>
+      <text class="t-muted" x="180" y="140" text-anchor="middle" font-size="13">"Nega?" vs "Qancha?"</text>
+
+      <!-- 2-o'q: Munosabat vs Xulq-atvor -->
+      <rect class="fb" x="360" y="40" width="280" height="120" rx="16"/>
+      <text class="t-head" x="500" y="85" text-anchor="middle" font-size="20" font-weight="bold">Munosabat vs Xulq</text>
+      <text class="t-accent" x="500" y="115" text-anchor="middle" font-size="16">Attitudinal vs Behavioral</text>
+      <text class="t-muted" x="500" y="140" text-anchor="middle" font-size="13">"Nima deydi?" vs "Nima qiladi?"</text>
+
+      <!-- 3-o'q: Generativ vs Baholovchi -->
+      <rect class="fc" x="680" y="40" width="280" height="120" rx="16"/>
+      <text class="t-head" x="820" y="85" text-anchor="middle" font-size="20" font-weight="bold">Generativ vs Baholovchi</text>
+      <text class="t-accent" x="820" y="115" text-anchor="middle" font-size="16">Generative vs Evaluative</text>
+      <text class="t-muted" x="820" y="140" text-anchor="middle" font-size="13">G'oya yaratish vs Sinab ko'rish</text>
+
+      <!-- Bog'lovchi chiziq -->
+      <g class="fragment">
+        <path class="la flowing" d="M 180,165 L 500,260 L 820,165" fill="none"/>
+        <rect class="fg" x="360" y="240" width="280" height="70" rx="14"/>
+        <text class="t-head" x="500" y="280" text-anchor="middle" font-size="18" font-weight="bold">Eng yaxshi natija: Kombinatsiya</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 6. SIFAT VA MIQDORIY TAQQOSLASH -->
+<section>
+  <h2>Sifatli va Miqdoriy tadqiqot</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>Sifatli (Qualitative)</h3>
+      <p><b>Savol:</b> "Nima uchun odamlar to'lov sahifasidan ketib qolmoqda?"</p>
+      <p>5-10 kishi bilan chuqur intervyu va ularning his-tuyg'ularini tushunish.</p>
+      <div class="chips mt"><span class="chip">Intervyu</span><span class="chip">Kuzatish</span></div>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>Miqdoriy (Quantitative)</h3>
+      <p><b>Savol:</b> "Saytga kirganlarning necha foizi savatni tark etdi?"</p>
+      <p>10 000 tashrifchining statistik ma'lumotlari va raqamli ko'rsatkichlar.</p>
+      <div class="chips mt"><span class="chip">Analitika</span><span class="chip">So'rovnoma</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. GAPIRISH vs HARAKAT -->
+<section>
+  <h2>Munosabat va Xulq-atvor: So'z vs Harakat</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="message-square"></i></div>
+      <h3>Munosabat (Nima deyishadi)</h3>
+      <p>Odamlar so'rovnomada: «Men har doim foydali va to'yimli nonushta qilaman» deb aytishi mumkin.</p>
+      <div class="callout mt">Fikrlar, orzular va subyektiv qarashlar.</div>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="eye" data-anim="pulse"></i></div>
+      <h3>Xulq-atvor (Amalda nima qilishadi)</h3>
+      <p>Kuzatuv kamerasi esa ular ertalab shoshilib shokolad va kofe sotib olganini ko'rsatadi.</p>
+      <div class="callout mt">Haqiqiy xatti-harakat va obyektiv amallar.</div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 8. BO'LIM 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Asosiy tadqiqot metodlari</h1>
+  <p>Intervyu, kuzatish va so'rovnomalarni professional o'tkazish</p>
+</section>
+
+<!-- 9. METOD 1: INTERVYU -->
+<section>
+  <h2>Foydalanuvchi intervyulari (User Interviews)</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="users"></i></div>
+      <h3>5–8 kishi yetarli</h3>
+      <p>Nielsen Norman Group tadqiqotiga ko'ra, 5 nafar foydalanuvchi bilan o'tkazilgan intervyu muammolarning 85%ini ochib beradi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="activity" data-anim="pulse"></i></div>
+      <h3>Ochiq savollar</h3>
+      <p>«Ha/Yo'q» javobli emas, balki «Oxirgi marta bu vaziyat qanday kechganini aytib bering» kabi hikoyaga undovchi savollar.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="sparkles"></i></div>
+      <h3>Chuqur sabab</h3>
+      <p>«Nega?» savolini bir necha marta berish orqali muammoning asl ildiziga yetib borish (5 Whys metodikasi).</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10. ILLYUSTRATSIYA 2: INTERVYU SAVOLLARI -->
+<section>
+  <h2>Yo'naltiruvchi vs Xolis savollar</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <!-- Noto'g'ri savol -->
+      <rect class="fa" x="60" y="60" width="410" height="200" rx="16"/>
+      <text class="t-accent" x="265" y="110" text-anchor="middle" font-size="20" font-weight="bold">Noto'g'ri: Yo'naltiruvchi (Leading)</text>
+      <text class="t-muted" x="265" y="150" text-anchor="middle" font-size="16">"Bizning sayt juda qulay, shunday emasmi?"</text>
+      <text class="t-muted" x="265" y="185" text-anchor="middle" font-size="14">Foydalanuvchini aldamchi maqtovga majbur qiladi</text>
+      <text class="t-muted" x="265" y="220" text-anchor="middle" font-size="13">Natija: Soxta ma'lumot va xato qaror</text>
+
+      <!-- To'g'ri savol -->
+      <g class="fragment">
+        <rect class="fg" x="530" y="60" width="410" height="200" rx="16"/>
+        <text class="t-head" x="735" y="110" text-anchor="middle" font-size="20" font-weight="bold">To'g'ri: Xolis va Ochiq (Open)</text>
+        <text class="t-head" x="735" y="150" text-anchor="middle" font-size="16">"Saytdan foydalanishda qanday tajribani boshdan kechirdingiz?"</text>
+        <text class="t-head" x="735" y="185" text-anchor="middle" font-size="14">Foydalanuvchiga erkin fikr bildirish imkonini beradi</text>
+        <text class="t-accent" x="735" y="220" text-anchor="middle" font-size="13">Natija: Haqiqiy muammolar va yashirin to'siqlar ochiladi</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 11. METOD 2: KUZATISH (FIELD STUDIES) -->
+<section>
+  <h2>Kuzatuv tadqiqotlari (Field Studies)</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="eye" data-anim="float"></i></div>
+      <h3>Tabiiy muhitda o'rganish</h3>
+      <p>Foydalanuvchini laboratoriyaga chaqirmasdan, o'zining uyida, maktabida yoki ofisida mahsulotdan qanday foydalanayotganini kuzatish.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="triangle-alert"></i></div>
+      <h3>Hawthorne effekti</h3>
+      <p>Odamlar o'zlarining kuzatilayotganini bilsa, odatdagidan ehtiyotkorroq va xatosiz harakat qilishga urinadi. Shuning uchun tabiiylikni saqlash zarur.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 12. OLDIN VA KEYIN (SWAP): SO'ROVNOMA SAVOLLARI -->
+<section>
+  <h2>Oldin va keyin: So'rovnoma savollari</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">Xato noaniq savol</button><button type="button">Aniq o'lchanadigan savol</button></div>
+    <div class="swap-p">
+      <div class="card">
+        <h3>«Kelajakda dasturimizdan foydalanasizmi?»</h3>
+        <p>Bunday kelajak ehtimoli haqidagi savolga odamlar deyarli har doim "Ha" deb aldaydi. Real ma'lumot bermaydi.</p>
+      </div>
+    </div>
+    <div class="swap-p">
+      <div class="card accent">
+        <h3>«Oxirgi 1 oyda ushbu xizmatdan necha marta foydalandingiz?»</h3>
+        <p>Aniq o'tgan tajriba va xulq-atvorga tayanadi: Hech qachon / 1-2 marta / Haftada 1 marta / Har kuni. Aniq statistika beradi!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13. BO'LIM 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Karta tartiblash va testlar</h1>
+  <p>Axborot arxitekturasini yaratish va tezkor tekshirish</p>
+</section>
+
+<!-- 14. KARTA TARTIBLASH (CARD SORTING) -->
+<section>
+  <h2>Karta tartiblash (Card Sorting)</h2>
+  <p class="muted">Sayt navigatsiyasi va menyusini foydalanuvchilar qanday ko'rishini aniqlash</p>
+  <div class="cards three mt">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="layout-grid"></i></div>
+      <h3>Ochiq (Open)</h3>
+      <p>Foydalanuvchilar kartalarni o'zlari xohlagan guruhga ajratadi va toifalarga o'zlari nom qo'yadi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>Yopiq (Closed)</h3>
+      <p>Oldindan belgilangan tayyor toifalar beriladi. Kartalar faqat shu guruhlarga joylashtiriladi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+      <h3>Gibrid (Hybrid)</h3>
+      <p>Mavjud guruhlar beriladi, ammo zarur bo'lsa yangi toifa ochishga ruxsat etiladi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 15. ILLYUSTRATSIYA 3: KARTA TARTIBLASH JARAYONI -->
+<section>
+  <h2>Illyustratsiya: Card Sorting Jarayoni</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <!-- 1: Sochilgan kartalar -->
+      <rect class="fa" x="50" y="80" width="220" height="150" rx="14"/>
+      <text class="t-head" x="160" y="125" text-anchor="middle" font-size="18" font-weight="bold">Tartibsiz kartalar</text>
+      <text class="t-muted" x="160" y="155" text-anchor="middle" font-size="14">Noutbuk, Naushnik,</text>
+      <text class="t-muted" x="160" y="180" text-anchor="middle" font-size="14">Klaviatura, Smartfon...</text>
+
+      <line class="la flowing" x1="270" y1="155" x2="350" y2="155"/>
+      <polygon class="ar-a" points="355,155 340,145 340,165"/>
+
+      <!-- 2: Foydalanuvchi saralaydi -->
+      <rect class="fb" x="355" y="80" width="240" height="150" rx="14"/>
+      <text class="t-head" x="475" y="125" text-anchor="middle" font-size="18" font-weight="bold">Foydalanuvchi mantiqi</text>
+      <text class="t-muted" x="475" y="155" text-anchor="middle" font-size="14">O'xshash elementlarni</text>
+      <text class="t-muted" x="475" y="180" text-anchor="middle" font-size="14">bir toifaga to'plash</text>
+
+      <line class="lb flowing" x1="595" y1="155" x2="675" y2="155"/>
+      <polygon class="ar-b" points="680,155 665,145 665,165"/>
+
+      <!-- 3: Aniq menyu tuzilishi -->
+      <rect class="fg" x="680" y="80" width="270" height="150" rx="14"/>
+      <text class="t-head" x="815" y="125" text-anchor="middle" font-size="18" font-weight="bold">Intuitiv Menyu</text>
+      <text class="t-accent" x="815" y="155" text-anchor="middle" font-size="14">1. Kompyuterlar</text>
+      <text class="t-accent" x="815" y="180" text-anchor="middle" font-size="14">2. Aksessuarlar</text>
+      <text class="t-accent" x="815" y="205" text-anchor="middle" font-size="14">3. Audio texnika</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 16. 5 SONIYALIK TEST -->
+<section>
+  <h2>5 Soniyalik Test (5-Second Test)</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="clock" data-anim="spin"></i></div>
+      <h3>Test qanday o'tadi?</h3>
+      <p>Sahifa foydalanuvchiga atigi 5 soniya ko'rsatiladi va darhol yopiladi. So'ngra 2 ta asosiy savol beriladi:</p>
+      <ul class="mt">
+        <li>Bu qanday kompaniya/sayt edi?</li>
+        <li>U yerda qanday asosiy amalni bajarish mumkin?</li>
+      </ul>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Nimani aniqlaydi?</h3>
+      <p>Interfeysning asosiy sarlavhasi (Value Proposition) va harakatga chaqiruvchi CTA tugmasi darhol ko'zga tashlanyaptimi yoki yo'qmi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 17. ILLYUSTRATSIYA 4: BOSQICHLAR BO'YICHA METODLAR -->
+<section>
+  <h2>Qaysi bosqichda qaysi metod?</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <!-- 1: Boshlanishida -->
+      <rect class="fa" x="40" y="60" width="280" height="200" rx="16"/>
+      <text class="t-head" x="180" y="105" text-anchor="middle" font-size="18" font-weight="bold">1. Loyiha boshida</text>
+      <text class="t-muted" x="180" y="135" text-anchor="middle" font-size="14">Kashf qilish va g'oya</text>
+      <text class="t-accent" x="180" y="170" text-anchor="middle" font-size="15">• Foydalanuvchi intervyusi</text>
+      <text class="t-accent" x="180" y="195" text-anchor="middle" font-size="15">• Field Studies (Kuzatuv)</text>
+      <text class="t-accent" x="180" y="220" text-anchor="middle" font-size="15">• Karta tartiblash</text>
+
+      <!-- 2: Loyihalashda -->
+      <rect class="fb" x="360" y="60" width="280" height="200" rx="16"/>
+      <text class="t-head" x="500" y="105" text-anchor="middle" font-size="18" font-weight="bold">2. Dizayn jarayonida</text>
+      <text class="t-muted" x="500" y="135" text-anchor="middle" font-size="14">Prototipni sinash</text>
+      <text class="t-accent" x="500" y="170" text-anchor="middle" font-size="15">• 5 soniyalik test</text>
+      <text class="t-accent" x="500" y="195" text-anchor="middle" font-size="15">• Usability testing</text>
+      <text class="t-accent" x="500" y="220" text-anchor="middle" font-size="15">• Daraxt testi (Tree testing)</text>
+
+      <!-- 3: Ishga tushgach -->
+      <rect class="fc" x="680" y="60" width="280" height="200" rx="16"/>
+      <text class="t-head" x="820" y="105" text-anchor="middle" font-size="18" font-weight="bold">3. Ishga tushgach</text>
+      <text class="t-muted" x="820" y="135" text-anchor="middle" font-size="14">Optimallashtirish</text>
+      <text class="t-accent" x="820" y="170" text-anchor="middle" font-size="15">• A/B testing</text>
+      <text class="t-accent" x="820" y="195" text-anchor="middle" font-size="15">• So'rovnomalar (Surveys)</text>
+      <text class="t-accent" x="820" y="220" text-anchor="middle" font-size="15">• Kliklar analitikasi (Heatmap)</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 18. STEPPER: TADQIQOT O'TKAZISH QADAMLARI -->
+<section>
+  <h2>Tadqiqot o'tkazish qadamlari</h2>
+  <div class="stepper">
+    <div class="stp on">
+      <div class="card">
+        <div class="icon"><i data-ic="compass" data-anim="float"></i></div>
+        <h3>1. Maqsad va gipoteza</h3>
+        <p>Nimani o'rganmoqchimiz va qanday savolga javob izlayotganimizni aniq belgilash.</p>
+      </div>
+    </div>
+    <div class="stp">
+      <div class="card">
+        <div class="icon"><i data-ic="users" data-anim="pulse"></i></div>
+        <h3>2. Auditoriyani tanlash</h3>
+        <p>Do'stlar emas, aynan mahsulotdan foydalanuvchi real maqsadli guruhni yig'ish.</p>
+      </div>
+    </div>
+    <div class="stp">
+      <div class="card">
+        <div class="icon"><i data-ic="file-text" data-anim="draw"></i></div>
+        <h3>3. Savol va skript tuzish</h3>
+        <p>Ochiq, xolis va yo'naltirilmagan savollar ro'yxatini (intervyu qo'llanmasi) yozish.</p>
+      </div>
+    </div>
+    <div class="stp">
+      <div class="card">
+        <div class="icon"><i data-ic="sparkles" data-anim="bounce"></i></div>
+        <h3>4. Natijalarni tahlil qilish</h3>
+        <p>Foydalanuvchilarning og'riqlarini ajratib, ularni dizayn talablariga aylantirish.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 19. FLIP KARTALAR: METOD TANLASH -->
+<section>
+  <h2>Qaysi vaziyatda qaysi metod?</h2>
+  <p class="muted">Kartani bosing va eng to'g'ri metodni ko'ring</p>
+  <div class="cards three mt">
+    <div class="flip" style="min-height:200px">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="layout-grid"></i></div>
+          <h3>Menyuda chalkashlik</h3>
+          <span class="flip-hint">bosing</span>
+        </div>
+        <div class="face back">
+          <p><b>Karta tartiblash (Card sorting):</b> Foydalanuvchilar toifalarni o'zlari mantiqan guruhlaydi.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip" style="min-height:200px">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="eye"></i></div>
+          <h3>To'lovdan chiqib ketish</h3>
+          <span class="flip-hint">bosing</span>
+        </div>
+        <div class="face back">
+          <p><b>Usability testing:</b> 5 kishi oldida to'lov jarayonini kuzatib, to'siqni ko'z bilan ko'rish.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip" style="min-height:200px">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="chart-bar"></i></div>
+          <h3>Narx ma'qulligi</h3>
+          <span class="flip-hint">bosing</span>
+        </div>
+        <div class="face back">
+          <p><b>So'rovnoma (Survey):</b> 500+ kishidan yangi tariflar haqida statistik fikr yig'ish.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 20. AMALIY TOPSHIRIQ -->
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Berilgan 3 ta yo'naltiruvchi intervyu savolini ochiq va xolis shaklga keltiring.</div>
+  <div class="task"><span class="level mid">O'rta</span>12 ta texnika tovarini karta tartiblash usulida 3 ta toifaga ajrating.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Maktab transporti ilovasi bo'yicha sifatli intervyu va miqdoriy so'rovnoma savollarini tuzing.</div>
+</section>
+
+<!-- 21. MINI TEST -->
+<section>
+  <h2>Bilimingizni sinang</h2>
+  <div class="quiz">
+    <p class="q">Nielsen Norman Group tadqiqotlariga ko'ra, necha nafar foydalanuvchi bilan o'tkazilgan intervyu interfeys muammolarining 85%ini aniqlashga yetarli hisoblanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat 1 kishi</button>
+      <button class="opt" type="button" data-ok>5 nafar foydalanuvchi</button>
+      <button class="opt" type="button">Kamida 500 kishi</button>
+      <button class="opt" type="button">100 kishi</button>
+    </div>
+    <div class="explain">To'g'ri: Jakob Nielsen formulasi bo'yicha 5 nafar sifatli foydalanuvchi testda barcha asosiy muammolarning 85%ini ochib beradi.</div>
+  </div>
+</section>
+
+<!-- 22. XULOSA -->
+<section>
+  <h2>Xulosa</h2>
+  <div class="cards two">
+    <div class="card">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Bugun o'rgandik</h3>
+      <ul class="mt">
+        <li>Sifatli vs miqdoriy, munosabat vs xulq-atvor</li>
+        <li>Intervyu va so'rovnomalarni xolis tuzish</li>
+        <li>Karta tartiblash va 5 soniyalik test</li>
+      </ul>
+    </div>
+    <div class="card accent">
+      <div class="icon"><i data-ic="sparkles"></i></div>
+      <h3>Keyingi dars</h3>
+      <p><b>Persona va empatiya xaritasini yaratish:</b> Tadqiqot ma'lumotlarini qahramon obraziga (User Persona) aylantiramiz!</p>
+    </div>
+  </div>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

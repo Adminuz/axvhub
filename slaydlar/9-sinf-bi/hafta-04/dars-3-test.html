@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>3-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>3-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">Business Intelligence</span><span class="badge">4-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">SQL nega deklarativ til deyiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Unda «nimani olish kerak» yoziladi, bajarish yo'lini DBMS tanlaydi</button>
+      <button class="opt" type="button">Unda har bir qadam batafsil yoziladi</button>
+      <button class="opt" type="button">U faqat grafik interfeysda ishlaydi</button>
+      <button class="opt" type="button">U faqat matnni e'lon qiladi</button>
+    </div>
+    <div class="explain">«Qanday» emas, «nima» — deklarativ yondashuv.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">SELECT qaysi toifaga kiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">DDL</button>
+      <button class="opt" type="button" data-ok>DQL</button>
+      <button class="opt" type="button">DCL</button>
+      <button class="opt" type="button">TCL</button>
+    </div>
+    <div class="explain">DQL — Data Query Language; SELECT ma'lumotni faqat o'qiydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>CREATE TABLE</code> qaysi toifaga kiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>DDL</button>
+      <button class="opt" type="button">DML</button>
+      <button class="opt" type="button">DQL</button>
+      <button class="opt" type="button">DCL</button>
+    </div>
+    <div class="explain">DDL tuzilmani yaratadi va o'zgartiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>SELECT * FROM Mahsulotlar;</code> nima qaytaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat birinchi ustunni</button>
+      <button class="opt" type="button" data-ok>Jadvaldagi barcha ustun va qatorlarni</button>
+      <button class="opt" type="button">Faqat ustun nomlarini</button>
+      <button class="opt" type="button">Jadvalni o'chiradi</button>
+    </div>
+    <div class="explain">* — barcha ustunlar; filtr bo'lmagani uchun barcha qatorlar.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>SELECT Narx, Nomi FROM Mahsulotlar;</code> natijasida birinchi ustun qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Narx</button>
+      <button class="opt" type="button">Nomi</button>
+      <button class="opt" type="button">MahsulotID</button>
+      <button class="opt" type="button">Alifbo bo'yicha birinchi</button>
+    </div>
+    <div class="explain">Ustunlar SELECT da yozilgan tartibda chiqadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>AS</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Jadvaldagi ustun nomini butunlay o'zgartiradi</button>
+      <button class="opt" type="button">Ustunni o'chiradi</button>
+      <button class="opt" type="button">Qatorlarni saralaydi</button>
+      <button class="opt" type="button" data-ok>Natijadagi ustunga vaqtinchalik nom (taxallus) beradi</button>
+    </div>
+    <div class="explain">Jadvaldagi asl nom o'zgarmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Narx = 80000, Soni = 25. <code>Narx * Soni AS OmborQiymati</code> nimaga teng?</p>
+    <div class="opts">
+      <button class="opt" type="button">80025</button>
+      <button class="opt" type="button" data-ok>2000000</button>
+      <button class="opt" type="button">3200</button>
+      <button class="opt" type="button">800000</button>
+    </div>
+    <div class="explain">80000 × 25 = 2 000 000.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">SQL Server da <code>SELECT 7 / 2;</code> natijasi qanday?</p>
+    <div class="opts">
+      <button class="opt" type="button">3.5</button>
+      <button class="opt" type="button">4</button>
+      <button class="opt" type="button">Xato</button>
+      <button class="opt" type="button" data-ok>3</button>
+    </div>
+    <div class="explain">Ikki butun son bo'linganda butun natija; 3.5 uchun 7 / 2.0 yozing.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">6 ta mahsulot 3 xil kategoriyada. <code>SELECT DISTINCT Kategoriya FROM Mahsulotlar;</code> nechta qator qaytaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">6</button>
+      <button class="opt" type="button">1</button>
+      <button class="opt" type="button" data-ok>3</button>
+      <button class="opt" type="button">9</button>
+    </div>
+    <div class="explain">DISTINCT takrorlanuvchi qiymatlarni olib tashlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">SQL Server dagi <code>SELECT TOP 3 ...</code> ning PostgreSQL/MySQL dagi muqobili qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>... FIRST 3 ROWS ONLY TOP</code></button>
+      <button class="opt" type="button"><code>SELECT 3 ...</code></button>
+      <button class="opt" type="button"><code>... MAX 3</code></button>
+      <button class="opt" type="button" data-ok><code>... LIMIT 3</code></button>
+    </div>
+    <div class="explain">PostgreSQL, MySQL va SQLite da LIMIT ishlatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: SQL toifalari, SELECT, FROM, AS, hisoblangan ustunlar, DISTINCT, TOP.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

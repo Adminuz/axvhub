@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Django REST Framework</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 1-slayd: Sarlavha -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Django REST Framework</h1>
+  <p class="muted">Server-Side Rendering (SSR) va User-Side Rendering (CSR/USR) arxitekturasi</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">1-hafta &middot; 1-dars</span>
+  
+</section>
+
+<!-- 2-slayd: Dars rejasi -->
+<section>
+  <h2>Dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers" data-anim="float"></i></div>
+      <h3>Veb arxitekturasi</h3>
+      <p>Frontend va backend o'rtasidagi aloqa, HTTP so'rov va javob mexanizmi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="server" data-anim="pulse"></i></div>
+      <h3>SSR va CSR tahlili</h3>
+      <p>Server-side va user-side renderingning ishlash tartibi, afzallik va kamchiliklari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu" data-anim="spin"></i></div>
+      <h3>REST &amp; DRF</h3>
+      <p>RESTful tamoyillari, JSON ma'lumotlar va Django REST Framework afzalliklari.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 3-slayd: Bo'lim 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Veb arxitekturasi</h1>
+  <p>Mijoz (Client) va Server muloqoti</p>
+</section>
+
+<!-- 4-slayd: SVG Sxema: Client-Server aloqasi -->
+<section>
+  <h2>Client va Server muloqoti</h2>
+  <p>Veb-dasturlashda har qanday amal HTTP so'rovi va javobi orqali amalga oshadi</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320" width="100%" height="320">
+      <!-- Client qutisi -->
+      <rect x="50" y="70" width="240" height="180" rx="14" class="fa"></rect>
+      <text x="170" y="120" text-anchor="middle" class="t-head" font-size="24" font-weight="bold">Client (Mijoz)</text>
+      <text x="170" y="160" text-anchor="middle" class="t-muted" font-size="18">Brauzer, Mobil ilova,</text>
+      <text x="170" y="190" text-anchor="middle" class="t-muted" font-size="18">Telegram Bot, Frontend</text>
+
+      <!-- So'rov strelkasi (tepada) -->
+      <path d="M 310 120 L 670 120" class="la flowing" stroke-width="4"></path>
+      <polygon points="670,113 690,120 670,127" class="ar-a"></polygon>
+      <text x="490" y="105" text-anchor="middle" class="t-accent" font-size="18" font-weight="bold">1. HTTP Request (GET, POST...)</text>
+
+      <!-- Javob strelkasi (pastda) -->
+      <path d="M 690 200 L 330 200" class="lg flowing" stroke-width="4"></path>
+      <polygon points="330,193 310,200 330,207" class="ar-g"></polygon>
+      <text x="510" y="235" text-anchor="middle" class="t-accent" font-size="18" font-weight="bold">2. HTTP Response (HTML yoki JSON)</text>
+
+      <!-- Server qutisi -->
+      <rect x="710" y="70" width="240" height="180" rx="14" class="fb"></rect>
+      <text x="830" y="120" text-anchor="middle" class="t-head" font-size="24" font-weight="bold">Server (Backend)</text>
+      <text x="830" y="160" text-anchor="middle" class="t-muted" font-size="18">Django / DRF,</text>
+      <text x="830" y="190" text-anchor="middle" class="t-muted" font-size="18">Biznes mantiq, MB</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 5-slayd: HTTP Metodlari -->
+<section>
+  <h2>Asosiy HTTP metodlari</h2>
+  <div class="cards four">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="search"></i></div>
+      <h3>GET</h3>
+      <p>Serverdan ma'lumotlarni so'rab olish. Ma'lumotlar bazasini o'zgartirmaydi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-plus"></i></div>
+      <h3>POST</h3>
+      <p>Serverga yangi ma'lumot yuborish (ro'yxatdan o'tish, yangi post qo'shish).</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="refresh-cw"></i></div>
+      <h3>PUT / PATCH</h3>
+      <p>Mavjud ma'lumotni to'liq (PUT) yoki qisman (PATCH) yangilash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="trash"></i></div>
+      <h3>DELETE</h3>
+      <p>Serverdagi ma'lumotni o'chirib tashlash.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 6-slayd: Bo'lim 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Server-Side Rendering</h1>
+  <p>Sahifaning serverda to'liq tayyorlanishi (Klassik Django)</p>
+</section>
+
+<!-- 7-slayd: SVG Sxema: SSR ishlash tartibi -->
+<section>
+  <h2>SSR qanday ishlaydi?</h2>
+  <p>Server ma'lumotlar bazasidan olib, HTML shablonni to'ldiradi va tayyor sahifani uzatadi</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320" width="100%" height="320">
+      <!-- Qadam 1: Brauzer -->
+      <rect x="30" y="80" width="200" height="160" rx="12" class="fa"></rect>
+      <text x="130" y="130" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">1. Brauzer</text>
+      <text x="130" y="165" text-anchor="middle" class="t-muted" font-size="15">GET /news/1/</text>
+      <text x="130" y="195" text-anchor="middle" class="t-muted" font-size="15">So'rov yuboradi</text>
+
+      <!-- Strelka 1 -->
+      <path d="M 240 140 L 350 140" class="la flowing" stroke-width="3"></path>
+      <polygon points="350,135 365,140 350,145" class="ar-a"></polygon>
+
+      <!-- Qadam 2: Django View + DTL -->
+      <rect x="375" y="60" width="250" height="200" rx="12" class="fb"></rect>
+      <text x="500" y="105" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">2. Django Server</text>
+      <text x="500" y="140" text-anchor="middle" class="t-accent" font-size="15">DB dan ma'lumot oladi</text>
+      <text x="500" y="170" text-anchor="middle" class="t-muted" font-size="15">HTML shablonni to'ldiradi</text>
+      <text x="500" y="200" text-anchor="middle" class="t-muted" font-size="15">(render: HTML + CSS)</text>
+
+      <!-- Strelka 2 -->
+      <path d="M 635 180 L 745 180" class="lg flowing" stroke-width="3"></path>
+      <polygon points="745,175 760,180 745,185" class="ar-g"></polygon>
+
+      <!-- Qadam 3: Brauzer ekrani -->
+      <rect x="770" y="80" width="200" height="160" rx="12" class="fg"></rect>
+      <text x="870" y="130" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">3. Tayyor sahifa</text>
+      <text x="870" y="165" text-anchor="middle" class="t-muted" font-size="15">Brauzer tayyor</text>
+      <text x="870" y="195" text-anchor="middle" class="t-muted" font-size="15">HTML ni ko'rsatadi</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 8-slayd: SSR afzallik va kamchiliklari -->
+<section>
+  <h2>SSR ning tahlili</h2>
+  <div class="vs">
+    <div class="side">
+      <h3><i data-ic="circle-check"></i> Afzalliklari</h3>
+      <ul>
+        <li><strong>A'lo darajadagi SEO:</strong> Qidiruv botlari (Google, Yandex) to'liq HTML-ni darhol o'qiydi.</li>
+        <li><strong>Tezkor birinchi ko'rinish:</strong> Foydalanuvchi sahifani bir zumda ko'radi.</li>
+        <li><strong>Oddiy arxitektura:</strong> Frontend va backend bitta loyihada jamlangan.</li>
+      </ul>
+    </div>
+    <div class="side">
+      <h3><i data-ic="circle-alert"></i> Kamchiliklari</h3>
+      <ul>
+        <li><strong>Sahifaning to'liq yangilanishi:</strong> Har bir havola bosilganda butun ekran oqarib qayta yuklanadi.</li>
+        <li><strong>Server yuki yuqori:</strong> Server har bir so'rovga HTML fayl yig'ib berishi kerak.</li>
+        <li><strong>Mobil ilovalar uchun yaroqsiz:</strong> iOS yoki Android ilovaga HTML kerak emas, toza ma'lumot kerak.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 9-slayd: Bo'lim 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>User-Side Rendering</h1>
+  <p>Mijoz tomonida renderlash (CSR / SPA arxitekturasi)</p>
+</section>
+
+<!-- 10-slayd: SVG Sxema: USR ishlash tartibi -->
+<section>
+  <h2>USR / CSR qanday ishlaydi?</h2>
+  <p>Server bo'sh HTML va JS beradi, brauzerdagi JS esa API orqali faqat JSON oladi</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320" width="100%" height="320">
+      <!-- Brauzer JS -->
+      <rect x="30" y="70" width="240" height="180" rx="12" class="fc"></rect>
+      <text x="150" y="115" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Brauzer (Frontend)</text>
+      <text x="150" y="150" text-anchor="middle" class="t-muted" font-size="15">React / Vue / JS</text>
+      <text x="150" y="180" text-anchor="middle" class="t-muted" font-size="15">Bo'sh HTML yuklangan</text>
+      <text x="150" y="210" text-anchor="middle" class="t-accent" font-size="15">DOM-ni JS chizadi</text>
+
+      <!-- So'rov: JSON so'rash -->
+      <path d="M 280 120 L 680 120" class="lc flowing" stroke-width="4"></path>
+      <polygon points="680,113 700,120 680,127" class="ar-c"></polygon>
+      <text x="490" y="105" text-anchor="middle" class="t-accent" font-size="17" font-weight="bold">fetch('/api/v1/posts/')</text>
+
+      <!-- Javob: Faqat JSON -->
+      <path d="M 700 190 L 300 190" class="lg flowing" stroke-width="4"></path>
+      <polygon points="300,183 280,190 300,197" class="ar-g"></polygon>
+      <text x="490" y="225" text-anchor="middle" class="t-accent" font-size="17" font-weight="bold">JSON Javob: [{"id": 1, ...}]</text>
+
+      <!-- Backend API -->
+      <rect x="710" y="70" width="250" height="180" rx="12" class="fb"></rect>
+      <text x="835" y="115" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">DRF Backend (API)</text>
+      <text x="835" y="150" text-anchor="middle" class="t-muted" font-size="15">HTML shablon YO'Q</text>
+      <text x="835" y="180" text-anchor="middle" class="t-accent" font-size="15">Faqat toza ma'lumot</text>
+      <text x="835" y="210" text-anchor="middle" class="t-muted" font-size="15">Serialization (JSON)</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 11-slayd: USR afzalliklari -->
+<section>
+  <h2>Nega butun dunyo API ga o'tmoqda?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="rocket" data-anim="float"></i></div>
+      <h3>SPA va Interaktivlik</h3>
+      <p>Sahifa umuman qayta yuklanmaydi. Tugmani bosganda faqat kerakli qism o'zgaradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu" data-anim="pulse"></i></div>
+      <h3>Serverga minimal yuk</h3>
+      <p>Server har safar og'ir HTML yig'maydi. 100 KB o'rniga 3 KB toza JSON uzatiladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="globe" data-anim="spin"></i></div>
+      <h3>Bitta API — Hamma mijoz</h3>
+      <p>Yaratilgan REST API-dan bir vaqtning o'zida Web, iOS, Android va Bot foydalanadi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 12-slayd: Taqqoslash jadvali -->
+<section>
+  <h2>SSR va USR taqqoslash</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Mezon</th>
+        <th>Server-Side (SSR)</th>
+        <th>User-Side (USR / CSR)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Render joyi</strong></td>
+        <td>Serverda (Django MTV)</td>
+        <td>Brauzerda (JS / React)</td>
+      </tr>
+      <tr>
+        <td><strong>SEO qulayligi</strong></td>
+        <td>Juda oson va yuqori</td>
+        <td>Qo'shimcha sozlamalar talab etadi</td>
+      </tr>
+      <tr>
+        <td><strong>Interaktivlik</strong></td>
+        <td>Past (sahifa qayta yuklanadi)</td>
+        <td>Juda yuqori (SPA tajribasi)</td>
+      </tr>
+      <tr>
+        <td><strong>Server yuklamasi</strong></td>
+        <td>Yuqori</td>
+        <td>Minimal (faqat ma'lumot)</td>
+      </tr>
+      <tr>
+        <td><strong>Boshqa ilovalar</strong></td>
+        <td>Mobil ilovalar ulana olmaydi</td>
+        <td>Universal (Web, Mobile, Bot)</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 13-slayd: Interaktiv tanlov (swap) -->
+<section>
+  <h2>Qaysi birini tanlaymiz?</h2>
+  <p>Loyiha talabiga qarab texnologiya tanlash mahorati</p>
+  <div class="swap">
+    <div class="swap-tabs">
+      <button class="on" type="button"><i data-ic="globe"></i> Yangiliklar portali (SSR)</button>
+      <button type="button"><i data-ic="layers"></i> Admin panel / Dashboard (CSR)</button>
+    </div>
+    <div class="swap-p on">
+      <div class="callout tip">
+        <h4>Tavsiya: Server-Side Rendering (yoki Next.js)</h4>
+        <p>Yangiliklar portallari va ommaviy bloglar uchun qidiruv tizimlari (Google, Yandex) birinchi o'rinda turadi. Foydalanuvchi havolani bosganda matn darhol ko'rinishi shart.</p>
+      </div>
+    </div>
+    <div class="swap-p">
+      <div class="callout tip">
+        <h4>Tavsiya: Django REST Framework + React / Vue</h4>
+        <p>Buxgalteriya, maktab boshqaruv tizimi yoki tahliliy panelda SEO kerak emas. Bu yerda son-sanoqsiz jadvallar, filtrlar va tezkor hisob-kitoblar sahifa yangilanmasdan ishlashi kerak.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14-slayd: Bo'lim 4 -->
+<section class="sec">
+  <div class="num">04</div>
+  <h1>REST arxitekturasi va DRF</h1>
+  <p>Standartlashtirilgan backend API tamoyillari</p>
+</section>
+
+<!-- 15-slayd: REST tamoyillari -->
+<section>
+  <h2>RESTful API ning 4 ta oltin qoidasi</h2>
+  <ol class="steps-n mt">
+    <li class="fragment">
+      <strong>Client-Server ajratilganligi:</strong>
+      Foydalanuvchi interfeysi va backend bir-biriga bog'liq bo'lmagan mustaqil tizimlar.
+    </li>
+    <li class="fragment">
+      <strong>Stateless (Holatsiz):</strong>
+      Server har bir so'rovni mustaqil bajaradi. O'tgan so'rovlar holati sessiyada saqlanmaydi.
+    </li>
+    <li class="fragment">
+      <strong>Resurslarga asoslangan URL:</strong>
+      URL fe'l emas, ot bo'lishi kerak: <code>/api/v1/posts/</code> (amal metod bilan bildiriladi).
+    </li>
+    <li class="fragment">
+      <strong>Universal format:</strong>
+      Ma'lumotlar platformalarga bog'liq bo'lmagan umumiy formatda (JSON) uzatiladi.
+    </li>
+  </ol>
+</section>
+
+<!-- 16-slayd: JSON formati -->
+<section>
+  <h2>API qaytaradigan JSON namunasi</h2>
+  <p>Oddiy, tushunarli va barcha dasturlash tillari taniydigan format</p>
+  <pre><code class="language-json" data-trim data-noescape data-line-numbers="1-13|2-4|6-9|11">{
+  "id": 101,
+  "title": "Django REST Framework asoslari",
+  "slug": "drf-asoslari",
+  "status": "published",
+  "category": {
+    "id": 2,
+    "name": "Backend dasturlash"
+  },
+  "views_count": 1420,
+  "created_at": "2026-10-04T12:00:00Z"
+}</code></pre>
+</section>
+
+<!-- 17-slayd: DRF komponentlari -->
+<section>
+  <h2>Django REST Framework ekotizimi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="code-xml"></i></div>
+      <h3>Serializers</h3>
+      <p>Django model obyektlarini JSON-ga va kelgan JSON-ni modelga o'tkazuvchi filtr/tarjimon.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>ViewSets &amp; Views</h3>
+      <p>CRUD mantiqini birlashtiruvchi, biznes qoidalarni va ruxsatlarni boshqaruvchi qatlam.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="link"></i></div>
+      <h3>Routers</h3>
+      <p>URL marshrutlarni avtomatik ravishda REST standartida shakllantiruvchi dvigatel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 18-slayd: DRF Browsable API -->
+<section>
+  <h2>DRF ning eng kuchli jihati: Browsable API</h2>
+  <p>Brauzerda API ni hech qanday qo'shimcha dastursiz to'g'ridan-to'g'ri testlash mumkin</p>
+  <div class="browser">
+    <div class="bar">
+      <i></i><i></i><i></i>
+      <span>http://127.0.0.1:8000/api/v1/posts/</span>
+    </div>
+    <div class="page">
+      <p>HTTP 200 OK</p>
+      <p>Content-Type: application/json</p>
+      <pre><code class="language-json">[
+  {
+    "id": 1,
+    "title": "Texnologiya yangiliklari"
+  }
+]</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- 19-slayd: Interaktiv Flip Card -->
+<section>
+  <h2>Atamalarni eslab qolamiz</h2>
+  <p>Kartani bosib, uning ma'nosini tekshiring</p>
+  <div class="cards three">
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="server"></i></div>
+          <h3>SSR</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Server-Side</h3>
+          <p>HTML serverda yig'ilib, tayyor holda brauzerga jo'natiladi.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="laptop"></i></div>
+          <h3>USR / CSR</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Client-Side</h3>
+          <p>Brauzerda JS ishlaydi, serverdan faqat JSON API olinadi.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="shield"></i></div>
+          <h3>Stateless</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Holatsiz</h3>
+          <p>Har bir so'rov mustaqil, server o'tgan so'rovni eslab o'tirmaydi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 20-slayd: Mini-test Quiz -->
+<section>
+  <h2>Tezkor bilim tekshiruvi</h2>
+  <div class="quiz">
+    <p class="q">Qaysi holatda Django REST Framework (API) ishlatish eng to'g'ri qaror hisoblanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat bitta statik sahifali vizitka sayti uchun</button>
+      <button class="opt" type="button" data-ok>Bitta backenddan Web, Android va iOS ilovalar bir vaqtda foydalanishi uchun</button>
+      <button class="opt" type="button">Qidiruv tizimlariga faqat HTML sahifa ko'rsatish zarur bo'lganda</button>
+    </div>
+    <div class="explain">
+      To'g'ri! REST API ning eng katta kuchi — bitta yagona backend orqali barcha frontend mijozlariga (veb, mobil, bot) ma'lumot yetkazib berishidir.
+    </div>
+  </div>
+</section>
+
+<!-- 21-slayd: Odatiy xatolar -->
+<section>
+  <h2>Dasturchilar ko'p yo'l qo'yadigan xatolar</h2>
+  <div class="callout bad">
+    <i data-ic="circle-alert"></i>
+    Xato: REST URL ichida amallarni yozish (<code>GET /api/v1/delete_user/5/</code> xato!).
+  </div>
+  <div class="callout tip">
+    <i data-ic="circle-check"></i>
+    To'g'ri: URL faqat resurs nomi bo'lsin: <code>DELETE /api/v1/users/5/</code>.
+  </div>
+</section>
+
+<!-- 22-slayd: Amaliy topshiriq -->
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>15 daqiqa</span></h2>
+  <div class="task">
+    <span class="level easy">Oson</span>
+    3 ta xizmat (masalan: Kundalik.com, Instagram, Wikipedia) uchun SSR yoki USR mos kelishini aniqlang.
+  </div>
+  <div class="task">
+    <span class="level mid">O'rta</span>
+    Kutubxona API tizimi uchun 4 ta asosiy endpoint yozing (GET, POST, PUT, DELETE).
+  </div>
+  <div class="task">
+    <span class="level hard">Qiyin</span>
+    Bitta mahsulot uchun to'liq JSON ma'lumotlar tuzilmasini (id, title, price, category) shakllantiring.
+  </div>
+</section>
+
+<!-- 23-slayd: Xulosa -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h2>Darsni yakunlaymiz</h2>
+  <p class="muted">Keyingi darsda: DRF loyiha qurish, PostgreSQL sozlash va NewsPortal arxitekturasini yaratamiz!</p>
+  <div class="chips">
+    <span class="chip">SSR (HTML serverda)</span>
+    <span class="chip">CSR (JSON API + JS)</span>
+    <span class="chip">REST arxitekturasi</span>
+    <span class="chip">Django REST Framework</span>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Test: 15-dars. Kutubxonalar va versiyalar</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Test: 15-dars. Kutubxonalar va versiyalar</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">5-hafta · 15-dars</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Kutubxonalar qaysi blokda ulanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>android {}</code></button>
+      <button class="opt" type="button"><code>plugins {}</code></button>
+      <button class="opt" type="button" data-ok><code>dependencies {}</code></button>
+      <button class="opt" type="button"><code>buildTypes {}</code></button>
+    </div>
+    <div class="explain">Module-level <code>build.gradle</code> dagi <code>dependencies</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q"><code>implementation("a:b:1.0")</code> da <code>1.0</code> nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Guruh</button>
+      <button class="opt" type="button" data-ok>Versiya</button>
+      <button class="opt" type="button">Nom</button>
+      <button class="opt" type="button">Ombor</button>
+    </div>
+    <div class="explain">Format: guruh, nom, versiya.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Kutubxonalar qaysi ombordan yuklanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>google()</code> va <code>mavenCentral()</code></button>
+      <button class="opt" type="button"><code>github()</code></button>
+      <button class="opt" type="button"><code>localhost</code></button>
+      <button class="opt" type="button">Telegram</button>
+    </div>
+    <div class="explain">Standart omborlar.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi versiya eng barqaror?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>0.28.1-alpha</code></button>
+      <button class="opt" type="button"><code>1.0.0-beta03</code></button>
+      <button class="opt" type="button" data-ok><code>2.9.0</code></button>
+      <button class="opt" type="button"><code>3.0-SNAPSHOT-alpha</code></button>
+    </div>
+    <div class="explain">Qo'shimchasiz — stable nashr.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Ikki kutubxona OkHttp ning turli versiyasini talab qilsa, Gradle nimani tanlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Eng pastini</button>
+      <button class="opt" type="button">Tasodifiy</button>
+      <button class="opt" type="button">Hech birini</button>
+      <button class="opt" type="button" data-ok>Eng yuqori versiyani</button>
+    </div>
+    <div class="explain">Standart dependency resolution.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Aniq versiyani majburlash uchun?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>exclude(...)</code></button>
+      <button class="opt" type="button"><code>skip(...)</code></button>
+      <button class="opt" type="button" data-ok><code>force(...)</code></button>
+      <button class="opt" type="button"><code>pin(...)</code></button>
+    </div>
+    <div class="explain"><code>resolutionStrategy { force(...) }</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Keraksiz transitive bog'liqlikni olib tashlash uchun?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>exclude(...)</code></button>
+      <button class="opt" type="button"><code>force(...)</code></button>
+      <button class="opt" type="button"><code>delete(...)</code></button>
+      <button class="opt" type="button"><code>remove(...)</code></button>
+    </div>
+    <div class="explain"><code>exclude(group, module)</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Version catalog fayli qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>settings.xml</code></button>
+      <button class="opt" type="button"><code>build.xml</code></button>
+      <button class="opt" type="button" data-ok><code>libs.versions.toml</code></button>
+      <button class="opt" type="button"><code>gradle.json</code></button>
+    </div>
+    <div class="explain"><code>gradle/libs.versions.toml</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Katalogdagi <code>coil-compose</code> kodda qanday yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>libs.coil-compose</code></button>
+      <button class="opt" type="button"><code>libs.coilCompose2</code></button>
+      <button class="opt" type="button"><code>catalog.coil</code></button>
+      <button class="opt" type="button" data-ok><code>libs.coil.compose</code></button>
+    </div>
+    <div class="explain">Defis nuqtaga aylanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>compileSdk</code> haqida tavsiya?</p>
+    <div class="opts">
+      <button class="opt" type="button">Eng eski versiyani tanlash</button>
+      <button class="opt" type="button">Yozmaslik</button>
+      <button class="opt" type="button">Har oy o'zgartirish</button>
+      <button class="opt" type="button" data-ok>So'nggi barqaror versiyada tutish</button>
+    </div>
+    <div class="explain"><code>compileSdk</code> kompilyatsiya uchun ishlatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: 15-dars konspekti va slaydlari</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

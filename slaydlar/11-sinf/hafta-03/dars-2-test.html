@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>8-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>8-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">LSP (Liskov Substitution) nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Voris sinf obyekti bazaviy sinf o'rnida kutilmagan holatsiz ishlashi kerak</button>
+      <button class="opt" type="button">Voris sinflar yaratilmasligi kerak</button>
+      <button class="opt" type="button">Bazaviy sinf o'chirilishi kerak</button>
+      <button class="opt" type="button">Barcha sinflar bitta metodga ega bo'lishi kerak</button>
+    </div>
+    <div class="explain">Funksiya <code>BaseClass</code> qabul qilsa, <code>SubClass</code> uzatilganda ham buzilmasligi lozim.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">LSP buzilishining klassik misoli qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>Dog</code> va <code>Cat</code></button>
+      <button class="opt" type="button" data-ok><code>Rectangle</code> va <code>Square</code></button>
+      <button class="opt" type="button"><code>User</code> va <code>Admin</code></button>
+      <button class="opt" type="button"><code>List</code> va <code>Tuple</code></button>
+    </div>
+    <div class="explain">Kvadratning enini o'zgartirsangiz bo'yi ham o'zgaradi, <code>set_width()</code> kutilmagan natija beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">ISP (Interface Segregation) nimani talab qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Bitta katta interfeys bo'lsin</button>
+      <button class="opt" type="button">Interfeyslar bo'lmasin</button>
+      <button class="opt" type="button" data-ok>Mijoz o'zi ishlatmaydigan metodlarga bog'lanishga majbur bo'lmasin</button>
+      <button class="opt" type="button">Faqat bitta metod bo'lsin</button>
+    </div>
+    <div class="explain">Katta («semiz») interfeys o'rniga kichik, aniq interfeyslar yaratiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">DIP ga ko'ra yuqori darajadagi modul nimaga tayanishi kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Aniq amalga oshirilgan sinflarga</button>
+      <button class="opt" type="button">Global o'zgaruvchilarga</button>
+      <button class="opt" type="button">Fayl nomlariga</button>
+      <button class="opt" type="button" data-ok>Abstraksiyalarga</button>
+    </div>
+    <div class="explain">Yuqori va past daraja modullar ikkalasi ham abstraksiyaga tayanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Dependency Injection nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Sinf tashqi obyektni o'zi yaratmasdan, konstruktor orqali qabul qiladi</button>
+      <button class="opt" type="button">Sinf ichida <code>new DB()</code> chaqiriladi</button>
+      <button class="opt" type="button">Sinf global holatni o'zgartiradi</button>
+      <button class="opt" type="button">Obyekt o'chiriladi</button>
+    </div>
+    <div class="explain"><code>UserService(repo)</code> kabi uzatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Nega <code>FakeUserRepository</code> testlarda qulay?</p>
+    <div class="opts">
+      <button class="opt" type="button">Chunki u PostgreSQL ning yangi versiyasi</button>
+      <button class="opt" type="button" data-ok>Haqiqiy baza serversiz tez va izolyatsiyada test qilish mumkin</button>
+      <button class="opt" type="button">Chunki test kerak bo'lmaydi</button>
+      <button class="opt" type="button">Chunki u PostgreSQL ni almashtiradi</button>
+    </div>
+    <div class="explain">DIP tufayli abstraksiya orqali soxta obyekt inject qilinadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">«God Object» qaysi kod hidiga tegishli?</p>
+    <div class="opts">
+      <button class="opt" type="button">Juda qisqa funksiya</button>
+      <button class="opt" type="button">Har bir sinf bitta ishni qiladi</button>
+      <button class="opt" type="button" data-ok>Barcha ishni bitta ulkan sinf bajaradi</button>
+      <button class="opt" type="button">Ortiqcha izohlar</button>
+    </div>
+    <div class="explain">Davosi: Extract Class (SRP).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Telefon raqam yoki pulni oddiy <code>str</code> yoki <code>int</code> da saqlash qaysi kod hidi va davosi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Feature Envy; Move Method</button>
+      <button class="opt" type="button">Long Method; Extract Method</button>
+      <button class="opt" type="button">God Object; Extract Class</button>
+      <button class="opt" type="button" data-ok>Primitive Obsession; Value Object (<code>Money</code>, <code>PhoneNumber</code>)</button>
+    </div>
+    <div class="explain">Qiymat obyektlari qoidalarni bir joyda saqlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>Penguin</code> sinfi <code>Bird.fly()</code> ni meros oladi, lekin uchmaydi va xato beradi. Qaysi tamoyil buzilgan?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>LSP</button>
+      <button class="opt" type="button">SRP</button>
+      <button class="opt" type="button">OCP</button>
+      <button class="opt" type="button">DRY</button>
+    </div>
+    <div class="explain">Voris bazaviy sinf va'da qilgan xatti-harakatdan kamini ko'rsatmasligi kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>UserService.__init__</code> ichida <code>PostgresDatabase("localhost:5432")</code> yaratilgan. Unit test nega qiyin va nima qilinadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Test muammosi yo'q</button>
+      <button class="opt" type="button" data-ok>Qattiq bog'liqlik; <code>UserRepository</code> abstraksiyasini konstruktor orqali berish</button>
+      <button class="opt" type="button">Bazani o'chirish kerak</button>
+      <button class="opt" type="button">Funksiya nomini o'zgartirish kerak</button>
+    </div>
+    <div class="explain">DIP + DI bilan test uchun <code>FakeUserRepository</code> uzatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: LSP, ISP, DIP va Dependency Injection, kod hidlari.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

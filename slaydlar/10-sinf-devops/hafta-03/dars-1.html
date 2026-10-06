@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Git branchlar va masofaviy omborlar</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 7-dars. Git branchlar va masofaviy repozitoriylar (GitHub, Push, Pull, Merge) -->
+
+<!-- 1. SARLAVHA -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Git branchlar va masofaviy omborlar</h1>
+  <p class="muted">Tarmoqlanish (branching), birlashtirish (merge), ziddiyatlar va GitHub ekotizimi</p>
+  <span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">3-hafta · 7-dars</span>
+</section>
+
+<!-- 2. MAQSADLAR KARTALARI -->
+<section>
+  <h2>Bugungi dars maqsadlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="git-branch" data-anim="float"></i></div>
+      <h3>Branchlar mantig'i</h3>
+      <p>Asosiy main kodiga daxl qilmay parallel ishlab chiqish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="git-merge" data-anim="pulse"></i></div>
+      <h3>Birlashtirish (Merge)</h3>
+      <p>Fast-forward, 3-way merge va konfliktlarni hal qilish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cloud" data-anim="spin"></i></div>
+      <h3>GitHub va Masofaviy ish</h3>
+      <p>Remote origin, push, pull va jamoaviy kod almashish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 3. STATISTIKA: BRANCHING TEZLIGI -->
+<section>
+  <h2>Git branchlari raqamlarda</h2>
+  <div class="stats">
+    <div class="stat fragment"><div class="v"><span class="count" data-to="41" data-suf=" bayt">0</span></div><div class="l">bitta branch xotira hajmi</div></div>
+    <div class="stat fragment"><div class="v">1 ms</div><div class="l">yangi branch ochish vaqti</div></div>
+    <div class="stat fragment"><div class="v">0 xavf</div><div class="l">asosiy kod barqaror qoladi</div></div>
+  </div>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Git branch shunchaki commit xeshiga qaratilgan yengil ko'rsatkichdir!</div>
+</section>
+
+<!-- 4. BO'LIM 01: BRANCHING ARXITEKTURASI -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Branching arxitekturasi</h1>
+  <p>Loyiha tarixida yangi parallel tarmoq ochish</p>
+</section>
+
+<!-- 5. SVG ILLYUSTRATSIYA 1: BRANCHING SXEMASI -->
+<section>
+  <h2>Tarmoqlanish (Branching) modeli</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <circle class="fa" cx="150" cy="200" r="35"/><text class="t-head" x="150" y="205" text-anchor="middle" font-size="16">C1</text>
+      <line class="la" x1="185" y1="200" x2="315" y2="200"/>
+
+      <circle class="fa" cx="350" cy="200" r="35"/><text class="t-head" x="350" y="205" text-anchor="middle" font-size="16">C2</text>
+      <text class="t-muted" x="350" y="260" text-anchor="middle" font-size="16">main</text>
+
+      <line class="la flowing" x1="375" y1="175" x2="515" y2="95"/><polygon class="ar-a" points="520,92 506,94 515,106"/>
+
+      <g class="fragment"><circle class="fb" cx="550" cy="80" r="35"/><text class="t-head" x="550" y="85" text-anchor="middle" font-size="16">C3</text></g>
+      <line class="lb flowing" x1="585" y1="80" x2="715" y2="80"/><polygon class="ar-b" points="720,80 707,72 707,88"/>
+
+      <g class="fragment"><circle class="fb" cx="750" cy="80" r="35"/><text class="t-head" x="750" y="85" text-anchor="middle" font-size="16">C4</text><text class="t-accent" x="750" y="140" text-anchor="middle" font-size="16">feature-login</text></g>
+
+      <line class="la" x1="385" y1="200" x2="715" y2="200"/>
+      <g class="fragment"><circle class="fa" cx="750" cy="200" r="35"/><text class="t-head" x="750" y="205" text-anchor="middle" font-size="16">C5</text><text class="t-muted" x="750" y="260" text-anchor="middle" font-size="16">main (HEAD)</text></g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 6. BO'LIM 02: BIRLASHTIRISH VA MOJAROLAR -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Branchlarni birlashtirish</h1>
+  <p>Fast-forward, 3-way merge va ziddiyatlarni (conflicts) hal qilish</p>
+</section>
+
+<!-- 7. TAQQOSLASH (SWAP): FAST-FORWARD vs 3-WAY -->
+<section>
+  <h2>Merge turlari</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">Fast-forward</button><button type="button">3-Way Merge</button></div>
+    <div class="swap-p">
+      <div class="card">
+        <h3>Fast-forward Merge</h3>
+        <p>Main branchda siz ajralganingizdan beri yangi kommit bo'lmagan.</p>
+        <p>Git shunchaki main ko'rsatkichini oldinga surib qo'yadi.</p>
+        <p>Qo'shimcha merge commit yaratilmaydi.</p>
+      </div>
+    </div>
+    <div class="swap-p">
+      <div class="card accent">
+        <h3>3-Way Merge (Haqiqiy birlashuv)</h3>
+        <p>Ikkala branchda ham parallel ravishda yangi kommitlar kiritilgan.</p>
+        <p>Git ikkita ota kommitga ega bo'lgan yangi «Merge commit» hosil qiladi.</p>
+        <p>Tarixda tarmoqlanish va birlashish yaqqol aks etadi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. SVG ILLYUSTRATSIYA 2: MERGE CONFLICT -->
+<section>
+  <h2>Merge Conflict (Mojaro) anatomiyasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <rect class="fa" x="80" y="50" width="840" height="220" rx="16"/>
+      <text class="t-accent" x="120" y="95" font-size="20">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD (Joriy main branch kodi)</text>
+      <rect class="fn" x="120" y="110" width="760" height="35" rx="6"/>
+      <text class="t-head" x="140" y="133" font-size="18">const API_URL = "https://production.api.com";</text>
+      
+      <text class="t-muted" x="500" y="165" text-anchor="middle" font-size="20">=======</text>
+
+      <rect class="fn" x="120" y="180" width="760" height="35" rx="6"/>
+      <text class="t-head" x="140" y="203" font-size="18">const API_URL = "https://staging-v2.api.com";</text>
+      <text class="t-accent" x="120" y="245" font-size="20">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature-api (Qo'shilayotgan yangi kod)</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 9. STEPPER: KONFLIKTNI HAL QILISH BOSQICHLARI -->
+<section>
+  <h2>Konfliktni hal qilish algoritmi</h2>
+  <div class="stepper">
+    <div class="stp on">
+      <div class="card">
+        <div class="icon"><i data-ic="search" data-anim="float"></i></div>
+        <h3>1. Faylni ochish</h3>
+        <p>Konfliktli faylni matn muharririda oching.</p>
+      </div>
+    </div>
+    <div class="stp">
+      <div class="card">
+        <div class="icon"><i data-ic="file-pen" data-anim="pulse"></i></div>
+        <h3>2. To'g'ri kodni qoldirish</h3>
+        <p>Keraksiz qatorlarni va <code>&lt;&lt;&lt;</code>, <code>===</code>, <code>&gt;&gt;&gt;</code> belgilarini o'chiring.</p>
+      </div>
+    </div>
+    <div class="stp">
+      <div class="card">
+        <div class="icon"><i data-ic="shield-check" data-anim="draw"></i></div>
+        <h3>3. Commit qilish</h3>
+        <p><code>git add [fayl]</code> va <code>git commit</code> bilan yakunlang.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. BO'LIM 03: MASOFAVIY OMBORLAR VA GITHUB -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Masofaviy omborlar (Remote)</h1>
+  <p>GitHub, GitLab va jamoaviy hamkorlik: push va pull</p>
+</section>
+
+<!-- 11. SVG ILLYUSTRATSIYA 3: REMOTE HAMKORLIK -->
+<section>
+  <h2>Lokal va Masofaviy ombor aloqasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <rect class="fa" x="50" y="80" width="260" height="160" rx="16"/>
+      <text class="t-head" x="180" y="130" text-anchor="middle" font-size="22">Lokal kompyuter</text>
+      <text class="t-muted" x="180" y="165" text-anchor="middle" font-size="16">Sizning repozitoriyangiz</text>
+      <text class="t-accent" x="180" y="195" text-anchor="middle" font-size="16">main (lokal)</text>
+
+      <line class="la flowing" x1="310" y1="120" x2="490" y2="120"/><polygon class="ar-a" points="495,120 482,112 482,128"/>
+      <text class="t-accent" x="400" y="105" text-anchor="middle" font-size="16">git push</text>
+
+      <line class="lc flowing" x1="490" y1="190" x2="310" y2="190"/><polygon class="ar-c" points="305,190 318,198 318,182"/>
+      <text class="t-muted" x="400" y="220" text-anchor="middle" font-size="16">git pull</text>
+
+      <rect class="fb" x="500" y="80" width="450" height="160" rx="16"/>
+      <text class="t-head" x="725" y="130" text-anchor="middle" font-size="22">GitHub / GitLab (Remote)</text>
+      <text class="t-muted" x="725" y="165" text-anchor="middle" font-size="16">Markaziy bulut ombori: origin</text>
+      <text class="t-head" x="725" y="195" text-anchor="middle" font-size="16">CI/CD va Jamoa hamkorligi</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 12. AYLANADIGAN KARTALAR: REMOTE BUYRUQLAR -->
+<section>
+  <h2>Masofaviy buyruqlar</h2>
+  <div class="cards three">
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="cloud-download"></i></div><h3>git clone</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>GitHub'dagi butun loyihani tarixi bilan o'z kompyuteringizga to'liq ko'chiradi.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="cloud-upload"></i></div><h3>git push</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Lokal commitlarni GitHub serveriga xavfsiz yuklaydi (yuklash).</p></div>
+    </div></div>
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="cloud-sync"></i></div><h3>git pull</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Jamoaning yangi o'zgarishlarini GitHub'dan lokal omborga oladi (yangilash).</p></div>
+    </div></div>
+  </div>
+</section>
+
+<!-- 13. KOD: AMALIY BRANCH VA REMOTE BUYRUQLAR -->
+<section>
+  <h2>Amaliy buyruqlar sintaksisi</h2>
+  <pre><code class="language-bash" data-trim data-noescape data-line-numbers="1-6|1-2|4|6">
+# Yangi branch ochish va unga o'tish
+git switch -c feature-navbar
+
+# Asosiy branchga birlashtirish
+git switch main && git merge feature-navbar
+
+# GitHub masofaviy omboriga yuklash
+git push -u origin main
+  </code></pre>
+  <div class="callout tip"><i data-ic="circle-check"></i><code>git switch -c</code> buyrug'i <code>git checkout -b</code> ning zamonaviy va xavfsiz analogidir.</div>
+</section>
+
+<!-- 14. MINI TEST (QUIZ) -->
+<section>
+  <h2>Tezkor bilim sinovi</h2>
+  <div class="quiz">
+    <p class="q">Qaysi buyruq yangi branch yaratib, darhol unga o'tishni ta'minlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">git branch [nom]</button>
+      <button class="opt" type="button" data-ok>git switch -c [nom]</button>
+      <button class="opt" type="button">git merge [nom]</button>
+      <button class="opt" type="button">git push [nom]</button>
+    </div>
+    <div class="explain">To'g'ri: 'git switch -c' (yoki 'checkout -b') yangi branch ochadi va avtomatik unga o'tadi!</div>
+  </div>
+</section>
+
+<!-- 15. AMALIY TOPSHIRIQ -->
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span><code>git switch -c feature-test</code> qiling va bitta fayl commit qiling.</div>
+  <div class="task"><span class="level mid">O'rta</span><code>main</code> ga qaytib, uni <code>merge</code> qiling va branchni o'chiring.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Merge conflict hosil qiling va uni qo'lda to'g'rilab muhrlang.</div>
+</section>
+
+<!-- 16. XULOSA -->
+<section>
+  <h2>Bugungi dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>O'rganilgan mavzular</h3>
+      <p>Git branching, Fast-forward va 3-way merge, konfliktlarni yechish hamda masofaviy GitHub (push, pull).</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="book-open"></i></div>
+      <h3>Uyga vazifa</h3>
+      <p>Yangi branch ochish, mustaqil funksiya yozish va asosiy branchga xavfsiz birlashtirish.</p>
+    </div>
+  </div>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

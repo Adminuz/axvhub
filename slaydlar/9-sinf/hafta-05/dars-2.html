@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Mashhur UI kitlar</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Mashhur UI kitlar</h1>
+  <p class="muted">Apple HIG, Ant Design, Bootstrap, Figma UI Kit, Material UI</p>
+  <span class="badge">9-sinf</span><span class="badge">UX/UI dizayn</span><span class="badge">5-hafta · 14-dars</span>
+  
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">UI Kit va dizayn tizimi qanday bog'langan?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ular bir xil narsa</button>
+      <button class="opt" type="button" data-ok>UI Kit — dizayn tizimining bir qismi</button>
+      <button class="opt" type="button">Dizayn tizimi — UI Kit'ning bir qismi</button>
+      <button class="opt" type="button">Ular bog'liq emas</button>
+    </div>
+    <div class="explain">Dizayn tizimi = komponentlar + tokenlar + shablonlar + qoidalar + hujjatlar.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Nega har xil kitlar bor?</h2>
+  <div class="chips">
+    <span class="chip fragment">funksionallik</span>
+    <span class="chip fragment">platformaga moslik</span>
+    <span class="chip fragment">komponentlar soni</span>
+    <span class="chip fragment">moslashuvchanlik</span>
+  </div>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>iOS ilova, korporativ panel va oddiy sayt — har biriga o'z kiti mos.</div>
+</section>
+
+<section>
+  <h2>5 ta mashhur kit</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+      <g data-tip="Apple — iOS, macOS, watchOS, tvOS, visionOS"><rect class="fa la" x="20" y="90" width="170" height="80" rx="14" stroke-width="3"/><text class="t-head" x="105" y="138" text-anchor="middle" font-size="24">HIG</text></g>
+      <g class="fragment" data-tip="React.js, korporativ veb-ilovalar"><rect class="fb lb" x="215" y="90" width="170" height="80" rx="14" stroke-width="3"/><text class="t-head" x="300" y="138" text-anchor="middle" font-size="22">Ant Design</text></g>
+      <g class="fragment" data-tip="HTML, CSS, JS — responsiv dizayn"><rect class="fc lc" x="410" y="90" width="170" height="80" rx="14" stroke-width="3"/><text class="t-head" x="495" y="138" text-anchor="middle" font-size="22">Bootstrap</text></g>
+      <g class="fragment" data-tip="Figma uchun komponentlar va shablonlar"><rect class="fg lg" x="605" y="90" width="170" height="80" rx="14" stroke-width="3"/><text class="t-head" x="690" y="138" text-anchor="middle" font-size="22">Figma UI Kit</text></g>
+      <g class="fragment" data-tip="Google Material Design, React"><rect class="fn ln" x="800" y="90" width="180" height="80" rx="14" stroke-width="3"/><text class="t-head" x="890" y="138" text-anchor="middle" font-size="22">Material UI</text></g>
+      <line class="la flowing" x1="40" y1="230" x2="960" y2="230" stroke-width="3" marker-end="url(#ar-a)"/>
+      <text class="t-muted" x="500" y="270" text-anchor="middle" font-size="20">mobil qoidalar → korporativ → veb → prototip → React ilovalar</text>
+    </svg>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Apple HIG</h1>
+  <p>Human Interface Guidelines</p>
+</section>
+
+<section>
+  <h2>HIG nima?</h2>
+  <div class="quote fragment">Apple'ning dizayn qo'llanmasi: iOS, macOS, watchOS, tvOS va visionOS ilovalari uchun eng yaxshi amaliyotlar va tamoyillar.</div>
+  <div class="stats mt">
+    <div class="stat fragment"><div class="v"><span class="count" data-to="1977" data-suf="">0</span></div><div class="l">Apple II uchun boshlangan</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="5" data-suf="">0</span></div><div class="l">platforma</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="6" data-suf="">0</span></div><div class="l">asosiy bo'lim</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>HIG'ning 6 bo'limi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="monitor-smartphone" data-anim="float"></i></div><h3>Platforms</h3><p>iOS, macOS, watchOS, tvOS, visionOS</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="palette"></i></div><h3>Foundations</h3><p>rang, shrift, layout, accessibility</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="search"></i></div><h3>Patterns</h3><p>share, multitasking, search, feedback</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="blocks"></i></div><h3>Components</h3><p>menyu, tugma, karta, forma</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="hand"></i></div><h3>Inputs</h3><p>touch, keyboard, gestures, eye gaze</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="cpu"></i></div><h3>Technologies</h3><p>Apple Pay, iCloud, Maps, HomeKit</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Rang, shrift va accessibility HIG'ning qaysi bo'limida?</p>
+    <div class="opts">
+      <button class="opt" type="button">Patterns</button>
+      <button class="opt" type="button" data-ok>Foundations</button>
+      <button class="opt" type="button">Technologies</button>
+      <button class="opt" type="button">Inputs</button>
+    </div>
+    <div class="explain">Foundations — asoslar: rang, shrift, layout, kompozitsiya, kirish imkoniyati.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Ant Design va Bootstrap</h1>
+  <p>Korporativ panel va responsiv veb</p>
+</section>
+
+<section>
+  <h2>Ant Design va Bootstrap</h2>
+  <div class="vs">
+    <div class="side fragment"><h3><i data-ic="table"></i> Ant Design</h3><b>React.js</b> asosida. Korporativ veb-ilovalar: jadval, forma, pagination, datepicker.</div>
+    <div class="mid">vs</div>
+    <div class="side b fragment"><h3><i data-ic="smartphone" data-anim="pulse"></i> Bootstrap</h3><b>HTML, CSS, JS</b>. Twitter dasturchilari yaratgan. Kuchi — responsiv dizayn.</div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>Komponent guruhlari</h2>
+    <table>
+      <thead><tr><th>Guruh</th><th>Ant Design</th><th>Bootstrap</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td>Navigatsiya</td><td>menu, breadcrumb, tabs</td><td>navbar, breadcrumb, tabs, pagination</td></tr>
+        <tr class="fragment"><td>Forma</td><td>input, checkbox, radio, select, datepicker</td><td>input, textarea, select, validation</td></tr>
+        <tr class="fragment"><td>Vizual</td><td>button, icon, tooltip, avatar, badge, tag</td><td>button, badge, alert, card, modal</td></tr>
+        <tr class="fragment"><td>Maxsus</td><td>table, list, chart, progress, skeleton</td><td>container, row, col; carousel, dropdown</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: Bootstrap grid</p>
+  </section>
+  <section>
+    <h2>Bootstrap grid</h2>
+    <div class="callout tip"><i data-ic="layout-grid"></i><b>container → row → col</b>: sahifa 12 ustunli to'rga bo'linadi va ekran kichrayganda ustunlar avtomatik qayta joylashadi.</div>
+  </section>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Figma UI Kit va Material UI</h1>
+  <p>Prototip va React komponentlar</p>
+</section>
+
+<section>
+  <h2>Figma UI Kit</h2>
+  <div class="cards two">
+    <div class="card fragment"><div class="icon"><i data-ic="panels-top-left"></i></div><h3>Navigatsiya va forma</h3><p>menu, tabs, sidebars; input, checkbox, dropdown, slider</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="mouse-pointer-click"></i></div><h3>Interaktiv</h3><p>hover, klik, drag &amp; drop effektlari</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="layout-template"></i></div><h3>Shablonlar</h3><p>ekran tartiblari, wireframe, prototip sahifalari</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="users"></i></div><h3>Jamoa</h3><p>yagona uslub va birgalikda ishlash</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Material UI (MUI)</h2>
+  <div class="flip fragment" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>MUI nimaga asoslangan?</h3><span class="flip-hint">bosing</span></div><div class="face back"><p><b>Google Material Design</b> tamoyillari, <b>React</b> komponentlari.</p></div></div></div>
+  <pre class="terminal"><code class="language-bash" data-trim data-noescape>
+npm install @mui/material
+yarn add @mui/material
+  </code></pre>
+  <p class="small">react va react-dom ham kerak.</p>
+</section>
+
+<section>
+  <h2>Button props</h2>
+  <pre class="terminal"><code class="language-jsx" data-trim data-line-numbers="1|2|3">
+&lt;Button variant="text"&gt;Button&lt;/Button&gt;
+&lt;Button variant="contained" size="large"&gt;Button&lt;/Button&gt;
+&lt;Button variant="outlined" disabled&gt;Button&lt;/Button&gt;
+  </code></pre>
+  <div class="chips mt">
+    <span class="chip fragment">variant: text · contained · outlined</span>
+    <span class="chip fragment">size: small · medium · large</span>
+    <span class="chip fragment">disabled</span>
+  </div>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">sx xususiyati</h2>
+  <p>Oddiy tugma: <code>&lt;Button variant="contained"&gt;</code></p>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">sx xususiyati</h2>
+  <p><code>sx={{ backgroundColor: 'purple', width: 200, color: 'white' }}</code></p>
+  <div class="callout warn"><i data-ic="triangle-alert"></i>sx — qo'shimcha CSS. Ko'p ishlatsangiz kitning yagona uslubi buziladi.</div>
+</section>
+
+<section>
+  <h2>Qaysi kit qachon?</h2>
+  <ol class="steps-n">
+    <li class="fragment"><b>iPhone / Mac ilova</b> → HIG</li>
+    <li class="fragment"><b>Jadvalli admin-panel</b> → Ant Design</li>
+    <li class="fragment"><b>Tez responsiv sayt</b> → Bootstrap</li>
+    <li class="fragment"><b>Klikli prototip</b> → Figma UI Kit</li>
+    <li class="fragment"><b>Material uslubidagi React ilova</b> → Material UI</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Bank xodimlari uchun jadvalli React admin-panel. Qaysi kit?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Ant Design</button>
+      <button class="opt" type="button">Apple HIG</button>
+      <button class="opt" type="button">Figma UI Kit</button>
+      <button class="opt" type="button">Hech qaysi</button>
+    </div>
+    <div class="explain">Ant Design — korporativ veb-ilovalar uchun: table, pagination, datepicker tayyor.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Figma Community'da kit</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="globe"></i></div><h3>1. Community</h3><p>Qidiruv: «Material 3», «iOS UI Kit».</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="file-plus"></i></div><h3>2. Open in Figma</h3><p>Nusxa Drafts'ga tushadi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="copy"></i></div><h3>3. Nusxalash</h3><p>Button va Input'ni Tahlil frame'iga.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="table"></i></div><h3>4. Taqqoslash</h3><p>radius, balandlik, rang, holatlar, shrift.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriqlar <span class="timer"><i data-ic="timer"></i>30 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Kitni toping: Apple II, Twitter, npm, korporativ React.</div>
+  <div class="task"><span class="level mid">O'rta</span>4 ta buyurtmaga kit tanlang va asoslang.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Figma Community: 2 kitning Button va Input'ini 5 mezon bo'yicha taqqoslang.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>HIG</h3><p>Apple, 1977, 6 bo'lim.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Ant · Bootstrap</h3><p>React korporativ · HTML/CSS/JS responsiv.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Figma · MUI</h3><p>Prototip · Material Design React.</p></div>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="library" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: UI kit amaliyoti</h1>
+  <p class="muted">«E-kutubxona» header va kategoriya paneli</p>
+  <span class="badge">5-hafta · 15-dars</span>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

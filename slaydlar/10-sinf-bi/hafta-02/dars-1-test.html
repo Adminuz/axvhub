@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>1-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>1-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">BI &amp; ML</span><span class="badge">2-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Satrli (row-based) saqlashning asosiy afzalligi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Yangi qator qo'shish va butun yozuvni o'qish tez (OLTP)</button>
+      <button class="opt" type="button">Ustun bo'yicha agregatsiya juda tez</button>
+      <button class="opt" type="button">Fayl hajmi har doim eng kichik</button>
+      <button class="opt" type="button">Faqat kerakli ustunlar o'qiladi</button>
+    </div>
+    <div class="explain">Satrli formatda bitta yozuv diskda ketma-ket turadi, shuning uchun INSERT va to'liq yozuvni o'qish tez.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Parquet qaysi turdagi format?</p>
+    <div class="opts">
+      <button class="opt" type="button">Satrli matn formati</button>
+      <button class="opt" type="button" data-ok>Ustunli (columnar) ikkilik format</button>
+      <button class="opt" type="button">Ichma-ich JSON formati</button>
+      <button class="opt" type="button">Faqat Excel formati</button>
+    </div>
+    <div class="explain">Parquet - ochiq kodli ustunli binary format.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Projection Pushdown nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Shartga mos kelmaydigan Row Group'larni o'tkazib yuborish</button>
+      <button class="opt" type="button">Faylni Gzip bilan siqish</button>
+      <button class="opt" type="button" data-ok>So'rovda ko'rsatilgan ustunlarnigina diskdan o'qish</button>
+      <button class="opt" type="button">Footer'ni fayl boshiga ko'chirish</button>
+    </div>
+    <div class="explain">Masalan, <code>pd.read_parquet('data.parquet', columns=['ism', 'baho'])</code> faqat ikki ustunni o'qiydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Parquet fayli matn muharririda ochilsa nega tushunarsiz belgilar ko'rinadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Chunki fayl buzilgan</button>
+      <button class="opt" type="button">Chunki faqat Windows'da ochiladi</button>
+      <button class="opt" type="button">Chunki UTF-8 ishlatilmagan</button>
+      <button class="opt" type="button" data-ok>Chunki u binary formatda saqlanadi va siqilgan</button>
+    </div>
+    <div class="explain">Binary format maxsus kutubxona (pyarrow) orqali o'qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Parquet metadata (Footer) nega fayl oxirida joylashadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Statistikalar yozuv tugagach ma'lum bo'ladi, shuning uchun fayl bir o'tishda yoziladi</button>
+      <button class="opt" type="button">Faylni tez o'chirish uchun</button>
+      <button class="opt" type="button">Oxiridagi ma'lumot siqilmasligi uchun</button>
+      <button class="opt" type="button">Boshida joy qolmagani uchun</button>
+    </div>
+    <div class="explain">Qatorlar soni va min/max faqat yozib bo'lingach aniqlanadi (single-pass streaming write).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Snappy ning Gzip dan asosiy ustunligi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Fayl hajmini ancha kichikroq qiladi</button>
+      <button class="opt" type="button" data-ok>Siqish va ochish tezligi yuqori, CPU'ga kam yuk</button>
+      <button class="opt" type="button">Ma'lumotni shifrlaydi</button>
+      <button class="opt" type="button">Faqat CSV bilan ishlaydi</button>
+    </div>
+    <div class="explain">Snappy Gzip kabi maksimal siqmasligi mumkin, lekin tez ishlaydi va Parquet'da standart.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>pd.read_parquet(p, columns=['viloyat','baho'])</code> va <code>pd.read_csv(p, usecols=[...])</code> farqi qanday?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ikkalasi bir xil tezlikda ishlaydi</button>
+      <button class="opt" type="button">CSV tezroq, chunki matn</button>
+      <button class="opt" type="button" data-ok>Parquet'da faqat shu ustunlar diskdan o'qiladi; CSV da satrlar baribir skanerlanadi</button>
+      <button class="opt" type="button">Parquet barcha ustunlarni o'qiydi, keyin tashlaydi</button>
+    </div>
+    <div class="explain">Columnar format Column Chunk'larni alohida saqlagani uchun kerakli ustungina o'qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Footer'dagi Min/Max statistikalar tufayli <code>yil == 2024</code> filtri qaysi optimizatsiyani beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Projection Pushdown: ortiqcha ustunlar o'qilmaydi</button>
+      <button class="opt" type="button">Schema Evolution: yangi maydonlar qo'shiladi</button>
+      <button class="opt" type="button">Snappy: fayl ochilmaydi</button>
+      <button class="opt" type="button" data-ok>Predicate Pushdown: mos kelmaydigan Row Group'lar o'qilmaydi</button>
+    </div>
+    <div class="explain">Row Group'da yillar 2020-2022 bo'lsa, u blok xotiraga yuklanmasdan tashlab ketiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">100 ustunli jadvalda faqat bitta ustun bo'yicha <code>SUM()</code> qilinadi. Nega Parquet CSV dan tez?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Faqat shu ustunning Column Chunk'i o'qiladi, qolgan 99 tasi ochilmaydi</button>
+      <button class="opt" type="button">Parquet jadvalni xotiraga to'liq yuklaydi</button>
+      <button class="opt" type="button">CSV Snappy bilan siqilgan</button>
+      <button class="opt" type="button">Parquet SUM ni diskda hisoblamaydi, lekin CSV hisoblaydi</button>
+    </div>
+    <div class="explain">CSV da barcha 100 ustun satrma-satr skanerlanadi; Parquet disk I/O ni deyarli 99% ga tejaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Quyidagilardan qaysi biri CSV va Parquet taqqoslashida to'g'ri?</p>
+    <div class="opts">
+      <button class="opt" type="button">CSV ichki schema saqlaydi, Parquet saqlamaydi</button>
+      <button class="opt" type="button" data-ok>Parquet ichki schema va turlarni saqlaydi, CSV esa hammasini matn qilib saqlaydi</button>
+      <button class="opt" type="button">Ikkalasi ham inson o'qiy oladigan format</button>
+      <button class="opt" type="button">Parquet Raw zona uchun, CSV Gold uchun mo'ljallangan</button>
+    </div>
+    <div class="explain">Parquet - qat'iy tiplar bilan, Data Lake (Silver/Gold) va DWH uchun; CSV - raw va tezkor eksport uchun.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: Row va columnar saqlash, Parquet tuzilishi, pushdown optimizatsiyalari, Snappy va Gzip.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

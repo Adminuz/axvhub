@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>CIA uchligi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="Logo">
+  <h1>CIA uchligi</h1>
+  <p class="muted">Konfidensiallik, Yaxlitlik va Foydalanuvchanlik tamoyillari</p>
+  <span class="badge">10-sinf Kiberxavfsizlik · 2-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield" data-anim="pulse"></i></div>
+      <h3>CIA Triadasi nima?</h3>
+      <p>Axborot xavfsizligining oltin uchburchagi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="lock" data-anim="float"></i></div>
+      <h3>Confidentiality (Maxfiylik)</h3>
+      <p>Ruxsatsiz o'qish va oshkor etishdan himoyalanish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="check-check" data-anim="wiggle"></i></div>
+      <h3>Integrity (Yaxlitlik)</h3>
+      <p>Ma'lumotlarni o'zgartirish va soxtalashtirishdan asrash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="server" data-anim="float"></i></div>
+      <h3>Availability (Foydalanuvchanlik)</h3>
+      <p>Tizimlarning doimo uzluksiz va tayyor turishi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>CIA Triadasi modeli</h1>
+  <p>Axborot xavfsizligining uchta asosiy ustuni</p>
+  
+</section>
+
+<section>
+  <h2>CIA Triadasi arxitekturasi</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <h3>C — Confidentiality</h3>
+        <p class="muted">Konfidensiallik / Maxfiylik</p>
+        <p>Faqat ruxsat berilgan shaxslar ko'ra oladi.</p>
+      </div>
+      <div class="card fragment fade-up">
+        <h3>I — Integrity</h3>
+        <p class="muted">Yaxlitlik</p>
+        <p>Ma'lumotlar o'zgarmas, to'g'ri va ishonchli saqlanadi.</p>
+      </div>
+      <div class="card fragment fade-up">
+        <h3>A — Availability</h3>
+        <p class="muted">Foydalanuvchanlik</p>
+        <p>Kerakli vaqtda tizim va ma'lumotlar tayyor turadi.</p>
+      </div>
+    </div>
+    <div class="fragment fade-up">
+      <svg viewBox="0 0 400 300">
+        <polygon points="200,30 50,260 350,260" class="fb" />
+        <circle cx="200" cy="40" r="30" class="fc" />
+        <text x="200" y="47" text-anchor="middle" class="t-accent">C</text>
+        <circle cx="60" cy="250" r="30" class="fc" />
+        <text x="60" y="257" text-anchor="middle" class="t-head">I</text>
+        <circle cx="340" cy="250" r="30" class="fc" />
+        <text x="340" y="257" text-anchor="middle" class="t-head">A</text>
+        <text x="200" y="170" text-anchor="middle" class="t-head">XAVFSIZLIK</text>
+      </svg>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Confidentiality: Maxfiylik</h1>
+  <p>Ruxsatsiz o'qish va ko'rishdan himoyalanish</p>
+  
+</section>
+
+<section>
+  <h2>Konfidensiallik qanday ta'minlanadi?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="key"></i></div>
+      <h3>Kriptografik shifrlash</h3>
+      <p>AES-256 va RSA algoritmlari orqali ma'lumotlarni begona ko'zlardan yashirish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-user"></i></div>
+      <h3>Kirish huquqlari (ACL)</h3>
+      <p>Har bir xodim faqat o'z ishiga tegishli fayllarnigina ko'ra olishi kerak.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="smartphone"></i></div>
+      <h3>2FA va Biometriya</h3>
+      <p>Faqat parol yetarli emas, ikkinchi omil (SMS, barmoq izi) orqali tekshirish.</p>
+    </div>
+  </div>
+  <div class="callout fragment fade-up">
+    <p><strong>AOB misoli:</strong> Bob o'z balansida 100 000 so'm borligini Tridi bilishini istamaydi!</p>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Integrity: Yaxlitlik</h1>
+  <p>Ruxsatsiz o'zgartirish va soxtalashtirishdan himoyalanish</p>
+  
+</section>
+
+<section>
+  <h2>Yaxlitlik qanday ta'minlanadi?</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <h3>Xesh funksiyalari (SHA-256)</h3>
+        <p>Har qanday fayl yoki tranzaksiyaning o'zgarmas matematik barmoq izi.</p>
+      </div>
+      <div class="card fragment fade-up">
+        <h3>Raqamli imzo (Digital Signature)</h3>
+        <p>Xat yoki buyurtma aynan qonuniy shaxs tomonidan imzolanganligini isbotlaydi.</p>
+      </div>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-alert" data-anim="pulse"></i></div>
+      <h3>Bitta harf o'zgarsa nima bo'ladi?</h3>
+      <p class="muted">«Summa: 50 000» xeshi butunlay boshqa, «Summa: 90 000» xeshi mutlaqo boshqa chiqadi!</p>
+      <p>Tizim ma'lumot buzilganini soniyaning mingdan birida aniqlaydi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Availability: Foydalanuvchanlik</h1>
+  <p>Tizim va ma'lumotlarning uzluksiz tayyorligi</p>
+  
+</section>
+
+<section>
+  <h2>Foydalanuvchanlik qanday ta'minlanadi?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="server"></i></div>
+      <h3>Redundancy (Zaxira)</h3>
+      <p>Asosiy server buzilsa, bir zumda ishga tushuvchi ikkinchi zaxira server.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="network"></i></div>
+      <h3>DDoS himoyasi</h3>
+      <p>Cloudflare va WAF tizimlari orqali soxta yuklamalarni filtrlash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="database"></i></div>
+      <h3>Muntazam Backup</h3>
+      <p>Har kuni olinadigan toza nusxa tufayli tizimni bir necha daqiqada tiklash.</p>
+    </div>
+  </div>
+  <div class="callout fragment fade-up">
+    <p><strong>AOB misoli:</strong> Bob kassada turganda server ishlamay qolsa, bank obro'si va mijoz ishonchi yo'qoladi!</p>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">05</div>
+  <h1>Turli sohalarda CIA ustuvorligi</h1>
+  <p>Qaysi sohada nima birinchi o'rinda turadi?</p>
+  
+</section>
+
+<section>
+  <h2>Sohalar bo'yicha CIA tahlili</h2>
+  <table class="fragment fade-up">
+      <thead>
+        <tr>
+          <th>Soha</th>
+          <th>1-ustuvorlik</th>
+          <th>Xatarli oqibat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Tez yordam (103)</td>
+          <td>Availability</td>
+          <td>Aloqa uzilsa inson hayoti xavf ostida qoladi</td>
+        </tr>
+        <tr>
+          <td>Bank va moliya</td>
+          <td>Integrity</td>
+          <td>Balanslar soxtalashtirilsa bank sinadi</td>
+        </tr>
+        <tr>
+          <td>Davlat va mudofaa</td>
+          <td>Confidentiality</td>
+          <td>Harbiy sir dushmanga oshkor bo'ladi</td>
+        </tr>
+        <tr>
+          <td>Tibbiyot (Bemor)</td>
+          <td>Integrity / Conf.</td>
+          <td>Qon guruhi o'zgarsa davolash xato bo'ladi</td>
+        </tr>
+      </tbody>
+    </table>
+  
+</section>
+
+<section>
+  <h2>Amaliyot: Fayl xeshini tekshirish</h2>
+  <pre><code class="language-powershell"># Windows PowerShell da SHA-256 xesh olish
+CertUtil -hashfile tolov.txt SHA256
+
+# Linux / macOS terminalida xesh olish
+sha256sum tolov.txt</code></pre>
+  <div class="callout fragment fade-up">
+    <p>Xesh natijasi: 64 belgili o'n oltilik (hex) kod hosil bo'ladi. Bitta nuqta o'zgarsa ham xesh butunlay boshqacha bo'ladi!</p>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">06</div>
+  <h1>Amaliy topshiriqlar</h1>
+  <p>CIA keyslari va mustaqil tahlil</p>
+  
+</section>
+
+<section>
+  <h2>Darsning amaliy vazifalari</h2>
+  <div class="cols">
+    <div class="task fragment fade-up">
+      <span class="level easy">Oson</span>
+      <h4>1. C va I chegarasi</h4>
+      <p>Tridi xatni o'qiy olmadi, lekin ichiga begona belgilar qo'shdi. Qaysi mezon buzildi?</p>
+    </div>
+    <div class="task fragment fade-up">
+      <span class="level easy">Oson</span>
+      <h4>2. DoS ning nishoni</h4>
+      <p>DDoS hujumi uyushtirilganda CIA ning qaysi ustuni bevosita buziladi?</p>
+    </div>
+    <div class="task fragment fade-up">
+      <span class="level mid">O'rta</span>
+      <h4>3. Bankda Integrity</h4>
+      <p>Nega bank tizimlarida Yaxlitlik hatto Maxfiylikdan ham yuqoriroq qo'yiladi?</p>
+    </div>
+    <div class="task fragment fade-up">
+      <span class="level hard">Qiyin</span>
+      <h4>4. CIA muvozanati</h4>
+      <p>Haddan tashqari ko'p xavfsizlik cheklovlari qaysi mezonga salbiy ta'sir qiladi?</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Xulosa</h2>
+  <div class="card fragment fade-up">
+    <div class="icon"><i data-ic="shield-check"></i></div>
+    <h3>CIA — har qanday xavfsizlik o'lchovi</h3>
+    <p>Har qanday kiberxavfsizlik muhandisi biror tizimni baholayotganda o'ziga savol beradi: «C, I va A qay darajada ta'minlangan?»</p>
+  </div>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <h4>Muvozanat</h4>
+      <p>Xavfsizlik foydalanuvchilar ishiga to'sqinlik qilmasligi, qulay bo'lishi kerak.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <h4>Yaxlitlik kafolati</h4>
+      <p>Xesh va raqamli imzolar zamonaviy internet ishonchining poydevoridir.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="shield-check" data-anim="pulse"></i></div>
+  <h1>E'tiboringiz uchun rahmat!</h1>
+  <p class="muted">Keyingi dars: CIA buzilish ssenariylari va MITM hujumlari</p>
+  <span class="badge">Savollar bormi?</span>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Operatsion tizimlar va Windows muhitida ishlash</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+      <!-- 1. SARLAVHA -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>Operatsion tizimlar va Windows muhitida ishlash</h1>
+        <p class="muted">Operatsion tizim mohiyati, Windows, Linux, macOS, ish stoli va oynalarni boshqarish</p>
+        <span class="badge">8-sinf</span><span class="badge">Foundation</span><span class="badge">1-hafta · 2-dars</span>
+        
+      </section>
+
+      <!-- 2. Reja -->
+      <section>
+        <h2>Bugun nimalarni o'rganamiz?</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="layers" data-anim="float"></i></div>
+            <h3>Operatsion tizim nima?</h3>
+            <p>Apparat va inson o'rtasidagi asosiy ko'prik</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="layout-grid" data-anim="pulse"></i></div>
+            <h3>OT turlari</h3>
+            <p>Windows, Linux, macOS, Android va iOS</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="settings" data-anim="spin"></i></div>
+            <h3>Windows boshqaruvi</h3>
+            <p>Snap layouts, sozlamalar va dasturlarni boshqarish</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 3. Muammoli savol -->
+      <section>
+        <h2>Kompyuter ichida nima bo'ladi?</h2>
+        <div class="chips">
+          <span class="chip fragment">Faqat 0 va 1 lardan iborat tok</span>
+          <span class="chip t fragment">Murakkab mikrosxemalar</span>
+          <span class="chip fragment">Milliardlab tranzistorlar</span>
+        </div>
+        <div class="callout tip fragment">
+          <i data-ic="sparkles"></i>
+          Ammo biz ekranda chiroyli oynalar, tugmalar, rasmlar va videolarni ko'ramiz. Bu sehrni aynan <strong>Operatsion tizim</strong> amalga oshiradi!
+        </div>
+      </section>
+
+      <!-- 4. SEC 01 -->
+      <section class="sec">
+        <div class="num">01</div>
+        <h1>Operatsion tizim vazifasi</h1>
+        <p>Kompyuter orkestrining bosh dirijyori</p>
+      </section>
+
+      <!-- 5. OT ning 3 ta asosiy roli -->
+      <section>
+        <h2>Operatsion tizim nima qiladi?</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="cpu" data-anim="float"></i></div>
+            <h3>Resurslarni boshqarish</h3>
+            <p>Protsessor vaqti, operativ xotira (RAM) va disk hajmini dasturlarga adolatli taqsimlaydi</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="monitor" data-anim="pulse"></i></div>
+            <h3>Grafik interfeys (GUI)</h3>
+            <p>Foydalanuvchiga murakkab buyruqlar o'rniga qulay oynalar, belgilar va tugmalarni beradi</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="shield" data-anim="draw"></i></div>
+            <h3>Xavfsizlik va nazorat</h3>
+            <p>Fayllarni himoya qiladi, dasturlarning bir-biriga xalaqit berishining oldini oladi</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. SVG ILLUS 1: Vositachi arxitekturasi -->
+      <section>
+        <h2>Operatsion tizimning ko'prik roli</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- Foydalanuvchi -->
+            <rect class="fn" x="60" y="40" width="220" height="280" rx="16"/>
+            <text class="t-head" x="170" y="90" text-anchor="middle" font-size="22">Foydalanuvchi</text>
+            <text class="t-muted" x="170" y="125" text-anchor="middle" font-size="15">Siz va biz</text>
+            <text class="t-accent" x="170" y="210" text-anchor="middle" font-size="18">Tugmani bosadi</text>
+            <text class="t-accent" x="170" y="240" text-anchor="middle" font-size="18">Kodni yozadi</text>
+
+            <line class="la flowing" x1="280" y1="180" x2="380" y2="180"/>
+            <polygon class="ar-a" points="380,180 365,172 365,188"/>
+
+            <!-- OT va dasturlar -->
+            <rect class="fa" x="380" y="30" width="240" height="300" rx="18"/>
+            <text class="t-head" x="500" y="80" text-anchor="middle" font-size="24">Operatsion tizim</text>
+            <text class="t-muted" x="500" y="110" text-anchor="middle" font-size="15">Windows / Linux / macOS</text>
+            
+            <rect class="fc" x="405" y="140" width="190" height="50" rx="10"/>
+            <text class="t-head" x="500" y="172" text-anchor="middle" font-size="16">Foydalanuvchi ilovalari</text>
+            
+            <rect class="fb" x="405" y="210" width="190" height="50" rx="10"/>
+            <text class="t-head" x="500" y="242" text-anchor="middle" font-size="16">OT yadrosi (Kernel)</text>
+
+            <line class="la flowing" x1="620" y1="180" x2="720" y2="180"/>
+            <polygon class="ar-a" points="720,180 705,172 705,188"/>
+
+            <!-- Apparat qismlar -->
+            <rect class="fn" x="720" y="40" width="220" height="280" rx="16"/>
+            <text class="t-head" x="830" y="90" text-anchor="middle" font-size="22">Apparat qism</text>
+            <text class="t-muted" x="830" y="125" text-anchor="middle" font-size="15">Hardware</text>
+            <text class="t-accent" x="830" y="190" text-anchor="middle" font-size="17">CPU (Hisoblaydi)</text>
+            <text class="t-accent" x="830" y="225" text-anchor="middle" font-size="17">RAM (Saqlaydi)</text>
+            <text class="t-accent" x="830" y="260" text-anchor="middle" font-size="17">SSD (Yozadi)</text>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 7. Flip karta: OT ta'rifi -->
+      <section>
+        <h2>Asosiy atama: Operatsion tizim</h2>
+        <div class="flip">
+          <div class="flip-in">
+            <div class="face front">
+              <i data-ic="layers" data-anim="pulse"></i>
+              <h3>Operatsion tizim (OT)</h3>
+              <p class="muted">Kartani bosib ta'rifni oching</p>
+            </div>
+            <div class="face back">
+              <h3>Operating System (OS)</h3>
+              <p>Kompyuterning barcha texnik resurslarini boshqaradigan va foydalanuvchiga qulay grafik interfeys taqdim etadigan bosh dasturlar majmuasi.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. SEC 02 -->
+      <section class="sec">
+        <div class="num">02</div>
+        <h1>Zamonaviy operatsion tizimlar</h1>
+        <p>Kompyuter va mobil olam yetakchilari</p>
+      </section>
+
+      <!-- 9. Kartalar: 4 ta OT -->
+      <section>
+        <h2>Mashhur operatsion tizimlar</h2>
+        <div class="cards four">
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="layout-grid" data-anim="float"></i></div>
+            <h3>Windows</h3>
+            <p>Shaxsiy kompyuterlar qiroli. O'yinlar, ofis va ta'lim uchun eng ommabop tizim</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="laptop" data-anim="float"></i></div>
+            <h3>macOS</h3>
+            <p>Apple Mac kompyuterlari uchun maxsus yopiq, o'ta silliq va xavfsiz tizim</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="server" data-anim="pulse"></i></div>
+            <h3>Linux</h3>
+            <p>Ochiq kodli va bepul. Butun dunyo serverlari va dasturchilari tayanchi</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="zap" data-anim="draw"></i></div>
+            <h3>Android / iOS</h3>
+            <p>Milliardlab smartfon va planshetlarni boshqaruvchi mobil tizimlar</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. SVG ILLUS 2: OT oilasi ekotizimi -->
+      <section>
+        <h2>Operatsion tizimlar tasnifi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- Markaz -->
+            <rect class="fa" x="390" y="30" width="220" height="70" rx="14"/>
+            <text class="t-head" x="500" y="72" text-anchor="middle" font-size="20">Operatsion tizimlar</text>
+
+            <line class="la" x1="420" y1="100" x2="260" y2="160"/>
+            <line class="la" x1="580" y1="100" x2="740" y2="160"/>
+
+            <!-- Shaxsiy kompyuterlar -->
+            <rect class="fc" x="140" y="160" width="240" height="50" rx="10"/>
+            <text class="t-head" x="260" y="192" text-anchor="middle" font-size="18">Shaxsiy kompyuterlar (PC)</text>
+
+            <g class="fragment">
+              <rect class="fn" x="80" y="240" width="105" height="70" rx="10"/>
+              <text class="t-head" x="132" y="275" text-anchor="middle" font-size="16">Windows</text>
+              <text class="t-muted" x="132" y="295" text-anchor="middle" font-size="12">10 va 11</text>
+            </g>
+            <g class="fragment">
+              <rect class="fn" x="205" y="240" width="105" height="70" rx="10"/>
+              <text class="t-head" x="257" y="275" text-anchor="middle" font-size="16">Linux</text>
+              <text class="t-muted" x="257" y="295" text-anchor="middle" font-size="12">Ubuntu/Debian</text>
+            </g>
+            <g class="fragment">
+              <rect class="fn" x="330" y="240" width="105" height="70" rx="10"/>
+              <text class="t-head" x="382" y="275" text-anchor="middle" font-size="16">macOS</text>
+              <text class="t-muted" x="382" y="295" text-anchor="middle" font-size="12">Apple Mac</text>
+            </g>
+
+            <!-- Mobil qurilmalar -->
+            <rect class="fb" x="620" y="160" width="240" height="50" rx="10"/>
+            <text class="t-head" x="740" y="192" text-anchor="middle" font-size="18">Mobil qurilmalar</text>
+
+            <g class="fragment">
+              <rect class="fn" x="635" y="240" width="100" height="70" rx="10"/>
+              <text class="t-head" x="685" y="275" text-anchor="middle" font-size="16">Android</text>
+              <text class="t-muted" x="685" y="295" text-anchor="middle" font-size="12">Google / Ochiq</text>
+            </g>
+            <g class="fragment">
+              <rect class="fn" x="765" y="240" width="100" height="70" rx="10"/>
+              <text class="t-head" x="815" y="275" text-anchor="middle" font-size="16">iOS</text>
+              <text class="t-muted" x="815" y="295" text-anchor="middle" font-size="12">iPhone / Apple</text>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <!-- 11. TAQQOSLASH (vs): Windows vs Linux -->
+      <section>
+        <h2>Windows va Linux taqqoslovi</h2>
+        <div class="vs">
+          <div class="side fragment">
+            <h3>Microsoft Windows</h3>
+            <p>Foydalanish o'ta sodda, barcha o'yinlar va tijoriy dasturlar bilan to'liq mos keladi. Pullik litsenziyaga ega.</p>
+          </div>
+          <div class="mid">VS</div>
+          <div class="side b fragment">
+            <h3>Linux (Ubuntu)</h3>
+            <p>Butunlay bepul va ochiq kodli. Xavfsizligi juda yuqori, dunyo serverlarining 90%+ qismi Linuxda ishlaydi.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12. Statistika (.stats) -->
+      <section>
+        <h2>Raqamlar va faktlar</h2>
+        <div class="stats">
+          <div class="stat">
+            <div class="v"><span class="count" data-to="70" data-suf="%">0</span></div>
+            <div class="l">Shaxsiy kompyuterlarda Windows ulushi</div>
+          </div>
+          <div class="stat">
+            <div class="v"><span class="count" data-to="100" data-suf="%">0</span></div>
+            <div class="l">Superkompyuterlarda Linux ulushi</div>
+          </div>
+          <div class="stat">
+            <div class="v"><span class="count" data-to="3" data-suf=" mlrd+">0</span></div>
+            <div class="l">Faol Android qurilmalar soni</div>
+          </div>
+        </div>
+        <p class="muted">Har bir operatsion tizim o'z sohasida yetakchi hisoblanadi.</p>
+      </section>
+
+      <!-- 13. SEC 03 -->
+      <section class="sec">
+        <div class="num">03</div>
+        <h1>Windows muhitida ishlash</h1>
+        <p>Ish stoli, oynalar va tizim sozlamalari</p>
+      </section>
+
+      <!-- 14. Ish stoli elementlari -->
+      <section>
+        <h2>Windows interfeysi elementlari</h2>
+        <div class="cards two">
+          <div class="card fragment fade-up">
+            <h3>Start (Boshlash) menyusi</h3>
+            <p>Barcha o'rnatilgan dasturlar, qidiruv paneli va kompyuterni o'chirish/qayta yuklash tugmalari markazi.</p>
+          </div>
+          <div class="card fragment fade-up">
+            <h3>Vazifalar paneli (Taskbar)</h3>
+            <p>Ekranning quyi qismidagi mahkamlangan ilovalar, ochiq oynalar va bildirishnomalar (System Tray) maydoni.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 15. SVG ILLUS 3: Windows ekrani anatomiyasi -->
+      <section>
+        <h2>Windows oynasi anatomiyasi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- Asosiy oyna ramkasi -->
+            <rect class="fn" x="100" y="30" width="800" height="280" rx="14"/>
+            <!-- Oyna sarlavhasi paneli -->
+            <rect class="fa" x="100" y="30" width="800" height="45" rx="14"/>
+            <text class="t-head" x="130" y="60" font-size="18">Dastur oynasi — Dokument.txt</text>
+            <!-- 3 ta tugma -->
+            <circle class="fc" cx="810" cy="52" r="8"/>
+            <circle class="fb" cx="840" cy="52" r="8"/>
+            <circle class="fa" cx="870" cy="52" r="8"/>
+            
+            <!-- Oyna ichki maydoni -->
+            <rect class="fn" x="120" y="95" width="760" height="195" rx="8"/>
+            <text class="t-accent" x="500" y="160" text-anchor="middle" font-size="22">Snap Layouts: Win + Chapga / O'ngga</text>
+            <text class="t-muted" x="500" y="200" text-anchor="middle" font-size="16">Ekranni teng 50/50 qilib ikkita dastur bilan yonma-yon ishlash</text>
+            <text class="t-head" x="500" y="240" text-anchor="middle" font-size="18">Bir tomonda darslik — ikkinchi tomonda kod yozish!</text>
+          </svg>
+        </div>
+      </section>
+
+      <!-- 16. STEPPER: Snap bilan ishlash -->
+      <section>
+        <h2>Oynalarni ekranga bo'lish (Snap)</h2>
+        <div class="stepper">
+          <div class="stp on">
+            <h3>1. Birinchi oynani tanlang</h3>
+            <p>Masalan, o'zingiz dars o'rganayotgan brauzer oynasini bosing.</p>
+          </div>
+          <div class="stp">
+            <h3>2. Win + Chapga strelka</h3>
+            <p>Oyna ekranning chap 50 foizini to'liq egallaydi.</p>
+          </div>
+          <div class="stp">
+            <h3>3. Ikkinchi oynani tanlang</h3>
+            <p>O'ng tomonda chiqadigan ro'yxatdan kod muharririni (VS Code yoki Bloknot) bosing.</p>
+          </div>
+          <div class="stp">
+            <h3>4. Professional ish muhiti tayyor!</h3>
+            <p>Ikkala dastur ham ko'z oldingizda yonma-yon ishlaydi, vaqtingiz tejaladi.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 17. SWAP: Sozlamalar va Boshqaruv paneli -->
+      <section>
+        <h2>Sozlamalar va Boshqaruv paneli</h2>
+        <div class="swap">
+          <div class="swap-tabs">
+            <button type="button">Settings (Win + I)</button>
+            <button type="button">Control Panel</button>
+          </div>
+          <div class="swap-p">
+            <div class="callout tip">
+              <h3>Windows Sozlamalari (Zamonaviy)</h3>
+              <p>Ekran, Wi-Fi tarmog'i, Bluetooth, shaxsiylashtirish, ovoz va o'rnatilgan dasturlar ro'yxatini boshqaruvchi qulay va sodda markaz.</p>
+            </div>
+          </div>
+          <div class="swap-p">
+            <div class="callout tip">
+              <h3>Boshqaruv paneli (Klassik)</h3>
+              <p>Chuqur texnik sozlamalar, ma'muriy boshqaruv, drayverlar va tarmoq adapterlarini batafsil sozlash uchun klassik Windows paneli.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 18. SVG ILLUS 4: Dasturni o'rnatish va o'chirish -->
+      <section>
+        <h2>Dasturlarning hayot sikli</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 340">
+            <g class="fragment">
+              <rect class="fn" x="60" y="80" width="240" height="180" rx="14"/>
+              <text class="t-accent" x="180" y="125" text-anchor="middle" font-size="20">1. Yuklab olish</text>
+              <text class="t-head" x="180" y="165" text-anchor="middle" font-size="17">.exe yoki .msi</text>
+              <text class="t-muted" x="180" y="200" text-anchor="middle" font-size="14">Rasmiy saytdan oling</text>
+            </g>
+            <line class="la flowing" x1="300" y1="170" x2="380" y2="170"/>
+            <polygon class="ar-a" points="380,170 365,162 365,178"/>
+
+            <g class="fragment">
+              <rect class="fa" x="380" y="80" width="240" height="180" rx="14"/>
+              <text class="t-accent" x="500" y="125" text-anchor="middle" font-size="20">2. O'rnatish (Setup)</text>
+              <text class="t-head" x="500" y="165" text-anchor="middle" font-size="17">Next -> Install</text>
+              <text class="t-muted" x="500" y="200" text-anchor="middle" font-size="14">Fayllar diskka yoziladi</text>
+            </g>
+            <line class="la flowing" x1="620" y1="170" x2="700" y2="170"/>
+            <polygon class="ar-a" points="700,170 685,162 685,178"/>
+
+            <g class="fragment">
+              <rect class="fc" x="700" y="80" width="240" height="180" rx="14"/>
+              <text class="t-accent" x="820" y="125" text-anchor="middle" font-size="20">3. To'g'ri o'chirish</text>
+              <text class="t-head" x="820" y="165" text-anchor="middle" font-size="17">Settings -> Uninstall</text>
+              <text class="t-muted" x="820" y="200" text-anchor="middle" font-size="14">Tizim toza qoladi</text>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <!-- 19. Odatiy xato -->
+      <section>
+        <h2>Katta xato: Yorliqni o'chirish</h2>
+        <div class="callout bad">
+          <i data-ic="triangle-alert"></i>
+          «Ish stolidagi o'yin belgisini Delete qilib o'chirdim, lekin diskda joy ochilmadi!»
+        </div>
+        <div class="callout tip fragment">
+          <i data-ic="circle-check"></i>
+          Yorliq (Shortcut) — shunchaki manzil belgisi. Dasturni to'liq o'chirish uchun <strong>Settings -> Installed apps -> Uninstall</strong> amali bajarilishi shart!
+        </div>
+      </section>
+
+      <!-- 20. Tezkor klaviatura buyruqlari -->
+      <section>
+        <h2>Foydali Windows tezkor tugmalari</h2>
+        <div class="cards four">
+          <div class="card fragment fade-up">
+            <h3>Win + I</h3>
+            <p>Windows Sozlamalarini (Settings) bir zumda ochish</p>
+          </div>
+          <div class="card fragment fade-up">
+            <h3>Win + D</h3>
+            <p>Barcha oynalarni yashirib, ish stolini ko'rsatish</p>
+          </div>
+          <div class="card fragment fade-up">
+            <h3>Win + E</h3>
+            <p>Fayl boshqaruvchisini (File Explorer) ochish</p>
+          </div>
+          <div class="card fragment fade-up">
+            <h3>Alt + Tab</h3>
+            <p>Ochiq dasturlar o'rtasida sichqonchasiz sakrash</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 21. QUIZ -->
+      <section>
+        <h2>Tezkor sinov</h2>
+        <div class="quiz">
+          <p class="q">Dastur oynasini ekranning aniq chap yarmiga joylashtirish uchun qaysi klavishlar kombinatsiyasi bosiladi?</p>
+          <div class="opts">
+            <button class="opt" type="button">Ctrl + C</button>
+            <button class="opt" type="button" data-ok>Win + Chapga strelka</button>
+            <button class="opt" type="button">Alt + F4</button>
+            <button class="opt" type="button">Shift + Tab</button>
+          </div>
+          <div class="explain">To'g'ri! Windows Snap mexanizmida Win + Chapga/O'ngga strelkalari oynalarni teng ikkiga taqsimlaydi.</div>
+        </div>
+      </section>
+
+      <!-- 22. Amaliy vazifa -->
+      <section class="task">
+        <div class="badge">Amaliy topshiriq · 15 daqiqa</div>
+        <h2>Windows interfeysini sozlang</h2>
+        <ol>
+          <li><code>Win + I</code> orqali Sozlamalar darchasini oching va versiyangizni aniqlang.</li>
+          <li>Brauzer va Bloknot dasturlarini ochib, <code>Win + strelkalar</code> bilan yonma-yon qo'ying.</li>
+          <li><code>Alt + Tab</code> orqali ular orasida 3 marta tezkor almashib ko'ring.</li>
+          <li><code>Win + D</code> bosib barcha oynalarni ish stoliga yashiring.</li>
+        </ol>
+      </section>
+
+      <!-- 23. Xulosa -->
+      <section>
+        <h2>Bugungi dars xulosasi</h2>
+        <div class="cards two">
+          <div class="card">
+            <h3>Biz o'rgandik:</h3>
+            <ul>
+              <li>Operatsion tizim — apparat va dasturlar o'rtasidagi boshqaruvchi ko'prik</li>
+              <li>Windows, Linux, macOS, Android va iOS turlari</li>
+              <li>Oynalar bilan professional ishlash (Snap layouts)</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Keyingi dars:</h3>
+            <p><strong>3-dars:</strong> Axborot o‘lchov birliklari (bit, bayt, GB), fayl turlari va fayllar bilan ishlashda tezkor tugmalar (Hot keys).</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

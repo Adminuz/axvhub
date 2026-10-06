@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>RDBMS va yaxlitlik</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 11-dars: RDBMS muhitlari va ma'lumotlar yaxlitligi -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>RDBMS va yaxlitlik</h1>
+  <p class="muted">Relatsion model (3-qism): RDBMS muhitlari va ma'lumotlar yaxlitligi</p>
+  <span class="badge">9-sinf</span><span class="badge">Business Intelligence</span><span class="badge">4-hafta · 11-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi reja</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="server" data-anim="pulse"></i></div><h3>01. RDBMS</h3><p>SQL Server, PostgreSQL, MySQL, Oracle, SQLite.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="monitor" data-anim="float"></i></div><h3>02. SSMS</h3><p>Baza va jadval yaratish muhiti.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="shield-check" data-anim="bounce"></i></div><h3>03. Yaxlitlik</h3><p>Cheklovlar va ACID.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Takrorlash: 10-dars</h2>
+  <div class="quiz">
+    <p class="q">Mijoz telefoni faqat bitta qatorda yangilanib, boshqa qatorlarda eskisi qoldi. Bu qanday anomaliya?</p>
+    <div class="opts">
+      <button class="opt" type="button">Insert anomaly</button>
+      <button class="opt" type="button" data-ok>Update anomaly</button>
+      <button class="opt" type="button">Delete anomaly</button>
+      <button class="opt" type="button">Anomaliya emas</button>
+    </div>
+    <div class="explain">To'g'ri: takrorlangan ma'lumot qisman yangilandi. 3NF bunday holatning oldini oladi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>RDBMS platformalari</h1>
+  <p>Bitta til - SQL, turli «shevalar»</p>
+</section>
+
+<section>
+  <h2>Mashhur RDBMS lar</h2>
+  <table>
+    <thead><tr><th>RDBMS</th><th>Kim</th><th>Qayerda</th><th>Dialekt</th></tr></thead>
+    <tbody>
+      <tr class="fragment"><td>SQL Server</td><td>Microsoft</td><td>korporativ, Power BI</td><td>T-SQL</td></tr>
+      <tr class="fragment"><td>PostgreSQL</td><td>ochiq kod</td><td>veb, analitika</td><td>PostgreSQL</td></tr>
+      <tr class="fragment"><td>MySQL</td><td>Oracle / ochiq kod</td><td>veb-saytlar</td><td>MySQL</td></tr>
+      <tr class="fragment"><td>Oracle</td><td>Oracle</td><td>yirik korporatsiyalar</td><td>PL/SQL</td></tr>
+      <tr class="fragment"><td>SQLite</td><td>ochiq kod</td><td>telefon, brauzer</td><td>SQLite</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Bir til - turli shevalar</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>SQL Server</h3><code>SELECT TOP 5 * FROM Mahsulotlar;</code></div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>PostgreSQL, MySQL, SQLite</h3><code>SELECT * FROM Mahsulotlar LIMIT 5;</code></div>
+  </div>
+  <div class="callout tip"><i data-ic="lightbulb"></i>Asosiy grammatika bir xil: SELECT, FROM, WHERE hamma joyda ishlaydi.</div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>SSMS muhiti</h1>
+  <p>SQL Server Management Studio</p>
+</section>
+
+<section>
+  <h2>SSMS qismlari</h2>
+  <div class="cards two">
+    <div class="card fragment"><div class="icon"><i data-ic="plug"></i></div><h3>Connect to Server</h3><p>Server nomi: <code>localhost</code> yoki <code>.\SQLEXPRESS</code>.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="folder-tree"></i></div><h3>Object Explorer</h3><p>Chapda: bazalar, jadvallar, ustunlar daraxti.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="file-code"></i></div><h3>New Query</h3><p>SQL yozish oynasi.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="play"></i></div><h3>Execute (F5)</h3><p>Bajarish; natija Results va Messages da.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Birinchi baza</h2>
+  <pre><code class="language-sql" data-trim data-noescape data-line-numbers="1|3">
+CREATE DATABASE Dokon;
+GO
+USE Dokon;
+GO
+  </code></pre>
+  <p class="small"><code>GO</code> - SSMS uchun «paket tugadi» belgisi. <code>USE</code> - qaysi baza bilan ishlashni tanlash.</p>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Ma'lumotlar yaxlitligi</h1>
+  <p>Aniq, to'liq va izchil</p>
+</section>
+
+<section>
+  <h2>Uch tur yaxlitlik</h2>
+  <div class="cards three">
+    <div class="flip" style="min-height:220px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="key-round" data-anim="pulse"></i></div><h3>Entity</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Har qator noyob: PRIMARY KEY takrorlanmaydi va NULL bo'lmaydi.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:220px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="link" data-anim="bounce"></i></div><h3>Referential</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>FOREIGN KEY faqat mavjud PK qiymatiga ishora qiladi.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:220px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="ruler" data-anim="wiggle"></i></div><h3>Domain</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Qiymat ruxsat etilgan doirada: tur, NOT NULL, CHECK, DEFAULT.</p></div>
+    </div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Cheklovlar (constraints)</h2>
+  <div class="cards three">
+    <div class="card fragment"><h3>NOT NULL</h3><p>Bo'sh qolmasin: ism.</p></div>
+    <div class="card fragment"><h3>UNIQUE</h3><p>Takrorlanmasin: email, telefon.</p></div>
+    <div class="card fragment"><h3>CHECK</h3><p>Shartga mos: <code>Narx &gt; 0</code>.</p></div>
+    <div class="card fragment"><h3>DEFAULT</h3><p>Standart qiymat: <code>N'Toshkent'</code>.</p></div>
+    <div class="card fragment"><h3>PRIMARY KEY</h3><p>Noyob identifikator.</p></div>
+    <div class="card fragment"><h3>FOREIGN KEY</h3><p>Boshqa jadvalga bog'lanish.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Cheklovli jadval</h2>
+  <pre><code class="language-sql" data-trim data-noescape data-line-numbers="2|3|4|5|6">
+CREATE TABLE Mijozlar (
+    MijozID INT PRIMARY KEY,
+    Ism     NVARCHAR(50) NOT NULL,
+    Telefon VARCHAR(20)  UNIQUE,
+    Shahar  NVARCHAR(30) DEFAULT N'Toshkent',
+    Yosh    INT CHECK (Yosh &gt;= 14)
+);
+  </code></pre>
+  <p class="small"><code>NVARCHAR</code> - o'zbek harflari uchun Unicode matn; qiymat <code>N'...'</code> ko'rinishida.</p>
+</section>
+
+<section>
+  <h2>FK bilan bog'lash</h2>
+  <pre><code class="language-sql" data-trim data-noescape data-line-numbers="4">
+CREATE TABLE Buyurtmalar (
+    BuyurtmaID INT PRIMARY KEY,
+    Sana       DATE NOT NULL,
+    MijozID    INT NOT NULL FOREIGN KEY REFERENCES Mijozlar(MijozID)
+);
+  </code></pre>
+  <div class="callout warn"><i data-ic="triangle-alert"></i>Avval Mijozlar, keyin Buyurtmalar: FK mavjud jadvalga ishora qiladi.</div>
+</section>
+
+<section>
+  <h2>Xato - bu himoya</h2>
+  <div class="terminal">
+    <div class="bar">Messages</div>
+    <pre><span class="o">INSERT</span> Mijozlar (1, N'Bekzod') -- ID 1 bor
+<span class="e">Xato:</span> PRIMARY KEY buzildi
+<span class="o">INSERT</span> Buyurtmalar (101, ..., 99)
+<span class="e">Xato:</span> FOREIGN KEY: MijozID 99 yo'q</pre>
+  </div>
+  <p class="small mt">Cheklovlar «iflos» ma'lumotni bazaga kiritmaydi - Data Cleaning ishi kamayadi.</p>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Baholar jadvalida mavjud bo'lmagan FanID = 55 kiritildi. Qaysi yaxlitlik turi buzildi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Entity</button>
+      <button class="opt" type="button">Domain</button>
+      <button class="opt" type="button" data-ok>Referential</button>
+      <button class="opt" type="button">Hech qaysi</button>
+    </div>
+    <div class="explain">FK mavjud bo'lmagan PK qiymatiga ishora qilmoqda - referential integrity buzildi, DBMS rad etadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>ACID</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><h3>A - Atomicity</h3><p>Hammasi yoki hech biri: pul yechilib, qo'shilmasa - bekor.</p></div></div>
+    <div class="stp"><div class="card"><h3>C - Consistency</h3><p>Tranzaksiyadan keyin barcha cheklovlar saqlanadi.</p></div></div>
+    <div class="stp"><div class="card"><h3>I - Isolation</h3><p>Bir vaqtdagi tranzaksiyalar bir-biriga xalaqit bermaydi.</p></div></div>
+    <div class="stp"><div class="card"><h3>D - Durability</h3><p>COMMIT qilingan o'zgarish elektr o'chsa ham saqlanadi.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Apostrof tuzog'i</h2>
+  <div class="vs">
+    <div class="side fragment"><h3><i data-ic="circle-x"></i> Xato</h3><code>N'O'g'iloy'</code> - matn birinchi apostrofda tugaydi.</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3><i data-ic="circle-check"></i> To'g'ri</h3><code>N'O''g''iloy'</code> - apostrofni ikkilantiring.</div>
+  </div>
+  <p class="small mt">Ustun nomlarida apostrofdan umuman qoching: <code>OquvchiID</code>, <code>O'quvchiID</code> emas.</p>
+</section>
+
+<section>
+  <h2>BI uchun nega muhim?</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="copy"></i></div><h3>Dublikat yo'q</h3><p>PK tufayli bir mijoz ikki marta sanalmaydi.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="link"></i></div><h3>«Yetim» yo'q</h3><p>FK tufayli mijozi yo'q buyurtma bo'lmaydi.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="chart-column"></i></div><h3>To'g'ri hisobot</h3><p>CHECK tufayli manfiy narx yig'indini buzmaydi.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriqlar <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>3 holatga mos RDBMS tanlang. 3 xatoda yaxlitlik turini aniqlang.</div>
+  <div class="task"><span class="level mid">O'rta</span>SSMS da Maktab bazasi va Oquvchilar jadvali: PK, NOT NULL, UNIQUE, DEFAULT, CHECK.</div>
+  <div class="task"><span class="level hard">Qiyin</span>5 ta INSERT natijasini bashorat qiling, so'ng bajarib tekshiring.</div>
+  
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>RDBMS</h3><p>5 platforma, bitta SQL, turli dialektlar.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Yaxlitlik</h3><p>Entity, Referential, Domain - cheklovlar bilan.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>ACID</h3><p>Tranzaksiyalar ishonchli bajariladi.</p></div>
+  </div>
+  <p class="small mt">Uyga vazifa: kutubxona modeli uchun cheklovli CREATE TABLE.</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="search" data-anim="float"></i></div>
+  <h1>Keyingi dars: SELECT</h1>
+  <p class="muted">SQL asoslari: ustunlar va sodda ifodalar</p>
+  <span class="badge">4-hafta · 12-dars</span>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

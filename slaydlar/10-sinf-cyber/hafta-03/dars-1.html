@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Raqamli gigiyena va 2FA</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="Logo">
+  <h1>Raqamli gigiyena va 2FA</h1>
+  <p class="muted">Brauzer xavfsizligi, 1.1.1.1 DNS hamda Telegramda maxfiylik va 2FA</p>
+  <span class="badge">10-sinf Kiberxavfsizlik · 3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check" data-anim="pulse"></i></div>
+      <h3>Raqamli gigiyena</h3>
+      <p>4 ta oltin qoida: HTTPS, unikal parollar, 2FA va me'yor.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="globe" data-anim="float"></i></div>
+      <h3>Brauzerni mustahkamlash</h3>
+      <p>uBlock Origin, Cookie AutoDelete va ClearURLs kengaytmalari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="network" data-anim="float"></i></div>
+      <h3>Xavfsiz DNS: 1.1.1.1</h3>
+      <p>DNS-over-HTTPS (DoH) orqali provayder kuzatuvini to'xtatish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="smartphone" data-anim="wiggle"></i></div>
+      <h3>Telegram maxfiyligi va 2FA</h3>
+      <p>5 bosqichli xavfsizlik auditi va faol seanslar nazorati.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Raqamli gigiyena nima?</h1>
+  <p>Virtual olamda shaxsiy daxlsizlikni saqlash odatlari</p>
+  
+</section>
+
+<section>
+  <h2>Raqamli gigiyenaning 4 oltin qoidasi</h2>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="lock"></i></div>
+      <h3>1. Faqat HTTPS va xavfsiz tarmoq</h3>
+      <p>Reklama va trekerlarni bloklash, shifrlanmagan Wi-Fi larda ehtiyot bo'lish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="key"></i></div>
+      <h3>2. Har bir saytga alohida parol</h3>
+      <p>Bitta sayt buzilsa, qolgan hisoblar ochiq qolib ketmasligi shart.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="smartphone"></i></div>
+      <h3>3. Barcha muhim joylarda 2FA</h3>
+      <p>Parol o'g'irlangan taqdirda ham ikkinchi xavfsizlik kodi himoya qiladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="user-x"></i></div>
+      <h3>4. Shaxsiy ma'lumotlar me'yori</h3>
+      <p>Telefon raqam, pasport va yashash manzilini ijtimoiy tarmoqlarda ochiqlamaslik.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Brauzer xavfsizligi</h1>
+  <p>Trekerlar, kuki fayllari va foydali kengaytmalar</p>
+  
+</section>
+
+<section>
+  <h2>Brauzer uchun 4 ta zarur kengaytma</h2>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>uBlock Origin</h3>
+      <p class="muted">Eng yaxshi reklama to'suvchi</p>
+      <p>Zararli skriptlar, trekerlar va og'ir reklamalarni yuklanishidan oldin to'xtatadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="lock"></i></div>
+      <h3>HTTPS Everywhere</h3>
+      <p class="muted">Majburiy shifrlash</p>
+      <p>Saytlar bilan aloqani xavfsiz va shifrlangan HTTPS rejimiga o'tkazadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="trash"></i></div>
+      <h3>Cookie AutoDelete</h3>
+      <p class="muted">Kuki tozalagich</p>
+      <p>Veb-sahifa yopilishi bilan undan qolgan barcha kuzatuvchi fayllarni o'chiradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="scissors"></i></div>
+      <h3>ClearURLs</h3>
+      <p class="muted">Havolalarni tozalash</p>
+      <p>Havolalardagi shaxsiy kuzatuv kodlarini (`?utm_source=...`) olib tashlaydi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>DNS xavfsizligi: 1.1.1.1</h1>
+  <p>DNS-over-HTTPS (DoH) orqali provayder kuzatuvidan chiqish</p>
+  
+</section>
+
+<section>
+  <h2>DNS qanday ishlaydi va nega xavfli?</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <h3>Standart DNS (53-port)</h3>
+        <p>So'rovlar ochiq matnda ketadi. Provayder qaysi saytlarga kirayotganingizni ko'rib turadi.</p>
+      </div>
+      <div class="card fragment fade-up">
+        <h3>1.1.1.1 DoH (443-port)</h3>
+        <p>Barcha DNS so'rovlar TLS orqali shifrlanadi. Hech kim kirgan saytlaringizni bila olmaydi.</p>
+      </div>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="network"></i></div>
+      <h3>Sozlash parametrlari:</h3>
+      <p>Asosiy DNS: <code>1.1.1.1</code></p>
+      <p>Muqobil DNS: <code>1.0.0.1</code></p>
+      <p class="muted">Tekshirish sayti: <code>1.1.1.1/help</code></p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Telegramda xavfsizlik auditi</h1>
+  <p>5 ta muhim qadam bilan hisobni 95% xavfsiz qilish</p>
+  
+</section>
+
+<section>
+  <h2>Telegramda 5 ta xavfsizlik qadami</h2>
+  <div class="timeline">
+    <div class="tl fragment"><b>1. Maxfiylik sozlamalari:</b> Telefon raqamim va oxirgi faol vaqtim -> «Mening kontaktlarim» yoki «Hech kim».</div>
+    <div class="tl fragment"><b>2. Ikki bosqichli autentifikatsiya (2FA):</b> Maxsus 12+ belgili «Bulutli parol» o'rnatish. Faqat SMS yetarli emas!</div>
+    <div class="tl fragment"><b>3. Faol seanslarni tekshirish:</b> Qurilmalar bo'limida sizga tegishli bo'lmagan barcha begona seanslarni tugatish.</div>
+    <div class="tl fragment"><b>4. Guruhlarga qo'shishni cheklash:</b> «Meni guruhlarga kim qo'shishi mumkin?» -> «Mening kontaktlarim».</div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">05</div>
+  <h1>Amaliy topshiriqlar</h1>
+  <p>Bilimlarni amalda tekshirish</p>
+  
+</section>
+
+<section>
+  <h2>Darsning amaliy vazifalari</h2>
+  <div class="cols">
+    <div class="task fragment fade-up">
+      <span class="level easy">Oson</span>
+      <h4>1. Raqamli gigiyena</h4>
+      <p>Nega raqamli gigiyena muntazam bajariladigan odat bo'lishi kerak?</p>
+    </div>
+    <div class="task fragment fade-up">
+      <span class="level easy">Oson</span>
+      <h4>2. ClearURLs</h4>
+      <p>Havoladagi `?utm_source=...` belgilari nima va ularni tozalash nega kerak?</p>
+    </div>
+    <div class="task fragment fade-up">
+      <span class="level mid">O'rta</span>
+      <h4>3. 2FA da SMS xavfi</h4>
+      <p>Nima uchun faqat SMS kodli 2FA zaif hisoblanadi va TOTP afzal?</p>
+    </div>
+    <div class="task fragment fade-up">
+      <span class="level hard">Qiyin</span>
+      <h4>4. Faol seanslar</h4>
+      <p>Telegramda begona IP paydo bo'lganda qanday zudlik bilan chora ko'riladi?</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Xulosa</h2>
+  <div class="card fragment fade-up">
+    <div class="icon"><i data-ic="shield-check"></i></div>
+    <h3>Xavfsiz odatlar — eng yaxshi himoya</h3>
+    <p>Bir necha oddiy sozlama (2FA, xavfsiz DNS, brauzer kengaytmalari) orqali kiberfiribgarlarning 95% hujumlarini to'xtatish mumkin.</p>
+  </div>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <h4>Parollarni asrang</h4>
+      <p>Hech kimga parolingizni yoki 2FA kodingizni aytmang.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <h4>Doimo tekshiring</h4>
+      <p>Qurilmalaringizdagi faol seanslarni haftada bir bor ko'zdan kechiring.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="shield-check" data-anim="pulse"></i></div>
+  <h1>E'tiboringiz uchun rahmat!</h1>
+  <p class="muted">Keyingi dars: Tahdidlarni modellashtirish va Red/Blue Team</p>
+  <span class="badge">Savollar bormi?</span>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

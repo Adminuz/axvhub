@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Xavfsizlik tafakkuri</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="Logo">
+  <h1>Xavfsizlik tafakkuri</h1>
+  <p class="muted">Security Mindset, zaif parollar, Nmap va Hydra vositalari</p>
+  <span class="badge">10-sinf Kiberxavfsizlik · 2-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu" data-anim="pulse"></i></div>
+      <h3>Xavfsizlik tafakkuri</h3>
+      <p>Security Mindset: har bir tizimga zaiflik nuqtai nazaridan qarash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="user-shield" data-anim="float"></i></div>
+      <h3>5 ta asosiy tamoyil</h3>
+      <p>What could go wrong, Adversarial, Defensive, Assume breach.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="terminal" data-anim="float"></i></div>
+      <h3>Nmap va Hydra</h3>
+      <p>Ochiq portlarni skanerlash va zaif parollarni tekshirish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="key" data-anim="wiggle"></i></div>
+      <h3>Kuchli parollar siyosati</h3>
+      <p>Parol menejerlari (Bitwarden) va xavfsiz boshqaruv.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Xavfsizlik tafakkuri (Security Mindset)</h1>
+  <p>Oddiy foydalanuvchi va kiberxavfsizlik mutaxassisi qarashi</p>
+  
+</section>
+
+<section>
+  <h2>Oddiy foydalanuvchi vs Mutaxassis</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <h3>Oddiy foydalanuvchi</h3>
+        <p>«Wi-Fi paroli bor, demak xavfsizman.»</p>
+        <p>«Login formasi kiritish uchun qulay ekan.»</p>
+      </div>
+      <div class="card fragment fade-up">
+        <h3>Xavfsizlik mutaxassisi</h3>
+        <p>«WPA2 zaifmi? Routerning admin paroli o'zgartirilganmi?»</p>
+        <p>«Brute-force dan rate-limit bormi? SQL Injection tekshirilganmi?»</p>
+      </div>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="triangle-alert" data-anim="wiggle"></i></div>
+      <h3>Bryus Shnayer</h3>
+      <p class="muted">«Yaxshi mutaxassislar do'konga kirsa qanday o'g'irlik qilish mumkinligini, kompyuter ko'rsa qanday zaiflik borligini o'ylamasdan turolmaydilar.»</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>5 ta asosiy tamoyil</h1>
+  <p>Xavfsizlik tafakkurining arxitekturasi</p>
+  
+</section>
+
+<section>
+  <h2>Xavfsizlik tafakkuri tamoyillari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-question-mark"></i></div>
+      <h3>1. Nima buzilishi mumkin?</h3>
+      <p>What could go wrong? Har qanday jarayonda eng yomon ssenariyni ko'ra bilish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="swords"></i></div>
+      <h3>2. Hujumchi kabi fikrlash</h3>
+      <p>Adversarial thinking: tizimni buzish va qoidalarni aylanib o'tish yo'llarini izlash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield"></i></div>
+      <h3>3. Himoyachi kabi fikrlash</h3>
+      <p>Defensive thinking: tizimni qatlamli himoya (Defense-in-Depth) bilan o'rash.</p>
+    </div>
+  </div>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-alert"></i></div>
+      <h3>4. Tizim allaqachon buzilgan deb hisoblash</h3>
+      <p>Assume breach: tarmoq ichida allaqachon xaker bor deb, har bir so'rovni tekshirish (Zero Trust).</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="database"></i></div>
+      <h3>5. Aktivlaringni bilish</h3>
+      <p>Know your assets: himoya qilishdan oldin nimani himoyalash kerakligini aniq ro'yxatga olish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Zaif parollar va ochiq portlar</h1>
+  <p>Hujumchilar uchun eng oson kirish eshigi</p>
+  
+</section>
+
+<section>
+  <h2>Zaif parollar: Statistik haqiqat</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <h4>«123456»</h4>
+      <p class="muted">Dunyo bo'yicha 1-o'rinda</p>
+      <p>Topilishi: 0.001 soniya!</p>
+    </div>
+    <div class="card fragment fade-up">
+      <h4>«admin»</h4>
+      <p class="muted">Routerlar va serverlar</p>
+      <p>Topilishi: 0.001 soniya!</p>
+    </div>
+    <div class="card fragment fade-up">
+      <h4>«password»</h4>
+      <p class="muted">Eng mashhur so'z</p>
+      <p>Topilishi: 0.001 soniya!</p>
+    </div>
+  </div>
+  <div class="card fragment fade-up">
+    <div class="icon"><i data-ic="file-text"></i></div>
+    <h3>rockyou.txt lug'ati</h3>
+    <p>14 milliondan ortiq real parollar ro'yxati. Buzg'unchilar lug'at hujumi (Dictionary Attack) orqali parollarni bir zumda topishadi.</p>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Amaliy vositalar: Nmap va Hydra</h1>
+  <p>Portlarni skanerlash va parollarni sinash</p>
+  
+</section>
+
+<section>
+  <h2>1. Nmap: Ochiq portlar skaneri</h2>
+  <pre><code class="language-bash">sudo nmap -sV -p- --open 172.16.4.65</code></pre>
+  <div class="cards three fragment fade-up">
+    <div class="card">
+      <h4>-sV</h4>
+      <p class="muted">Servis versiyasini aniqlaydi (masalan, OpenSSH 8.2).</p>
+    </div>
+    <div class="card">
+      <h4>-p-</h4>
+      <p class="muted">Barcha 65 535 ta portni to'liq tekshiradi.</p>
+    </div>
+    <div class="card">
+      <h4>--open</h4>
+      <p class="muted">Faqat xavfli ochiq portlarni filtrlab chiqaradi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>2. Hydra: Lug'at hujumi vositasi</h2>
+  <pre><code class="language-bash">hydra -l windows -P /usr/share/wordlists/rockyou.txt -t 4 -V -f rdp://172.16.4.65</code></pre>
+  <div class="cols fragment fade-up">
+    <div>
+      <div class="card">
+        <h3>Parametrlar tahlili:</h3>
+        <p><code>-l windows</code>: Foydalanuvchi nomi</p>
+        <p><code>-P rockyou.txt</code>: Parollar lug'ati</p>
+        <p><code>-f</code>: Parol topilishi bilan to'xtatish</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="terminal"></i></div>
+      <h3>Natija:</h3>
+      <p class="muted">Agar parol oddiy (masalan, «qwerty») bo'lsa, Hydra uni bir necha soniyada ekranga chiqaradi!</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">05</div>
+  <h1>Kuchli parollar va Parol menejerlari</h1>
+  <p>Parollarni xavfsiz boshqarish san'ati</p>
+  
+</section>
+
+<section>
+  <h2>Kuchli parol mezonlari</h2>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>12-16+ belgi</h3>
+      <p>Uzunlik — eng asosiy omil. Har bir qo'shimcha belgi xaker vaqtini 100 barobar oshiradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="binary"></i></div>
+      <h3>Murakkab aralashma</h3>
+      <p>Katta harf (A-Z), kichik harf (a-z), sonlar (0-9) va belgilar (`!@#$%^&*`). Masalan: <code>Maktab@2025!Uz</code></p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="refresh-cw"></i></div>
+      <h3>Har bir saytga alohida!</h3>
+      <p>Bitta sayt buzilsa, boshqa akkauntlaringiz xavfsiz qolishi shart.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="smartphone"></i></div>
+      <h3>2FA yoqilgan bo'lsin</h3>
+      <p>Parol o'g'irlangan taqdirda ham telefoningizdagi kodsiz kirib bo'lmaydi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">06</div>
+  <h1>Amaliy topshiriqlar</h1>
+  <p>Darsdagi vazifalarni muhokama qilish</p>
+  
+</section>
+
+<section>
+  <h2>Darsning amaliy vazifalari</h2>
+  <div class="cols">
+    <div class="task fragment fade-up">
+      <span class="level easy">Oson</span>
+      <h4>1. 5 ta tamoyil</h4>
+      <p>Security Mindset tamoyillarini yozing va qisqacha izohlang.</p>
+    </div>
+    <div class="task fragment fade-up">
+      <span class="level easy">Oson</span>
+      <h4>2. Nmap parametrlari</h4>
+      <p>`-sV`, `-p-`, `--open` parametrlarining texnik vazifasini ayting.</p>
+    </div>
+    <div class="task fragment fade-up">
+      <span class="level mid">O'rta</span>
+      <h4>3. Brute vs Dictionary</h4>
+      <p>Nima uchun lug'at hujumi to'liq brute-forcedan tezroq ishlaydi?</p>
+    </div>
+    <div class="task fragment fade-up">
+      <span class="level hard">Qiyin</span>
+      <h4>4. Account Lockout</h4>
+      <p>5 marta xato kiritilganda bloklash qoidasi Hydrani qanday to'xtatadi?</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Xulosa: 2-hafta sarhisobi</h2>
+  <div class="card fragment fade-up">
+    <div class="icon"><i data-ic="shield-check"></i></div>
+    <h3>Xavfsizlik tafakkuri — eng muhim qurol</h3>
+    <p>Texnologiyalar o'zgarishi mumkin, ammo zaiflikni ko'ra bilish tafakkuri mutaxassisni har doim bir qadam oldinda ushlaydi.</p>
+  </div>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <h4>CIA Triadasi</h4>
+      <p>Har doim Maxfiylik, Yaxlitlik va Foydalanuvchanlikni birgalikda o'ylang.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <h4>Parol gigiyenasi</h4>
+      <p>Parol menejeridan foydalaning va 2FA ni barcha joyda yoqing.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="shield-check" data-anim="pulse"></i></div>
+  <h1>2-hafta yakunlandi!</h1>
+  <p class="muted">Keyingi hafta: Raqamli gigiyena, Red/Blue team va Tarmoq asoslari</p>
+  <span class="badge">Uyga vazifani bajarishni unutmang!</span>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Loyihalash andozalari: Factory va Singleton</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- SLIDE 1: Hero -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Loyihalash andozalari: Factory va Singleton</h1>
+  <p class="muted">Creational patterns: Obyekt yaratishni boshqarish va global holat arxitekturasi</p>
+  <span class="badge">11-sinf</span><span class="badge">Professional IT</span><span class="badge">3-hafta · 9-dars</span>
+  
+</section>
+
+<!-- SLIDE 2: Reja -->
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="boxes" data-anim="float"></i></div>
+      <h3>01. Andozalar tasnifi</h3>
+      <p>GoF 3 toifasi: Creational, Structural va Behavioral tushunchasi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="factory" data-anim="pulse"></i></div>
+      <h3>02. Factory Method</h3>
+      <p>Obyekt yaratishni mijozdan ajratish va OCP asosida markazlashtirish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="lock" data-anim="wiggle"></i></div>
+      <h3>03. Singleton arxitekturasi</h3>
+      <p>Yagona nusxa kafolati, Python'da <code>__new__</code> va test xatarlari.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 3: Bo'lim 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Loyihalash andozalari (Design Patterns)</h1>
+  <p>Tipik arxitektura muammolarining sinovdan o'tgan yechim modellari</p>
+  
+</section>
+
+<!-- SLIDE 4: SVG 1 - GoF 3 toifasi -->
+<section>
+  <h2>GoF 3 asosiy toifasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- 1. Creational -->
+      <g class="fragment">
+        <rect x="50" y="50" width="260" height="200" rx="14" class="fa la" stroke-width="2"/>
+        <text x="180" y="95" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">1. Creational</text>
+        <text x="180" y="125" text-anchor="middle" class="t-muted" font-size="13">Yaratuvchi andozalar</text>
+        <text x="180" y="160" text-anchor="middle" class="t-accent" font-size="14">&bull; Factory Method</text>
+        <text x="180" y="185" text-anchor="middle" class="t-accent" font-size="14">&bull; Singleton</text>
+        <text x="180" y="215" text-anchor="middle" class="t-muted" font-size="12">Obyekt qanday yaratiladi?</text>
+      </g>
+
+      <!-- 2. Structural -->
+      <g class="fragment">
+        <rect x="350" y="50" width="260" height="200" rx="14" class="fb lb" stroke-width="2"/>
+        <text x="480" y="95" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">2. Structural</text>
+        <text x="480" y="125" text-anchor="middle" class="t-muted" font-size="13">Strukturaviy andozalar</text>
+        <text x="480" y="160" text-anchor="middle" class="t-accent" font-size="14">&bull; Adapter</text>
+        <text x="480" y="185" text-anchor="middle" class="t-accent" font-size="14">&bull; Facade / Decorator</text>
+        <text x="480" y="215" text-anchor="middle" class="t-muted" font-size="12">Sinflar qanday ulanadi?</text>
+      </g>
+
+      <!-- 3. Behavioral -->
+      <g class="fragment">
+        <rect x="650" y="50" width="260" height="200" rx="14" class="fc lc" stroke-width="2"/>
+        <text x="780" y="95" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">3. Behavioral</text>
+        <text x="780" y="125" text-anchor="middle" class="t-muted" font-size="13">Xulq-atvor andozalari</text>
+        <text x="780" y="160" text-anchor="middle" class="t-accent" font-size="14">&bull; Observer (Pub/Sub)</text>
+        <text x="780" y="185" text-anchor="middle" class="t-accent" font-size="14">&bull; Strategy</text>
+        <text x="780" y="215" text-anchor="middle" class="t-muted" font-size="12">Obyektlar qanday muloqot qiladi?</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 5: Over-engineering xavfi -->
+<section>
+  <h2>Qachon andoza ishlatish kerak?</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="triangle-alert"></i></div>
+      <h3>Over-engineering (Ortiqcha yuk)</h3>
+      <p>Oddiy 5 qatorli masalaga ham 3 ta andoza tiqishtirish. Bu kodni og'irlashtiradi va tushunarsiz qiladi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>To'g'ri mezon (KISS & DRY)</h3>
+      <p>Muammo aniq bo'lganda, tizim kengayishi talab etilganda va takrorlanishlar ko'paygandagina andoza joriy qilinadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 6: Bo'lim 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Factory Method andozasi</h1>
+  <p>Obyektlarni to'g'ridan-to'g'ri emas, maxsus «fabrika» orqali yaratish</p>
+  
+</section>
+
+<!-- SLIDE 7: SVG 2 - Factory Method Architecture -->
+<section>
+  <h2>Factory Method arxitekturasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- Client Code -->
+      <g class="fragment">
+        <rect x="40" y="100" width="220" height="90" rx="10" class="fa la" stroke-width="2"/>
+        <text x="150" y="135" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">Client Code</text>
+        <text x="150" y="160" text-anchor="middle" class="t-muted" font-size="12">Mijoz kodi</text>
+      </g>
+
+      <!-- Arrow to Factory -->
+      <path d="M 260 145 L 340 145" class="la" stroke-width="3" marker-end="url(#arr)" class="fragment"/>
+
+      <!-- Factory -->
+      <g class="fragment">
+        <rect x="350" y="80" width="240" height="130" rx="12" class="fc lc" stroke-width="2"/>
+        <text x="470" y="115" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">PaymentFactory</text>
+        <text x="470" y="145" text-anchor="middle" class="t-accent" font-size="12">create_payment(type)</text>
+        <text x="470" y="175" text-anchor="middle" class="t-muted" font-size="11">Yaratish logikasi bir joyda</text>
+      </g>
+
+      <!-- Arrows to Products -->
+      <path d="M 590 120 L 680 80" class="lc" stroke-width="2" marker-end="url(#arr)" class="fragment"/>
+      <path d="M 590 170 L 680 210" class="lc" stroke-width="2" marker-end="url(#arr)" class="fragment"/>
+
+      <!-- Product 1 -->
+      <g class="fragment">
+        <rect x="690" y="50" width="220" height="60" rx="8" class="fb lb" stroke-width="2"/>
+        <text x="800" y="85" text-anchor="middle" class="t-head" font-size="14" font-weight="bold">UzcardPayment</text>
+      </g>
+
+      <!-- Product 2 -->
+      <g class="fragment">
+        <rect x="690" y="180" width="220" height="60" rx="8" class="fb lb" stroke-width="2"/>
+        <text x="800" y="215" text-anchor="middle" class="t-head" font-size="14" font-weight="bold">HumoPayment</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 8: Factory ning afzalliklari -->
+<section>
+  <h2>Nega Factory Method qulay?</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Markazlashtirish</h3>
+      <p>Obyekt yaratish logikasi butun loyiha bo'ylab sochilib ketmasdan bitta joyda turadi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="refresh-cw"></i></div>
+      <h3>OCP ga to'liq mos</h3>
+      <p>Yangi sinf qo'shilganda mijoz kodi o'zgarmaydi, faqat fabrika ro'yxatiga qo'shiladi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>Abstraksiya</h3>
+      <p>Dasturning qolgan qismi aniq detallarga emas, umumiy interfeysga tayanadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 9: Bo'lim 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Singleton andozasi</h1>
+  <p>Butun dastur bo'yicha yagona nusxani kafolatlash va unga kirish nuqtasi</p>
+  
+</section>
+
+<!-- SLIDE 10: SVG 3 - Singleton Memory Model -->
+<section>
+  <h2>Singleton xotira modeli</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- Callers -->
+      <g class="fragment">
+        <rect x="50" y="60" width="180" height="60" rx="8" class="fa la" stroke-width="2"/>
+        <text x="140" y="95" text-anchor="middle" class="t-head" font-size="14">AuthService</text>
+        <rect x="50" y="160" width="180" height="60" rx="8" class="fa la" stroke-width="2"/>
+        <text x="140" y="195" text-anchor="middle" class="t-head" font-size="14">OrderService</text>
+      </g>
+
+      <!-- Arrows pointing to same object -->
+      <path d="M 230 90 L 450 140" class="la" stroke-width="2" marker-end="url(#arr)" class="fragment"/>
+      <path d="M 230 190 L 450 160" class="la" stroke-width="2" marker-end="url(#arr)" class="fragment"/>
+
+      <!-- Singleton Instance in RAM -->
+      <g class="fragment">
+        <rect x="460" y="70" width="440" height="150" rx="16" class="fc lc" stroke-width="3"/>
+        <text x="680" y="115" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">DatabaseConnection._instance</text>
+        <text x="680" y="150" text-anchor="middle" class="t-muted" font-size="14">Yagona umumiy xotira manzili (0x7f8a...)</text>
+        <text x="680" y="180" text-anchor="middle" class="t-accent" font-size="13">db1 is db2 &rarr; True</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 11: Python'da `__new__` siri -->
+<section>
+  <h2>Python'da `__new__` va `__init__` farqi</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="box"></i></div>
+      <h3><code>__new__(cls)</code> &mdash; Yaratuvchi</h3>
+      <p>Xotiradan obyekt uchun joy ajratadi. Singleton aynan shu yerda mavjud nusxa bor-yo'qligini tekshiradi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+      <h3><code>__init__(self)</code> &mdash; Boshlang'ichlovchi</h3>
+      <p>Yaratilgan obyektga boshlang'ich qiymatlarni (atributlarni) yuklaydi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 12: Qayerda qo'llaniladi? -->
+<section>
+  <h2>Singleton qayerda zarur?</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="database"></i></div>
+      <h3>Connection Pool</h3>
+      <p>Ma'lumotlar bazasi bilan cheklangan (masalan, 10 ta) ulanishlar zaxirasini boshqarish.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="file-text"></i></div>
+      <h3>Logger</h3>
+      <p>Barcha modullardan kelgan yozuvlarni bitta log faylga tartibli yozish.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="settings"></i></div>
+      <h3>ConfigManager</h3>
+      <p>Dastur sozlamalarini xotiraga bir marta yuklab, barcha joyda bir xil o'qish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 13: Singleton xatarlari (Anti-pattern) -->
+<section>
+  <h2>Nega Singleton ba'zida «Anti-pattern»?</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="globe"></i></div>
+      <h3>Global State</h3>
+      <p>Istalgan modul xohlagan paytda o'zgartirib qo'yishi mumkin, bu xatolarni topishni qiyinlashtiradi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="test-tube"></i></div>
+      <h3>Flaky Tests</h3>
+      <p>Bitta unit-testda qolgan holat keyingi testlarning kutilmaganda qulashiga olib keladi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="zap"></i></div>
+      <h3>Race Condition</h3>
+      <p>Ko'p oqimli (multi-threading) tizimlarda qulflash (Lock) bo'lmasa, 2 ta obyekt ochilib ketadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 14: Zamonaviy muqobil: DI Container -->
+<section>
+  <h2>Zamonaviy yechim: Dependency Injection</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">Klassik Singleton</button><button type="button">DI Singleton Lifecycle</button></div>
+    <div class="swap-p"><div class="card"><h3>Qattiq global bog'liqlik</h3><p>Har bir sinf ichida <code>DB.get_instance()</code> chaqiriladi. Test paytida uni soxtalashtirish (mock) juda qiyin.</p></div></div>
+    <div class="swap-p"><div class="card accent"><h3>DI orqali yagona nusxa uzatish</h3><p>FastAPI yoki Spring kabi tizimlar obyektni o'zi 1 marta yaratadi va sinfga argument sifatida uzatadi. Test qilish juda oson!</p></div></div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 15: .quiz -->
+<section>
+  <h2>Tezkor viktorina</h2>
+  <div class="quiz">
+    <p class="q">Qaysi andoza butun tizim bo'yicha faqat bitta obyekt nusxasi bo'lishini ta'minlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Factory Method</button>
+      <button class="opt" type="button" data-ok>Singleton</button>
+      <button class="opt" type="button">Observer</button>
+    </div>
+    <div class="explain">To'g'ri: Singleton sinfning faqat 1 ta nusxasi bo'lishini kafolatlaydi.</div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 16: Amaliy topshiriq -->
+<section>
+  <h2>Bugungi amaliy vazifa <span class="timer"><i data-ic="timer"></i>25 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Python'da <code>VehicleFactory</code> tuzib, turiga qarab Car va Truck obyektlarini yarating.</div>
+  <div class="task"><span class="level mid">O'rta</span><code>__new__</code> metodi orqali <code>AppLogger</code> Singleton sinfini yozing va 2 ta o'zgaruvchi bitta xotiraga ega ekanini <code>is</code> bilan tekshiring.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Loyiha konfiguratsiyasini (.env) bir marta o'quvchi <code>ConfigManager</code> Singleton sinfini to'liq ishga tushiring.</div>
+  
+</section>
+
+<!-- SLIDE 17: Dars xulosasi -->
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Design Patterns</h3>
+      <p>Muammoga nisbatan o'ylangan arxitektura andozasi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Factory</h3>
+      <p>Obyekt yaratishni markazlashtirish va mijozni mustaqil qilish.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Singleton</h3>
+      <p>Resurslarni tejovchi yagona nusxa (lekin global xatarlariga hushyor bo'lish lozim).</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 18: Keyingi dars anonsi -->
+<section class="hero">
+  <div class="icon"><i data-ic="bell" data-anim="float"></i></div>
+  <h1>Keyingi dars: Observer andozasi va REST API asoslari</h1>
+  <p class="muted">Publish-Subscribe modeli, hodisalarni kuzatish va HTTP/JSON arxitekturasi</p>
+  <span class="badge">4-hafta · 10-dars</span>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>IoT Arxitekturasi: Tarmoq, Bulut va Interfeys</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>IoT Arxitekturasi: Tarmoq, Bulut va Interfeys</h1>
+  <p class="muted">Simsiz aloqa turlari, MQTT protokoli, Edge vs Cloud va zamonaviy dashboardlar</p>
+  <span class="badge">9-sinf</span><span class="badge">IoT</span><span class="badge">1-hafta · 3-dars</span>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>IoT Tarmoq Texnologiyalari</h1>
+  <p>Masofa, o'tkazish tezligi va quvvat sarfi muvozanati</p>
+</section>
+
+<section>
+  <h2>Nega Turli Xil Tarmoqlar Kerak?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="network" data-anim="pulse"></i></div>
+      <h3>Energiya va Masofa Balansi</h3>
+      <p>Wi-Fi juda tez, lekin batareyani bir necha kunda tugatadi va 50 metrgagina yetadi.</p>
+      <p class="t-muted">Daladagi datchik esa 10 km masofada bitta batareyada 5 yil ishlashi kerak.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+      <h3>Sharoitga Qarab Tanlov</h3>
+      <p>Uy ichida: Wi-Fi, Bluetooth BLE, ZigBee.</p>
+      <p class="t-muted">Dala va shaharda: LoRaWAN, NB-IoT, 4G / 5G mobil aloqasi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Qisqa Masofali Aloqa (Short-Range)</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="wifi"></i></div>
+      <h3>Wi-Fi</h3>
+      <p>Tezlik: Mbps (Yuqori).</p>
+      <p class="t-muted">Masofa: 10–50 m. Videokameralar va doimiy quvvatli aqlli uy qurilmalari uchun.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="radio"></i></div>
+      <h3>Bluetooth BLE</h3>
+      <p>Tezlik: kbps–Mbps.</p>
+      <p class="t-muted">Masofa: 1–20 m. Juda kam quvvat sarflaydi. Smart soat va tibbiy datchiklar uchun.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="network"></i></div>
+      <h3>ZigBee (Mesh)</h3>
+      <p>To'rsimon ulanish.</p>
+      <p class="t-muted">Qurilmalar bir-biri orqali signal uzatadi. O'nlab datchikli aqlli uylar uchun.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Uzoq Masofali Aloqa (LPWAN)</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="radio" data-anim="float"></i></div>
+      <h3>LoRaWAN (Long Range)</h3>
+      <p>10–15 km masofaga ma'lumot uzatish imkoniyati.</p>
+      <p class="t-muted">O'ta kam energiya: bitta batareyada 5–10 yil ishlaydi! Qishloq xo'jaligi uchun a'lo.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="signal"></i></div>
+      <h3>NB-IoT va 4G/5G</h3>
+      <p>Mobil aloqa operatorlari minoralari orqali ishlaydi.</p>
+      <p class="t-muted">Shahar bo'ylab harakatlanuvchi aqlli transportlar va masofaviy hisoblagichlar uchun.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Simsiz Texnologiyalar Xaritasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <line x1="60" y1="200" x2="740" y2="200" stroke="var(--c-accent)" stroke-width="2"></line>
+      <line x1="60" y1="200" x2="60" y2="30" stroke="var(--c-accent)" stroke-width="2"></line>
+
+      <text x="730" y="225" text-anchor="end" class="t-muted">Qamrov Masofasi →</text>
+      <text x="45" y="35" text-anchor="end" class="t-muted">Tezlik ↑</text>
+
+      <rect x="90" y="45" width="130" height="50" rx="6" class="fa la"></rect>
+      <text x="155" y="75" text-anchor="middle" class="t-head">Wi-Fi (Tez, yaqin)</text>
+
+      <rect x="90" y="130" width="130" height="50" rx="6" class="fb lb"></rect>
+      <text x="155" y="160" text-anchor="middle" class="t-head">BLE / ZigBee</text>
+
+      <rect x="550" y="55" width="140" height="50" rx="6" class="fn ln"></rect>
+      <text x="620" y="85" text-anchor="middle" class="t-head">4G / 5G Mobil</text>
+
+      <rect x="550" y="130" width="140" height="50" rx="6" class="fc lc"></rect>
+      <text x="620" y="160" text-anchor="middle" class="t-head">LoRaWAN (15 km)</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>IoT Protokollari</h1>
+  <p>MQTT ning Publish / Subscribe modeli va HTTP taqqosi</p>
+</section>
+
+<section>
+  <h2>Nega Oddiy HTTP IoT ga Mos Kelmaydi?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="globe"></i></div>
+      <h3>HTTP Og'ir Sarlavhalarga Ega</h3>
+      <p>Bitta kichik harorat qiymatini yuborish uchun yuzlab baytlik sarlavha ketadi.</p>
+      <p class="t-muted">Request / Response modeli doimiy kanalni ochiq tutmaydi va batareyani yeydi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="zap"></i></div>
+      <h3>MQTT Ning Yengilligi</h3>
+      <p>Sarlavha hajmi atigi <b>2 bayt</b>! Aloqa doimiy ulanish rejimida turadi.</p>
+      <p class="t-muted">Zaif mobil aloqa va chekka hududlarda ham uzluksiz ishlay oladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>MQTT Arxitekturasi (Pub / Sub)</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="num">1</div>
+      <h3>Publisher (Nashr etuvchi)</h3>
+      <p>Sensor ma'lumotini ma'lum bir mavzuga (Topic) jo'natuvchi qurilma.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="num">2</div>
+      <h3>Broker (Markaziy Server)</h3>
+      <p>Xabarlarni qabul qiladi va kerakli obunachilarga darhol tarqatadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="num">3</div>
+      <h3>Subscriber (Obunachi)</h3>
+      <p>Kerakli mavzuni tinglab, yangi ma'lumot kelishi bilan uni qabul qiladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>MQTT Topics (Mavzular Daraxti)</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="folder-tree"></i></div>
+      <h3>Daraxtsimon Ierarxiya</h3>
+      <p><code>uy/oshxona/harorat</code></p>
+      <p><code>uy/mehmonxona/chiroq</code></p>
+      <p class="t-muted">Har bir datchik o'zining aniq manzilli mavzusiga ega bo'ladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+      <h3>Filtrlar (Wildcards)</h3>
+      <p><code>uy/+/harorat</code> — barcha xonalardagi haroratni birvarakayiga qabul qilish.</p>
+      <p><code>uy/#</code> — uydagi barcha xabarlarga birdaniga obuna bo'lish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>MQTT Ma'lumotlar Oqimi Sxemasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 230">
+      <rect x="30" y="40" width="180" height="140" rx="8" class="fn ln"></rect>
+      <text x="120" y="75" text-anchor="middle" class="t-accent">Publisher (Sensor)</text>
+      <text x="120" y="105" text-anchor="middle" class="t-muted">ESP32 Harorat</text>
+      <text x="120" y="130" text-anchor="middle" class="t-head">Topic: uy/harorat</text>
+      <text x="120" y="155" text-anchor="middle" class="t-head">Payload: 24.5°C</text>
+
+      <line x1="220" y1="110" x2="310" y2="110" stroke="var(--c-accent)" stroke-width="3"></line>
+
+      <circle cx="400" cy="110" r="60" class="fa la"></circle>
+      <text x="400" y="105" text-anchor="middle" class="t-head">MQTT BROKER</text>
+      <text x="400" y="130" text-anchor="middle" class="t-head">Markaziy Server</text>
+
+      <line x1="470" y1="110" x2="560" y2="110" stroke="var(--c-accent)" stroke-width="3"></line>
+
+      <rect x="570" y="40" width="190" height="140" rx="8" class="fb lb"></rect>
+      <text x="665" y="75" text-anchor="middle" class="t-head">Subscriber (Ilova)</text>
+      <text x="665" y="105" text-anchor="middle" class="t-head">Smartfon Dashboard</text>
+      <text x="665" y="130" text-anchor="middle" class="t-muted">Obuna: uy/harorat</text>
+      <text x="665" y="155" text-anchor="middle" class="t-head">Ekran yangilandi!</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Edge vs Cloud Computing</h1>
+  <p>Mahalliy tezkor javob va global bulutli tahlil arxitekturasi</p>
+</section>
+
+<section>
+  <h2>Cloud Computing (Bulutli Hisoblash)</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cloud"></i></div>
+      <h3>Cheksiz Xotira va Big Data</h3>
+      <p>Yillar davomida to'plangan milliardlab telemetriya o'lchovlarini saqlash.</p>
+      <p class="t-muted">Mavsumiy energiya sarfini va yillik hosildorlikni tahlil qilish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="brain"></i></div>
+      <h3>Sun'iy Intellekt va Prognoz</h3>
+      <p>Mashinali o'rganish (ML) orqali ob-havo va nosozliklarni oldindan bashorat qilish.</p>
+      <p class="t-muted">AWS IoT, Microsoft Azure, Google Cloud IoT platformalari.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Edge Computing (Lokal Hisoblash)</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu" data-anim="pulse"></i></div>
+      <h3>1 Millisekundda Qaror</h3>
+      <p>Ma'lumotlar bulutga yuborilmasdan, bevosita mikrokontrollerning o'zida tahlil qilinadi.</p>
+      <p class="t-muted">Kritik va xavfli holatlarda kechikishsiz (Zero Latency) javob qaytarish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Internetsiz Mustaqil Ishlash</h3>
+      <p>Agar internet yoki provayder uzilib qolsa ham, lokal xavfsizlik 100% ishlayveradi.</p>
+      <p class="t-muted">Gaz klapanini yopish yoki tormoz bosish uchun internet kutilmaydi!</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>IoT Kiberxavfsizlik Choralari</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="lock"></i></div>
+      <h3>TLS / SSL Shifrlash</h3>
+      <p>Tarmoq orqali uzatilayotgan ma'lumotlarni begona shaxslar tutib ololmaydigan qilib shifrlash.</p>
+      <p class="t-muted">MQTT xabarlari MQTTS (port 8883) orqali himoyalanadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="key"></i></div>
+      <h3>Kuchli Autentifikatsiya</h3>
+      <p>Standart parollardan ("admin/admin", "12345") qat'iyan voz kechish.</p>
+      <p class="t-muted">Har bir qurilmaga noyob token va xavfsiz kalit (UID) biriktiriladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Edge va Cloud Qarorlar Taqqosi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 230">
+      <rect x="30" y="30" width="350" height="170" rx="8" class="fc lc"></rect>
+      <text x="205" y="65" text-anchor="middle" class="t-head">EDGE COMPUTING (Lokal)</text>
+      <circle cx="100" cy="115" r="22" class="fa la"></circle>
+      <text x="140" y="120" font-size="20" class="t-accent">→</text>
+      <circle cx="180" cy="115" r="22" class="fb lb"></circle>
+      <text x="205" y="165" text-anchor="middle" class="t-head">Kechikish: 1 millisekund</text>
+      <text x="205" y="185" text-anchor="middle" class="t-muted">Gaz sizishi, avto-tormoz, yong'in</text>
+
+      <rect x="420" y="30" width="350" height="170" rx="8" class="fn ln"></rect>
+      <text x="595" y="65" text-anchor="middle" class="t-head">CLOUD COMPUTING (Bulut)</text>
+      <circle cx="480" cy="115" r="18" class="fa la"></circle>
+      <text x="515" y="120" font-size="20" class="t-muted">→</text>
+      <circle cx="560" cy="115" r="28" class="fc lc"></circle>
+      <text x="595" y="165" text-anchor="middle" class="t-head">Kechikish: 100–500 millisekund</text>
+      <text x="595" y="185" text-anchor="middle" class="t-muted">Oylik hisobotlar, Big Data tahlili</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Foydalanuvchi Interfeysi</h1>
+  <p>Dashboardlar, mobil ilovalar va vizual telemetriya</p>
+</section>
+
+<section>
+  <h2>IoT Dashboard Nima?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+      <h3>Vizual Boshqaruv Markazi</h3>
+      <p>Sensor ma'lumotlarini o'qilishi oson bo'lgan grafiklar, ko'rsatkichlar va shkalalarga aylantirish.</p>
+      <p class="t-muted">Oddiy quruq raqamlar o'rniga dinamik jonli ko'rsatkichlar.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="smartphone"></i></div>
+      <h3>Masofaviy Boshqaruv Tugmalari</h3>
+      <p>Ilova orqali bitta bosishda dunyoning narigi burchagidagi chiroqni yoki nasosni yoqish.</p>
+      <p class="t-muted">Blynk, ThingsBoard, Ubidots va Home Assistant tizimlari.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Ommabop IoT Platformalari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="smartphone"></i></div>
+      <h3>Blynk IoT</h3>
+      <p>Mobil ilova yaratish eng oson platforma.</p>
+      <p class="t-muted">Drag-and-drop vidjetlar bilan 5 daqiqada tayyor bo'ladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="chart-column"></i></div>
+      <h3>ThingsBoard</h3>
+      <p>Sanoat darajasidagi ochiq manbali tizim.</p>
+      <p class="t-muted">Katta zavod va aqlli shaharlar uchun a'lo darajadagi xavfsizlik.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="house-wifi"></i></div>
+      <h3>Home Assistant</h3>
+      <p>Aqlli uylar uchun mahalliy server tizimi.</p>
+      <p class="t-muted">Barcha qurilmalarni bitta lokal interfeysga jamlaydi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Mobil Dashboard Vidjetlari</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 230">
+      <rect x="50" y="30" width="200" height="170" rx="8" class="fn ln"></rect>
+      <text x="150" y="65" text-anchor="middle" class="t-head">Harorat Termometri</text>
+      <circle cx="150" cy="115" r="30" class="fc lc"></circle>
+      <text x="150" y="122" text-anchor="middle" class="t-head">24.5°C</text>
+      <text x="150" y="180" text-anchor="middle" class="t-muted">Gauge Widget</text>
+
+      <rect x="300" y="30" width="200" height="170" rx="8" class="fn ln"></rect>
+      <text x="400" y="65" text-anchor="middle" class="t-head">Xona Chirog'i</text>
+      <rect x="360" y="95" width="80" height="40" rx="20" class="fb lb"></rect>
+      <circle cx="420" cy="115" r="15" fill="currentColor" class="t-head"></circle>
+      <text x="400" y="160" text-anchor="middle" class="t-head">YONIQ (ON)</text>
+      <text x="400" y="180" text-anchor="middle" class="t-muted">Switch Widget</text>
+
+      <rect x="550" y="30" width="200" height="170" rx="8" class="fn ln"></rect>
+      <text x="650" y="65" text-anchor="middle" class="t-head">Haftalik Dinamika</text>
+      <path d="M 570 140 Q 600 90 630 130 T 730 100" stroke="var(--c-accent)" stroke-width="3" fill="none"></path>
+      <text x="650" y="180" text-anchor="middle" class="t-muted">Chart Widget</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Interaktiv Savol: Favqulodda Holat</h2>
+  <div class="flip">
+    <div class="flip-in">
+      <div class="face front">
+        <div class="icon"><i data-ic="shield-alert"></i></div>
+        <h3>Nega gaz sizganda buyruqni bulutdan kutish xavfli?</h3>
+        <p class="t-muted">Kartanikiga bosing yoki aylantiring</p>
+      </div>
+      <div class="face back">
+        <div class="icon"><i data-ic="circle-check"></i></div>
+        <h3>Internet uzilishi portlashga olib keladi!</h3>
+        <p>Agar internet provayderda nosozlik bo'lsa, bulut xabarni ko'rmaydi. Shu sababli xavfsizlik qarorlari <b>Edge Computing</b> asosida bevosita qurilmaning o'zida (ESP32) qabul qilinib, klapan darhol yopilishi shart!</p>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>MQTT Xabar Uzatish Bosqichlari</h2>
+  <div class="stepper">
+    <div class="step fragment fade-up">
+      <div class="num">1</div>
+      <h3>Mavzuni (Topic) Belgilash</h3>
+      <p>Datchik uchun aniq manzil o'rnatiladi: <code>uy/oshxona/gaz</code>.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">2</div>
+      <h3>Nashr Etish (Publish)</h3>
+      <p>Sensor har 5 soniyada qiymatni markaziy Broker serveriga jo'natadi.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">3</div>
+      <h3>Ilovada Qabul Qilish (Subscribe)</h3>
+      <p>Smartfondagi ilova ushbu mavzuga obuna bo'lib, ekranni darhol yangilaydi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tezkor Savol: IoT Protokollari</h2>
+  <div class="quiz">
+    <div class="q">IoT qurilmalari o'rtasida kam energiya va kichik paketlar bilan xabar almashuvchi Publish/Subscribe protokoli qaysi?</div>
+    <div class="opts">
+      <div class="opt">A) HTTP (Veb-saytlar protokoli)</div>
+      <div class="opt" data-ok>B) MQTT (Message Queuing Telemetry Transport)</div>
+      <div class="opt">C) FTP (Fayl yuklash)</div>
+      <div class="opt">D) SMTP (Elektron pochta)</div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>1-Hafta Xulosasi: 4 Qatlam Birligi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>1-Haftada O'rganganlarimiz</h3>
+      <p>IoT tushunchasi va Kevin Eshton tarixi.</p>
+      <p>Sensorlar, aktuatorlar va mikrokontrollerlar.</p>
+      <p class="t-muted">Simsiz tarmoqlar (LoRa, Wi-Fi), MQTT va Edge/Cloud.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>Keyingi Hafta Rejasi</h3>
+      <p>Tinkercad.com virtual laboratoriyasi bilan tanishuv.</p>
+      <p>Virtual non-board (Breadboard) va LED ulanishi.</p>
+      <p class="t-muted">Ilk elektron sxemalarni xavfsiz simulyatsiya qilish.</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

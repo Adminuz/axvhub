@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Disklar, fayl tizimlari va paketlar</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 5-dars. Disklar, fayl tizimlari va paket menejerlari (APT, DNF) -->
+
+<!-- 1. SARLAVHA -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Disklar, fayl tizimlari va paketlar</h1>
+  <p class="muted">df, du, mount tushunchasi hamda zamonaviy paket menejerlari (APT, DNF)</p>
+  <span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">2-hafta · 5-dars</span>
+</section>
+
+<!-- 2. MAQSADLAR KARTALARI -->
+<section>
+  <h2>Bugungi dars maqsadlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="hard-drive" data-anim="float"></i></div>
+      <h3>Disklar va Xotira</h3>
+      <p>Blokli qurilmalar (/dev/sda), bo'limlar va Swap xotirasi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="search" data-anim="pulse"></i></div>
+      <h3>Monitoring vositalari</h3>
+      <p>df -h bilan bo'sh joyni, du -sh bilan papkalar hajmini o'lchash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="folder-archive" data-anim="spin"></i></div>
+      <h3>Paket menejerlari</h3>
+      <p>APT va DNF: dastur o'rnatish, yangilash va tozalash.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 3. STATISTIKA: DISKLAR RAQAMLARDA -->
+<section>
+  <h2>Disk va dasturlar raqamlarda</h2>
+  <div class="stats">
+    <div class="stat fragment"><div class="v"><span class="count" data-to="60" data-suf=" 000+">0</span></div><div class="l">Ubuntu rasmiy paketlari soni</div></div>
+    <div class="stat fragment"><div class="v">ext4</div><div class="l">eng ommabop Linux fayl tizimi</div></div>
+    <div class="stat fragment"><div class="v">100%</div><div class="l">disk to'lsa, server qulaydi</div></div>
+  </div>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>DevOps amaliyotida disk sarfini avtomat kuzatuvchi monitoring qo'yiladi.</div>
+</section>
+
+<!-- 4. BO'LIM 01: BLOKLI QURILMALAR VA BO'LIMLAR -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Blokli qurilmalar (/dev)</h1>
+  <p>Linux qattiq disklar va bo'limlarni qanday ko'radi?</p>
+</section>
+
+<!-- 5. SVG ILLYUSTRATSIYA 1: DISK BO'LIMLARI DARAXTI -->
+<section>
+  <h2>Disk qurilmalari ierarxiyasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <rect class="fa" x="50" y="80" width="220" height="150" rx="16"/>
+      <text class="t-head" x="160" y="130" text-anchor="middle" font-size="24">/dev/sda</text>
+      <text class="t-muted" x="160" y="165" text-anchor="middle" font-size="16">Fizik qattiq disk</text>
+      <text class="t-accent" x="160" y="195" text-anchor="middle" font-size="16">500 GB</text>
+
+      <line class="la flowing" x1="270" y1="120" x2="390" y2="90"/><polygon class="ar-a" points="395,88 382,82 386,96"/>
+      <line class="la flowing" x1="270" y1="190" x2="390" y2="220"/><polygon class="ar-a" points="395,222 386,214 382,228"/>
+
+      <g class="fragment"><rect class="fb" x="400" y="40" width="240" height="100" rx="14"/><text class="t-head" x="520" y="85" text-anchor="middle" font-size="22">/dev/sda1</text><text class="t-muted" x="520" y="115" text-anchor="middle" font-size="15">450 GB (ext4) -> /</text></g>
+
+      <g class="fragment"><rect class="fc" x="400" y="170" width="240" height="100" rx="14"/><text class="t-head" x="520" y="215" text-anchor="middle" font-size="22">/dev/sda2</text><text class="t-muted" x="520" y="245" text-anchor="middle" font-size="15">50 GB (Swap bo'limi)</text></g>
+
+      <line class="lb flowing" x1="640" y1="90" x2="740" y2="90"/><polygon class="ar-b" points="745,90 732,82 732,98"/>
+      
+      <g class="fragment"><rect class="fg" x="750" y="40" width="210" height="100" rx="14"/><text class="t-head" x="855" y="85" text-anchor="middle" font-size="22">Mount: /</text><text class="t-muted" x="855" y="115" text-anchor="middle" font-size="15">Ildiz fayl tizimi</text></g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 6. BO'LIM 02: MOUNT QILISH KONSEPSIYASI -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Ulanish nuqtasi (Mount Point)</h1>
+  <p>Yangi diskni fayllar daraxtiga kiritish qoidasi</p>
+</section>
+
+<!-- 7. SVG ILLYUSTRATSIYA 2: MOUNT JARAYONI -->
+<section>
+  <h2>Diskni ulash (Mount) sxemasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <rect class="fa" x="80" y="60" width="340" height="200" rx="16"/>
+      <text class="t-head" x="250" y="105" text-anchor="middle" font-size="24">Tashqi disk: /dev/sdb1</text>
+      <text class="t-muted" x="250" y="145" text-anchor="middle" font-size="16">Fleshka yoki yangi SSD</text>
+      <rect class="fn" x="120" y="175" width="260" height="50" rx="8"/>
+      <text class="t-accent" x="250" y="207" text-anchor="middle" font-size="18">Xom ma'lumotlar bloki</text>
+
+      <line class="la flowing" x1="420" y1="160" x2="570" y2="160"/><polygon class="ar-a" points="575,160 562,152 562,168"/>
+      <text class="t-accent" x="495" y="145" text-anchor="middle" font-size="18">mount</text>
+
+      <rect class="fb" x="580" y="60" width="340" height="200" rx="16"/>
+      <text class="t-head" x="750" y="105" text-anchor="middle" font-size="24">Ulanish nuqtasi: /mnt/backup</text>
+      <text class="t-muted" x="750" y="145" text-anchor="middle" font-size="16">Oddiy katalog</text>
+      <rect class="fn" x="620" y="175" width="260" height="50" rx="8"/>
+      <text class="t-head" x="750" y="207" text-anchor="middle" font-size="18">Fayllar ko'rinadi!</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 8. AYLANADIGAN KARTALAR: FAYL TIZIMLARI -->
+<section>
+  <h2>Linux fayl tizimlari turlari</h2>
+  <div class="cards three">
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="hard-drive"></i></div><h3>ext4</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Eng ishonchli va sinovdan o'tgan standart. Tezkor va barqaror.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="server"></i></div><h3>XFS</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Ulkan fayllar va ma'lumotlar bazalari uchun yuqori unumdorlik.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="cloud"></i></div><h3>Btrfs</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Snapshots, o'zini o'zi tuzatish va moslashuvchan disk massivlari.</p></div>
+    </div></div>
+  </div>
+</section>
+
+<!-- 9. BO'LIM 03: DISK MONITORINGI -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Disk monitoringi: df va du</h1>
+  <p>Qaysi bo'lim to'ldi va qaysi papka ko'p joy olyapti?</p>
+</section>
+
+<!-- 10. TAQQOSLASH (SWAP): DF vs DU -->
+<section>
+  <h2>df va du buyruqlari taqqosi</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">df -h (Disk Free)</button><button type="button">du -sh (Disk Usage)</button></div>
+    <div class="swap-p">
+      <div class="card">
+        <h3>df -h (Umumiy bo'sh joy)</h3>
+        <p>Barcha ulangan disk bo'limlari hajmini ko'rsatadi.</p>
+        <p>Qaysi disk qancha foiz to'lganini bir zumda bilish.</p>
+        <p>Misol: <code>df -h /</code></p>
+      </div>
+    </div>
+    <div class="swap-p">
+      <div class="card accent">
+        <h3>du -sh (Katalog sarfi)</h3>
+        <p>Aniq bitta papka yoki fayl hajmini hisoblaydi.</p>
+        <p>Haddan tashqari shishib ketgan papkalarni topish.</p>
+        <p>Misol: <code>du -sh /var/log</code></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. BO'LIM 04: PAKET MENEJERLARI -->
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Paket menejerlari (APT)</h1>
+  <p>Dasturlarni repozitoriyalardan xavfsiz o'rnatish</p>
+</section>
+
+<!-- 12. SVG ILLYUSTRATSIYA 3: REPOZITORIYA VA APT -->
+<section>
+  <h2>APT ishlash arxitekturasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <g data-tip="Mijoz: sudo apt install nginx"><rect class="fa" x="30" y="100" width="220" height="120" rx="16"/><text class="t-head" x="140" y="145" text-anchor="middle" font-size="22">Mijoz serveri</text><text class="t-muted" x="140" y="175" text-anchor="middle" font-size="16">APT / sources.list</text></g>
+
+      <line class="la flowing" x1="250" y1="160" x2="440" y2="160"/><polygon class="ar-a" points="445,160 432,152 432,168"/>
+      <text class="t-accent" x="345" y="145" text-anchor="middle" font-size="16">1. Indeks tekshirish</text>
+
+      <g data-tip="Rasmiy Repozitoriya: imzolangan paketlar ombori"><rect class="fb" x="450" y="100" width="240" height="120" rx="16"/><text class="t-head" x="570" y="145" text-anchor="middle" font-size="22">Rasmiy Repozitoriya</text><text class="t-muted" x="570" y="175" text-anchor="middle" font-size="16">GPG kalit bilan imzolangan</text></g>
+
+      <line class="lb flowing" x1="690" y1="160" x2="770" y2="160"/><polygon class="ar-b" points="775,160 762,152 762,168"/>
+
+      <g data-tip="O'rnatish: barcha bog'liqliklar bilan yuklab olinadi"><rect class="fg" x="780" y="100" width="190" height="120" rx="16"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">Dastur o'rnatildi</text><text class="t-muted" x="875" y="175" text-anchor="middle" font-size="15">Nginx tayyor!</text></g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 13. STEPPER: APT ISH OQIMI -->
+<section>
+  <h2>APT yordamida dastur o'rnatish</h2>
+  <div class="stepper">
+    <div class="stp on">
+      <div class="card">
+        <div class="icon"><i data-ic="refresh-cw" data-anim="spin"></i></div>
+        <h3>1. Indekslarni yangilash</h3>
+        <p><code>sudo apt update</code> — eng so'nggi ro'yxatni yuklaydi.</p>
+      </div>
+    </div>
+    <div class="stp">
+      <div class="card">
+        <div class="icon"><i data-ic="folder-down" data-anim="pulse"></i></div>
+        <h3>2. O'rnatish</h3>
+        <p><code>sudo apt install -y htop</code> — dastur va bog'liqliklarni o'rnatadi.</p>
+      </div>
+    </div>
+    <div class="stp">
+      <div class="card">
+        <div class="icon"><i data-ic="trash" data-anim="wiggle"></i></div>
+        <h3>3. Tozalash</h3>
+        <p><code>sudo apt autoremove</code> — keraksiz qoldiqlarni yo'qotadi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14. SVG ILLYUSTRATSIYA 4: SWAP VA RAM -->
+<section>
+  <h2>Swap xotirasi xavfsizlik yostig'i</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+      <rect class="fa" x="100" y="60" width="340" height="180" rx="16"/>
+      <text class="t-head" x="270" y="110" text-anchor="middle" font-size="24">Operativ xotira (RAM)</text>
+      <text class="t-accent" x="270" y="150" text-anchor="middle" font-size="32">8 GB (Tezkor)</text>
+      <text class="t-muted" x="270" y="195" text-anchor="middle" font-size="16">100% to'lib qolsa...</text>
+
+      <line class="la flowing" x1="440" y1="150" x2="560" y2="150"/><polygon class="ar-a" points="565,150 552,142 552,158"/>
+      <text class="t-accent" x="500" y="135" text-anchor="middle" font-size="16">Overflow</text>
+
+      <rect class="fb" x="570" y="60" width="340" height="180" rx="16"/>
+      <text class="t-head" x="740" y="110" text-anchor="middle" font-size="24">Swap bo'limi (Disk)</text>
+      <text class="t-accent" x="740" y="150" text-anchor="middle" font-size="32">4 GB (Zaxira)</text>
+      <text class="t-head" x="740" y="195" text-anchor="middle" font-size="16">Server qulashdan saqlanadi!</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 15. KOD: AMALIY BUYRUQLAR -->
+<section>
+  <h2>Amaliy boshqaruv buyruqlari</h2>
+  <pre><code class="language-bash" data-trim data-noescape data-line-numbers="1-6|1-2|4|6">
+# Tizimdagi bo'sh disk maydonini ko'rish
+df -h /
+
+# Eng katta kataloglarni aniqlash
+sudo du -sh /var/* | sort -h
+
+# Dasturni to'liq (sozlamalari bilan) o'chirish
+sudo apt purge nginx
+  </code></pre>
+  <div class="callout tip"><i data-ic="circle-check"></i><code>df -h</code> natijasida <code>Use%</code> ustunini doimo nazorat qiling.</div>
+</section>
+
+<!-- 16. MINI TEST (QUIZ) -->
+<section>
+  <h2>Tezkor bilim sinovi</h2>
+  <div class="quiz">
+    <p class="q">Qaysi buyruq dasturni uning barcha konfiguratsiya fayllari bilan birga butunlay yo'q qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">apt remove</button>
+      <button class="opt" type="button" data-ok>apt purge</button>
+      <button class="opt" type="button">apt clean</button>
+      <button class="opt" type="button">apt autoremove</button>
+    </div>
+    <div class="explain">To'g'ri: 'purge' barcha konfiguratsiyalarni tozalaydi, 'remove' esa faqat dastur fayllarini o'chiradi.</div>
+  </div>
+</section>
+
+<!-- 17. AMALIY TOPSHIRIQ -->
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span><code>df -h</code> va <code>lsblk</code> orqali disklaringizni tekshiring.</div>
+  <div class="task"><span class="level mid">O'rta</span><code>du -sh ~/* | sort -h</code> bilan katta papkalarni aniqlang.</div>
+  <div class="task"><span class="level hard">Qiyin</span><code>sudo apt update && sudo apt install -y ncdu</code> qilib xotirani tahlil qiling.</div>
+</section>
+
+<!-- 18. XULOSA -->
+<section>
+  <h2>Bugungi dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>O'rganilgan mavzular</h3>
+      <p>Disklar va bo'limlar (/dev/sda), mount qilish mantig'i, df/du tahlili hamda APT paket menejeri.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="book-open"></i></div>
+      <h3>Uyga vazifa</h3>
+      <p>Disk sarfini tahlil qilish va APT orqali kerakli utilitalarni o'rnatish.</p>
+    </div>
+  </div>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

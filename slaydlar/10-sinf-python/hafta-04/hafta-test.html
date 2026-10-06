@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>4-hafta testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>4-hafta testi</h1>
+  <p class="muted">20 ta savol &middot; taxminan 15 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">4-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/20</h2>
+  <div class="quiz">
+    <p class="q">DRF da <code>request.user</code> qachon <code>AnonymousUser</code> bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Foydalanuvchi admin bo'lsa</button>
+      <button class="opt" type="button" data-ok>So'rov egasi kimligini isbotlay olmasa</button>
+      <button class="opt" type="button">Token muddati uzaytirilsa</button>
+      <button class="opt" type="button">Throttling yoqilgan bo'lsa</button>
+    </div>
+    <div class="explain">Autentifikatsiya bloklamaydi, faqat kimligini aniqlaydi; bloklash Permissions ishi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/20</h2>
+  <div class="quiz">
+    <p class="q">Session autentifikatsiyasining asosiy kamchiligi qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Hech qanday cookie ishlatmaydi</button>
+      <button class="opt" type="button">Mobil ilovalarda eng yaxshi ishlaydi</button>
+      <button class="opt" type="button">Parolni Base64 da yuboradi</button>
+      <button class="opt" type="button" data-ok>Faqat brauzer uchun qulay va CSRF ga moyil</button>
+    </div>
+    <div class="explain">Brauzer cookie ni avtomatik yuboradi, shu sababli CSRF xavfi bor.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/20</h2>
+  <div class="quiz">
+    <p class="q">Token Authentication ning kamchiligi qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Har so'rovda tokenni tekshirish uchun bazaga murojaat kerak</button>
+      <button class="opt" type="button">Token Base64 da saqlanadi</button>
+      <button class="opt" type="button">U faqat GET so'rovlarda ishlaydi</button>
+      <button class="opt" type="button">U muddati o'tmaydigan bo'lishi mumkin emas</button>
+    </div>
+    <div class="explain">Bu Database Lookup Performance muammosi; JWT uni hal qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/20</h2>
+  <div class="quiz">
+    <p class="q">Refresh token nima uchun ishlatiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Har API so'rovini imzolash uchun</button>
+      <button class="opt" type="button">Parolni saqlash uchun</button>
+      <button class="opt" type="button" data-ok>Muddati tugagan Access tokenning yangisini olish uchun</button>
+      <button class="opt" type="button">CORS ruxsatini olish uchun</button>
+    </div>
+    <div class="explain">Refresh uzoq yashaydi, faqat serverning maxsus manziliga yuboriladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/20</h2>
+  <div class="quiz">
+    <p class="q">Qaysi ruxsat sinfi mehmonga faqat o'qishga (GET) ruxsat beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">IsAdminUser</button>
+      <button class="opt" type="button">AllowAny</button>
+      <button class="opt" type="button">IsAuthenticated</button>
+      <button class="opt" type="button" data-ok>IsAuthenticatedOrReadOnly</button>
+    </div>
+    <div class="explain">O'zgartirish (POST, PUT, DELETE) uchun tizimga kirish talab qilinadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/20</h2>
+  <div class="quiz">
+    <p class="q">ScopedRateThrottle qachon qo'llanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Alohida nozik joy (masalan parolni tiklash) uchun limit qo'yishda</button>
+      <button class="opt" type="button">Faqat adminlar uchun</button>
+      <button class="opt" type="button">Faqat statik fayllar uchun</button>
+      <button class="opt" type="button">Barcha View larga bir xil limit uchun</button>
+    </div>
+    <div class="explain">Masalan, parolni tiklashni kuniga 3 marta bilan cheklash.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/20</h2>
+  <div class="quiz">
+    <p class="q">Productionda baza sifatida nega SQLite o'rniga PostgreSQL tanlanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">SQLite pullik</button>
+      <button class="opt" type="button">PostgreSQL SQL ni qo'llamaydi</button>
+      <button class="opt" type="button" data-ok>SQLite da yozish bloklanadi (database lock), PostgreSQL parallel yozuvlarni ko'taradi</button>
+      <button class="opt" type="button">SQLite faqat Windows da ishlaydi</button>
+    </div>
+    <div class="explain">Bir soniyada ko'p POST kelsa SQLite qotib qolishi mumkin.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/20</h2>
+  <div class="quiz">
+    <p class="q">Deploy da sirlar (SECRET_KEY, parollar) qayerda saqlanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">settings.py ichida ochiq</button>
+      <button class="opt" type="button" data-ok>.env faylida, u .gitignore da turadi</button>
+      <button class="opt" type="button">README faylida</button>
+      <button class="opt" type="button">Docker image nomida</button>
+    </div>
+    <div class="explain">settings.py ularni <code>os.environ</code> orqali o'qiydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/20</h2>
+  <div class="quiz">
+    <p class="q">Qaysi komponent SSL (HTTPS) ni boshqaradi (SSL Termination)?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Nginx</button>
+      <button class="opt" type="button">Django ORM</button>
+      <button class="opt" type="button">Alembic</button>
+      <button class="opt" type="button">Pydantic</button>
+    </div>
+    <div class="explain">Nginx shifrlangan so'rovni ochib, Gunicorn ga oddiy HTTP ko'rinishida beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/20</h2>
+  <div class="quiz">
+    <p class="q">Dockerfile da <code>requirements.txt</code> nega kod dan oldin alohida COPY qilinadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Python buni talab qiladi</button>
+      <button class="opt" type="button">Image hajmi nolga tushadi</button>
+      <button class="opt" type="button" data-ok>Kod o'zgarganda kutubxonalar qayta o'rnatilmaydi: build cache tezlashadi</button>
+      <button class="opt" type="button">Gunicorn faqat shunday ishlaydi</button>
+    </div>
+    <div class="explain">Layer cache: o'zgarmagan qatlamlar qayta bajarilmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 11/20</h2>
+  <div class="quiz">
+    <p class="q">Compose dagi <code>volumes</code> nima uchun kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Konteynerni tezlashtirish uchun</button>
+      <button class="opt" type="button">Parollarni shifrlash uchun</button>
+      <button class="opt" type="button">Portlarni yopish uchun</button>
+      <button class="opt" type="button" data-ok>Konteyner qayta ishga tushsa ham ma'lumot yo'qolmasligi uchun</button>
+    </div>
+    <div class="explain">postgres_data, staticfiles, media volume lari saqlanib qoladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 12/20</h2>
+  <div class="quiz">
+    <p class="q">CI/CD da CI qismi nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Serverni o'chiradi</button>
+      <button class="opt" type="button" data-ok>git push dan keyin testlarni avtomatik yurgizib kodni tekshiradi</button>
+      <button class="opt" type="button">Faqat dizaynni yangilaydi</button>
+      <button class="opt" type="button">Bazani o'chirib qayta yaratadi</button>
+    </div>
+    <div class="explain">Test yiqilsa robot jarayonni to'xtatadi; yashil bo'lsa CD serverga yetkazadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 13/20</h2>
+  <div class="quiz">
+    <p class="q">FastAPI loyihasida <code>/docs</code> sahifasi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Admin panel</button>
+      <button class="opt" type="button">Baza dizayneri</button>
+      <button class="opt" type="button" data-ok>Swagger: avtomatik interaktiv API hujjati</button>
+      <button class="opt" type="button">Docker konsoli</button>
+    </div>
+    <div class="explain">Skeleton tekshiruvida /health bilan birga /docs ham ochiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 14/20</h2>
+  <div class="quiz">
+    <p class="q">Monolit <code>main.py</code> qanday muammo keltiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Kodni o'qish va test qilish qiyinlashadi</button>
+      <button class="opt" type="button">Python ishlamay qoladi</button>
+      <button class="opt" type="button">Baza ulanmaydi</button>
+      <button class="opt" type="button">FastAPI ishga tushmaydi</button>
+    </div>
+    <div class="explain">Modulli tuzilma (Separation of Concerns) kengaytirishni osonlashtiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 15/20</h2>
+  <div class="quiz">
+    <p class="q">E-Library TT ga ko'ra kitobni kim tahrirlay oladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Istalgan mehmon</button>
+      <button class="opt" type="button" data-ok>Faqat uning egasi (owner)</button>
+      <button class="opt" type="button">Faqat Guest</button>
+      <button class="opt" type="button">Hech kim</button>
+    </div>
+    <div class="explain">Create/update/delete faqat owner uchun; ownership qoidasi service qatlamida bo'ladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 16/20</h2>
+  <div class="quiz">
+    <p class="q"><code>.env.example</code> faylining vazifasi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Haqiqiy parollarni GitHub da saqlash</button>
+      <button class="opt" type="button">Docker image ni yaratish</button>
+      <button class="opt" type="button">Migratsiyalarni bajarish</button>
+      <button class="opt" type="button" data-ok>Kerakli o'zgaruvchilar namunasi: undan .env nusxa olinadi</button>
+    </div>
+    <div class="explain">Namunada haqiqiy sirlar bo'lmaydi, shuning uchun uni repoga qo'shish mumkin.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 17/20</h2>
+  <div class="quiz">
+    <p class="q"><code>alembic revision --autogenerate</code> ishlashi uchun nima shart?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat .env bo'sh bo'lishi</button>
+      <button class="opt" type="button">Docker ishlab turishi</button>
+      <button class="opt" type="button" data-ok>env.py da <code>target_metadata = Base.metadata</code> va modellar import qilingan bo'lishi</button>
+      <button class="opt" type="button">Swagger ochiq bo'lishi</button>
+    </div>
+    <div class="explain">Aks holda Alembic jadvallarni ko'rmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 18/20</h2>
+  <div class="quiz">
+    <p class="q">10- va 11-darslarni bog'lang: productionda xavfsiz cookie sozlamalari qayerda yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>prod.py da: SESSION_COOKIE_SECURE va CSRF_COOKIE_SECURE</button>
+      <button class="opt" type="button">Dockerfile ichida</button>
+      <button class="opt" type="button">Nginx dagi /static/ blokida</button>
+      <button class="opt" type="button">alembic.ini da</button>
+    </div>
+    <div class="explain">Xavfsizlik sozlamalari prod.py ga kiradi, sirlar esa .env.prod dan o'qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 19/20</h2>
+  <div class="quiz">
+    <p class="q">Throttling counter lari DRF da qayerda hisoblanadi va productionda nima tavsiya etiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat Nginx loglarida</button>
+      <button class="opt" type="button">Bazadagi users jadvalida</button>
+      <button class="opt" type="button">JWT payload ida</button>
+      <button class="opt" type="button" data-ok>Cache tizimida; productionda masalan Redis</button>
+    </div>
+    <div class="explain">Uslubiy ko'rsatmada Redis cache/throttling counters uchun ixtiyoriy komponent sifatida keltirilgan.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 20/20</h2>
+  <div class="quiz">
+    <p class="q">11- va 12-darslarni bog'lang: FastAPI loyihasi uchun deploy da nima o'zgaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Nginx kerak bo'lmay qoladi</button>
+      <button class="opt" type="button" data-ok>WSGI/Gunicorn o'rniga ASGI server (Uvicorn) ishlatiladi</button>
+      <button class="opt" type="button">Baza ishlatilmaydi</button>
+      <button class="opt" type="button">Docker ishlamaydi</button>
+    </div>
+    <div class="explain">Asinxron FastAPI Uvicorn bilan ishga tushadi; Docker va Nginx g'oyasi o'zgarmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>20 dan 18+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>20 dan 12-17</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>10 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: API xavfsizligi, deploy (Gunicorn, Nginx, Docker) va FastAPI loyiha poydevori.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

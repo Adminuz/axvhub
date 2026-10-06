@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Android Studio va Android SDK bilan tanishuv (2-qism)</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Android Studio va Android SDK bilan tanishuv (2-qism)</h1>
+  <p class="muted">Loyiha ichki strukturasi: java/kotlin, res, AndroidManifest va Gradle</p>
+  <span class="badge">9-sinf</span>
+  <span class="badge">Android dasturlash</span>
+  <span class="badge">3-hafta · 7-dars</span>
+</section>
+
+<section>
+  <h2>Bugungi dars maqsadlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="folder-tree"></i></div>
+      <h3>Loyiha daraxti</h3>
+      <p>java/ mantiqiy kod va res/ resurslar jildlari arxitekturasi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="file-text"></i></div>
+      <h3>AndroidManifest</h3>
+      <p>Ilovaning pasporti, ruxsatnomalar va boshlang'ich ekran.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="settings"></i></div>
+      <h3>Gradle Scripts</h3>
+      <p>minSdk, targetSdk, compileSdk va tashqi kutubxonalar.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Loyiha papkalari tuzilishi</h1>
+  <p>Kod va dizaynning qat'iy ajratilishi</p>
+</section>
+
+<section>
+  <h2>4 ta asosiy katalog</h2>
+  <div class="timeline">
+    <div class="tl fragment"><b>1. manifests/:</b> AndroidManifest.xml — ilovaning pasporti va sozlamalari.</div>
+    <div class="tl fragment"><b>2. java/ (yoki kotlin/):</b> MainActivity.kt — barcha mantiqiy algoritmlar va dastur kodi.</div>
+    <div class="tl fragment"><b>3. res/ (Resources):</b> Ekran maketlari, rasmlar, ranglar va matnlar.</div>
+    <div class="tl fragment"><b>4. Gradle Scripts/:</b> Yig'ish parametrlari, versiyalar va tashqi kutubxonalar.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>res/ (Resources) jildi</h1>
+  <p>Dizayn va statik resurslar xazinasi</p>
+</section>
+
+<section>
+  <h2>res/ ichidagi papkalar</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layout-grid"></i></div>
+      <h3>layout/</h3>
+      <p>Ekranlarning XML dizayn maketlari (activity_main.xml).</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="palette"></i></div>
+      <h3>drawable/</h3>
+      <p>Rasmlar, fonlar va vektorli SVG/XML chizmalar.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="languages"></i></div>
+      <h3>values/</h3>
+      <p>Matnlar (strings.xml), ranglar (colors.xml), mavzular (themes.xml).</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Nega strings.xml muhim?</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <h3>Lokalizatsiya (Ko'p tillilik)</h3>
+        <p>Matnlarni to'g'ridan-to'g'ri kodda yozmasdan, <code>strings.xml</code>da saqlash tavsiya etiladi.</p>
+        <p class="muted">Telefon tili o'zgarsa, ilova tili ham avtomatik o'zgaradi!</p>
+      </div>
+    </div>
+    <div>
+      <div class="callout good fragment fade-up">
+        <h4>Namuna:</h4>
+        <pre><code class="language-xml">&lt;string name="welcome"&gt;
+  Xush kelibsiz!
+&lt;/string&gt;</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>AndroidManifest.xml</h1>
+  <p>Operatsion tizim o'qiydigan rasmiy pasport</p>
+</section>
+
+<section>
+  <h2>Manifestda nimalar e'lon qilinadi?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Ruxsatnomalar (Permissions)</h3>
+      <p>Internet, kamera yoki xotiradan foydalanish uchun rasmiy talabnomalar.</p>
+      <p class="muted"><code>&lt;uses-permission android:name="..." /&gt;</code></p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="smartphone"></i></div>
+      <h3>Komponentlar va Launcher</h3>
+      <p>Barcha Activity ekranlari va telefon menyusida birinchi ochiluvchi boshlang'ich ekran.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Boshlang'ich ekran kodi</h2>
+  <pre><code class="language-xml" data-trim data-noescape data-line-numbers="1-7|3|4">
+&lt;activity android:name=".MainActivity" android:exported="true"&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name="android.intent.action.MAIN" /&gt;
+        &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+    &lt;/intent-filter&gt;
+&lt;/activity&gt;
+  </code></pre>
+  <div class="callout good"><i data-ic="circle-check"></i>MAIN va LAUNCHER yozuvi ilovaning kirish eshigini belgilaydi.</div>
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Gradle sozlamalari</h1>
+  <p>minSdk, targetSdk va compileSdk</p>
+</section>
+
+<section>
+  <h2>SDK versiyalarining ma'nosi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <h3>minSdk</h3>
+      <p class="muted">Ilova ishlay oladigan eng minimal Android versiyasi (masalan, API 24 — Android 7.0).</p>
+      <p class="bad">Bundan eski telefonlarga o'rnatilmaydi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <h3>targetSdk</h3>
+      <p class="muted">Ilova qaysi versiya xavfsizlik va dizayn talablariga moslab sinovdan o'tkazilgan (masalan, 34).</p>
+    </div>
+    <div class="card fragment fade-up">
+      <h3>compileSdk</h3>
+      <p class="muted">Loyiha kodini kompilyatsiya qilishda qaysi Android SDK vositasi ishlatiladi.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>dependencies: Tashqi kutubxonalar</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <h3>Kutubxonalar ulash</h3>
+        <p>Barcha qulay kutubxonalar (Material Design, Retrofit, Room, Glide) shu blokda e'lon qilinadi.</p>
+        <p class="muted">Gradle ularni avtomatik tarzda internetdan yuklab oladi.</p>
+      </div>
+    </div>
+    <div>
+      <div class="callout warn fragment fade-up">
+        <h4>Sync Now tugmasi:</h4>
+        <p>Gradle fayli o'zgargach, albatta "Sync Now" tugmasini bosib loyihani yangilash shart!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>15 daqiqa</span></h2>
+  <div class="task">
+    <span class="level easy">Oson</span>
+    Android loyihasidagi 4 ta asosiy papkani va ularning vazifasini yozing.
+  </div>
+  <div class="task">
+    <span class="level mid">O'rta</span>
+    Nima uchun matnlar kodda emas, strings.xml faylida saqlanishini tushuntiring.
+  </div>
+  <div class="task">
+    <span class="level hard">Qiyin</span>
+    AndroidManifest.xml fayliga internet ruxsatnomasini qo'shish kodini yozing.
+  </div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Bugun o'rgandik</h3>
+      <p>Loyiha 4 bo'limdan iborat: kod java/ da, dizayn res/ da, ruxsatlar manifestda va sozlamalar build.gradle faylida saqlanadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="book-open"></i></div>
+      <h3>Keyingi dars</h3>
+      <p>8-dars: Birinchi «Hello World» ilovasini yaratish va Gradle build jarayoni.</p>
+    </div>
+  </div>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

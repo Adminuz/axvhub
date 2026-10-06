@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Python: o‘rnatish va ilk dastur</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+      <!-- 1. SARLAVHA (HERO) -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>Python: o‘rnatish va ilk dastur</h1>
+        <p class="muted">Interpretator, PATH tizimi, terminal va ilk kod</p>
+        <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">1-hafta · 1-dars</span>
+        
+      </section>
+
+      <!-- 2. Reja -->
+      <section>
+        <h2>Bugungi dars rejasi</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="terminal" data-anim="float"></i></div>
+            <h3>Python nima?</h3>
+            <p>Tilning imkoniyatlari va backend arxitekturasidagi o'rni</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="download" data-anim="bounce"></i></div>
+            <h3>O‘rnatish &amp; PATH</h3>
+            <p>python.org, sozlamalar va tizim o'zgaruvchilari</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="play" data-anim="float"></i></div>
+            <h3>Ilk dastur</h3>
+            <p>REPL interaktiv rejimi va print() funksiyasi</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 3. Nega Python? -->
+      <section>
+        <h2>Nega aynan Python va Back-end?</h2>
+        <div class="cards three">
+          <div class="card fragment">
+            <h3>Sodda va tushunarli</h3>
+            <p>Ingliz tiliga yaqin sintaksis, ortiqcha murakkablik yo'q</p>
+          </div>
+          <div class="card fragment">
+            <h3>Katta ekotizim</h3>
+            <p>FastAPI, Django, SQLAlchemy, Docker va DevOps vositalari</p>
+          </div>
+          <div class="card fragment">
+            <h3>Yuqori talab</h3>
+            <p>Dunyo bozorida backend va sun'iy intellekt bo'yicha yetakchi</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 4. SEC 01: PYTHON NIMA? -->
+      <section class="sec">
+        <div class="num">01</div>
+        <h1>Interpretator nima?</h1>
+        <p>Kod qanday qilib mashina tiliga aylanadi?</p>
+      </section>
+
+      <!-- 5. SVG 1: INTERPRETATOR ARXITEKTURASI -->
+      <section>
+        <h2>Interpretator qanday ishlaydi?</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- Chiziqlar -->
+            <g class="fragment"><line class="la flowing" x1="240" y1="180" x2="380" y2="180"/></g>
+            <g class="fragment"><line class="lb flowing" x1="620" y1="180" x2="760" y2="180"/></g>
+
+            <!-- 1-blok: Python kodi -->
+            <g class="fragment">
+              <rect class="fn" x="40" y="100" width="200" height="160" rx="16"/>
+              <text class="t-accent" x="140" y="150" text-anchor="middle" font-size="22">Python kodi</text>
+              <text class="t-head" x="140" y="190" text-anchor="middle" font-size="20">main.py</text>
+              <text class="t-muted" x="140" y="230" text-anchor="middle" font-size="16">print("Salom")</text>
+            </g>
+
+            <!-- 2-blok: Python interpretatori -->
+            <g class="fragment">
+              <rect class="fa pulse" x="380" y="80" width="240" height="200" rx="20"/>
+              <text class="t-head" x="500" y="150" text-anchor="middle" font-size="24">Python</text>
+              <text class="t-head" x="500" y="185" text-anchor="middle" font-size="24">Interpretator</text>
+              <text class="t-muted" x="500" y="230" text-anchor="middle" font-size="16">Qatorma-qator tahlil</text>
+            </g>
+
+            <!-- 3-blok: Natija / CPU -->
+            <g class="fragment">
+              <rect class="fn" x="760" y="100" width="200" height="160" rx="16"/>
+              <text class="t-accent" x="860" y="150" text-anchor="middle" font-size="22">Natija</text>
+              <text class="t-head" x="860" y="190" text-anchor="middle" font-size="20">Konsol / CPU</text>
+              <text class="t-muted" x="860" y="230" text-anchor="middle" font-size="16">Ekranda chiqish</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 6. SEC 02: O'RNATISH VA SOZLASh -->
+      <section class="sec">
+        <div class="num">02</div>
+        <h1>O‘rnatish va muhit</h1>
+        <p>python.org va PATH tizim o‘zgaruvchisi</p>
+      </section>
+
+      <!-- 7. O'rnatish qadamlari -->
+      <section>
+        <h2>O‘rnatish bosqichlari</h2>
+        <ol class="steps-n">
+          <li class="fragment">
+            <div>
+              <h3>Saytga kirish</h3>
+              <p>www.python.org saytining Downloads bo‘limiga o‘ting</p>
+            </div>
+          </li>
+          <li class="fragment">
+            <div>
+              <h3>Eng muhim katak: PATH</h3>
+              <p>«Add python.exe to PATH» parametriga albatta tasdiq belgisini qo‘ying</p>
+            </div>
+          </li>
+          <li class="fragment">
+            <div>
+              <h3>O‘rnatishni yakunlash</h3>
+              <p>Install tugmasini bosing va jarayon tugagach Close bosing</p>
+            </div>
+          </li>
+        </ol>
+        
+      </section>
+
+      <!-- 8. SVG 2: PATH TIZIMI -->
+      <section>
+        <h2>PATH nima uchun kerak?</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- Terminaldan so'rov -->
+            <g class="fragment">
+              <rect class="fn" x="40" y="120" width="220" height="120" rx="14"/>
+              <text class="t-head" x="150" y="170" text-anchor="middle" font-size="22">Terminal</text>
+              <text class="t-accent" x="150" y="210" text-anchor="middle" font-size="18">&gt; python</text>
+            </g>
+
+            <g class="fragment"><line class="la flowing" x1="260" y1="180" x2="380" y2="180"/></g>
+
+            <!-- Tizim PATH katalogi -->
+            <g class="fragment">
+              <rect class="fb pulse" x="380" y="80" width="240" height="200" rx="18"/>
+              <text class="t-head" x="500" y="140" text-anchor="middle" font-size="24">PATH ro'yxati</text>
+              <text class="t-muted" x="500" y="180" text-anchor="middle" font-size="16">C:\Python312\</text>
+              <text class="t-muted" x="500" y="210" text-anchor="middle" font-size="16">C:\Python312\Scripts\</text>
+              <text class="t-head" x="500" y="250" text-anchor="middle" font-size="18">Dastur topildi!</text>
+            </g>
+
+            <g class="fragment"><line class="lg flowing" x1="620" y1="180" x2="740" y2="180"/></g>
+
+            <!-- Python.exe -->
+            <g class="fragment">
+              <rect class="fn" x="740" y="120" width="220" height="120" rx="14"/>
+              <text class="t-head" x="850" y="170" text-anchor="middle" font-size="22">python.exe</text>
+              <text class="t-accent" x="850" y="210" text-anchor="middle" font-size="18">Ishga tushadi</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 9. CMD TEKSHIRISH -->
+      <section>
+        <h2>O‘rnatilganini tekshirish</h2>
+        <p>Terminal yoki CMD oynasini ochib quyidagi buyruqni yozamiz:</p>
+        <div class="terminal">
+          <div class="bar">Command Prompt</div>
+          <pre><code class="language-bash">&gt; python --version
+Python 3.12.2</code></pre>
+        </div>
+        <div class="callout tip fragment">
+          <i data-ic="circle-check"></i> Agar versiya raqami ko‘rinsa — tizim to‘liq ishlashga tayyor!
+        </div>
+        
+      </section>
+
+      <!-- 10. SEC 03: INTERAKTIV REJIM VA KOD -->
+      <section class="sec">
+        <div class="num">03</div>
+        <h1>REPL va ilk dastur</h1>
+        <p>Konsolda tezkor muloqot va print() funksiyasi</p>
+      </section>
+
+      <!-- 11. SVG 3: REPL SIKLI -->
+      <section>
+        <h2>REPL nima? (Read-Eval-Print Loop)</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- 4 ta sikl nuqtasi -->
+            <g class="fragment">
+              <circle class="fa" cx="220" cy="180" r="60"/>
+              <text class="t-head" x="220" y="175" text-anchor="middle" font-size="20">Read</text>
+              <text class="t-muted" x="220" y="200" text-anchor="middle" font-size="14">O‘qish</text>
+            </g>
+            <g class="fragment">
+              <circle class="fb" cx="410" cy="180" r="60"/>
+              <text class="t-head" x="410" y="175" text-anchor="middle" font-size="20">Eval</text>
+              <text class="t-muted" x="410" y="200" text-anchor="middle" font-size="14">Hisoblash</text>
+            </g>
+            <g class="fragment">
+              <circle class="fc" cx="600" cy="180" r="60"/>
+              <text class="t-head" x="600" y="175" text-anchor="middle" font-size="20">Print</text>
+              <text class="t-muted" x="600" y="200" text-anchor="middle" font-size="14">Chiqarish</text>
+            </g>
+            <g class="fragment">
+              <circle class="fg pulse" cx="790" cy="180" r="60"/>
+              <text class="t-head" x="790" y="175" text-anchor="middle" font-size="20">Loop</text>
+              <text class="t-muted" x="790" y="200" text-anchor="middle" font-size="14">Takrorlash</text>
+            </g>
+            <!-- Bog'lovchi oqim chiziqlari -->
+            <g class="fragment"><line class="la flowing" x1="280" y1="180" x2="350" y2="180"/></g>
+            <g class="fragment"><line class="lb flowing" x1="470" y1="180" x2="540" y2="180"/></g>
+            <g class="fragment"><line class="lc flowing" x1="660" y1="180" x2="730" y2="180"/></g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 12. KOD: BIRINCHI DASTUR -->
+      <section>
+        <h2>Birinchi dastur: print()</h2>
+        <p>Ekranga ma'lumot chiqarishning asosiy vositasi</p>
+        <pre><code class="language-python" data-line-numbers="1-2|4-5"># Matn chiqarish
+print("Hello, World!")
+
+# O'zbekcha salomlashuv
+print("Salom, Muhammad al-Xorazmiy vorislari!")</code></pre>
+        <div class="callout tip fragment">
+          <i data-ic="info"></i> Matn har doim qo‘shtirnoq <code>"..."</code> yoki birtirnoq <code>'...'</code> ichida yoziladi.
+        </div>
+        
+      </section>
+
+      <!-- 13. KOD: KONSOL PARAMETRLARI -->
+      <section>
+        <h2>print() parametrlari: sep va end</h2>
+        <pre><code class="language-python" data-line-numbers="1-3|5-7"># sep - qiymatlar orasidagi ajratuvchi
+print("FastAPI", "PostgreSQL", "Docker", sep=" + ")
+# Natija: FastAPI + PostgreSQL + Docker
+
+# end - qator oxiridagi belgi (sukut bo'yicha yangi qator)
+print("Yuklanmoqda...", end=" ")
+print("Muvaffaqiyatli!")
+# Natija: Yuklanmoqda... Muvaffaqiyatli!</code></pre>
+        
+      </section>
+
+      <!-- 14. TAQQOSLASH: REPL vs FAYL -->
+      <section>
+        <h2>Interaktiv rejim vs Faylda ishlash</h2>
+        <div class="vs">
+          <div class="side fragment">
+            <h3>REPL (&gt;&gt;&gt;)</h3>
+            <ul>
+              <li>Tezkor sinov va tajribalar</li>
+              <li>Kod saqlanib qolmaydi</li>
+              <li>Yopilgach barcha ma'lumot o'chadi</li>
+              <li>Kichik hisob-kitoblar uchun qulay</li>
+            </ul>
+          </div>
+          <div class="side fragment">
+            <h3>Skript (main.py)</h3>
+            <ul>
+              <li>Katta va doimiy loyihalar</li>
+              <li>Kod diskda fayl sifatida saqlanadi</li>
+              <li>Versiyalar nazoratiga (Git) olinadi</li>
+              <li>Serverda ishga tushiriladi</li>
+            </ul>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 15. SVG 4: BACKEND ARXITEKTURASI -->
+      <section>
+        <h2>Backend tizimida Python qayerda turadi?</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- 1. Mijoz -->
+            <g class="fragment">
+              <rect class="fn" x="40" y="110" width="220" height="140" rx="14"/>
+              <text class="t-head" x="150" y="165" text-anchor="middle" font-size="22">Mijoz (Client)</text>
+              <text class="t-muted" x="150" y="200" text-anchor="middle" font-size="16">Brauzer / Telefon</text>
+            </g>
+
+            <g class="fragment"><line class="la flowing" x1="260" y1="180" x2="390" y2="180"/></g>
+
+            <!-- 2. Python Server -->
+            <g class="fragment">
+              <rect class="fa pulse" x="390" y="90" width="240" height="180" rx="18"/>
+              <text class="t-head" x="510" y="150" text-anchor="middle" font-size="24">Python Server</text>
+              <text class="t-accent" x="510" y="185" text-anchor="middle" font-size="18">FastAPI / Backend</text>
+              <text class="t-muted" x="510" y="220" text-anchor="middle" font-size="15">Mantiq va tahlil</text>
+            </g>
+
+            <g class="fragment"><line class="lg flowing" x1="630" y1="180" x2="760" y2="180"/></g>
+
+            <!-- 3. Ma'lumotlar bazasi -->
+            <g class="fragment">
+              <rect class="fn" x="760" y="110" width="200" height="140" rx="14"/>
+              <text class="t-head" x="860" y="165" text-anchor="middle" font-size="22">Baza (Database)</text>
+              <text class="t-muted" x="860" y="200" text-anchor="middle" font-size="16">PostgreSQL</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 16. KENG TARQALGAN XATOLAR -->
+      <section>
+        <h2>Boshlang'ich dasturchilar xatosi</h2>
+        <div class="cards two">
+          <div class="card fragment">
+            <h3>Xato: Katta harf bilan yozish</h3>
+            <pre><code class="language-python"># Xato
+Print("Salom")
+# To'g'ri
+print("Salom")</code></pre>
+            <p>Python katta-kichik harflarni qat'iy farqlaydi!</p>
+          </div>
+          <div class="card fragment">
+            <h3>Xato: Qo‘shtirnoqni unutish</h3>
+            <pre><code class="language-python"># Xato: NameError
+print(Salom)
+# To'g'ri:
+print("Salom")</code></pre>
+            <p>Matnlar albatta qo‘shtirnoq ichida bo‘lishi lozim!</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 17. AMALIY TOPSHIRIQ (TASK) -->
+      <section class="task">
+        <h2>Amaliy topshiriq: Konsolda ilk qadamlar</h2>
+        <p class="muted">Vaqt: 15 daqiqa · Darajalar bo‘yicha</p>
+        <div class="cards three">
+          <div class="card">
+            <h3>1. Oson</h3>
+            <p><code>python --version</code> orqali versiyani tekshiring va o'z ism-familiyangizni chiqaring.</p>
+          </div>
+          <div class="card">
+            <h3>2. O'rta</h3>
+            <p><code>sep=" | "</code> yordamida sevimli 3 ta fanni bitta satrda chiroyli qilib chiqaring.</p>
+          </div>
+          <div class="card">
+            <h3>3. Qiyin</h3>
+            <p>Yulduzchalar yordamida konsolda server ishga tushganini bildiruvchi ramkali xabar hosil qiling.</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 18. QUIZ / TEZKOR SAVOL -->
+      <section>
+        <h2>Tezkor savol</h2>
+        <p>Quyidagi kod konsolga nima chiqaradi?</p>
+        <pre><code class="language-python">print("Backend", "DevOps", sep=" -&gt; ")</code></pre>
+        <div class="fragment callout tip">
+          <i data-ic="check"></i> <strong>Javob:</strong> <code>Backend -&gt; DevOps</code>
+        </div>
+        
+      </section>
+
+      <!-- 19. DARSNING XULOSASI -->
+      <section>
+        <h2>Bugun nimalarni bilib oldik?</h2>
+        <div class="cards three">
+          <div class="card fragment">
+            <h3>Python &amp; PATH</h3>
+            <p>Interpretatorni to'g'ri o'rnatish va terminaldan boshqarish</p>
+          </div>
+          <div class="card fragment">
+            <h3>REPL &amp; Fayl</h3>
+            <p>Interaktiv rejimda sinash va .py faylida kod yozish</p>
+          </div>
+          <div class="card fragment">
+            <h3>print() imkoniyati</h3>
+            <p>sep va end parametrlari bilan ma'lumotlarni konsolga chiqarish</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 20. YAKUNIY SLAYD -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>Rahmat!</h1>
+        <p class="muted">Keyingi dars: Sodda ma’lumot toifalari va arifmetik amallar</p>
+        <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span>
+        
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

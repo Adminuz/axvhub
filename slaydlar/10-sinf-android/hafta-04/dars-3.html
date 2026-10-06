@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Continuous Integration (CI/CD) tushunchasi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 12-dars: Continuous Integration (CI/CD) tushunchasi -->
+
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Continuous Integration (CI/CD) tushunchasi</h1>
+  <p class="muted">Build va test avtomatlashtirish, pipeline, GitHub Actions</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">4-hafta &middot; 12-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimani o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="refresh-cw" data-anim="spin"></i></div><h3>CI</h3><p>Kodni tez-tez qo'shish va avtomatik tekshirish</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="rocket" data-anim="float"></i></div><h3>CD</h3><p>Delivery va Deployment: ilovani yetkazish</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="workflow" data-anim="pulse"></i></div><h3>GitHub Actions</h3><p>YAML fayl bilan pipeline sozlash</p></div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Continuous Integration</h1>
+  <p>Kodni doimiy qo'shish va avtomatik tekshirish</p>
+</section>
+
+<section>
+  <h2>Qo'lda ishlashning muammosi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="file-x" data-anim="wiggle"></i></div><h3>Fayl unutildi</h3><p>Build qilishda muhim fayl tushib qoldi</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="bug" data-anim="wiggle"></i></div><h3>Test o'tkazilmadi</h3><p>Xato foydalanuvchigacha yetib bordi</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="git-merge-conflict" data-anim="wiggle"></i></div><h3>Mos kelmadi</h3><p>Boshqalar bilan moslashmagan kod push qilindi</p></div>
+  </div>
+  <p class="small mt">Har bosqichda inson xatosi bo'lishi mumkin. Jamoa katta bo'lsa, xatolar ko'payadi.</p>
+  
+</section>
+
+<section>
+  <h2>CI qanday ishlaydi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <g class="fragment" data-tip="Barcha dasturchilar kodni tez-tez asosiy loyihaga qo'shadi.">
+        <rect class="fa" x="20" y="110" width="190" height="100" rx="18"/>
+        <text class="t-head" x="115" y="168" text-anchor="middle" font-size="24">Push / PR</text>
+      </g>
+      <g class="fragment"><line class="la flowing" x1="212" y1="160" x2="262" y2="160" stroke-width="4"/><polygon class="ar-a" points="278,160 262,169 262,151"/></g>
+      <g class="fragment" data-tip="Tizim avtomatik build qiladi, test o'tkazadi, lint va scan bilan tahlil qiladi.">
+        <rect class="fc pulse" x="280" y="90" width="260" height="140" rx="18"/>
+        <text class="t-head" x="410" y="140" text-anchor="middle" font-size="24">Avtomatik tizim</text>
+        <text class="t-muted" x="410" y="180" text-anchor="middle" font-size="22">build, test, lint</text>
+      </g>
+      <g class="fragment"><line class="lg flowing" x1="542" y1="130" x2="632" y2="90" stroke-width="4"/><polygon class="ar-g" points="648,82 636,97 628,82"/></g>
+      <g class="fragment"><line class="lb flowing" x1="542" y1="190" x2="632" y2="230" stroke-width="4"/><polygon class="ar-b" points="648,238 628,238 636,223"/></g>
+      <g class="fragment" data-tip="Hammasi joyida: kod qo'shiladi.">
+        <rect class="fg" x="650" y="40" width="330" height="80" rx="18"/>
+        <text class="t-head" x="815" y="90" text-anchor="middle" font-size="24">Muvaffaqiyat</text>
+      </g>
+      <g class="fragment" data-tip="Xato topilsa, dasturchiga darhol xabar yuboriladi.">
+        <rect class="fb" x="650" y="200" width="330" height="80" rx="18"/>
+        <text class="t-head" x="815" y="250" text-anchor="middle" font-size="24">Xato: xabar</text>
+      </g>
+    </svg>
+  </div>
+  <p class="small">Qismni bosing. Xato topilsa, tizim dasturchiga darhol xabar beradi.</p>
+  
+</section>
+
+<section>
+  <h2>Haftada bir marta yoki har commitda?</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>Kam-kam birlashtirish</h3>Uch dasturchi (API, UI, ma'lumotlar bazasi) haftada bir qo'shsa, ulkan konfliktlar chiqadi.</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>CI: doimiy</h3>Har kuni, hatto har commitda tekshiriladi. Konfliktlar kichik bosqichda topiladi.</div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Insho analogiyasi</h2>
+  <div class="quote">Uch o'quvchi bitta insho yozmoqda. Oy oxirida birlashtirsa, chalkash chiqadi. Har kuni birlashtirsa, xatolar tez ko'rinadi. CI ham shunday: kod doimiy birlashtiriladi.</div>
+  <ol class="steps-n mt">
+    <li class="fragment">Har kim o'z paragrafini yozadi</li>
+    <li class="fragment">Har kuni birlashtiriladi</li>
+    <li class="fragment">Xato kichikligida tuzatiladi</li>
+  </ol>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>CD va pipeline</h1>
+  <p>Ilovani tayyorlash, nashr qilish va avtomatlashtirish</p>
+</section>
+
+<section>
+  <section>
+    <h2>Delivery va Deployment</h2>
+    <div class="swap">
+      <div class="swap-tabs"><button type="button">Delivery</button><button type="button">Deployment</button></div>
+      <div class="swap-p"><div class="card"><div class="icon"><i data-ic="package"></i></div><h3>Continuous Delivery</h3><p>CI davomi: ilovani tayyorlash, sinovga chiqarish va nashr jarayonlarini avtomatlashtiradi. Ilova doim tayyor turadi.</p></div></div>
+      <div class="swap-p"><div class="card accent"><div class="icon"><i data-ic="rocket"></i></div><h3>Continuous Deployment</h3><p>Jarayonni yanada rivojlantiradi: ilova foydalanuvchilarga avtomatik yetkaziladi.</p></div></div>
+    </div>
+    <p class="muted">Misol: mobil o'yinlar deyarli har hafta yangilanadi. Pastga</p>
+    
+  </section>
+  <section>
+    <h2>Zavod analogiyasi</h2>
+    <div class="quote">Telefon zavodida har detal (displey, korpus, protsessor) tekshiruvdan o'tadi: bu Continuous Integration. Tayyor telefonni bozorga chiqarish: Delivery va Deployment.</div>
+    
+  </section>
+</section>
+
+<section>
+  <h2>Android pipeline</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+      <g class="fragment"><rect class="fa" x="10" y="100" width="170" height="100" rx="18"/><text class="t-head" x="95" y="158" text-anchor="middle" font-size="24">Checkout</text></g>
+      <g class="fragment"><line class="la flowing" x1="182" y1="150" x2="212" y2="150" stroke-width="4"/><polygon class="ar-a" points="228,150 212,159 212,141"/></g>
+      <g class="fragment"><rect class="fc" x="230" y="100" width="170" height="100" rx="18"/><text class="t-head" x="315" y="158" text-anchor="middle" font-size="24">SDK/JDK</text></g>
+      <g class="fragment"><line class="la flowing" x1="402" y1="150" x2="432" y2="150" stroke-width="4"/><polygon class="ar-a" points="448,150 432,159 432,141"/></g>
+      <g class="fragment"><rect class="fb" x="450" y="100" width="170" height="100" rx="18"/><text class="t-head" x="535" y="158" text-anchor="middle" font-size="24">Build</text></g>
+      <g class="fragment"><line class="la flowing" x1="622" y1="150" x2="652" y2="150" stroke-width="4"/><polygon class="ar-a" points="668,150 652,159 652,141"/></g>
+      <g class="fragment"><rect class="fn" x="670" y="100" width="150" height="100" rx="18"/><text class="t-head" x="745" y="158" text-anchor="middle" font-size="24">Test</text></g>
+      <g class="fragment"><line class="la flowing" x1="822" y1="150" x2="842" y2="150" stroke-width="4"/><polygon class="ar-a" points="858,150 842,159 842,141"/></g>
+      <g class="fragment"><rect class="fg" x="860" y="100" width="130" height="100" rx="18"/><text class="t-head" x="925" y="158" text-anchor="middle" font-size="24">Natija</text></g>
+    </svg>
+  </div>
+  <p class="small">Pipeline: jarayonlar ketma-ketligi. Hammasi avtomatik, qo'lda ish yo'q.</p>
+  
+</section>
+
+<section>
+  <h2>CI/CD xizmatlari</h2>
+  <div class="chips"><span class="chip">GitHub Actions</span><span class="chip">GitLab CI/CD</span><span class="chip">Bitbucket Pipelines</span><span class="chip t">Jenkins</span><span class="chip t">CircleCI</span><span class="chip t">Azure DevOps</span></div>
+  <p class="mt">Har biri Git repozitoriyasi bilan bog'liq holda ishlaydi.</p>
+  
+</section>
+
+<section>
+  <h2>Qaysi testlar pipeline'da?</h2>
+  <div class="cards four">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="flask-conical"></i></div><h3>Unit</h3><p>ViewModel va Repository funksiyalari</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="puzzle"></i></div><h3>Integration</h3><p>Qismlar birga ishlashi</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="smartphone"></i></div><h3>UI</h3><p>Compose, Activity, Fragment</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="gauge"></i></div><h3>Performance</h3><p>Resurslardan foydalanish</p></div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>CI MR/PR ni rad etadi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+      <g class="fragment"><rect class="fa" x="30" y="110" width="220" height="90" rx="18"/><text class="t-head" x="140" y="165" text-anchor="middle" font-size="24">PR ochildi</text></g>
+      <g class="fragment"><line class="la flowing" x1="252" y1="155" x2="332" y2="155" stroke-width="4"/><polygon class="ar-a" points="348,155 332,164 332,146"/></g>
+      <g class="fragment" data-tip="Standart testlar avtomatik o'tkaziladi."><rect class="fc pulse" x="350" y="110" width="220" height="90" rx="18"/><text class="t-head" x="460" y="165" text-anchor="middle" font-size="24">Testlar</text></g>
+      <g class="fragment"><line class="lg flowing" x1="572" y1="135" x2="682" y2="80" stroke-width="4"/><polygon class="ar-g" points="698,72 686,88 678,73"/></g>
+      <g class="fragment"><line class="lb flowing" x1="572" y1="180" x2="682" y2="230" stroke-width="4"/><polygon class="ar-b" points="698,238 678,238 686,223"/></g>
+      <g class="fragment"><rect class="fg" x="700" y="40" width="270" height="70" rx="18"/><text class="t-head" x="835" y="85" text-anchor="middle" font-size="24">O'tdi: merge</text></g>
+      <g class="fragment"><rect class="fb" x="700" y="200" width="270" height="70" rx="18"/><text class="t-head" x="835" y="245" text-anchor="middle" font-size="24">Yiqildi: rad</text></g>
+    </svg>
+  </div>
+  <p class="small">"Kodim to'g'ri ishlayapti" degan xayol bo'lishi mumkin, CI real tekshiruv qiladi.</p>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>GitHub Actions</h1>
+  <p>YAML konfiguratsiya fayli: build, test, deploy</p>
+</section>
+
+<section data-auto-animate>
+  <h2>Workflow: qachon ishga tushadi</h2>
+  <pre data-id="y"><code class="language-yaml" data-trim data-noescape>
+name: Android CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+</code></pre>
+  <p class="small">Fayl <code>.github/workflows</code> papkasida turadi. <code>on</code>: push va PR hodisalari.</p>
+  
+</section>
+
+<section data-auto-animate>
+  <h2>Workflow: nima bajariladi</h2>
+  <pre data-id="y"><code class="language-yaml" data-trim data-noescape data-line-numbers="1-2|3-5|6-7|8-11">
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Build with Gradle
+        run: ./gradlew build
+</code></pre>
+  
+</section>
+
+<section>
+  <h2>YAML bosqichlari</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="download" data-anim="bounce"></i></div><h3>1. Checkout</h3><p>Loyiha fayllari yuklanadi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="coffee" data-anim="float"></i></div><h3>2. JDK</h3><p>Java 17 (temurin) o'rnatiladi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="hammer" data-anim="wiggle"></i></div><h3>3. Build</h3><p><code>./gradlew build</code> ilovani yig'adi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="circle-check" data-anim="pulse"></i></div><h3>4. Natija</h3><p>Muvaffaqiyat yoki xato ko'rsatiladi.</p></div></div>
+  </div>
+  
+</section>
+
+<section>
+  <section>
+    <h2>CD: release workflow</h2>
+    <pre><code class="language-yaml" data-trim data-noescape data-line-numbers="1-4|5-8|9-12">
+name: Release Build
+on:
+  push:
+    tags: [ 'v*' ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Release
+        run: ./gradlew bundleRelease
+      - name: Upload to Play Store
+        uses: r0adkll/upload-google-play@v1
+</code></pre>
+    <p class="muted">Qisqartirilgan nusxa. Pastga: Secrets</p>
+    
+  </section>
+  <section>
+    <h2>Secrets: maxfiy ma'lumotlar</h2>
+    <ul>
+      <li class="fragment">API kalitlari, tokenlar, maxfiy fayllar kodda turmaydi</li>
+      <li class="fragment">GitHub Actions va GitLab CI'da "Secrets" bo'limi bor</li>
+      <li class="fragment">Ular shifrlangan holda saqlanadi</li>
+      <li class="fragment">Tasodifan repozitoriyaga tushib qolishining oldi olinadi</li>
+    </ul>
+    <p class="small">Fayldagi <code>secrets.PLAY_STORE_KEY</code> shu bo'limdan olinadi.</p>
+    
+  </section>
+</section>
+
+<section>
+  <h2>Qaysi biri CI, qaysi biri CD?</h2>
+  <div class="quiz">
+    <p class="q">PR ochilganda avtomatik build va unit test ishga tushishi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat Deployment</button>
+      <button class="opt" type="button" data-ok>Continuous Integration</button>
+      <button class="opt" type="button">Code Review o'rniga</button>
+      <button class="opt" type="button">Branch nomlash</button>
+    </div>
+    <div class="explain">CI: kod qo'shilgan zahoti avtomatik tekshiriladi. Deployment esa ilovani foydalanuvchiga yetkazadi.</div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Atamalarni aylantiring</h2>
+  <div class="cards three">
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="refresh-cw"></i></div><h3>CI</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Kodni doimiy qo'shish va avtomatik tekshirish.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="rocket"></i></div><h3>CD</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Ilovani tayyorlash va yetkazishni avtomatlashtirish.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="workflow"></i></div><h3>Pipeline</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Avtomatik bajariladigan jarayonlar ketma-ketligi.</p></div>
+    </div></div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Odatiy xatolar</h2>
+  <div class="callout bad"><i data-ic="circle-x"></i>API kalit yoki token'ni to'g'ridan-to'g'ri YAML yoki kodga yozish.</div>
+  <div class="callout warn"><i data-ic="triangle-alert"></i>Kodni oyda bir marta birlashtirish: konfliktlar to'planadi.</div>
+  <div class="callout warn"><i data-ic="triangle-alert"></i>Pipeline yiqilganda e'tiborsiz qoldirish.</div>
+  <div class="callout tip"><i data-ic="lightbulb"></i>Yechim: tez-tez integratsiya, Secrets va qizil pipeline'ni darhol tuzatish.</div>
+  
+</section>
+
+<section>
+  <h2>Raqamlarda bugungi dars</h2>
+  <div class="stats">
+    <div class="stat fragment"><div class="v"><span class="count" data-to="3" data-suf="">0</span></div><div class="l">bosqich: build, test, deploy</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="4" data-suf="">0</span></div><div class="l">test turi</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="6" data-suf="">0</span></div><div class="l">CI/CD xizmati</div></div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>30 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>CI, CD va Deployment atamalarini o'z so'zingiz bilan 1 jumlada yozing.</div>
+  <div class="task"><span class="level mid">O'rta</span>Repozitoriyada <code>.github/workflows/android.yml</code> yarating va "Android CI" workflow'ini yozing.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Workflow'ga unit test qadamini qo'shing va yiqilgan test pipeline'ni qanday to'xtatishini tushuntiring.</div>
+  
+</section>
+
+<section>
+  <h2>Xulosa</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="refresh-cw"></i></div><h3>CI</h3><p>Tez-tez birlashtirish, avtomatik build va test.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="rocket"></i></div><h3>CD</h3><p>Tayyorlash va yetkazishni avtomatlashtirish.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="file-code"></i></div><h3>YAML</h3><p>GitHub Actions: on, jobs, steps.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="lock"></i></div><h3>Secrets</h3><p>Maxfiy ma'lumotlar shifrlangan saqlanadi.</p></div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Uyga vazifa va anons</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="file-code"></i></div><h3>1. Workflow yozing</h3><p>O'z loyihangiz uchun Android CI YAML faylini yozing.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="lightbulb"></i></div><h3>2. Tahlil</h3><p>CI va CD farqini va afzalliklarini yozing.</p></div>
+  </div>
+  <p class="muted mt">Keyingi hafta: build.gradle faylining asosiy tuzilmasi va modullararo bog'lanishi.</p>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

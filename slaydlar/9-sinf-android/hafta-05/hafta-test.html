@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>5-hafta yakuniy testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>5-hafta yakuniy testi</h1>
+  <p class="muted">20 ta savol &middot; taxminan 20 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">Android dasturlash</span><span class="badge">5-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/20</h2>
+  <div class="quiz">
+    <p class="q"><code>for (i in 1..4)</code> siklida tana necha marta bajariladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">3 marta</button>
+      <button class="opt" type="button" data-ok>4 marta</button>
+      <button class="opt" type="button">5 marta</button>
+      <button class="opt" type="button">1 marta</button>
+    </div>
+    <div class="explain"><code>1..4</code> ikkala chegarani ham kiritadi: 1, 2, 3, 4.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/20</h2>
+  <div class="quiz">
+    <p class="q"><code>1 until 5</code> oralig'ida qaysi son yo'q?</p>
+    <div class="opts">
+      <button class="opt" type="button">1</button>
+      <button class="opt" type="button">3</button>
+      <button class="opt" type="button" data-ok>5</button>
+      <button class="opt" type="button">4</button>
+    </div>
+    <div class="explain"><code>until</code> oxirgi chegarani kiritmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/20</h2>
+  <div class="quiz">
+    <p class="q">Kamayish tartibida sanash uchun qaysi kalit so'z ishlatiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>until</code></button>
+      <button class="opt" type="button"><code>step</code></button>
+      <button class="opt" type="button"><code>reverse</code></button>
+      <button class="opt" type="button" data-ok><code>downTo</code></button>
+    </div>
+    <div class="explain"><code>10 downTo 1</code> - 10, 9, ..., 1.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/20</h2>
+  <div class="quiz">
+    <p class="q"><code>1..10 step 3</code> qaysi sonlarni beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">1, 3, 6, 9</button>
+      <button class="opt" type="button" data-ok>1, 4, 7, 10</button>
+      <button class="opt" type="button">3, 6, 9</button>
+      <button class="opt" type="button">1, 2, 3</button>
+    </div>
+    <div class="explain">Har safar 3 qo'shiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/20</h2>
+  <div class="quiz">
+    <p class="q"><code>while</code> sikli shartni qachon tekshiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Tana bajarilishidan oldin</button>
+      <button class="opt" type="button">Tana bajarilgandan keyin</button>
+      <button class="opt" type="button">Hech qachon</button>
+      <button class="opt" type="button">Faqat oxirida</button>
+    </div>
+    <div class="explain">Shart noto'g'ri bo'lsa tana umuman ishlamaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/20</h2>
+  <div class="quiz">
+    <p class="q">Qaysi sikl kamida bir marta albatta ishlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>while</code></button>
+      <button class="opt" type="button" data-ok><code>do-while</code></button>
+      <button class="opt" type="button"><code>for</code></button>
+      <button class="opt" type="button">Hech biri</button>
+    </div>
+    <div class="explain"><code>do-while</code> shartni tanadan keyin tekshiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/20</h2>
+  <div class="quiz">
+    <p class="q"><code>break</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Qadamni o'tkazadi</button>
+      <button class="opt" type="button">Dasturni o'chiradi</button>
+      <button class="opt" type="button" data-ok>Siklni to'xtatadi</button>
+      <button class="opt" type="button">Siklni qayta boshlaydi</button>
+    </div>
+    <div class="explain"><code>break</code> siklni darhol tugatadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/20</h2>
+  <div class="quiz">
+    <p class="q">Funksiya e'lon qilishning to'g'ri shakli?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>fun hello() { }</code></button>
+      <button class="opt" type="button"><code>def hello() { }</code></button>
+      <button class="opt" type="button"><code>function hello() { }</code></button>
+      <button class="opt" type="button"><code>hello fun() { }</code></button>
+    </div>
+    <div class="explain">Kotlinda <code>fun</code> ishlatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/20</h2>
+  <div class="quiz">
+    <p class="q">Funksiya e'lon qilinishi uni bajaradimi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Yo'q, uni chaqirish kerak</button>
+      <button class="opt" type="button">Ha, darhol bajariladi</button>
+      <button class="opt" type="button">Faqat <code>main</code> da</button>
+      <button class="opt" type="button">Faqat <code>val</code> bilan</button>
+    </div>
+    <div class="explain">Tana chaqirilganda bajariladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/20</h2>
+  <div class="quiz">
+    <p class="q"><code>fun f(name: String, age: Int)</code> da <code>name</code> va <code>age</code> nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Argumentlar</button>
+      <button class="opt" type="button">Sinflar</button>
+      <button class="opt" type="button">Konstantalar</button>
+      <button class="opt" type="button" data-ok>Parametrlar</button>
+    </div>
+    <div class="explain">E'londagi o'zgaruvchilar parametr deyiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 11/20</h2>
+  <div class="quiz">
+    <p class="q"><code>f("Tom", 36)</code> dagi <code>"Tom"</code> va <code>36</code> nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Parametrlar</button>
+      <button class="opt" type="button">Turlar</button>
+      <button class="opt" type="button" data-ok>Argumentlar</button>
+      <button class="opt" type="button">Funksiyalar</button>
+    </div>
+    <div class="explain">Chaqirishda berilgan qiymatlar argument.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 12/20</h2>
+  <div class="quiz">
+    <p class="q">Funksiya parametri qanday turdagi o'zgaruvchi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>var</code></button>
+      <button class="opt" type="button" data-ok><code>val</code> (o'zgartirib bo'lmaydi)</button>
+      <button class="opt" type="button"><code>const</code></button>
+      <button class="opt" type="button">Hech qanday</button>
+    </div>
+    <div class="explain"><code>n = n * 2</code> xato beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 13/20</h2>
+  <div class="quiz">
+    <p class="q"><code>fun f(a: Int, b: Int = 5)</code>. <code>f(1)</code> da <code>b</code>?</p>
+    <div class="opts">
+      <button class="opt" type="button">0</button>
+      <button class="opt" type="button">1</button>
+      <button class="opt" type="button">Xato</button>
+      <button class="opt" type="button" data-ok>5</button>
+    </div>
+    <div class="explain">Berilmagan parametr standart qiymat oladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 14/20</h2>
+  <div class="quiz">
+    <p class="q">Nomlangan argument qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>f("Tom", 28)</code></button>
+      <button class="opt" type="button" data-ok><code>f("Tom", age = 28)</code></button>
+      <button class="opt" type="button"><code>f(Tom, 28)</code></button>
+      <button class="opt" type="button"><code>f[age = 28]</code></button>
+    </div>
+    <div class="explain"><code>age = 28</code> nom bilan berilgan.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 15/20</h2>
+  <div class="quiz">
+    <p class="q">Sinf nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Obyektning nusxasi</button>
+      <button class="opt" type="button">Funksiya</button>
+      <button class="opt" type="button" data-ok>Obyektning chizmasi</button>
+      <button class="opt" type="button">Oraliq</button>
+    </div>
+    <div class="explain">Sinfdan obyektlar yaratiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 16/20</h2>
+  <div class="quiz">
+    <p class="q">Obyekt yaratishning to'g'ri shakli?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>val p = new Person()</code></button>
+      <button class="opt" type="button"><code>p = class Person</code></button>
+      <button class="opt" type="button"><code>Person.new()</code></button>
+      <button class="opt" type="button" data-ok><code>val p = Person()</code></button>
+    </div>
+    <div class="explain">Kotlinda <code>new</code> yo'q.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 17/20</h2>
+  <div class="quiz">
+    <p class="q">Obyekt xossasiga qanday murojaat qilinadi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>tom-&gt;name</code></button>
+      <button class="opt" type="button"><code>tom::name()</code></button>
+      <button class="opt" type="button"><code>name.tom</code></button>
+      <button class="opt" type="button" data-ok><code>tom.name</code></button>
+    </div>
+    <div class="explain">Nuqta orqali: <code>obyekt.xossa</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 18/20</h2>
+  <div class="quiz">
+    <p class="q">Metod nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Sinf tashqarisidagi o'zgaruvchi</button>
+      <button class="opt" type="button">Turi</button>
+      <button class="opt" type="button">Sikl</button>
+      <button class="opt" type="button" data-ok>Sinf ichidagi funksiya</button>
+    </div>
+    <div class="explain">Metod obyekt amalini bajaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 19/20</h2>
+  <div class="quiz">
+    <p class="q">Primary konstruktor qayerda yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Sinf nomidan keyin qavs ichida</button>
+      <button class="opt" type="button">Sinf tanasi oxirida</button>
+      <button class="opt" type="button"><code>main</code> ichida</button>
+      <button class="opt" type="button">Alohida faylda</button>
+    </div>
+    <div class="explain"><code>class Person(val name: String)</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 20/20</h2>
+  <div class="quiz">
+    <p class="q">Sinfda nechta primary konstruktor bo'lishi mumkin?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ikkita</button>
+      <button class="opt" type="button" data-ok>Bitta</button>
+      <button class="opt" type="button">Cheksiz</button>
+      <button class="opt" type="button">Hech qanday</button>
+    </div>
+    <div class="explain">Faqat bitta primary.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>20 dan 18+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>20 dan 12-17</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>11 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: 13–15-darslar materiallari</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

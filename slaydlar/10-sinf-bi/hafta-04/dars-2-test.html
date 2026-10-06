@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>11-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>11-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">BI &amp; ML</span><span class="badge">4-hafta · 11-dars</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">JOIN nima uchun ishlatiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Jadvalni o'chirish uchun</button>
+      <button class="opt" type="button">Ustun nomini o'zgartirish uchun</button>
+      <button class="opt" type="button" data-ok>Bir nechta jadvalni kalit orqali birlashtirish uchun</button>
+      <button class="opt" type="button">Natijani saralash uchun</button>
+    </div>
+    <div class="explain"><code>JOIN</code> bo'laklarga bo'lingan ma'lumotni kalit (PK = FK) bo'yicha bir natijaga yig'adi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q"><code>ON</code> bandida odatda nima yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Bog'lash sharti, masalan <code>k.hudud_id = h.hudud_id</code></button>
+      <button class="opt" type="button">Saralash tartibi</button>
+      <button class="opt" type="button">Jadvalning yangi nomi</button>
+      <button class="opt" type="button">Satrlar soni</button>
+    </div>
+    <div class="explain"><code>ON</code> jadvallar qaysi ustun bo'yicha bog'lanishini ko'rsatadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>INNER JOIN</code> qaysi satrlarni qaytaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Chap jadvalning barcha satrlarini</button>
+      <button class="opt" type="button">O'ng jadvalning barcha satrlarini</button>
+      <button class="opt" type="button">Ikkala jadvalning hamma satrini</button>
+      <button class="opt" type="button" data-ok>Faqat ikkala jadvalda mos kelganlarni</button>
+    </div>
+    <div class="explain"><code>INNER JOIN</code> kesishmani beradi: mosi yo'q satrlar tushib qoladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>hududlar LEFT JOIN yillik_kpi</code> da qaysi satrlar to'liq saqlanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">yillik_kpi ning barcha satrlari</button>
+      <button class="opt" type="button" data-ok>hududlar jadvalining barcha satrlari</button>
+      <button class="opt" type="button">Faqat mos kelganlar</button>
+      <button class="opt" type="button">Hech qaysi</button>
+    </div>
+    <div class="explain"><code>LEFT JOIN</code> chap jadvalni to'liq saqlaydi, mosi yo'q joyga NULL qo'yadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>FULL JOIN</code> natijasida nima bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat mos kelganlar</button>
+      <button class="opt" type="button" data-ok>Ikkala jadvalning barcha satrlari, mos kelmaganlari NULL bilan</button>
+      <button class="opt" type="button">Faqat chap jadval</button>
+      <button class="opt" type="button">Natija bo'sh</button>
+    </div>
+    <div class="explain"><code>FULL JOIN</code> ikkala tomonni ham to'liq saqlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">6 hudud bor, 5 tasi uchun 2024-yil KPI si kiritilgan. <code>INNER JOIN ... WHERE k.yil = 2024</code> necha qator beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">6</button>
+      <button class="opt" type="button">1</button>
+      <button class="opt" type="button">11</button>
+      <button class="opt" type="button" data-ok>5</button>
+    </div>
+    <div class="explain">Faqat mosi bor 5 hudud qoladi; KPI siz hudud tushib qoladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>hududlar</code> 6 qator, <code>yillik_kpi</code> 15 qator (5 hududga 3 yildan; 1 hudud yo'q). <code>hududlar LEFT JOIN yillik_kpi</code> (shartsiz) necha qator?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>16</button>
+      <button class="opt" type="button">15</button>
+      <button class="opt" type="button">6</button>
+      <button class="opt" type="button">21</button>
+    </div>
+    <div class="explain">15 ta mos qator va KPI siz hudud uchun 1 ta NULL li qator: 16.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">KPI si umuman yo'q hududlarni topish uchun qaysi shart kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">INNER JOIN ... WHERE k.kpi_id IS NULL</button>
+      <button class="opt" type="button">WHERE k.kpi_id = NULL</button>
+      <button class="opt" type="button" data-ok>LEFT JOIN ... WHERE k.kpi_id IS NULL</button>
+      <button class="opt" type="button">GROUP BY k.kpi_id</button>
+    </div>
+    <div class="explain">Anti-join: LEFT JOIN dan keyin o'ng jadval kaliti NULL bo'lgan satrlar mosi yo'qlardir. <code>= NULL</code> ishlamaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>LEFT JOIN yillik_kpi k ON ... WHERE k.yil = 2024</code> da nima bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Hamma hudud saqlanadi</button>
+      <button class="opt" type="button">So'rov xato beradi</button>
+      <button class="opt" type="button">yil ustuni yo'qoladi</button>
+      <button class="opt" type="button" data-ok>NULL li satrlar tushib, natija INNER JOIN ga o'xshab qoladi</button>
+    </div>
+    <div class="explain">NULL = 2024 to'g'ri bo'lmaydi, shuning uchun o'ng jadval sharti <code>ON</code> ga yoziladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>LEFT JOIN</code> + <code>GROUP BY</code> da maktabi yo'q hudud uchun 0 chiqishi uchun nima yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">COUNT(*)</button>
+      <button class="opt" type="button" data-ok>COUNT(m.maktab_id)</button>
+      <button class="opt" type="button">SUM(*)</button>
+      <button class="opt" type="button">COUNT(h.hudud_id) + 1</button>
+    </div>
+    <div class="explain"><code>COUNT(m.maktab_id)</code> NULL ni sanamaydi (0), <code>COUNT(*)</code> esa NULL li satrni ham 1 deb sanaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards two">
+    <div class="card"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Test yakunlandi</h3><p>Barcha savollar tugadi. To'g'ri javoblaringizni sanang.</p></div>
+    <div class="card accent"><div class="icon"><i data-ic="book-open" data-anim="float"></i></div><h3>Nimani takrorlash kerak?</h3><p>JOIN turlari, ON sharti, anti-join, ON va WHERE farqi, COUNT va LEFT JOIN.</p></div>
+  </div>
+  <p class="small mt">To'g'ri javoblar soni: 9-10 a'lo, 7-8 yaxshi, 5-6 takrorlang.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Androidning imkoniyatlari va qo‘llanilish sohalari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Androidning imkoniyatlari va qo‘llanilish sohalari</h1>
+  <p class="muted">Smartfondan kosmik stansiyagacha: Wear OS, Android Auto, TV va IoT</p>
+  <span class="badge">9-sinf</span>
+  <span class="badge">Android dasturlash</span>
+  <span class="badge">1-hafta · 3-dars</span>
+</section>
+
+<section>
+  <h2>Bugungi dars maqsadlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>Texnik imkoniyatlar</h3>
+      <p>Multitasking, on-device AI/ML va bulutli sinxronizatsiya.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="watch"></i></div>
+      <h3>Wear OS va Auto</h3>
+      <p>Aqlli soatlar va avtomobillar uchun ixtisoslashgan tizimlar.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="tv"></i></div>
+      <h3>TV va IoT</h3>
+      <p>Katta ekranlar, maishiy texnika va sanoat kiosklari.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Texnik imkoniyatlar</h1>
+  <p>Ko'p vazifalilik, on-device AI va bulut</p>
+</section>
+
+<section>
+  <h2>Ko'p vazifalilik (Multitasking)</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="monitor-smartphone"></i></div>
+      <h3>Split-Screen (Ekranni bo'lish)</h3>
+      <p>Ikkita ilovani bir vaqtda yonma-yon yoki ustma-ust ishlatish (masalan, video va darslik).</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="monitor"></i></div>
+      <h3>Picture-in-Picture (PiP)</h3>
+      <p>Video qo'ng'iroq yoki xaritani kichik suzuvchi oyna ko'rinishida doim ko'rib turish.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>On-device Sun'iy Intellekt (AI)</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <h3>Gemini Nano va AICore</h3>
+        <p>Zamonaviy Android versiyalarida AI hisob-kitoblari internet talab qilmaydi.</p>
+        <p class="muted">Ovozni matnga aylantirish va matnlarni umumlashtirish bevosita telefon protsessorida (NPU) ishlaydi.</p>
+      </div>
+    </div>
+    <div>
+      <div class="callout good fragment fade-up">
+        <h4>Afzalliklari:</h4>
+        <p>Maksimal tezlik, oflayn rejimda ishlash va shaxsiy ma'lumotlarning to'liq maxfiyligi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Wear OS: Aqlli soatlar</h1>
+  <p>Kiyiladigan aqlli gadjetlar arxitekturasi</p>
+</section>
+
+<section>
+  <h2>Wear OS imkoniyatlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="activity"></i></div>
+      <h3>Salomatlik nazorati</h3>
+      <p>Puls (yurak urishi), qon bosimi, EKG va qadamlarni uzluksiz o'lchash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="bell"></i></div>
+      <h3>Tezkor xabarlar</h3>
+      <p>Smartfonni cho'ntakdan chiqarmasdan xabarlarga qisqa yoki ovozli javob qaytarish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="credit-card"></i></div>
+      <h3>Kontaktsiz to'lov</h3>
+      <p>Google Wallet orqali soatni to'lov terminaliga tekkazib to'lov qilish (NFC).</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Soat interfeysi talablari (UI/UX)</h2>
+  <div class="timeline">
+    <div class="tl fragment"><b>Minimalizm:</b> Ekran kichik (1.2–1.5 dyuym), matnlar qisqa va aniq bo'lishi shart.</div>
+    <div class="tl fragment"><b>Batareya tejamkorligi:</b> Qora rangli AMOLED fonlar va yorug'likni tejovchi Always-on Display rejimi.</div>
+    <div class="tl fragment"><b>Katta teginish maydoni:</b> Tugmalar doiraviy va barmoq bilan bosishga qulay joylashtiriladi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Avtomobil tizimlari</h1>
+  <p>Android Auto va Android Automotive OS</p>
+</section>
+
+<section>
+  <h2>Ikkita xil avtomobil tizimi</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>Android Auto</h3>
+      <p>Smartfondagi ilovalarni avtomobil monitoriga proyeksiyalash.</p>
+      <p class="muted">Smartfon uzilsa, tizim to'xtaydi.</p>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>Automotive OS</h3>
+      <p>Mashinaning o'ziga o'rnatilgan mustaqil operatsion tizim.</p>
+      <p class="good">Konditsioner, batareya va mashina datchiklarini boshqaradi.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Avtomobilda xavfsizlik qoidasi</h2>
+  <div class="callout warn fragment fade-up">
+    <h4>Haydovchi diqqati eng muhimi!</h4>
+    <p>Avtomobil harakatlanayotgan paytda video ko'rish va klaviaturada yozish taqiqlanadi. Boshqaruv asosan Google Assistant ovozli buyruqlari orqali amalga oshiriladi.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Android TV va IoT</h1>
+  <p>Katta ekranlar, maishiy texnika va sanoat</p>
+</section>
+
+<section>
+  <h2>Android TV arxitekturasi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="tv"></i></div>
+      <h3>"10-foot UI" dizayn qoidasi</h3>
+      <p>Foydalanuvchi ekrandan 3 metr uzoqda o'tiradi. Matnlar yirik, kontrast baland va qulay bo'lishi kerak.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="navigation"></i></div>
+      <h3>D-pad pult orqali boshqaruv</h3>
+      <p>Sensorli bosish yo'q. Faqat yuqori, pastki, chap, o'ng va OK tugmalari bilan boshqariladi.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Android asosidagi IoT qurilmalar</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="credit-card"></i></div>
+      <h3>Smart POS terminallar</h3>
+      <p>Bank kartalarini qabul qiluvchi va chek chiqaruvchi kassa apparatlari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layout-grid"></i></div>
+      <h3>O'z-o'ziga xizmat kiosklari</h3>
+      <p>Fast-food restoranlari va banklardagi navbat olish panellari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="activity"></i></div>
+      <h3>Tibbiy uskunalar</h3>
+      <p>Shifoxonalardagi bemor holatini monitoring qiluvchi sensorli panellar.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Qurilmalar bo'yicha taqqoslash</h2>
+  <div class="timeline">
+    <div class="tl fragment"><b>Smartfon:</b> Universal foydalanish, sensorli ekran, boy dasturlar bazasi.</div>
+    <div class="tl fragment"><b>Wear OS:</b> Tezkor ma'lumot va salomatlik, ixcham ekran, minimal interfeys.</div>
+    <div class="tl fragment"><b>Android TV:</b> Video va o'yinlar, pult bilan boshqaruv, yirik ekran.</div>
+    <div class="tl fragment"><b>Android Auto:</b> Ovozli boshqaruv, minimal chalg'itish, xavfsiz harakat.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>15 daqiqa</span></h2>
+  <div class="task">
+    <span class="level easy">Oson</span>
+    Smartfoningizda Split-Screen (ekranni ikkiga bo'lish) funksiyasini yoqing va ikkita ilovani birga ishlating.
+  </div>
+  <div class="task">
+    <span class="level mid">O'rta</span>
+    Smartfon, aqlli soat va televizor interfeysi o'rtasidagi asosiy farqlarni jadval qilib yozing.
+  </div>
+  <div class="task">
+    <span class="level hard">Qiyin</span>
+    Maktab oshxonasi uchun Android kioski ilovasi konsepsiyasini ishlab chiqing.
+  </div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Bugun o'rgandik</h3>
+      <p>Android smartfonlardan tashqari soat (Wear OS), avtomobil (Auto), televizor (TV) va IoT uskunalarini qamrab oluvchi ulkan platformadir.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="book-open"></i></div>
+      <h3>Keyingi hafta</h3>
+      <p>2-hafta: Android ekotizimi va Google xizmatlari (GMS vs AOSP), Android Studio va SDK bilan amaliy tanishuv.</p>
+    </div>
+  </div>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

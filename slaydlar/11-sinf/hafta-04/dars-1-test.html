@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>10-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>10-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">4-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Observer qaysi turdagi andoza?</p>
+    <div class="opts">
+      <button class="opt" type="button">Yaratuvchi (Creational)</button>
+      <button class="opt" type="button">Tuzilmaviy (Structural)</button>
+      <button class="opt" type="button" data-ok>Xulq-atvor (Behavioral)</button>
+      <button class="opt" type="button">Arxitektura qatlami</button>
+    </div>
+    <div class="explain">Hodisalarni kuzatuvchilarga tarqatadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Observer'da Subject nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Har kuzatuvchining ichki mantiqini biladi</button>
+      <button class="opt" type="button">Faqat ma'lumotlar bazasiga yozadi</button>
+      <button class="opt" type="button">Kuzatuvchilarni o'zi yaratadi</button>
+      <button class="opt" type="button" data-ok>Kuzatuvchilar ro'yxatini saqlaydi va hodisani e'lon qiladi</button>
+    </div>
+    <div class="explain">Subject kuzatuvchilar kimligini bilmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Observer qanday bog'liqlik beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Bo'sh bog'liqlik (loose coupling)</button>
+      <button class="opt" type="button">Qattiq bog'liqlik</button>
+      <button class="opt" type="button">Aylanma bog'liqlik</button>
+      <button class="opt" type="button">Bog'liqlik umuman yo'qoladi</button>
+    </div>
+    <div class="explain">Yangi kuzatuvchi Subject kodini o'zgartirmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>OrderService</code> ichida email, analytics, loyalty to'g'ridan chaqirilsa, qaysi tamoyil buziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">DRY</button>
+      <button class="opt" type="button">KISS</button>
+      <button class="opt" type="button">YAGNI</button>
+      <button class="opt" type="button" data-ok>OCP (ochiq/yopiq)</button>
+    </div>
+    <div class="explain">Har yangi ish uchun OrderService o'zgaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Hayotiy o'xshatish sifatida Observer'ga eng mos?</p>
+    <div class="opts">
+      <button class="opt" type="button">Kalkulyator</button>
+      <button class="opt" type="button">Lift tugmasi</button>
+      <button class="opt" type="button">Kitob mundarijasi</button>
+      <button class="opt" type="button" data-ok>Telegram kanali va obunachilar</button>
+    </div>
+    <div class="explain">Kanal obunachilarni tanimaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>EventBus</code> ning asosiy metodlari?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>get</code>, <code>post</code>, <code>put</code></button>
+      <button class="opt" type="button" data-ok><code>on</code>, <code>off</code>, <code>emit</code></button>
+      <button class="opt" type="button"><code>open</code>, <code>read</code>, <code>close</code></button>
+      <button class="opt" type="button"><code>start</code>, <code>stop</code>, <code>pause</code></button>
+    </div>
+    <div class="explain">Obuna, bekor qilish, e'lon.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>unsubscribe</code> unutilsa?</p>
+    <div class="opts">
+      <button class="opt" type="button">Dastur tezlashadi</button>
+      <button class="opt" type="button">Kuzatuvchi avtomatik o'chadi</button>
+      <button class="opt" type="button">SyntaxError</button>
+      <button class="opt" type="button" data-ok>Xotira oqimi: Subject havolani ushlab turadi</button>
+    </div>
+    <div class="explain">Yechim: unsubscribe yoki weak reference.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Bitta kuzatuvchi xato bersa, to'g'ri yondashuv?</p>
+    <div class="opts">
+      <button class="opt" type="button">Hamma kuzatuvchini to'xtatish</button>
+      <button class="opt" type="button" data-ok>Har chaqiruv <code>try/except</code> da, xato logga yoki DLQ ga</button>
+      <button class="opt" type="button">Xatoni jimgina yutish</button>
+      <button class="opt" type="button">Subject'ni qayta yaratish</button>
+    </div>
+    <div class="explain">Kuzatuvchilar mustaqil; xato yutilmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Bir hodisa ikki marta yetib kelsa ham ish bir marta bajarilishi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Backpressure</button>
+      <button class="opt" type="button">Polimorfizm</button>
+      <button class="opt" type="button" data-ok>Idempotentlik (event-id bo'yicha deduplikatsiya)</button>
+      <button class="opt" type="button">Inkapsulyatsiya</button>
+    </div>
+    <div class="explain">Outbox naqshi ham yordam beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Observer qachon ortiqcha?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Bitta qabul qiluvchi va bitta aniq harakat bo'lsa</button>
+      <button class="opt" type="button">Javob beruvchilar soni o'zgarib tursa</button>
+      <button class="opt" type="button">UI komponentlarida</button>
+      <button class="opt" type="button">Bitta hodisaga ko'p mustaqil javob bo'lsa</button>
+    </div>
+    <div class="explain">Oddiy funksiya chaqirish yetarli (over-engineering).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: Subject va Observer rollari, loose coupling, EventBus, xavflar (xotira oqimi, idempotentlik, xatoni yutmaslik).</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Kibertahdidlarning turlari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="Logo">
+  <h1>Kibertahdidlarning turlari</h1>
+  <p class="muted">Zararli dasturlar (Malware) tasnifi va DoS/DDoS hujumlari</p>
+  <span class="badge">10-sinf Kiberxavfsizlik · 1-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="bug" data-anim="pulse"></i></div>
+      <h3>Zararli dasturlar (Malware)</h3>
+      <p>Viruslar, qurtlar, troyanlar, rootkitlar va josus dasturlar.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-alert" data-anim="wiggle"></i></div>
+      <h3>Ransomware xavfi</h3>
+      <p>Fayllarni garovga oluvchi tovlamachi viruslar anatomiyasi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="server-crash" data-anim="float"></i></div>
+      <h3>DoS va DDoS hujumlari</h3>
+      <p>Server resurslarini to'ldirish va xizmatni to'xtatish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="terminal" data-anim="float"></i></div>
+      <h3>Slowloris simulyatsiyasi</h3>
+      <p>Past tezlikli HTTP DoS hujumining ishlash mexanizmi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Zararli dasturlar tasnifi</h1>
+  <p>Malware turlari, maqsadlari va tarqalish yo'llari</p>
+  
+</section>
+
+<section>
+  <h2>Malware nima?</h2>
+  <div class="card fragment fade-up">
+    <div class="icon"><i data-ic="bug"></i></div>
+    <h3>Malicious Software (Zararli dastur)</h3>
+    <p>Foydalanuvchining ruxsatisiz tizimga kiruvchi, buzuvchi, o'g'irlovchi yoki kompyuter faoliyatini boshqaruvchi har qanday dasturiy vosita.</p>
+  </div>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <h4>Maqsad: O'g'irlash</h4>
+      <p>Parollar, bank kartalari, shaxsiy yozishmalar va sirlar.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <h4>Maqsad: Shifrlash</h4>
+      <p>Fayllarni ochib bo'lmaydigan qilib, tovon puli talab qilish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <h4>Maqsad: Nazorat</h4>
+      <p>Kompyuterni zombi botnetiga qo'shib, DDoS hujumlarda ishlatish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Virus vs Qurt (Worm)</h2>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="file"></i></div>
+      <h3>Kompyuter Virusi</h3>
+      <p class="muted">Mezbon faylga muhtoj</p>
+      <p>Boshqa dasturlar yoki fayllar (.exe, .docx) ichiga yashirinadi. Inson faylni ochgandagina ishga tushadi va ko'payadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="network"></i></div>
+      <h3>Kompyuter Qurti (Worm)</h3>
+      <p class="muted">Mustaqil dastur</p>
+      <p>Hech qanday mezbon faylga muhtoj emas. Tarmoqdagi zaifliklar orqali odam ishtirokisiz avtomatik tarzda tarqaladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Troyan otlari va Spyware</h2>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="box"></i></div>
+      <h3>Troyan oti (Trojan Horse)</h3>
+      <p class="muted">Foydali ko'rinishdagi niqob</p>
+      <p>O'yin, tekin aktivator yoki tozalovchi dastur qiyofasida yuklanadi. Ichida yashirin zararli modul (masalan, backdoor) bo'ladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="user-search"></i></div>
+      <h3>Josus dastur (Spyware)</h3>
+      <p class="muted">Yashirin kuzatuvchi</p>
+      <p>Klaviaturada terilgan parollarni (Keylogger), brauzer tarixini va veb-kamera tasvirlarini yozib olib buzg'unchiga jo'natadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Rootkit, Backdoor va Mantiqiy bombalar</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>Rootkit</h3>
+      <p>Operatsion tizim yadrosiga (Kernel) o'rnashadi. O'zining fayllari va jarayonlarini antiviruslardan yashiradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="key"></i></div>
+      <h3>Backdoor</h3>
+      <p>Tizimga loginsiz, yashirin eshik orqali kirish imkonini yaratadi. Masofadan buyruq bajarish imkonini beradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="clock"></i></div>
+      <h3>Logic Bomb</h3>
+      <p>Muayyan shart (sana yoki hodisa) sodir bo'lguncha yashirinib yotadi va vaqti kelganda tizimni o'chiradi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Ransomware: Tovlamachi viruslar</h1>
+  <p>Fayllarni shifrlash va tovon puli talab qilish sxemasi</p>
+  
+</section>
+
+<section>
+  <h2>Ransomware qanday ishlaydi?</h2>
+  <div class="timeline">
+    <div class="tl fragment"><b>1. Kirib kelish:</b> Fishing xati, ochiq RDP porti yoki zararlangan fayl orqali kompyuterga kiradi.</div>
+    <div class="tl fragment"><b>2. Shifrlash (AES-256):</b> Diskdagi barcha .docx, .pdf, .jpg, .sql fayllarini soniyalar ichida shifrlaydi.</div>
+    <div class="tl fragment"><b>3. Tovon talab qilish:</b> Ekranda xabar paydo bo'ladi: «Fayllarni ochish uchun 0.5 Bitcoin to'lang!»</div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Ransomware ga qarshi oltin qoida</h2>
+  <div class="card fragment fade-up">
+    <div class="icon"><i data-ic="shield-check" data-anim="pulse"></i></div>
+    <h3>3-2-1 Zaxiralash qoidasi (Backup)</h3>
+    <p>Fayllarning zaxira nusxasi bo'lsa, ransomware hech qanday zarar yetkaza olmaydi!</p>
+  </div>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <h4>3 ta nusxa</h4>
+      <p>Asosiy fayllarning kamida 3 ta nusxasi saqlanishi kerak.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <h4>2 xil tashuvchi</h4>
+      <p>2 xil qurilmada (masalan, ichki disk va tashqi qattiq disk).</p>
+    </div>
+    <div class="card fragment fade-up">
+      <h4>1 ta tashqi ombor</h4>
+      <p>1 ta nusxa tarmoqdan uzilgan xavfsiz joyda yoki bulutda saqlanishi shart.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>DoS va DDoS hujumlari</h1>
+  <p>Foydalanuvchanlikni yo'q qilish mexanizmlari</p>
+  
+</section>
+
+<section>
+  <h2>DoS vs DDoS: Arxitektura</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <h3>DoS (Denial of Service)</h3>
+        <p>Bitta hujumchi kompyuter maqsadli serverga ko'p so'rov yuboradi. Bitta IP ni bloklash orqali to'xtatish oson.</p>
+      </div>
+      <div class="card fragment fade-up">
+        <h3>DDoS (Distributed DoS)</h3>
+        <p>Dunyo bo'ylab tarqalgan millionlab botnet qurilmalari bir vaqtda hujum qiladi. Barcha IP larni bloklash imkonsiz.</p>
+      </div>
+    </div>
+    <div class="fragment fade-up">
+      <svg viewBox="0 0 400 280">
+        <circle cx="200" cy="40" r="24" class="fb" />
+        <text x="200" y="45" text-anchor="middle" class="t-accent">C2</text>
+        <line x1="180" y1="60" x2="80" y2="120" stroke="currentColor" stroke-width="2" class="t-muted" />
+        <line x1="200" y1="64" x2="200" y2="120" stroke="currentColor" stroke-width="2" class="t-muted" />
+        <line x1="220" y1="60" x2="320" y2="120" stroke="currentColor" stroke-width="2" class="t-muted" />
+        <circle cx="80" cy="140" r="18" class="fc" />
+        <text x="80" y="145" text-anchor="middle" class="t-head">Bot</text>
+        <circle cx="200" cy="140" r="18" class="fc" />
+        <text x="200" y="145" text-anchor="middle" class="t-head">Bot</text>
+        <circle cx="320" cy="140" r="18" class="fc" />
+        <text x="320" y="145" text-anchor="middle" class="t-head">Bot</text>
+        <line x1="80" y1="160" x2="180" y2="220" stroke="currentColor" stroke-width="2" class="t-accent" />
+        <line x1="200" y1="160" x2="200" y2="220" stroke="currentColor" stroke-width="2" class="t-accent" />
+        <line x1="320" y1="160" x2="220" y2="220" stroke="currentColor" stroke-width="2" class="t-accent" />
+        <rect x="150" y="220" width="100" height="40" rx="8" class="fa" />
+        <text x="200" y="245" text-anchor="middle" class="t-head">Server</text>
+      </svg>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Slowloris hujumi</h1>
+  <p>Past tezlikli HTTP DoS hujumining ishlash siri</p>
+  
+</section>
+
+<section>
+  <h2>Slowloris: Sekin va xavfli</h2>
+  <div class="callout fragment fade-up">
+    <p>Odatdagi DoS gigabaytlab paket yuboradi. Slowloris esa sekundiga bir necha bayt yuboradi!</p>
+  </div>
+  <div class="timeline">
+    <div class="tl fragment"><b>1. HTTP GET so'rovi:</b> Hujumchi so'rovni ochadi, lekin uni yakunlovchi bo'sh qatorni (`\r\n\r\n`) jo'natmaydi.</div>
+    <div class="tl fragment"><b>2. Kutish rejimida ushlash:</b> Server so'rov tugashini kutadi. Hujumchi har 10 soniyada soxta sarlavha tashlab turadi.</div>
+    <div class="tl fragment"><b>3. Soketlar to'lishi:</b> Serverning barcha ulanish o'rinlari (connection pool) to'ladi va yangi mijozlar kira olmaydi.</div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Amaliyot: Slowloris simulyatsiyasi</h2>
+  <pre><code class="language-powershell">1..500 | ForEach-Object {
+    Start-Job -ScriptBlock {
+        try {
+            $tcp = New-Object System.Net.Sockets.TcpClient
+            $tcp.Connect("127.0.0.1", 80)
+            $stream = $tcp.GetStream()
+            $writer = New-Object System.IO.StreamWriter($stream)
+            $writer.WriteLine("GET / HTTP/1.1`r`nHost: localhost`r`n")
+            $writer.Flush()
+            Start-Sleep -Seconds 300
+        } catch {}
+    }
+}
+Write-Host "500 ta sekin ulanish ochildi!"</code></pre>
+  
+</section>
+
+<section>
+  <h2>Slowloris dan qanday himoyalanamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="clock"></i></div>
+      <h3>Timeout ni kamaytirish</h3>
+      <p>Sarlavhalarni kutish vaqtini (timeout) 5-10 soniyaga tushirish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Ulanishlar limitini qo'yish</h3>
+      <p>Bitta IP manzildan parallel ochiladigan ulanishlar sonini cheklash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="server"></i></div>
+      <h3>Reverse Proxy (Nginx)</h3>
+      <p>Asinxron arxitekturaga ega Nginx ni oraliq server sifatida o'rnatish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">05</div>
+  <h1>Amaliy topshiriqlar</h1>
+  <p>Bilimlarni mustahkamlash uchun mashqlar</p>
+  
+</section>
+
+<section>
+  <h2>Darsning amaliy vazifalari</h2>
+  <div class="cols">
+    <div class="task fragment fade-up">
+      <span class="level easy">Oson</span>
+      <h4>1. Worm vs Virus</h4>
+      <p>Nega qurtlar tarmoqda inson aralashuvisiz viruslarga qaraganda tezroq tarqaladi?</p>
+    </div>
+    <div class="task fragment fade-up">
+      <span class="level easy">Oson</span>
+      <h4>2. Slowloris tahlili</h4>
+      <p>Nima sababdan Slowloris hujumi katta internet tezligini talab qilmaydi?</p>
+    </div>
+    <div class="task fragment fade-up">
+      <span class="level mid">O'rta</span>
+      <h4>3. DoS vs DDoS</h4>
+      <p>Bitta IP dan bo'lgan DoSni to'xtatish usuli nega DDoS ga qarshi yordam bermaydi?</p>
+    </div>
+    <div class="task fragment fade-up">
+      <span class="level hard">Qiyin</span>
+      <h4>4. Rootkit xavfi</h4>
+      <p>Nima uchun operatsion tizim ichidagi oddiy antivirus Rootkitni aniqlay olmaydi?</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Xulosa</h2>
+  <div class="card fragment fade-up">
+    <div class="icon"><i data-ic="shield-check"></i></div>
+    <h3>Himoya majmuasi</h3>
+    <p>Antivirus, EDR, tizim yangilanishlari va zaxira nusxalar birgalikda ishlasagina tizim xavfsiz bo'ladi.</p>
+  </div>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <h4>DDoS himoyasi</h4>
+      <p>Bulutli xizmatlar (Cloudflare, Akamai) orqali yirik trafikni filtrlash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <h4>Hushyorlik</h4>
+      <p>Notanish ilovalar va aktivatorlarni hech qachon ish kompyuteriga o'rnatmaslik.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="shield-check" data-anim="pulse"></i></div>
+  <h1>E'tiboringiz uchun rahmat!</h1>
+  <p class="muted">Keyingi dars: Ijtimoiy muhandislik va fishing tahlili (Thunderbird, MX Toolbox, VirusTotal)</p>
+  <span class="badge">Savollar bormi?</span>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

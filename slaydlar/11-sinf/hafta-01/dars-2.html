@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Git asoslari: kodingiz tarixini boshqaring</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 2-dars (1-hafta): Git asoslari. Faqat slaydlar. -->
+
+      <!-- 1. SARLAVHA -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>Git asoslari: kodingiz tarixini boshqaring</h1>
+        <p class="muted">Bugun terminalda birinchi repozitoriyni yaratamiz, commit qilamiz, shox ochamiz va birlashtiramiz</p>
+        <span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">1-hafta · 2-dars</span>
+      </section>
+
+      <!-- 2. KO'PRIK + REJA -->
+      <section>
+        <h2>1-darsdan bugunga</h2>
+        <div class="flow">
+          <div class="step"><span class="icon"><i data-ic="list-checks"></i></span>Talab</div>
+          <div class="arrow"><i data-ic="arrow-right"></i></div>
+          <div class="step"><span class="icon"><i data-ic="pencil-ruler"></i></span>Dizayn</div>
+          <div class="arrow"><i data-ic="arrow-right"></i></div>
+          <div class="step"><span class="icon"><i data-ic="terminal"></i></span><b>Kod yozish</b></div>
+          <div class="arrow"><i data-ic="arrow-right"></i></div>
+          <div class="step"><span class="icon"><i data-ic="bug" data-anim="wiggle"></i></span>Test</div>
+        </div>
+        <div class="quote mt fragment">SDLC ning «Kod» bosqichi Git repozitoriyda yashaydi: har o'zgarish izi bilan saqlanadi.</div>
+        
+      </section>
+
+      <!-- 3. REJA -->
+      <section>
+        <h2>Bugun nima qilamiz?</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="list-clock"></i></div><h3>Nega Git?</h3><p>Versiyalarni boshqarish va snapshot g'oyasi</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="folder-git-2" data-anim="float"></i></div><h3>Repo va commit</h3><p>init, add, commit, status, diff</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="git-merge" data-anim="pulse"></i></div><h3>Branch va merge</h3><p>Parallel ish, konflikt, log</p></div>
+        </div>
+        <p class="small mt">Natija: o'z <code>dev-journal</code> repozitoriyingiz, 3-darsda GitHub'ga yuklanadi.</p>
+      </section>
+
+      <!-- 4. BO'LIM 01 -->
+      <section class="sec">
+        <div class="num">01</div>
+        <h1>Nega Git kerak?</h1>
+        <p>Versiyalarni boshqarish tizimining g'oyasi</p>
+      </section>
+
+      <!-- 5. ILLYUSTRATSIYA: fayl chalkashligi vs Git -->
+      <section>
+        <h2>«final_v3_HAQIQIY» davri tugadi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 400">
+            <text class="t-muted" x="20" y="36" font-size="24">Qo'lda versiyalash</text>
+            <rect class="fn" x="20" y="56" width="400" height="56" rx="12"/><text x="40" y="92" font-size="24">hisobot.docx</text>
+            <g class="fragment"><rect class="fn" x="20" y="126" width="400" height="56" rx="12"/><text x="40" y="162" font-size="24">hisobot_v2.docx</text></g>
+            <g class="fragment"><rect class="fn" x="20" y="196" width="400" height="56" rx="12"/><text x="40" y="232" font-size="24">hisobot_FINAL.docx</text></g>
+            <g class="fragment"><rect class="fb pulse" x="20" y="266" width="400" height="56" rx="12"/><text x="40" y="302" font-size="24">hisobot_FINAL_haqiqiy2.docx</text></g>
+            <g class="fragment"><text class="t-accent" x="20" y="370" font-size="24">Qaysi biri oxirgisi? Kim nimani o'zgartirdi?</text></g>
+            <line class="ln" x1="470" y1="40" x2="470" y2="380"/>
+            <g class="fragment">
+              <text class="t-muted" x="520" y="36" font-size="24">Git: bitta papka + tarix</text>
+              <circle class="fa" cx="560" cy="150" r="34"/><text class="t-head" x="560" y="158" text-anchor="middle" font-size="24">1</text>
+              <line class="la" x1="594" y1="150" x2="656" y2="150"/><polygon class="ar-a" points="662,150 646,142 646,158"/>
+              <circle class="fa" cx="696" cy="150" r="34"/><text class="t-head" x="696" y="158" text-anchor="middle" font-size="24">2</text>
+              <line class="la" x1="730" y1="150" x2="792" y2="150"/><polygon class="ar-a" points="798,150 782,142 782,158"/>
+              <circle class="fa" cx="832" cy="150" r="34"/><text class="t-head" x="832" y="158" text-anchor="middle" font-size="24">3</text>
+              <line class="la" x1="866" y1="150" x2="918" y2="150"/><polygon class="ar-a" points="924,150 908,142 908,158"/>
+              <circle class="fg pulse" cx="950" cy="150" r="22"/>
+              <text class="t-accent" x="520" y="240" font-size="24">Har nuqta = commit (snapshot)</text>
+              <text x="520" y="280" font-size="24">Istalganiga qaytish mumkin</text>
+              <text x="520" y="320" font-size="24">Kim, qachon, nima uchun yozilgan</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 6. VCS TURLARI: taqqoslash -->
+      <section>
+        <h2>Versiyalarni boshqarish tizimi (VCS)</h2>
+        <div class="vs">
+          <div class="side fragment"><h3>Markazlashgan (SVN)</h3>Tarix bitta serverda. Server ishlamasa, tarixga kira olmaysiz.</div>
+          <div class="mid">VS</div>
+          <div class="side b fragment"><h3>Taqsimlangan (Git)</h3>Har kompyuterda to'liq tarix. Internetsiz ham commit, branch, log ishlaydi.</div>
+        </div>
+        <div class="callout tip fragment"><i data-ic="lightbulb" data-anim="draw"></i>Git (2005, Linus Torvalds, Linux yadrosi uchun) — buyruqlar vositasi. GitHub — alohida xizmat, uni 3-darsda o'tamiz.</div>
+      </section>
+
+      <!-- 6b. RAQAMLAR -->
+      <section>
+        <h2>Git raqamlarda</h2>
+        <div class="stats">
+          <div class="stat"><div class="v"><span class="count" data-to="2005">0</span></div><div class="l">Git yaratilgan yil</div></div>
+          <div class="stat"><div class="v"><span class="count" data-to="40" data-suf=" belgi">0</span></div><div class="l">commit hash (SHA-1)</div></div>
+          <div class="stat"><div class="v"><span class="count" data-to="3" data-suf=" zona">0</span></div><div class="l">working, staging, repository</div></div>
+        </div>
+      </section>
+
+      <!-- 7. COMMIT ANATOMIYASI -->
+      <section>
+        <h2>Commit — kod fotosurati</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 380">
+            <rect class="fa" x="30" y="30" width="520" height="320" rx="22"/>
+            <text class="t-head" x="60" y="76" font-size="28">commit 3280c5a</text>
+            <g class="fragment"><text class="t-muted" x="60" y="130" font-size="24">hash:</text><text x="190" y="130" font-size="24">SHA-1 (40 belgi), noyob</text></g>
+            <g class="fragment"><text class="t-muted" x="60" y="178" font-size="24">muallif:</text><text x="190" y="178" font-size="24">Aziz, vaqt</text></g>
+            <g class="fragment"><text class="t-muted" x="60" y="226" font-size="24">xabar:</text><text x="190" y="226" font-size="24">«feat: add second line»</text></g>
+            <g class="fragment"><text class="t-muted" x="60" y="274" font-size="24">snapshot:</text><text x="190" y="274" font-size="24">fayllarning to'liq holati</text></g>
+            <g class="fragment"><text class="t-muted" x="60" y="322" font-size="24">parent:</text><text class="t-accent" x="190" y="322" font-size="24">5284414</text></g>
+            <g class="fragment">
+              <line class="la flowing" x1="550" y1="322" x2="690" y2="322"/><polygon class="ar-a" points="696,322 680,314 680,330"/>
+              <rect class="fn" x="700" y="270" width="270" height="104" rx="18"/>
+              <text class="t-head" x="835" y="312" text-anchor="middle" font-size="24">5284414</text>
+              <text class="t-muted" x="835" y="346" text-anchor="middle" font-size="22">oldingi commit</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 8. BO'LIM 02 -->
+      <section class="sec">
+        <div class="num">02</div>
+        <h1>O'rnatish va sozlash</h1>
+        <p>Birinchi buyruqlar, o'zingizni Gitga tanishtirish</p>
+      </section>
+
+      <!-- 9. VERTIKAL: o'rnatish va config -->
+      <section>
+        <section>
+          <h2>O'rnatganmiz-ku? Tekshiramiz</h2>
+          <pre class="terminal"><code class="language-bash" data-trim data-noescape data-line-numbers="1-2|3|4">
+$ git --version
+git version 2.50.1
+$ git config --global user.name "Aziz Karimov"
+$ git config --global user.email "aziz@example.com"
+          </code></pre>
+          <p class="small">Commit muallifi shu ikki qiymatdan olinadi. <span class="muted">Pastga ↓ o'rnatish va config darajalari</span></p>
+        </section>
+        <section>
+          <h2>O'rnatish</h2>
+          <div class="cards three">
+            <div class="card"><div class="icon"><i data-ic="monitor"></i></div><h3>Windows</h3><p>git-scm.com dan installer; Git Bash terminali bilan keladi</p></div>
+            <div class="card"><div class="icon"><i data-ic="laptop"></i></div><h3>macOS</h3><p><code>git --version</code> yoki Xcode CLT, yoki <code>brew install git</code></p></div>
+            <div class="card"><div class="icon"><i data-ic="server"></i></div><h3>Linux</h3><p><code>sudo apt install git</code> (Debian/Ubuntu)</p></div>
+          </div>
+        </section>
+        <section>
+          <h2>Config uchta darajada</h2>
+          <table>
+            <tr><th>Daraja</th><th>Bayroq</th><th>Qamrovi</th></tr>
+            <tr><td>system</td><td><code>--system</code></td><td>butun kompyuter</td></tr>
+            <tr><td>global</td><td><code>--global</code></td><td>sizning foydalanuvchingiz</td></tr>
+            <tr><td>local</td><td>(bayroqsiz)</td><td>faqat shu repo, eng kuchli</td></tr>
+          </table>
+          <pre class="terminal"><code class="language-bash" data-trim data-noescape>
+$ git config --global init.defaultBranch main
+$ git config --list --show-origin
+          </code></pre>
+        </section>
+      </section>
+
+      <!-- 10. BO'LIM 03 -->
+      <section class="sec">
+        <div class="num">03</div>
+        <h1>Repozitoriy, 3 zona, commit</h1>
+        <p>Git ishining asosiy sikli</p>
+      </section>
+
+      <!-- 11. git init va .git anatomiyasi -->
+      <section>
+        <h2>git init: .git/ hosil bo'ladi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 380">
+            <rect class="fn" x="20" y="30" width="400" height="320" rx="22"/>
+            <text class="t-head" x="50" y="78" font-size="28">dev-journal/</text>
+            <text x="60" y="130" font-size="24">README.md</text>
+            <text x="60" y="176" font-size="24">hello.py</text>
+            <g class="fragment"><rect class="fb pulse" x="40" y="214" width="360" height="56" rx="12"/><text class="t-head" x="60" y="252" font-size="26">.git/ (yashirin)</text></g>
+            <g class="fragment"><line class="lb flowing" x1="420" y1="242" x2="560" y2="242"/><polygon class="ar-b" points="566,242 550,234 550,250"/></g>
+            <g class="fragment">
+              <rect class="fb" x="570" y="30" width="410" height="320" rx="22"/>
+              <text class="t-head" x="600" y="78" font-size="28">.git/ ichida</text>
+              <text x="600" y="128" font-size="24">objects/  commit va fayllar</text>
+              <text x="600" y="176" font-size="24">refs/  branch va tag nomlari</text>
+              <text x="600" y="224" font-size="24">HEAD  qaysi shoxdasiz</text>
+              <text x="600" y="272" font-size="24">index  staging zonasi</text>
+              <text x="600" y="320" font-size="24">config  repo sozlamalari</text>
+            </g>
+          </svg>
+        </div>
+        <div class="callout warn fragment"><i data-ic="triangle-alert"></i><code>.git/</code> ni o'chirsangiz, butun tarix yo'qoladi. Fayllar qoladi, lekin Git ularni endi bilmaydi.</div>
+      </section>
+
+      <!-- 12. UCH ZONA -->
+      <section>
+        <h2>Uch zona modeli</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 380">
+            <g data-tip="Working directory: fayllarni tahrirlaydigan oddiy papkangiz."><rect class="fa" x="20" y="60" width="270" height="250" rx="22"/>
+            <text class="t-head" x="155" y="130" text-anchor="middle" font-size="28">Working</text>
+            <text class="t-head" x="155" y="166" text-anchor="middle" font-size="28">directory</text>
+            <text class="t-muted" x="155" y="230" text-anchor="middle" font-size="22">fayllarni tahrirlaysiz</text></g>
+            <g class="fragment" data-tip="Staging area: keyingi commitga kiradigan fayllar saflanadigan joy."><rect class="fb" x="365" y="60" width="270" height="250" rx="22"/>
+              <text class="t-head" x="500" y="130" text-anchor="middle" font-size="28">Staging</text>
+              <text class="t-head" x="500" y="166" text-anchor="middle" font-size="28">area</text>
+              <text class="t-muted" x="500" y="230" text-anchor="middle" font-size="22">keyingi commit saflari</text></g>
+            <g class="fragment" data-tip="Repository (.git): commitlar doimiy saqlanadigan tarix."><rect class="fg" x="710" y="60" width="270" height="250" rx="22"/>
+              <text class="t-head" x="845" y="130" text-anchor="middle" font-size="28">Repository</text>
+              <text class="t-head" x="845" y="166" text-anchor="middle" font-size="28">(.git)</text>
+              <text class="t-muted" x="845" y="230" text-anchor="middle" font-size="22">doimiy tarix</text></g>
+            <g class="fragment"><line class="la flowing" x1="295" y1="185" x2="355" y2="185"/><polygon class="ar-a" points="361,185 345,177 345,193"/><text class="t-accent" x="328" y="350" text-anchor="middle" font-size="26">git add</text></g>
+            <g class="fragment"><line class="lb flowing" x1="640" y1="185" x2="700" y2="185"/><polygon class="ar-b" points="706,185 690,177 690,193"/><text class="t-accent" x="672" y="350" text-anchor="middle" font-size="26">git commit</text></g>
+          </svg>
+        </div>
+        <p class="small">Zonaning ustiga olib boring yoki bosing.</p>
+        
+      </section>
+
+      <!-- 13. BUYRUQLAR: terminal, qator bo'yicha -->
+      <section>
+        <h2>Birinchi commit</h2>
+        <pre class="terminal"><code class="language-bash" data-trim data-noescape data-line-numbers="1-3|4-6|7-10">
+$ mkdir dev-journal &amp;&amp; cd dev-journal
+$ git init -b main
+Initialized empty Git repository in .../dev-journal/.git/
+$ echo "# Dev Journal" &gt; README.md
+$ git status -s
+?? README.md
+$ git add README.md
+$ git commit -m "docs: add README"
+[main (root-commit) bd42656] docs: add README
+ 1 file changed, 1 insertion(+)
+          </code></pre>
+        <p class="small"><code>??</code> = kuzatilmayapti (untracked). <code>A</code> = stagingda. Qator-qator tushuntiring.</p>
+        
+      </section>
+
+      <!-- 14. status belgilari -->
+      <section>
+        <h2>git status -s: belgilarni o'qing</h2>
+        <div class="cards four">
+          <div class="flip" style="min-height:190px"><div class="flip-in">
+            <div class="face front"><h3><code>??</code></h3><span class="flip-hint">bosing</span></div>
+            <div class="face back"><p>Yangi, Git kuzatmaydi</p></div>
+          </div></div>
+          <div class="flip" style="min-height:190px"><div class="flip-in">
+            <div class="face front"><h3><code>A</code></h3><span class="flip-hint">bosing</span></div>
+            <div class="face back"><p>Yangi fayl stagingga qo'shildi</p></div>
+          </div></div>
+          <div class="flip" style="min-height:190px"><div class="flip-in">
+            <div class="face front"><h3><code>_M</code></h3><span class="flip-hint">bosing</span></div>
+            <div class="face back"><p>O'zgardi, hali stagingda emas</p></div>
+          </div></div>
+          <div class="flip" style="min-height:190px"><div class="flip-in">
+            <div class="face front"><h3><code>M_</code></h3><span class="flip-hint">bosing</span></div>
+            <div class="face back"><p>O'zgardi va stagingda</p></div>
+          </div></div>
+        </div>
+        <pre class="terminal fragment"><code class="language-bash" data-trim data-noescape>
+$ git diff            # ishchi papka va staging farqi
+$ git diff --staged   # staging va oxirgi commit farqi
+        </code></pre>
+      </section>
+
+      <!-- 15-16. AVTO-ANIMATSIYA: commit xabari -->
+      <section data-auto-animate>
+        <h2>Commit xabari: avval</h2>
+        <pre data-id="msg"><code class="language-bash" data-trim data-noescape>
+$ git commit -m "ozgardi"
+        </code></pre>
+        <div class="callout bad"><i data-ic="circle-x"></i>Nima o'zgardi? Nega? 3 oydan keyin o'zingiz ham eslay olmaysiz.</div>
+      </section>
+      <section data-auto-animate>
+        <h2>Commit xabari: keyin</h2>
+        <pre data-id="msg"><code class="language-bash" data-trim data-noescape>
+$ git commit -m "feat: add greeting by name"
+        </code></pre>
+        <div class="chips"><span class="chip">feat: yangi imkoniyat</span><span class="chip t">fix: xato tuzatish</span><span class="chip">docs: hujjat</span><span class="chip t">refactor: tuzilish</span><span class="chip">test: sinov</span></div>
+        <p class="small mt">Conventional Commits: <code>tur: qisqa tavsif</code>. Buyruq maylida, 50 belgigacha.</p>
+      </section>
+
+      <!-- 17. Commit sikli: o'zgartirish -> diff -> commit (terminal) -->
+      <section>
+        <h2>O'zgartirdik, ko'rdik, saqladik</h2>
+        <pre class="terminal"><code class="language-bash" data-trim data-noescape data-line-numbers="1|2-7|8|9-10">
+$ echo 'print("Ikkinchi qator")' &gt;&gt; hello.py
+$ git diff
+--- a/hello.py
++++ b/hello.py
+@@ -1 +1,2 @@
+ print("Salom, Git!")
++print("Ikkinchi qator")
+$ git commit -am "feat: add second line"
+$ git log --oneline
+3280c5a feat: add second line
+          </code></pre>
+        <div class="callout"><i data-ic="lightbulb"></i><code>-a</code> faqat allaqachon kuzatilayotgan fayllarni oladi. Yangi fayl uchun avval <code>git add</code>.</div>
+      </section>
+
+      <!-- 18. BO'LIM 04 -->
+      <section class="sec">
+        <div class="num">04</div>
+        <h1>Branch, merge va tarix</h1>
+        <p>Asosiy shoxga tegmasdan xavfsiz tajriba</p>
+      </section>
+
+      <!-- 19. BRANCH ILLYUSTRATSIYASI -->
+      <section>
+        <h2>Branch — mustaqil yo'lak</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <line class="la" x1="60" y1="110" x2="930" y2="110"/>
+            <circle class="fa" cx="100" cy="110" r="26"/><circle class="fa" cx="260" cy="110" r="26"/><circle class="fa" cx="420" cy="110" r="26"/>
+            <text class="t-accent" x="40" y="60" font-size="26">main</text>
+            <g class="fragment">
+              <path class="lb" d="M 260 136 C 280 220, 320 250, 400 250"/>
+              <circle class="fb" cx="440" cy="250" r="26"/><line class="lb" x1="466" y1="250" x2="570" y2="250"/>
+              <circle class="fb" cx="600" cy="250" r="26"/>
+              <text class="t-accent" x="400" y="320" font-size="26">feature/greeting</text>
+            </g>
+            <g class="fragment">
+              <line class="la" x1="446" y1="110" x2="570" y2="110"/>
+              <circle class="fa" cx="600" cy="110" r="26"/>
+              <path class="lb flowing" d="M 626 250 C 760 250, 760 150, 800 126"/>
+              <line class="la" x1="626" y1="110" x2="770" y2="110"/>
+              <circle class="fg pulse" cx="800" cy="110" r="30"/>
+              <text class="t-head" x="800" y="60" text-anchor="middle" font-size="24">merge</text>
+            </g>
+          </svg>
+        </div>
+        <p class="small">Branch — commit'ga ko'rsatkich (yorliq). Yaratish deyarli bepul va bir lahzada bo'ladi.</p>
+        
+      </section>
+
+      <!-- 20. BRANCH BUYRUQLARI -->
+      <section>
+        <h2>Shox ochamiz, ishlaymiz, qaytamiz</h2>
+        <pre class="terminal"><code class="language-bash" data-trim data-noescape data-line-numbers="1-2|3-4|5-6|7-10|11">
+$ git switch -c feature/greeting
+Switched to a new branch 'feature/greeting'
+$ git commit -am "feat: greet by name"
+[feature/greeting 245556f] feat: greet by name
+$ git switch main
+Switched to branch 'main'
+$ git merge feature/greeting
+Updating 3280c5a..245556f
+Fast-forward
+ hello.py | 4 ++--
+$ git branch -d feature/greeting
+          </code></pre>
+        
+      </section>
+
+      <!-- 21. FAST-FORWARD vs MERGE COMMIT -->
+      <section>
+        <h2>Merge ikki xil bo'ladi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 380">
+            <text class="t-head" x="20" y="40" font-size="26">Fast-forward</text>
+            <circle class="fa" cx="60" cy="110" r="24"/><line class="la" x1="84" y1="110" x2="156" y2="110"/>
+            <circle class="fa" cx="180" cy="110" r="24"/><line class="la" x1="204" y1="110" x2="276" y2="110"/>
+            <circle class="fb" cx="300" cy="110" r="24"/><line class="lb" x1="324" y1="110" x2="396" y2="110"/>
+            <circle class="fb" cx="420" cy="110" r="24"/>
+            <text x="20" y="190" font-size="24">main orqada, yangi commitlar ustida</text>
+            <text class="t-accent" x="20" y="226" font-size="24">Git faqat main'ni oldinga suradi</text>
+            <g class="fragment">
+              <line class="ln" x1="500" y1="30" x2="500" y2="350"/>
+              <text class="t-head" x="530" y="40" font-size="26">Merge commit</text>
+              <circle class="fa" cx="560" cy="110" r="24"/>
+              <line class="la" x1="584" y1="110" x2="676" y2="110"/><circle class="fa" cx="700" cy="110" r="24"/>
+              <line class="la" x1="724" y1="110" x2="856" y2="110"/>
+              <path class="lb" d="M 560 134 C 580 200, 640 220, 700 220"/>
+              <circle class="fb" cx="720" cy="220" r="24"/>
+              <path class="lb" d="M 744 220 C 820 220, 850 180, 868 140"/>
+              <circle class="fg pulse" cx="880" cy="110" r="28"/>
+              <text x="530" y="300" font-size="24">ikkala shox o'zgargan</text>
+              <text class="t-accent" x="530" y="336" font-size="24">Git ikki ota-onali commit yaratadi</text>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <!-- 22. KONFLIKT (vertikal) -->
+      <section>
+        <section>
+          <h2>Konflikt: Git to'xtab, so'raydi</h2>
+          <pre class="terminal"><code class="language-bash" data-trim data-noescape data-line-numbers="1|2-3|4-9">
+$ git merge feature/title
+Auto-merging README.md
+CONFLICT (content): Merge conflict in README.md
+$ cat README.md
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+# Dasturchi kundaligi
+=======
+# Aziz Dev Journal
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/title
+          </code></pre>
+          <p class="small">Bitta qatorni ikki shox turlicha o'zgartirgan. <span class="muted">Pastga ↓ yechish tartibi</span></p>
+        </section>
+        <section>
+          <h2>Konfliktni yechish</h2>
+          <div class="stepper">
+            <div class="stp on"><div class="card"><h3>1. O'qing</h3><p>Faylni oching, ikkala variantni o'qing</p></div></div>
+            <div class="stp"><div class="card"><h3>2. Tahrirlang</h3><p>Qoldiradigan matnni yozing, <code>&lt;&lt;&lt;</code> <code>===</code> <code>&gt;&gt;&gt;</code> belgilarini o'chiring</p></div></div>
+            <div class="stp"><div class="card"><h3>3. Stagingga</h3><p><code>git add README.md</code></p></div></div>
+            <div class="stp"><div class="card"><h3>4. Commit</h3><p><code>git commit</code> (merge'ni yakunlaydi)</p></div></div>
+          </div>
+          <div class="callout tip fragment"><i data-ic="shield-check" data-anim="draw"></i>Qo'rqmang: <code>git merge --abort</code> hammasini merge'dan oldingi holatga qaytaradi.</div>
+        </section>
+      </section>
+
+      <!-- 23. TARIX -->
+      <section>
+        <h2>Tarixni o'qing: git log</h2>
+        <pre class="terminal"><code class="language-bash" data-trim data-noescape data-line-numbers="1|2-8">
+$ git log --oneline --graph
+*   79a25f9 Merge branch 'feature/bye'
+|\
+| * 03c5311 feat: add goodbye
+* | d76ee7f docs: describe project
+|/
+* 245556f feat: greet by name
+* 3280c5a feat: add second line
+          </code></pre>
+        <div class="chips"><span class="chip">--oneline</span><span class="chip t">--graph</span><span class="chip">--all</span><span class="chip t">-n 5</span><span class="chip">git show &lt;hash&gt;</span></div>
+      </section>
+
+      <!-- 24. BEKOR QILISH -->
+      <section>
+        <h2>Xato qildim: qanday qaytaraman?</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="undo-2"></i></div><h3>Ishchi o'zgarish</h3><p><code>git restore hello.py</code><br>faylni oxirgi commit holatiga</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="archive-restore"></i></div><h3>Stagingdan olish</h3><p><code>git restore --staged hello.py</code><br>fayl o'zgarishi saqlanadi</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="rotate-ccw"></i></div><h3>Commitni bekor</h3><p><code>git revert &lt;hash&gt;</code><br>teskari commit, tarix buzilmaydi</p></div>
+        </div>
+        <div class="callout warn fragment"><i data-ic="triangle-alert"></i><code>git restore</code> saqlanmagan o'zgarishni qaytarib bo'lmaydigan qilib o'chiradi.</div>
+      </section>
+
+      <!-- 25. ODATIY XATOLAR -->
+      <section>
+        <h2>Odatiy xatolar</h2>
+        <div class="cards two">
+          <div class="card accent2 fragment fade-up"><div class="icon"><i data-ic="key-round"></i></div><h3>Parolni commit qilish</h3><p>Tarixdan o'chirish juda qiyin. Maxfiy fayllarni <code>.gitignore</code> ga yozing.</p></div>
+          <div class="card accent2 fragment fade-up"><div class="icon"><i data-ic="git-branch"></i></div><h3>Noto'g'ri shoxda ishlash</h3><p>Ish boshlashdan oldin <code>git branch</code> yoki <code>git status</code>.</p></div>
+          <div class="card accent2 fragment fade-up"><div class="icon"><i data-ic="package"></i></div><h3>git add . ko'r-ko'rona</h3><p>Keraksiz fayl (<code>node_modules</code>, <code>.env</code>) tushadi. Avval <code>status</code>.</p></div>
+          <div class="card accent2 fragment fade-up"><div class="icon"><i data-ic="file-text"></i></div><h3>«fix» kabi xabar</h3><p>Tarix foydasiz bo'lib qoladi. Nima va nega ekanini yozing.</p></div>
+        </div>
+      </section>
+
+      <!-- 26. QUIZ -->
+      <section>
+        <h2>Tezkor savol</h2>
+        <div class="quiz">
+          <p class="q">hello.py ni o'zgartirdingiz, <code>git add</code> qilmadingiz va <code>git commit -m "x"</code> yozdingiz. Commitga nima tushadi?</p>
+          <div class="opts">
+            <button class="opt" type="button">hello.py ning yangi holati</button>
+            <button class="opt" type="button" data-ok>Hech narsa</button>
+            <button class="opt" type="button">Butun papka</button>
+          </div>
+          <div class="explain">To'g'ri: «nothing added to commit». Faqat stagingdagilar commitga tushadi. Variant: <code>git commit -am</code> kuzatiladigan faylni o'zi stagingga oladi.</div>
+        </div>
+      </section>
+
+      <!-- 27. AMALIY TOPSHIRIQ -->
+      <section>
+        <h2>Amaliyot: dev-journal <span class="timer"><i data-ic="timer" data-anim="spin"></i>20 daqiqa</span></h2>
+        <div class="task"><span class="level easy">Oson</span>Repo yarating, <code>README.md</code> va <code>hello.py</code> uchun 2 ta commit</div>
+        <div class="task"><span class="level mid">O'rta</span><code>feature/skills</code> shoxida <code>skills.md</code> yozing, <code>main</code>'ga merge qiling</div>
+        <div class="task"><span class="level hard">Qiyin</span>Ataylab konflikt yarating va yeching, <code>git log --graph</code> bilan isbotlang</div>
+        
+      </section>
+
+      <!-- 28. XULOSA -->
+      <section>
+        <h2>Xulosa</h2>
+        <div class="cards two">
+          <div class="card"><div class="icon"><i data-ic="circle-check"></i></div><h3>Bugun o'rgandik</h3><p>init, add, commit; uch zona; branch, merge, konflikt; log va restore</p></div>
+          <div class="card"><div class="icon"><i data-ic="book-open"></i></div><h3>Uyga vazifa</h3><p>dev-journal ga 3 kunlik yozuv, shox va merge; <code>log --graph</code> natijasi</p></div>
+        </div>
+        <p class="small mt">Keyingi dars: repozitoriyni GitHub'ga yuboramiz (remote, push, pull, fork).</p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

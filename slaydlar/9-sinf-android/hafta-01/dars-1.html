@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Android nima va uning rivojlanish tarixi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Android nima va uning rivojlanish tarixi</h1>
+  <p class="muted">Kameralardan smartfonlar sari: mobil platformaning global evolyutsiyasi</p>
+  <span class="badge">9-sinf</span>
+  <span class="badge">Android dasturlash</span>
+  <span class="badge">1-hafta · 1-dars</span>
+</section>
+
+<section>
+  <h2>Bugungi dars maqsadlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="target"></i></div>
+      <h3>Android mohiyati</h3>
+      <p>Linux yadrosiga asoslangan ochiq kodli tizimning vazifalari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="clock"></i></div>
+      <h3>Yaratilish tarixi</h3>
+      <p>Andy Rubin, Android Inc., Google xaridi va HTC Dream.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>Versiyalar va ekotizim</h3>
+      <p>Cupcake'dan Android 15 gacha va O'zbekistondagi mobil ilovalar.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Androidning mohiyati</h1>
+  <p>Mobil qurilmalar va sensorli tizimlar uchun ochiq operatsion tizim</p>
+</section>
+
+<section>
+  <h2>Android nima?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="smartphone" data-anim="pulse"></i></div>
+      <h3>Mobil operatsion tizim</h3>
+      <p>Sensorli ekranli smartfon, planshet, aqlli soat va televizorlar uchun mo'ljallangan dasturiy majmua.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>Linux yadrosiga asoslangan</h3>
+      <p>Apparat qismlari, protsessor, xotira, kamera va datchiklarni Linux Kernel orqali ishonchli boshqaradi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Android qanday vazifalarni bajaradi?</h2>
+  <div class="timeline">
+    <div class="tl fragment"><b>1. Resurslarni taqsimlaydi:</b> Protsessor (CPU), operativ xotira (RAM) va quvvatni ilovalar o'rtasida boshqaradi.</div>
+    <div class="tl fragment"><b>2. Sensorlar va apparat bilan ishlaydi:</b> Kamera, mikrafon, GPS, giroskop va barmoq izi skanerini boshqaradi.</div>
+    <div class="tl fragment"><b>3. Xavfsiz sandbox muhiti:</b> Har bir ilovani alohida jarayonda izolyatsiyalab, tizim xavfsizligini ta'minlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Global ko'rsatkichlar</h2>
+  <div class="stats">
+    <div class="stat fragment"><div class="v">3 mlrd+</div><div class="l">faol Android qurilmasi</div></div>
+    <div class="stat fragment"><div class="v">71%</div><div class="l">jahon mobil bozori ulushi</div></div>
+    <div class="stat fragment"><div class="v">4 mln+</div><div class="l">Android dasturchilari soni</div></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Yaratilish tarixi</h1>
+  <p>2003-yildan bugungi kungacha bo'lgan innovatsion yo'l</p>
+</section>
+
+<section>
+  <h2>Boshlanish nuqtasi: 2003-yil</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <div class="icon"><i data-ic="sparkles"></i></div>
+        <h3>Android Inc. tashkil etilishi</h3>
+        <p>Kaliforniya, Palo-Alto shahri. Asoschilar: <b>Andy Rubin, Rich Miner, Nick Sears va Chris White</b>.</p>
+      </div>
+    </div>
+    <div>
+      <div class="callout warn fragment fade-up">
+        <p><b>Qiziqarli fakt:</b> Dastlabki maqsad smartfonlar emas, balki <i>raqamli fotoapparatlar</i> uchun aqlli tizim yaratish bo'lgan!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Tarixiy burilish: Google xaridi</h2>
+  <div class="timeline">
+    <div class="tl fragment"><b>2005-yil:</b> Google kompaniyasi Android Inc.ni 50 million dollarga sotib oldi.</div>
+    <div class="tl fragment"><b>2007-yil:</b> Open Handset Alliance (OHA) tashkil etildi: ochiq mobil platforma e'lon qilindi.</div>
+    <div class="tl fragment"><b>2008-yil:</b> Dunyodagi birinchi Android smartfoni — <b>HTC Dream (T-Mobile G1)</b> sotuvga chiqdi.</div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Birinchi Android smartfoni: HTC Dream</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="smartphone"></i></div>
+      <h3>Qurilma tuzilishi</h3>
+      <p>Sensorli ekran va suriluvchi to'liq jismoniy QWERTY klaviatura.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="globe"></i></div>
+      <h3>Internet xizmatlari</h3>
+      <p>Google Maps, Gmail, YouTube va HTML brauzer o'rnatilgan edi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>Android Market</h3>
+      <p>Ilovalarni onlayn yuklab olish imkonini beruvchi dastlabki do'kon.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Versiyalar evolyutsiyasi</h1>
+  <p>Shirinliklar nomlaridan raqamlar davriga</p>
+</section>
+
+<section>
+  <h2>Shirinliklar davri (2009–2018)</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <h3>Alifbo tartibidagi nomlar</h3>
+      <p class="muted">Google har bir versiyani shirinliklar nomi bilan atagan:</p>
+      <p>Cupcake, Donut, Eclair, Froyo, Gingerbread, Honeycomb, Ice Cream Sandwich, Jelly Bean, KitKat, Lollipop, Marshmallow, Nougat, Oreo, Pie.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <h3>Asosiy yutuqlar</h3>
+      <p><b>5.0 Lollipop:</b> Material Design kiritildi.</p>
+      <p><b>6.0 Marshmallow:</b> Dinamik ruxsatlar tizimi.</p>
+      <p><b>7.0 Nougat:</b> Split-screen ko'p oynali rejim.</p>
+      <p><b>9.0 Pie:</b> Sun'iy intellektli batareya nazorati.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Raqamli nomlash davri (2019-yildan)</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sparkles"></i></div>
+      <h3>Android 10 va 12</h3>
+      <p><b>Android 10:</b> Tizimli qora mavzu (Dark Theme) va to'liq imo-ishoralar boshqaruvi.</p>
+      <p><b>Android 12:</b> <b>Material You</b> — foydalanuvchi fon rasmiga moslashuvchi dinamik ranglar.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Android 14 va 15</h3>
+      <p><b>Android 14:</b> Ultra HDR, unumdorlik va batareya optimallashuvi.</p>
+      <p><b>Android 15:</b> Private Space (shaxsiy maxfiy hudud) va Gemini AI integratsiyasi.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Ochiq kod va ishlab chiqaruvchilar</h1>
+  <p>AOSP (Android Open Source Project) falsafasi</p>
+</section>
+
+<section>
+  <h2>AOSP nima?</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <h3>Android Open Source Project</h3>
+        <p>Google Androidning asosiy manba kodini dunyoga bepul va ochiq taqdim etadi (Apache 2.0 litsenziyasi).</p>
+        <p class="muted">Istalgan ishlab chiqaruvchi kodni olib, o'z apparatiga moslashtira oladi.</p>
+      </div>
+    </div>
+    <div>
+      <div class="callout good fragment fade-up">
+        <h4>Ochiq kodning afzalliklari:</h4>
+        <p>Tezkor rivojlanish, millionlab mustaqil ishlab chiquvchilar hissasi va monopoliya yo'qligi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Brendlarning shaxsiy qobiqlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="smartphone"></i></div>
+      <h3>Samsung — One UI</h3>
+      <p>Katta ekranli qurilmalarda bir qo'l bilan boshqarishga qulaylashtirilgan interfeys.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="smartphone"></i></div>
+      <h3>Xiaomi — HyperOS</h3>
+      <p>Smartfon, uy gadjetlari va avtomobillarni birlashtiruvchi ekotizimli qobiq.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="smartphone"></i></div>
+      <h3>Google — Pixel UI</h3>
+      <p>Hech qanday ortiqcha ilovalarsiz toza, tezkor va eng yangi Android imkoniyatlari.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">05</div>
+  <h1>O'zbekistonda Android bozori</h1>
+  <p>Mobil ilovalar va dasturchilar imkoniyatlari</p>
+</section>
+
+<section>
+  <h2>O'zbekistonning mashhur mobil ilovalari</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="credit-card"></i></div>
+      <h3>Moliya va to'lovlar</h3>
+      <p><b>Click, Payme, Uzum Bank:</b> Karta to'lovlari, P2P o'tkazmalar, QR to'lov va kommunal to'lovlar.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="car"></i></div>
+      <h3>Transport va xizmatlar</h3>
+      <p><b>Yandex Go, MyTaxi:</b> GPS navigatsiyasi orqali taksi chaqirish va xaritada kuzatish.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Nega Android dasturlashni o'rganamiz?</h2>
+  <div class="timeline">
+    <div class="tl fragment"><b>Yuqori talab:</b> O'zbekistonda va xalqaro bozorda Android dasturchilariga bo'lgan ehtiyoj yuqori.</div>
+    <div class="tl fragment"><b>Zamonaviy texnologiyalar:</b> Kotlin tili, Jetpack Compose, Room va Firebase zamonaviy vositalar hisoblanadi.</div>
+    <div class="tl fragment"><b>Mustaqil startaplar:</b> O'zingiz orzu qilgan mobil ilovani mustaqil yaratib, Google Play'da butun dunyoga taqdim eta olasiz.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>15 daqiqa</span></h2>
+  <div class="task">
+    <span class="level easy">Oson</span>
+    Smartfoningiz sozlamalaridan Android versiyasini va qurilma parametrlarini aniqlang.
+  </div>
+  <div class="task">
+    <span class="level mid">O'rta</span>
+    Android 5.0 (Material Design) va Android 12 (Material You) farqini konspekt qiling.
+  </div>
+  <div class="task">
+    <span class="level hard">Qiyin</span>
+    O'zbekistondagi 3 ta mobil ilovaning qaysi funksiyalari ommalashganini tahlil qiling.
+  </div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Bugun o'rgandik</h3>
+      <p>Android Linux yadrosiga qurilgan ochiq tizim. 2003-yilda yaratilib, 2005-yilda Google tomonidan rivojlantirila boshlangan.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="book-open"></i></div>
+      <h3>Keyingi dars</h3>
+      <p>2-dars: Android tizimining arxitekturasi: Linux Kernel, HAL, ART/Dalvik va Java API Framework qatlamlari.</p>
+    </div>
+  </div>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

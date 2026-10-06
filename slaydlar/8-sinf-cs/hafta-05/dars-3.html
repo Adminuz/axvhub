@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Git kompyuterda</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Git kompyuterda</h1>
+  <p class="muted">2-qism: init, status, add, commit, log</p>
+  <span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">5-hafta · 15-dars</span>
+  
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">Commit'da qaysi ma'lumot saqlanmaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Xabar</button>
+      <button class="opt" type="button">Muallif</button>
+      <button class="opt" type="button">Vaqt va ID</button>
+      <button class="opt" type="button" data-ok>Parolingiz</button>
+    </div>
+    <div class="explain">Commit: xabar, muallif, vaqt, ID. Parol — hech qachon.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Tayyorgarlik</h1>
+  <p>Terminal, o'rnatish va sozlash</p>
+</section>
+
+<section>
+  <h2>Terminal — matnli buyruqlar</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="terminal" data-anim="blink"></i></div><h3>Git Bash</h3><p>git-scm.com dan Git bilan birga o'rnatiladi.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="folder-tree"></i></div><h3>4 buyruq</h3><p><code>pwd</code> — qayerdaman, <code>ls</code> — nima bor, <code>cd</code> — kirish, <code>mkdir</code> — papka.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Tekshirish va sozlash</h2>
+  <pre class="terminal"><code class="language-bash" data-trim data-noescape data-line-numbers="1|2-3|4">
+git --version
+git config --global user.name "Alisher Karimov"
+git config --global user.email "alisher@example.com"
+git config --list
+</code></pre>
+  <div class="callout tip fragment"><i data-ic="lightbulb"></i>Email GitHub'dagi bilan bir xil bo'lsa — commitlar profilingizga bog'lanadi.</div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Uch hudud</h1>
+  <p>Stol, konvert va pochta qutisi</p>
+</section>
+
+<section>
+  <h2>Fayl yo'li</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+      <g data-tip="Ishchi papka — fayllarni tahrirlayotgan joy (stol ustidagi qog'ozlar)."><rect class="fa la" x="30" y="80" width="250" height="130" rx="14" stroke-width="3"/><text class="t-head" x="155" y="140" text-anchor="middle" font-size="24">Ishchi papka</text><text class="t-muted" x="155" y="175" text-anchor="middle" font-size="20">stol</text></g>
+      <g class="fragment" data-tip="git add — o'zgarishni staging'ga (konvertga) soladi."><line class="lb flowing" x1="285" y1="145" x2="370" y2="145" stroke-width="4" marker-end="url(#ar-b)"/><text class="t-accent" x="328" y="125" text-anchor="middle" font-size="20">add</text><rect class="fb lb" x="375" y="80" width="250" height="130" rx="14" stroke-width="3"/><text class="t-head" x="500" y="140" text-anchor="middle" font-size="24">Staging</text><text class="t-muted" x="500" y="175" text-anchor="middle" font-size="20">konvert</text></g>
+      <g class="fragment" data-tip="git commit — staging'dagini tarixga (pochta qutisiga) saqlaydi; .git papkasida."><line class="lg flowing" x1="630" y1="145" x2="715" y2="145" stroke-width="4" marker-end="url(#ar-g)"/><text class="t-accent" x="672" y="125" text-anchor="middle" font-size="20">commit</text><rect class="fg lg pulse" x="720" y="80" width="250" height="130" rx="14" stroke-width="4"/><text class="t-head" x="845" y="140" text-anchor="middle" font-size="24">Repository</text><text class="t-muted" x="845" y="175" text-anchor="middle" font-size="20">.git · tarix</text></g>
+      <g class="fragment"><text class="t-muted" x="500" y="270" text-anchor="middle" font-size="22">git status — har bir hududda nima borligini aytadi</text></g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Faylni staging'ga qaysi buyruq qo'shadi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>git init</code></button>
+      <button class="opt" type="button" data-ok><code>git add</code></button>
+      <button class="opt" type="button"><code>git log</code></button>
+      <button class="opt" type="button"><code>git status</code></button>
+    </div>
+    <div class="explain">add — konvertga solish; commit — pochta qutisiga tashlash.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Beshta buyruq</h1>
+  <p>init → status → add → commit → log</p>
+</section>
+
+<section>
+  <h2>Buyruqlar</h2>
+  <table>
+    <thead><tr><th>Buyruq</th><th>Vazifasi</th></tr></thead>
+    <tbody>
+      <tr class="fragment"><td><code>git init</code></td><td>papkani repository'ga aylantiradi (<code>.git</code>)</td></tr>
+      <tr class="fragment"><td><code>git status</code></td><td>fayllar holati</td></tr>
+      <tr class="fragment"><td><code>git add .</code></td><td>o'zgarishlarni staging'ga</td></tr>
+      <tr class="fragment"><td><code>git commit -m "..."</code></td><td>saqlash</td></tr>
+      <tr class="fragment"><td><code>git log --oneline</code></td><td>tarix: ID va xabar</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section data-auto-animate>
+  <h2>Birinchi commit</h2>
+  <pre class="terminal" data-id="jar"><code class="language-bash" data-trim data-noescape>
+mkdir kundalik
+cd kundalik
+git init
+</code></pre>
+</section>
+
+<section data-auto-animate>
+  <h2>Birinchi commit</h2>
+  <pre class="terminal" data-id="jar"><code class="language-bash" data-trim data-noescape data-line-numbers="1-3|4|5|6|7|8">
+mkdir kundalik
+cd kundalik
+git init
+echo "# Mening kundaligim" > README.md
+git status            # Untracked files: README.md
+git add README.md
+git commit -m "README qo'shildi"
+git log --oneline     # a1b2c3d README qo'shildi
+</code></pre>
+</section>
+
+<section>
+  <section>
+    <h2><code>git status</code> ni o'qish</h2>
+    <table>
+      <thead><tr><th>Xabar</th><th>Nima qilamiz</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td>Untracked files</td><td><code>git add</code></td></tr>
+        <tr class="fragment"><td>Changes not staged for commit</td><td><code>git add</code></td></tr>
+        <tr class="fragment"><td>Changes to be committed</td><td><code>git commit -m</code></td></tr>
+        <tr class="fragment"><td>working tree clean</td><td>hammasi saqlangan</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: <code>git log</code></p>
+  </section>
+  <section>
+    <h2><code>git log --oneline</code></h2>
+    <pre class="terminal"><code class="language-bash" data-trim data-noescape>
+c3d4e5f README ga muallif qo'shildi
+b2c3d4e Dushanba yozuvi qo'shildi
+a1b2c3d README qo'shildi
+</code></pre>
+    <p>Eng yangi — <b>yuqorida</b>, eng eski — <b>pastda</b>.</p>
+  </section>
+</section>
+
+<section>
+  <h2>Raqamlarda</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="5">0</span></div><div class="l">asosiy buyruq</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="3">0</span></div><div class="l">hudud</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="7">0</span></div><div class="l">belgili qisqa ID</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Odatiy xatolar</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-x"></i></div><h3>add unutildi</h3><p>«nothing added to commit».</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-x"></i></div><h3>-m yo'q</h3><p>Vim ochiladi: <code>Esc</code> → <code>:wq</code> → Enter.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-x"></i></div><h3>.git o'chirildi</h3><p>Butun tarix yo'qoladi!</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Laboratoriya ishi <span class="timer"><i data-ic="timer"></i>35 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span><code>git --version</code>, ism va emailni sozlash.</div>
+  <div class="task"><span class="level easy">Oson</span>5 ta buyruqni vazifasi bilan juftlash.</div>
+  <div class="task"><span class="level mid">O'rta</span><code>kundalik</code>: init, README, birinchi commit, har qadamda status.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Yana 2 ta commit va <code>git log --oneline</code>.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Sozlash</h3><p><code>git config</code> — ism va email.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Uch hudud</h3><p>Ishchi papka → staging → repository.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Jarayon</h3><p>status → add → commit → log.</p></div>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="cloud-upload" data-anim="float"></i></div>
+  <h1>Keyingi dars: GitHub'ga yuklash</h1>
+  <p class="muted">git push, clone, pull va branch</p>
+  <span class="badge">6-hafta · 16-dars</span>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

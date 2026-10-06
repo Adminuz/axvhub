@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>10-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>10-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">8-sinf</span><span class="badge">Web Full-stack</span><span class="badge">4-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">CSS ning vazifasi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Sahifa tuzilmasini yaratish</button>
+      <button class="opt" type="button">Ma'lumotlar bazasini boshqarish</button>
+      <button class="opt" type="button" data-ok>Sahifaning tashqi ko'rinishini belgilash</button>
+      <button class="opt" type="button">Serverga so'rov yuborish</button>
+    </div>
+    <div class="explain">HTML - tuzilma va mazmun, CSS - ko'rinish.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q"><code>h1 { color: blue; }</code> da <code>color</code> nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Selektor</button>
+      <button class="opt" type="button">Qiymat</button>
+      <button class="opt" type="button">Teg</button>
+      <button class="opt" type="button" data-ok>Xususiyat (property)</button>
+    </div>
+    <div class="explain"><code>h1</code> - selektor, <code>color</code> - xususiyat, <code>blue</code> - qiymat.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Ko'p sahifaga bitta CSS faylini ulashning asosiy usuli?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></button>
+      <button class="opt" type="button"><code>style</code> atributi</button>
+      <button class="opt" type="button"><code>&lt;style&gt;</code> tegi</button>
+      <button class="opt" type="button"><code>&lt;css&gt;</code> tegi</button>
+    </div>
+    <div class="explain">External CSS <code>&lt;link&gt;</code> bilan ulanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>style.css</code> fayli ichida nima yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>&lt;style&gt;</code> tegi va qoidalar</button>
+      <button class="opt" type="button">HTML teglar</button>
+      <button class="opt" type="button"><code>&lt;link&gt;</code> tegi</button>
+      <button class="opt" type="button" data-ok>Faqat CSS qoidalari</button>
+    </div>
+    <div class="explain">Tashqi faylda <code>&lt;style&gt;</code> yozilmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Class selektori qanday yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>#karta</code></button>
+      <button class="opt" type="button"><code>karta</code></button>
+      <button class="opt" type="button"><code>*karta</code></button>
+      <button class="opt" type="button" data-ok><code>.karta</code></button>
+    </div>
+    <div class="explain">Class - nuqta, id - panjara.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Sahifada faqat bir marta ishlatiladigan selektor?</p>
+    <div class="opts">
+      <button class="opt" type="button">class</button>
+      <button class="opt" type="button" data-ok>id</button>
+      <button class="opt" type="button">element</button>
+      <button class="opt" type="button">universal</button>
+    </div>
+    <div class="explain">Id yagona bo'ladi, class esa takrorlanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>nav a</code> nimani tanlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat birinchi <code>a</code> ni</button>
+      <button class="opt" type="button"><code>nav</code> va <code>a</code> ni alohida</button>
+      <button class="opt" type="button"><code>a</code> ichidagi <code>nav</code> ni</button>
+      <button class="opt" type="button" data-ok><code>nav</code> ichidagi barcha <code>a</code> teglarini</button>
+    </div>
+    <div class="explain">Bu descendant (avlod) selektor.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>h1, h2, h3 { color: navy; }</code> qanday selektor?</p>
+    <div class="opts">
+      <button class="opt" type="button">Descendant</button>
+      <button class="opt" type="button" data-ok>Guruh selektori</button>
+      <button class="opt" type="button">Universal</button>
+      <button class="opt" type="button">Id</button>
+    </div>
+    <div class="explain">Vergul bilan sanalgan selektorlar bitta qoidani oladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>&lt;p id=&quot;asosiy&quot; class=&quot;xabar&quot;&gt;</code> ga <code>p</code> - qizil, <code>.xabar</code> - yashil, <code>#asosiy</code> - ko'k. Matn rangi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Qizil</button>
+      <button class="opt" type="button">Yashil</button>
+      <button class="opt" type="button" data-ok>Ko'k</button>
+      <button class="opt" type="button">Qora</button>
+    </div>
+    <div class="explain">id (100) &gt; class (10) &gt; element (1).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>karta { color: red; }</code> nega <code>class=&quot;karta&quot;</code> elementga ishlamaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Oldida nuqta yo'q: u &lt;karta&gt; tegini qidiradi</button>
+      <button class="opt" type="button">Rang nomi noto'g'ri</button>
+      <button class="opt" type="button">Nuqta-vergul yo'q</button>
+      <button class="opt" type="button">Qavslar noto'g'ri</button>
+    </div>
+    <div class="explain">Class selektori <code>.karta</code> deb yoziladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: CSS qoidasi tuzilishi, 3 ta ulash usuli, 6 ta selektor, class va id, ustuvorlik.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

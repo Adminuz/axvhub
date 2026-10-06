@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>cron, at va monitoring</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>cron, at va monitoring</h1>
+  <p class="muted">ps, top, htop, iotop, kill, cron, crontab, at, atq</p>
+  <span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">5-hafta · 14-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimalarni o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="activity" data-anim="pulse"></i></div><h3>Jarayonlar</h3><p>ps, top, htop, iotop</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="calendar-clock" data-anim="float"></i></div><h3>cron va crontab</h3><p>Takrorlanuvchi vazifa</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="alarm-clock" data-anim="blink"></i></div><h3>at buyrug'i</h3><p>Bir martalik vazifa</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">Quvur zanjirida <code>awk '{print $2}'</code> ps aux chiqishidan nimani oladi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>PID ustunini</button>
+    <button class="opt" type="button">Foydalanuvchi nomini</button>
+    <button class="opt" type="button">Buyruq nomini</button>
+    <button class="opt" type="button">Xotira hajmini</button>
+    </div>
+    <div class="explain"><code>ps aux</code> da 2-ustun PID.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Jarayonlar</h1>
+  <p>ps, top, htop, iotop</p>
+</section>
+
+<section>
+  <h2>Monitoring zanjiri</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Sekin tizim</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">top / htop:</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">CPU, xotira</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">iotop: disk</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">kill:</text><text class="t-head" x="875" y="171" text-anchor="middle" font-size="22">to'xtatish</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Avval sababni toping, keyin harakat qiling</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Jarayonlar bilan ishlash</h2>
+  <pre><code class="language-bash" data-trim data-line-numbers="1|2|3-4|5|6|7|8">
+ps aux | grep ssh
+top
+sudo apt install htop iotop
+htop
+sudo iotop -o
+sleep 300 &amp;
+kill 12345
+kill -9 12345
+  </code></pre>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i>Avval <code>kill PID</code> (SIGTERM) ni ishlating, <code>kill -9</code> (SIGKILL) faqat jarayon javob bermasa. Tizim jarayonlarini to'xtatmang.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Disk yuklamasini jarayonlar bo'yicha qaysi vosita ko'rsatadi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>iotop</button>
+    <button class="opt" type="button">htop</button>
+    <button class="opt" type="button">ls</button>
+    <button class="opt" type="button">pwd</button>
+    </div>
+    <div class="explain"><code>iotop</code> disk I/O ni jarayonlar kesimida ko'rsatadi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>cron va crontab</h1>
+  <p>Takrorlanuvchi vazifa</p>
+</section>
+
+<section>
+  <h2>crontab qatori</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Daqiqa (0-59)</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">Soat (0-23)</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Kun va oy</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">Hafta kuni</text><text class="t-head" x="875" y="171" text-anchor="middle" font-size="22">+ buyruq</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Beshta maydon, keyin buyruq</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>crontab misollari</h2>
+  <pre><code class="language-bash" data-trim data-line-numbers="2|3|4|5|6">
+# daq soat kun oy hafta  buyruq
+*/5 * * * *     /home/ali/tekshir.sh
+30 2 * * *      /home/ali/zaxira.sh
+0 9 * * 1-5     /home/ali/hisobot.sh
+0 0 1 * *       /home/ali/oylik.sh
+@reboot         /home/ali/start.sh
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Cron da PATH qisqa bo'ladi: skriptni to'liq yo'l bilan yozing. Natijani saqlash: <code>&gt;&gt; /home/ali/log.txt 2&gt;&amp;1</code>.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>30 2 * * *</code> qachon ishlaydi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Har kuni 02:30 da</button>
+    <button class="opt" type="button">Har 30 daqiqada</button>
+    <button class="opt" type="button">Har oyning 2-kuni</button>
+    <button class="opt" type="button">Har soat 2-daqiqada</button>
+    </div>
+    <div class="explain">Daqiqa 30, soat 2, qolgani har qanday: har kuni 02:30.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>at buyrug'i</h1>
+  <p>Bir martalik vazifa</p>
+</section>
+
+<section>
+  <h2>at jarayoni</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Vaqt belgilash</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">Buyruq yozish</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">atq: navbat</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">Bir marta</text><text class="t-head" x="875" y="171" text-anchor="middle" font-size="22">ishlaydi</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Bajarilgach vazifa navbatdan o'chadi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>at misollari</h2>
+  <pre><code class="language-bash" data-trim data-line-numbers="1|2|3|4|5|6">
+echo "echo salom &gt; ~/salom.txt" | at now + 2 minutes
+at 18:30
+atq
+atrm 3
+sudo systemctl status atd
+grep CRON /var/log/syslog
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i><code>at</code> va <code>cron</code> farqi: <code>at</code> bir marta, <code>cron</code> doimiy takror. Navbatda bo'lmagan vazifa raqamini <code>atrm</code> ga bermang.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Bir martalik vazifa uchun qaysi buyruq qulay?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>at</button>
+    <button class="opt" type="button">crontab</button>
+    <button class="opt" type="button">htop</button>
+    <button class="opt" type="button">iotop</button>
+    </div>
+    <div class="explain"><code>at</code> vazifani bir marta bajaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>cron va at</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>cron</h3>Takrorlanuvchi vazifalar; crontab da 5 maydon; masalan har kuni 02:30</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>at</h3>Bir martalik vazifa; <code>at 18:30</code>; navbat <code>atq</code></div>
+  </div>
+  <div class="card accent fragment mt"><p>Takror uchun cron, bir marta uchun at.</p></div>
+</section>
+
+<section>
+  <h2>Atamalar. Bosing</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>PID</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Jarayon raqami</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>SIGTERM / SIGKILL</h3><span class="flip-hint">bosing</span></div><div class="face back"><p><code>kill</code> va <code>kill -9</code> signallari</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>crontab</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Cron vazifalari jadvali</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>atd</h3><span class="flip-hint">bosing</span></div><div class="face back"><p><code>at</code> vazifalarini ishga tushiruvchi xizmat</p></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>cron vazifasini yaratish</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="file-text" data-anim="pulse"></i></div><h3>1. Skript yozing</h3><p><code>tekshir.sh</code> yarating va <code>chmod +x</code> qiling.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="pencil"></i></div><h3>2. crontab -e</h3><p>Vaqt va to'liq yo'lni yozing.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="eye"></i></div><h3>3. Natijani kuzating</h3><p><code>crontab -l</code> va log faylini tekshiring.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>Cron maydonlari</h2>
+    <table>
+      <thead><tr><th>Maydon</th><th>Qiymat</th><th>Misol</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td>Daqiqa</td><td>0-59</td><td>*/5</td></tr>
+        <tr class="fragment"><td>Soat</td><td>0-23</td><td>2</td></tr>
+        <tr class="fragment"><td>Oyning kuni</td><td>1-31</td><td>1,15</td></tr>
+        <tr class="fragment"><td>Oy</td><td>1-12</td><td>*</td></tr>
+        <tr class="fragment"><td>Hafta kuni</td><td>0-7 (0, 7 yakshanba)</td><td>1-5</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: sinash</p>
+  </section>
+  <section>
+    <h2>Cron ni sinash</h2>
+    <ol class="steps-n">
+      <li class="fragment"><code>crontab -e</code> oching.</li>
+      <li class="fragment"><code>* * * * * date &gt;&gt; ~/vaqt.txt</code> yozing.</li>
+      <li class="fragment">Bir daqiqadan so'ng <code>cat ~/vaqt.txt</code> ni tekshiring, so'ng qatorni o'chiring.</li>
+    </ol>
+  </section>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">Vazifa qo'shish</h2>
+  <pre data-id="c"><code class="language-bash" data-trim>
+crontab -l
+  </code></pre>
+</section>
+<section data-auto-animate>
+  <h2 data-id="t">Vazifa qo'shish</h2>
+  <pre data-id="c"><code class="language-bash" data-trim data-line-numbers="2-3">
+crontab -l
+crontab -e
+# */5 * * * * /home/ali/tekshir.sh
+  </code></pre>
+</section>
+
+<section>
+  <h2>Cron raqamlarda</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="5" data-suf="">0</span></div><div class="l"> vaqt maydoni</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="60" data-suf="">0</span></div><div class="l"> soniya: cron minimal qadami 1 daqiqa</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="1" data-suf="">0</span></div><div class="l"> marta: at vazifasi</div></div>
+  </div>
+  <p class="small fragment">Cron eng kichik qadami bitta daqiqa.</p>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Har 10 daqiqa: Har 10 daqiqada <code>tekshir.sh</code> ni ishga tushiruvchi crontab qatorini yozing.</div>
+  <div class="task"><span class="level mid">O'rta</span>Ish kunlari: Dushanbadan jumagacha 08:30 da <code>hisobot.sh</code> ni ishga tushiring.</div>
+  <div class="task"><span class="level mid">O'rta</span>Log bilan: Har kuni 03:00 da <code>zaxira.sh</code> ishlasin, natija <code>zaxira.log</code> ga qo'shilib yozilsin.</div>
+  <div class="task"><span class="level hard">Qiyin</span>at va jarayon: 2 daqiqadan keyin <code>salom.txt</code> yarating, navbatni ko'ring; <code>sleep 300 &amp;</code> jarayonini toping va to'xtating.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Monitoring</h3><p>ps, top, htop, iotop, kill.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>cron</h3><p>5 maydon + buyruq; crontab -e, -l, -r.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>at</h3><p>Bir martalik; atq, atrm.</p></div>
+  </div>
+  <p class="small fragment mt">Uyga vazifa: cron vazifasi, at va monitoring hisoboti.</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="shield" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: Foydalanuvchilar va SSH</h1>
+  <p class="muted">useradd, sudoers, SSH kalitlar</p>
+  <span class="badge">5-hafta · 15-dars</span>
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

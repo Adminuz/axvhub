@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Oraliq nazorat</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Oraliq nazorat</h1>
+  <p class="muted">I bob bo'yicha amaliy nazorat: Git, Clean Code, SOLID, Observer, REST/JSON, soft skills</p>
+  <span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">5-hafta · 15-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimalarni o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="clipboard-check" data-anim="pulse"></i></div><h3>Nazorat qoidalari</h3><p>Shakl va vaqt</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="map" data-anim="float"></i></div><h3>Mavzular xaritasi</h3><p>1–14-darslar</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="award" data-anim="blink"></i></div><h3>Baholash</h3><p>100 ball va baholar</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">Oraliq nazoratda nechta topshiriq turi ishlatiladi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Faqat bitta tur</button>
+    <button class="opt" type="button">Uch tur</button>
+    <button class="opt" type="button">Hamma turlar</button>
+    <button class="opt" type="button">Hech biri</button>
+    </div>
+    <div class="explain">Dastur: topshiriq turlaridan faqat bittasi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Nazorat qoidalari</h1>
+  <p>Shakl va vaqt</p>
+</section>
+
+<section>
+  <h2>Nazorat bosqichlari</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Qoidalar</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">Topshiriq</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Topshirish</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Tahlil</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">80 daqiqa: 5 qism</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Topshiriladigan fayllar</h2>
+  <pre><code class="language-text" data-trim data-line-numbers="1|2|3|4">
+nazorat.py        # kod: A, B, C qismlar
+test_nazorat.py   # testlar: kamida 4 ta
+PR.md             # D qism: tarmoq, commitlar, PR
+reflection.md     # E qism: matritsa va I-xabar
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Vaqtni boshidan taqsimlang (timeboxing): A 15, B 20, C 20, D 10, E 10 daqiqa, 5 daqiqa tekshirishga.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Oraliq nazorat bugun qaysi shaklda?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Amaliy topshiriq</button>
+    <button class="opt" type="button">Og'zaki imtihon</button>
+    <button class="opt" type="button">Referat</button>
+    <button class="opt" type="button">Taqdimot</button>
+    </div>
+    <div class="explain">Amaliy topshiriq, 80 daqiqa.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Mavzular xaritasi</h1>
+  <p>1–14-darslar</p>
+</section>
+
+<section>
+  <h2>I bob mavzulari</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Git va PR</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">Clean</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">Code, SOLID</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Patternlar</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">REST/JSON</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Soft skills nazoratning E qismida</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Qism va mavzu xaritasi</h2>
+  <pre><code class="language-text" data-trim data-line-numbers="1|2|3|4|5">
+A  Clean Code, SOLID   (20 ball)
+B  Observer, EventBus  (25 ball)
+C  REST/JSON kontrakt  (25 ball)
+D  Git va PR           (20 ball)
+E  Soft skills         (10 ball)
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Kuchsiz mavzuni oldindan aniqlang: 14-dars uyga vazifasida 3 ta kuchsiz mavzuni belgilagan edingiz.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Observer qaysi qismda tekshiriladi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>B qism</button>
+    <button class="opt" type="button">A qism</button>
+    <button class="opt" type="button">D qism</button>
+    <button class="opt" type="button">E qism</button>
+    </div>
+    <div class="explain">B: EventBus va kuzatuvchilar.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Baholash</h1>
+  <p>100 ball va baholar</p>
+</section>
+
+<section>
+  <h2>Baho shkalasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">0–59: 2</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">60–70: 3</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">71–89: 4</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">90–100: 5</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Dastur 8-bo'limi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Nazorat uchun checklist</h2>
+  <pre><code class="language-text" data-trim data-line-numbers="1-2|3-4|5-6">
+[ ] Funksiyalar ma'noli nomli, bitta ish qiladi
+[ ] Hodisa va kuzatuvchilar ishlaydi, xato izolyatsiya
+[ ] make_error, paginate, sanitize_user tayyor
+[ ] Testlar yashil o'tadi
+[ ] PR.md: What, Why, How, commitlar
+[ ] reflection.md: matritsa va I-xabar
+  </code></pre>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i>Topshirishdan oldin testlarni oxirgi marta ishga tushiring: yashil bo'lmagan test baho olib tashlaydi.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">90–100 ball qaysi baho?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>5</button>
+    <button class="opt" type="button">4</button>
+    <button class="opt" type="button">3</button>
+    <button class="opt" type="button">2</button>
+    </div>
+    <div class="explain">90–100 ball: a'lo (5).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Tayyorgarlik</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>Tayyor emas</h3>Hamma narsani bir vaqtda boshlaydi, test yozmaydi, vaqt tugaydi</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>Tayyor</h3>Vaqtni taqsimlaydi, kichik qadam va testlar, oxirida tekshiradi</div>
+  </div>
+  <div class="card accent fragment mt"><p>Timeboxing va testlar nazoratda yordam beradi.</p></div>
+</section>
+
+<section>
+  <h2>Atamalar. Bosing</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>Oraliq nazorat</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Bob oxiridagi bilim tekshiruvi</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>Amaliy topshiriq</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Kod yozib bajariladigan vazifa</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>Timeboxing</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Qismga oldindan vaqt berish</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>DoD</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Tugallanish mezoni</p></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Nazorat paytida</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="timer" data-anim="pulse"></i></div><h3>1. Vaqtni taqsimlang</h3><p>Har qismga vaqt belgilang.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="code-xml"></i></div><h3>2. Kichik qadam</h3><p>Yozing, testlang, commit qiling.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="circle-check"></i></div><h3>3. Tekshiring</h3><p>Oxirgi 5 daqiqada testlar va fayllar.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>Baholash qismlari</h2>
+    <table>
+      <thead><tr><th>Qism</th><th>Mavzu</th><th>Ball</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td>A</td><td>Clean Code, SOLID</td><td>20</td></tr>
+        <tr class="fragment"><td>B</td><td>Observer</td><td>25</td></tr>
+        <tr class="fragment"><td>C</td><td>REST/JSON</td><td>25</td></tr>
+        <tr class="fragment"><td>D</td><td>Git va PR</td><td>20</td></tr>
+        <tr class="fragment"><td>E</td><td>Soft skills</td><td>10</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: tekshirish</p>
+  </section>
+  <section>
+    <h2>Nazoratdan keyin</h2>
+    <ol class="steps-n">
+      <li class="fragment">Mentor bilan 5 daqiqalik tahlil.</li>
+      <li class="fragment">Eng ko'p ball yo'qotilgan qismni aniqlang.</li>
+      <li class="fragment">Xatolar ustida ishlang: 1 ta tuzatilgan qism yuboring.</li>
+    </ol>
+  </section>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">Test bilan tekshirish</h2>
+  <pre data-id="c"><code class="language-text" data-trim>
+def paginate(items, limit, offset):
+    return items[offset:offset+limit]
+  </code></pre>
+</section>
+<section data-auto-animate>
+  <h2 data-id="t">Test bilan tekshirish</h2>
+  <pre data-id="c"><code class="language-text" data-trim data-line-numbers="1-2|3-6">
+def paginate(items, limit, offset):
+    return {
+        "data": items[offset:offset+limit],
+        "meta": {"limit": limit, "offset": offset, "total": len(items)},
+    }
+  </code></pre>
+</section>
+
+<section>
+  <h2>Nazorat raqamlarda</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="80" data-suf="">0</span></div><div class="l"> daqiqa</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="5" data-suf="">0</span></div><div class="l"> ta qism</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="100" data-suf="">0</span></div><div class="l"> ball</div></div>
+  </div>
+  <p class="small fragment">Baho shkalasi dasturning 8-bo'limidan.</p>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Git tayyorgarligi: Yangi tarmoq ochish va semantik commit yozish buyruqlarini yozing.</div>
+  <div class="task"><span class="level mid">O'rta</span>Observer tayyorgarligi: <code>EventBus</code> ning 2 ta metodini yozing va bitta kuzatuvchi ulang.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Kontrakt tayyorgarligi: <code>paginate</code> va <code>make_error</code> yozing va 2 ta test bilan tekshiring.</div>
+  <div class="task"><span class="level hard">Bonus</span>O'z-o'zini baholash: I bobdagi 3 ta kuchsiz mavzuni yozing va har biriga 1 ta takrorlash qadamini belgilang.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Shakl</h3><p>Amaliy topshiriq, 80 daqiqa, 5 qism.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Mavzular</h3><p>Git, Clean Code, SOLID, Observer, REST/JSON, soft skills.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Baholash</h3><p>100 ball; 90–100 — 5, 71–89 — 4, 60–70 — 3.</p></div>
+  </div>
+  <p class="small fragment mt">Uyga vazifa: xatolar ustida ishlash.</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="terminal" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: Unix/Linux muhiti va SSH</h1>
+  <p class="muted">fayl tizimi, ruxsatlar, SSH, Nginx</p>
+  <span class="badge">6-hafta · 16-dars</span>
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

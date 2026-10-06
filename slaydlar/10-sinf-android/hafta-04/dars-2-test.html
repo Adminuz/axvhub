@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>11-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>11-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">4-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Git'da branch nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Commit xabari</button>
+      <button class="opt" type="button" data-ok>Loyihaning mustaqil shoxchasi</button>
+      <button class="opt" type="button">Server nomi</button>
+      <button class="opt" type="button">Fayl turi</button>
+    </div>
+    <div class="explain">Branch asosiy loyihaga zarar bermasdan mustaqil ishlash imkonini beruvchi shoxcha.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Branch ichki tuzilishi bo'yicha nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Butun loyihaning nusxasi</button>
+      <button class="opt" type="button">Alohida dastur</button>
+      <button class="opt" type="button" data-ok>Commitga ishora qiluvchi ko'rsatkich (pointer)</button>
+      <button class="opt" type="button">Parol fayli</button>
+    </div>
+    <div class="explain">Branch commitga ishora qiladi, shuning uchun u tez ishlaydi va joy egallamaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>git checkout -b login-feature</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Branchni o'chiradi</button>
+      <button class="opt" type="button">Branchni merge qiladi</button>
+      <button class="opt" type="button">Faqat tarixni ko'rsatadi</button>
+      <button class="opt" type="button" data-ok>Yangi branch yaratadi va unga o'tadi</button>
+    </div>
+    <div class="explain"><code>-b</code> bayrog'i yangi branch yaratadi va avtomatik unga o'tkazadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi nom branch nomlash standartiga mos?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>feature/login</code></button>
+      <button class="opt" type="button"><code>test2</code></button>
+      <button class="opt" type="button"><code>my branch</code></button>
+      <button class="opt" type="button"><code>aaa</code></button>
+    </div>
+    <div class="explain">Standart nomlar maqsadni bildiradi: feature, bugfix, hotfix, refactor.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Merge nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Fayl o'chirish</button>
+      <button class="opt" type="button">Commitni qaytarish</button>
+      <button class="opt" type="button" data-ok>Ikki branchni yagona tarixga birlashtirish</button>
+      <button class="opt" type="button">Branch nomini o'zgartirish</button>
+    </div>
+    <div class="explain">Merge ikki branchdagi commitlarni solishtirib, yagona kodga birlashtiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Konflikt qachon yuzaga keladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Branch nomi uzun bo'lsa</button>
+      <button class="opt" type="button" data-ok>Bir fayl bir xil satri ikki branchda turlicha o'zgarsa</button>
+      <button class="opt" type="button">Commit ko'p bo'lsa</button>
+      <button class="opt" type="button">Faqat internet bo'lmaganda</button>
+    </div>
+    <div class="explain">Git qaysi versiya to'g'ri ekanini bilmaydi va qo'lda hal qilishni so'raydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Konflikt belgilarida <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> dan keyingi qism qaysi branchniki?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Joriy (HEAD) branchniki</button>
+      <button class="opt" type="button">Birlashtirilayotgan branchniki</button>
+      <button class="opt" type="button">Eski commitniki</button>
+      <button class="opt" type="button">Serverniki</button>
+    </div>
+    <div class="explain">HEAD va <code>=======</code> orasi joriy branch kodi, pastdagi qism qo'shilayotgan branchniki.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Rebase merge'dan nimasi bilan farq qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Fayllarni o'chiradi</button>
+      <button class="opt" type="button" data-ok>Branchni asosiy branch ustiga qaytadan qo'yib, tarixni silliq qiladi</button>
+      <button class="opt" type="button">Branch yaratadi</button>
+      <button class="opt" type="button">Konfliktni avtomatik hal qiladi</button>
+    </div>
+    <div class="explain">Merge ikki tarixni parallel saqlaydi, rebase esa chiziqli tarix hosil qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">PR'ni ochgan dasturchi nimani kutadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Jamoadan ko'rib chiqish, sharh va tasdiq</button>
+      <button class="opt" type="button">Kodni avtomatik o'chirishni</button>
+      <button class="opt" type="button">Parolni almashtirishni</button>
+      <button class="opt" type="button">Yangi repo yaratilishini</button>
+    </div>
+    <div class="explain">PR: "o'zgarish kiritdim, iltimos tekshirib chiqing" degan rasmiy murojaat.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Hamkasbingiz konflikt belgilarini o'chirmay commit qildi. Nima qilasiz?</p>
+    <div class="opts">
+      <button class="opt" type="button">E'tibor bermaysiz</button>
+      <button class="opt" type="button">Hammasini o'chirib tashlaysiz</button>
+      <button class="opt" type="button">Yangi akkaunt ochasiz</button>
+      <button class="opt" type="button" data-ok>Faylni ochib belgilarni olib tashlaysiz va yangi commit qilasiz</button>
+    </div>
+    <div class="explain">Belgilar kodda qolsa, loyiha kompilyatsiya bo'lmaydi; ular tuzatilib qayta commit qilinadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: branch va pointer, merge, konflikt belgilari, rebase, Pull Request va Code Review (11-dars).</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

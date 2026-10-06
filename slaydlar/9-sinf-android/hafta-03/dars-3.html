@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Simulyator va Emulator haqida tushuncha (1-qism)</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Simulyator va Emulator haqida tushuncha (1-qism)</h1>
+  <p class="muted">Testlash muhiti: Simulyator vs Emulyator, AVD yaratish va CPU virtualizatsiyasi</p>
+  <span class="badge">9-sinf</span>
+  <span class="badge">Android dasturlash</span>
+  <span class="badge">3-hafta · 9-dars</span>
+</section>
+
+<section>
+  <h2>Bugungi dars maqsadlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="smartphone"></i></div>
+      <h3>Simulyator vs Emulyator</h3>
+      <p>Dasturiy qobiq taqlidi va apparat modellashtirishining tub farqlari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>AVD yaratish</h3>
+      <p>Android Studio'da virtual Pixel telefonini sozlash va tizim tasviri.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="settings"></i></div>
+      <h3>Extended Controls</h3>
+      <p>GPS koordinatalari, batareya va qo'ng'iroqlarni simulyatsiya qilish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Simulyator va Emulyator farqi</h1>
+  <p>Apparat modellashtirish va dasturiy taqlid</p>
+</section>
+
+<section>
+  <h2>Asosiy farqlar</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>Simulyator</h3>
+      <p>Faqat dasturiy qoidalar va tashqi interfeysni taqlid qiladi.</p>
+      <p class="muted">Kompyuterning o'z protsessorida ishlaydi.</p>
+      <p>Haqiqiy apparat xatolarini aniqlay olmaydi.</p>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>Emulyator</h3>
+      <p>Telefon apparatini (CPU, RAM, datchiklar) to'liq modellashtiradi.</p>
+      <p class="good">Ichida to'liq Android operatsion tizimi yuklanadi.</p>
+      <p>Haqiqiy telefonga 99% yaqin natija beradi.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>AVD yaratish qadamlari</h1>
+  <p>Android Virtual Device sozlamalari</p>
+</section>
+
+<section>
+  <h2>AVD yaratish bosqichlari</h2>
+  <div class="timeline">
+    <div class="tl fragment"><b>1. Hardware Profile:</b> Telefon modeli (Pixel 8), ekran o'lchami va piksellar zichligi tanlanadi.</div>
+    <div class="tl fragment"><b>2. System Image:</b> Android versiyasi (Android 14 API 34). Doimo "Google APIs" varianti tanlanadi.</div>
+    <div class="tl fragment"><b>3. Xotira ajratish:</b> Emulyator uchun kamida 2048 MB RAM va 6 GB ichki xotira beriladi.</div>
+    <div class="tl fragment"><b>4. Ishga tushirish:</b> "Play" tugmasi bosiladi va kompyuterda virtual smartfon ochiladi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>CPU Virtualizatsiyasi</h1>
+  <p>Intel VT-x va AMD-V nima uchun kerak?</p>
+</section>
+
+<section>
+  <h2>Nega virtualizatsiya zarur?</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <h3>Apparat tezlatgichi</h3>
+        <p>Emulyator kompyuter ichida butun bir operatsion tizimni boshqargani uchun protsessor yordami shart.</p>
+        <p class="muted">Intel VT-x yoki AMD-V yoqilsa, emulyator 5-10 barobar tezlashadi.</p>
+      </div>
+    </div>
+    <div>
+      <div class="callout warn fragment fade-up">
+        <h4>Agar BIOS'da o'chirilgan bo'lsa:</h4>
+        <p>Emulyator "VT-x is disabled" xatosini beradi yoki juda sekin ochilib, kompyuterni qotirib qo'yadi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Extended Controls imkoniyatlari</h1>
+  <p>Virtual telefonning yashirin sinov asboblari</p>
+</section>
+
+<section>
+  <h2>Hayotiy ssenariylarni sinash</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="map-pin"></i></div>
+      <h3>Location (GPS)</h3>
+      <p>Xaritadan istalgan shaharni tanlab, ilovaga sun'iy koordinatalar yuborish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="battery-charging"></i></div>
+      <h3>Batareya nazorati</h3>
+      <p>Zaryadni 5% ga tushirib, ilovaning kam quvvatdagi xatti-harakatini tekshirish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="rotate-cw"></i></div>
+      <h3>Ekranni aylantirish</h3>
+      <p>Portretdan gorizontal (Landscape) rejimga o'tganda dizaynni sinash.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>15 daqiqa</span></h2>
+  <div class="task">
+    <span class="level easy">Oson</span>
+    Simulyator va Emulyator o'rtasidagi eng muhim 2 ta farqni yozing.
+  </div>
+  <div class="task">
+    <span class="level mid">O'rta</span>
+    Android Studio'da yangi AVD virtual qurilmasini yaratish bosqichlarini tasvirlang.
+  </div>
+  <div class="task">
+    <span class="level hard">Qiyin</span>
+    "VT-x is disabled in BIOS" xatosi sababini va uni tuzatish tartibini asoslang.
+  </div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Bugun o'rgandik</h3>
+      <p>Emulyator apparatni to'liq modellashtiradi. AVD Manager virtual telefonlarni yaratadi, CPU virtualizatsiyasi esa tezlikni kafolatlaydi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="book-open"></i></div>
+      <h3>Keyingi dars</h3>
+      <p>10-dars: Real telefonni USB orqali ulash (USB Debugging) va Logcat kuzatuvi.</p>
+    </div>
+  </div>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

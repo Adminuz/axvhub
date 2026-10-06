@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Subquery, CTE va CASE WHEN</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 12-dars: Subquery, CTE, CASE WHEN -->
+
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Subquery, CTE va CASE WHEN</h1>
+  <p class="muted">Murakkab savolni bosqichlarga bo'lib yechamiz</p>
+  <span class="badge">10-sinf</span><span class="badge">BI &amp; ML</span><span class="badge">4-hafta · 12-dars</span>
+  
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="layers" data-anim="float"></i></div><h3>GROUP BY / HAVING</h3><p>Guruhlab hisoblash va filtrlash</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="link" data-anim="float"></i></div><h3>JOIN</h3><p>INNER, LEFT, RIGHT, FULL</p></div>
+    <div class="card accent fragment fade-up"><div class="icon"><i data-ic="puzzle" data-anim="float"></i></div><h3>Bugun</h3><p>So'rovni qismlarga bo'lish</p></div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Subquery</h1>
+  <p>Savol ichida savol</p>
+</section>
+
+<section>
+  <h2>Ichkaridan tashqariga</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 380">
+      <rect class="fa" x="20" y="20" width="960" height="340" rx="26"/>
+      <text class="t-head" x="60" y="70" font-size="26">Tashqi so'rov: o'rtachadan katta hududlar</text>
+      <text class="t-muted" x="60" y="115" font-size="24">WHERE oquvchilar_soni &gt; ( ... )</text>
+      <g class="fragment">
+        <rect class="fb" x="160" y="150" width="680" height="160" rx="22"/>
+        <text class="t-head" x="500" y="205" text-anchor="middle" font-size="26">Ichki so'rov (birinchi bajariladi)</text>
+        <text class="t-muted" x="500" y="250" text-anchor="middle" font-size="24">SELECT AVG(oquvchilar_soni) ... WHERE yil = 2024</text>
+      </g>
+      <g class="fragment pulse"><text class="t-accent" x="500" y="292" text-anchor="middle" font-size="26">natija: 505 200 (bitta son)</text></g>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Skalyar subquery</h2>
+  <pre><code class="language-sql" data-trim data-noescape data-line-numbers="1-5|4|5">
+SELECT hudud_id, oquvchilar_soni
+FROM yillik_kpi
+WHERE yil = 2024
+  AND oquvchilar_soni &gt;
+      (SELECT AVG(oquvchilar_soni) FROM yillik_kpi WHERE yil = 2024);
+  </code></pre>
+  <div class="callout tip fragment"><i data-ic="circle-check"></i>Natija: hudud 2, 3, 4 (Samarqand, Farg'ona, Andijon)</div>
+  
+</section>
+
+<section>
+  <section>
+    <h2>IN bilan ro'yxat</h2>
+    <pre><code class="language-sql" data-trim data-noescape data-line-numbers="1-4|2-4">
+SELECT nomi FROM hududlar
+WHERE hudud_id IN (
+  SELECT hudud_id FROM yillik_kpi
+  WHERE yil = 2024 AND oquvchilar_soni &gt; 500000);
+    </code></pre>
+    <p class="small">NOT IN haqida pastga <i data-ic="arrow-down"></i></p>
+  </section>
+  <section>
+    <h2>NOT IN ehtiyotkorligi</h2>
+    <div class="callout warn"><i data-ic="triangle-alert"></i>Ichki ro'yxatda NULL bo'lsa, NOT IN kutilmagan (bo'sh) natija berishi mumkin.</div>
+    <p class="small mt">Xavfsiz yo'l: <code>LEFT JOIN ... WHERE ... IS NULL</code> (anti-join).</p>
+  </section>
+</section>
+
+<section>
+  <h2>FROM dagi subquery</h2>
+  <pre><code class="language-sql" data-trim data-noescape data-line-numbers="1-5|2-3|1">
+SELECT t.hudud_id, t.ortacha
+FROM (SELECT hudud_id, AVG(oquvchilar_soni) AS ortacha
+      FROM yillik_kpi GROUP BY hudud_id) AS t
+WHERE t.ortacha &gt; 500000;
+  </code></pre>
+  <div class="callout fragment"><i data-ic="info"></i>FROM dagi subquery ga taxallus (<code>AS t</code>) majburiy.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Skalyar subquery nechta qiymat qaytarishi kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Istalgancha</button>
+      <button class="opt" type="button">Faqat ro'yxat</button>
+      <button class="opt" type="button" data-ok>Aynan bitta</button>
+      <button class="opt" type="button">Hech narsa</button>
+    </div>
+    <div class="explain">Skalyar qiymat taqqoslash belgisi (&gt;, =) bilan ishlatiladi, shuning uchun bitta bo'lishi shart.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>CTE: WITH</h1>
+  <p>Nomlangan vaqtinchalik natija</p>
+</section>
+
+<section>
+  <h2>Qadam-baqadam yozuv</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 380">
+      <g data-tip="1-qadam: WITH bilan vaqtinchalik natijaga nom beramiz (masalan, t)."><rect class="fa" x="40" y="20" width="920" height="90" rx="18"/><text class="t-head" x="500" y="75" text-anchor="middle" font-size="28">WITH t AS ( yillik jamilar )</text></g>
+      <g class="fragment"><line class="ln flowing" x1="500" y1="115" x2="500" y2="145"/><polygon class="ar-a" points="500,150 490,134 510,134"/></g>
+      <g data-tip="2-qadam: t ni oddiy jadval kabi ishlatamiz va LAG bilan oldingi yil bilan solishtiramiz."><rect class="fc" x="40" y="155" width="920" height="90" rx="18"/><text class="t-head" x="500" y="210" text-anchor="middle" font-size="28">SELECT ... FROM t</text></g>
+      <g class="fragment"><line class="ln flowing" x1="500" y1="250" x2="500" y2="280"/><polygon class="ar-a" points="500,285 490,269 510,269"/></g>
+      <g data-tip="3-qadam: tayyor hisobot."><rect class="fb" x="40" y="290" width="920" height="80" rx="18"/><text class="t-head" x="500" y="342" text-anchor="middle" font-size="28">Natija: yillik o'sish</text></g>
+    </svg>
+  </div>
+  <p class="small">Qutilarni bosing. CTE: tepadan pastga o'qiladi.</p>
+</section>
+
+<section data-auto-animate>
+  <h2>Subquery bilan</h2>
+  <pre data-id="cte"><code class="language-sql" data-trim data-noescape>
+SELECT yil, jami
+FROM (SELECT yil, SUM(oquvchilar_soni) AS jami
+      FROM yillik_kpi GROUP BY yil) AS t;
+  </code></pre>
+  <p class="small">Ichma-ich: ichkaridan o'qiladi.</p>
+</section>
+
+<section data-auto-animate>
+  <h2>CTE bilan</h2>
+  <pre data-id="cte"><code class="language-sql" data-trim data-noescape>
+WITH t AS (
+  SELECT yil, SUM(oquvchilar_soni) AS jami
+  FROM yillik_kpi GROUP BY yil
+)
+SELECT yil, jami FROM t;
+  </code></pre>
+  <p class="small">Bir xil natija, lekin tepadan pastga o'qiladi.</p>
+</section>
+
+<section>
+  <h2>Yillik o'sish (YoY)</h2>
+  <pre><code class="language-sql" data-trim data-noescape data-line-numbers="1-8|1-4|6-7">
+WITH t AS (
+  SELECT yil, SUM(oquvchilar_soni) AS jami
+  FROM yillik_kpi GROUP BY yil
+)
+SELECT yil, jami,
+  jami - LAG(jami) OVER (ORDER BY yil) AS yoy_change
+FROM t
+ORDER BY yil;
+  </code></pre>
+  <div class="chips fragment"><span class="chip">2022: NULL</span><span class="chip t">2023: +48 000</span><span class="chip t">2024: +48 000</span></div>
+  
+</section>
+
+<section>
+  <h2>Bir nechta CTE</h2>
+  <pre><code class="language-sql" data-trim data-noescape data-line-numbers="1-8|1-3|4-5|6-8">
+WITH jami AS (
+  SELECT hudud_id, SUM(oquvchilar_soni) AS s
+  FROM yillik_kpi GROUP BY hudud_id
+), ort AS (
+  SELECT AVG(s) AS a FROM jami
+)
+SELECT j.hudud_id, j.s FROM jami j, ort
+WHERE j.s &gt; ort.a;
+  </code></pre>
+  <p class="small fragment">Vergul bilan ajratiladi; ikkinchi CTE birinchisini ishlatishi mumkin.</p>
+</section>
+
+<section>
+  <h2>Subquery yoki CTE?</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="package"></i></div><h3>Subquery</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Bir joyda bitta oddiy qiymat yoki ro'yxat kerak bo'lganda.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="workflow"></i></div><h3>CTE</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Ko'p bosqichli hisob, qayta ishlatish va o'qish osonligi kerak bo'lganda.</p></div>
+    </div></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>CASE WHEN</h1>
+  <p>SQL dagi if / elif / else</p>
+</section>
+
+<section>
+  <h2>Shartlar zinapoyasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 360">
+      <rect class="fb" x="30" y="20" width="560" height="80" rx="16"/>
+      <text class="t-head" x="310" y="70" text-anchor="middle" font-size="26">&gt;= 600000 ?</text>
+      <g class="fragment"><text class="t-accent" x="640" y="70" font-size="26">Katta</text></g>
+      <g class="fragment"><rect class="fc" x="30" y="130" width="560" height="80" rx="16"/>
+      <text class="t-head" x="310" y="180" text-anchor="middle" font-size="26">&gt;= 400000 ?</text>
+      <text class="t-accent" x="640" y="180" font-size="26">O'rta</text></g>
+      <g class="fragment"><rect class="fa" x="30" y="240" width="560" height="80" rx="16"/>
+      <text class="t-head" x="310" y="290" text-anchor="middle" font-size="26">ELSE</text>
+      <text class="t-accent" x="640" y="290" font-size="26">Kichik</text></g>
+      <line class="ln flowing" x1="310" y1="104" x2="310" y2="126"/><line class="ln flowing" x1="310" y1="214" x2="310" y2="236"/>
+    </svg>
+  </div>
+  <p class="small">Yuqoridan pastga tekshiriladi. Birinchi to'g'ri shart ishlaydi.</p>
+</section>
+
+<section>
+  <h2>CASE WHEN yozuvi</h2>
+  <pre><code class="language-sql" data-trim data-noescape data-line-numbers="1-10|3-5|6-7">
+SELECT h.nomi, k.oquvchilar_soni,
+  CASE
+    WHEN k.oquvchilar_soni &gt;= 600000 THEN 'Katta'
+    WHEN k.oquvchilar_soni &gt;= 400000 THEN 'O''rta'
+    ELSE 'Kichik'
+  END AS toifa
+FROM yillik_kpi k
+JOIN hududlar h ON h.hudud_id = k.hudud_id
+WHERE k.yil = 2024;
+  </code></pre>
+  <div class="callout fragment"><i data-ic="info"></i>Matn ichida apostrof ikkilanadi: <code>'O''rta'</code></div>
+</section>
+
+<section>
+  <h2>Pivot: yillar ustunlarga</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 360">
+      <rect class="fa" x="20" y="30" width="360" height="300" rx="20"/>
+      <text class="t-head" x="200" y="75" text-anchor="middle" font-size="26">Oldin (uzun)</text>
+      <text class="t-muted" x="200" y="130" text-anchor="middle" font-size="24">1 · 2022 · 470000</text>
+      <text class="t-muted" x="200" y="175" text-anchor="middle" font-size="24">1 · 2023 · 478000</text>
+      <text class="t-muted" x="200" y="220" text-anchor="middle" font-size="24">1 · 2024 · 485000</text>
+      <text class="t-muted" x="200" y="265" text-anchor="middle" font-size="24">2 · 2022 · 600000 ...</text>
+      <g class="fragment"><line class="la flowing" x1="390" y1="180" x2="600" y2="180"/><polygon class="ar-a" points="610,180 594,170 594,190"/>
+      <text class="t-accent" x="500" y="160" text-anchor="middle" font-size="22">CASE WHEN</text></g>
+      <g class="fragment"><rect class="fb" x="620" y="30" width="360" height="300" rx="20"/>
+      <text class="t-head" x="800" y="75" text-anchor="middle" font-size="26">Keyin (keng)</text>
+      <text class="t-accent" x="800" y="125" text-anchor="middle" font-size="22">id · y2022 · y2023 · y2024</text>
+      <text class="t-muted" x="800" y="185" text-anchor="middle" font-size="24">1 · 470000 · 478000 · 485000</text>
+      <text class="t-muted" x="800" y="235" text-anchor="middle" font-size="24">2 · 600000 · 610000 · 620000</text>
+      <text class="t-muted" x="800" y="285" text-anchor="middle" font-size="24">har hudud = 1 qator</text></g>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Pivot kodi</h2>
+  <pre><code class="language-sql" data-trim data-noescape data-line-numbers="1-7|2|3|4">
+SELECT hudud_id,
+  SUM(CASE WHEN yil = 2022 THEN oquvchilar_soni END) AS y2022,
+  SUM(CASE WHEN yil = 2023 THEN oquvchilar_soni END) AS y2023,
+  SUM(CASE WHEN yil = 2024 THEN oquvchilar_soni END) AS y2024
+FROM yillik_kpi
+GROUP BY hudud_id;
+  </code></pre>
+  <p class="small fragment">Shartga mos kelmasa CASE NULL qaytaradi, SUM esa NULL ni o'tkazib yuboradi.</p>
+</section>
+
+<section>
+  <h2>CASE qanday tekshiradi?</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="target" data-anim="pulse"></i></div><h3>Qiymat: 585 000</h3><p>Farg'ona viloyati, 2024.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="circle-x" data-anim="wiggle"></i></div><h3>&gt;= 600 000 ?</h3><p>Yo'q, keyingi shartga o'tamiz.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="circle-check" data-anim="bounce"></i></div><h3>&gt;= 400 000 ?</h3><p>Ha: natija "O'rta", qolgani tekshirilmaydi.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Odatiy xatolar</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="circle-x"></i></div><h3>END yo'q</h3><p>CASE ni END bilan yoping.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="circle-x"></i></div><h3>Shart tartibi</h3><p>Kichik shart oldin tursa, kattasini "yutadi".</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="circle-x"></i></div><h3>CTE vergullari</h3><p>CTE lar orasida vergul bor, oxirida yo'q.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Mini-test: tartib</h2>
+  <div class="quiz">
+    <p class="q">WHEN x &gt; 0 THEN 'A' WHEN x &gt;= 400000 THEN 'B'. x = 500000 uchun natija?</p>
+    <div class="opts">
+      <button class="opt" type="button">B</button>
+      <button class="opt" type="button">NULL</button>
+      <button class="opt" type="button">Xato</button>
+      <button class="opt" type="button" data-ok>A</button>
+    </div>
+    <div class="explain">Birinchi to'g'ri shart (x &gt; 0) ishlaydi, ikkinchisi tekshirilmaydi. Shartlar kattadan kichikka yoziladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Amaliyot <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>2024-yilda eng ko'p o'quvchisi bo'lgan hududni MAX va subquery bilan toping.</div>
+  <div class="task"><span class="level mid">O'rta</span>Har hududga o'quvchi/o'qituvchi nisbati bo'yicha toifa bering (CASE WHEN).</div>
+  <div class="task"><span class="level hard">Qiyin</span>CTE + pivot: 2022 va 2024 ustunlari, 2 yillik o'sish bo'yicha tartiblang.</div>
+  
+</section>
+
+<section>
+  <h2>4-hafta yo'l xaritasi</h2>
+  <div class="timeline">
+    <div class="tl fragment"><b>10-dars.</b> GROUP BY va HAVING: guruhlash</div>
+    <div class="tl fragment"><b>11-dars.</b> JOIN: jadvallarni bog'lash</div>
+    <div class="tl fragment"><b>12-dars.</b> Subquery, CTE, CASE WHEN: murakkab so'rovlar</div>
+    <div class="tl fragment"><b>5-hafta.</b> Ma'lumotlarni modellashtirish: Star Schema</div>
+  </div>
+</section>
+
+<section>
+  <h2>Xulosa</h2>
+  <div class="cards two">
+    <div class="card"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Bugun o'rgandik</h3>
+      <ul><li>Subquery: skalyar, IN, FROM</li><li>CTE: WITH, bir nechta CTE</li><li>CASE WHEN va pivot</li><li>YoY o'sish ko'rinishi</li></ul></div>
+    <div class="card accent"><div class="icon"><i data-ic="book-open" data-anim="float"></i></div><h3>Uyga vazifa</h3><p>CTE + CASE WHEN hisoboti: hududlarni nisbat bo'yicha toifalash.</p></div>
+  </div>
+  <p class="small mt fragment"><i data-ic="zap"></i> Hafta oxiridagi test: 4-hafta testi (20 savol).</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

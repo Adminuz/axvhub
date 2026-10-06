@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>5-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>5-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">2-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Pull Request (PR) nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>O'z tarmog'idagi o'zgarishlarni <code>main</code> ga birlashtirishni so'rab jamoaga yuboriladigan rasmiy taklif</button>
+      <button class="opt" type="button">Reponi o'chirish buyrug'i</button>
+      <button class="opt" type="button">Faylni yuklab olish usuli</button>
+      <button class="opt" type="button">Yangi akkaunt yaratish</button>
+    </div>
+    <div class="explain">PR — muhokama maydoni, sifat eshigi va loyiha tarixi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Professional PR qaysi savollarga javob beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Who, When, Where</button>
+      <button class="opt" type="button" data-ok>What, Why, How (va dalillar)</button>
+      <button class="opt" type="button">Faqat «kod yozdim»</button>
+      <button class="opt" type="button">Faqat fayl nomlari</button>
+    </div>
+    <div class="explain">Nima o'zgardi, nega kerak, qanday yechildi. UI bo'lsa skrinshot, backend bo'lsa log yoki test natijasi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">PR tavsifidagi <code>Closes #14</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">PR'ni o'chiradi</button>
+      <button class="opt" type="button">14 ta commitni birlashtiradi</button>
+      <button class="opt" type="button" data-ok>PR merge bo'lganda 14-raqamli Issue'ni avtomatik yopadi</button>
+      <button class="opt" type="button">Branchni o'chiradi</button>
+    </div>
+    <div class="explain"><code>Closes</code>/<code>Fixes</code> bog'langan issue'ni yopadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">PR shablon fayli qayerda joylashadi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>docs/pr.txt</code></button>
+      <button class="opt" type="button"><code>.git/template.md</code></button>
+      <button class="opt" type="button"><code>README/pr.md</code></button>
+      <button class="opt" type="button" data-ok><code>.github/pull_request_template.md</code></button>
+    </div>
+    <div class="explain">Shablon yangi PR ochilganda tavsif oynasiga avtomatik chiqadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Squash and merge nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Branchdagi ko'p commitni bitta toza commitga birlashtirib <code>main</code> ga yozadi</button>
+      <button class="opt" type="button">Commitlarni o'chiradi</button>
+      <button class="opt" type="button">Faqat oxirgi faylni ko'chiradi</button>
+      <button class="opt" type="button">Merge commit'siz birma-bir ko'chiradi</button>
+    </div>
+    <div class="explain">Asosiy tarmoq tarixi toza va chiziqli bo'ladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi merge usulida merge commit hosil bo'lmaydi va commitlar <code>main</code> oxiriga birma-bir ko'chiriladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Create a merge commit</button>
+      <button class="opt" type="button" data-ok>Rebase and merge</button>
+      <button class="opt" type="button">Squash and merge</button>
+      <button class="opt" type="button">Hech qaysisi</button>
+    </div>
+    <div class="explain">Oddiy merge'da <code>Merge branch ...</code> commiti paydo bo'ladi; rebase commitlarni ko'chirib ulaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Merge conflict qachon yuzaga keladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Har merge'da</button>
+      <button class="opt" type="button">Fayl nomi uzun bo'lganda</button>
+      <button class="opt" type="button" data-ok>Bir faylning aynan bir xil qatori ikki tarmoqda turlicha o'zgartirilganda</button>
+      <button class="opt" type="button">Branch nomi bir xil bo'lganda</button>
+    </div>
+    <div class="explain">Git qaysi variant to'g'riligini o'zi hal qilolmaydi va yordam so'raydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Konfliktni hal qilish ketma-ketligi qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>git push --force</code></button>
+      <button class="opt" type="button">Reponi o'chirish</button>
+      <button class="opt" type="button"><code>git init</code> ni qayta ishga tushirish</button>
+      <button class="opt" type="button" data-ok>Faylni tahrirlash, belgilarni o'chirish, <code>git add</code>, <code>git commit</code></button>
+    </div>
+    <div class="explain">Ikkala mantiq to'g'ri birlashtiriladi, <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> belgilari olib tashlanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">PR'ga nega dalil (skrinshot yoki log) qo'shiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Reviewer o'zgarish ishlashini tez ko'rishi va tekshirishi uchun</button>
+      <button class="opt" type="button">Repo hajmini oshirish uchun</button>
+      <button class="opt" type="button">Git talab qilgani uchun</button>
+      <button class="opt" type="button">Commit tezlashishi uchun</button>
+    </div>
+    <div class="explain">UI uchun oldin/keyin skrinshoti, backend uchun test natijasi yoki terminal logi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>app.txt</code> da main va feature shoxlari bir qatorni turlicha o'zgartirdi. <code>git merge feat/update-text</code> dan keyin nima chiqadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Hech narsa, avtomatik birlashadi</button>
+      <button class="opt" type="button" data-ok>CONFLICT (content): Merge conflict in app.txt</button>
+      <button class="opt" type="button">Branch o'chadi</button>
+      <button class="opt" type="button">Fayl bo'sh bo'lib qoladi</button>
+    </div>
+    <div class="explain">Avtomatik birlashtirish bajarilmaydi; konfliktni qo'lda hal qilib, commit bilan yakunlaysiz.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: PR anatomiyasi (What/Why/How), PR shabloni, merge strategiyalari, merge conflict.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

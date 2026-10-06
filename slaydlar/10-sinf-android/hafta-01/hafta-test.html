@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>1-hafta testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>1-hafta testi</h1>
+  <p class="muted">20 ta savol &middot; taxminan 18 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">1-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/20</h2>
+  <div class="quiz">
+    <p class="q"><code>gradle.properties</code> faylida odatda nima saqlanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Global JVM parametrlari, masalan Gradle uchun ajratiladigan RAM (<code>org.gradle.jvmargs</code>)</button>
+      <button class="opt" type="button">Kutubxonalar ro'yxati</button>
+      <button class="opt" type="button">Modullar ro'yxati</button>
+      <button class="opt" type="button">Ilova ikonkasi</button>
+    </div>
+    <div class="explain">Masalan, <code>-Xmx4096m</code> Gradle uchun xotirani oshiradi. Juda katta qiymat (8 GB RAM da 6 GB) tizimni qotiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/20</h2>
+  <div class="quiz">
+    <p class="q"><code>targetSdk</code> nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Eng past qo'llab-quvvatlanadigan versiyani</button>
+      <button class="opt" type="button" data-ok>Ilova qaysi tizim talablari va xavfsizlik qoidalariga moslab sinalganini</button>
+      <button class="opt" type="button">Kompilyator versiyasini</button>
+      <button class="opt" type="button">Ilova versiyasini</button>
+    </div>
+    <div class="explain">Google Play <code>targetSdk</code> ni so'nggi versiyalarda ushlab turishni talab qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/20</h2>
+  <div class="quiz">
+    <p class="q"><code>versionName "2.1-beta"</code> kimga mo'ljallangan?</p>
+    <div class="opts">
+      <button class="opt" type="button">Google Play yangilanish tekshiruviga</button>
+      <button class="opt" type="button">Gradle ga</button>
+      <button class="opt" type="button" data-ok>Foydalanuvchiga ko'rsatiladigan versiya nomi</button>
+      <button class="opt" type="button">Kompilyatorga</button>
+    </div>
+    <div class="explain"><code>versionName</code> matn, faqat ko'rsatish uchun; yangilanishni <code>versionCode</code> belgilaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/20</h2>
+  <div class="quiz">
+    <p class="q">Vazifalarning ketma-ket bajarilishi va APK yaratilishi Gradle ning qaysi bosqichida bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Initialization</button>
+      <button class="opt" type="button">Configuration</button>
+      <button class="opt" type="button">Sync</button>
+      <button class="opt" type="button" data-ok>Execution</button>
+    </div>
+    <div class="explain">Execution da kod kompilyatsiya qilinadi, resurslar siqiladi va <code>.apk</code>/<code>.aab</code> yaratiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/20</h2>
+  <div class="quiz">
+    <p class="q">Debug APK yaratadigan buyruq qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>./gradlew assembleDebug</code></button>
+      <button class="opt" type="button"><code>./gradlew clean</code></button>
+      <button class="opt" type="button"><code>./gradlew tasks</code></button>
+      <button class="opt" type="button"><code>./gradlew --version</code></button>
+    </div>
+    <div class="explain"><code>assembleDebug</code> sinov (Debug) APK faylini yig'adi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/20</h2>
+  <div class="quiz">
+    <p class="q">Project-level va Module-level <code>build.gradle</code> farqi nimada?</p>
+    <div class="opts">
+      <button class="opt" type="button">Farqi yo'q, bir xil fayl</button>
+      <button class="opt" type="button" data-ok>Project-level hamma modullarga umumiy qoidalar, Module-level <code>:app</code> ga xos sozlamalar</button>
+      <button class="opt" type="button">Module-level faqat plaginlar uchun</button>
+      <button class="opt" type="button">Project-level faqat versionCode uchun</button>
+    </div>
+    <div class="explain"><code>compileSdk</code>, <code>defaultConfig</code> va dependency'lar Module-level faylda yoziladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/20</h2>
+  <div class="quiz">
+    <p class="q">Debug build turida odatda nima bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Kod chalkashtiriladi</button>
+      <button class="opt" type="button">Debug qilish taqiqlanadi</button>
+      <button class="opt" type="button" data-ok>Kod siqilmaydi, loglar ochiq, breakpoint qo'yish mumkin</button>
+      <button class="opt" type="button">Resurslar o'chiriladi</button>
+    </div>
+    <div class="explain">Debug maksimal tezlikda yig'iladi va nosozliklarni topishga qulay.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/20</h2>
+  <div class="quiz">
+    <p class="q">Test serveriga (Staging) va haqiqiy serverga (Production) ulanuvchi ilova uchun nima qulay?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ikkita alohida loyihani nusxalash</button>
+      <button class="opt" type="button">Kodda qo'lda URL ni o'zgartirib yurish</button>
+      <button class="opt" type="button">Faqat Debug build</button>
+      <button class="opt" type="button" data-ok>Product Flavors va <code>BASE_URL</code> ni <code>buildConfigField</code> bilan berish</button>
+    </div>
+    <div class="explain">Har flavorda o'z <code>BASE_URL</code> e'lon qilinadi, kod esa bitta qoladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/20</h2>
+  <div class="quiz">
+    <p class="q"><code>paidDebug</code> varianti nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Sinov uchun mo'ljallangan to'liq VIP (pullik) versiya</button>
+      <button class="opt" type="button">Google Play uchun pullik versiya</button>
+      <button class="opt" type="button">Bepul Release</button>
+      <button class="opt" type="button">Faqat reklama versiyasi</button>
+    </div>
+    <div class="explain"><code>paid</code> flavor + <code>debug</code> build type.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/20</h2>
+  <div class="quiz">
+    <p class="q"><code>BuildConfig</code> klassi qanday paydo bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Dasturchi qo'lda yozadi</button>
+      <button class="opt" type="button" data-ok>Gradle yig'ish paytida avtomatik yaratadi</button>
+      <button class="opt" type="button">Android Studio o'rnatilganda keladi</button>
+      <button class="opt" type="button">Google Play yaratadi</button>
+    </div>
+    <div class="explain"><code>build.gradle</code> dagi <code>buildConfigField</code> qiymatlari shu klassga o'tadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 11/20</h2>
+  <div class="quiz">
+    <p class="q">API maxfiy kalitlarini qayerda saqlash tavsiya etiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">To'g'ridan-to'g'ri <code>build.gradle</code> da ochiq</button>
+      <button class="opt" type="button"><code>README</code> faylida</button>
+      <button class="opt" type="button" data-ok><code>local.properties</code> faylida</button>
+      <button class="opt" type="button">Kotlin kodida konstanta sifatida</button>
+    </div>
+    <div class="explain">Ochiq kodda qoldirilgan kalitlar xavfsizlikka zarar yetkazadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 12/20</h2>
+  <div class="quiz">
+    <p class="q"><code>mavenCentral()</code> ombori nimaga mo'ljallangan?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat Google kutubxonalari</button>
+      <button class="opt" type="button">Faqat rasmlar uchun</button>
+      <button class="opt" type="button">Lokal kesh</button>
+      <button class="opt" type="button" data-ok>Dunyodagi eng yirik ochiq Java va Kotlin kutubxonalari ombori</button>
+    </div>
+    <div class="explain">Gradle kutubxonalarni shu serverlardan yuklab oladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 13/20</h2>
+  <div class="quiz">
+    <p class="q">Espresso UI testlari qaysi konfiguratsiya bilan ulanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>androidTestImplementation</code></button>
+      <button class="opt" type="button"><code>testImplementation</code></button>
+      <button class="opt" type="button"><code>compileOnly</code></button>
+      <button class="opt" type="button"><code>api</code></button>
+    </div>
+    <div class="explain">Bu testlar qurilma yoki emulyatorda ishlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 14/20</h2>
+  <div class="quiz">
+    <p class="q"><code>runtimeOnly</code> nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat kompilyatsiyada kerak</button>
+      <button class="opt" type="button" data-ok>Kutubxona kompilyatsiyada ko'rinmaydi, faqat ilova ishlayotganda kerak</button>
+      <button class="opt" type="button">Faqat testlarda</button>
+      <button class="opt" type="button">Boshqa modullarga ochiq</button>
+    </div>
+    <div class="explain"><code>compileOnly</code> aksincha: faqat kompilyatsiya paytida kerak va APK ga kirmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 15/20</h2>
+  <div class="quiz">
+    <p class="q">Hardcoded versiyalar usulining asosiy kamchiligi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ilova ishlamaydi</button>
+      <button class="opt" type="button">Internet talab qiladi</button>
+      <button class="opt" type="button" data-ok>10 ta modulda har bir versiyani alohida qidirib o'zgartirish kerak bo'ladi</button>
+      <button class="opt" type="button">Faqat Kotlin'da ishlaydi</button>
+    </div>
+    <div class="explain">Version Catalog versiyalarni bitta markazda saqlab, bu muammoni yo'qotadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 16/20</h2>
+  <div class="quiz">
+    <p class="q">Coil (<code>io.coil-kt:coil-compose:2.6.0</code>) ni Version Catalog ga qo'shib, qanday chaqiriladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>implementation libs.coil-compose</code></button>
+      <button class="opt" type="button"><code>implementation coil.compose.2.6.0</code></button>
+      <button class="opt" type="button"><code>implementation libs.versions.coil</code></button>
+      <button class="opt" type="button" data-ok><code>implementation libs.coil.compose</code></button>
+    </div>
+    <div class="explain"><code>[versions]</code> da <code>coil</code>, <code>[libraries]</code> da <code>coil-compose</code> e'lon qilinib, nuqta bilan chaqiriladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 17/20</h2>
+  <div class="quiz">
+    <p class="q">Bir Version Catalog yangilanganda Debug va Release variantlari uchun nima o'zgaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Ikkalasi ham yangi versiya bilan yig'iladi, chunki katalog umumiy</button>
+      <button class="opt" type="button">Faqat Debug</button>
+      <button class="opt" type="button">Faqat Release</button>
+      <button class="opt" type="button">Hech narsa o'zgarmaydi</button>
+    </div>
+    <div class="explain">Katalog versiyalarni barcha build variantlari uchun markazlashtiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 18/20</h2>
+  <div class="quiz">
+    <p class="q">Release da <code>minifyEnabled true</code> bo'lsa, <code>versionCode</code>ni oshirish qaysi darslar mavzusini bog'laydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Debug uchun <code>versionCode</code> kerak emas</button>
+      <button class="opt" type="button" data-ok>Google Play'ga yangi Release yuklashda <code>versionCode</code> oshishi shart (1 va 2-darslar)</button>
+      <button class="opt" type="button"><code>versionCode</code> faqat R8 uchun</button>
+      <button class="opt" type="button">Bog'liqlik yo'q</button>
+    </div>
+    <div class="explain">Release yig'ma Google Play'ga yuklanadi, do'kon esa faqat oshgan <code>versionCode</code> ni qabul qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 19/20</h2>
+  <div class="quiz">
+    <p class="q"><code>free</code> va <code>paid</code> flavorlarda bir xil kutubxona kerak. Eng to'g'ri joy qayerda?</p>
+    <div class="opts">
+      <button class="opt" type="button">Har flavor uchun alohida nusxa loyiha</button>
+      <button class="opt" type="button">Har flavorda qo'lda hardcoded versiya</button>
+      <button class="opt" type="button" data-ok>Umumiy <code>dependencies</code> bloki, versiya esa <code>libs.versions.toml</code> da</button>
+      <button class="opt" type="button">Faqat <code>settings.gradle</code></button>
+    </div>
+    <div class="explain">Dependencies umumiy, flavor farqlari esa <code>productFlavors</code> da qoladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 20/20</h2>
+  <div class="quiz">
+    <p class="q">Yangi <code>libs.versions.toml</code> qatori qo'shildi, lekin Android Studio uni tanimayapti. Birinchi qadam?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>./gradlew clean</code> ni o'chirish</button>
+      <button class="opt" type="button">Telefonni qayta yoqish</button>
+      <button class="opt" type="button"><code>minSdk</code> ni oshirish</button>
+      <button class="opt" type="button" data-ok>Gradle Sync (Sync Now) qilish</button>
+    </div>
+    <div class="explain">Har qanday toml yoki gradle o'zgarishidan keyin sinxronizatsiya shart.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>20 dan 18+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>20 dan 12-17</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>11 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: Gradle va SDK (1-dars), build variantlari va BuildConfig (2-dars), dependency va Version Catalog (3-dars).</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

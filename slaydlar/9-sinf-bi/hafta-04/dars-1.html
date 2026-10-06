@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Normalizatsiya</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 10-dars: Normalizatsiya asoslari va BI'dagi o'rni -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Normalizatsiya</h1>
+  <p class="muted">Relatsion model (2-qism): 1NF, 2NF, 3NF va BI'dagi o'rni</p>
+  <span class="badge">9-sinf</span><span class="badge">Business Intelligence</span><span class="badge">4-hafta · 10-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi reja</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="triangle-alert" data-anim="pulse"></i></div><h3>01. Muammo</h3><p>Redundansiya va 3 ta anomaliya.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="layers" data-anim="float"></i></div><h3>02. Normal shakllar</h3><p>1NF, 2NF, 3NF bosqichma-bosqich.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="star" data-anim="spin"></i></div><h3>03. BI'da</h3><p>OLTP, Star schema, Fact va Dimension.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Takrorlash: 9-dars</h2>
+  <div class="quiz">
+    <p class="q">1:N munosabatda Foreign Key qaysi jadvalga qo'yiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">«Bir» tomondagi jadvalga</button>
+      <button class="opt" type="button" data-ok>«Ko'p» tomondagi jadvalga</button>
+      <button class="opt" type="button">Ikkala jadvalga ham</button>
+      <button class="opt" type="button">Alohida faylga</button>
+    </div>
+    <div class="explain">To'g'ri: masalan, Buyurtmalar jadvalida MijozID (FK). Bugun jadvallarni qanday to'g'ri ajratishni o'rganamiz.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Muammo: yassi jadval</h1>
+  <p>Hammasi bitta jadvalda bo'lsa nima bo'ladi?</p>
+</section>
+
+<section>
+  <h2>Bitta katta jadval</h2>
+  <table>
+    <thead><tr><th>BuyurtmaID</th><th>MijozIsmi</th><th>Telefon</th><th>Mahsulotlar</th><th>Narxlar</th></tr></thead>
+    <tbody>
+      <tr><td>101</td><td>Aziza</td><td>90 111 22 33</td><td>Sichqoncha, Klaviatura</td><td>80000, 150000</td></tr>
+      <tr><td>102</td><td>Aziza</td><td>90 111 22 33</td><td>Monitor</td><td>1900000</td></tr>
+      <tr><td>103</td><td>Bekzod</td><td>93 444 55 66</td><td>Sichqoncha</td><td>80000</td></tr>
+    </tbody>
+  </table>
+  <div class="callout warn mt"><i data-ic="triangle-alert"></i>Mijoz har buyurtmada takrorlanadi, bitta katakda bir nechta mahsulot.</div>
+  
+</section>
+
+<section>
+  <h2>Redundansiya</h2>
+  <div class="quote">Redundansiya - bir xil ma'lumotning bazada ortiqcha takrorlanishi.</div>
+  <div class="stats mt">
+    <div class="stat fragment"><div class="v"><span class="count" data-to="1" data-suf=" mijoz">0</span></div><div class="l">Aziza</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="2" data-suf=" marta">0</span></div><div class="l">telefoni takrorlangan</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="1000" data-suf="+">0</span></div><div class="l">real do'konda buyurtmalar</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Uchta anomaliya</h2>
+  <div class="cards three">
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="refresh-cw" data-anim="spin"></i></div><h3>Update</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Telefon faqat 101-qatorda yangilandi, 102-qatorda eskisi qoldi - ziddiyat.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="circle-plus" data-anim="bounce"></i></div><h3>Insert</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Yangi mahsulotni hali hech kim olmagan - uni jadvalga qo'shib bo'lmaydi.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="trash"></i></div><h3>Delete</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Bekzodning yagona buyurtmasi o'chirildi - Bekzod haqidagi ma'lumot ham yo'qoldi.</p></div>
+    </div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Normalizatsiya nima?</h2>
+  <div class="vs">
+    <div class="side fragment"><h3><i data-ic="table"></i> Oldin</h3>Bitta katta jadval, ko'p takrorlanish, anomaliyalar.</div>
+    <div class="mid">→</div>
+    <div class="side b fragment"><h3><i data-ic="network"></i> Keyin</h3>Bir nechta kichik jadval, PK va FK bilan bog'langan. Har ma'lumot bir joyda.</div>
+  </div>
+  <p class="small mt">Bosqichlari normal shakllar (Normal Forms) deb ataladi: 1NF, 2NF, 3NF.</p>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Normal shakllar</h1>
+  <p>Kalitga, butun kalitga, faqat kalitga</p>
+</section>
+
+<section>
+  <h2>1NF: har katakda bitta qiymat</h2>
+  <table>
+    <thead><tr><th>BuyurtmaID</th><th>MijozIsmi</th><th>Telefon</th><th>Mahsulot</th><th>Narx</th></tr></thead>
+    <tbody>
+      <tr class="fragment"><td>101</td><td>Aziza</td><td>90 111 22 33</td><td>Sichqoncha</td><td>80000</td></tr>
+      <tr class="fragment"><td>101</td><td>Aziza</td><td>90 111 22 33</td><td>Klaviatura</td><td>150000</td></tr>
+      <tr class="fragment"><td>102</td><td>Aziza</td><td>90 111 22 33</td><td>Monitor</td><td>1900000</td></tr>
+      <tr class="fragment"><td>103</td><td>Bekzod</td><td>93 444 55 66</td><td>Sichqoncha</td><td>80000</td></tr>
+    </tbody>
+  </table>
+  <p class="small mt">Kalit endi kompozit: (BuyurtmaID, Mahsulot). Takrorlanish hali ko'p.</p>
+  
+</section>
+
+<section>
+  <h2>2NF: butun kalitga bog'liq</h2>
+  <div class="cards two">
+    <div class="card fragment"><div class="icon"><i data-ic="key-round"></i></div><h3>Kalit</h3><p>(BuyurtmaID, Mahsulot)</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="triangle-alert"></i></div><h3>Qisman bog'liqlik</h3><p>Sana, MijozIsmi - faqat BuyurtmaID ga; Narx - faqat Mahsulot ga.</p></div>
+  </div>
+  <pre class="fragment"><code class="language-plaintext" data-trim data-noescape>
+Buyurtmalar(BuyurtmaID PK, Sana, MijozIsmi, Telefon)
+Mahsulotlar(MahsulotID PK, Nomi, Narx)
+BuyurtmaTarkibi(BuyurtmaID FK, MahsulotID FK, Soni)
+  </code></pre>
+</section>
+
+<section>
+  <h2>3NF: faqat kalitga bog'liq</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+      <g class="fragment">
+        <rect class="fa la" x="40" y="110" width="220" height="90" rx="18" stroke-width="3"/>
+        <text class="t-head" x="150" y="165" text-anchor="middle" font-size="26">BuyurtmaID</text>
+      </g>
+      <g class="fragment">
+        <line class="la flowing" x1="270" y1="155" x2="380" y2="155" stroke-width="4"/><polygon class="ar-a" points="390,155 372,144 372,166"/>
+        <rect class="fb lb" x="400" y="110" width="200" height="90" rx="18" stroke-width="3"/>
+        <text class="t-head" x="500" y="165" text-anchor="middle" font-size="26">Mijoz</text>
+      </g>
+      <g class="fragment" data-tip="Telefon buyurtmaga emas, mijozga bog'liq: bu tranzitiv bog'liqlik. Yechim - Mijozlar jadvali.">
+        <line class="lc flowing" x1="610" y1="155" x2="720" y2="155" stroke-width="4"/><polygon class="ar-c" points="730,155 712,144 712,166"/>
+        <rect class="fc lc" x="740" y="110" width="220" height="90" rx="18" stroke-width="3"/>
+        <text class="t-head" x="850" y="165" text-anchor="middle" font-size="26">Telefon</text>
+      </g>
+      <g class="fragment"><text class="t-accent" x="500" y="260" text-anchor="middle" font-size="24">tranzitiv bog'liqlik: Buyurtma → Mijoz → Telefon</text></g>
+    </svg>
+  </div>
+  <p class="small">Telefon ustiga bosing.</p>
+</section>
+
+<section>
+  <h2>Yakuniy 3NF model</h2>
+  <pre><code class="language-plaintext" data-trim data-noescape data-line-numbers="1|2|3|4">
+Mijozlar(MijozID PK, Ism, Telefon, Shahar)
+Buyurtmalar(BuyurtmaID PK, Sana, MijozID FK)
+Mahsulotlar(MahsulotID PK, Nomi, Narx)
+BuyurtmaTarkibi(BuyurtmaID FK, MahsulotID FK, Soni)
+  </code></pre>
+  <div class="callout tip"><i data-ic="circle-check"></i>Telefon bir joyda, mahsulotni buyurtmasiz qo'shish mumkin, buyurtma o'chsa ham mijoz qoladi.</div>
+</section>
+
+<section>
+  <h2>Eslab qolish qoidasi</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="square-check"></i></div><h3>1NF - kalitga</h3><p>Har katakda bitta qiymat, takrorlanuvchi ustunlar yo'q.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="key-round"></i></div><h3>2NF - butun kalitga</h3><p>Kompozit kalitning bir qismiga bog'liqlik yo'q.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="lock"></i></div><h3>3NF - faqat kalitga</h3><p>Kalit bo'lmagan ustunlar bir-biriga bog'liq emas.</p></div></div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Xodimlar(XodimID, Ism, BolimID, BolimNomi) jadvalida BolimNomi BolimID ga bog'liq. Qaysi shakl buzilgan?</p>
+    <div class="opts">
+      <button class="opt" type="button">1NF</button>
+      <button class="opt" type="button">2NF</button>
+      <button class="opt" type="button" data-ok>3NF</button>
+      <button class="opt" type="button">Hech qaysi</button>
+    </div>
+    <div class="explain">Kalit bo'lmagan ustun (BolimNomi) boshqa kalit bo'lmagan ustunga (BolimID) bog'liq - tranzitiv bog'liqlik, 3NF buzilgan.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Normalizatsiya va BI</h1>
+  <p>Yozish uchun - normallashtirish, o'qish uchun - yulduz</p>
+</section>
+
+<section>
+  <h2>OLTP va BI</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">OLTP</button><button type="button">BI (tahlil)</button></div>
+    <div class="swap-p"><div class="card"><div class="icon"><i data-ic="shopping-cart"></i></div><h3>Tranzaksion tizim</h3><p>Kassa, bank, sayt. Har kuni minglab yozuv. Model - 3NF, ustuvorlik - yaxlitlik.</p></div></div>
+    <div class="swap-p"><div class="card accent"><div class="icon"><i data-ic="chart-column"></i></div><h3>Tahliliy tizim</h3><p>Hisobot, dashboard. Ko'p o'qish. Model - Star schema, ustuvorlik - tezlik va soddalik.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Star schema</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <g class="fragment" data-tip="Fact jadval: nima sodir bo'ldi va qancha. SanaID, MijozID, MahsulotID, Soni, Summa.">
+        <rect class="fa la" x="380" y="125" width="240" height="90" rx="18" stroke-width="3"/>
+        <text class="t-head" x="500" y="180" text-anchor="middle" font-size="28">FactSotuv</text>
+      </g>
+      <g class="fragment" data-tip="Dimension: sana, oy, chorak, yil.">
+        <line class="ln" x1="500" y1="120" x2="500" y2="85" stroke-width="3"/>
+        <rect class="fb lb" x="400" y="15" width="200" height="70" rx="16" stroke-width="3"/>
+        <text class="t-head" x="500" y="58" text-anchor="middle" font-size="24">DimSana</text>
+      </g>
+      <g class="fragment" data-tip="Dimension: mijoz ismi, shahri, yoshi.">
+        <line class="ln" x1="375" y1="170" x2="260" y2="170" stroke-width="3"/>
+        <rect class="fb lb" x="40" y="135" width="220" height="70" rx="16" stroke-width="3"/>
+        <text class="t-head" x="150" y="178" text-anchor="middle" font-size="24">DimMijoz</text>
+      </g>
+      <g class="fragment" data-tip="Dimension: mahsulot nomi, kategoriyasi, narxi.">
+        <line class="ln" x1="625" y1="170" x2="740" y2="170" stroke-width="3"/>
+        <rect class="fb lb" x="740" y="135" width="230" height="70" rx="16" stroke-width="3"/>
+        <text class="t-head" x="855" y="178" text-anchor="middle" font-size="24">DimMahsulot</text>
+      </g>
+      <g class="fragment" data-tip="Dimension: do'kon nomi va shahri.">
+        <line class="ln" x1="500" y1="220" x2="500" y2="255" stroke-width="3"/>
+        <rect class="fb lb" x="400" y="255" width="200" height="70" rx="16" stroke-width="3"/>
+        <text class="t-head" x="500" y="298" text-anchor="middle" font-size="24">DimDokon</text>
+      </g>
+    </svg>
+  </div>
+  <p class="small">Markazda Fact (raqamlar), atrofida Dimension (tavsiflar). Bloklar ustiga bosing.</p>
+</section>
+
+<section>
+  <h2>Fact yoki Dimension?</h2>
+  <div class="cards two">
+    <div class="card fragment"><div class="icon"><i data-ic="calculator"></i></div><h3>Fact</h3><p>O'lchanadigan hodisalar: Soni, Summa, Chegirma. Qatorlar juda ko'p.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="tag"></i></div><h3>Dimension</h3><p>Kim, nima, qachon, qayerda: Mijoz, Mahsulot, Sana, Do'kon.</p></div>
+  </div>
+  <div class="callout tip mt"><i data-ic="lightbulb"></i>Denormalizatsiya - tahlil tezligi uchun jadvallarni qasddan birlashtirish.</div>
+  
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Star schema markazidagi jadval qanday ataladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Dimension jadval</button>
+      <button class="opt" type="button">Junction jadval</button>
+      <button class="opt" type="button" data-ok>Fact jadval</button>
+      <button class="opt" type="button">Lookup varaq</button>
+    </div>
+    <div class="explain">Fact jadvalda raqamlar va Dimension jadvallarga FK lar turadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriqlar <span class="timer"><i data-ic="timer"></i>15 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Sinf rahbari telefoni 30 qatorda: qanday anomaliya? To'garaklar jadvalini 1NF ga keltiring.</div>
+  <div class="task"><span class="level mid">O'rta</span>Baholar jadvalini (O'quvchi, Fan, O'qituvchi, Baho) 3NF ga keltiring.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Do'kon uchun Star schema: 1 Fact va 3 Dimension, har birida 3-4 ustun.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Muammo</h3><p>Redundansiya: Update, Insert, Delete anomaliyalari.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Yechim</h3><p>1NF, 2NF, 3NF: kalitga, butun kalitga, faqat kalitga.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>BI</h3><p>OLTP - 3NF; hisobot - Star schema.</p></div>
+  </div>
+  <p class="small mt">Uyga vazifa: kutubxona jadvalini 3NF ga keltirish.</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="database" data-anim="float"></i></div>
+  <h1>Keyingi dars: RDBMS va yaxlitlik</h1>
+  <p class="muted">SQL Server, SSMS va cheklovlar</p>
+  <span class="badge">4-hafta · 11-dars</span>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

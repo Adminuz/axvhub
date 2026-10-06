@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Test: 13-dars. Autentifikatsiya, avtorizatsiya va JWT</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Test: 13-dars. Autentifikatsiya, avtorizatsiya va JWT</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">5-hafta · 13-dars</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Kim ekanligingizni isbotlash nima deyiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Identifikatsiya</button>
+      <button class="opt" type="button">Avtorizatsiya</button>
+      <button class="opt" type="button">Migratsiya</button>
+      <button class="opt" type="button" data-ok>Autentifikatsiya</button>
+    </div>
+    <div class="explain">Parol yoki token bilan isbotlash — autentifikatsiya.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Foydalanuvchining ruxsat darajasini tekshirish?</p>
+    <div class="opts">
+      <button class="opt" type="button">Identifikatsiya</button>
+      <button class="opt" type="button" data-ok>Avtorizatsiya</button>
+      <button class="opt" type="button">Autentifikatsiya</button>
+      <button class="opt" type="button">Validatsiya</button>
+    </div>
+    <div class="explain">Nimaga ruxsat borligini avtorizatsiya aniqlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">JWT nechta qismdan iborat?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>3</button>
+      <button class="opt" type="button">2</button>
+      <button class="opt" type="button">4</button>
+      <button class="opt" type="button">1</button>
+    </div>
+    <div class="explain">header.payload.signature.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">JWT payload qanday ko'rinishda?</p>
+    <div class="opts">
+      <button class="opt" type="button">AES bilan shifrlangan</button>
+      <button class="opt" type="button" data-ok>Base64 kodlangan, shifrlanmagan</button>
+      <button class="opt" type="button">Xeshlangan</button>
+      <button class="opt" type="button">Ko'rinmas</button>
+    </div>
+    <div class="explain">Payload ni o'qish mumkin.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Parol bazada qanday saqlanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ochiq</button>
+      <button class="opt" type="button">Base64 da</button>
+      <button class="opt" type="button" data-ok>Xesh ko'rinishida</button>
+      <button class="opt" type="button">Rasm sifatida</button>
+    </div>
+    <div class="explain">Faqat <code>hashed_password</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi kutubxona parolni xeshlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">uvicorn</button>
+      <button class="opt" type="button" data-ok>passlib (bcrypt)</button>
+      <button class="opt" type="button">alembic</button>
+      <button class="opt" type="button">ruff</button>
+    </div>
+    <div class="explain"><code>CryptContext(schemes=["bcrypt"])</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Email allaqachon band bo'lsa qaysi status?</p>
+    <div class="opts">
+      <button class="opt" type="button">201</button>
+      <button class="opt" type="button" data-ok>409</button>
+      <button class="opt" type="button">401</button>
+      <button class="opt" type="button">404</button>
+    </div>
+    <div class="explain">409 Conflict.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Yaroqsiz token bilan so'rov yuborilsa?</p>
+    <div class="opts">
+      <button class="opt" type="button">200</button>
+      <button class="opt" type="button">201</button>
+      <button class="opt" type="button">409</button>
+      <button class="opt" type="button" data-ok>401</button>
+    </div>
+    <div class="explain">401 Unauthorized.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Admin bo'lmagan foydalanuvchi admin yo'liga kirsa?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>403</button>
+      <button class="opt" type="button">401</button>
+      <button class="opt" type="button">200</button>
+      <button class="opt" type="button">422</button>
+    </div>
+    <div class="explain">403 Forbidden.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Login uchun FastAPI qaysi sinfni beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">BaseSettings</button>
+      <button class="opt" type="button">AsyncSession</button>
+      <button class="opt" type="button" data-ok>OAuth2PasswordRequestForm</button>
+      <button class="opt" type="button">APIRouter</button>
+    </div>
+    <div class="explain">Forma maydonlari <code>username</code> va <code>password</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: 13-dars konspekti va slaydlari</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

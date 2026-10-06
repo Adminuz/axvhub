@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Tranzitiv Bog'liqliklar va Ziddiyatlarni Hal Qilish</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 4-dars: Dependency management va ziddiyatlarni hal qilish -->
+
+<!-- 1. SARLAVHA -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Tranzitiv Bog'liqliklar va Ziddiyatlarni Hal Qilish</h1>
+  <p class="muted">Transitive dependencies, Dependency Tree, exclude qoidalari va BOM platformasi</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">2-hafta · 4-dars</span>
+</section>
+
+<!-- 2. BUGUN NIMANI O'RGANAMIZ? -->
+<section>
+  <h2>Bugun nimani o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="boxes" data-anim="pulse"></i></div>
+      <h3>Tranzitiv bog'liqlik</h3>
+      <p>Kutubxonalarning yashirin zanjiri va ilovaga avtomatik qo'shiluvchi yordamchi modullar</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="folder-tree" data-anim="float"></i></div>
+      <h3>Dependency Conflicts</h3>
+      <p>Versiya to'qnashuvlari sababi va <code>./gradlew app:dependencies</code> daraxti tahlili</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check" data-anim="draw"></i></div>
+      <h3>exclude va BOM</h3>
+      <p>Ortiqcha modullarni chiqarib tashlash va yagona mos versiyalar xaritasini boshqarish</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. BO'LIM 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Tranzitiv Bog'liqliklar Mohiyati</h1>
+  <p>Bitta kutubxona ortidan kirib keladigan yashirin modullar zanjiri</p>
+</section>
+
+<!-- 4. TRANZITIVLIK TUSHUNCHASI -->
+<section>
+  <h2>Kutubxonalar zanjiri</h2>
+  <div class="quote">
+    «Siz bitta kutubxona qo'shdim deb o'ylaysiz, ammo uning ortidan o'nlab boshqa kutubxonalar kirib keladi.»
+  </div>
+  <div class="cards two mt">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="boxes"></i></div>
+      <h3>Yordamchilar armiyasi</h3>
+      <p>Retrofit o'z ishini bajarish uchun OkHttp'ga, OkHttp esa Okio kutubxonasiga tayanadi. Bu zanjir avtomatik yuklanadi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="refresh-cw"></i></div>
+      <h3>Katta loyihadagi xatarlar</h3>
+      <p>Bir nechta kutubxona bitta yordamchi modulning turli versiyalarini talab qilsa, ziddiyat (conflict) paydo bo'ladi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. ILLYUSTRATSIYA 1: TRANZITIV ZANJIR (SVG) -->
+<section>
+  <h2>Tranzitiv bog'liqliklar zanjiri</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="30" width="880" height="420" rx="20" class="fa" />
+      <rect x="40" y="30" width="880" height="420" rx="20" class="la" fill="none" stroke-width="2" />
+      
+      <!-- Boshlang'ich: Dasturchi qo'shgan kutubxona -->
+      <g transform="translate(80, 160)">
+        <rect x="0" y="0" width="220" height="150" rx="14" class="fg" />
+        <text x="110" y="45" text-anchor="middle" class="fn" font-size="16" font-weight="700">Dasturchi kodi</text>
+        <rect x="15" y="65" width="190" height="45" rx="8" class="fa" />
+        <text x="110" y="93" text-anchor="middle" class="t-accent" font-size="12">implementation</text>
+        <text x="110" y="135" text-anchor="middle" class="fn" font-size="13" font-weight="600">Retrofit 2.9.0</text>
+      </g>
+      
+      <!-- Strelka 1 -->
+      <line x1="300" y1="235" x2="360" y2="235" class="la" stroke-width="3" />
+      <polygon points="360,230 370,235 360,240" class="fg" />
+      
+      <!-- Tranzitiv 1: OkHttp -->
+      <g transform="translate(370, 140)">
+        <rect x="0" y="0" width="220" height="190" rx="14" class="fb" />
+        <rect x="0" y="0" width="220" height="190" rx="14" class="la" fill="none" stroke-width="2" />
+        <text x="110" y="35" text-anchor="middle" class="t-head" font-size="15" font-weight="700">1-daraja Tranzitiv</text>
+        <text x="110" y="60" text-anchor="middle" class="t-muted" font-size="11">Avtomatik yuklanadi</text>
+        
+        <rect x="15" y="80" width="190" height="45" rx="8" class="fa" />
+        <text x="110" y="108" text-anchor="middle" class="t-head" font-size="13">OkHttp 4.12.0</text>
+        
+        <rect x="15" y="135" width="190" height="40" rx="8" class="fa" />
+        <text x="110" y="160" text-anchor="middle" class="t-muted" font-size="11">HTTP transport qatlami</text>
+      </g>
+      
+      <!-- Strelka 2 -->
+      <line x1="590" y1="235" x2="650" y2="235" class="la" stroke-width="3" />
+      <polygon points="650,230 660,235 650,240" class="fg" />
+      
+      <!-- Tranzitiv 2: Okio -->
+      <g transform="translate(650, 140)">
+        <rect x="0" y="0" width="230" height="190" rx="14" class="fb" />
+        <rect x="0" y="0" width="230" height="190" rx="14" class="lb" fill="none" stroke-width="1.5" />
+        <text x="115" y="35" text-anchor="middle" class="t-head" font-size="15" font-weight="700">2-daraja Tranzitiv</text>
+        <text x="115" y="60" text-anchor="middle" class="t-muted" font-size="11">Yashirin quyi modul</text>
+        
+        <rect x="15" y="80" width="200" height="45" rx="8" class="fa" />
+        <text x="115" y="108" text-anchor="middle" class="t-head" font-size="13">Okio 3.8.0</text>
+        
+        <rect x="15" y="135" width="200" height="40" rx="8" class="fa" />
+        <text x="115" y="160" text-anchor="middle" class="t-accent" font-size="11">I/O bayt bufferlari</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 6. BO'LIM 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Versiya Ziddiyatlari (Conflicts)</h1>
+  <p>To'qnashuv sabablari va Gradle tanlov strategiyasi</p>
+</section>
+
+<!-- 7. ZIDDIYAT MOHIYATI -->
+<section>
+  <h2>To'qnashuv qanday yuzaga keladi?</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="boxes"></i></div>
+      <h3>Ziddiyat sababi</h3>
+      <p>Loyiha tarkibidagi Kutubxona A <code>OkHttp 3.14.9</code> versiyasini talab qilsa, Kutubxona B esa <code>OkHttp 4.12.0</code> ni talab qiladi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Gradle strategiyasi</h3>
+      <p>Gradle sukut bo'yicha <strong>eng yuqori versiyani (4.12.0)</strong> tanlaydi. Ammo bu eski kutubxona bilan kutilmagan crash berishi mumkin.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8. ILLYUSTRATSIYA 2: ZIDDIYAT VA TANLOV (SVG) -->
+<section>
+  <h2>Gradle Dependency Resolution mexanizmi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="30" width="880" height="420" rx="20" class="fa" />
+      <rect x="40" y="30" width="880" height="420" rx="20" class="la" fill="none" stroke-width="2" />
+      
+      <!-- Modul A talabi -->
+      <g transform="translate(80, 90)">
+        <rect x="0" y="0" width="280" height="120" rx="12" class="fb" />
+        <rect x="0" y="0" width="280" height="120" rx="12" class="lb" fill="none" stroke-width="1.5" />
+        <text x="140" y="35" text-anchor="middle" class="t-head" font-size="15" font-weight="700">Kutubxona A</text>
+        <text x="140" y="65" text-anchor="middle" class="t-muted" font-size="12">talab qiladi:</text>
+        <rect x="25" y="75" width="230" height="35" rx="6" class="fa" />
+        <text x="140" y="98" text-anchor="middle" class="t-accent" font-size="13">okhttp: 3.14.9 (Eski)</text>
+      </g>
+      
+      <!-- Modul B talabi -->
+      <g transform="translate(80, 260)">
+        <rect x="0" y="0" width="280" height="120" rx="12" class="fb" />
+        <rect x="0" y="0" width="280" height="120" rx="12" class="lb" fill="none" stroke-width="1.5" />
+        <text x="140" y="35" text-anchor="middle" class="t-head" font-size="15" font-weight="700">Kutubxona B</text>
+        <text x="140" y="65" text-anchor="middle" class="t-muted" font-size="12">talab qiladi:</text>
+        <rect x="25" y="75" width="230" height="35" rx="6" class="fa" />
+        <text x="140" y="98" text-anchor="middle" class="t-head" font-size="13">okhttp: 4.12.0 (Yangi)</text>
+      </g>
+      
+      <!-- Chiziqlar markazga -->
+      <line x1="360" y1="150" x2="450" y2="235" class="la" stroke-width="2" />
+      <line x1="360" y1="320" x2="450" y2="235" class="la" stroke-width="2" />
+      
+      <!-- Gradle Resolution Engine -->
+      <g transform="translate(450, 130)">
+        <rect x="0" y="0" width="220" height="210" rx="16" class="fb" />
+        <rect x="0" y="0" width="220" height="210" rx="16" class="la" fill="none" stroke-width="2" />
+        <text x="110" y="45" text-anchor="middle" class="t-head" font-size="16" font-weight="700">RESOLUTION</text>
+        <text x="110" y="70" text-anchor="middle" class="t-accent" font-size="11">Gradle Conflict Solver</text>
+        
+        <rect x="20" y="95" width="180" height="40" rx="8" class="fa" />
+        <text x="110" y="120" text-anchor="middle" class="t-muted" font-size="11">Qoida: Newest Wins</text>
+        
+        <rect x="20" y="145" width="180" height="40" rx="8" class="fa" />
+        <text x="110" y="170" text-anchor="middle" class="t-head" font-size="11">3.14.9 -&gt; 4.12.0</text>
+      </g>
+      
+      <!-- Chiziq o'ngga -->
+      <line x1="670" y1="235" x2="730" y2="235" class="la" stroke-width="3" />
+      <polygon points="730,230 740,235 730,240" class="fg" />
+      
+      <!-- Natija -->
+      <g transform="translate(740, 160)">
+        <rect x="0" y="0" width="150" height="150" rx="14" class="fg" />
+        <text x="75" y="45" text-anchor="middle" class="fn" font-size="14" font-weight="700">Tanlangan:</text>
+        <text x="75" y="80" text-anchor="middle" class="fn" font-size="17" font-weight="700">OkHttp</text>
+        <text x="75" y="105" text-anchor="middle" class="fn" font-size="14" opacity="0.9">4.12.0</text>
+        <text x="75" y="130" text-anchor="middle" class="fn" font-size="11" opacity="0.8">Loyiha bo'ylab</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- 9. BO'LIM 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Dependency Tree Tahlili</h1>
+  <p>Terminal yordamida loyihaning barcha yashirin qatlamlarini ko'rish</p>
+</section>
+
+<!-- 10. DEPENDENCY TREE BUYRUG'I -->
+<section>
+  <h2>./gradlew app:dependencies buyrug'i</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="terminal"></i></div>
+      <h3>Buyruq formati</h3>
+      <pre><code>./gradlew app:dependencies \
+  --configuration releaseRuntimeClasspath</code></pre>
+      <p class="t-muted">Loyiha modulidagi barcha kutubxonalar va ularning tranzitiv shoxlarini to'liq daraxt ko'rinishida chiqaradi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="folder-tree"></i></div>
+      <h3>Belgilar siri</h3>
+      <p><strong>-> 4.12.0</strong> — Gradle eski versiyani yangisiga avtomatik ko'targanini bildiradi.</p>
+      <p><strong>(*) belgisi</strong> — Ushbu kutubxonaning shoxlari yuqorida allaqachon ko'rsatilgani va takrorlanmasligini bildiradi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 11. ILLYUSTRATSIYA 3: DEPENDENCY TREE (SVG) -->
+<section>
+  <h2>Terminaldagi bog'liqliklar daraxti</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="30" width="880" height="420" rx="20" class="fa" />
+      <rect x="40" y="30" width="880" height="420" rx="20" class="la" fill="none" stroke-width="2" />
+      
+      <!-- Terminal Oynasi -->
+      <g transform="translate(80, 60)">
+        <rect x="0" y="0" width="800" height="360" rx="12" class="fb" />
+        <rect x="0" y="0" width="800" height="360" rx="12" class="la" fill="none" stroke-width="1.5" />
+        
+        <!-- Terminal Header -->
+        <rect x="0" y="0" width="800" height="35" rx="12" class="fa" />
+        <circle cx="20" cy="18" r="5" class="la" />
+        <circle cx="35" cy="18" r="5" class="la" />
+        <circle cx="50" cy="18" r="5" class="la" />
+        <text x="80" y="23" class="t-muted" font-size="12">Terminal: ./gradlew app:dependencies</text>
+        
+        <!-- Daraxt satrlari -->
+        <text x="30" y="75" class="t-accent" font-size="14" font-family="monospace">+--- com.squareup.retrofit2:retrofit:2.9.0</text>
+        <text x="30" y="115" class="t-head" font-size="14" font-family="monospace">|    \--- com.squareup.okhttp3:okhttp:3.14.9 -&gt; 4.12.0 (*)</text>
+        <text x="30" y="155" class="t-accent" font-size="14" font-family="monospace">\--- com.squareup.okhttp3:logging-interceptor:4.12.0</text>
+        <text x="30" y="195" class="t-head" font-size="14" font-family="monospace">     \--- com.squareup.okhttp3:okhttp:4.12.0 (*)</text>
+        <text x="30" y="235" class="t-muted" font-size="14" font-family="monospace">          \--- com.squareup.okio:okio:3.8.0 (*)</text>
+        
+        <!-- Izoh bloki pastda -->
+        <rect x="25" y="270" width="750" height="65" rx="8" class="fa" />
+        <text x="40" y="298" class="t-head" font-size="13">Tahlil: okhttp 3.14.9 eskirgan versiyasi avtomatik ravishda 4.12.0 ga almashtirildi.</text>
+        <text x="40" y="320" class="t-muted" font-size="12">Yulduzcha (*) takroriy ko'rsatishni cheklash uchun qo'yilgan.</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- 12. BO'LIM 4 -->
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Ziddiyatlarni Hal Qilish</h1>
+  <p>exclude qoidalari, force strategiyasi va BOM platformasi</p>
+</section>
+
+<!-- 13. EXCLUDE VA FORCE -->
+<section>
+  <h2>exclude va force mexanizmlari</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>exclude qoidasi</h3>
+      <p>Kutubxona tarkibidagi aniq bitta keraksiz yoki ziddiyatli modulni to'xtatish:</p>
+      <pre><code>implementation('com.lib:tool:1.0') {
+    exclude group: 'org.old', module: 'unused'
+}</code></pre>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+      <h3>resolutionStrategy.force</h3>
+      <p>Loyiha bo'ylab bitta qat'iy versiyani majburiy qilib o'rnatish:</p>
+      <pre><code>configurations.all {
+    resolutionStrategy.force 'com.squareup.okhttp3:okhttp:4.12.0'
+}</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- 14. ILLYUSTRATSIYA 4: BOM PLATFORMASI (SVG) -->
+<section>
+  <h2>BOM (Bill of Materials) ishlash prinsipi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="30" width="880" height="420" rx="20" class="fa" />
+      <rect x="40" y="30" width="880" height="420" rx="20" class="la" fill="none" stroke-width="2" />
+      
+      <!-- Markaziy BOM Qalqoni -->
+      <g transform="translate(340, 70)">
+        <rect x="0" y="0" width="280" height="110" rx="14" class="fg" />
+        <text x="140" y="40" text-anchor="middle" class="fn" font-size="18" font-weight="700">FIREBASE BOM</text>
+        <text x="140" y="65" text-anchor="middle" class="fn" font-size="12" opacity="0.9">platform("...:firebase-bom:32.8.0")</text>
+        <text x="140" y="90" text-anchor="middle" class="fn" font-size="11" opacity="0.8">100% Sinovdan o'tgan moslik xaritasi</text>
+      </g>
+      
+      <!-- Tarmoqlar -->
+      <path d="M 480 180 L 480 230 L 220 230 L 220 270" class="la" fill="none" stroke-width="2" />
+      <path d="M 480 180 L 480 230 L 480 270" class="la" fill="none" stroke-width="2" />
+      <path d="M 480 180 L 480 230 L 740 230 L 740 270" class="la" fill="none" stroke-width="2" />
+      
+      <!-- Modul 1: Auth -->
+      <g transform="translate(100, 270)">
+        <rect x="0" y="0" width="240" height="130" rx="12" class="fb" />
+        <rect x="0" y="0" width="240" height="130" rx="12" class="lb" fill="none" stroke-width="1.5" />
+        <text x="120" y="35" text-anchor="middle" class="t-head" font-size="15" font-weight="700">firebase-auth-ktx</text>
+        <text x="120" y="65" text-anchor="middle" class="t-accent" font-size="12">Versiya yozilmaydi!</text>
+        <text x="120" y="95" text-anchor="middle" class="t-muted" font-size="11">BOM avtomatik beradi</text>
+      </g>
+      
+      <!-- Modul 2: Firestore -->
+      <g transform="translate(360, 270)">
+        <rect x="0" y="0" width="240" height="130" rx="12" class="fb" />
+        <rect x="0" y="0" width="240" height="130" rx="12" class="lb" fill="none" stroke-width="1.5" />
+        <text x="120" y="35" text-anchor="middle" class="t-head" font-size="15" font-weight="700">firebase-firestore-ktx</text>
+        <text x="120" y="65" text-anchor="middle" class="t-accent" font-size="12">Versiya yozilmaydi!</text>
+        <text x="120" y="95" text-anchor="middle" class="t-muted" font-size="11">Moslik kafolatlangan</text>
+      </g>
+      
+      <!-- Modul 3: Storage -->
+      <g transform="translate(620, 270)">
+        <rect x="0" y="0" width="240" height="130" rx="12" class="fb" />
+        <rect x="0" y="0" width="240" height="130" rx="12" class="lb" fill="none" stroke-width="1.5" />
+        <text x="120" y="35" text-anchor="middle" class="t-head" font-size="15" font-weight="700">firebase-storage-ktx</text>
+        <text x="120" y="65" text-anchor="middle" class="t-accent" font-size="12">Versiya yozilmaydi!</text>
+        <text x="120" y="95" text-anchor="middle" class="t-muted" font-size="11">Hech qanday ziddiyatsiz</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- 15. STEPPER: ZIDDIYATNI BARTARAF ETISH -->
+<section>
+  <h2>Versiya ziddiyatini hal qilish bosqichlari</h2>
+  <div class="stepper">
+    <div class="step fragment">
+      <div class="num">1</div>
+      <h3>Xatoni aniqlash</h3>
+      <p>Logcat yoki build jarayonida <code>NoSuchMethodError</code> yoki moslik xatolarini payqash.</p>
+    </div>
+    <div class="step fragment">
+      <div class="num">2</div>
+      <h3>Daraxtni ochish</h3>
+      <p>Terminalda <code>./gradlew app:dependencies</code> buyrug'i orqali to'qnashuv manbasini topish.</p>
+    </div>
+    <div class="step fragment">
+      <div class="num">3</div>
+      <h3>exclude qo'llash</h3>
+      <p>Eski modullarni <code>exclude</code> qilish yoki yagona versiyani <code>force</code> bilan majburlash.</p>
+    </div>
+    <div class="step fragment">
+      <div class="num">4</div>
+      <h3>Sinxronlash & Test</h3>
+      <p>Loyihani "Sync Now" qilish va barcha funksiyalar to'g'ri ishlashini sinovdan o'tkazish.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 16. TAQQOSLASH -->
+<section>
+  <h2>Nazoratsiz bog'liqlik vs Boshqariladigan arxitektura</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-question-mark"></i></div>
+      <h3>Nazoratsiz loyiha</h3>
+      <p>Har bir kutubxona ixtiyoriy versiyalarni tortib keladi.</p>
+      <p>Ilova hajmi keraksiz dublikat modullar bilan shishib ketadi.</p>
+      <p>Telefonda ilova kutilmaganda "crash" bo'ladi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Boshqariladigan tizim</h3>
+      <p>Bog'liqliklar daraxti doimiy tekshiriladi.</p>
+      <p>Ortiqcha modullar <code>exclude</code> orqali tozalanadi.</p>
+      <p>BOM va markazlashgan Version Catalog orqali to'liq barqarorlik.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 17. QUIZ -->
+<section>
+  <h2>Tezkor bilim sinovi</h2>
+  <div class="quiz">
+    <div class="q">Kutubxona ichidagi ma'lum bir keraksiz tranzitiv modulni ilovadan chiqarib tashlash uchun nima ishlatiladi?</div>
+    <div class="opts">
+      <div class="opt">remove(module = "...") buyrug'i</div>
+      <div class="opt" data-ok>exclude group: '...', module: '...' parametri</div>
+      <div class="opt">Faqat kutubxonani butunlay o'chirib tashlash mumkin</div>
+      <div class="opt">settings.gradle faylidan o'chirish</div>
+    </div>
+  </div>
+</section>
+
+<!-- 18. AMALIY LAB -->
+<section>
+  <h2>Amaliy laboratoriya mashg'uloti</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="terminal"></i></div>
+      <h3>1. Daraxtni tahlil qilish</h3>
+      <p>Terminalda <code>./gradlew app:dependencies</code> buyrug'ini ishga tushiring va Retrofit qaysi OkHttp versiyasini tortganini aniqlang.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>2. exclude sinovi</h3>
+      <p>Biror kutubxona uchun <code>exclude</code> qoidasini yozing, "Sync Now" qiling va daraxtda ushbu modul yo'qolganini tasdiqlang.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 19. XULOSA -->
+<section>
+  <h2>Darsning asosiy xulosalari</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="boxes"></i></div>
+      <h3>Yashirin zanjirlar</h3>
+      <p>Tranzitiv kutubxonalar qulay, biroq ularning versiyalari ziddiyat bermasligini nazorat qilish shart.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Kuchli vositalar</h3>
+      <p><code>exclude</code>, <code>resolutionStrategy</code> va <strong>BOM</strong> har qanday murakkab versiya to'qnashuvini professional hal qiladi.</p>
+    </div>
+  </div>
+  <p class="muted mt">Keyingi dars: ProGuard va R8 yordamida kodni optimallashtirish (1-qism)</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

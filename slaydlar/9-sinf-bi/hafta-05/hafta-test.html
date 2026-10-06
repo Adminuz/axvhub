@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>5-hafta yakuniy testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>5-hafta yakuniy testi</h1>
+  <p class="muted">20 ta savol &middot; taxminan 20 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">Business Intelligence</span><span class="badge">5-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/20</h2>
+  <div class="quiz">
+    <p class="q">Qatorlarni shart bo'yicha filtrlash uchun qaysi band ishlatiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>ORDER BY</code></button>
+      <button class="opt" type="button"><code>DISTINCT</code></button>
+      <button class="opt" type="button" data-ok><code>WHERE</code></button>
+      <button class="opt" type="button"><code>AS</code></button>
+    </div>
+    <div class="explain"><code>WHERE</code> shartga mos qatorlarni qoldiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/20</h2>
+  <div class="quiz">
+    <p class="q"><code>&lt;&gt;</code> operatori nimani anglatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Katta yoki teng</button>
+      <button class="opt" type="button">Teng</button>
+      <button class="opt" type="button" data-ok>Teng emas</button>
+      <button class="opt" type="button">Kichik</button>
+    </div>
+    <div class="explain"><code>&lt;&gt;</code> — «teng emas».</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/20</h2>
+  <div class="quiz">
+    <p class="q"><code>WHERE Narx &gt; 1000000</code> Mahsulotlar jadvalida nechta qator qaytaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">6</button>
+      <button class="opt" type="button">2</button>
+      <button class="opt" type="button" data-ok>3</button>
+      <button class="opt" type="button">4</button>
+    </div>
+    <div class="explain">Monitor, Noutbuk va Planshet.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/20</h2>
+  <div class="quiz">
+    <p class="q">Matn qiymati qanday yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Tirnoqsiz</button>
+      <button class="opt" type="button" data-ok>Bir tirnoqda: <code>N'Aksessuar'</code></button>
+      <button class="opt" type="button">Qavs ichida</button>
+      <button class="opt" type="button">Katta qavsda</button>
+    </div>
+    <div class="explain">Matn bir tirnoqda; unicode uchun <code>N</code> prefiksi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/20</h2>
+  <div class="quiz">
+    <p class="q"><code>AND</code> operatori qachon <code>TRUE</code> beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Kamida bittasi <code>TRUE</code> bo'lsa</button>
+      <button class="opt" type="button">Hech biri <code>TRUE</code> bo'lmasa</button>
+      <button class="opt" type="button" data-ok>Ikkala shart ham <code>TRUE</code> bo'lsa</button>
+      <button class="opt" type="button">Doim</button>
+    </div>
+    <div class="explain"><code>AND</code> — ikkala shart ham.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/20</h2>
+  <div class="quiz">
+    <p class="q"><code>OR</code> operatori qachon <code>TRUE</code> beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ikkalasi <code>FALSE</code> bo'lsa</button>
+      <button class="opt" type="button">Faqat ikkalasi <code>TRUE</code> bo'lsa</button>
+      <button class="opt" type="button">Hech qachon</button>
+      <button class="opt" type="button" data-ok>Kamida bitta shart <code>TRUE</code> bo'lsa</button>
+    </div>
+    <div class="explain"><code>OR</code> uchun bittasi yetarli.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/20</h2>
+  <div class="quiz">
+    <p class="q"><code>A OR B AND C</code> da qaysi biri birinchi bajariladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>A OR B</code></button>
+      <button class="opt" type="button">Chapdan o'ngga hammasi</button>
+      <button class="opt" type="button">Tasodifiy</button>
+      <button class="opt" type="button" data-ok><code>B AND C</code></button>
+    </div>
+    <div class="explain"><code>AND</code> ning ustuvorligi <code>OR</code> dan yuqori.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/20</h2>
+  <div class="quiz">
+    <p class="q">Natijani tartiblash uchun qaysi band ishlatiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>ORDER BY</code></button>
+      <button class="opt" type="button"><code>WHERE</code></button>
+      <button class="opt" type="button"><code>GROUP</code></button>
+      <button class="opt" type="button"><code>TOP</code></button>
+    </div>
+    <div class="explain"><code>ORDER BY</code> natijani saralaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/20</h2>
+  <div class="quiz">
+    <p class="q"><code>ORDER BY</code> da standart tartib qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>DESC</code> (kamayish)</button>
+      <button class="opt" type="button">Tasodifiy</button>
+      <button class="opt" type="button">Alifbo bo'yicha teskari</button>
+      <button class="opt" type="button" data-ok><code>ASC</code> (o'sish)</button>
+    </div>
+    <div class="explain"><code>ASC</code> yozilmasa ham o'sish tartibi bo'ladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/20</h2>
+  <div class="quiz">
+    <p class="q">Eng qimmat mahsulotni birinchi chiqarish uchun?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>ORDER BY Narx ASC</code></button>
+      <button class="opt" type="button"><code>WHERE Narx</code></button>
+      <button class="opt" type="button" data-ok><code>ORDER BY Narx DESC</code></button>
+      <button class="opt" type="button"><code>DISTINCT Narx</code></button>
+    </div>
+    <div class="explain"><code>DESC</code> — kamayish tartibi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 11/20</h2>
+  <div class="quiz">
+    <p class="q"><code>ORDER BY Kategoriya, Narx DESC</code> da ikkinchi ustun qachon ishlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Har doim</button>
+      <button class="opt" type="button">Hech qachon</button>
+      <button class="opt" type="button">Faqat <code>WHERE</code> bilan</button>
+      <button class="opt" type="button" data-ok>Birinchi ustun qiymatlari teng bo'lsa</button>
+    </div>
+    <div class="explain">Birinchi ustun teng bo'lgan qatorlar ichida ishlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 12/20</h2>
+  <div class="quiz">
+    <p class="q">«Eng qimmat 3 ta» uchun to'g'ri so'rov?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>SELECT TOP 3 ... ORDER BY Narx ASC</code></button>
+      <button class="opt" type="button"><code>SELECT TOP 3 ...</code> tartibsiz</button>
+      <button class="opt" type="button"><code>SELECT 3 ...</code></button>
+      <button class="opt" type="button" data-ok><code>SELECT TOP 3 ... ORDER BY Narx DESC</code></button>
+    </div>
+    <div class="explain"><code>TOP</code> ni <code>DESC</code> tartib bilan ishlatish kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 13/20</h2>
+  <div class="quiz">
+    <p class="q">SQL Server da sahifalash uchun nima ishlatiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>LIMIT</code></button>
+      <button class="opt" type="button"><code>SKIP</code></button>
+      <button class="opt" type="button" data-ok><code>OFFSET ... FETCH</code></button>
+      <button class="opt" type="button"><code>PAGE</code></button>
+    </div>
+    <div class="explain"><code>LIMIT</code> esa PostgreSQL, MySQL, SQLite da.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 14/20</h2>
+  <div class="quiz">
+    <p class="q"><code>OFFSET ... FETCH</code> qaysi band bilan birga ishlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>ORDER BY</code></button>
+      <button class="opt" type="button"><code>GROUP BY</code></button>
+      <button class="opt" type="button"><code>DISTINCT</code></button>
+      <button class="opt" type="button"><code>AS</code></button>
+    </div>
+    <div class="explain"><code>ORDER BY</code> bo'lmasa xato beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 15/20</h2>
+  <div class="quiz">
+    <p class="q"><code>NULL</code> nimani anglatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Nol</button>
+      <button class="opt" type="button" data-ok>Qiymat yo'q yoki noma'lum</button>
+      <button class="opt" type="button">Bo'sh matn</button>
+      <button class="opt" type="button"><code>FALSE</code></button>
+    </div>
+    <div class="explain"><code>NULL</code> na <code>0</code>, na <code>''</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 16/20</h2>
+  <div class="quiz">
+    <p class="q"><code>NULL</code> ni tekshirish uchun to'g'ri shart?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>= NULL</code></button>
+      <button class="opt" type="button"><code>== NULL</code></button>
+      <button class="opt" type="button"><code>LIKE NULL</code></button>
+      <button class="opt" type="button" data-ok><code>IS NULL</code></button>
+    </div>
+    <div class="explain"><code>= NULL</code> hech qachon <code>TRUE</code> bermaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 17/20</h2>
+  <div class="quiz">
+    <p class="q"><code>WHERE Telefon IS NOT NULL</code> kimni qoldiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Telefoni yo'qlarni</button>
+      <button class="opt" type="button">Hammasini</button>
+      <button class="opt" type="button">Hech kimni</button>
+      <button class="opt" type="button" data-ok>Telefoni kiritilganlarni</button>
+    </div>
+    <div class="explain">Qiymati bor qatorlar.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 18/20</h2>
+  <div class="quiz">
+    <p class="q"><code>5 + NULL</code> natijasi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>5</code></button>
+      <button class="opt" type="button"><code>0</code></button>
+      <button class="opt" type="button" data-ok><code>NULL</code></button>
+      <button class="opt" type="button">Xato</button>
+    </div>
+    <div class="explain">NULL qatnashgan arifmetika NULL beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 19/20</h2>
+  <div class="quiz">
+    <p class="q"><code>ISNULL(Telefon, N'Yo''q')</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>NULL</code> bo'lsa «Yo'q» beradi</button>
+      <button class="opt" type="button">Telefonni o'chiradi</button>
+      <button class="opt" type="button"><code>NULL</code> ni tekshirib qator o'chiradi</button>
+      <button class="opt" type="button">Matnni <code>NULL</code> qiladi</button>
+    </div>
+    <div class="explain"><code>ISNULL</code> NULL ni almashtiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 20/20</h2>
+  <div class="quiz">
+    <p class="q"><code>COALESCE(NULL, NULL, N'C')</code> natijasi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>NULL</code></button>
+      <button class="opt" type="button"><code>0</code></button>
+      <button class="opt" type="button">Xato</button>
+      <button class="opt" type="button" data-ok><code>C</code></button>
+    </div>
+    <div class="explain">Birinchi NULL bo'lmagan qiymat.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>20 dan 18+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>20 dan 12-17</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>11 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: 13–15-darslar materiallari</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

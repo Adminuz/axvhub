@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Axure RP: wireframe'dan interfeys sxemasigacha</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 6-dars: Balsamiq va Axure RP, asosiy UI komponentlar va dastlabki interfeys sxemalari -->
+
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Axure RP: wireframe'dan interfeys sxemasigacha</h1>
+  <p class="muted">Bugun Home_books sahifasining to'liq wireframe'ini yasaymiz</p>
+  <span class="badge">9-sinf</span><span class="badge">UX/UI dizayn</span><span class="badge">2-hafta · 6-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimani o'rganamiz?</h2>
+  <div class="cards four">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="pencil-ruler" data-anim="float"></i></div><h3>Axure RP</h3><p>Balsamiq bilan farqi</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="layout-panel-left" data-anim="pulse"></i></div><h3>Panellar</h3><p>Pages, Canvas, Widgets</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="palette" data-anim="draw"></i></div><h3>Grayscale</h3><p>Kulrang ierarxiya</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="image-up" data-anim="bounce"></i></div><h3>Eksport</h3><p>PNG/SVG va Figma</p></div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Takrorlash</h1>
+  <p>5-dars: wireframe va Balsamiq asoslari</p>
+</section>
+
+<section>
+  <h2>Tezkor takrorlash</h2>
+  <div class="quiz">
+    <p class="q">Balsamiq'da «X» bilan chizilgan to'rtburchak nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Xato joyni</button>
+      <button class="opt" type="button" data-ok>Rasm uchun ajratilgan o'rin</button>
+      <button class="opt" type="button">Yopish tugmasini</button>
+      <button class="opt" type="button">O'chirilgan blokni</button>
+    </div>
+    <div class="explain">To'g'ri: [X] rasm o'rni (placeholder). Wireframe'da haqiqiy rasm kerak emas.</div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Axure RP</h1>
+  <p>Professional prototiplash vositasi</p>
+</section>
+
+<section>
+  <h2>Balsamiq va Axure RP</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>Balsamiq</h3>Qalamaki, daftardagi eskiz uslubi. Dastlabki tezkor g'oyalar uchun: 5-10 daqiqa. Faqat oddiy havolalar. O'rganish 1 kun.</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>Axure RP</h3>Geometrik toza, professional karkas. To'liq va batafsil sxemalar. O'zgaruvchilar, formulalar, shartli o'tishlar.</div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Xususiyatlar jadvali</h2>
+  <table>
+    <tr><th>Xususiyat</th><th>Balsamiq</th><th>Axure RP</th></tr>
+    <tr><td>Asosiy uslub</td><td>Qalamaki eskiz</td><td>Geometrik, toza</td></tr>
+    <tr><td>Maqsad</td><td>Tezkor g'oya</td><td>Batafsil sxema</td></tr>
+    <tr><td>Mantiq</td><td>Oddiy havola</td><td>O'zgaruvchi, shart</td></tr>
+    <tr><td>Murakkablik</td><td>Juda sodda</td><td>Professional</td></tr>
+  </table>
+  
+</section>
+
+<section>
+  <h2>G'oyadan dizaynga yo'l</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+      <g data-tip="G'oya: qog'ozda yoki xayolda tug'iladi. Hali sxema yo'q."><rect class="fn" x="20" y="70" width="190" height="150" rx="20"/><text class="t-head" x="115" y="140" text-anchor="middle" font-size="28">G'oya</text><text class="t-muted" x="115" y="180" text-anchor="middle" font-size="22">qog'ozda</text></g>
+      <g class="fragment" data-tip="Balsamiq: 5-10 daqiqada qalamaki eskiz."><rect class="fb" x="270" y="70" width="190" height="150" rx="20"/><text class="t-head" x="365" y="140" text-anchor="middle" font-size="28">Balsamiq</text><text class="t-muted" x="365" y="180" text-anchor="middle" font-size="22">eskiz</text></g>
+      <g class="fragment" data-tip="Axure RP: aniq geometriya, sahifalar, interaktivlik."><rect class="fa pulse" x="520" y="70" width="190" height="150" rx="20"/><text class="t-head" x="615" y="140" text-anchor="middle" font-size="28">Axure RP</text><text class="t-muted" x="615" y="180" text-anchor="middle" font-size="22">to'liq sxema</text></g>
+      <g class="fragment" data-tip="Figma: wireframe ustiga rang, shrift va piktogramma chiziladi."><rect class="fc" x="770" y="70" width="190" height="150" rx="20"/><text class="t-head" x="865" y="140" text-anchor="middle" font-size="28">Figma</text><text class="t-muted" x="865" y="180" text-anchor="middle" font-size="22">UI dizayn</text></g>
+      <line class="ln flowing" x1="215" y1="145" x2="258" y2="145"/><polygon class="ar-a" points="268,145 254,137 254,153"/>
+      <line class="ln flowing" x1="465" y1="145" x2="508" y2="145"/><polygon class="ar-a" points="518,145 504,137 504,153"/>
+      <line class="ln flowing" x1="715" y1="145" x2="758" y2="145"/><polygon class="ar-a" points="768,145 754,137 754,153"/>
+      <text class="t-accent" x="615" y="270" text-anchor="middle" font-size="24">bugun shu yerdamiz</text>
+    </svg>
+  </div>
+  <p class="small">Qutilar ustiga bosing: izoh chiqadi.</p>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Axure RP interfeysi</h1>
+  <p>Panellar, sahifalar va komponentlar</p>
+</section>
+
+<section>
+  <h2>Ish maydoni: to'rtta hudud</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 400">
+      <g data-tip="Pages: loyihaning barcha sahifalari daraxt ko'rinishida. Home_books, Search_results, Profile."><rect class="fa" x="20" y="20" width="200" height="360" rx="18"/><text class="t-head" x="120" y="180" text-anchor="middle" font-size="28">Pages</text><text class="t-muted" x="120" y="220" text-anchor="middle" font-size="22">sahifalar</text></g>
+      <g data-tip="Canvas: markaziy ish maydoni, pikselli setka (grid) bilan."><rect class="fn" x="240" y="20" width="520" height="260" rx="18"/><text class="t-head" x="500" y="140" text-anchor="middle" font-size="28">Canvas</text><text class="t-muted" x="500" y="180" text-anchor="middle" font-size="22">ish maydoni (grid)</text></g>
+      <g data-tip="Widgets Library: Rectangle, Text, Droplist, Checkbox, Radio."><rect class="fc" x="780" y="20" width="200" height="360" rx="18"/><text class="t-head" x="880" y="180" text-anchor="middle" font-size="28">Widgets</text><text class="t-muted" x="880" y="220" text-anchor="middle" font-size="22">komponentlar</text></g>
+      <g data-tip="Interactions: element bosilganda qayerga o'tish, animatsiya va holatlar."><rect class="fb" x="240" y="300" width="520" height="80" rx="18"/><text class="t-head" x="500" y="352" text-anchor="middle" font-size="28">Interactions</text></g>
+    </svg>
+  </div>
+  <p class="small">Har hududni bosing yoki ustiga olib boring.</p>
+  
+</section>
+
+<section>
+  <h2>Panellar: qadam-baqadam</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="folder-tree" data-anim="float"></i></div><h3>1. Pages</h3><p>Barcha sahifalar daraxt ko'rinishida. Ularni tartibli nomlash shart.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="layout-grid" data-anim="pulse"></i></div><h3>2. Canvas</h3><p>Markaziy hudud, pikselli setka bilan jihozlangan.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="component" data-anim="wiggle"></i></div><h3>3. Widgets Library</h3><p>Rectangle, Text, Droplist, Checkbox, Radio: tayyor g'ishtlar.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="mouse-pointer-click" data-anim="bounce"></i></div><h3>4. Interactions</h3><p>Bosilganda qayerga o'tish, animatsiya va dinamik holatlar.</p></div></div>
+  </div>
+  
+</section>
+
+<section>
+  <section>
+    <h2>Sahifalarni nomlash</h2>
+    <ul>
+      <li class="fragment"><code>Home_books</code>: bosh sahifa</li>
+      <li class="fragment"><code>Search_results</code>: qidiruv natijalari</li>
+      <li class="fragment"><code>Book_details</code>: kitob tafsiloti</li>
+      <li class="fragment"><code>Profile</code>: foydalanuvchi profili</li>
+    </ul>
+    <p class="small">Pastga bosing: nega nomlash muhim? ↓</p>
+    
+  </section>
+  <section>
+    <h2>Nega tartibli nom kerak?</h2>
+    <div class="cards three">
+      <div class="card fragment fade-up"><div class="icon"><i data-ic="search"></i></div><h3>Topish oson</h3><p>20 sahifa ichidan kerakligi darrov topiladi.</p></div>
+      <div class="card fragment fade-up"><div class="icon"><i data-ic="share-2"></i></div><h3>Jamoa tushunadi</h3><p>Boshqa dizayner va dasturchi nomdan mazmunni biladi.</p></div>
+      <div class="card fragment fade-up"><div class="icon"><i data-ic="link"></i></div><h3>Navigatsiya</h3><p>Havolalarni to'g'ri sahifaga ulash osonlashadi.</p></div>
+    </div>
+  </section>
+  <section>
+    <h2>Interactions: bosilganda o'tish</h2>
+    <div class="flow">
+      <div class="step"><span class="icon"><i data-ic="mouse-pointer-click"></i></span>Kartani tanlang</div>
+      <div class="arrow"><i data-ic="arrow-right"></i></div>
+      <div class="step"><span class="icon"><i data-ic="sliders-horizontal"></i></span>Click or Tap</div>
+      <div class="arrow"><i data-ic="arrow-right"></i></div>
+      <div class="step"><span class="icon"><i data-ic="link"></i></span>Open Link</div>
+      <div class="arrow"><i data-ic="arrow-right"></i></div>
+      <div class="step"><span class="icon"><i data-ic="file-text"></i></span>Book_details</div>
+    </div>
+    
+  </section>
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Komponentlar</h1>
+  <p>Interfeys g'ishtlari va ularning ierarxiyasi</p>
+</section>
+
+<section>
+  <h2>Asosiy vidjetlar: bosing</h2>
+  <div class="cards three">
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face"><div class="icon"><i data-ic="square" data-anim="float"></i></div><h3>Rectangle</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Asosiy g'isht: banner, karta, sarlavha qutisi, tugma.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face"><div class="icon"><i data-ic="type"></i></div><h3>Text</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Sarlavha (Heading) va tavsif matnlari.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face"><div class="icon"><i data-ic="list-checks"></i></div><h3>Droplist, Checkbox, Radio</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Formalar uchun vidjetlar: tanlash va belgilash.</p></div>
+    </div></div>
+  </div>
+  
+</section>
+
+<section data-auto-animate>
+  <h2>Bitta Rectangle</h2>
+  <div class="card" data-id="blok" style="width:30%"><h3>Header</h3></div>
+  
+</section>
+<section data-auto-animate>
+  <h2>Bitta Rectangle</h2>
+  <div class="card accent" data-id="blok" style="width:100%"><h3>Header</h3><p>Logo uchun to'rtburchak va 4 ta matnli menyu havolasi: hammasi Rectangle va Text'dan.</p></div>
+</section>
+
+<section>
+  <h2>Home_books: sahifa sxemasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 420">
+      <rect class="fn" x="30" y="8" width="940" height="404" rx="16"/>
+      <g class="fragment"><rect class="fa" x="50" y="24" width="900" height="64" rx="12"/><rect class="fn" x="64" y="36" width="90" height="40" rx="8"/><text class="t-head" x="109" y="64" text-anchor="middle" font-size="22">Logo</text><text x="420" y="65" text-anchor="middle" font-size="22">Bosh</text><text x="560" y="65" text-anchor="middle" font-size="22">Qidiruv</text><text x="710" y="65" text-anchor="middle" font-size="22">Kitoblar</text><text x="860" y="65" text-anchor="middle" font-size="22">Profil</text></g>
+      <g class="fragment"><rect class="fb" x="50" y="102" width="900" height="150" rx="12"/><text class="t-head" x="70" y="150" font-size="26">Kitoblar olamiga xush kelibsiz</text><rect class="fc" x="70" y="184" width="150" height="44" rx="10"/><text class="t-head" x="145" y="214" text-anchor="middle" font-size="22">Batafsil</text><rect class="fn" x="720" y="116" width="210" height="122" rx="10"/><line class="ln" x1="720" y1="116" x2="930" y2="238"/><line class="ln" x1="930" y1="116" x2="720" y2="238"/></g>
+      <text class="t-muted" x="50" y="282" font-size="22">Tavsiya etilgan kitoblar</text>
+      <g class="fragment"><rect class="fn" x="50" y="298" width="280" height="96" rx="12"/><text class="t-head" x="190" y="354" text-anchor="middle" font-size="22">Kitob 1</text></g>
+      <g class="fragment"><rect class="fn" x="360" y="298" width="280" height="96" rx="12"/><text class="t-head" x="500" y="354" text-anchor="middle" font-size="22">Kitob 2</text></g>
+      <g class="fragment"><rect class="fn" x="670" y="298" width="280" height="96" rx="12"/><text class="t-head" x="810" y="354" text-anchor="middle" font-size="22">Kitob 3</text></g>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <section>
+    <h2>Blok o'lchamlari</h2>
+    <div class="stats">
+      <div class="stat fragment"><div class="v"><span class="count" data-to="70" data-suf=" px">0</span></div><div class="l">Header balandligi</div></div>
+      <div class="stat fragment"><div class="v"><span class="count" data-to="250" data-suf=" px">0</span></div><div class="l">Banner balandligi</div></div>
+      <div class="stat fragment"><div class="v"><span class="count" data-to="24" data-suf=" px">0</span></div><div class="l">Kartalar orasi (gap)</div></div>
+    </div>
+    <p class="small mt">Pastga bosing: shu sahifa telefonda qanday ko'rinadi? ↓</p>
+    
+  </section>
+  <section>
+    <h2>Mobil ko'rinish</h2>
+    <div class="cols">
+      <div class="phone"><div class="scr-bar"></div><p>Home_books</p><p>Kitoblar olamiga xush kelibsiz</p><span class="scr-btn">Batafsil</span><p>Kitob 1</p><p>Kitob 2</p></div>
+      <ul>
+        <li>Kartalar bir ustunga tushadi</li>
+        <li>Menyu bitta tugmaga yig'iladi</li>
+        <li>Banner qisqaradi</li>
+      </ul>
+    </div>
+    
+  </section>
+</section>
+
+<section class="sec">
+  <div class="num">05</div>
+  <h1>Kulranglar ierarxiyasi</h1>
+  <p>Rangsiz ham muhimlikni ko'rsatish</p>
+</section>
+
+<section>
+  <h2>Grayscale: 4 ta ton</h2>
+  <div class="swatches">
+    <div class="sw fragment" style="background:var(--text);color:var(--bg)">1-ton<br>sarlavha, tugma</div>
+    <div class="sw fragment" style="background:var(--muted);color:#fff">2-ton<br>ikkilamchi matn</div>
+    <div class="sw fragment" style="background:var(--line);color:var(--text)">3-ton<br>fon bloklari</div>
+    <div class="sw fragment" style="background:var(--bg2);color:var(--text)">4-ton<br>sahifa foni</div>
+  </div>
+  <div class="callout tip"><i data-ic="lightbulb" data-anim="blink"></i>Ko'z avval eng to'q (kontrastli) elementga qaraydi: Visual Weight.</div>
+  
+</section>
+
+<section>
+  <h2>Oldin va keyin</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">Hammasi bir xil</button><button type="button">Ierarxiya bilan</button></div>
+    <div class="swap-p"><div class="card"><h3>Bir xil kulrang</h3><p>Sarlavha, tugma va matn bir xil ko'rinadi. Qaysi biri muhim: aniq emas.</p></div></div>
+    <div class="swap-p"><div class="card accent"><h3>3-4 xil ton</h3><p>Sarlavha va tugma to'q, matn o'rtacha, fon och. Muhimi bir qarashda ko'rinadi.</p></div></div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Eksport va Figmaga yo'l</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+      <g data-tip="Ssenariy: foydalanuvchi ehtiyoji va maqsadi."><rect class="fn" x="20" y="80" width="150" height="120" rx="18"/><text class="t-head" x="95" y="135" text-anchor="middle" font-size="24">Ssenariy</text><text class="t-muted" x="95" y="172" text-anchor="middle" font-size="22">ehtiyoj</text></g>
+      <g data-tip="User Flow: foydalanuvchi bosib o'tadigan yo'l."><rect class="fn" x="222" y="80" width="150" height="120" rx="18"/><text class="t-head" x="297" y="135" text-anchor="middle" font-size="24">User Flow</text><text class="t-muted" x="297" y="172" text-anchor="middle" font-size="22">yo'l</text></g>
+      <g data-tip="Wireframe: Axure RP yoki Balsamiq'da. File, Export to Image: PNG yoki SVG."><rect class="fa pulse" x="425" y="80" width="150" height="120" rx="18"/><text class="t-head" x="500" y="135" text-anchor="middle" font-size="24">Wireframe</text><text class="t-muted" x="500" y="172" text-anchor="middle" font-size="22">Axure RP</text></g>
+      <g class="fragment" data-tip="UI dizayn: Figmaga PNG tashlanadi, qulflanadi, ustiga rang va shrift chiziladi."><rect class="fc" x="627" y="80" width="150" height="120" rx="18"/><text class="t-head" x="702" y="135" text-anchor="middle" font-size="24">UI dizayn</text><text class="t-muted" x="702" y="172" text-anchor="middle" font-size="22">Figma</text></g>
+      <g class="fragment" data-tip="Front-end kod: HTML va CSS."><rect class="fg" x="830" y="80" width="150" height="120" rx="18"/><text class="t-head" x="905" y="135" text-anchor="middle" font-size="24">Kod</text><text class="t-muted" x="905" y="172" text-anchor="middle" font-size="22">HTML/CSS</text></g>
+      <line class="ln flowing" x1="175" y1="140" x2="212" y2="140"/><polygon class="ar-a" points="220,140 208,133 208,147"/>
+      <line class="ln flowing" x1="377" y1="140" x2="415" y2="140"/><polygon class="ar-a" points="423,140 411,133 411,147"/>
+      <line class="la flowing" x1="580" y1="140" x2="617" y2="140"/><polygon class="ar-a" points="625,140 613,133 613,147"/>
+      <line class="la flowing" x1="782" y1="140" x2="820" y2="140"/><polygon class="ar-a" points="828,140 816,133 816,147"/>
+      <text class="t-accent" x="500" y="255" text-anchor="middle" font-size="24">Bugun shu yerda: eksport</text>
+    </svg>
+  </div>
+  <p class="small">Qutilarni bosing: har bosqich izohi chiqadi.</p>
+  
+</section>
+
+<section>
+  <h2>Eksport: 3 qadam</h2>
+  <ol class="steps-n">
+    <li class="fragment">File, Export to Image: PNG yoki SVG</li>
+    <li class="fragment">PNG'ni Figmaga sudrab tashlang (drag-and-drop)</li>
+    <li class="fragment">Rasmni qulflang (Lock), ustidan UI dizayn chizing</li>
+  </ol>
+  <div class="callout"><i data-ic="download" data-anim="bounce"></i>Axure RP'da: Publish, Export Pages to Images.</div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">06</div>
+  <h1>Amaliyot</h1>
+  <p>Wireframe yasaymiz</p>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Home_books: Header (logo + 4 havola) va banner (sarlavha, Batafsil tugmasi, rasm o'rni [X])</div>
+  <div class="task"><span class="level mid">O'rta</span>Tavsiya etilgan kitoblar: 3 ta bir xil karta, orasi 24 px, 3-4 ta kulrang ton</div>
+  <div class="task"><span class="level hard">Qiyin</span>Karta bosilganda Book_details sahifasiga o'tish (Click, Open Link), so'ng PNG eksport</div>
+  
+</section>
+
+<section>
+  <h2>Tezkor nazorat</h2>
+  <div class="quiz">
+    <p class="q">Kulranglar ierarxiyasi (Grayscale) nima uchun kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Sahifani chiroyli bo'yash uchun</button>
+      <button class="opt" type="button" data-ok>Ranglarsiz ham qaysi blok muhimroqligini ko'rsatish uchun</button>
+      <button class="opt" type="button">Faylni kichraytirish uchun</button>
+      <button class="opt" type="button">Matnni yashirish uchun</button>
+    </div>
+    <div class="explain">To'g'ri: kulrang tonlar muhimlikni rangsiz ham bir qarashda ko'rsatadi.</div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Xulosa</h2>
+  <div class="cards three">
+    <div class="card"><div class="icon"><i data-ic="circle-check"></i></div><h3>Bugun o'rgandik</h3><p>Axure RP va Balsamiq farqi, panellar, nomlash, Grayscale, eksport</p></div>
+    <div class="card"><div class="icon"><i data-ic="book-open"></i></div><h3>Uyga vazifa</h3><p>Home_books wireframe'ini tugatib, PNG qilib saqlash</p></div>
+    <div class="card"><div class="icon"><i data-ic="rocket" data-anim="float"></i></div><h3>3-hafta</h3><p>Murakkab komponentlar va interaktiv prototiplash</p></div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

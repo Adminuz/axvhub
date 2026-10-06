@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Ikonka, Tugma va Navigatsiya Dizayni</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 9-dars: Ikonka, tugma va navigatsiya elementlarini dizayni (UI Kit) -->
+
+<!-- 1. SARLAVHA -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Ikonka, Tugma va Navigatsiya Dizayni</h1>
+  <p class="muted">UI Kit asoslari, tugmalar ierarxiyasi, 5 ta holat va navigatsiya arxitekturasi</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced UX/UI</span><span class="badge">3-hafta · 9-dars</span>
+</section>
+
+<!-- 2. BUGUN NIMANI O'RGANAMIZ? -->
+<section>
+  <h2>Bugun nimani o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="mouse-pointer-click" data-anim="bounce"></i></div>
+      <h3>Tugmalar ierarxiyasi</h3>
+      <p>Primary, Secondary, Ghost, FAB va maxsus tugmalar vazifasi</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="toggle-right" data-anim="pulse"></i></div>
+      <h3>5 ta holat & 44px</h3>
+      <p>Enabled, Hover, Focus, Active, Disabled va mobil touch target me'yori</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="component" data-anim="float"></i></div>
+      <h3>Ikonkalar & UI Kit</h3>
+      <p>Universal ramzlar, navigatsiya bloklari va Figma Auto Layout komponentlari</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. BO'LIM 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Tugmalar va Vizual Ierarxiya</h1>
+  <p>Foydalanuvchi diqqatini harakatga (Call to Action — CTA) yo'naltirish</p>
+</section>
+
+<!-- 4. TUGMANING INTERFEYSDAGI ROLI -->
+<section>
+  <h2>Tugma — harakatga undovchi vosita</h2>
+  <div class="quote">
+    «Tugma — interfeysdagi eng faol komponent. U foydalanuvchining niyatini natijaga aylantiradi.»
+  </div>
+  <div class="cards two mt">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="zap" data-anim="pulse"></i></div>
+      <h3>Call to Action (CTA)</h3>
+      <p>Har bir ekranda foydalanuvchi amalga oshirishi kerak bo'lgan asosiy maqsad aniq ko'rinishi shart.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>Vizual vazn va tartib</h3>
+      <p>Barcha amallar bir xil bo'lmaydi: to'lash, bekor qilish va hisobni o'chirish turli vizual kuchga ega bo'lishi kerak.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. ASOSIY TUGMA TURLARI -->
+<section>
+  <h2>Asosiy tugmalar ierarxiyasi</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Primary Button</h3>
+      <p class="t-accent">Birlamchi tugma</p>
+      <p>Ekrandagi eng muhim amal (To'lov qilish, Ro'yxatdan o'tish). To'liq yorqin fon, yuqori kontrast. Odatda ekranda 1 ta bo'ladi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="toggle-left"></i></div>
+      <h3>Secondary Button</h3>
+      <p class="t-muted">Ikkilamchi tugma</p>
+      <p>Zarur, ammo yordamchi amallar (Bekor qilish, Qoralama saqlash). Konturli (outline) yoki och neytral fonli ko'rinish.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="pointer"></i></div>
+      <h3>Tertiary / Ghost</h3>
+      <p class="t-muted">Uchinchi darajali</p>
+      <p>Eng kam diqqat talab qiluvchi amallar (Parolni tiklash, Tafsilotlar). Fonsiz, faqat matn yoki havola ko'rinishida.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6. ILLYUSTRATSIYA 1: TUGMALAR IERARXIYASI (SVG) -->
+<section>
+  <h2>Tugmalar ierarxiyasining vizual kuchi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <!-- Orqa fon paneli -->
+      <rect x="40" y="30" width="880" height="420" rx="20" class="fa" />
+      <rect x="40" y="30" width="880" height="420" rx="20" class="la" fill="none" stroke-width="2" />
+      
+      <!-- Primary Card -->
+      <g transform="translate(80, 80)">
+        <rect x="0" y="0" width="240" height="320" rx="16" class="fb" />
+        <rect x="0" y="0" width="240" height="320" rx="16" class="lb" fill="none" stroke-width="1.5" />
+        <text x="120" y="45" text-anchor="middle" class="t-head" font-size="18" font-weight="700">PRIMARY</text>
+        <text x="120" y="70" text-anchor="middle" class="t-accent" font-size="13">Birlamchi (Eng muhim)</text>
+        
+        <!-- Tugma namunasi -->
+        <rect x="25" y="120" width="190" height="52" rx="10" class="fg" />
+        <text x="120" y="152" text-anchor="middle" class="fn" font-size="15" font-weight="600">Davom etish</text>
+        
+        <!-- Izoh -->
+        <text x="120" y="220" text-anchor="middle" class="t-muted" font-size="13">To'liq yorqin fon</text>
+        <text x="120" y="245" text-anchor="middle" class="t-muted" font-size="13">Eng yuqori kontrast</text>
+        <text x="120" y="270" text-anchor="middle" class="t-muted" font-size="13">1 ekranda 1 ta CTA</text>
+      </g>
+      
+      <!-- Secondary Card -->
+      <g transform="translate(360, 80)">
+        <rect x="0" y="0" width="240" height="320" rx="16" class="fb" />
+        <rect x="0" y="0" width="240" height="320" rx="16" class="lb" fill="none" stroke-width="1.5" />
+        <text x="120" y="45" text-anchor="middle" class="t-head" font-size="18" font-weight="700">SECONDARY</text>
+        <text x="120" y="70" text-anchor="middle" class="t-muted" font-size="13">Ikkilamchi (Yordamchi)</text>
+        
+        <!-- Tugma namunasi -->
+        <rect x="25" y="120" width="190" height="52" rx="10" class="fa" />
+        <rect x="25" y="120" width="190" height="52" rx="10" class="la" fill="none" stroke-width="2" />
+        <text x="120" y="152" text-anchor="middle" class="t-head" font-size="15" font-weight="600">Bekor qilish</text>
+        
+        <!-- Izoh -->
+        <text x="120" y="220" text-anchor="middle" class="t-muted" font-size="13">Konturli yoki neytral</text>
+        <text x="120" y="245" text-anchor="middle" class="t-muted" font-size="13">Birlamchi tugmaga fon</text>
+        <text x="120" y="270" text-anchor="middle" class="t-muted" font-size="13">Bir nechta bo'lishi mumkin</text>
+      </g>
+      
+      <!-- Tertiary Card -->
+      <g transform="translate(640, 80)">
+        <rect x="0" y="0" width="240" height="320" rx="16" class="fb" />
+        <rect x="0" y="0" width="240" height="320" rx="16" class="lb" fill="none" stroke-width="1.5" />
+        <text x="120" y="45" text-anchor="middle" class="t-head" font-size="18" font-weight="700">TERTIARY / GHOST</text>
+        <text x="120" y="70" text-anchor="middle" class="t-muted" font-size="13">Uchinchi darajali</text>
+        
+        <!-- Tugma namunasi -->
+        <rect x="25" y="120" width="190" height="52" rx="10" fill="transparent" />
+        <text x="120" y="152" text-anchor="middle" class="t-accent" font-size="15" font-weight="500">Parolni unutdingizmi?</text>
+        
+        <!-- Izoh -->
+        <text x="120" y="220" text-anchor="middle" class="t-muted" font-size="13">Fonsiz yoki havola</text>
+        <text x="120" y="245" text-anchor="middle" class="t-muted" font-size="13">Minimal vizual yuk</text>
+        <text x="120" y="270" text-anchor="middle" class="t-muted" font-size="13">Qo'shimcha ma'lumotlar</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 7. QO'SHIMCHA TUGMA TURLARI -->
+<section>
+  <h2>Qo'shimcha va maxsus tugmalar</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>FAB (Floating Action)</h3>
+      <p>Asosan mobilda qo'llanadi. Doira shaklida, soyali bo'lib ekranning pastki qismida suzib turadi (masalan, yangi xat yozish).</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="search"></i></div>
+      <h3>Ikona tugma (Icon Button)</h3>
+      <p>Joy tejash uchun faqat piktogramma ko'rinishida bo'ladi (qidiruv, savat, bildirishnoma). Bounding box orqali teginish maydoni kengaytiriladi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="arrow-right"></i></div>
+      <h3>Havola tugma (Link)</h3>
+      <p>Matnli giperhavola ko'rinishida bo'lib, foydalanuvchini boshqa sahifaga yoki resursga ravon yo'naltiradi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8. TUGMA ANATOMIYASI VA YORLIQ -->
+<section>
+  <h2>Tugma yorlig'i (Label) qoidalari</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="check"></i></div>
+      <h3>To'g'ri amaliyot</h3>
+      <p><strong>Aniq fe'l bilan boshlash:</strong> "To'lov qilish", "Saqlash", "Yuklab olish".</p>
+      <p><strong>Qisqalik va laconizm:</strong> 1-3 ta so'zdan oshmasin.</p>
+      <p><strong>Shrift qoidasi:</strong> 14–18px, Medium yoki Semibold.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="x"></i></div>
+      <h3>Qo'pol xatolar</h3>
+      <p><strong>Noaniq so'zlar:</strong> "Bu yerga bosing", "Davom etish mumkin".</p>
+      <p><strong>Uzun gaplar:</strong> Tugma ichiga to'liq gap yoki shartlarni yozish.</p>
+      <p><strong>Nomuvofiqlik:</strong> Bitta platformada bir sahifada "Yuborish", boshqa sahifada "Jo'natish" deyish.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9. BO'LIM 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Tugma Holatlari va Ergonomika</h1>
+  <p>5 ta interaktiv holat, Accessibility va 44px teginish me'yori</p>
+</section>
+
+<!-- 10. ILLYUSTRATSIYA 2: 5 TA TUGMA HOLATI (SVG) -->
+<section>
+  <h2>Tugmaning 5 ta holati (Button States)</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="30" width="880" height="420" rx="20" class="fa" />
+      <rect x="40" y="30" width="880" height="420" rx="20" class="la" fill="none" stroke-width="2" />
+      
+      <!-- 1. Enabled -->
+      <g transform="translate(80, 80)">
+        <text x="0" y="30" class="t-head" font-size="16" font-weight="700">1. Enabled (Default)</text>
+        <text x="0" y="55" class="t-muted" font-size="12">Odatiy bosishga tayyor holat</text>
+        <rect x="420" y="10" width="180" height="48" rx="8" class="fg" />
+        <text x="510" y="40" text-anchor="middle" class="fn" font-size="14" font-weight="600">Tasdiqlash</text>
+      </g>
+      
+      <!-- 2. Hover -->
+      <g transform="translate(80, 150)">
+        <text x="0" y="30" class="t-head" font-size="16" font-weight="700">2. Hover</text>
+        <text x="0" y="55" class="t-muted" font-size="12">Kursor ustiga keltirilganda (to'qroq)</text>
+        <rect x="420" y="10" width="180" height="48" rx="8" class="fg" opacity="0.85" />
+        <circle cx="620" cy="34" r="8" class="fn" opacity="0.6" />
+        <text x="510" y="40" text-anchor="middle" class="fn" font-size="14" font-weight="600">Tasdiqlash</text>
+      </g>
+      
+      <!-- 3. Focus -->
+      <g transform="translate(80, 220)">
+        <text x="0" y="30" class="t-head" font-size="16" font-weight="700">3. Focus (Accessibility)</text>
+        <text x="0" y="55" class="t-muted" font-size="12">Tab klaviaturasi bilan tanlanganda halqa</text>
+        <!-- Tashqi halqa -->
+        <rect x="416" y="6" width="188" height="56" rx="12" class="la" fill="none" stroke-width="3" stroke-dasharray="4 2" />
+        <rect x="420" y="10" width="180" height="48" rx="8" class="fg" />
+        <text x="510" y="40" text-anchor="middle" class="fn" font-size="14" font-weight="600">Tasdiqlash</text>
+      </g>
+      
+      <!-- 4. Active -->
+      <g transform="translate(80, 290)">
+        <text x="0" y="30" class="t-head" font-size="16" font-weight="700">4. Active (Pressed)</text>
+        <text x="0" y="55" class="t-muted" font-size="12">Bosilgan lahzadagi reaksiyasi</text>
+        <rect x="424" y="13" width="172" height="44" rx="8" class="fg" />
+        <text x="510" y="40" text-anchor="middle" class="fn" font-size="14" font-weight="600">Tasdiqlash</text>
+      </g>
+      
+      <!-- 5. Disabled -->
+      <g transform="translate(80, 360)">
+        <text x="0" y="30" class="t-head" font-size="16" font-weight="700">5. Disabled</text>
+        <text x="0" y="55" class="t-muted" font-size="12">Faol emas (bosish taqiqlangan)</text>
+        <rect x="420" y="10" width="180" height="48" rx="8" class="fb" />
+        <rect x="420" y="10" width="180" height="48" rx="8" class="lb" fill="none" stroke-width="1" />
+        <text x="510" y="40" text-anchor="middle" class="t-muted" font-size="14" font-weight="600">Tasdiqlash</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 11. ACCESSIBILITY VA KONTRAST TALABI -->
+<section>
+  <h2>Kontrast va qulaylik (Accessibility)</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shield-check" data-anim="pulse"></i></div>
+      <h3>4.5 : 1 Kontrast nisbati</h3>
+      <p>WCAG AA standartiga ko'ra, tugma matni va uning foni o'rtasidagi kontrast kamida 4.5:1 bo'lishi shart.</p>
+      <p class="t-muted">Figma uchun Stark yoki Contrast Checker plaginlari buni avtomatik tekshirib beradi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="eye"></i></div>
+      <h3>Fokus va ko'zga tashlanish</h3>
+      <p>Sichqonchasiz foydalanuvchilar (Tab tugmasi orqali yuruvchilar) tugma qayerdaligini doimo aniq ko'rishlari kerak.</p>
+      <p class="t-muted">Focus holatidagi kontur hech qachon yashirib qo'yilmasligi lozim.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 12. ILLYUSTRATSIYA 3: 44PX TOUCH TARGET (SVG) -->
+<section>
+  <h2>Mobil interfeyslarda 44px qoidasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="30" width="880" height="420" rx="20" class="fa" />
+      <rect x="40" y="30" width="880" height="420" rx="20" class="la" fill="none" stroke-width="2" />
+      
+      <!-- Noto'g'ri: 24px tugma -->
+      <g transform="translate(100, 80)">
+        <rect x="0" y="0" width="340" height="320" rx="16" class="fb" />
+        <rect x="0" y="0" width="340" height="320" rx="16" class="lb" fill="none" stroke-width="1.5" />
+        <text x="170" y="45" text-anchor="middle" class="t-head" font-size="18" font-weight="700">KICHIK TUGMA (24px)</text>
+        <text x="170" y="70" text-anchor="middle" class="t-muted" font-size="13">Qo'pol ergonomik xato</text>
+        
+        <!-- Tugma -->
+        <rect x="95" y="130" width="150" height="24" rx="4" class="fg" />
+        <text x="170" y="147" text-anchor="middle" class="fn" font-size="11">Yuborish</text>
+        
+        <!-- Barmoq bosish hududi (katta doira) -->
+        <circle cx="170" cy="142" r="44" class="la" fill="none" stroke-width="2" stroke-dasharray="6 3" opacity="0.6" />
+        <text x="170" y="240" text-anchor="middle" class="t-muted" font-size="13">Barmoq o'lchami: ~44px</text>
+        <text x="170" y="265" text-anchor="middle" class="t-accent" font-size="13">Xato bosish ehtimoli 80%</text>
+      </g>
+      
+      <!-- To'g'ri: 48px tugma -->
+      <g transform="translate(520, 80)">
+        <rect x="0" y="0" width="340" height="320" rx="16" class="fb" />
+        <rect x="0" y="0" width="340" height="320" rx="16" class="lb" fill="none" stroke-width="1.5" />
+        <text x="170" y="45" text-anchor="middle" class="t-head" font-size="18" font-weight="700">STANDART TUGMA (48px)</text>
+        <text x="170" y="70" text-anchor="middle" class="t-accent" font-size="13">Apple va Google standarti</text>
+        
+        <!-- Tugma -->
+        <rect x="70" y="120" width="200" height="48" rx="10" class="fg" />
+        <text x="170" y="150" text-anchor="middle" class="fn" font-size="15" font-weight="600">Yuborish</text>
+        
+        <!-- Barmoq bosish hududi -->
+        <circle cx="170" cy="144" r="44" class="la" fill="none" stroke-width="2" opacity="0.8" />
+        <text x="170" y="240" text-anchor="middle" class="t-muted" font-size="13">To'liq touch target qamrovi</text>
+        <text x="170" y="265" text-anchor="middle" class="t-accent" font-size="13">Ergonomik va qulay</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 13. STEPPER: FIGMA AUTO LAYOUT TUGMA -->
+<section>
+  <h2>Figmada Auto Layout tugma yaratish</h2>
+  <div class="stepper">
+    <div class="step fragment">
+      <div class="num">1</div>
+      <h3>Matn yozish</h3>
+      <p><code>T</code> tugmasini bosib matn kiriting (masalan, "Saqlash"). Shrift: Inter/Roboto, 16px, Semibold.</p>
+    </div>
+    <div class="step fragment">
+      <div class="num">2</div>
+      <h3>Auto Layout</h3>
+      <p>Matnni tanlab <code>Shift + A</code> bosing. Freym avtomatik ravishda moslashuvchan konteynerga aylanadi.</p>
+    </div>
+    <div class="step fragment">
+      <div class="num">3</div>
+      <h3>Padding & Radius</h3>
+      <p>Yon padding: 24px, balandlik bo'yicha: 12px, burchak radiusi: 8px qilib o'rnating.</p>
+    </div>
+    <div class="step fragment">
+      <div class="num">4</div>
+      <h3>Variants</h3>
+      <p>Komponentga aylantiring va Variantlar orqali Hover, Focus, Disabled holatlarini shakllantiring.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 14. BO'LIM 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Ikonkalar va Navigatsiya Bloklari</h1>
+  <p>Universal vizual metaforalar va sayt tuzilmasini boshqarish</p>
+</section>
+
+<!-- 15. IKONKALAR QOIDALARI -->
+<section>
+  <h2>Ikonkalar bilan ishlash qoidalari</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="search"></i></div>
+      <h3>Tanish metaforalar</h3>
+      <p>Qidiruv uchun lupa, xarid uchun savat, sozlamalar uchun tishli g'ildirak. Odamlar tanigan belgilardan foydalaning.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-question-mark"></i></div>
+      <h3>Yangi belgi yaratmang</h3>
+      <p>Noaniq va noodatiy ikonka foydalanuvchini chalg'itadi. Ikonka vazifasi — so'zsiz tezkor tushunishni ta'minlashdir.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="file-text"></i></div>
+      <h3>Matn bilan quvvatlang</h3>
+      <p>Imkon boricha ikona yoniga qisqa matn qo'shing. Bu tushunmovchilikni 90% ga kamaytiradi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 16. ASOSIY NAVIGATSIYA BLOKLARI -->
+<section>
+  <h2>Asosiy navigatsiya bloklari</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="layout-template"></i></div>
+      <h3>Header & Gorizontal menyu</h3>
+      <p>Sahifaning yuqori qismida joylashadi: chapda logotip (bosh sahifaga qaytaradi), o'rtada bo'limlar havolalari, o'ngda qidiruv va profil.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="smartphone"></i></div>
+      <h3>Bottom Navigation (Pastki tab-bar)</h3>
+      <p>Mobil ilovalarda bir qo'l bilan boshqarish uchun pastki qismda 3–5 ta eng muhim tugmani jamlovchi navigatsiya paneli.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 17. ILLYUSTRATSIYA 4: NAVIGATSIYA ARXITEKTURASI (SVG) -->
+<section>
+  <h2>Navigatsiya arxitekturasi: Desktop vs Mobil</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="30" width="880" height="420" rx="20" class="fa" />
+      <rect x="40" y="30" width="880" height="420" rx="20" class="la" fill="none" stroke-width="2" />
+      
+      <!-- Desktop Maketi -->
+      <g transform="translate(80, 70)">
+        <rect x="0" y="0" width="460" height="340" rx="12" class="fb" />
+        <rect x="0" y="0" width="460" height="340" rx="12" class="lb" fill="none" stroke-width="1.5" />
+        <text x="230" y="30" text-anchor="middle" class="t-head" font-size="15" font-weight="700">DESKTOP HEADER & BREADCRUMBS</text>
+        
+        <!-- Header bar -->
+        <rect x="15" y="45" width="430" height="45" rx="6" class="fa" />
+        <rect x="15" y="45" width="430" height="45" rx="6" class="la" fill="none" stroke-width="1" />
+        <!-- Logo -->
+        <rect x="30" y="57" width="60" height="20" rx="4" class="fg" />
+        <!-- Links -->
+        <line x1="120" y1="67" x2="160" y2="67" class="la" stroke-width="3" />
+        <line x1="180" y1="67" x2="220" y2="67" class="la" stroke-width="3" />
+        <line x1="240" y1="67" x2="280" y2="67" class="la" stroke-width="3" />
+        <!-- Search & Profile -->
+        <rect x="320" y="55" width="80" height="24" rx="12" class="fb" />
+        <circle cx="425" cy="67" r="10" class="fg" />
+        
+        <!-- Breadcrumbs -->
+        <text x="25" y="115" class="t-muted" font-size="12">Bosh sahifa  &gt;  Katalog  &gt;  Noutbuklar</text>
+        
+        <!-- Kontent skeleti -->
+        <rect x="25" y="135" width="130" height="180" rx="6" class="fa" />
+        <rect x="175" y="135" width="270" height="180" rx="6" class="fa" />
+      </g>
+      
+      <!-- Mobil Maketi -->
+      <g transform="translate(600, 70)">
+        <rect x="0" y="0" width="260" height="340" rx="24" class="fb" />
+        <rect x="0" y="0" width="260" height="340" rx="24" class="lb" fill="none" stroke-width="2" />
+        <text x="130" y="30" text-anchor="middle" class="t-head" font-size="15" font-weight="700">MOBIL BOTTOM BAR</text>
+        
+        <!-- Mobil Top Bar -->
+        <rect x="15" y="45" width="230" height="35" rx="6" class="fa" />
+        <circle cx="35" cy="62" r="8" class="fg" />
+        <line x1="215" y1="57" x2="235" y2="57" class="la" stroke-width="2" />
+        <line x1="215" y1="62" x2="235" y2="62" class="la" stroke-width="2" />
+        <line x1="215" y1="67" x2="235" y2="67" class="la" stroke-width="2" />
+        
+        <!-- Kontent skeleti -->
+        <rect x="20" y="95" width="220" height="180" rx="8" class="fa" />
+        
+        <!-- Bottom Tab Bar -->
+        <rect x="10" y="285" width="240" height="45" rx="12" class="fa" />
+        <rect x="10" y="285" width="240" height="45" rx="12" class="la" fill="none" stroke-width="1.5" />
+        <circle cx="45" cy="307" r="10" class="fg" />
+        <circle cx="100" cy="307" r="10" class="fb" />
+        <circle cx="160" cy="307" r="10" class="fb" />
+        <circle cx="215" cy="307" r="10" class="fb" />
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- 18. BO'LIM 4 -->
+<section class="sec">
+  <div class="num">04</div>
+  <h1>UI Kit va Dizayn Tizimi</h1>
+  <p>Komponentlar yordamida izchil, tezkor va xatosiz interfeys yaratish</p>
+</section>
+
+<!-- 19. UI KIT MOHIYATI -->
+<section>
+  <h2>UI Kit nima?</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="atom" data-anim="spin"></i></div>
+      <h3>Atomlar va komponentlar</h3>
+      <p>Ranglar, tipografiya, ikonalar, tugmalar va input maydonlarining yagona kutubxonasi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="boxes"></i></div>
+      <h3>Muntazam izchillik</h3>
+      <p>Barcha sahifalarda tugmalar, oraliqlar va shriftlar bir xil qoidada ishlatiladi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+      <h3>Bir zumda yangilanish</h3>
+      <p>Asosiy master komponent o'zgarganda loyihadagi barcha 100 ta sahifadagi tugmalar avtomatik yangilanadi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 20. FLIP KARTA: TAQQOSLASH -->
+<section>
+  <h2>Amaliy taqqoslash: Havaskor vs Professional</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="x"></i></div>
+      <h3>Tartibsiz dizayn (UI Kitsiz)</h3>
+      <p>Har xil o'lchamdagi tugmalar (28px, 35px, 51px).</p>
+      <p>Och sariq fonda oq matn (past kontrast).</p>
+      <p>Bitta ekranda 4 ta turli Primary tugma.</p>
+      <p>Tugma holatlari (Hover, Focus) unutilgan.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Professional dizayn (UI Kit bilan)</h3>
+      <p>Yagona 8pt panjara va 48px qulay o'lcham.</p>
+      <p>Kamida 4.5:1 kontrast (WCAG me'yori).</p>
+      <p>Aniq ierarxiya: 1 ta Primary, qolgani Secondary.</p>
+      <p>5 ta to'liq holat va qulay klaviatura fokusi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 21. QUIZ -->
+<section>
+  <h2>Tezkor bilim sinovi</h2>
+  <div class="quiz">
+    <div class="q">Mobil interfeyslarda tugmaning teginish maydoni (touch target) nega kamida 44px bo'lishi kerak?</div>
+    <div class="opts">
+      <div class="opt">Faqat chiroyli ko'rinish va katta matn sig'ishi uchun</div>
+      <div class="opt" data-ok>Inson barmog'i bilan adashmasdan va qo'shni elementlarga tegib ketmasdan qulay bosish uchun</div>
+      <div class="opt">Dasturchilar kod yozayotganda qiynalmasligi uchun</div>
+      <div class="opt">Figmada Auto Layout faqat 44px dan boshlab ishlagani uchun</div>
+    </div>
+  </div>
+</section>
+
+<!-- 22. AMALIY TOPSHIRIQ -->
+<section>
+  <h2>Amaliy laboratoriya mashg'uloti</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="component"></i></div>
+      <h3>Figma UI Kit yaratish</h3>
+      <p>1. Primary va Secondary tugmalarni Auto Layout bilan loyihalang;</p>
+      <p>2. Burchak radiusini 8px, ichki paddinglarni 24x12px qilib sozlang;</p>
+      <p>3. 5 ta holat (Enabled, Hover, Focus, Active, Disabled) variantlarini birlashtiring.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="layout-grid"></i></div>
+      <h3>Navbar va Bottom Bar yig'ish</h3>
+      <p>1. Desktop uchun: Logo, 3 ta menyu havolasi va Primary CTA tugma;</p>
+      <p>2. Mobil uchun: 4 ta universal ikonkali Bottom Navigation bar yarating.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 23. XULOSA -->
+<section>
+  <h2>Darsning asosiy xulosalari</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Oltin standartlar</h3>
+      <p>Bitta ekranda bitta asosiy Primary CTA, kamida 44px o'lcham va 4.5:1 kontrast nisbati.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="box"></i></div>
+      <h3>Tizimli yondashuv</h3>
+      <p>Ikonkalarni ixtiro qilmang, universal ramzlardan foydalaning va elementlarni UI Kit orqali boshqaring.</p>
+    </div>
+  </div>
+  <p class="muted mt">Keyingi mavzu: IV bob. Prototiplash va Wireframe yaratish asoslari</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

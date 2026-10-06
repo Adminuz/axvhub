@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>8-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>8-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Statik fayllar (Static) kim tomonidan yaratiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Dasturchi, kod yozish jarayonida</button>
+      <button class="opt" type="button">Foydalanuvchilar sayt ishlayotganda</button>
+      <button class="opt" type="button">Nginx avtomatik</button>
+      <button class="opt" type="button">Ma'lumotlar bazasi</button>
+    </div>
+    <div class="explain">Masalan: <code>style.css</code>, <code>app.js</code>, logo.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Media fayllarga qaysi misol to'g'ri?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>app.js</code></button>
+      <button class="opt" type="button" data-ok>Foydalanuvchi yuklagan avatar va maqola muqovasi</button>
+      <button class="opt" type="button">Admin panel CSS fayli</button>
+      <button class="opt" type="button"><code>style.css</code></button>
+    </div>
+    <div class="explain">Media foydalanuvchilar yuklagan dinamik fayllar; bazada faqat yo'li saqlanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>collectstatic</code> buyrug'i nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Media fayllarni o'chiradi</button>
+      <button class="opt" type="button">Testlarni ishga tushiradi</button>
+      <button class="opt" type="button" data-ok>Statik fayllarni <code>STATIC_ROOT</code> papkasiga yig'adi</button>
+      <button class="opt" type="button">Migratsiyalarni yaratadi</button>
+    </div>
+    <div class="explain">Deployda yig'ilgan statika Nginx orqali uzatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>media/</code> va <code>staticfiles/</code> nega <code>.gitignore</code> ga qo'shiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Chunki ular xavfli</button>
+      <button class="opt" type="button">Chunki Git rasm o'qiy olmaydi</button>
+      <button class="opt" type="button">Chunki Django ularni o'chiradi</button>
+      <button class="opt" type="button" data-ok>Git faqat kodni saqlashi kerak, fayllar omborni behuda og'irlashtiradi</button>
+    </div>
+    <div class="explain">Yuklangan va yig'ilgan fayllar kod emas.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>DEBUG=True</code> bo'lganda media fayllarni ochish uchun nima qo'shiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>urls.py</code> ga <code>static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)</code></button>
+      <button class="opt" type="button"><code>settings.py</code> ga <code>MEDIA=True</code></button>
+      <button class="opt" type="button">Hech narsa shart emas</button>
+      <button class="opt" type="button"><code>collectstatic</code> ni ishga tushirish</button>
+    </div>
+    <div class="explain">Statik fayllar avtomatik ochiladi, media uchun esa <code>urlpatterns</code> ga qator qo'shiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Fayl yuklashda JSON o'rniga qaysi <code>Content-Type</code> ishlatiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>text/plain</code></button>
+      <button class="opt" type="button" data-ok><code>multipart/form-data</code></button>
+      <button class="opt" type="button"><code>application/xml</code></button>
+      <button class="opt" type="button"><code>application/json</code> baribir</button>
+    </div>
+    <div class="explain">Ikkilik (binary) fayllar oddiy JSON ichida uzatilmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">DRF'da yuklangan fayl obyektlarini o'qish uchun qaysi parser kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>JSONParser</code> faqat</button>
+      <button class="opt" type="button"><code>XMLParser</code></button>
+      <button class="opt" type="button" data-ok><code>MultiPartParser</code> (va <code>FormParser</code>)</button>
+      <button class="opt" type="button"><code>FileResponse</code></button>
+    </div>
+    <div class="explain"><code>@action(..., parser_classes=[MultiPartParser, FormParser])</code> ko'rsatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>FileResponse(..., as_attachment=True)</code> nimani majburlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faylni o'chirishni</button>
+      <button class="opt" type="button">Faylni JSON'ga o'girishni</button>
+      <button class="opt" type="button">Faylni 5 MB gacha qisqartirishni</button>
+      <button class="opt" type="button" data-ok>Faylni brauzerda ochmasdan, yuklab olish oynasini chiqarishni</button>
+    </div>
+    <div class="explain">Bu pullik yoki nazorat qilinadigan fayllar uchun ham qulay.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>validate_cover_image</code> da <code>max_size = 5 * 1024 * 1024</code> bo'lsa, 6 MB rasm yuklansa nima bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>ValidationError</code> ko'tariladi va rasm qabul qilinmaydi</button>
+      <button class="opt" type="button">Rasm qabul qilinadi</button>
+      <button class="opt" type="button">Rasm 5 MB gacha kesiladi</button>
+      <button class="opt" type="button">Server <code>FileResponse</code> qaytaradi</button>
+    </div>
+    <div class="explain"><code>file.size &gt; max_size</code> bo'lsa xato xabari qaytariladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Quyidagi curl xato: <code>-H "Content-Type: application/json" -d '{"cover_image": "django.jpg"}'</code>. Sabab nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Token yozilmagan, boshqa xato yo'q</button>
+      <button class="opt" type="button" data-ok>Fayl ichi yuborilmaydi; kerak: <code>-F "cover_image=@django.jpg"</code> (multipart)</button>
+      <button class="opt" type="button"><code>GET</code> ishlatish kerak</button>
+      <button class="opt" type="button">Fayl nomi 5 MB dan uzun</button>
+    </div>
+    <div class="explain">JSON'da faqat fayl nomi matn bo'lib ketadi, <code>-F</code> esa faylning o'zini multipart sifatida yuboradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: static va media farqi, MEDIA_ROOT, multipart upload, parserlar, FileResponse.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

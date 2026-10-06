@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Photoshop Vositalari va Qatlamlar</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Photoshop Vositalari va Qatlamlar</h1>
+  <p class="muted">Tanlash uskunalari, chizish vositalari, Layer Masks va Blending Modes</p>
+  <span class="badge">9-sinf</span><span class="badge">Game Design</span><span class="badge">2-hafta · 6-dars</span>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Tanlash Vositalari</h1>
+  <p>O'yin obyektlarini fondan ajratish va qirqib olish uskunalari</p>
+</section>
+
+<section>
+  <h2>Nega Tanlash Vositalari Kerak?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="scissors" data-anim="float"></i></div>
+      <h3>Fondan Ajratish</h3>
+      <p>Internetdan yoki eskizdan olingan obyektni begona fondan toza ajratib olish.</p>
+      <p class="t-muted">O'yin dvijogiga o'tkazish uchun shaffof PNG spraytlar tayyorlash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="crop"></i></div>
+      <h3>Lokal Tahrirlash</h3>
+      <p>Tasvirning faqat tanlangan qismiga rang, yorug'lik yoki filtr qo'llash.</p>
+      <p class="t-muted">Tanlov chegarasidan tashqaridagi piksellar daxlsiz saqlanadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Geometrik Tanlov: Marquee Tool (M)</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="square"></i></div>
+      <h3>Rectangular Marquee</h3>
+      <p>To'g'ri to'rtburchak shakldagi sohalarni belgilash.</p>
+      <p class="t-muted">Shift bilan bosib tortilsa — mukammal kvadrat hosil bo'ladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle"></i></div>
+      <h3>Elliptical Marquee</h3>
+      <p>Ellips va aylana shakldagi hududlarni tanlash.</p>
+      <p class="t-muted">O'yin tangalari, dumaloq nishonlar va tugmalar uchun qulay.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Erkin Tanlov: Lasso Tools (L)</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="lasso-select"></i></div>
+      <h3>Lasso Tool</h3>
+      <p>Qo'l harakati bilan erkin chizib tanlash vositasi.</p>
+      <p class="t-muted">Tezkor xomaki qirqishlar uchun.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="pentagon"></i></div>
+      <h3>Polygonal Lasso</h3>
+      <p>To'g'ri chiziqli qirralar orqali tanlash.</p>
+      <p class="t-muted">Burchakli toshlar, kristallar va binolar uchun.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="magnet"></i></div>
+      <h3>Magnetic Lasso</h3>
+      <p>Rang kontrasti bo'ylab obyekt qirrasiga o'zi yopishadi.</p>
+      <p class="t-muted">Aniq chegarali obyektlar uchun qulay.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Aqlli Tanlov: Magic Wand va Quick Selection (W)</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="wand-sparkles" data-anim="pulse"></i></div>
+      <h3>Magic Wand Tool</h3>
+      <p>Bir xil rangdagi qo'shni piksellarni bitta bosishda tanlaydi.</p>
+      <p class="t-muted">Tolerance (0-255) parametri orqali rang sezgirligi boshqariladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="brush"></i></div>
+      <h3>Quick Selection Tool</h3>
+      <p>Cho'tka kabi yurgizilganda obyektning shaklini avtomatik taniy oladi.</p>
+      <p class="t-muted">Murakkab shaklli qahramonlar va maxluqlarni tez ajratadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tanlash Vositalarining O'yindagi Vazifalari</h2>
+  <div class="illus">
+    <svg viewBox="0 0 820 250">
+      <rect x="20" y="30" width="240" height="190" rx="8" class="fn ln"></rect>
+      <text x="140" y="65" text-anchor="middle" class="t-accent">Marquee (M)</text>
+      <rect x="50" y="85" width="80" height="50" rx="4" class="fa la"></rect>
+      <circle cx="190" cy="110" r="25" class="fa la"></circle>
+      <text x="140" y="170" text-anchor="middle" class="t-muted">Aniq geometriya</text>
+      <text x="140" y="195" text-anchor="middle" class="t-head">UI bloklari, tayllar</text>
+
+      <rect x="290" y="30" width="240" height="190" rx="8" class="fn ln"></rect>
+      <text x="410" y="65" text-anchor="middle" class="t-accent">Lasso (L)</text>
+      <polygon points="340,130 380,85 460,95 480,135 410,145" class="fb lb"></polygon>
+      <text x="410" y="170" text-anchor="middle" class="t-muted">Erkin va qirrali</text>
+      <text x="410" y="195" text-anchor="middle" class="t-head">Toshlar, qurollar</text>
+
+      <rect x="560" y="30" width="240" height="190" rx="8" class="fn ln"></rect>
+      <text x="680" y="65" text-anchor="middle" class="t-accent">Wand / Quick (W)</text>
+      <circle cx="680" cy="110" r="30" class="fc lc"></circle>
+      <path d="M 640 110 Q 680 70 720 110" stroke="var(--c-accent)" stroke-width="2" fill="none"></path>
+      <text x="680" y="170" text-anchor="middle" class="t-muted">Aqlli rang tahlili</text>
+      <text x="680" y="195" text-anchor="middle" class="t-head">Fonni olib tashlash</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Chizish va Vektor Vositalari</h1>
+  <p>Piksellar bilan rasm chizish va Bezye egri chiziqlari</p>
+</section>
+
+<section>
+  <h2>Brush Tool (B) — Asosiy Mo'yqalam</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+      <h3>Size (O'lcham)</h3>
+      <p>Cho'tkaning pikseldagi diametri.</p>
+      <p class="t-muted">Tezkor boshqaruv: <code>[</code> va <code>]</code> tugmalari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-dot"></i></div>
+      <h3>Hardness (Qattiqlik)</h3>
+      <p>0% — mayin tumanli qirralar; 100% — keskin qattiq chiziqlar.</p>
+      <p class="t-muted">Yorug'lik uchun 0%, spraytlar uchun 100%.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="eye"></i></div>
+      <h3>Opacity &amp; Flow</h3>
+      <p>Cho'tka bo'yog'ining shaffofligi va quyilish tezligi.</p>
+      <p class="t-muted">Ranglarni qatlam-qatlam qorishtirish siri.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Pen Tool (P) — Bezye Egri Chiziqlari</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="pen-tool"></i></div>
+      <h3>Vektor Aniqligi</h3>
+      <p>Tayanch nuqtalar (Anchor Points) va boshqaruv dastaklari (Handles).</p>
+      <p class="t-muted">Matematik aniqlikdagi mukammal silliq yoylar va egri chiziqlar.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="vector-square"></i></div>
+      <h3>O'yindagi Vazifalari</h3>
+      <p>O'yin logotiplari, piktogrammalar va murakkab asset konturlarini chizish.</p>
+      <p class="t-muted">Hosil bo'lgan yo'l (Path)ni bir bosishda Selection ga aylantirish mumkin.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Shape (U) va Gradient Tool (G)</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="square-code"></i></div>
+      <h3>Shape Tools (U)</h3>
+      <p>Rectangle, Rounded Rectangle, Ellipse va Custom Shapes.</p>
+      <p class="t-muted">O'yin tugmalari, salomatlik chiziqlari (HP bar) va UI ramkalari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="blend"></i></div>
+      <h3>Gradient Tool (G)</h3>
+      <p>Ranglarning biridan ikkinchisiga mayin oqib o'tishi.</p>
+      <p class="t-muted">Linear (chiziqli) va Radial (aylanma) — osmon va sehrli nurlar uchun.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Rastrli Brush va Vektorli Pen Taqqosi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="30" y="30" width="350" height="180" rx="8" class="fn ln"></rect>
+      <text x="205" y="65" text-anchor="middle" class="t-head">Brush Tool (B) — Rastr</text>
+      <circle cx="100" cy="115" r="30" class="fa la"></circle>
+      <circle cx="125" cy="115" r="20" class="fc lc"></circle>
+      <circle cx="145" cy="115" r="10" class="fb lb"></circle>
+      <text x="205" y="165" text-anchor="middle" class="t-muted">Pikselli qatlam, cheksiz bo'yoq erkinligi</text>
+      <text x="205" y="190" text-anchor="middle" class="t-head">Masshtab kattalashganda sifat pasayadi</text>
+
+      <rect x="420" y="30" width="350" height="180" rx="8" class="fn ln"></rect>
+      <text x="595" y="65" text-anchor="middle" class="t-head">Pen Tool (P) — Vektor</text>
+      <path d="M 480 140 Q 595 70 710 140" stroke="var(--c-accent)" stroke-width="4" fill="none"></path>
+      <rect x="475" y="135" width="10" height="10" class="fa la"></rect>
+      <circle cx="595" cy="105" r="5" class="fc lc"></circle>
+      <rect x="705" y="135" width="10" height="10" class="fa la"></rect>
+      <text x="595" y="165" text-anchor="middle" class="t-muted">Matematik formula, o'ta silliq qirra</text>
+      <text x="595" y="190" text-anchor="middle" class="t-head">Istalgan hajmda 100% tiniqlikni saqlaydi</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Qatlamlar va Maskalar</h1>
+  <p>Buzilmasdan tahrirlash (Non-destructive editing) falsafasi</p>
+</section>
+
+<section>
+  <h2>Qatlamlar Ierarxiyasi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>Qatlam Oltin Qoidasi</h3>
+      <p>Har bir alohida obyekt — yangi qatlamda bo'lishi shart!</p>
+      <p class="t-muted">Tezkor yaratish: <code>Ctrl + Shift + N</code>. Qatlamni nusxalash: <code>Ctrl + J</code>.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="eye"></i></div>
+      <h3>Qatlam Xususiyatlari</h3>
+      <p>Ko'rinuvchanlik (ko'zcha belgisi), blokirovka (Lock) va guruhlash (<code>Ctrl + G</code>).</p>
+      <p class="t-muted">Yuzlab qatlamli fayllarda tartib saqlash loyihaning muvaffaqiyatidir.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Eraser vs Layer Mask</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="trash"></i></div>
+      <h3>Eraser Tool (Destruktiv)</h3>
+      <p>Piksellarni to'g'ridan-to'g'ri o'chirib tashlaydi.</p>
+      <p class="t-muted">Faylni yopib ochgandan keyin xatoni qaytarib bo'lmaydi!</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="venetian-mask"></i></div>
+      <h3>Layer Mask (Buzilmas tahrir)</h3>
+      <p>Piksellarni yo'qotmaydi, faqat vaqtincha berkitadi.</p>
+      <p class="t-muted">Istalgan paytda oq cho'tka bilan piksellarni qayta tiklash mumkin.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Layer Mask Qoidasi: Qora va Oq</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="moon"></i></div>
+      <h3>Qora Rang (Black)</h3>
+      <p>Niqob ustiga qora rang bilan bo'yalsangiz — soha yashirinadi (shaffof bo'ladi).</p>
+      <p class="t-muted">Qora = Ko'rinmaydi (Hides).</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sun"></i></div>
+      <h3>Oq Rang (White)</h3>
+      <p>Niqob ustiga oq rang bilan bo'yalsangiz — yashiringan qism qayta ko'rinadi.</p>
+      <p class="t-muted">Oq = Ko'rinadi (Reveals). Kulrang esa yarim shaffof qiladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Layer Mask Qanday Ishlaydi?</h2>
+  <div class="illus">
+    <svg viewBox="0 0 820 230">
+      <rect x="20" y="30" width="220" height="150" rx="6" class="fa la"></rect>
+      <text x="130" y="110" text-anchor="middle" class="t-head">Rangli Tasvir</text>
+      <text x="130" y="140" text-anchor="middle" class="t-muted">Original Asset</text>
+
+      <text x="270" y="115" font-size="28" text-anchor="middle" class="t-accent">+</text>
+
+      <rect x="300" y="30" width="220" height="150" rx="6" class="fn ln"></rect>
+      <rect x="300" y="30" width="110" height="150" fill="currentColor" class="t-muted"></rect>
+      <text x="355" y="110" text-anchor="middle" class="t-head">Qora</text>
+      <text x="465" y="110" text-anchor="middle" class="t-head">Oq</text>
+      <text x="410" y="160" text-anchor="middle" class="t-accent">Layer Mask</text>
+
+      <text x="550" y="115" font-size="28" text-anchor="middle" class="t-accent">=</text>
+
+      <rect x="580" y="30" width="220" height="150" rx="6" class="fb lb"></rect>
+      <text x="690" y="100" text-anchor="middle" class="t-head">Natija</text>
+      <text x="690" y="130" text-anchor="middle" class="t-muted">Chap qism yashirindi</text>
+      <text x="690" y="155" text-anchor="middle" class="t-head">O'ng qism saqlandi</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Blending Modes</h1>
+  <p>Qatlamlarning o'zaro optik ta'sirlashuv rejimlari</p>
+</section>
+
+<section>
+  <h2>Asosiy Blending Rejimlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="moon"></i></div>
+      <h3>Multiply (Qoraytirish)</h3>
+      <p>Oq rangni shaffof qiladi, qorong'ulikni kuchaytiradi.</p>
+      <p class="t-muted">O'yin sahnasiga quyuq soyalar va kirlanish berish uchun.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sun"></i></div>
+      <h3>Screen (Yoritish)</h3>
+      <p>Qora rangni butunlay shaffof qiladi, nurni kuchaytiradi.</p>
+      <p class="t-muted">Olov, lazer, sehrli alanga va chaqmoqlar uchun eng yaxshi rejim.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sparkles" data-anim="pulse"></i></div>
+      <h3>Overlay (Kontrast)</h3>
+      <p>To'q joylarni qoraytiradi, ochiq joylarni yoritadi.</p>
+      <p class="t-muted">O'yin obyekti ustiga tosh yoki metall tekstura kiygizish uchun.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Blending Modes Vizual Effektlari</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 230">
+      <rect x="30" y="30" width="220" height="160" rx="8" class="fn ln"></rect>
+      <text x="140" y="65" text-anchor="middle" class="t-accent">Multiply</text>
+      <circle cx="140" cy="115" r="35" class="fg lg"></circle>
+      <text x="140" y="165" text-anchor="middle" class="t-muted">Oq yo'qoladi, qorayadi</text>
+      <text x="140" y="185" text-anchor="middle" class="t-head">Soyalar va kirlar</text>
+
+      <rect x="290" y="30" width="220" height="160" rx="8" class="fn ln"></rect>
+      <text x="400" y="65" text-anchor="middle" class="t-accent">Screen</text>
+      <circle cx="400" cy="115" r="35" class="fc lc"></circle>
+      <text x="400" y="165" text-anchor="middle" class="t-muted">Qora yo'qoladi, porlaydi</text>
+      <text x="400" y="185" text-anchor="middle" class="t-head">Sehr, olov va chaqmoq</text>
+
+      <rect x="550" y="30" width="220" height="160" rx="8" class="fn ln"></rect>
+      <text x="660" y="65" text-anchor="middle" class="t-accent">Overlay</text>
+      <circle cx="660" cy="115" r="35" class="fa la"></circle>
+      <text x="660" y="165" text-anchor="middle" class="t-muted">Kontrast va boy rang</text>
+      <text x="660" y="185" text-anchor="middle" class="t-head">Teksturalar va muhit</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Interaktiv Savol: Qatlam Niqobi Sirlari</h2>
+  <div class="flip">
+    <div class="flip-in">
+      <div class="face front">
+        <div class="icon"><i data-ic="venetian-mask"></i></div>
+        <h3>O'chirg'ich o'rniga niqob nega afzal?</h3>
+        <p class="t-muted">Kartanikiga bosing yoki burib ko'ring</p>
+      </div>
+      <div class="face back">
+        <div class="icon"><i data-ic="circle-check"></i></div>
+        <h3>Piksellar Hech Qachon Yo'qolmaydi!</h3>
+        <p>Qora rang faqat ko'rinishni berkitadi. Ertaga mijoz yoki geym-dizayner o'zgartirish kiritsa, oq cho'tka bilan asl tasvirni to'liq qaytarib olish mumkin.</p>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Obyektni Fondan Ajratish Bosqichlari</h2>
+  <div class="stepper">
+    <div class="step fragment fade-up">
+      <div class="num">1</div>
+      <h3>Magic Wand bilan Tanlash</h3>
+      <p>Bir xil rangdagi oq yoki yashil fonga Magic Wand (W) bilan bosing.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">2</div>
+      <h3>Tanlovni Teskari Qilish</h3>
+      <p><code>Ctrl + Shift + I</code> bosib, fon emas, qahramonning o'zini tanlangan qiling.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">3</div>
+      <h3>Yangi Qatlamga O'tkazish</h3>
+      <p><code>Ctrl + J</code> tugmasini bosing — toza qahramon yangi qatlamga ajraladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tezkor Savol: Blending Mode</h2>
+  <div class="quiz">
+    <div class="q">Qora fonga olingan olov tasviridagi qora rangni yo'qotib, faqat porloq alanganing o'zini o'yin sahnasiga o'tkazish uchun qaysi rejim ishlatiladi?</div>
+    <div class="opts">
+      <div class="opt">A) Multiply (Qoraytirish)</div>
+      <div class="opt" data-ok>B) Screen (Yoritish)</div>
+      <div class="opt">C) Normal</div>
+      <div class="opt">D) Dissolve</div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Photoshop Klaviaturadagi Tezkor Tugmalar</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="keyboard"></i></div>
+      <h3>Asboblar Tugmalari</h3>
+      <p><code>M</code> — Marquee Tool | <code>L</code> — Lasso Tool</p>
+      <p><code>W</code> — Magic Wand | <code>B</code> — Brush Tool</p>
+      <p><code>P</code> — Pen Tool | <code>G</code> — Gradient Tool</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="zap"></i></div>
+      <h3>Qatlam va Amallar</h3>
+      <p><code>Ctrl + J</code> — Qatlamni nusxalash</p>
+      <p><code>Ctrl + Shift + N</code> — Yangi bo'sh qatlam</p>
+      <p><code>Ctrl + Shift + I</code> — Tanlovni invert qilish</p>
+      <p><code>[</code> va <code>]</code> — Cho'tka o'lchami</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Dars Xulosasi va Amaliy Topshiriq</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Bugun O'rganganlarimiz</h3>
+      <p>Geometrik, erkin va aqlli tanlash vositalari.</p>
+      <p>Brush, Pen, Layer Masks va Blending Modes.</p>
+      <p class="t-muted">Assetlarni buzilmasdan professional tahrirlash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="gamepad-2"></i></div>
+      <h3>Amaliy Vazifa</h3>
+      <p>Berilgan 3 xil o'yin obyektini fondan ajratish.</p>
+      <p>Layer Mask va Screen rejimi orqali qahramonga sehrli alanga tutqazish.</p>
+      <p class="t-muted">Faylni shaffof PNG formatida saqlash.</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

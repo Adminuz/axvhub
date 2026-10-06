@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>2-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>2-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">Android dasturlash</span><span class="badge">3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Yangi loyiha uchun qaysi shablon tanlanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Empty Views Activity</button>
+      <button class="opt" type="button">Wear OS Tiles</button>
+      <button class="opt" type="button">Android TV Leanback</button>
+      <button class="opt" type="button">Native C++</button>
+    </div>
+    <div class="explain">Bu klassik XML + Kotlin modeli.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Layout Editor'da kod va ekranni yonma-yon ko'rsatuvchi rejim qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Code</button>
+      <button class="opt" type="button" data-ok>Split</button>
+      <button class="opt" type="button">Design</button>
+      <button class="opt" type="button">Preview-only</button>
+    </div>
+    <div class="explain">Split rejimida chapda XML, o'ngda telefon ekrani ko'rinadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Androidda matn o'lchami qaysi birlikda beriladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>dp</code></button>
+      <button class="opt" type="button"><code>px</code></button>
+      <button class="opt" type="button" data-ok><code>sp</code></button>
+      <button class="opt" type="button"><code>cm</code></button>
+    </div>
+    <div class="explain">sp foydalanuvchining shrift sozlamasiga moslashadi, dp esa boshqa elementlar uchun.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>setContentView(R.layout.activity_main)</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ilovani yopadi</button>
+      <button class="opt" type="button">Ma'lumotlar bazasini yaratadi</button>
+      <button class="opt" type="button">Gradle'ni qayta ishga tushiradi</button>
+      <button class="opt" type="button" data-ok>Kodni <code>activity_main.xml</code> maketi bilan bog'lab, ekranga chizadi</button>
+    </div>
+    <div class="explain">Bu qator Kotlin kodi va XML dizayni orasidagi bog'lovchi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>onCreate()</code> qachon chaqiriladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Ekran xotirada yaratilayotganda, eng birinchi</button>
+      <button class="opt" type="button">Ilova o'chirilganda</button>
+      <button class="opt" type="button">Telefon zaryadlanganda</button>
+      <button class="opt" type="button">Faqat tugma bosilganda</button>
+    </div>
+    <div class="explain">Operatsion tizim uni eng birinchi chaqiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Hardcoded matnni <code>strings.xml</code> ga ko'chirish klavishi qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>Ctrl + S</code> (Mac'da <code>Cmd + S</code>)</button>
+      <button class="opt" type="button" data-ok><code>Alt + Enter</code> (Mac'da <code>Option + Return</code>)</button>
+      <button class="opt" type="button"><code>Shift + F10</code></button>
+      <button class="opt" type="button"><code>Ctrl + Z</code></button>
+    </div>
+    <div class="explain">Keyin Extract string resource tanlanib, resurs nomi kiritiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>R</code> sinfi qanday hosil bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Dasturchi qo'lda yozadi</button>
+      <button class="opt" type="button">Google Play yaratadi</button>
+      <button class="opt" type="button" data-ok><code>aapt2</code> tomonidan yig'ish paytida avtomatik yaratiladi</button>
+      <button class="opt" type="button">Emulyator yaratadi</button>
+    </div>
+    <div class="explain">R har bir resursga unikal butun son identifikator biriktiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Minimum SDK sifatida API 24 (Android 7.0) tanlansa, bu nimani beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ilova faqat yangi telefonlarda ishlaydi</button>
+      <button class="opt" type="button">Ilova tezligi ikki baravar oshadi</button>
+      <button class="opt" type="button">Ilova hajmi kamayadi</button>
+      <button class="opt" type="button" data-ok>Ilova dunyodagi qurilmalarning 96% dan ko'prog'ida ishlaydi</button>
+    </div>
+    <div class="explain">API 24 dan yuqori qurilmalar katta ulushni egallaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>setContentView</code> qatori o'chirib tashlansa, ilova ochilganda nima ko'rinadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Ilova crash qilmaydi, lekin bo'sh ekran chiqadi</button>
+      <button class="opt" type="button">Ilova o'rnatilmaydi</button>
+      <button class="opt" type="button">TextView avtomatik chiqadi</button>
+      <button class="opt" type="button">Telefon qayta yuklanadi</button>
+    </div>
+    <div class="explain">Activity qaysi maketni chizishni bilmay qoladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">«Run» bosilganda APK emulyatorga qanday yetkaziladi va ishga tushiriladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat USB flesh orqali</button>
+      <button class="opt" type="button" data-ok><code>adb install</code> bilan o'rnatiladi, <code>am start</code> bilan ochiladi</button>
+      <button class="opt" type="button">Google Play orqali yuklanadi</button>
+      <button class="opt" type="button">Kompyuter ekranida ochiladi, qurilmada emas</button>
+    </div>
+    <div class="explain">Gradle build'dan so'ng ADB orqali yetkazib, Activity Manager ishga tushiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: Yangi loyiha parametrlari, Layout Editor rejimlari, sp birligi, setContentView, onCreate, R sinfi va Run bosqichlari.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Ko‘p tarmoqli shartlar: elif</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+      <!-- 1. SARLAVHA (HERO) -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>Ko‘p tarmoqli shartlar: elif</h1>
+        <p class="muted">if-elif-else zanjiri va rasmiy amaliy topshiriqlar</p>
+        <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">2-hafta · 6-dars</span>
+        
+      </section>
+
+      <!-- 2. Reja -->
+      <section>
+        <h2>Bugungi dars rejasi</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="git-branch" data-anim="float"></i></div>
+            <h3>elif operatori</h3>
+            <p>Ko‘p variantli shartlar (else if) va ularning ishlash mexanizmi</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="award" data-anim="bounce"></i></div>
+            <h3>Baholash tizimi</h3>
+            <p>1.29-rasm: 5, 4, 3, 2 baholarini if-elif orqali taqsimlash</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="list-checks" data-anim="float"></i></div>
+            <h3>4 ta amaliy topshiriq</h3>
+            <p>Musbat/manfiy, kattasini topish, yosh toifasi va harorat</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 3. SEC 01: ELIF OPERATORI -->
+      <section class="sec">
+        <div class="num">01</div>
+        <h1>elif operatori</h1>
+        <p>Aks holda agar... — ko‘p shoxli tanlov</p>
+      </section>
+
+      <!-- 4. SVG 1: IF-ELIF-ELSE SXEMASI -->
+      <section>
+        <h2>if-elif-else oqim sxemasi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- 1-shart -->
+            <polygon class="fa" points="200,60 300,100 200,140 100,100"/>
+            <text class="t-head" x="200" y="105" text-anchor="middle" font-size="16">1-shart?</text>
+
+            <line class="lg flowing" x1="300" y1="100" x2="420" y2="100"/>
+            <rect class="fg" x="420" y="70" width="160" height="60" rx="10"/>
+            <text class="t-head" x="500" y="105" text-anchor="middle" font-size="16">1-amal</text>
+
+            <!-- 2-shart (elif) -->
+            <g class="fragment">
+              <line class="la" x1="200" y1="140" x2="200" y2="180"/>
+              <polygon class="fb" points="200,180 300,220 200,260 100,220"/>
+              <text class="t-head" x="200" y="225" text-anchor="middle" font-size="16">elif 2-shart?</text>
+
+              <line class="lg flowing" x1="300" y1="220" x2="420" y2="220"/>
+              <rect class="fg" x="420" y="190" width="160" height="60" rx="10"/>
+              <text class="t-head" x="500" y="225" text-anchor="middle" font-size="16">2-amal</text>
+            </g>
+
+            <!-- else -->
+            <g class="fragment">
+              <line class="la" x1="200" y1="260" x2="200" y2="300"/>
+              <rect class="fc" x="420" y="280" width="160" height="60" rx="10"/>
+              <text class="t-head" x="500" y="315" text-anchor="middle" font-size="16">else (qolgani)</text>
+              <line class="la" x1="200" y1="310" x2="420" y2="310"/>
+            </g>
+
+            <!-- Yakuniy chiqish -->
+            <g class="fragment">
+              <line class="ln" x1="580" y1="100" x2="720" y2="190"/>
+              <line class="ln" x1="580" y1="220" x2="720" y2="190"/>
+              <line class="ln" x1="580" y1="310" x2="720" y2="190"/>
+              <circle class="fn pulse" cx="760" cy="190" r="35"/>
+              <text class="t-head" x="760" y="197" text-anchor="middle" font-size="16">Davom</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 5. SEC 02: BAHOLASH TIZIMI -->
+      <section class="sec">
+        <div class="num">02</div>
+        <h1>Baholash tizimi</h1>
+        <p>1.29-rasm: 86+, 71+, 56+ ballar taqsimoti</p>
+      </section>
+
+      <!-- 6. SVG 2: BAHOLAR SHKALASI -->
+      <section>
+        <h2>Baholar shkalasi taqsimoti</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- 5 baho -->
+            <g class="fragment">
+              <rect class="fg" x="60" y="70" width="200" height="220" rx="16"/>
+              <text class="t-head" x="160" y="125" text-anchor="middle" font-size="40">5</text>
+              <text class="t-head" x="160" y="165" text-anchor="middle" font-size="20">A'lo</text>
+              <text class="t-muted" x="160" y="210" text-anchor="middle" font-size="16">86 va undan yuqori</text>
+              <text class="t-accent" x="160" y="240" text-anchor="middle" font-size="14">ball &gt;= 86</text>
+            </g>
+
+            <!-- 4 baho -->
+            <g class="fragment">
+              <rect class="fa" x="280" y="70" width="200" height="220" rx="16"/>
+              <text class="t-head" x="380" y="125" text-anchor="middle" font-size="40">4</text>
+              <text class="t-head" x="380" y="165" text-anchor="middle" font-size="20">Yaxshi</text>
+              <text class="t-muted" x="380" y="210" text-anchor="middle" font-size="16">71 dan 85 gacha</text>
+              <text class="t-accent" x="380" y="240" text-anchor="middle" font-size="14">ball &gt;= 71</text>
+            </g>
+
+            <!-- 3 baho -->
+            <g class="fragment">
+              <rect class="fb" x="500" y="70" width="200" height="220" rx="16"/>
+              <text class="t-head" x="600" y="125" text-anchor="middle" font-size="40">3</text>
+              <text class="t-head" x="600" y="165" text-anchor="middle" font-size="20">Qoniqarli</text>
+              <text class="t-muted" x="600" y="210" text-anchor="middle" font-size="16">56 dan 70 gacha</text>
+              <text class="t-accent" x="600" y="240" text-anchor="middle" font-size="14">ball &gt;= 56</text>
+            </g>
+
+            <!-- 2 baho -->
+            <g class="fragment">
+              <rect class="fn" x="720" y="70" width="200" height="220" rx="16"/>
+              <text class="t-head" x="820" y="125" text-anchor="middle" font-size="40">2</text>
+              <text class="t-head" x="820" y="165" text-anchor="middle" font-size="20">Qoniqarsiz</text>
+              <text class="t-muted" x="820" y="210" text-anchor="middle" font-size="16">56 dan kam</text>
+              <text class="t-accent" x="820" y="240" text-anchor="middle" font-size="14">else</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 7. KOD: BAHOLASH TIZIMI -->
+      <section>
+        <h2>Baholash dasturi kodi</h2>
+        <pre><code class="language-python" data-line-numbers="1-2|4-11">ball = 78
+
+if ball &gt;= 86:
+    print("Baho: 5")
+elif ball &gt;= 71:
+    print("Baho: 4")
+elif ball &gt;= 56:
+    print("Baho: 3")
+else:
+    print("Baho: 2")
+# Natija: Baho: 4</code></pre>
+        
+      </section>
+
+      <!-- 8. SEC 03: AMALIY TOPSHIRIQLAR -->
+      <section class="sec">
+        <div class="num">03</div>
+        <h1>Rasmiy amaliy topshiriqlar</h1>
+        <p>Qo‘llanmadagi 4 ta asosiy masalaning to‘liq yechimi</p>
+      </section>
+
+      <!-- 9. SVG 3: MUSBAT, MANFIY, NOL -->
+      <section>
+        <h2>1-topshiriq: Sonning ishorasi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- Sonlar o'qi -->
+            <line class="la" x1="100" y1="180" x2="900" y2="180"/>
+            <polygon class="ar-a" points="900,180 880,170 880,190"/>
+
+            <!-- 0 nuqtasi -->
+            <circle class="fb pulse" cx="500" cy="180" r="14"/>
+            <text class="t-head" x="500" y="230" text-anchor="middle" font-size="24">0</text>
+            <text class="t-accent" x="500" y="150" text-anchor="middle" font-size="18">"Nolga teng"</text>
+
+            <!-- Manfiy qism -->
+            <g class="fragment">
+              <rect class="fa" x="120" y="80" width="300" height="70" rx="12"/>
+              <text class="t-head" x="270" y="125" text-anchor="middle" font-size="20">son &lt; 0 &rarr; "Manfiy son"</text>
+            </g>
+
+            <!-- Musbat qism -->
+            <g class="fragment">
+              <rect class="fg" x="580" y="80" width="300" height="70" rx="12"/>
+              <text class="t-head" x="730" y="125" text-anchor="middle" font-size="20">son &gt; 0 &rarr; "Musbat son"</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 10. KOD: 1-VA 2-TOPSHIRIQ -->
+      <section>
+        <h2>1 va 2-topshiriqlar kodi</h2>
+        <div class="cards two">
+          <div class="card">
+            <h3>1. Musbat / Manfiy / Nol</h3>
+            <pre><code class="language-python">son = -5
+
+if son &gt; 0:
+    print("Musbat son")
+elif son &lt; 0:
+    print("Manfiy son")
+else:
+    print("Nolga teng")</code></pre>
+          </div>
+          <div class="card">
+            <h3>2. Kattasini aniqlash</h3>
+            <pre><code class="language-python">a, b = 25, 20
+
+if a &gt; b:
+    print("Kattasi:", a)
+elif b &gt; a:
+    print("Kattasi:", b)
+else:
+    print("Sonlar teng")</code></pre>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 11. SVG 4: HARORAT TAVSIYASI -->
+      <section>
+        <h2>4-topshiriq: Harorat tavsiyasi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- 1. Sovuq -->
+            <g class="fragment">
+              <rect class="fa" x="60" y="100" width="260" height="180" rx="16"/>
+              <text class="t-head" x="190" y="150" text-anchor="middle" font-size="24">&lt; 0°C</text>
+              <text class="t-accent" x="190" y="190" text-anchor="middle" font-size="20">Sovuq</text>
+              <text class="t-muted" x="190" y="230" text-anchor="middle" font-size="15">Qalin kiyining</text>
+            </g>
+
+            <!-- 2. Salqin -->
+            <g class="fragment">
+              <rect class="fc" x="370" y="100" width="260" height="180" rx="16"/>
+              <text class="t-head" x="500" y="150" text-anchor="middle" font-size="24">0°C &ndash; 20°C</text>
+              <text class="t-accent" x="500" y="190" text-anchor="middle" font-size="20">Salqin</text>
+              <text class="t-muted" x="500" y="230" text-anchor="middle" font-size="15">Qulay ob-havo</text>
+            </g>
+
+            <!-- 3. Issiq -->
+            <g class="fragment">
+              <rect class="fb pulse" x="680" y="100" width="260" height="180" rx="16"/>
+              <text class="t-head" x="810" y="150" text-anchor="middle" font-size="24">&gt; 20°C</text>
+              <text class="t-accent" x="810" y="190" text-anchor="middle" font-size="20">Issiq</text>
+              <text class="t-muted" x="810" y="230" text-anchor="middle" font-size="15">Yengil kiyining</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 12. KOD: 3-VA 4-TOPSHIRIQ -->
+      <section>
+        <h2>3 va 4-topshiriqlar kodi</h2>
+        <div class="cards two">
+          <div class="card">
+            <h3>3. Yosh toifasi</h3>
+            <pre><code class="language-python">yosh = 15
+
+if yosh &lt;= 6:
+    print("Bog‘cha yoshi")
+elif yosh &lt;= 17:
+    print("Maktab o‘quvchisi")
+else:
+    print("Voyaga yetgan")</code></pre>
+          </div>
+          <div class="card">
+            <h3>4. Harorat tavsiyasi</h3>
+            <pre><code class="language-python">harorat = 25
+
+if harorat &lt; 0:
+    print("Sovuq, qalin kiyining")
+elif harorat &lt;= 20:
+    print("Salqin")
+else:
+    print("Issiq")</code></pre>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 13. ODATIY XATOLAR -->
+      <section>
+        <h2>Sintaksisda uchraydigan 3 ta xato</h2>
+        <div class="cards three">
+          <div class="card fragment">
+            <h3>Xato 1: = va ==</h3>
+            <p><code>if a = 0</code> &larr; Xato!</p>
+            <p><code>if a == 0:</code> &larr; To‘g‘ri</p>
+          </div>
+          <div class="card fragment">
+            <h3>Xato 2: Ikki nuqta</h3>
+            <p><code>elif a &lt; 0</code> &larr; Xato!</p>
+            <p><code>elif a &lt; 0:</code> &larr; To‘g‘ri</p>
+          </div>
+          <div class="card fragment">
+            <h3>Xato 3: Chekinish</h3>
+            <p>Surilmagan qatorlar <code>IndentationError</code> beradi</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 14. AMALIY TOPSHIRIQ (TASK) -->
+      <section class="task">
+        <h2>Amaliy topshiriq: 2-hafta loyihalari</h2>
+        <p class="muted">Vaqt: 20 daqiqa · Darajalar bo‘yicha</p>
+        <div class="cards three">
+          <div class="card">
+            <h3>1. Oson</h3>
+            <p>Son musbat, manfiy yoki nol ekanligini aniqlovchi dastur yozing.</p>
+          </div>
+          <div class="card">
+            <h3>2. O'rta</h3>
+            <p>Haroratga qarab ("Sovuq", "Salqin", "Issiq") tavsiya beruvchi dastur tuzing.</p>
+          </div>
+          <div class="card">
+            <h3>3. Qiyin</h3>
+            <p>Uchta son ichidan eng kattasini <code>if-elif-else</code> orqali toping.</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 15. QUIZ / TEZKOR SAVOL -->
+      <section>
+        <h2>Tezkor sinov</h2>
+        <p>Quyidagi kodda ball = 75 bo‘lsa nima chiqadi?</p>
+        <pre><code class="language-python">ball = 75
+if ball &gt;= 86:
+    print("5")
+elif ball &gt;= 71:
+    print("4")
+else:
+    print("Boshqa")</code></pre>
+        <div class="fragment callout tip">
+          <i data-ic="check"></i> <strong>Javob:</strong> <code>4</code> (chunki 75 &gt;= 71 &rarr; True)
+        </div>
+        
+      </section>
+
+      <!-- 16. 2-HAFTA YAKUNIY XULOSASI -->
+      <section>
+        <h2>2-hafta bo‘yicha erishilgan natijalar</h2>
+        <div class="cards three">
+          <div class="card fragment">
+            <h3>Operatorlar</h3>
+            <p>Taqqoslash va mantiqiy operatorlar (and, or, not)</p>
+          </div>
+          <div class="card fragment">
+            <h3>Tarmoqlanish</h3>
+            <p>if va else bilan ikkiga ajraluvchi shartlar</p>
+          </div>
+          <div class="card fragment">
+            <h3>Ko‘p tarmoqli elif</h3>
+            <p>Murakkab shartlar va rasmiy 4 ta amaliy loyiha</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 17. YAKUNIY SLAYD -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>2-hafta yakunlandi!</h1>
+        <p class="muted">Keyingi hafta: Takrorlanuvchi algoritm (for, while) va match/case</p>
+        <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span>
+        
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

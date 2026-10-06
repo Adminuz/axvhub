@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Ruxsatlar Bilan Ishlash</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 1-slayd: Sarlavha -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Ruxsatlar Bilan Ishlash</h1>
+  <p class="muted">DRF Permissions tizimi, IsOwnerOrStaff va obyekt darajasidagi xavfsizlik</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">2-hafta &middot; 5-dars</span>
+  
+</section>
+
+<!-- 2-slayd: Dars rejasi -->
+<section>
+  <h2>Dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield" data-anim="pulse"></i></div>
+      <h3>Standart Permissions</h3>
+      <p>AllowAny, IsAuthenticated, IsAdminUser va IsAuthenticatedOrReadOnly.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="lock" data-anim="float"></i></div>
+      <h3>Custom Permissions</h3>
+      <p>BasePermission, has_permission va has_object_permission mexanizmi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="user-check" data-anim="spin"></i></div>
+      <h3>perform_create &amp; IDOR</h3>
+      <p>Obyekt egaligini xavfsiz biriktirish va kiberhujumlarni bartaraf etish.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3-slayd: Bo'lim 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>DRF Ruxsatlar tizimi</h1>
+  <p>So'rovlarni tekshirish bosqichlari</p>
+</section>
+
+<!-- 4-slayd: SVG Sxema: Permission Pipeline -->
+<section>
+  <h2>So'rovni tekshirish zanjiri</h2>
+  <p>Har bir HTTP so'rovining viewga yetib borish yo'li</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300" width="100%" height="300">
+      <!-- 1. Kiruvchi so'rov -->
+      <rect x="30" y="70" width="200" height="160" rx="12" class="fa"></rect>
+      <text x="130" y="115" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">1. HTTP So'rov</text>
+      <text x="130" y="150" text-anchor="middle" class="t-muted" font-size="14">PUT /posts/12/</text>
+      <text x="130" y="180" text-anchor="middle" class="t-accent" font-size="14">Token bilan birga</text>
+
+      <!-- Strelka 1 -->
+      <path d="M 235 150 L 285 150" class="la flowing" stroke-width="3"></path>
+      <polygon points="280,145 290,150 280,155" class="ar-a"></polygon>
+
+      <!-- 2. Authentication -->
+      <rect x="295" y="70" width="200" height="160" rx="12" class="fb"></rect>
+      <text x="395" y="115" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">2. Autentifikatsiya</text>
+      <text x="395" y="150" text-anchor="middle" class="t-accent" font-size="14">request.user</text>
+      <text x="395" y="180" text-anchor="middle" class="t-muted" font-size="13">Foydalanuvchi aniqlandi</text>
+
+      <!-- Strelka 2 -->
+      <path d="M 500 150 L 550 150" class="la flowing" stroke-width="3"></path>
+      <polygon points="545,145 555,150 545,155" class="ar-a"></polygon>
+
+      <!-- 3. Permission -->
+      <rect x="560" y="70" width="220" height="160" rx="12" class="fc"></rect>
+      <text x="670" y="115" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">3. Permission</text>
+      <text x="670" y="150" text-anchor="middle" class="t-accent" font-size="14">has_object_permission</text>
+      <text x="670" y="180" text-anchor="middle" class="t-muted" font-size="13">Muallif tekshiruvi</text>
+
+      <!-- Strelka 3 -->
+      <path d="M 785 150 L 835 150" class="lg flowing" stroke-width="3"></path>
+      <polygon points="830,145 840,150 830,155" class="ar-g"></polygon>
+
+      <!-- 4. Natija -->
+      <rect x="845" y="70" width="130" height="160" rx="12" class="fg"></rect>
+      <text x="910" y="125" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">200 OK</text>
+      <text x="910" y="165" text-anchor="middle" class="t-muted" font-size="13">Yoki 403</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 5-slayd: Standart Permissions -->
+<section>
+  <h2>Standart DRF ruxsatlari</h2>
+  <div class="cards four">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="globe"></i></div>
+      <h3>AllowAny</h3>
+      <p>Barcha foydalanuvchilar (mehmonlar ham) uchun to'liq ochiq.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="user-check"></i></div>
+      <h3>IsAuthenticated</h3>
+      <p>Faqat tizimga kirgan va yaroqli tokenga ega foydalanuvchilar.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield"></i></div>
+      <h3>IsAdminUser</h3>
+      <p>Faqat <code>is_staff=True</code> bo'lgan admin va xodimlar uchun.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="book-open"></i></div>
+      <h3>IsAuthOrReadOnly</h3>
+      <p>O'qish hammaga ochiq, yozish faqat kirganlar uchun.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6-slayd: Bo'lim 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Custom Permissions</h1>
+  <p>O'z biznes qoidalarimizni yaratish</p>
+</section>
+
+<!-- 7-slayd: SVG Sxema: IDOR Hujumi va Himoya -->
+<section>
+  <h2>IDOR zaifligi va undan himoyalanish</h2>
+  <p>Foydalanuvchi birovning maqolasini o'zgartirmoqchi bo'lganda nima sodir bo'ladi?</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300" width="100%" height="300">
+      <!-- Foydalanuvchi Anvar -->
+      <rect x="50" y="60" width="260" height="180" rx="14" class="fa"></rect>
+      <text x="180" y="105" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Foydalanuvchi: Anvar</text>
+      <text x="180" y="145" text-anchor="middle" class="t-muted" font-size="14">O'zining ID si: 10</text>
+      <text x="180" y="180" text-anchor="middle" class="t-accent" font-size="14">So'rov: DELETE /posts/5/</text>
+      <text x="180" y="205" text-anchor="middle" class="t-muted" font-size="13">(5-post Begzodniki!)</text>
+
+      <!-- To'siq: IsOwnerOrStaff -->
+      <rect x="420" y="40" width="220" height="220" rx="16" class="fb"></rect>
+      <text x="530" y="85" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">IsOwnerOrStaff</text>
+      <text x="530" y="125" text-anchor="middle" class="t-muted" font-size="14">post.author == Anvar?</text>
+      <text x="530" y="155" text-anchor="middle" class="t-accent" font-size="14">False! (Begzod != Anvar)</text>
+      <text x="530" y="190" text-anchor="middle" class="t-muted" font-size="14">Anvar adminmi?</text>
+      <text x="530" y="215" text-anchor="middle" class="t-accent" font-size="14">False! (oddiy user)</text>
+
+      <!-- Natija -->
+      <rect x="740" y="60" width="210" height="180" rx="14" class="fn"></rect>
+      <text x="845" y="115" text-anchor="middle" class="t-accent" font-size="20" font-weight="bold">403 Forbidden</text>
+      <text x="845" y="155" text-anchor="middle" class="t-muted" font-size="14">Ruxsat berilmadi!</text>
+      <text x="845" y="195" text-anchor="middle" class="t-head" font-size="14">Baza daxlsiz qoldi</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 8-slayd: IsOwnerOrStaff kodi -->
+<section>
+  <h2>src/apps/common/permissions.py</h2>
+  <pre><code class="language-python" data-trim data-noescape data-line-numbers="1-15|5-6|8-11|13-15">class IsOwnerOrStaff(BasePermission):
+    owner_field = "author"
+
+    def has_object_permission(self, request, view, obj):
+        if request.method in SAFE_METHODS:
+            return True  # O'qishga hammaga ruxsat
+
+        user = request.user
+        if not (user and user.is_authenticated):
+            return False
+        if user.is_staff:
+            return True  # Adminga to'liq ruxsat
+
+        owner = getattr(obj, self.owner_field, None)
+        return owner == user</code></pre>
+</section>
+
+<!-- 9-slayd: Bo'lim 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>perform_create amali</h1>
+  <p>Muallifni server tomonida xavfsiz biriktirish</p>
+</section>
+
+<!-- 10-slayd: perform_create kodi -->
+<section>
+  <h2>perform_create nima uchun kerak?</h2>
+  <pre><code class="language-python" data-trim data-noescape data-line-numbers="1-10|4-5|7-9">class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    lookup_field = "slug"
+    permission_classes = (IsAuthenticatedOrReadOnly, IsOwnerOrStaff)
+
+    def perform_create(self, serializer):
+        # Muallifni frontenddan EMAS, tokendan olamiz!
+        serializer.save(author=self.request.user)</code></pre>
+  <div class="callout tip">
+    <i data-ic="circle-check"></i>
+    Bu usul orqali hech kim boshqa odamning ID raqamini ko'rsatib, uning nomidan yolg'on maqola chop eta olmaydi.
+  </div>
+</section>
+
+<!-- 11-slayd: Interaktiv Flip Card -->
+<section>
+  <h2>Atamalarni eslab qolamiz</h2>
+  <div class="cards three">
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="shield"></i></div>
+          <h3>403 Forbidden</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Taqiqlangan</h3>
+          <p>Foydalanuvchi kimligi ma'lum, ammo bu amalni bajarishga huquqi yetarli emas.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="lock"></i></div>
+          <h3>SAFE_METHODS</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Xavfsiz metodlar</h3>
+          <p>Bazani o'zgartirmaydigan GET, HEAD, OPTIONS so'rovlari to'plami.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="user-check"></i></div>
+          <h3>perform_create</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Saqlashdan avval</h3>
+          <p>Bazaga yozishdan oldin joriy foydalanuvchini muallif qilib ulaydi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12-slayd: Mini-test Quiz -->
+<section>
+  <h2>Tezkor bilim tekshiruvi</h2>
+  <div class="quiz">
+    <p class="q">Nima uchun maqola muallifini frontenddan JSON orqali qabul qilish xavfli hisoblanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">JSON formati matnlarni saqlay olmasligi sababli</button>
+      <button class="opt" type="button" data-ok>Foydalanuvchi o'zining emas, boshqa odamning (masalan adminning) ID sini yuborib uning nomidan maqola chiqarmasligi uchun</button>
+      <button class="opt" type="button">Maqola sarlavhasi o'chib ketishi xavfi borligi uchun</button>
+    </div>
+    <div class="explain">
+      To'g'ri! Muallif har doim server tomonidan olingan request.user orqali belgilanadi. Bu soxtaliklarning oldini oladi.
+    </div>
+  </div>
+</section>
+
+<!-- 13-slayd: Odatiy xato -->
+<section>
+  <h2>Dasturchilar ko'p yo'l qo'yadigan xatolar</h2>
+  <div class="callout bad">
+    <i data-ic="circle-alert"></i>
+    Xato: Faqat <code>IsAuthenticated</code> qo'yish va obyekt egasini tekshirmaslik (barcha foydalanuvchilar bir-birining postini o'chira oladi!).
+  </div>
+  <div class="callout tip">
+    <i data-ic="circle-check"></i>
+    To'g'ri: Har doim <code>has_object_permission</code> (masalan <code>IsOwnerOrStaff</code>) orqali obyekt egaligini tekshiring.
+  </div>
+</section>
+
+<!-- 14-slayd: Amaliy topshiriq -->
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>15 daqiqa</span></h2>
+  <div class="task">
+    <span class="level easy">Oson</span>
+    <code>apps/common/permissions.py</code> da <code>IsStaffOrReadOnly</code> klassini yozing.
+  </div>
+  <div class="task">
+    <span class="level mid">O'rta</span>
+    <code>IsOwnerOrStaff</code> klassini yozing va <code>PostViewSet</code> ga ulang.
+  </div>
+  <div class="task">
+    <span class="level hard">Qiyin</span>
+    <code>perform_create</code> ni yozing va boshqa user nomidan post tahrirlashda 403 Forbidden oling.
+  </div>
+</section>
+
+<!-- 15-slayd: Xulosa -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h2>Darsni yakunlaymiz</h2>
+  <p class="muted">Keyingi darsda: Filtrlash, qidiruv (Search) va tartiblash (Ordering) vositalarini quramiz!</p>
+  <div class="chips">
+    <span class="chip">BasePermission</span>
+    <span class="chip">IsStaffOrReadOnly</span>
+    <span class="chip">IsOwnerOrStaff</span>
+    <span class="chip">perform_create</span>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

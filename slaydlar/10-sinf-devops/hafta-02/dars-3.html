@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Git va versiya boshqaruvi asoslari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 6-dars. Git va versiya boshqaruvi tizimlariga kirish (Git asoslari) -->
+
+<!-- 1. SARLAVHA -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Git va versiya boshqaruvi asoslari</h1>
+  <p class="muted">VCS tushunchasi, 3 ta hudud (Working, Staging, Repo), commitlar va .gitignore</p>
+  <span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">2-hafta · 6-dars</span>
+</section>
+
+<!-- 2. MAQSADLAR KARTALARI -->
+<section>
+  <h2>Bugungi dars maqsadlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="git-branch" data-anim="float"></i></div>
+      <h3>VCS tushunchasi</h3>
+      <p>Nega zip nusxalar emas, balki taqsimlangan Git tizimi kerak?</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="folder-tree" data-anim="pulse"></i></div>
+      <h3>Git 3 ta hududi</h3>
+      <p>Working Directory, Staging Area va Git Repository (.git).</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="file-check" data-anim="spin"></i></div>
+      <h3>Asosiy buyruqlar</h3>
+      <p>git init, status, add, commit hamda .gitignore qoidalari.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 3. STATISTIKA: GIT DUNYOSI -->
+<section>
+  <h2>Git butun dunyo standarti</h2>
+  <div class="stats">
+    <div class="stat fragment"><div class="v"><span class="count" data-to="95" data-suf="%">0</span></div><div class="l">IT kompaniyalari Git ishlatadi</div></div>
+    <div class="stat fragment"><div class="v">100 mln+</div><div class="l">dasturchilar jamoasi</div></div>
+    <div class="stat fragment"><div class="v">2005</div><div class="l">Linus Torvalds yaratgan yil</div></div>
+  </div>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Git tufayli istalgan vaqtda loyihaning bir yil oldingi holatiga qaytish mumkin.</div>
+</section>
+
+<!-- 4. BO'LIM 01: VERSYIYA BOSHQARUVI NIMA? -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Versiya boshqaruvi (VCS)</h1>
+  <p>Zip fayllar xaosidan professional tartib tomon</p>
+</section>
+
+<!-- 5. TAQQOSLASH (SWAP): ZIP vs GIT -->
+<section>
+  <h2>Zip nusxalar vs Git VCS</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">Zip nusxalar (Eski)</button><button type="button">Git VCS (Zamonaviy)</button></div>
+    <div class="swap-p">
+      <div class="card">
+        <h3>Eski usul (Zip arxivlar)</h3>
+        <p><code>loyiha_final_v2_oxirgisi.zip</code> — doimiy xaos!</p>
+        <p>Kim, qachon, nimani o'zgartirganini bilib bo'lmaydi.</p>
+        <p>Jamoada bir vaqtda ishlaganda fayllar bir-birini o'chirib yuboradi.</p>
+      </div>
+    </div>
+    <div class="swap-p">
+      <div class="card accent">
+        <h3>Zamonaviy usul (Git)</h3>
+        <p>Har bir commit — aniq muallif, sana va izohli fotosurat.</p>
+        <p>Parallel branchlarda jamoaviy mustaqil ishlash.</p>
+        <p>Istalgan xato versiyadan darhol orqaga qaytish imkoniyati.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. SVG ILLYUSTRATSIYA 1: CENTRALIZED vs DISTRIBUTED -->
+<section>
+  <h2>Markazlashgan vs Taqsimlangan VCS</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <rect class="fa" x="60" y="40" width="380" height="230" rx="16"/>
+      <text class="t-head" x="250" y="80" text-anchor="middle" font-size="22">Markazlashgan (SVN)</text>
+      <text class="t-muted" x="250" y="115" text-anchor="middle" font-size="15">Faqat serverda to'liq tarix bor</text>
+      <rect class="fn" x="100" y="140" width="300" height="45" rx="8"/>
+      <text class="t-accent" x="250" y="170" text-anchor="middle" font-size="16">Server o'chsa — ish to'xtaydi!</text>
+
+      <rect class="fb" x="560" y="40" width="380" height="230" rx="16"/>
+      <text class="t-head" x="750" y="80" text-anchor="middle" font-size="22">Taqsimlangan (Git)</text>
+      <text class="t-muted" x="750" y="115" text-anchor="middle" font-size="15">Har bir kompyuterda to'liq ombor bor</text>
+      <rect class="fn" x="600" y="140" width="300" height="45" rx="8"/>
+      <text class="t-head" x="750" y="170" text-anchor="middle" font-size="16">Offlayn rejimda ham to'liq ishlaydi!</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 7. BO'LIM 02: GIT'NING 3 TA HUDUDI -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Git'ning 3 ta hududi</h1>
+  <p>Working Directory, Staging Area va Git Repository</p>
+</section>
+
+<!-- 8. SVG ILLYUSTRATSIYA 2: 3 TA HUDUD -->
+<section>
+  <h2>Git 3 ta ishchi hududi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <g data-tip="Working Directory: oddiy fayllar"><rect class="fa" x="30" y="80" width="260" height="150" rx="16"/><text class="t-head" x="160" y="130" text-anchor="middle" font-size="22">Working Directory</text><text class="t-muted" x="160" y="165" text-anchor="middle" font-size="16">Fayllar tahrirlanmoqda</text><text class="t-accent" x="160" y="195" text-anchor="middle" font-size="16">(Untracked / Modified)</text></g>
+
+      <line class="la flowing" x1="290" y1="155" x2="390" y2="155"/><polygon class="ar-a" points="395,155 382,147 382,163"/>
+      <text class="t-accent" x="340" y="140" text-anchor="middle" font-size="16">git add</text>
+
+      <g data-tip="Staging Area: commitga tayyorlanganlar"><rect class="fb" x="400" y="80" width="260" height="150" rx="16"/><text class="t-head" x="530" y="130" text-anchor="middle" font-size="22">Staging Area</text><text class="t-muted" x="530" y="165" text-anchor="middle" font-size="16">Index maydoni</text><text class="t-accent" x="530" y="195" text-anchor="middle" font-size="16">(Staged for commit)</text></g>
+
+      <line class="lb flowing" x1="660" y1="155" x2="760" y2="155"/><polygon class="ar-b" points="765,155 752,147 752,163"/>
+      <text class="t-accent" x="710" y="140" text-anchor="middle" font-size="16">git commit</text>
+
+      <g data-tip="Git Repository: .git ombori"><rect class="fg" x="770" y="80" width="200" height="150" rx="16"/><text class="t-head" x="870" y="130" text-anchor="middle" font-size="22">Git Repository</text><text class="t-muted" x="870" y="165" text-anchor="middle" font-size="16">.git ma'lumotlar bazasi</text><text class="t-head" x="870" y="195" text-anchor="middle" font-size="16">(Committed Snapshot)</text></g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 9. AYLANADIGAN KARTALAR: HUDUDLAR VAZIFASI -->
+<section>
+  <h2>Hududlar bilan yaqindan tanishing</h2>
+  <div class="cards three">
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="folder"></i></div><h3>Working Dir</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Siz VS Code yoki Vim'da bevosita tahrirlayotgan joriy ishchi papka.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="clipboard-list"></i></div><h3>Staging Area</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Keyingi commit uchun tanlab olingan o'zgarishlar savatchasi.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="shield-check"></i></div><h3>.git Ombori</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Loyiha tarixining barcha snapshotlari mustahkam muhrlangan baza.</p></div>
+    </div></div>
+  </div>
+</section>
+
+<!-- 10. BO'LIM 03: ASOSIY BUYRUQLAR OQIMI -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Asosiy buyruqlar zanjiri</h1>
+  <p>git init, status, add va commit amalda</p>
+</section>
+
+<!-- 11. STEPPER: COMMIT QILISH BOSQICHLARI -->
+<section>
+  <h2>Commit qilishning 3 qadami</h2>
+  <div class="stepper">
+    <div class="stp on">
+      <div class="card">
+        <div class="icon"><i data-ic="file-code" data-anim="float"></i></div>
+        <h3>1. Kod yozish</h3>
+        <p>Fayllarni o'zgartirasiz. <code>git status</code> qizil rangda ko'rsatadi.</p>
+      </div>
+    </div>
+    <div class="stp">
+      <div class="card">
+        <div class="icon"><i data-ic="check-check" data-anim="pulse"></i></div>
+        <h3>2. git add</h3>
+        <p><code>git add .</code> orqali o'zgarishlarni yashil (Staged) holatga o'tkazasiz.</p>
+      </div>
+    </div>
+    <div class="stp">
+      <div class="card">
+        <div class="icon"><i data-ic="shield-check" data-anim="draw"></i></div>
+        <h3>3. git commit</h3>
+        <p><code>git commit -m "feat: yangi sahifa"</code> bilan tarixga muhrlaysiz.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. SVG ILLYUSTRATSIYA 3: COMMITLAR ZANJIRI -->
+<section>
+  <h2>Commitlar zanjiri (Snapshots)</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+      <g class="fragment"><circle class="fa" cx="200" cy="150" r="50"/><text class="t-head" x="200" y="155" text-anchor="middle" font-size="18">Commit 1</text><text class="t-muted" x="200" y="230" text-anchor="middle" font-size="14">c3b2f1a (init)</text></g>
+      
+      <line class="la flowing" x1="250" y1="150" x2="450" y2="150"/><polygon class="ar-a" points="455,150 442,142 442,158"/>
+
+      <g class="fragment"><circle class="fb" cx="500" cy="150" r="50"/><text class="t-head" x="500" y="155" text-anchor="middle" font-size="18">Commit 2</text><text class="t-muted" x="500" y="230" text-anchor="middle" font-size="14">8a4d91e (feat)</text></g>
+
+      <line class="lb flowing" x1="550" y1="150" x2="750" y2="150"/><polygon class="ar-b" points="755,150 742,142 742,158"/>
+
+      <g class="fragment"><circle class="fg" cx="800" cy="150" r="50"/><text class="t-head" x="800" y="155" text-anchor="middle" font-size="18">Commit 3</text><text class="t-muted" x="800" y="230" text-anchor="middle" font-size="14">9f11a2b (HEAD)</text></g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 13. BO'LIM 04: .GITIGNORE VA XAVFSIZLIK -->
+<section class="sec">
+  <div class="num">04</div>
+  <h1>.gitignore va xavfsizlik</h1>
+  <p>Git omboriga tushmasligi shart bo'lgan fayllar</p>
+</section>
+
+<!-- 14. SVG ILLYUSTRATSIYA 4: .GITIGNORE FILTRI -->
+<section>
+  <h2>.gitignore filtrlash qoidasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+      <rect class="fa" x="50" y="80" width="240" height="150" rx="14"/>
+      <text class="t-head" x="170" y="125" text-anchor="middle" font-size="20">Fayllar ro'yxati</text>
+      <text class="t-muted" x="170" y="160" text-anchor="middle" font-size="16">index.html, .env, app.log</text>
+
+      <line class="la flowing" x1="290" y1="155" x2="430" y2="155"/><polygon class="ar-a" points="435,155 422,147 422,163"/>
+
+      <rect class="fc" x="440" y="80" width="220" height="150" rx="14"/>
+      <text class="t-head" x="550" y="125" text-anchor="middle" font-size="20">.gitignore</text>
+      <text class="t-muted" x="550" y="160" text-anchor="middle" font-size="15">*.log, .env taqiqlandi</text>
+
+      <line class="lb flowing" x1="660" y1="155" x2="790" y2="155"/><polygon class="ar-b" points="795,155 782,147 782,163"/>
+
+      <rect class="fg" x="800" y="80" width="160" height="150" rx="14"/>
+      <text class="t-head" x="880" y="125" text-anchor="middle" font-size="20">Git Repo</text>
+      <text class="t-head" x="880" y="160" text-anchor="middle" font-size="15">Toza kod!</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 15. KOD: AMALIY GIT BUYRUQLARI -->
+<section>
+  <h2>Amaliy Git buyruqlari</h2>
+  <pre><code class="language-bash" data-trim data-noescape data-line-numbers="1-6|1-2|4|6">
+# Repozitoriy ochish va holatni tekshirish
+git init
+git status
+
+# O'zgarishlarni qo'shish va commit qilish
+git add .
+git commit -m "feat: birinchi commit"
+
+# Tarixni bir qatorda ixcham ko'rish
+git log --oneline
+  </code></pre>
+  <div class="callout tip"><i data-ic="circle-check"></i><code>git log --oneline</code> katta loyihalarda tarixni tez ko'rish uchun eng qulay usuldir.</div>
+</section>
+
+<!-- 16. MINI TEST (QUIZ) -->
+<section>
+  <h2>Tezkor bilim sinovi</h2>
+  <div class="quiz">
+    <p class="q">O'zgartirilgan fayllarni Staging Area (tayyorgarlik maydoni) ga o'tkazish uchun qaysi buyruq ishlatiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">git init</button>
+      <button class="opt" type="button">git commit</button>
+      <button class="opt" type="button" data-ok>git add</button>
+      <button class="opt" type="button">git push</button>
+    </div>
+    <div class="explain">To'g'ri: 'git add' fayllarni Staging Area ga tayyorlaydi, 'git commit' esa ularni tarixga yozadi.</div>
+  </div>
+</section>
+
+<!-- 17. AMALIY TOPSHIRIQ -->
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span><code>git init</code> bilan repozitoriya yarating va <code>README.md</code> qo'shing.</div>
+  <div class="task"><span class="level mid">O'rta</span><code>git commit -m "feat: birinchi sahifa"</code> qilib, <code>git log</code> ni ko'ring.</div>
+  <div class="task"><span class="level hard">Qiyin</span><code>.gitignore</code> fayliga <code>*.log</code> qo'shib, filtrlashni sinang.</div>
+</section>
+
+<!-- 18. XULOSA -->
+<section>
+  <h2>Bugungi dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>O'rganilgan mavzular</h3>
+      <p>VCS afzalliklari, Git'ning 3 ta hududi, init, status, add, commit zanjiri va .gitignore xavfsizligi.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="book-open"></i></div>
+      <h3>Uyga vazifa</h3>
+      <p>Shaxsiy repozitoriya ochish, bir nechta mantiqiy commit qilish va .gitignore sozlash.</p>
+    </div>
+  </div>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

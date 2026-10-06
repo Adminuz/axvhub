@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>11-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>11-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">4-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Deploy nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Kodni GitHub ga yuklash</button>
+      <button class="opt" type="button" data-ok>Tayyor loyihani serverga joylab, foydalanuvchilarga ochiq qilish</button>
+      <button class="opt" type="button">Loyihani testlash</button>
+      <button class="opt" type="button">Bazani zaxiralash</button>
+    </div>
+    <div class="explain">Deploy jonli muhitga chiqish jarayoni.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Productionda <code>DEBUG = True</code> qoldirilsa nima xavf bor?</p>
+    <div class="opts">
+      <button class="opt" type="button">Server sekinlashadi, boshqa xavf yo'q</button>
+      <button class="opt" type="button">Statik fayllar yo'qoladi</button>
+      <button class="opt" type="button">Baza o'chib ketadi</button>
+      <button class="opt" type="button" data-ok>Xato sahifasida parol va kalitlar ko'rinib qolishi mumkin</button>
+    </div>
+    <div class="explain">Haker atayin xato chaqirib, qizil ekrandan sirlarni o'qishi mumkin.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>ALLOWED_HOSTS</code> nima uchun kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Ruxsat etilgan domenlar ro'yxati: Host Header Injection dan himoya</button>
+      <button class="opt" type="button">Ruxsat etilgan IP lar uchun throttling</button>
+      <button class="opt" type="button">CORS originlarini belgilash</button>
+      <button class="opt" type="button">Statik fayllar manzili</button>
+    </div>
+    <div class="explain">Soxta domen nomidan kelgan so'rov Django tomonidan rad etiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>runserver</code> nega productionda ishlatilmaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">U Python 3 ni qo'llamaydi</button>
+      <button class="opt" type="button">U faqat PostgreSQL bilan ishlaydi</button>
+      <button class="opt" type="button" data-ok>U faqat development uchun mo'ljallangan</button>
+      <button class="opt" type="button">U HTTPS ni majburlaydi</button>
+    </div>
+    <div class="explain">Django hujjati: uni production da ishlatmang. Gunicorn ishlatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Gunicorn dagi <code>--workers 3</code> nimani anglatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">3 ta foydalanuvchi bilan cheklanadi</button>
+      <button class="opt" type="button">3 ta baza ulanadi</button>
+      <button class="opt" type="button">3 soniyada qayta ishga tushadi</button>
+      <button class="opt" type="button" data-ok>Loyihaning 3 ta mustaqil jarayoni ishga tushadi</button>
+    </div>
+    <div class="explain">Bitta ishchi band bo'lsa so'rov boshqasiga yo'naltiriladi; o'lsa yangisi yaratiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Nginx Reverse Proxy rejimida nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Statikni o'zi beradi, API so'rovlarini Gunicorn ga uzatadi</button>
+      <button class="opt" type="button">Python kodini bajaradi</button>
+      <button class="opt" type="button">Ma'lumotlar bazasini saqlaydi</button>
+      <button class="opt" type="button">Migratsiyalarni bajaradi</button>
+    </div>
+    <div class="explain">Nginx qabulxona xodimi kabi: /static/ ga o'zi javob beradi, qolganini Proxy Pass qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>python manage.py collectstatic</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Statik fayllarni bazaga yozadi</button>
+      <button class="opt" type="button">Statik fayllarni o'chiradi</button>
+      <button class="opt" type="button" data-ok>Barcha statik fayllarni STATIC_ROOT papkasiga yig'adi</button>
+      <button class="opt" type="button">Media fayllarni siqadi</button>
+    </div>
+    <div class="explain">Keyin shu papkani Nginx (yoki WhiteNoise) xizmat qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Docker qaysi muammoni hal qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Internet tezligini oshirishni</button>
+      <button class="opt" type="button" data-ok>«Mening kompyuterimda ishlagandi» muammosini</button>
+      <button class="opt" type="button">Parollarni xeshlashni</button>
+      <button class="opt" type="button">SQL so'rovlarni tezlashtirishni</button>
+    </div>
+    <div class="explain">Konteyner ichida OS, Python, kod va kutubxonalar bir xil bo'ladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>docker-compose.prod.yml</code> da web servisi bazaga ulanishi uchun <code>DB_HOST</code> nima bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>db (compose servis nomi)</button>
+      <button class="opt" type="button">localhost</button>
+      <button class="opt" type="button">127.0.0.1</button>
+      <button class="opt" type="button">web</button>
+    </div>
+    <div class="explain">Konteyner ichidagi localhost konteynerning o'zi; servislar nomi bilan topiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Qo'llanma bo'yicha eng professional va to'g'ri hosting turi qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Shared (cPanel)</button>
+      <button class="opt" type="button">Faqat PaaS</button>
+      <button class="opt" type="button" data-ok>VPS/VDS</button>
+      <button class="opt" type="button">Bepul statik hosting</button>
+    </div>
+    <div class="explain">VPS: bo'sh Linux server, hammasini o'zingiz sozlaysiz. Shared Django uchun noqulay.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: DEBUG, ALLOWED_HOSTS, .env, Gunicorn, Nginx, collectstatic, Docker, compose, VPS.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

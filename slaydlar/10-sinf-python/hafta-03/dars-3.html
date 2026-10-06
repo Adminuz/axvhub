@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>APIni Testlash va Hujjatlashtirish</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 1-slayd: Sarlavha -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>APIni Testlash va Hujjatlashtirish</h1>
+  <p class="muted">APITestCase orqali avtomatlashtirilgan sinovlar, OpenAPI 3.0, Swagger va ReDoc</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">3-hafta &middot; 9-dars</span>
+  
+</section>
+
+<!-- 2-slayd: Dars rejasi -->
+<section>
+  <h2>Dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="check-check" data-anim="pulse"></i></div>
+      <h3>Avtomatlashtirilgan Testlar</h3>
+      <p>APITestCase, APIClient, force_authenticate va regressiyalarni oldini olish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="file-text" data-anim="float"></i></div>
+      <h3>OpenAPI &amp; Swagger</h3>
+      <p>drf-spectacular, interaktiv Swagger UI va ReDoc hujjatlashtirish tizimi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="award" data-anim="spin"></i></div>
+      <h3>1-bob Yakuni (NewsPortal)</h3>
+      <p>3 haftalik to'liq professional REST API loyihasini muvaffaqiyatli topshirish.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3-slayd: Bo'lim 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>APIni testlash</h1>
+  <p>APITestCase va ishonchli sinovlar</p>
+</section>
+
+<!-- 4-slayd: SVG Sxema: Test hayot sikli -->
+<section>
+  <h2>APITestCase qanday ishlaydi?</h2>
+  <p>Har bir test vaqtinchalik xotira bazasida izolyatsiyalangan holda bajariladi</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300" width="100%" height="300">
+      <!-- 1. setUp -->
+      <rect x="40" y="60" width="260" height="180" rx="14" class="fa"></rect>
+      <text x="170" y="105" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">1. setUp()</text>
+      <text x="170" y="145" text-anchor="middle" class="t-accent" font-size="14">Vaqtinchalik Test Baza</text>
+      <text x="170" y="175" text-anchor="middle" class="t-muted" font-size="13">Foydalanuvchi yaratiladi</text>
+      <text x="170" y="205" text-anchor="middle" class="t-muted" font-size="13">Kategoriya yaratiladi</text>
+
+      <!-- Strelka 1 -->
+      <path d="M 300 150 L 370 150" class="la flowing" stroke-width="3"></path>
+      <polygon points="360,145 370,150 360,155" class="ar-a"></polygon>
+
+      <!-- 2. Test Ijrosi -->
+      <rect x="380" y="60" width="260" height="180" rx="14" class="fb"></rect>
+      <text x="510" y="105" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">2. Test Metodi</text>
+      <text x="510" y="145" text-anchor="middle" class="t-accent" font-size="14">client.post('/posts/')</text>
+      <text x="510" y="175" text-anchor="middle" class="t-muted" font-size="13">assertEqual(status, 201)</text>
+      <text x="510" y="205" text-anchor="middle" class="t-muted" font-size="13">assertIn("results", ...)</text>
+
+      <!-- Strelka 2 -->
+      <path d="M 640 150 L 710 150" class="lg flowing" stroke-width="3"></path>
+      <polygon points="700,145 710,150 700,155" class="ar-g"></polygon>
+
+      <!-- 3. Tozalash -->
+      <rect x="720" y="60" width="240" height="180" rx="14" class="fg"></rect>
+      <text x="840" y="105" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">3. Tozalash (TearDown)</text>
+      <text x="840" y="145" text-anchor="middle" class="t-head" font-size="14">Vaqtinchalik baza o'chadi</text>
+      <text x="840" y="175" text-anchor="middle" class="t-muted" font-size="13">Asosiy baza toza qoladi</text>
+      <text x="840" y="205" text-anchor="middle" class="t-head" font-size="14">Natija: OK (Yashil!)</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 5-slayd: Test kod namunasi -->
+<section>
+  <h2>src/apps/news/tests/test_posts_api.py</h2>
+  <pre><code class="language-python" data-trim data-noescape data-line-numbers="1-15|5-7|9-11|13-15">class PostAPITestCase(APITestCase):
+    def setUp(self):
+        self.user = User.objects.create_user("u@mail.uz", "pass")
+        self.cat = Category.objects.create(name="IT", slug="it")
+
+    def test_list_posts(self):
+        response = self.client.get("/api/v1/posts/")
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_create_post_authenticated(self):
+        self.client.force_authenticate(user=self.user)
+        res = self.client.post("/api/v1/posts/", {"title": "A", "category": self.cat.id})
+        self.assertEqual(res.status_code, status.HTTP_201_CREATED)
+
+    def test_create_unauthenticated_fails(self):
+        res = self.client.post("/api/v1/posts/", {"title": "X"})
+        self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)</code></pre>
+</section>
+
+<!-- 6-slayd: Bo'lim 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>API Hujjatlashtirish</h1>
+  <p>drf-spectacular va OpenAPI 3.0 standarti</p>
+</section>
+
+<!-- 7-slayd: SVG Sxema: Hujjatlashtirish oqimi -->
+<section>
+  <h2>Avtomatik hujjatlashtirish oqimi</h2>
+  <p>Kodingizdagi o'zgarishlar darhol veb-hujjatda aks etadi</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300" width="100%" height="300">
+      <!-- Kod qatlami -->
+      <rect x="50" y="60" width="260" height="180" rx="14" class="fa"></rect>
+      <text x="180" y="105" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Django Kodlari</text>
+      <text x="180" y="145" text-anchor="middle" class="t-muted" font-size="14">ModelViewSetlar</text>
+      <text x="180" y="175" text-anchor="middle" class="t-muted" font-size="14">Serializer maydonlari</text>
+      <text x="180" y="205" text-anchor="middle" class="t-accent" font-size="14">Filter &amp; Permissions</text>
+
+      <!-- drf-spectacular -->
+      <path d="M 310 150 L 370 150" class="la flowing" stroke-width="3"></path>
+      <polygon points="360,145 370,150 360,155" class="ar-a"></polygon>
+
+      <rect x="380" y="60" width="260" height="180" rx="14" class="fb"></rect>
+      <text x="510" y="105" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">drf-spectacular</text>
+      <text x="510" y="145" text-anchor="middle" class="t-accent" font-size="15">AutoSchema Generator</text>
+      <text x="510" y="175" text-anchor="middle" class="t-muted" font-size="14">/api/schema/</text>
+      <text x="510" y="205" text-anchor="middle" class="t-head" font-size="14">OpenAPI 3.0 JSON/YAML</text>
+
+      <!-- Hujjatlar UI -->
+      <path d="M 640 150 L 700 150" class="lg flowing" stroke-width="3"></path>
+      <polygon points="690,145 700,150 690,155" class="ar-g"></polygon>
+
+      <rect x="710" y="60" width="250" height="180" rx="14" class="fg"></rect>
+      <text x="835" y="105" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Interfeyslar</text>
+      <text x="835" y="145" text-anchor="middle" class="t-head" font-size="15">Swagger UI (/api/docs/)</text>
+      <text x="835" y="175" text-anchor="middle" class="t-muted" font-size="14">ReDoc (/api/redoc/)</text>
+      <text x="835" y="205" text-anchor="middle" class="t-head" font-size="14">Interaktiv sinash!</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 8-slayd: Swagger UI ko'rinishi -->
+<section>
+  <h2>Swagger UI: /api/docs/</h2>
+  <div class="browser">
+    <div class="bar">
+      <i></i><i></i><i></i>
+      <span>http://127.0.0.1:8000/api/docs/</span>
+    </div>
+    <div class="page">
+      <p><strong>NewsPortal REST API v1.0.0</strong> &mdash; [Authorize Bearer]</p>
+      <p style="color: #4ec9b0;">GET /api/v1/posts/ &mdash; Maqolalar ro'yxatini olish</p>
+      <p style="color: #ce9178;">POST /api/v1/posts/ &mdash; Yangi maqola yaratish</p>
+      <p style="color: #9cdcfe;">GET /api/v1/posts/{slug}/ &mdash; Maqola tafsilotlari</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9-slayd: Bo'lim 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>1-bob Xulosasi: NewsPortal</h1>
+  <p>3 haftalik to'liq backend arxitekturasi</p>
+</section>
+
+<!-- 10-slayd: SVG Sxema: NewsPortal to'liq xaritasi -->
+<section>
+  <h2>NewsPortal to'liq arxitekturasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320" width="100%" height="320">
+      <!-- 1. Auth -->
+      <rect x="30" y="40" width="210" height="120" rx="10" class="fa"></rect>
+      <text x="135" y="75" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">1. Autentifikatsiya</text>
+      <text x="135" y="105" text-anchor="middle" class="t-muted" font-size="13">Custom User, JWT</text>
+      <text x="135" y="130" text-anchor="middle" class="t-accent" font-size="13">Access &amp; Refresh</text>
+
+      <!-- 2. CRUD & Router -->
+      <rect x="270" y="40" width="210" height="120" rx="10" class="fb"></rect>
+      <text x="375" y="75" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">2. CRUD &amp; Routers</text>
+      <text x="375" y="105" text-anchor="middle" class="t-muted" font-size="13">Post, Category, Tag</text>
+      <text x="375" y="130" text-anchor="middle" class="t-accent" font-size="13">DefaultRouter</text>
+
+      <!-- 3. Ruxsatlar -->
+      <rect x="510" y="40" width="210" height="120" rx="10" class="fc"></rect>
+      <text x="615" y="75" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">3. Xavfsizlik</text>
+      <text x="615" y="105" text-anchor="middle" class="t-muted" font-size="13">IsOwnerOrStaff</text>
+      <text x="615" y="130" text-anchor="middle" class="t-accent" font-size="13">IDOR himoyasi</text>
+
+      <!-- 4. Qidiruv & Pagination -->
+      <rect x="750" y="40" width="220" height="120" rx="10" class="fg"></rect>
+      <text x="860" y="75" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">4. Filtr &amp; Pagination</text>
+      <text x="860" y="105" text-anchor="middle" class="t-muted" font-size="13">django-filter, Search</text>
+      <text x="860" y="130" text-anchor="middle" class="t-accent" font-size="13">PageNumber, Throttling</text>
+
+      <!-- 5. Pastki: Fayllar va Hujjatlar -->
+      <rect x="150" y="190" width="330" height="100" rx="10" class="fg"></rect>
+      <text x="315" y="230" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">5. Fayllar (Upload/Download)</text>
+      <text x="315" y="260" text-anchor="middle" class="t-muted" font-size="13">MultiPartParser &amp; FileResponse</text>
+
+      <rect x="520" y="190" width="330" height="100" rx="10" class="fa"></rect>
+      <text x="685" y="230" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">6. Testlar &amp; Swagger</text>
+      <text x="685" y="260" text-anchor="middle" class="t-muted" font-size="13">APITestCase &amp; OpenAPI 3.0</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 11-slayd: Interaktiv Flip Card -->
+<section>
+  <h2>Atamalarni eslab qolamiz</h2>
+  <div class="cards three">
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="check-check"></i></div>
+          <h3>APITestCase</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Test sinfi</h3>
+          <p>Vaqtinchalik xotira bazasida so'rovlarni avtomatik sinovdan o'tkazuvchi vosita.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="file-text"></i></div>
+          <h3>Swagger UI</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Interaktiv hujjat</h3>
+          <p>Brauzerda API ni ko'rish va to'g'ridan-to'g'ri testlab ko'rish interfeysi.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="zap"></i></div>
+          <h3>force_authenticate</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Tezkor kirish</h3>
+          <p>Testda parolsiz foydalanuvchi nomidan darhol so'rov yuborish imkoni.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12-slayd: Mini-test Quiz -->
+<section>
+  <h2>Tezkor bilim tekshiruvi</h2>
+  <div class="quiz">
+    <p class="q">Nima uchun Swagger UI frontend dasturchilar bilan ishlashda eng muhim vosita hisoblanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Chunki u avtomatik ravishda rasm chizib beradi</button>
+      <button class="opt" type="button" data-ok>Chunki u barcha endpointlar, parametrlar va JSON modellarini avtomatik ko'rsatib, "Try it out" orqali testlash imkonini beradi</button>
+      <button class="opt" type="button">Chunki u faqat kompyuter o'yinlari uchun ishlatiladi</button>
+    </div>
+    <div class="explain">
+      To'g'ri! Swagger UI backend va frontend o'rtasidagi asosiy ko'prikdir: hech qanday bahs-munozarasiz aniq API spetsifikatsiyasini ko'rsatadi.
+    </div>
+  </div>
+</section>
+
+<!-- 13-slayd: Odatiy xato -->
+<section>
+  <h2>Dasturchilar ko'p yo'l qo'yadigan xatolar</h2>
+  <div class="callout bad">
+    <i data-ic="circle-alert"></i>
+    Xato: Test yozishni vaqtni yo'qotish deb bilish (natijada yangi o'zgarish kiritilganda butun tizim qulashi mumkin).
+  </div>
+  <div class="callout tip">
+    <i data-ic="circle-check"></i>
+    To'g'ri: Har bir muhim endpoint (CRUD, Auth, Permissions) uchun kamida bittadan avtomatlashtirilgan test yozing.
+  </div>
+</section>
+
+<!-- 14-slayd: Amaliy topshiriq -->
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task">
+    <span class="level easy">Oson</span>
+    <code>apps/news/tests/test_posts_api.py</code> faylini yarating va <code>python manage.py test</code> qiling.
+  </div>
+  <div class="task">
+    <span class="level mid">O'rta</span>
+    <code>pip install drf-spectacular</code> qilib, <code>/api/docs/</code> marshrutini ulang.
+  </div>
+  <div class="task">
+    <span class="level hard">Qiyin</span>
+    Swagger UI da "Try it out" tugmasi orqali yangi maqola yarating va natijani tekshiring.
+  </div>
+</section>
+
+<!-- 15-slayd: Xulosa -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h2>1-BOBNI TUGATDIK! TABRIKLAYMIZ!</h2>
+  <p class="muted">Keyingi bobda (II Bob): Asinxron Python olami — zamonaviy va o'ta tezkor FastAPI freymvorkini boshlaymiz!</p>
+  <div class="chips">
+    <span class="chip">APITestCase (100% OK)</span>
+    <span class="chip">OpenAPI 3.0</span>
+    <span class="chip">Swagger UI &amp; ReDoc</span>
+    <span class="chip">NewsPortal REST API Tayyor!</span>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

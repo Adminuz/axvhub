@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>2-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>2-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">1-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Git nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Kompyuterda ishlaydigan versiyalarni boshqarish tizimi</button>
+      <button class="opt" type="button">Veb-xizmat, faqat internetda ishlaydi</button>
+      <button class="opt" type="button">Matn muharriri</button>
+      <button class="opt" type="button">Dasturlash tili</button>
+    </div>
+    <div class="explain">Git lokal dastur, internet shart emas. GitHub esa uning atrofidagi veb-xizmat.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Yangi bo'sh papkada repozitoriy yaratish buyrug'i qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>git start</code></button>
+      <button class="opt" type="button" data-ok><code>git init -b main</code></button>
+      <button class="opt" type="button"><code>git new repo</code></button>
+      <button class="opt" type="button"><code>git create main</code></button>
+    </div>
+    <div class="explain"><code>git init</code> yashirin <code>.git/</code> katalogini yaratadi, <code>-b main</code> boshlang'ich shox nomini beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Git'ning uchta zonasi to'g'ri tartibda qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Repozitoriy, ishchi papka, staging</button>
+      <button class="opt" type="button">Staging, commit, push</button>
+      <button class="opt" type="button" data-ok>Ishchi papka, staging, repozitoriy</button>
+      <button class="opt" type="button">Ishchi papka, remote, staging</button>
+    </div>
+    <div class="explain"><code>git add</code> ishchi papkadan stagingga, <code>git commit</code> stagingdan tarixga o'tkazadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>git status -s</code> da <code>??</code> belgisi nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faylda konflikt bor</button>
+      <button class="opt" type="button">Fayl o'chirilgan</button>
+      <button class="opt" type="button">Fayl commit qilingan</button>
+      <button class="opt" type="button" data-ok>Fayl hali kuzatilmaydi (untracked)</button>
+    </div>
+    <div class="explain"><code>??</code> Git hali kuzatmaydigan yangi fayl. <code>A </code> stagingga qo'shilgan, <code> M</code> o'zgargan lekin stagingda emas.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>git add a.txt</code> dan keyin a.txt ga yana qator qo'shildi. <code>git status -s</code> nima ko'rsatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>AM a.txt</code></button>
+      <button class="opt" type="button"><code>A  a.txt</code></button>
+      <button class="opt" type="button"><code>?? a.txt</code></button>
+      <button class="opt" type="button"><code> M a.txt</code></button>
+    </div>
+    <div class="explain">Birinchi harf A: fayl stagingda. Ikkinchi harf M: ishchi papkada stagingga tushmagan o'zgarish bor.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>git add</code> dan keyin <code>git diff</code> bo'sh chiqdi. Sababi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Git buzilgan</button>
+      <button class="opt" type="button" data-ok>Ishchi papka va staging bir xil; farqni <code>git diff --staged</code> ko'rsatadi</button>
+      <button class="opt" type="button">O'zgarish yo'qolgan</button>
+      <button class="opt" type="button">Commit avtomatik qilingan</button>
+    </div>
+    <div class="explain"><code>git diff</code> ishchi papka va stagingni solishtiradi. Staging va oxirgi commit farqi <code>--staged</code> bilan ko'rinadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>main</code> da turib <code>feature/greeting</code> ni birlashtirish buyrug'i qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>git switch feature/greeting</code></button>
+      <button class="opt" type="button"><code>git branch -d feature/greeting</code></button>
+      <button class="opt" type="button" data-ok><code>git merge feature/greeting</code></button>
+      <button class="opt" type="button"><code>git restore feature/greeting</code></button>
+    </div>
+    <div class="explain">Merge qabul qiluvchi shoxda (main) turib bajariladi. <code>-d</code> esa birlashgan shoxni o'chiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Saqlanmagan o'zgarishni bekor qiladigan, lekin qaytarib bo'lmaydigan buyruq qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>git revert hello.py</code></button>
+      <button class="opt" type="button"><code>git log hello.py</code></button>
+      <button class="opt" type="button"><code>git show hello.py</code></button>
+      <button class="opt" type="button" data-ok><code>git restore hello.py</code></button>
+    </div>
+    <div class="explain"><code>git restore</code> ishchi o'zgarishni o'chiradi va uni tiklab bo'lmaydi. Ehtiyot bo'ling.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Konfliktli faylda <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> va <code>=======</code> belgilari orasidagi qism nimani anglatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Hozirgi shox (main) dagi variant</button>
+      <button class="opt" type="button">Birlashtirilayotgan shoxdagi variant</button>
+      <button class="opt" type="button">Eski o'chirilgan kod</button>
+      <button class="opt" type="button">Git'ning avtomatik izohi</button>
+    </div>
+    <div class="explain"><code>HEAD</code> ostidagi qism joriy shoxniki; <code>=======</code> dan keyingisi birlashtirilayotgan shoxniki.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Umumiy shoxda xato commitni xavfsiz bekor qilish kerak. Qaysi buyruq mos va nega?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>git restore</code>, chunki u tarixni o'chiradi</button>
+      <button class="opt" type="button" data-ok><code>git revert &lt;hash&gt;</code>, chunki tarixni buzmay teskari commit qo'shadi</button>
+      <button class="opt" type="button"><code>git reset --hard</code>, chunki u eng xavfsiz</button>
+      <button class="opt" type="button"><code>git init</code>, chunki u tarixni yangilaydi</button>
+    </div>
+    <div class="explain">Revert yangi commit qo'shadi, tarix saqlanadi, shuning uchun umumiy shoxlarda xavfsiz.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: Git zonalari, <code>git status -s</code> belgilari, branch va merge, konfliktni hal qilish, restore va revert farqi.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

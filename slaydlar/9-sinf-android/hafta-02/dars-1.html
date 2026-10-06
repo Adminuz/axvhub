@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Android ekotizimi va Google xizmatlari (1-qism)</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Android ekotizimi va Google xizmatlari (1-qism)</h1>
+  <p class="muted">AOSP va GMS farqi: Google Play Services platformasining imkoniyatlari</p>
+  <span class="badge">9-sinf</span>
+  <span class="badge">Android dasturlash</span>
+  <span class="badge">2-hafta · 4-dars</span>
+</section>
+
+<section>
+  <h2>Bugungi dars maqsadlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>AOSP vs GMS</h3>
+      <p>Ochiq manbali tizim va Google xususiy xizmatlari farqi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cloud"></i></div>
+      <h3>Play Services</h3>
+      <p>Ilovalar va Google serverlari o'rtasidagi xavfsiz ko'prik.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Moslashuvchanlik</h3>
+      <p>GMS va HMS (Huawei) qurilmalari bilan to'g'ri ishlash.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>AOSP va GMS taqqoslashi</h1>
+  <p>Ochiq manba dvigateli va Google qulayliklari</p>
+</section>
+
+<section>
+  <h2>Ekotizimning ikki qanoti</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>AOSP</h3>
+      <p>Android Open Source Project.</p>
+      <p>Barcha uchun ochiq, bepul va modulli yadro kodi.</p>
+      <p class="muted">Linux yadrosi, ART, tizim kutubxonalari.</p>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>GMS</h3>
+      <p>Google Mobile Services.</p>
+      <p>Googlening maxsus ilovalari va xizmatlari.</p>
+      <p class="good">Play Store, Maps, YouTube, Play Services.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Nega Google AOSP'ni bepul beradi?</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <h3>Strategik maqsad</h3>
+        <p>Google operatsion tizimni bepul tarqatib, dunyo foydalanuvchilarini o'z qidiruv va internet xizmatlariga bog'laydi.</p>
+        <p class="muted">Foydalanuvchilar soni qancha ko'p bo'lsa, Google xizmatlari shuncha daromad keltiradi.</p>
+      </div>
+    </div>
+    <div>
+      <div class="callout good fragment fade-up">
+        <h4>Ekotizim yutug'i:</h4>
+        <p>Har bir smartfon ishlab chiqaruvchisi noldan tizim yaratmasdan, tayyor AOSP'dan foydalanadi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Google Play Services</h1>
+  <p>Fondagi ko'prik: ekotizimning aqlli markazi</p>
+</section>
+
+<section>
+  <h2>Google Play Services nima?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="smartphone"></i></div>
+      <h3>Fondagi tizim xizmati</h3>
+      <p>Menyuda ko'rinmaydi, lekin har soniyada tizim xavfsizligi va API aloqalarini boshqaradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cloud"></i></div>
+      <h3>Doimiy yangilanish</h3>
+      <p>Operatsion tizim yangilanmasa ham, Play Market orqali eng yangi xavfsizlik va API funksiyalarini olib keladi.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Asosiy vazifalari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="map-pin"></i></div>
+      <h3>Fused Location</h3>
+      <p>GPS, Wi-Fi va uyali minoralar signallarini birlashtirib, kam quvvat bilan manzilni aniqlaydi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="bell"></i></div>
+      <h3>FCM bildirishnomalar</h3>
+      <p>Barcha ilovalar uchun bitta umumiy aloqa kanali orqali tezkor xabarlarni yetkazadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Google Play Protect</h3>
+      <p>Telefondagi barcha ilovalarni zararli kodlarga qarshi doimiy tekshirib turadi.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Fused Location qanday ishlaydi?</h2>
+  <div class="timeline">
+    <div class="tl fragment"><b>Oddiy GPS:</b> To'g'ridan-to'g'ri sun'iy yo'ldoshga ulanadi va batareyani juda tez tugatadi.</div>
+    <div class="tl fragment"><b>Aqlli kombinatsiya:</b> Fused Location GPS + Wi-Fi tarmoqlari + uyali aloqa minoralarini birlashtiradi.</div>
+    <div class="tl fragment"><b>Natija:</b> Bino ichida ham joylashuv aniqlanadi va batareya quvvati maksimal tejaladi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>GMS va HMS muammosi</h1>
+  <p>Google xizmatlari bo'lmagan qurilmalar bilan ishlash</p>
+</section>
+
+<section>
+  <h2>Nega Huawei qurilmalarida GMS yo'q?</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <h3>Xalqaro cheklovlar</h3>
+        <p>2019-yilda sanksiyalar tufayli Huawei smartfonlariga GMS o'rnatish taqiqlandi.</p>
+        <p class="muted">Huawei AOSP asosida o'zining HMS (Huawei Mobile Services) ekotizimini yaratdi.</p>
+      </div>
+    </div>
+    <div>
+      <div class="callout warn fragment fade-up">
+        <h4>Dasturchiga eslatma:</h4>
+        <p>Agar ilova faqat Google Maps'ga tayansa, u Huawei telefonlarida ochilmay qolishi mumkin!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Xavfsiz tekshiruv kodi</h2>
+  <pre><code class="language-kotlin" data-trim data-noescape data-line-numbers="1-8|1-2|4-8">
+val availability = GoogleApiAvailability.getInstance()
+val code = availability.isGooglePlayServicesAvailable(context)
+
+if (code == ConnectionResult.SUCCESS) {
+    // Google xizmatlarini ishga tushirish
+} else {
+    // Muqobil ochiq manbali xaritani ochish
+}
+  </code></pre>
+  <div class="callout good"><i data-ic="shield-check"></i>Bu kod ilovaning barcha telefonlarda xatosiz ishlashini kafolatlaydi.</div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>15 daqiqa</span></h2>
+  <div class="task">
+    <span class="level easy">Oson</span>
+    Smartfoningiz sozlamalaridan «Google Play xizmatlari» hajmini va versiyasini aniqlang.
+  </div>
+  <div class="task">
+    <span class="level mid">O'rta</span>
+    AOSP va GMS farqini ko'rsatuvchi 3 ustunli jadval tuzing.
+  </div>
+  <div class="task">
+    <span class="level hard">Qiyin</span>
+    Nima uchun ilovalar to'g'ridan-to'g'ri GPS'ga emas, Fused Location'ga murojaat qilishini asoslang.
+  </div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Bugun o'rgandik</h3>
+      <p>AOSP ochiq yadro, GMS esa Google xususiy xizmatlaridir. Google Play Services fonda ishlovchi aqlli ko'prikdir.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="book-open"></i></div>
+      <h3>Keyingi dars</h3>
+      <p>5-dars: Google Play Console, SHA-1 barmoq izi, google-services.json va AAB formati.</p>
+    </div>
+  </div>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

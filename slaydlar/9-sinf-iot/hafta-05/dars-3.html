@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Mikrokontroller tushunchasi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Mikrokontroller tushunchasi</h1>
+  <p class="muted">Chip ichidagi kompyuter: CPU, xotira va portlar (1-qism)</p>
+  <span class="badge">9-sinf</span><span class="badge">IoT</span><span class="badge">5-hafta · 15-dars</span>
+  
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">Wi-Fi rejimida ESP o'zi tarmoq yaratsa va telefon unga ulansa — bu qaysi rejim?</p>
+    <div class="opts">
+      <button class="opt" type="button">Station</button>
+      <button class="opt" type="button" data-ok>Access Point</button>
+      <button class="opt" type="button">Deep Sleep</button>
+      <button class="opt" type="button">MQTT</button>
+    </div>
+    <div class="explain">Access Point — modul o'zi kichik «router»ga aylanadi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Mikrokontroller nima?</h1>
+  <p>Buyumlar ichida yashiringan kompyuter</p>
+</section>
+
+<section>
+  <h2>Ta'rif</h2>
+  <div class="quote fragment">Mikrokontroller — bitta mikrosxema (chip) ichiga joylashtirilgan <b>ixcham kompyuter</b>.</div>
+  <div class="chips mt">
+    <span class="chip fragment">kir yuvish mashinasi</span>
+    <span class="chip fragment">tormoz tizimi</span>
+    <span class="chip fragment">televizor pulti</span>
+    <span class="chip fragment">mikroto'lqinli pech</span>
+  </div>
+</section>
+
+<section>
+  <h2>«Hamma narsa o'zida»</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <rect class="fn ln" x="250" y="40" width="500" height="260" rx="18" stroke-width="4"/>
+      <text class="t-muted" x="500" y="30" text-anchor="middle" font-size="22">bitta chip</text>
+      <g class="fragment" data-tip="CPU — buyruqlarni o'qiydi va bajaradi, hisoblaydi, qaror qabul qiladi."><rect class="fa la pulse" x="290" y="80" width="190" height="90" rx="12" stroke-width="3"/><text class="t-head" x="385" y="133" text-anchor="middle" font-size="26">CPU</text></g>
+      <g class="fragment" data-tip="Xotira: Flash (dastur) va RAM (vaqtinchalik ma'lumot)."><rect class="fb lb" x="520" y="80" width="190" height="90" rx="12" stroke-width="3"/><text class="t-head" x="615" y="120" text-anchor="middle" font-size="24">Xotira</text><text class="t-muted" x="615" y="152" text-anchor="middle" font-size="20">Flash · RAM</text></g>
+      <g class="fragment" data-tip="Kirish-chiqish portlari — tashqi dunyo bilan aloqa: sensor, LED, motor."><rect class="fg lg" x="290" y="200" width="420" height="70" rx="12" stroke-width="3"/><text class="t-head" x="500" y="244" text-anchor="middle" font-size="24">Kirish-chiqish portlari (I/O)</text></g>
+      <g class="fragment"><line class="lc flowing" x1="140" y1="235" x2="285" y2="235" stroke-width="4" marker-end="url(#ar-c)"/><text class="t-accent" x="120" y="225" text-anchor="end" font-size="22">sensor</text><line class="lc flowing" x1="715" y1="235" x2="860" y2="235" stroke-width="4" marker-end="url(#ar-c)"/><text class="t-accent" x="880" y="225" font-size="22">LED</text></g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>MCU va MPU</h2>
+  <div class="vs">
+    <div class="side fragment"><h3><i data-ic="cpu" data-anim="pulse"></i> Mikrokontroller</h3>Yaxlit tizim: CPU, xotira, portlar bitta chipda. Mustaqil ishlaydi.</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3><i data-ic="microchip"></i> Mikroprotsessor</h3>Faqat «miya» (Intel, AMD). RAM, disk, sxemalar tashqaridan ulanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>O'xshatish</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:190px"><div class="flip-in"><div class="face front"><div class="icon"><i data-ic="wrench"></i></div><h3>Shveysariya pichog'i</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Kichkina, hamma asbob o'zida, mayda aniq ishlar uchun — <b>MCU</b>.</p></div></div></div>
+    <div class="flip" style="min-height:190px"><div class="flip-in"><div class="face front"><div class="icon"><i data-ic="car" data-anim="float"></i></div><h3>Formula-1 dvigateli</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Juda qudratli, lekin g'ildirak, korpus, bak alohida kerak — <b>MPU</b>.</p></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>1-jadval: MCU va MPU</h2>
+  <table>
+    <thead><tr><th>Xususiyat</th><th>MCU</th><th>MPU</th></tr></thead>
+    <tbody>
+      <tr class="fragment"><td>Tuzilishi</td><td>hammasi bitta chipda</td><td>faqat «miya»</td></tr>
+      <tr class="fragment"><td>Vazifasi</td><td>maxsus (harorat o'lchash)</td><td>umumiy (o'yin, video)</td></tr>
+      <tr class="fragment"><td>Tezlik/quvvat</td><td>MHz, juda kam tok</td><td>GHz, kuler kerak</td></tr>
+      <tr class="fragment"><td>Narxi</td><td>1 $ dan ham arzon</td><td>yuzlab $</td></tr>
+      <tr class="fragment"><td>Misollar</td><td>ATmega328, ESP32, STM32</td><td>Core i7, Ryzen, Apple M1</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Kompyuterdan farqi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="laptop"></i></div><h3>Kompyuter</h3><p>Universal: Windows/Linux, bir vaqtda yuzlab dastur.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="microwave" data-anim="blink"></i></div><h3>Mikroto'lqinli pech MCU</h3><p>OS yo'q. Faqat vaqtni sanaydi va qizdiradi — bitta dastur tinimsiz takrorlanadi.</p></div>
+  </div>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Video montaj, o'yin → kompyuter. Robot, avtomatik chiroq → mikrokontroller.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Qaysi biri mikrokontroller?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>STM32</button>
+      <button class="opt" type="button">Intel Core i7</button>
+      <button class="opt" type="button">AMD Ryzen</button>
+      <button class="opt" type="button">Apple M1</button>
+    </div>
+    <div class="explain">STM32 — MCU; qolganlari kompyuter mikroprotsessorlari.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Uchta ustun</h1>
+  <p>Protsessor, xotira, kirish-chiqish portlari</p>
+</section>
+
+<section>
+  <h2>CPU — «miya» va «dirijyor»</h2>
+  <ol class="steps-n">
+    <li class="fragment">Xotiradagi buyruqni <b>o'qiydi</b></li>
+    <li class="fragment">Uni <b>tushunadi</b></li>
+    <li class="fragment"><b>Bajaradi</b>: qo'shish, ayirish, «agar harorat ko'tarilsa…»</li>
+  </ol>
+  <div class="stats mt">
+    <div class="stat"><div class="v"><span class="count" data-to="16" data-suf=" MHz">0</span></div><div class="l">Arduino UNO chastotasi</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="8" data-suf="-bit">0</span></div><div class="l">ATmega328P (AVR)</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Xotira: darslik va doska</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="book-open"></i></div><h3>Flash (ROM)</h3><p>Dastur kodi. Tok o'chsa ham saqlanadi — <b>darslik</b>.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="presentation"></i></div><h3>RAM (SRAM)</h3><p>O'zgaruvchilar, oraliq natija. Tok o'chsa o'chadi — <b>doska</b>.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="save"></i></div><h3>EEPROM</h3><p>Tok o'chganda ham saqlanishi kerak bo'lgan sozlamalar.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>I/O portlar — «ko'z-quloq» va «qo'l-oyoq»</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+      <g data-tip="Input rejimi: tugma bosildimi, yorug'lik bormi, harorat qancha — xabar protsessorga boradi."><rect class="fb lb" x="30" y="100" width="200" height="100" rx="14" stroke-width="3"/><text class="t-head" x="130" y="145" text-anchor="middle" font-size="24">Input</text><text class="t-muted" x="130" y="178" text-anchor="middle" font-size="20">tugma, sensor</text></g>
+      <g class="fragment" data-tip="CPU Flash'dagi dastur asosida xabarni tahlil qiladi va qaror qabul qiladi."><line class="lb flowing" x1="230" y1="150" x2="385" y2="150" stroke-width="4" marker-end="url(#ar-b)"/><rect class="fa la pulse" x="390" y="80" width="220" height="140" rx="14" stroke-width="4"/><text class="t-head" x="500" y="145" text-anchor="middle" font-size="26">CPU</text><text class="t-muted" x="500" y="180" text-anchor="middle" font-size="20">dastur bo'yicha</text></g>
+      <g class="fragment" data-tip="Output rejimi: tok yuborib chiroqni yoqadi yoki motorni aylantiradi."><line class="lg flowing" x1="610" y1="150" x2="765" y2="150" stroke-width="4" marker-end="url(#ar-g)"/><rect class="fg lg" x="770" y="100" width="200" height="100" rx="14" stroke-width="3"/><text class="t-head" x="870" y="145" text-anchor="middle" font-size="24">Output</text><text class="t-muted" x="870" y="178" text-anchor="middle" font-size="20">LED, motor</text></g>
+      <g class="fragment"><text class="t-accent" x="500" y="270" text-anchor="middle" font-size="22">port xabar oladi → CPU tahlil qiladi → port javob beradi</text></g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Tok o'chib-yonganda nima yo'qoladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Flash'dagi dastur</button>
+      <button class="opt" type="button" data-ok>RAM'dagi o'zgaruvchi qiymati</button>
+      <button class="opt" type="button">EEPROM'dagi sozlama</button>
+      <button class="opt" type="button">Hech narsa</button>
+    </div>
+    <div class="explain">RAM — «doska»: tok uzilishi bilan tozalanadi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Arduino UNO ichida</h1>
+  <p>ATmega328P misolida</p>
+</section>
+
+<section>
+  <section>
+    <h2>Plata qismlari</h2>
+    <div class="cards three">
+      <div class="card fragment fade-up"><div class="icon"><i data-ic="cpu"></i></div><h3>ATmega328P</h3><p>8-bit AVR; flash, SRAM, EEPROM ichida.</p></div>
+      <div class="card fragment fade-up"><div class="icon"><i data-ic="pin"></i></div><h3>Pinlar</h3><p>14 raqamli (HIGH/LOW), 6 analog (A0–A5).</p></div>
+      <div class="card fragment fade-up"><div class="icon"><i data-ic="plug"></i></div><h3>Quvvat</h3><p>5V, 3.3V, GND; tashqi 7–12V yoki USB.</p></div>
+    </div>
+    <p class="small">Pastga bosing: USB va «yurak urishi»</p>
+  </section>
+  <section>
+    <h2>USB-B va kvars generator</h2>
+    <div class="cards two">
+      <div class="card"><div class="icon"><i data-ic="usb"></i></div><h3>USB-B</h3><p>Dastur yuklash va quvvat. USB–Serial chip — ATmega16U2.</p></div>
+      <div class="card"><div class="icon"><i data-ic="activity" data-anim="pulse"></i></div><h3>Kvars</h3><p>Vaqt chastotasini belgilaydi — 16 MHz.</p></div>
+    </div>
+  </section>
+</section>
+
+<section data-auto-animate>
+  <h2>Tugma → LED</h2>
+  <pre class="terminal" data-id="kod"><code class="language-cpp" data-trim data-noescape>
+const int TUGMA = 2;
+const int LED = 13;
+int holat = 0;          // RAM
+</code></pre>
+</section>
+
+<section data-auto-animate>
+  <h2>Tugma → LED</h2>
+  <pre class="terminal" data-id="kod"><code class="language-cpp" data-trim data-noescape data-line-numbers="3|5-6|9|10|11-14">
+const int TUGMA = 2;
+const int LED = 13;
+int holat = 0;          // RAM
+void setup() {
+  pinMode(TUGMA, INPUT);   // «quloq»
+  pinMode(LED, OUTPUT);    // «qo'l»
+}
+void loop() {
+  holat = digitalRead(TUGMA);   // port xabar oladi
+  if (holat == HIGH) {          // CPU qaror qiladi
+    digitalWrite(LED, HIGH);    // port javob beradi
+  } else {
+    digitalWrite(LED, LOW);
+  }
+}
+</code></pre>
+</section>
+
+<section>
+  <h2>Ehtiyot bo'ling</h2>
+  <div class="callout warn"><i data-ic="triangle-alert"></i><code>pinMode()</code> yozilmasa pin kutilgandek ishlamaydi. Tugmaga pull-down rezistor (10 kΩ) yoki <code>INPUT_PULLUP</code> kerak — aks holda qiymat «suzib yuradi».</div>
+  <div class="callout bad mt fragment"><i data-ic="circle-x"></i>«Mikrokontrollerda ham Windows bor» — yo'q: odatda OS yo'q, bitta dastur <code>loop()</code> da aylanadi.</div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriqlar <span class="timer"><i data-ic="timer"></i>25 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>6 ta qurilmadan mikrokontrollerlilarini ajrating, vazifasini yozing.</div>
+  <div class="task"><span class="level easy">Oson</span>5 ta ta'rifga mos qismni toping (Flash, CPU, RAM, Input, Output).</div>
+  <div class="task"><span class="level mid">O'rta</span>MCU va MPU: 5 mezonli jadval va o'xshatish.</div>
+  <div class="task"><span class="level hard">Qiyin</span>«Tugma → LED» dasturini qismlarga ajrating; EEPROM qachon kerak?</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>MCU</h3><p>Bitta chipda CPU + xotira + portlar; arzon, kam energiya.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Xotira</h3><p>Flash — darslik, RAM — doska, EEPROM — sozlamalar.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Portlar</h3><p>Input oladi, Output buyruq beradi.</p></div>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="network" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: Mikrokontroller IoT'da (2-qism)</h1>
+  <p class="muted">Sensor → mikrokontroller → aktuator → bulut; analog va raqamli pinlar</p>
+  <span class="badge">6-hafta · 16-dars</span>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

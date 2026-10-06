@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Git bilan Versiya Nazorati Asoslari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 7-dars: Git bilan versiya nazorati asoslari -->
+
+<!-- 1. SARLAVHA -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Git bilan Versiya Nazorati Asoslari</h1>
+  <p class="muted">Tizimning vazifasi, 3 ta holat, commitlar va Android uchun .gitignore</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">3-hafta · 7-dars</span>
+  
+</section>
+
+<!-- 2. BUGUN NIMANI O'RGANAMIZ? -->
+<section>
+  <h2>Bugun nimani o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="git-branch" data-anim="pulse"></i></div>
+      <h3>Git nima?</h3>
+      <p>Tarqoq versiya nazorati tizimi va uning «vaqt mashinasi» vazifasi</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers" data-anim="float"></i></div>
+      <h3>Gitning 3 holati</h3>
+      <p>Working Directory, Staging Area va Repository (.git) arxitekturasi</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check" data-anim="draw"></i></div>
+      <h3>Android .gitignore</h3>
+      <p>Kompilyatsiya va shaxsiy SDK fayllarini repodan toza saqlash qoidalari</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 3. MUAMMO: FASTER CHALKASHLIK -->
+<section>
+  <h2>Muammo: Nusxalar girdobi!</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-alert" data-anim="bounce"></i></div>
+      <h3>Dasturchilarning eski xatosi</h3>
+      <p>Loyiha_v1.zip, Loyiha_v2_oxirgi.zip, Loyiha_final_rostanam.zip...</p>
+      <p>Bitta xato tufayli butun loyiha buzilib ketsa, qayerda nima o'zgarganini bilish imkonsiz bo'lib qoladi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="terminal"></i></div>
+      <h3>Git yechimi</h3>
+      <p>Barcha o'zgarishlar bitta papka ichida, aniq sana, muallif va izoh bilan vaqt shajarasiga muhrlanadi.</p>
+      <p>Istalgan vaqtda eski holatga bitta buyruq bilan qaytish mumkin.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 4. SVG 1: DISTRIBUTED VCS (GIT) VS CENTRALIZED -->
+<section>
+  <h2>Markazlashgan (SVN) vs Tarqoq (Git)</h2>
+  <div class="illus">
+    <svg viewBox="0 0 920 360" width="100%" height="300">
+      <!-- Markazlashgan (Chapda) -->
+      <g transform="translate(40, 40)">
+        <rect x="0" y="0" width="370" height="260" rx="14" class="fb" />
+        <rect x="0" y="0" width="370" height="260" rx="14" class="la" fill="none" stroke-width="1.5" />
+        <text x="185" y="40" text-anchor="middle" class="t-head" font-size="16" font-weight="700">ESKI: Markazlashgan (SVN)</text>
+        <circle cx="185" cy="110" r="35" class="fg" />
+        <text x="185" y="115" text-anchor="middle" class="fn" font-size="12" font-weight="700">Markaziy Server</text>
+        
+        <circle cx="80" cy="210" r="25" class="fa" />
+        <text x="80" y="215" text-anchor="middle" class="t-muted" font-size="10">Dev 1</text>
+        
+        <circle cx="290" cy="210" r="25" class="fa" />
+        <text x="290" y="215" text-anchor="middle" class="t-muted" font-size="10">Dev 2</text>
+        
+        <line x1="100" y1="195" x2="160" y2="135" class="la" stroke-width="2" stroke-dasharray="3" />
+        <line x1="270" y1="195" x2="210" y2="135" class="la" stroke-width="2" stroke-dasharray="3" />
+        <text x="185" y="270" text-anchor="middle" class="t-muted" font-size="11">Internet o'chsa — ish to'xtaydi!</text>
+      </g>
+
+      <!-- Tarqoq Git (O'ngda) -->
+      <g transform="translate(490, 40)">
+        <rect x="0" y="0" width="390" height="260" rx="14" class="fb" />
+        <rect x="0" y="0" width="390" height="260" rx="14" class="la" fill="none" stroke-width="2" />
+        <text x="195" y="40" text-anchor="middle" class="t-head" font-size="16" font-weight="700">ZAMONAVIY: Tarqoq (Git)</text>
+        
+        <rect x="125" y="70" width="140" height="50" rx="8" class="fa" />
+        <text x="195" y="100" text-anchor="middle" class="t-accent" font-size="12" font-weight="700">Remote (GitHub)</text>
+        
+        <rect x="40" y="170" width="130" height="60" rx="8" class="fg" />
+        <text x="105" y="195" text-anchor="middle" class="fn" font-size="11" font-weight="700">Dev 1 Kompyuter</text>
+        <text x="105" y="215" text-anchor="middle" class="fn" font-size="9">(To'liq repo tarixi)</text>
+        
+        <rect x="220" y="170" width="130" height="60" rx="8" class="fg" />
+        <text x="285" y="195" text-anchor="middle" class="fn" font-size="11" font-weight="700">Dev 2 Kompyuter</text>
+        <text x="285" y="215" text-anchor="middle" class="fn" font-size="9">(To'liq repo tarixi)</text>
+        
+        <line x1="120" y1="170" x2="160" y2="120" class="la" stroke-width="2" />
+        <line x1="270" y1="170" x2="230" y2="120" class="la" stroke-width="2" />
+        <text x="195" y="270" text-anchor="middle" class="t-accent" font-size="11" font-weight="700">Offline rejimda ham 100% ishlaydi!</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 5. BIRINCHI QADAM: GIT CONFIG -->
+<section>
+  <h2>O'zingizni tanishtiring: git config</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="user-check"></i></div>
+      <h3>Mualliflik sozlamalari</h3>
+      <p>Git har bir yozilgan kod ostida kim turganini bilishi kerak. Buning uchun bir marta buyruq kiritiladi:</p>
+      <pre><code>git config --global user.name "Ali Valiyev"
+git config --global user.email "ali@xorazmiy.uz"</code></pre>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="terminal"></i></div>
+      <h3>Tekshirish buyrug'i</h3>
+      <p>Kiritilgan parametrlarni ko'rish uchun:</p>
+      <pre><code>git config --list</code></pre>
+      <p class="t-muted">Bu ma'lumotlar keyinchalik GitHub'dagi profilingiz bilan bog'lanadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 6. BO'LIM 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Gitning 3 Asosiy Holati</h1>
+  <p>Working Directory, Staging Area va Repository (.git)</p>
+</section>
+
+<!-- 7. SVG 2: GITNING 3 BOSQICHI -->
+<section>
+  <h2>Git qanday ishlaydi? (3 ta maydon)</h2>
+  <div class="illus">
+    <svg viewBox="0 0 920 340" width="100%" height="280">
+      <!-- 1. Working Directory -->
+      <g transform="translate(30, 40)">
+        <rect x="0" y="0" width="240" height="230" rx="14" class="fb" />
+        <rect x="0" y="0" width="240" height="230" rx="14" class="la" fill="none" stroke-width="1.5" />
+        <text x="120" y="35" text-anchor="middle" class="t-head" font-size="14" font-weight="700">1. WORKING DIR</text>
+        <rect x="20" y="60" width="200" height="140" rx="8" class="fa" />
+        <text x="35" y="95" class="t-head" font-size="12">Fayllar papkasi</text>
+        <text x="35" y="125" class="t-muted" font-size="11">MainActivity.kt</text>
+        <text x="35" y="150" class="t-accent" font-size="11">(Tahrir qilinmoqda)</text>
+      </g>
+
+      <!-- Strelka 1: git add -->
+      <g transform="translate(285, 120)">
+        <line x1="0" y1="35" x2="60" y2="35" class="la" stroke-width="3" />
+        <polygon points="60,30 75,35 60,40" class="fg" />
+        <text x="35" y="20" text-anchor="middle" class="t-accent" font-size="12" font-weight="700">git add</text>
+      </g>
+
+      <!-- 2. Staging Area -->
+      <g transform="translate(370, 40)">
+        <rect x="0" y="0" width="240" height="230" rx="14" class="fb" />
+        <rect x="0" y="0" width="240" height="230" rx="14" class="la" fill="none" stroke-width="1.5" />
+        <text x="120" y="35" text-anchor="middle" class="t-head" font-size="14" font-weight="700">2. STAGING AREA</text>
+        <rect x="20" y="60" width="200" height="140" rx="8" class="fa" />
+        <text x="35" y="95" class="t-head" font-size="12">Tayyorlash sahnasi</text>
+        <text x="35" y="125" class="t-accent" font-size="11">MainActivity.kt</text>
+        <text x="35" y="150" class="t-muted" font-size="11">(Suratga tayyor)</text>
+      </g>
+
+      <!-- Strelka 2: git commit -->
+      <g transform="translate(625, 120)">
+        <line x1="0" y1="35" x2="60" y2="35" class="la" stroke-width="3" />
+        <polygon points="60,30 75,35 60,40" class="fg" />
+        <text x="35" y="20" text-anchor="middle" class="t-accent" font-size="12" font-weight="700">git commit</text>
+      </g>
+
+      <!-- 3. Repository -->
+      <g transform="translate(710, 40)">
+        <rect x="0" y="0" width="180" height="230" rx="14" class="fg" />
+        <text x="90" y="35" text-anchor="middle" class="fn" font-size="14" font-weight="700">3. .git OMBOR</text>
+        <rect x="15" y="60" width="150" height="140" rx="8" class="fa" />
+        <text x="25" y="95" class="t-head" font-size="12">Doimiy xotira</text>
+        <text x="25" y="125" class="t-muted" font-size="11">Commit #1</text>
+        <text x="25" y="150" class="t-muted" font-size="11">Commit #2</text>
+        <text x="25" y="175" class="t-accent" font-size="11">Tarix saqlandi</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 8. REPOZITORIYNI BOSHLASH: GIT INIT -->
+<section>
+  <h2>Repozitoriy ochish: git init</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="folder-code"></i></div>
+      <h3>Yangi ombor yaratish</h3>
+      <p>Istalgan loyiha papkasiga kirib, terminalda yoziladi:</p>
+      <pre><code>git init</code></pre>
+      <p>Natijada papka ichida yashirin <code>.git/</code> papkasi paydo bo'ladi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shield-alert"></i></div>
+      <h3>Muhim ogohlantirish!</h3>
+      <p><code>.git/</code> papkasi — Gitning barcha xotirasi. Agar siz uni o'chirib yuborsangiz, loyihaning butun o'tmishi bir zumda yo'qoladi!</p>
+      <p class="t-muted">Oddiy fayllar qoladi, lekin commitlar tarixi o'chib ketadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 9. HOLATNI TEKSHIRISH: GIT STATUS -->
+<section>
+  <h2>Fayllar holati: git status</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-alert"></i></div>
+      <h3>Qizil rang (Untracked / Modified)</h3>
+      <pre><code>Untracked files:
+    (use "git add &lt;file&gt;...")
+        MainActivity.kt</code></pre>
+      <p>Git fayl borligini ko'rdi, lekin u hali sahnaga kiritilmagan.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="check-check"></i></div>
+      <h3>Yashil rang (Changes to be committed)</h3>
+      <pre><code>Changes to be committed:
+    new file:   MainActivity.kt</code></pre>
+      <p>Fayl <code>git add</code> qilindi va suratga olinishga tayyor holatda turibdi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 10. SAHNAGA CHIQARISH: GIT ADD -->
+<section>
+  <h2>Sahnaga olib chiqish: git add</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>Bitta faylni qo'shish</h3>
+      <p>Faqat aniq bir fayl o'zgarishini sahnaga chiqarish:</p>
+      <pre><code>git add MainActivity.kt</code></pre>
+      <p class="t-muted">Boshqa fayllar Working Directory'da qoladi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="boxes"></i></div>
+      <h3>Barcha o'zgarishlarni qo'shish</h3>
+      <p>Loyiha papkasidagi hamma o'zgargan va yangi fayllarni qo'shish:</p>
+      <pre><code>git add .</code></pre>
+      <p class="t-accent">Nuqta (.) barcha joriy papka fayllarini bildiradi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 11. STEPPER: BIRINCHI COMMITNI AMALGA OSHIRISH -->
+<section>
+  <h2>Birinchi commitni amalga oshirish qadamlari</h2>
+  <div class="stepper">
+    <div class="step fragment">
+      <div class="num">1</div>
+      <h3>Loyiha papkasini ochish</h3>
+      <p>Terminalda loyiha papkasiga kiring: <code>cd MyAndroidApp</code></p>
+    </div>
+    <div class="step fragment">
+      <div class="num">2</div>
+      <h3>git init</h3>
+      <p>Omborni ishga tushiring va <code>.gitignore</code> mavjudligini tekshiring.</p>
+    </div>
+    <div class="step fragment">
+      <div class="num">3</div>
+      <h3>git add .</h3>
+      <p>Barcha kerakli manba kodlarini sahnaga (Staging Area) olib chiqing.</p>
+    </div>
+    <div class="step fragment">
+      <div class="num">4</div>
+      <h3>git commit -m "..."</h3>
+      <p>Ma'noli izoh bilan tarixga yozing: <code>git commit -m "Initial commit"</code></p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 12. COMMIT XABARI MADANIYATI -->
+<section>
+  <h2>Commit xabarlari madaniyati (Commit Conventions)</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-alert"></i></div>
+      <h3>Yomon commit xabarlari</h3>
+      <p><code>"kod yozdim"</code>, <code>"tuzatish"</code>, <code>"asdasd"</code>, <code>"oxirgi versiya"</code></p>
+      <p class="t-muted">Bir oydan keyin qaysi commit nima qilganini hech kim topolmaydi!</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="check-check"></i></div>
+      <h3>Professional format</h3>
+      <p><code>feat: Foydalanuvchi profil ekrani qo'shildi</code></p>
+      <p><code>fix: Login tugmasi bosilmaslik xatosi tuzatildi</code></p>
+      <p><code>docs: README fayliga qo'llanma kiritildi</code></p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 13. TARIXNI KO'RISH: GIT LOG -->
+<section>
+  <h2>Tarix bo'ylab sayohat: git log</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="clock"></i></div>
+      <h3>Batafsil tarix: git log</h3>
+      <pre><code>commit a1b2c3d4e5f6... (HEAD -> main)
+Author: Ali Valiyev &lt;ali@x.uz&gt;
+Date:   Sun Oct 4 14:20:00 2026
+
+    feat: Login sahifasi yaratildi</code></pre>
+      <p class="t-muted">Har bir commitning 40 xonali unikal xeshi (SHA-1) ko'rinadi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="list"></i></div>
+      <h3>Ixcham ko'rinish: --oneline</h3>
+      <pre><code>git log --oneline --graph</code></pre>
+      <pre><code>* a1b2c3d feat: Login sahifasi
+* e4f5g6h docs: README yaratildi
+* 9z8y7x6 Initial commit</code></pre>
+      <p class="t-accent">Katta loyihalarda tarixni tez ko'rish uchun eng qulay usul.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 14. BO'LIM 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Android Loyihalari va .gitignore</h1>
+  <p>Repozitoriyni ortiqcha og'ir kesh va shaxsiy parollardan tozalash</p>
+</section>
+
+<!-- 15. SVG 3: GITIGNORE ARXITEKTURASI -->
+<section>
+  <h2>.gitignore faylining filtri qanday ishlaydi?</h2>
+  <div class="illus">
+    <svg viewBox="0 0 920 340" width="100%" height="280">
+      <!-- Loyiha fayllari kirishi -->
+      <g transform="translate(30, 40)">
+        <rect x="0" y="0" width="220" height="230" rx="14" class="fb" />
+        <rect x="0" y="0" width="220" height="230" rx="14" class="la" fill="none" stroke-width="1.5" />
+        <text x="110" y="35" text-anchor="middle" class="t-head" font-size="14" font-weight="700">LOYIHA FAYLLARI</text>
+        <rect x="15" y="60" width="190" height="145" rx="8" class="fa" />
+        <text x="25" y="90" class="t-accent" font-size="11">MainActivity.kt</text>
+        <text x="25" y="115" class="t-muted" font-size="11">build/ (150 MB)</text>
+        <text x="25" y="140" class="t-muted" font-size="11">local.properties</text>
+        <text x="25" y="165" class="t-accent" font-size="11">build.gradle.kts</text>
+        <text x="25" y="190" class="t-muted" font-size="11">app-release.apk</text>
+      </g>
+
+      <!-- O'rta: .gitignore filtri -->
+      <g transform="translate(300, 30)">
+        <rect x="0" y="0" width="280" height="250" rx="14" class="fg" />
+        <text x="140" y="35" text-anchor="middle" class="fn" font-size="15" font-weight="700">.gitignore FILTRI</text>
+        <rect x="20" y="60" width="240" height="165" rx="8" class="fa" />
+        <text x="35" y="95" class="t-muted" font-size="12">/build</text>
+        <text x="35" y="125" class="t-muted" font-size="12">/.gradle</text>
+        <text x="35" y="155" class="t-muted" font-size="12">local.properties</text>
+        <text x="35" y="185" class="t-muted" font-size="12">*.apk, *.aab</text>
+      </g>
+
+      <!-- O'ng: Toza Git ombori -->
+      <g transform="translate(640, 40)">
+        <rect x="0" y="0" width="240" height="230" rx="14" class="fb" />
+        <rect x="0" y="0" width="240" height="230" rx="14" class="la" fill="none" stroke-width="2" />
+        <text x="120" y="35" text-anchor="middle" class="t-head" font-size="14" font-weight="700">TOZA GIT REPO</text>
+        <rect x="20" y="60" width="200" height="145" rx="8" class="fa" />
+        <text x="35" y="100" class="t-accent" font-size="12">MainActivity.kt</text>
+        <text x="35" y="130" class="t-accent" font-size="12">build.gradle.kts</text>
+        <text x="35" y="160" class="t-accent" font-size="12">res/ (XML, icons)</text>
+        <text x="120" y="195" text-anchor="middle" class="t-muted" font-size="10">Hajm: 2 MB (150 MB emas!)</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 16. NEGA LOCAL.PROPERTIES QO'SHILMAYDI? -->
+<section>
+  <h2>Nega local.properties Gitga kirmaydi?</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="triangle-alert"></i></div>
+      <h3>Shaxsiy SDK yo'li</h3>
+      <pre><code>sdk.dir=/Users/ali/Library/Android/sdk</code></pre>
+      <p>Agar siz bu faylni Gitga yuklasangiz, do'stingiz (masalan, Windows ishlatuvchi) kodni yuklab olganda uning Android Studio'si ishlamay qoladi!</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Maxfiy kalitlar</h3>
+      <p>Ko'pincha API kalitlar va parollar shu yerda saqlanadi.</p>
+      <p>Uni ochiq repoga yuklash xavfsizlikka jiddiy putur yetkazadi.</p>
+      <p class="t-accent">Shuning uchun u doimo .gitignore ichida bo'ladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 17. ANDROID .GITIGNORE QOIDALARI -->
+<section>
+  <h2>Android loyihasi uchun standart .gitignore</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="code-xml"></i></div>
+      <h3>Qoidalar namunasi</h3>
+      <pre><code># Gradle va Build chiqishlari
+.gradle/
+build/
+app/build/
+
+# Shaxsiy SDK
+local.properties
+
+# Android Studio keshlari
+.idea/caches/
+.idea/libraries/
+*.iml</code></pre>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="file-code"></i></div>
+      <h3>Yakuniy paketlar</h3>
+      <pre><code># Chiqarilgan APK va AAB lar
+*.apk
+*.aab
+
+# Tizim fayllari
+.DS_Store
+Thumbs.db</code></pre>
+      <p class="t-muted">Android Studio loyiha ochganda ushbu faylni avtomatik to'g'ri yaratib beradi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 18. SVG 4: COMMIT TUSHUNCHASI VA SHA-1 -->
+<section>
+  <h2>Commit nima? (Loyiha lahzasi)</h2>
+  <div class="illus">
+    <svg viewBox="0 0 920 300" width="100%" height="250">
+      <!-- 1-commit -->
+      <g transform="translate(60, 60)">
+        <circle cx="60" cy="60" r="45" class="fg" />
+        <text x="60" y="55" text-anchor="middle" class="fn" font-size="12" font-weight="700">Commit #1</text>
+        <text x="60" y="75" text-anchor="middle" class="fn" font-size="10">8a3f91</text>
+        <text x="60" y="130" text-anchor="middle" class="t-head" font-size="12">Initial commit</text>
+      </g>
+
+      <line x1="165" y1="120" x2="295" y2="120" class="la" stroke-width="3" />
+
+      <!-- 2-commit -->
+      <g transform="translate(300, 60)">
+        <circle cx="60" cy="60" r="45" class="fg" />
+        <text x="60" y="55" text-anchor="middle" class="fn" font-size="12" font-weight="700">Commit #2</text>
+        <text x="60" y="75" text-anchor="middle" class="fn" font-size="10">4c7d2e</text>
+        <text x="60" y="130" text-anchor="middle" class="t-head" font-size="12">feat: Auth API</text>
+      </g>
+
+      <line x1="405" y1="120" x2="535" y2="120" class="la" stroke-width="3" />
+
+      <!-- 3-commit (HEAD) -->
+      <g transform="translate(540, 60)">
+        <circle cx="60" cy="60" r="45" class="fa" />
+        <circle cx="60" cy="60" r="45" class="la" fill="none" stroke-width="2" />
+        <text x="60" y="55" text-anchor="middle" class="t-accent" font-size="12" font-weight="700">Commit #3</text>
+        <text x="60" y="75" text-anchor="middle" class="t-accent" font-size="10">9b1a5f</text>
+        <text x="60" y="130" text-anchor="middle" class="t-head" font-size="12">fix: UI layout</text>
+      </g>
+
+      <!-- HEAD ko'rsatkichi -->
+      <g transform="translate(730, 95)">
+        <rect x="0" y="0" width="120" height="50" rx="8" class="fg" />
+        <text x="60" y="30" text-anchor="middle" class="fn" font-size="12" font-weight="700">HEAD (Main)</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 19. INTERAKTIV FLIP KARTALAR -->
+<section>
+  <h2>Git sirlari (Kartalarni bosing)</h2>
+  <div class="cards three mt">
+    <div class="flip" style="min-height:210px">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="key"></i></div>
+          <h3>SHA-1 Hash nima?</h3>
+          <span class="flip-hint">bosing</span>
+        </div>
+        <div class="face back">
+          <p><b>Unikal ID:</b> Har bir commitning 40 belgili kodi (masalan, <code>4c7d2e...</code>). Gitda hamma narsa shu kod orqali topiladi.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip" style="min-height:210px">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="folder-code"></i></div>
+          <h3>.git papkasi</h3>
+          <span class="flip-hint">bosing</span>
+        </div>
+        <div class="face back">
+          <p><b>Ombor:</b> Butun loyiha tarixi va sozlamalari shu yashirin papkada yotadi. Uni o'chirish loyihani nollaydi.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip" style="min-height:210px">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="shield-check"></i></div>
+          <h3>.gitignore kuchi</h3>
+          <span class="flip-hint">bosing</span>
+        </div>
+        <div class="face back">
+          <p><b>Tozalik:</b> Keshlar va shaxsiy kalitlarni repodan chetlatib, loyihani ixcham va xavfsiz saqlaydi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 20. ASOSIY BUYRUQLAR JADVALI -->
+<section>
+  <h2>Darsda o'rganilgan asosiy terminal buyruqlari</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="terminal"></i></div>
+      <h3>Sozlash va Boshlash</h3>
+      <p><code>git config --global user.name "..."</code> — ismni kiritish</p>
+      <p><code>git init</code> — yangi ombor ochish</p>
+      <p><code>git status</code> — fayllar holatini tekshirish</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>Sahnaga chiqarish va Tarix</h3>
+      <p><code>git add &lt;fayl&gt;</code> (yoki <code>git add .</code>) — sahnaga olish</p>
+      <p><code>git commit -m "izoh"</code> — tarixga muhrlash</p>
+      <p><code>git log --oneline</code> — tarixni ko'rish</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 21. QUIZ -->
+<section>
+  <h2>Tezkor bilim sinovi</h2>
+  <div class="quiz">
+    <div class="q">Gitda o'zgartirilgan faylni doimiy omborga yozishdan oldin qaysi maydonga chiqarish shart?</div>
+    <div class="opts">
+      <div class="opt">Faqat Working Directory da qoldirish kifoya</div>
+      <div class="opt" data-ok>Staging Area (git add orqali)</div>
+      <div class="opt">To'g'ridan-to'g'ri internetga yuklash</div>
+      <div class="opt">Faylni o'chirib qayta yaratish</div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 22. LABORATORIYA AMALIYOTI -->
+<section>
+  <h2>Sinfdagi amaliy laboratoriya ishi</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="terminal"></i></div>
+      <h3>1. Repozitoriy ochish</h3>
+      <p>Terminalda <code>AndroidNotes</code> papkasini oching, <code>git init</code> qiling va <code>README.md</code> faylini commit qiling.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="folder-check"></i></div>
+      <h3>2. .gitignore sinovi</h3>
+      <p><code>.gitignore</code> fayli yaratib, <code>*.log</code> deb yozing. Yangi log fayl yaratganda uning kuzatilmasligini tekshiring.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 23. XULOSA -->
+<section>
+  <h2>Darsning 4 oltin qoidasi</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>1. Har doim statusni tekshiring</h3>
+      <p>Commit qilishdan avval doim <code>git status</code> buyrug'i bilan sahnani tekshiring.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="check-check"></i></div>
+      <h3>2. Ma'noli commit yozing</h3>
+      <p>Commit xabarlari nima qilinganini aniq ifodalasin (masalan, <code>feat: ...</code>).</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="folder-code"></i></div>
+      <h3>3. .gitignore ni unutmang</h3>
+      <p>Ortiqcha keshlar va parollarni aslo Gitga yuklamang.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="clock"></i></div>
+      <h3>4. Tez-tez commit qiling</h3>
+      <p>Katta ish tugashini kutmay, har bir kichik mantiqiy blokdan so'ng commit qiling.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 24. UYGA VAZIFA VA KEYINGI DARS -->
+<section>
+  <h2>Uyga vazifa va anons</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="terminal"></i></div>
+      <h3>1. Gitni sozlash</h3>
+      <p>O'z kompyuteringizda <code>git config</code> orqali ism va pochtani kiritish.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="git-branch"></i></div>
+      <h3>2. 3 ta ketma-ket commit</h3>
+      <p>Yangi loyiha ochib, kamida 3 ta ma'noli commit qilish va <code>git log</code> ni ko'rish.</p>
+    </div>
+  </div>
+  <p class="muted mt">Keyingi dars: Git tarmoqlari (Branch), birlashtirish (Merge) va to'qnashuvlarni (Conflict) yechish!</p>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

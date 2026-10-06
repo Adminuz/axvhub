@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>1-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>1-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">BI &amp; ML</span><span class="badge">3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi cheklov ustunning bo'sh (<code>NULL</code>) qolishiga yo'l qo'ymaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>NOT NULL</code></button>
+      <button class="opt" type="button"><code>UNIQUE</code></button>
+      <button class="opt" type="button"><code>DEFAULT</code></button>
+      <button class="opt" type="button"><code>CHECK</code></button>
+    </div>
+    <div class="explain">NOT NULL ustunga qiymat kiritilishini majburiy qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Primary Key qaysi ikki cheklovning birikmasiga teng?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>CHECK</code> + <code>DEFAULT</code></button>
+      <button class="opt" type="button" data-ok><code>NOT NULL</code> + <code>UNIQUE</code></button>
+      <button class="opt" type="button"><code>UNIQUE</code> + <code>DEFAULT</code></button>
+      <button class="opt" type="button"><code>FOREIGN KEY</code> + <code>NOT NULL</code></button>
+    </div>
+    <div class="explain">PK takrorlanmaydi va bo'sh bo'lmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">JSHSHIR yoki kitobning ISBN kodi qanday kalit turiga misol?</p>
+    <div class="opts">
+      <button class="opt" type="button">Surrogate Key</button>
+      <button class="opt" type="button">Composite Key</button>
+      <button class="opt" type="button" data-ok>Natural Key</button>
+      <button class="opt" type="button">Foreign Key</button>
+    </div>
+    <div class="explain">Haqiqiy hayotdan olingan unikal xususiyat - tabiiy kalit.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>id INTEGER PRIMARY KEY AUTOINCREMENT</code> qanday kalit?</p>
+    <div class="opts">
+      <button class="opt" type="button">Natural Key</button>
+      <button class="opt" type="button">Composite Key</button>
+      <button class="opt" type="button">Foreign Key</button>
+      <button class="opt" type="button" data-ok>Surrogate Key (sun'iy kalit)</button>
+    </div>
+    <div class="explain">Baza yaratadigan sun'iy tartib raqam, biznes mantiqqa bog'liq emas.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>hududiy_statistika</code> jadvalida hudud ham, yil ham takrorlanadi. Qaysi PK mos?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>PRIMARY KEY (hudud, yil)</code></button>
+      <button class="opt" type="button"><code>PRIMARY KEY (hudud)</code></button>
+      <button class="opt" type="button"><code>PRIMARY KEY (yil)</code></button>
+      <button class="opt" type="button">PK kerak emas</button>
+    </div>
+    <div class="explain">Alohida ustun unikal emas, lekin (hudud, yil) birikmasi har yozuv uchun yagona.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>ON DELETE CASCADE</code> ota yozuv o'chirilsa nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">O'chirishni taqiqlaydi</button>
+      <button class="opt" type="button" data-ok>Unga bog'langan bolalar yozuvlarini ham avtomatik o'chiradi</button>
+      <button class="opt" type="button">Bola FK qiymatini <code>NULL</code> qiladi</button>
+      <button class="opt" type="button">Hech narsa qilmaydi</button>
+    </div>
+    <div class="explain">Masalan, mijoz o'chirilsa, uning barcha buyurtmalari ham o'chadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>ON DELETE RESTRICT</code> ning vazifasi qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Bolalarni avtomatik o'chiradi</button>
+      <button class="opt" type="button">FK ni <code>NULL</code> qiladi</button>
+      <button class="opt" type="button" data-ok>Bog'langan bola yozuvlar bo'lsa, ota yozuvni o'chirishga ruxsat bermaydi</button>
+      <button class="opt" type="button">Jadvalni nusxalaydi</button>
+    </div>
+    <div class="explain">Standart qoida: bog'liq yozuvlar bor ekan, ota yozuv o'chirilmaydi, xatolik qaytadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>sigim INTEGER NOT NULL CHECK (sigim &gt; 0 AND sigim &lt;= 5000)</code> jadvaliga <code>sigim = -50</code> kiritilsa nima bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Qiymat 50 ga o'zgaradi</button>
+      <button class="opt" type="button">Qiymat 0 bo'lib saqlanadi</button>
+      <button class="opt" type="button">Hech qanday xato bo'lmaydi</button>
+      <button class="opt" type="button" data-ok><code>sqlite3.IntegrityError</code> (CHECK buzildi)</button>
+    </div>
+    <div class="explain">CHECK shartga mos kelmagan qiymatni bazaga kiritishga yo'l qo'ymaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Maktab direktori o'zgardi va bitta ma'lumotni 10 000 qatorda o'zgartirish kerak. Bu qaysi anomaliya?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Update anomaly</button>
+      <button class="opt" type="button">Insertion anomaly</button>
+      <button class="opt" type="button">Deletion anomaly</button>
+      <button class="opt" type="button">Referential integrity</button>
+    </div>
+    <div class="explain">Ma'lumot ko'p joyda takrorlangani uchun bitta xato qarama-qarshilik keltirib chiqaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">SQLite'da <code>ON DELETE CASCADE</code> ishlashi uchun qaysi buyruq kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>COMMIT;</code></button>
+      <button class="opt" type="button" data-ok><code>PRAGMA foreign_keys = ON;</code></button>
+      <button class="opt" type="button"><code>DROP TABLE;</code></button>
+      <button class="opt" type="button"><code>SELECT * FROM sqlite_master;</code></button>
+    </div>
+    <div class="explain">SQLite da xorijiy kalitlar tekshiruvi yoqilmasa, FK va CASCADE ishlamaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: Cheklovlar, kalit turlari, ON DELETE qoidalari, anomaliyalar.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

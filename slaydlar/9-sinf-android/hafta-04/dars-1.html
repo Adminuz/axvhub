@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Simulyator va Emulator (2-qism)</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Simulyator va Emulator (2-qism)</h1>
+  <p class="muted">Real telefonni USB orqali ulaymiz va Logcat bilan ilovaning ichini kuzatamiz</p>
+  <span class="badge">9-sinf</span>
+  <span class="badge">Android dasturlash</span>
+  <span class="badge">4-hafta · 10-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi dars maqsadlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="smartphone" data-anim="float"></i></div>
+      <h3>Real qurilma</h3>
+      <p>Nega yakuniy test doim haqiqiy telefonda o'tkaziladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="usb" data-anim="pulse"></i></div>
+      <h3>USB va ADB</h3>
+      <p>Developer Options, USB Debugging va ADB drayverlari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="scroll-text" data-anim="draw"></i></div>
+      <h3>Logcat</h3>
+      <p>Tizim xabarlari, xatolar va Log.d bilan o'z belgilarimiz.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Takrorlash: virtual qurilmalar</h1>
+  <p>O'tgan darsda nimani bilib oldik?</p>
+</section>
+
+<section>
+  <h2>Simulyator va Emulator</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>Simulyator</h3>Faqat tashqi ko'rinish va interfeysni taqlid qiladi. Tez, yengil. Kamera va GPS yo'q.</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>Emulator (AVD)</h3>Qurilmaning apparat qismini ham qayta yaratadi. Sekinroq, lekin aniq.</div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Emulator yetarlimi?</h2>
+  <div class="quote">Emulator ajoyib mashq maydoni, lekin haqiqiy yo'lga chiqishdan oldin mashinani asl yo'lda ham sinab ko'rish kerak.</div>
+  <ul>
+    <li class="fragment">Turli telefonlarda ekran, tezlik va Android versiyasi boshqacha</li>
+    <li class="fragment">Samsung'da ishlagan ilova Xiaomi'da muammo berishi mumkin</li>
+    <li class="fragment">Shuning uchun yakuniy test doimo real telefonda</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Bitta ilova, ikki telefon</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 380">
+      <rect class="fa" x="40" y="130" width="250" height="130" rx="22"/>
+      <text class="t-head" x="165" y="185" text-anchor="middle" font-size="30">Sizning</text>
+      <text class="t-head" x="165" y="225" text-anchor="middle" font-size="30">ilovangiz</text>
+      <g class="fragment">
+        <line class="la flowing" x1="295" y1="170" x2="470" y2="90"/><polygon class="ar-a" points="475,88 457,86 463,104"/>
+        <line class="lb flowing" x1="295" y1="220" x2="470" y2="300"/><polygon class="ar-b" points="475,302 457,306 463,288"/>
+      </g>
+      <g class="fragment" data-tip="Telefon A: ilova to'liq ishlaydi.">
+        <rect class="fg" x="480" y="30" width="230" height="110" rx="20"/>
+        <text class="t-head" x="595" y="92" text-anchor="middle" font-size="28">Samsung</text>
+      </g>
+      <g class="fragment" data-tip="Telefon B: boshqa ekran, tezlik va Android versiyasi, muammo chiqishi mumkin.">
+        <rect class="fb" x="480" y="250" width="230" height="110" rx="20"/>
+        <text class="t-head" x="595" y="312" text-anchor="middle" font-size="28">Xiaomi</text>
+      </g>
+      <g class="fragment">
+        <text class="t-accent" x="725" y="92" font-size="26">ishlaydi</text>
+        <text class="t-accent" x="725" y="312" font-size="26">xato bor</text>
+      </g>
+    </svg>
+  </div>
+  <p class="small">Qismlar ustiga bosing: izoh chiqadi.</p>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Real telefonni ulash</h1>
+  <p>Developer Options, USB Debugging, ADB</p>
+</section>
+
+<section>
+  <h2>Nimalar kerak?</h2>
+  <div class="cards four">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="laptop"></i></div><h3>Kompyuter</h3><p>Android Studio o'rnatilgan.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="cable"></i></div><h3>USB kabel</h3><p>Ma'lumot uzatadigan kabel.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="smartphone"></i></div><h3>Android telefon</h3><p>Dasturchi sozlamalari yoqilgan.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="plug"></i></div><h3>ADB drayver</h3><p>Kompyuter telefonni taniydi.</p></div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>ADB nima?</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <g data-tip="Dasturchi kompyuteri: Android Studio shu yerda ishlaydi.">
+        <rect class="fa" x="30" y="90" width="260" height="170" rx="22"/>
+        <svg x="125" y="110" width="70" height="70" viewBox="0 0 24 24" class="ic-s" stroke-width="1.6"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg>
+        <text class="t-head" x="160" y="222" text-anchor="middle" font-size="28">Kompyuter</text>
+      </g>
+      <g class="fragment" data-tip="ADB (Android Debug Bridge): kompyuter va qurilma orasidagi ko'prik.">
+        <rect class="fc" x="380" y="110" width="240" height="130" rx="22"/>
+        <text class="t-head" x="500" y="185" text-anchor="middle" font-size="34">ADB</text>
+        <line class="lc flowing" x1="295" y1="175" x2="375" y2="175"/>
+        <line class="lc flowing" x1="625" y1="175" x2="705" y2="175"/>
+      </g>
+      <g data-tip="Telefon yoki emulator: ilova shu yerda ishga tushadi.">
+        <rect class="fb" x="710" y="90" width="260" height="170" rx="22"/>
+        <svg x="805" y="110" width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>
+        <text class="t-head" x="840" y="222" text-anchor="middle" font-size="28">Qurilma</text>
+      </g>
+      <g class="fragment"><text class="t-accent" x="500" y="290" text-anchor="middle" font-size="24">o'rnatish · loglarni o'qish · jarayonlarni boshqarish</text></g>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Qadam-baqadam: telefonni tayyorlash</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="settings" data-anim="spin"></i></div><h3>1. Developer Options</h3><p>Telefon sozlamalarida "Dasturchi sozlamalari" bo'limini yoqamiz.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="usb" data-anim="pulse"></i></div><h3>2. USB Debugging</h3><p>Shu bo'limda "USB Debugging" funksiyasini faollashtiramiz.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="cable" data-anim="float"></i></div><h3>3. Kabel bilan ulash</h3><p>Telefonni kompyuterga ulaymiz va telefon so'rasa ruxsat beramiz.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="rocket" data-anim="bounce"></i></div><h3>4. Run</h3><p>Android Studio telefonni ADB drayverlari orqali taniydi va ilovani unga yuklaydi.</p></div></div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Qurilma tanlash menyusi</h2>
+  <div class="cols">
+    <div>
+      <div class="browser"><div class="bar"><i></i><i></i><i></i><span>Android Studio · Run</span></div><div class="page"><h3>Device list</h3><p>Pixel 7 (emulator)</p><p><b>Mening telefonim (USB)</b></p></div></div>
+    </div>
+    <div>
+      <ul>
+        <li class="fragment">Ro'yxatda emulator ham, real telefon ham ko'rinadi</li>
+        <li class="fragment">Telefon ko'rinmasa: kabel, ruxsat, drayver</li>
+        <li class="fragment">Tanlab, Run tugmasini bosamiz</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Run bosilganda nima bo'ladi?</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 360">
+      <g data-tip="Android Studio ilovani yig'adi (build).">
+        <rect class="fa" x="20" y="110" width="210" height="120" rx="20"/>
+        <text class="t-head" x="125" y="180" text-anchor="middle" font-size="26">Yig'ish</text>
+      </g>
+      <g class="fragment">
+        <line class="la flowing" x1="235" y1="170" x2="290" y2="170"/><polygon class="ar-a" points="295,170 280,161 280,179"/>
+        <rect class="fc" x="300" y="110" width="210" height="120" rx="20"/>
+        <text class="t-head" x="405" y="180" text-anchor="middle" font-size="26">ADB</text>
+      </g>
+      <g class="fragment" data-tip="ADB ilovani USB kabel orqali telefonga o'rnatadi.">
+        <line class="lc flowing" x1="515" y1="170" x2="570" y2="170"/><polygon class="ar-c" points="575,170 560,161 560,179"/>
+        <rect class="fb" x="580" y="110" width="210" height="120" rx="20"/>
+        <text class="t-head" x="685" y="180" text-anchor="middle" font-size="26">Telefon</text>
+      </g>
+      <g class="fragment">
+        <line class="lg flowing" x1="795" y1="170" x2="850" y2="170"/><polygon class="ar-g" points="855,170 840,161 840,179"/>
+        <rect class="fg" x="860" y="110" width="130" height="120" rx="20"/>
+        <text class="t-head" x="925" y="180" text-anchor="middle" font-size="26">Ochiladi</text>
+      </g>
+      <g class="fragment"><text class="t-accent" x="500" y="310" text-anchor="middle" font-size="24">ilova ishlayotganda xabarlar Logcat'ga qaytadi</text></g>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Telefon ko'rinmayaptimi?</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">Sabablar</button><button type="button">Tekshiruv</button></div>
+    <div class="swap-p"><div class="card"><h3>Ehtimoliy sabablar</h3><p>USB Debugging yoqilmagan, kabel faqat zaryadlash uchun, ADB drayveri o'rnatilmagan yoki telefondagi ruxsat so'rovi rad etilgan.</p></div></div>
+    <div class="swap-p"><div class="card accent"><h3>Tekshirish tartibi</h3><p>Kabelni almashtiring, USB Debugging holatini ko'ring, ruxsat oynasiga "Ha" deng, kerak bo'lsa Android Studio'ni qayta ishga tushiring.</p></div></div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Mini-test: qurilmani ulash</h2>
+  <div class="quiz">
+    <p class="q">Telefonni Android Studio taniy olishi uchun qaysi funksiyani yoqish shart?</p>
+    <div class="opts">
+      <button class="opt" type="button">Dark Mode</button>
+      <button class="opt" type="button">Bluetooth</button>
+      <button class="opt" type="button" data-ok>USB Debugging</button>
+      <button class="opt" type="button">Samolyot rejimi</button>
+    </div>
+    <div class="explain">USB Debugging "Developer Options" ichida bo'ladi. U yoqilgach, ADB orqali ilovani telefonga yuklash mumkin.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Logcat</h1>
+  <p>Ilovaning "kundalik daftari"</p>
+</section>
+
+<section>
+  <h2>Logcat nima?</h2>
+  <div class="stats">
+    <div class="stat fragment"><div class="v"><span class="count" data-to="90" data-suf="%">0</span></div><div class="l">debugging vaqti Logcat tahlili bilan o'tadi</div></div>
+    <div class="stat fragment"><div class="v">real vaqt</div><div class="l">xabarlar ilova ishlayotganda chiqadi</div></div>
+    <div class="stat fragment"><div class="v">3 tur</div><div class="l">tizim xabari, xato (crash), o'z belgilarimiz</div></div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Xabar qayerdan qayerga boradi?</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <g data-tip="Ilova kodi: Log.d va Log.e shu yerda yoziladi.">
+        <rect class="fa" x="30" y="100" width="250" height="140" rx="22"/>
+        <text class="t-head" x="155" y="165" text-anchor="middle" font-size="30">Ilova</text>
+        <text class="t-muted" x="155" y="205" text-anchor="middle" font-size="24">Log.d / Log.e</text>
+      </g>
+      <g class="fragment">
+        <line class="la flowing" x1="285" y1="170" x2="380" y2="170"/><polygon class="ar-a" points="385,170 368,160 368,180"/>
+        <rect class="fc" x="390" y="100" width="220" height="140" rx="22"/>
+        <text class="t-head" x="500" y="178" text-anchor="middle" font-size="30">Android</text>
+      </g>
+      <g class="fragment" data-tip="Logcat oynasi: Android Studio ichida xabarlar real vaqtda ko'rinadi.">
+        <line class="lc flowing" x1="615" y1="170" x2="710" y2="170"/><polygon class="ar-c" points="715,170 698,160 698,180"/>
+        <rect class="fb" x="720" y="100" width="250" height="140" rx="22"/>
+        <text class="t-head" x="845" y="178" text-anchor="middle" font-size="30">Logcat</text>
+      </g>
+      <g class="fragment"><text class="t-accent" x="500" y="300" text-anchor="middle" font-size="24">tizim xabarlari + xatolar + sizning belgilaringiz</text></g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Logcat oynasi (namuna)</h2>
+  <div class="terminal">
+    <div class="bar">Logcat</div>
+    <pre><span class="o">D/MainActivity:</span> Ilova ishga tushdi
+<span class="o">D/Hisoblash:</span> Natija: 5
+<span class="e">E/Xatolik:</span> Nolga bo'lish: / by zero</pre>
+  </div>
+  <p class="small mt">Harf xabar darajasini bildiradi: D (Debug), E (Error).</p>
+  
+</section>
+
+<section>
+  <h2>Log.d va Log.e</h2>
+  <pre><code class="language-kotlin" data-trim data-noescape data-line-numbers="1|4-5|6-7">
+import android.util.Log
+
+fun natijaHisoblash(a: Int, b: Int) {
+    try {
+        val natija = a / b
+        Log.d("Hisoblash", "Natija: $natija")
+    } catch (e: Exception) {
+        Log.e("Xatolik", "Nolga bo'lishga urinish: ${e.message}")
+    }
+}
+  </code></pre>
+  <div class="chips"><span class="chip">Log.d: oddiy axborot</span><span class="chip t">Log.e: xato</span></div>
+  
+</section>
+
+<section data-auto-animate>
+  <h2>Birinchi Log</h2>
+  <pre data-id="code"><code class="language-kotlin" data-trim data-noescape>
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
+}
+  </code></pre>
+</section>
+<section data-auto-animate>
+  <h2>Birinchi Log</h2>
+  <pre data-id="code"><code class="language-kotlin" data-trim data-noescape>
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
+    Log.d("MainActivity", "Ilova ishga tushdi")
+}
+  </code></pre>
+  <div class="callout tip"><i data-ic="lightbulb"></i>Birinchi argument: teg (qidirish uchun), ikkinchisi: xabar matni.</div>
+</section>
+
+<section>
+  <h2>Mini-test: Logcat</h2>
+  <div class="quiz">
+    <p class="q">Ilova ishlayotganda xato yuz bergani haqida batafsil xabarni qayerdan topasiz?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Android Studio'dagi Logcat oynasidan</button>
+      <button class="opt" type="button">strings.xml faylidan</button>
+      <button class="opt" type="button">AndroidManifest.xml faylidan</button>
+      <button class="opt" type="button">AVD Manager'dan</button>
+    </div>
+    <div class="explain">Logcat real vaqtda tizim xabarlari, xatolar (crash) va sizning Log.d belgilaringizni ko'rsatadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Emulator bilan ishlash maslahatlari</h2>
+  <div class="cards three">
+    <div class="flip" style="min-height:190px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="cpu"></i></div><h3>RAM</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Emulatorga RAM'ni oqilona ajrating: 8 GB kompyuterda 4 GB berish tizimni sekinlashtirishi mumkin.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:190px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="zap"></i></div><h3>Snapshots</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Emulator holatini saqlash ("save" kabi): keyingi safar bir necha soniyada ochiladi.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:190px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="smartphone"></i></div><h3>Real qurilma</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Kompyuter og'ir bo'lsa yoki yakuniy test kerak bo'lsa: USB bilan haqiqiy telefon.</p></div>
+    </div></div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>Emulator tanlovi</h2>
+    <p>Real telefon bor, endi emulator kerakmi? <span class="muted">Pastga ↓</span></p>
+  </section>
+  <section>
+    <h2>Ikkalasi ham kerak</h2>
+    <ul>
+      <li class="fragment">Emulator: turli ekran o'lchami (telefon, planshet) va Dark Mode ni tez sinash</li>
+      <li class="fragment">Emulator: GPS, batareya, qo'ng'iroq kabi holatlarni sinash</li>
+      <li class="fragment">Real telefon: yakuniy, haqiqiy sinov</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Bulutli emulyatsiya</h2>
+    <p>Firebase Test Lab va BrowserStack kabi xizmatlar bulutdagi real qurilmalarda ilovani avtomatik sinash imkonini beradi.</p>
+  </section>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Telefoningizda Developer Options va USB Debugging ni yoqing, kabel bilan ulang.</div>
+  <div class="task"><span class="level mid">O'rta</span>Ilovani telefonda ishga tushiring va Logcat'da o'z Log.d xabaringizni toping.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Android Studio'da turli ekranli 2 ta emulator yarating, Dark Mode'ni yoqib farqni ko'ring.</div>
+  
+</section>
+
+<section>
+  <h2>Xulosa</h2>
+  <div class="cards two">
+    <div class="card"><div class="icon"><i data-ic="circle-check"></i></div><h3>Bugun o'rgandik</h3><p>Real telefon: Developer Options, USB Debugging, ADB. Logcat va Log.d / Log.e.</p></div>
+    <div class="card"><div class="icon"><i data-ic="book-open"></i></div><h3>Uyga vazifa</h3><p>Logcat darajalarini daftarga yozish va ADB vazifasini tushuntirish.</p></div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

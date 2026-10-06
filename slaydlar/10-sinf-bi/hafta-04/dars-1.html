@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>GROUP BY va HAVING</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 10-dars: GROUP BY va HAVING -->
+
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>GROUP BY va HAVING</h1>
+  <p class="muted">Ko'p satrdan bitta hisobot: agregat funksiyalar va guruhlash</p>
+  <span class="badge">10-sinf</span><span class="badge">BI &amp; ML</span><span class="badge">4-hafta · 10-dars</span>
+  
+</section>
+
+<section>
+  <h2>3-hafta: nima qildik?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="database" data-anim="float"></i></div><h3>maktab.db</h3><p>hududlar, maktablar, yillik_kpi jadvallari</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="funnel" data-anim="pulse"></i></div><h3>WHERE</h3><p>Satrlarni shart bilan saralash</p></div>
+    <div class="card accent fragment fade-up"><div class="icon"><i data-ic="trophy" data-anim="bounce"></i></div><h3>ORDER BY + LIMIT</h3><p>TOP-N tahlili va sahifalash</p></div>
+  </div>
+  <p class="small mt fragment">Bugun: bitta satr emas, <strong>butun guruh</strong> haqida hisobot.</p>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Agregat funksiyalar</h1>
+  <p>Ko'p satr, bitta natija</p>
+</section>
+
+<section>
+  <h2>Agregatsiya: 15 qator, 1 son</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <rect class="fa" x="30" y="50" width="300" height="230" rx="22"/>
+      <text class="t-head" x="180" y="95" text-anchor="middle" font-size="28">yillik_kpi</text>
+      <g class="fragment">
+        <text class="t-muted" x="180" y="150" text-anchor="middle" font-size="24">hudud 1 · 2022 · 470000</text>
+        <text class="t-muted" x="180" y="190" text-anchor="middle" font-size="24">hudud 1 · 2023 · 478000</text>
+        <text class="t-muted" x="180" y="230" text-anchor="middle" font-size="24">... jami 15 qator</text>
+      </g>
+      <g class="fragment">
+        <line class="la flowing" x1="345" y1="165" x2="620" y2="165"/>
+        <polygon class="ar-a" points="630,165 612,153 612,177"/>
+        <text class="t-accent" x="485" y="145" text-anchor="middle" font-size="26">SUM(...)</text>
+      </g>
+      <g class="fragment pulse">
+        <rect class="fb" x="640" y="80" width="330" height="170" rx="22"/>
+        <text class="t-head" x="805" y="150" text-anchor="middle" font-size="40">7 434 000</text>
+        <text class="t-muted" x="805" y="200" text-anchor="middle" font-size="24">jami o'quvchi</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Beshta asosiy funksiya</h2>
+  <div class="cards four">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="hash" data-anim="float"></i></div><h3>COUNT</h3><p>Nechta?</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="sigma" data-anim="float"></i></div><h3>SUM</h3><p>Yig'indi</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="scale" data-anim="float"></i></div><h3>AVG</h3><p>O'rtacha</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="chart-bar" data-anim="float"></i></div><h3>MIN / MAX</h3><p>Eng kam / eng ko'p</p></div>
+  </div>
+  <p class="small mt fragment">Hammasi <code>NULL</code> larni o'tkazib yuboradi. Faqat <code>COUNT(*)</code> hamma satrni sanaydi.</p>
+</section>
+
+<section>
+  <h2>Birinchi hisobot</h2>
+  <pre><code class="language-sql" data-trim data-noescape data-line-numbers="1-5|1|2|3|4">
+SELECT COUNT(*)  AS yozuvlar,
+       SUM(oquvchilar_soni) AS jami,
+       ROUND(AVG(oquvchilar_soni), 0) AS ortacha,
+       MAX(oquvchilar_soni) AS eng_kop
+FROM yillik_kpi;
+  </code></pre>
+  <div class="callout tip fragment"><i data-ic="lightbulb"></i>Natija: 15 | 7 434 000 | 495 600 | 620 000</div>
+  
+</section>
+
+<section>
+  <h2>COUNT(*) yoki COUNT(ustun)?</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="hash"></i></div><h3>COUNT(*)</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Barcha satrlarni sanaydi, <code>NULL</code> bo'lsa ham.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="search"></i></div><h3>COUNT(ustun)</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Faqat shu ustunda <code>NULL</code> bo'lmagan qiymatlarni sanaydi.</p></div>
+    </div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Ustunda 10 satr, 3 tasi NULL. COUNT(ustun) nechta chiqaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">10</button>
+      <button class="opt" type="button">3</button>
+      <button class="opt" type="button" data-ok>7</button>
+      <button class="opt" type="button">0</button>
+    </div>
+    <div class="explain">COUNT(ustun) NULL larni sanamaydi: 10 - 3 = 7.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>GROUP BY</h1>
+  <p>Guruhlab hisoblash</p>
+</section>
+
+<section>
+  <h2>Savatlarga ajratamiz</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 400">
+      <rect class="fa" x="300" y="10" width="400" height="60" rx="16"/>
+      <text class="t-head" x="500" y="52" text-anchor="middle" font-size="26">yillik_kpi · 15 qator</text>
+      <g class="fragment">
+        <line class="ln flowing" x1="400" y1="75" x2="170" y2="150"/>
+        <line class="ln flowing" x1="500" y1="75" x2="500" y2="150"/>
+        <line class="ln flowing" x1="600" y1="75" x2="830" y2="150"/>
+      </g>
+      <g class="fragment">
+        <rect class="fa" x="40" y="155" width="260" height="110" rx="20"/>
+        <text class="t-head" x="170" y="200" text-anchor="middle" font-size="26">yil = 2022</text>
+        <text class="t-muted" x="170" y="240" text-anchor="middle" font-size="22">5 qator</text>
+        <rect class="fc" x="370" y="155" width="260" height="110" rx="20"/>
+        <text class="t-head" x="500" y="200" text-anchor="middle" font-size="26">yil = 2023</text>
+        <text class="t-muted" x="500" y="240" text-anchor="middle" font-size="22">5 qator</text>
+        <rect class="fb" x="700" y="155" width="260" height="110" rx="20"/>
+        <text class="t-head" x="830" y="200" text-anchor="middle" font-size="26">yil = 2024</text>
+        <text class="t-muted" x="830" y="240" text-anchor="middle" font-size="22">5 qator</text>
+      </g>
+      <g class="fragment">
+        <text class="t-accent" x="170" y="330" text-anchor="middle" font-size="30">2 430 000</text>
+        <text class="t-accent" x="500" y="330" text-anchor="middle" font-size="30">2 478 000</text>
+        <text class="t-accent" x="830" y="330" text-anchor="middle" font-size="30">2 526 000</text>
+        <text class="t-muted" x="500" y="378" text-anchor="middle" font-size="22">SUM(oquvchilar_soni) har savat uchun</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<section data-auto-animate>
+  <h2>Guruhlamasdan</h2>
+  <pre data-id="kod"><code class="language-sql" data-trim data-noescape>
+SELECT SUM(oquvchilar_soni)
+FROM yillik_kpi;
+  </code></pre>
+  <p class="small">Natija: bitta son.</p>
+</section>
+
+<section data-auto-animate>
+  <h2>GROUP BY bilan</h2>
+  <pre data-id="kod"><code class="language-sql" data-trim data-noescape>
+SELECT yil, SUM(oquvchilar_soni) AS jami
+FROM yillik_kpi
+GROUP BY yil
+ORDER BY yil;
+  </code></pre>
+  <p class="small">Natija: har yil uchun bitta qator.</p>
+</section>
+
+<section>
+  <section>
+    <h2>Asosiy qoida</h2>
+    <div class="callout warn"><i data-ic="triangle-alert"></i>SELECT dagi har ustun yoki GROUP BY da bo'lishi, yoki agregat ichida turishi kerak.</div>
+    <p class="small mt">Chuqurroq bilish uchun pastga bosing.</p>
+  </section>
+  <section>
+    <h2>Bir nechta ustun bo'yicha</h2>
+    <pre><code class="language-sql" data-trim data-noescape>
+SELECT hudud_id, yil, COUNT(*)
+FROM yillik_kpi
+GROUP BY hudud_id, yil;
+    </code></pre>
+    <p class="small">Guruh = ustunlar kombinatsiyasi. Shu juftlik takrorlansa, COUNT 1 dan katta bo'ladi.</p>
+  </section>
+</section>
+
+<section>
+  <h2>KPI: o'quvchi / o'qituvchi</h2>
+  <pre><code class="language-sql" data-trim data-noescape data-line-numbers="1-6|2-4|3">
+SELECT yil,
+  ROUND(SUM(oquvchilar_soni) * 1.0
+    / NULLIF(SUM(oqituvchilar_soni), 0), 2) AS nisbat
+FROM yillik_kpi
+GROUP BY yil
+ORDER BY yil;
+  </code></pre>
+  <div class="cards two">
+    <div class="card fragment"><div class="icon"><i data-ic="shield" data-anim="pulse"></i></div><p><code>NULLIF(x, 0)</code>: x nol bo'lsa NULL, nolga bo'lish xatosi yo'q</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="calculator" data-anim="float"></i></div><p><code>* 1.0</code>: SQLite da kasr natija olish uchun</p></div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>GROUP BY ichida nima bo'ladi?</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="table" data-anim="float"></i></div><h3>1. Satrlar o'qiladi</h3><p>FROM jadvalidan hamma satr olinadi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="split" data-anim="pulse"></i></div><h3>2. Guruhlarga bo'linadi</h3><p>Bir xil yil qiymatlari bitta savatga tushadi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="sigma" data-anim="spin"></i></div><h3>3. Hisoblanadi</h3><p>SUM/COUNT har savat uchun alohida ishlaydi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="list-checks" data-anim="draw"></i></div><h3>4. Natija</h3><p>Har guruh bitta qator bo'lib chiqadi.</p></div></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>HAVING</h1>
+  <p>Guruhlarni filtrlash</p>
+</section>
+
+<section>
+  <h2>WHERE va HAVING</h2>
+  <div class="vs">
+    <div class="side fragment"><h3><i data-ic="funnel"></i> WHERE</h3><p>Satrlarni filtrlaydi</p><p>Guruhlashdan <strong>oldin</strong></p><p>Agregat yozib bo'lmaydi</p></div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3><i data-ic="list-filter"></i> HAVING</h3><p>Guruhlarni filtrlaydi</p><p>Guruhlashdan <strong>keyin</strong></p><p>Agregat yozish mumkin</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>HAVING ishlashi: 500 000 chegarasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 420">
+      <line class="ln" x1="40" y1="360" x2="960" y2="360"/>
+      <rect class="fn" x="90" y="207" width="130" height="153" rx="10"/>
+      <rect class="fg" x="260" y="55" width="130" height="305" rx="10"/>
+      <rect class="fg" x="430" y="74" width="130" height="286" rx="10"/>
+      <rect class="fg" x="600" y="104" width="130" height="256" rx="10"/>
+      <rect class="fn" x="770" y="207" width="130" height="153" rx="10"/>
+      <g>
+        <text class="t-muted" x="155" y="395" text-anchor="middle" font-size="22">Buxoro</text>
+        <text class="t-muted" x="325" y="395" text-anchor="middle" font-size="22">Samarq.</text>
+        <text class="t-muted" x="495" y="395" text-anchor="middle" font-size="22">Farg'ona</text>
+        <text class="t-muted" x="665" y="395" text-anchor="middle" font-size="22">Andijon</text>
+        <text class="t-muted" x="835" y="395" text-anchor="middle" font-size="22">Boshq.</text>
+      </g>
+      <g class="fragment">
+        <line class="lb flowing" x1="40" y1="110" x2="960" y2="110"/>
+        <text class="t-accent" x="960" y="95" text-anchor="end" font-size="24">HAVING AVG(...) &gt; 500000</text>
+      </g>
+      <g class="fragment pulse">
+        <text class="t-head" x="325" y="45" text-anchor="middle" font-size="24">qoladi</text>
+        <text class="t-head" x="495" y="64" text-anchor="middle" font-size="24">qoladi</text>
+      </g>
+    </svg>
+  </div>
+  <p class="small">Sxema: chegaradan o'tmagan guruhlar (kulrang) natijadan tushib qoladi. Ustun balandliklari shartli.</p>
+  
+</section>
+
+<section>
+  <h2>Ijro tartibi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <g data-tip="FROM: avval jadval topiladi."><rect class="fa" x="20" y="30" width="215" height="90" rx="16"/><text class="t-head" x="127" y="85" text-anchor="middle" font-size="26">1 FROM</text></g>
+      <g data-tip="WHERE: guruhlashdan oldin satrlarni filtrlaydi."><rect class="fc" x="262" y="30" width="215" height="90" rx="16"/><text class="t-head" x="370" y="85" text-anchor="middle" font-size="26">2 WHERE</text></g>
+      <g data-tip="GROUP BY: satrlar guruhlanadi."><rect class="fa" x="502" y="30" width="215" height="90" rx="16"/><text class="t-head" x="610" y="85" text-anchor="middle" font-size="26">3 GROUP BY</text></g>
+      <g data-tip="HAVING: guruhlar agregat natijasi bo'yicha filtrlanadi."><rect class="fb" x="745" y="30" width="235" height="90" rx="16"/><text class="t-head" x="862" y="85" text-anchor="middle" font-size="26">4 HAVING</text></g>
+      <line class="ln flowing" x1="240" y1="75" x2="258" y2="75"/><line class="ln flowing" x1="480" y1="75" x2="498" y2="75"/><line class="ln flowing" x1="720" y1="75" x2="741" y2="75"/>
+      <g data-tip="SELECT: kerakli ustunlar va agregatlar hisoblanadi."><rect class="fc" x="150" y="200" width="215" height="90" rx="16"/><text class="t-head" x="257" y="255" text-anchor="middle" font-size="26">5 SELECT</text></g>
+      <g data-tip="ORDER BY: natija saralanadi."><rect class="fa" x="392" y="200" width="215" height="90" rx="16"/><text class="t-head" x="500" y="255" text-anchor="middle" font-size="26">6 ORDER BY</text></g>
+      <g data-tip="LIMIT: kerakli qism kesib olinadi."><rect class="fb" x="635" y="200" width="215" height="90" rx="16"/><text class="t-head" x="742" y="255" text-anchor="middle" font-size="26">7 LIMIT</text></g>
+      <line class="ln flowing" x1="370" y1="245" x2="388" y2="245"/><line class="ln flowing" x1="612" y1="245" x2="630" y2="245"/>
+      <path class="la flowing" d="M862 125 C862 165 257 150 257 195" fill="none"/>
+    </svg>
+  </div>
+  <p class="small">Qutilarni bosing. Yozish tartibi bor, bajarilish tartibi boshqa!</p>
+  
+</section>
+
+<section>
+  <h2>Uchtasi birga</h2>
+  <pre><code class="language-sql" data-trim data-noescape data-line-numbers="1-6|3|4|5">
+SELECT hudud_id, COUNT(*) AS maktab_soni, SUM(sigim) AS umumiy_sigim
+FROM maktablar
+WHERE sigim &gt;= 600
+GROUP BY hudud_id
+HAVING COUNT(*) &gt;= 2
+ORDER BY umumiy_sigim DESC;
+  </code></pre>
+  <div class="chips"><span class="chip">WHERE: satr</span><span class="chip t">HAVING: guruh</span></div>
+</section>
+
+<section>
+  <h2>Xato yoki to'g'ri?</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">Xato</button><button type="button">To'g'ri</button></div>
+    <div class="swap-p"><div class="card"><pre><code class="language-sql" data-trim data-noescape>
+SELECT yil, SUM(oquvchilar_soni)
+FROM yillik_kpi
+WHERE SUM(oquvchilar_soni) &gt; 2500000
+GROUP BY yil;
+    </code></pre><p>WHERE da agregat: guruhlar hali yo'q!</p></div></div>
+    <div class="swap-p"><div class="card accent"><pre><code class="language-sql" data-trim data-noescape>
+SELECT yil, SUM(oquvchilar_soni)
+FROM yillik_kpi
+GROUP BY yil
+HAVING SUM(oquvchilar_soni) &gt; 2500000;
+    </code></pre><p>Agregat shart HAVING da. Natija: 2024.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Dublikat ovchisi</h2>
+  <pre><code class="language-sql" data-trim data-noescape>
+SELECT hudud_id, yil, COUNT(*) AS soni
+FROM yillik_kpi
+GROUP BY hudud_id, yil
+HAVING COUNT(*) &gt; 1;
+  </code></pre>
+  <div class="callout tip"><i data-ic="circle-check"></i>Natija bo'sh bo'lsa, dublikat yo'q. Ma'lumot sifatini tekshirishning asosiy usuli (uslubiy ko'rsatmadagi validation).</div>
+  
+</section>
+
+<section>
+  <h2>Odatiy xatolar</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="circle-x"></i></div><h3>WHERE da SUM</h3><p>Agregat shart faqat HAVING da.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="circle-x"></i></div><h3>GROUP BY da yo'q ustun</h3><p>SELECT dagi oddiy ustun GROUP BY da bo'lishi shart.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="circle-x"></i></div><h3>5 / 2 = 2</h3><p>SQLite da butun bo'linma. <code>* 1.0</code> qo'shing.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Mini-test: WHERE yoki HAVING?</h2>
+  <div class="quiz">
+    <p class="q">"Jami o'quvchisi 2 500 000 dan ko'p yillar" sharti qayerga yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">WHERE SUM(...) &gt; 2500000</button>
+      <button class="opt" type="button">FROM ... SUM</button>
+      <button class="opt" type="button">ORDER BY SUM(...)</button>
+      <button class="opt" type="button" data-ok>HAVING SUM(...) &gt; 2500000</button>
+    </div>
+    <div class="explain">Agregat natijasi bo'yicha filtr guruhlashdan keyin, HAVING da bajariladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Amaliyot <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Maktab turlari (turi) bo'yicha maktablar soni va o'rtacha sig'imni chiqaring.</div>
+  <div class="task"><span class="level mid">O'rta</span>2023 va 2024 uchun yillik jami o'quvchilarni toping, faqat 2 500 000 dan ko'pini qoldiring.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Hududlar bo'yicha 3 yillik jamini hisoblab, 1 500 000 dan ko'p hududlarni kamayish tartibida chiqaring.</div>
+  
+</section>
+
+<section>
+  <h2>Xulosa</h2>
+  <div class="cards two">
+    <div class="card"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Bugun o'rgandik</h3>
+      <ul><li>COUNT, SUM, AVG, MIN, MAX</li><li>GROUP BY: guruhlash</li><li>HAVING: guruh filtri</li><li>Ijro tartibi, NULLIF</li></ul></div>
+    <div class="card accent"><div class="icon"><i data-ic="book-open" data-anim="float"></i></div><h3>Uyga vazifa</h3><p>Yillar va hududlar bo'yicha hisobot, KPI nisbati va dublikat tekshirish (Python skript).</p></div>
+  </div>
+  <p class="small mt fragment"><i data-ic="zap"></i> Keyingi dars: JOIN. Jadvallarni bog'laymiz!</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

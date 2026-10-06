@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>12-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>12-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">Android dasturlash</span><span class="badge">4-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Kotlin'da ternar operator <code>? :</code> bormi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ha, Java'dagidek</button>
+      <button class="opt" type="button" data-ok>Yo'q, o'rniga <code>if</code> ifoda sifatida ishlatiladi</button>
+      <button class="opt" type="button">Faqat Android'da</button>
+      <button class="opt" type="button">Ha, lekin faqat sonlar uchun</button>
+    </div>
+    <div class="explain"><code>val x = if (a) b else c</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q"><code>val k = if (15 &gt; 25) 15 else 25</code>. <code>k</code>?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>15</code></button>
+      <button class="opt" type="button"><code>true</code></button>
+      <button class="opt" type="button" data-ok><code>25</code></button>
+      <button class="opt" type="button"><code>40</code></button>
+    </div>
+    <div class="explain">Shart noto'g'ri - else qismi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>if</code> ifoda sifatida o'zgaruvchiga berilsa, <code>else</code>?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ixtiyoriy</button>
+      <button class="opt" type="button">Taqiqlangan</button>
+      <button class="opt" type="button">Faqat sonlar uchun kerak</button>
+      <button class="opt" type="button" data-ok>Majburiy</button>
+    </div>
+    <div class="explain">Qiymat har doim bo'lishi kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>when</code> Java'dagi qaysi operator o'rnida?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>for</code></button>
+      <button class="opt" type="button"><code>try</code></button>
+      <button class="opt" type="button" data-ok><code>switch</code></button>
+      <button class="opt" type="button"><code>while</code></button>
+    </div>
+    <div class="explain">Ancha qudratli versiyasi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>when</code> tarmog'idan keyin <code>break</code>?</p>
+    <div class="opts">
+      <button class="opt" type="button">Majburiy</button>
+      <button class="opt" type="button">Faqat oxirida</button>
+      <button class="opt" type="button">Faqat else da</button>
+      <button class="opt" type="button" data-ok>Kerak emas</button>
+    </div>
+    <div class="explain">Kotlin avtomatik chiqadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Oraliqni tekshirish yozuvi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>90 to 100 -&gt;</code></button>
+      <button class="opt" type="button" data-ok><code>in 90..100 -&gt;</code></button>
+      <button class="opt" type="button"><code>range(90, 100) -&gt;</code></button>
+      <button class="opt" type="button"><code>90...100 -&gt;</code></button>
+    </div>
+    <div class="explain"><code>in</code> va <code>..</code></div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>ball = 88</code>: <code>in 90..100 -&gt; 5</code>, <code>in 70..89 -&gt; 4</code>. Natija?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>5</code></button>
+      <button class="opt" type="button"><code>3</code></button>
+      <button class="opt" type="button" data-ok><code>4</code></button>
+      <button class="opt" type="button"><code>else</code></button>
+    </div>
+    <div class="explain">88 - 70..89 oralig'ida.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Bir tarmoqda bir nechta qiymat?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>12 or 1 or 2 -&gt;</code></button>
+      <button class="opt" type="button"><code>[12, 1, 2] -&gt;</code></button>
+      <button class="opt" type="button">Mumkin emas</button>
+      <button class="opt" type="button" data-ok><code>12, 1, 2 -&gt; "Qish"</code></button>
+    </div>
+    <div class="explain">Vergul bilan ajratiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>when { x &gt; 5 -&gt; "a"; x &gt; 0 -&gt; "b"; else -&gt; "c" }</code>, <code>x = 10</code>?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>"a"</code></button>
+      <button class="opt" type="button"><code>"b"</code></button>
+      <button class="opt" type="button"><code>"a"</code> va <code>"b"</code></button>
+      <button class="opt" type="button"><code>"c"</code></button>
+    </div>
+    <div class="explain">Birinchi to'g'ri shart bajarilgach to'xtaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>val baho = when (ball) { in 90..100 -&gt; "A'lo" }</code> - xato sababi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>break</code> yo'q</button>
+      <button class="opt" type="button"><code>in</code> noto'g'ri</button>
+      <button class="opt" type="button" data-ok><code>else</code> yo'q</button>
+      <button class="opt" type="button">Qavs ortiqcha</button>
+    </div>
+    <div class="explain">Ifoda sifatida barcha holat qamrab olinishi kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: <code>if-else</code>, <code>if</code> ifoda sifatida, <code>when</code>, <code>in</code> oraliqlari, majburiy <code>else</code>.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

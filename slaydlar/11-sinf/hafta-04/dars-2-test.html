@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>11-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>11-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">4-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">REST markazida nima turadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Funksiya</button>
+      <button class="opt" type="button">Seans</button>
+      <button class="opt" type="button" data-ok>Resurs</button>
+      <button class="opt" type="button">Fayl</button>
+    </div>
+    <div class="explain">Har resursning o'z URI si bor.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">REST qoidasi: «nima?» va «qanday?»</p>
+    <div class="opts">
+      <button class="opt" type="button">Nima - metod, qanday - URI</button>
+      <button class="opt" type="button" data-ok>Nima - URI, qanday - HTTP metodi</button>
+      <button class="opt" type="button">Ikkalasi URI'da</button>
+      <button class="opt" type="button">Ikkalasi tanada</button>
+    </div>
+    <div class="explain">Fe'l URI'da bo'lmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">To'g'ri URI?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>GET /api/getAuthor?id=5</code></button>
+      <button class="opt" type="button" data-ok><code>GET /api/books/5/author</code></button>
+      <button class="opt" type="button"><code>POST /api/books/5/getAuthor</code></button>
+      <button class="opt" type="button"><code>GET /api/book/author/get</code></button>
+    </div>
+    <div class="explain">Ierarxiya, ko'plikdagi ot, fe'lsiz.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Resursni to'liq yangilash metodi?</p>
+    <div class="opts">
+      <button class="opt" type="button">PATCH</button>
+      <button class="opt" type="button">POST</button>
+      <button class="opt" type="button">GET</button>
+      <button class="opt" type="button" data-ok>PUT</button>
+    </div>
+    <div class="explain">PATCH - qisman.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Idempotentlik nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">So'rov tez bajariladi</button>
+      <button class="opt" type="button" data-ok>Bir yoki ko'p marta yuborilganda tizim holati bir xil</button>
+      <button class="opt" type="button">So'rov xavfsiz</button>
+      <button class="opt" type="button">Javob doim 200</button>
+    </div>
+    <div class="explain">DELETE ni 5 marta yuborsa ham kitob yo'q.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi metod odatda idempotent EMAS?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>POST</button>
+      <button class="opt" type="button">GET</button>
+      <button class="opt" type="button">PUT</button>
+      <button class="opt" type="button">DELETE</button>
+    </div>
+    <div class="explain">Har POST yangi resurs yaratadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Stateless degani?</p>
+    <div class="opts">
+      <button class="opt" type="button">Server ma'lumot saqlamaydi</button>
+      <button class="opt" type="button" data-ok>Har so'rov kerakli ma'lumotni o'zi olib keladi, server seans saqlamaydi</button>
+      <button class="opt" type="button">Javobda tana yo'q</button>
+      <button class="opt" type="button">Faqat GET ishlatiladi</button>
+    </div>
+    <div class="explain">Gorizontal masshtablash oson.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Yangi resurs yaratildi. Status kodi?</p>
+    <div class="opts">
+      <button class="opt" type="button">200 OK</button>
+      <button class="opt" type="button">204 No Content</button>
+      <button class="opt" type="button" data-ok>201 Created</button>
+      <button class="opt" type="button">302 Found</button>
+    </div>
+    <div class="explain">Created.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Token yo'q so'rovga javob?</p>
+    <div class="opts">
+      <button class="opt" type="button">403 Forbidden</button>
+      <button class="opt" type="button">404 Not Found</button>
+      <button class="opt" type="button" data-ok>401 Unauthorized</button>
+      <button class="opt" type="button">400 Bad Request</button>
+    </div>
+    <div class="explain">Kim ekanligi noma'lum.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Resurs o'zgarmagan, mijoz <code>If-None-Match</code> yubordi. Javob?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>304 Not Modified</button>
+      <button class="opt" type="button">200 OK</button>
+      <button class="opt" type="button">409 Conflict</button>
+      <button class="opt" type="button">429</button>
+    </div>
+    <div class="explain">ETag bilan keshlash: tarmoq tejaladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: resurs va URI, HTTP metodlari, idempotentlik, stateless, status kodlari, ETag.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

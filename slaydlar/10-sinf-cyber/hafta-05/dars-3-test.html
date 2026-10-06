@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Test: 15-dars. Firewall turlari va prinsiplari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Test: 15-dars. Firewall turlari va prinsiplari</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf Kiberxavfsizlik</span><span class="badge">5-hafta · 15-dars</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Firewall nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Antivirus dasturi</button>
+      <button class="opt" type="button">Parol menejeri</button>
+      <button class="opt" type="button">Brauzer kengaytmasi</button>
+      <button class="opt" type="button" data-ok>Trafikni qoidalar bo'yicha filtrlovchi vosita</button>
+    </div>
+    <div class="explain">Firewall kirish-chiqish trafigini nazorat qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Firewall qaysi tarmoqlar orasida joylashadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Ishonchli va ishonchsiz</button>
+      <button class="opt" type="button">Faqat ikki switch orasida</button>
+      <button class="opt" type="button">Faqat kompyuter ichida</button>
+      <button class="opt" type="button">Faqat Wi-Fi da</button>
+    </div>
+    <div class="explain">Trusted va untrusted tarmoqlar orasida.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">ACL nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Kirish boshqaruvi ro'yxati</button>
+      <button class="opt" type="button">Kabel turi</button>
+      <button class="opt" type="button">Shifrlash algoritmi</button>
+      <button class="opt" type="button">Domen nomi</button>
+    </div>
+    <div class="explain">Access Control List.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">IP, port va protokol bo'yicha filtrlaydigan tur?</p>
+    <div class="opts">
+      <button class="opt" type="button">Tatbiqiy proksi</button>
+      <button class="opt" type="button">Antivirus</button>
+      <button class="opt" type="button" data-ok>Paket filtri</button>
+      <button class="opt" type="button">DNS</button>
+    </div>
+    <div class="explain">Tarmoq sathining paket filtri.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">HTTP kontentini filtrlaydigan tur?</p>
+    <div class="opts">
+      <button class="opt" type="button">Paket filtri</button>
+      <button class="opt" type="button">Hab</button>
+      <button class="opt" type="button">Kabel</button>
+      <button class="opt" type="button" data-ok>Tatbiqiy proksi</button>
+    </div>
+    <div class="explain">Tatbiqiy vositachi ilova kontenti bo'yicha filtrlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Default-deny nimani anglatadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Hammasiga ruxsat</button>
+      <button class="opt" type="button">Faqat ping taqiq</button>
+      <button class="opt" type="button">Faqat chiquvchi trafik taqiq</button>
+      <button class="opt" type="button" data-ok>Avval hammasi taqiq, keyin kerakli ruxsat</button>
+    </div>
+    <div class="explain">DENY ALL, keyin kerakli ALLOW.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>NAT OUT InternalNet -&gt; Internet</code> nima uchun?</p>
+    <div class="opts">
+      <button class="opt" type="button">Portni yopish uchun</button>
+      <button class="opt" type="button">Parol uchun</button>
+      <button class="opt" type="button">Fayl nusxasi uchun</button>
+      <button class="opt" type="button" data-ok>Ichki tarmoq internetga chiqishi uchun</button>
+    </div>
+    <div class="explain">NAT ichki foydalanuvchilarni internetga chiqaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi protokol xavfsiz emas deb taqiqlanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">HTTPS</button>
+      <button class="opt" type="button" data-ok>Telnet</button>
+      <button class="opt" type="button">SSH</button>
+      <button class="opt" type="button">TLS</button>
+    </div>
+    <div class="explain">Telnet shifrlanmagan va zaif.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>DENY IN ANY -&gt; ANY (ICMP Echo Request)</code> nimani bloklaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Web sahifa</button>
+      <button class="opt" type="button" data-ok>Tashqaridan kiruvchi ping</button>
+      <button class="opt" type="button">Elektron pochta</button>
+      <button class="opt" type="button">SSH ulanish</button>
+    </div>
+    <div class="explain">ICMP Echo Request — ping so'rovi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">UTM qurilmasida nimalar bo'lishi mumkin?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat kabel</button>
+      <button class="opt" type="button">Faqat monitor</button>
+      <button class="opt" type="button">Faqat printer</button>
+      <button class="opt" type="button" data-ok>Firewall, IDS, antivirus, spamga qarshi modul</button>
+    </div>
+    <div class="explain">UTM kompleks perimetr himoyasi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: 15-dars konspekti va slaydlari</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

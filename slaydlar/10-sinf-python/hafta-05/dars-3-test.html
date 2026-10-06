@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Test: 15-dars. Filtrlash, qidiruv va tartiblash</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Test: 15-dars. Filtrlash, qidiruv va tartiblash</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">5-hafta · 15-dars</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Query parametr qayerda yuboriladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Request body da</button>
+      <button class="opt" type="button">Cookie da</button>
+      <button class="opt" type="button">Faylda</button>
+      <button class="opt" type="button" data-ok>URL da ? dan keyin</button>
+    </div>
+    <div class="explain"><code>?kalit=qiymat</code> ko'rinishida.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Ketma-ket ikkita <code>where</code> qanday birikadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">OR</button>
+      <button class="opt" type="button" data-ok>AND</button>
+      <button class="opt" type="button">XOR</button>
+      <button class="opt" type="button">NOT</button>
+    </div>
+    <div class="explain">AND.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Bir nechta maydonda OR qidiruv uchun?</p>
+    <div class="opts">
+      <button class="opt" type="button">and_()</button>
+      <button class="opt" type="button" data-ok>or_()</button>
+      <button class="opt" type="button">not_()</button>
+      <button class="opt" type="button">in_()</button>
+    </div>
+    <div class="explain"><code>or_</code> shartlarni OR bilan birlashtiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Registrni farqlamaydigan qidiruv?</p>
+    <div class="opts">
+      <button class="opt" type="button">==</button>
+      <button class="opt" type="button" data-ok>ilike</button>
+      <button class="opt" type="button">is_</button>
+      <button class="opt" type="button">desc</button>
+    </div>
+    <div class="explain"><code>ilike</code> — case-insensitive.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>order_by(Book.pages.desc())</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">O'sish tartibida tartiblaydi</button>
+      <button class="opt" type="button">Filtrlaydi</button>
+      <button class="opt" type="button" data-ok>Kamayish tartibida tartiblaydi</button>
+      <button class="opt" type="button">O'chiradi</button>
+    </div>
+    <div class="explain"><code>desc()</code> kamayish.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>limit=10, offset=20</code> nechanchi yozuvlarni beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>21–30</button>
+      <button class="opt" type="button">1–10</button>
+      <button class="opt" type="button">20–30 oxirdan</button>
+      <button class="opt" type="button">11–20</button>
+    </div>
+    <div class="explain">20 ta o'tkaziladi, keyingi 10 tasi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>Query(10, ge=1, le=100)</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faylni yuklaydi</button>
+      <button class="opt" type="button">Tokenni tekshiradi</button>
+      <button class="opt" type="button">Parolni xeshlaydi</button>
+      <button class="opt" type="button" data-ok>Qiymatni 1..100 oralig'ida cheklaydi</button>
+    </div>
+    <div class="explain">Validatsiya: chegaradan tashqari 422.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>sort</code> uchun ruxsat etilgan ro'yxat nega kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Tezlik uchun</button>
+      <button class="opt" type="button" data-ok>Ixtiyoriy maydon nomidan himoya</button>
+      <button class="opt" type="button">Rang uchun</button>
+      <button class="opt" type="button">Parol uchun</button>
+    </div>
+    <div class="explain">Xavfsizlik: faqat ma'lum maydonlar.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>total</code> qaysi vaqtda hisoblanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>limit qo'llashdan oldin</button>
+      <button class="opt" type="button">limit dan keyin</button>
+      <button class="opt" type="button">Faqat oxirgi sahifada</button>
+      <button class="opt" type="button">Hech qachon</button>
+    </div>
+    <div class="explain">Aks holda jami son noto'g'ri bo'ladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>in_([2020, 2021])</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Qiymat ro'yxatda bo'lsa moslaydi</button>
+      <button class="opt" type="button">Ikkala qiymatni qo'shadi</button>
+      <button class="opt" type="button">Ro'yxatni o'chiradi</button>
+      <button class="opt" type="button">Tartiblaydi</button>
+    </div>
+    <div class="explain">SQL dagi <code>IN</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: 15-dars konspekti va slaydlari</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>5-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>5-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">2-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">DRF'da <code>AllowAny</code> ruxsati kimlarga ruxsat beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Hammaga: mehmonlarga ham, tizimga kirganlarga ham</button>
+      <button class="opt" type="button">Faqat tizimga kirganlarga</button>
+      <button class="opt" type="button">Faqat is_staff=True foydalanuvchilarga</button>
+      <button class="opt" type="button">Faqat obyekt egasiga</button>
+    </div>
+    <div class="explain"><code>AllowAny</code> odatda ommaviy yangiliklarni o'qish uchun ishlatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q"><code>IsAdminUser</code> kimlarga ruxsat beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Barcha ro'yxatdan o'tganlarga</button>
+      <button class="opt" type="button" data-ok>Faqat <code>is_staff=True</code> bo'lgan xodim va adminlarga</button>
+      <button class="opt" type="button">Faqat mehmonlarga</button>
+      <button class="opt" type="button">Faqat maqola muallifiga</button>
+    </div>
+    <div class="explain"><code>IsAdminUser</code> <code>is_staff</code> bayrog'ini tekshiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>SAFE_METHODS</code> qaysi HTTP metodlarini o'z ichiga oladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">GET, POST, PUT</button>
+      <button class="opt" type="button">POST, PATCH, DELETE</button>
+      <button class="opt" type="button" data-ok>GET, HEAD, OPTIONS</button>
+      <button class="opt" type="button">GET, DELETE, OPTIONS</button>
+    </div>
+    <div class="explain">Bu metodlar ma'lumotni o'zgartirmaydi, faqat o'qish uchun xizmat qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>IsAuthenticatedOrReadOnly</code> mehmonga nimaga ruxsat beradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat POST ga</button>
+      <button class="opt" type="button">Hamma metodlarga</button>
+      <button class="opt" type="button">Hech narsaga</button>
+      <button class="opt" type="button" data-ok>Faqat GET, HEAD, OPTIONS ga</button>
+    </div>
+    <div class="explain">Yozish amallari (POST, PUT, DELETE) uchun tizimga kirgan bo'lish shart.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>has_permission</code> bilan <code>has_object_permission</code> farqi nimada?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Birinchisi umumiy endpoint darajasida, ikkinchisi aniq bitta obyekt uchun tekshiradi</button>
+      <button class="opt" type="button">Birinchisi faqat GET, ikkinchisi faqat POST uchun</button>
+      <button class="opt" type="button">Farqi yo'q, bir xil ishlaydi</button>
+      <button class="opt" type="button">Birinchisi bazaga yozadi, ikkinchisi o'qiydi</button>
+    </div>
+    <div class="explain"><code>has_object_permission</code> 15-raqamli Post kabi muayyan obyekt ustida amal bajarilganda ishlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Ali yozmagan maqolani oddiy foydalanuvchi sifatida <code>PATCH</code> qilmoqchi. <code>IsOwnerOrStaff</code> qanday status qaytaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">200 OK</button>
+      <button class="opt" type="button" data-ok>403 Forbidden</button>
+      <button class="opt" type="button">201 Created</button>
+      <button class="opt" type="button">404 Not Found</button>
+    </div>
+    <div class="explain">Foydalanuvchi tizimga kirgan, lekin obyekt egasi ham, staff ham emas, shuning uchun ruxsat berilmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>perform_create</code> ichida <code>serializer.save(author=self.request.user)</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Muallifni JSON'dan oladi</button>
+      <button class="opt" type="button">Maqolani o'chiradi</button>
+      <button class="opt" type="button" data-ok>Muallifni tokendagi joriy foydalanuvchi qilib avtomatik biriktiradi</button>
+      <button class="opt" type="button">Foydalanuvchini tizimdan chiqaradi</button>
+    </div>
+    <div class="explain">Muallif server tomonida <code>request.user</code> orqali belgilanadi, mijozga ishonilmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>IsStaffOrReadOnly</code> ulangan <code>CategoryViewSet</code> ga oddiy (staff emas) tizimga kirgan foydalanuvchi <code>POST</code> yubordi. Natija?</p>
+    <div class="opts">
+      <button class="opt" type="button">Kategoriya yaratiladi</button>
+      <button class="opt" type="button">Faqat GET ruxsat etiladi, POST ham o'tadi</button>
+      <button class="opt" type="button">Server 500 qaytaradi</button>
+      <button class="opt" type="button" data-ok>Rad etiladi, chunki yozish faqat staff uchun</button>
+    </div>
+    <div class="explain">SAFE bo'lmagan metodlarda <code>request.user.is_staff</code> True bo'lishi shart.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>CommentViewSet</code> da muallif maydoni <code>user</code> deb nomlangan. <code>IsOwnerOrStaff</code> to'g'ri ishlashi uchun nima qilinadi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>ViewSet'da <code>owner_field = "user"</code> belgilanadi</button>
+      <button class="opt" type="button">Comment modelini o'chirib, Post ishlatiladi</button>
+      <button class="opt" type="button"><code>SAFE_METHODS</code> ni o'zgartiriladi</button>
+      <button class="opt" type="button"><code>has_permission</code> ni True ga tenglanadi</button>
+    </div>
+    <div class="explain">Permission <code>getattr(view, "owner_field", ...)</code> orqali egasini qaysi maydondan olishni biladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Frontend dasturchi POST'da JSON ichida <code>author: 5</code> yuborsa va server uni qabul qilsa, qanday xavf bor?</p>
+    <div class="opts">
+      <button class="opt" type="button">Maqola ikki marta saqlanadi</button>
+      <button class="opt" type="button" data-ok>Foydalanuvchi boshqa odamning ID sini yozib, uning nomidan maqola chop etishi mumkin</button>
+      <button class="opt" type="button">Token muddati tugaydi</button>
+      <button class="opt" type="button">Sahifalash buziladi</button>
+    </div>
+    <div class="explain">Shuning uchun muallif <code>perform_create</code> orqali tokendan olinadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: standart ruxsat klasslari, SAFE_METHODS, has_permission va has_object_permission farqi, perform_create.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

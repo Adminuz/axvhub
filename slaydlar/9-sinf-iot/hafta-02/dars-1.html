@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Tinkercad.com Virtual Laboratoriyasi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Tinkercad.com Virtual Laboratoriyasi</h1>
+  <p class="muted">Virtual elektronika muhitida ro‘yxatdan o‘tish, Circuits interfeysi va simulyatsiya asoslari</p>
+  <span class="badge">9-sinf</span><span class="badge">IoT</span><span class="badge">2-hafta · 4-dars</span>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Nega Virtual Laboratoriya?</h1>
+  <p>Apparat vositalarini xavfsiz va xarajatsiz o'rganish platformasi</p>
+</section>
+
+<section>
+  <h2>Yangi Boshlovchilar Uchun Asosiy Xatarlar</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-alert" data-anim="bounce"></i></div>
+      <h3 class="t-accent">Qisqa Tutashuv Xavfi</h3>
+      <p>Simlarni noto'g'ri ulash sababli mikrokontroller yoki sensorlar soniyalar ichida yonib ketishi mumkin.</p>
+      <p class="t-muted">Haqiqiy apparatda har bir xato moddiy zarar keltiradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check" data-anim="pulse"></i></div>
+      <h3 class="t-head">Tinkercad Xavfsiz Muhiti</h3>
+      <p>Virtual platformada har qanday xato xavfsiz simulyatsiya qilinadi va fizik sababi ko'rsatiladi.</p>
+      <p class="t-muted">Talaba qo'rqmasdan erkin tajribalar o'tkazishi mumkin.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Haqiqiy Laboratoriya vs Tinkercad Circuits</h2>
+  <div class="fragment fade-up">
+    <svg viewBox="0 0 900 320" width="100%" height="240" style="display:block; margin:auto;">
+      <rect x="30" y="40" width="380" height="240" rx="16" class="la" stroke-width="2" fill="none"/>
+      <text x="220" y="80" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Haqiqiy Laboratoriya</text>
+      <circle cx="100" cy="130" r="20" class="fn" fill="currentColor"/>
+      <text x="140" y="135" class="t-muted" font-size="16">Fizik detallar (xarid qilinadi)</text>
+      <circle cx="100" cy="180" r="20" class="fn" fill="currentColor"/>
+      <text x="140" y="185" class="t-muted" font-size="16">Qisqa tutashuvda detal kuyadi</text>
+      <circle cx="100" cy="230" r="20" class="fn" fill="currentColor"/>
+      <text x="140" y="235" class="t-muted" font-size="16">Faqat laboratoriya xonasida</text>
+
+      <path d="M 430 160 L 470 160" stroke="currentColor" stroke-width="4" stroke-dasharray="6,6" class="t-muted"/>
+
+      <rect x="490" y="40" width="380" height="240" rx="16" class="lb" stroke-width="2" fill="none"/>
+      <text x="680" y="80" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Tinkercad Circuits</text>
+      <circle cx="560" cy="130" r="20" class="fg" fill="currentColor"/>
+      <text x="600" y="135" class="t-muted" font-size="16">Cheksiz virtual komponentlar</text>
+      <circle cx="560" cy="180" r="20" class="fg" fill="currentColor"/>
+      <text x="600" y="185" class="t-muted" font-size="16">Xavfsiz: xato sababi ko'rsatiladi</text>
+      <circle cx="560" cy="230" r="20" class="fg" fill="currentColor"/>
+      <text x="600" y="235" class="t-muted" font-size="16">Brauzerda istalgan joydan kirish</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Autodesk Tinkercad Ekotizimi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="box"></i></div>
+      <h3>3D Design</h3>
+      <p>IoT korpuslari, sensor g'iloflari va robot detallarini 3D printer uchun loyihalash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu" data-anim="float"></i></div>
+      <h3>Circuits (Sxemalar)</h3>
+      <p>Arduino Uno, sensorlar, breadboard va batareyalarni interaktiv simulyatsiya qilish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="code"></i></div>
+      <h3>Codeblocks</h3>
+      <p>Algoritmik vizual bloklar yordamida geometrik shakllar va animatsiyalar yaratish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Ro‘yxatdan O‘tish va Kirish</h1>
+  <p>Tinkercad.com saytida shaxsiy akkaunt yaratish bosqichlari</p>
+</section>
+
+<section>
+  <h2>Tinkercad.com Platformasiga Ulanish</h2>
+  <div class="stepper">
+    <div class="step fragment fade-up">
+      <div class="num">1</div>
+      <h3>Saytga Kirish</h3>
+      <p>Veb-brauzerda <code>www.tinkercad.com</code> manziliga o'tiladi va "Sign Up" tugmasi tanlanadi.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">2</div>
+      <h3>Akkaunt Turini Belgilash</h3>
+      <p>"Create a personal account" (mustaqil o'rganish) yoki "Students with Class Code" bosiladi.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">3</div>
+      <h3>Google Orqali Tezkor Kirish</h3>
+      <p>"Sign in with Google" tanlanib, mavjud Gmail pochtasi orqali tizimga bitta klik bilan kiriladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tinkercad Boshqaruv Paneli (Dashboard)</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="panel-left"></i></div>
+      <h3>Chap Navigatsiya Menyusi</h3>
+      <p><strong>Circuits:</strong> Barcha saqlangan elektron sxemalar joylashgan asosiy bo'lim.</p>
+      <p><strong>Tutorials:</strong> Autodesk tomonidan tayyorlangan interaktiv o'quv qo'llanmalari.</p>
+      <p><strong>Classes:</strong> O'qituvchi bergan maktab vazifalarini ko'rish maydoni.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-plus" data-anim="pulse"></i></div>
+      <h3>Yangi Sxema Yaratish</h3>
+      <p>1. Chap menyudan <strong>Circuits</strong> bo'limi tanlanadi;</p>
+      <p>2. Moviy <strong>+ Create</strong> tugmasi bosiladi;</p>
+      <p>3. Ochilgan ro'yxatdan <strong>Circuit</strong> bandi tanlanadi;</p>
+      <p class="t-accent">Toza Workplane ish maydoni ochiladi!</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Circuits Ishchi Maydoni</h1>
+  <p>Workplane, asboblar paneli va komponentlar kutubxonasi</p>
+</section>
+
+<section>
+  <h2>Circuits Interfeysi Anatomiyasi</h2>
+  <div class="fragment fade-up">
+    <svg viewBox="0 0 920 360" width="100%" height="260" style="display:block; margin:auto;">
+      <rect x="20" y="20" width="880" height="320" rx="12" class="la" stroke-width="2" fill="none"/>
+      
+      <!-- Top header bar -->
+      <rect x="20" y="20" width="880" height="50" rx="12" class="lc" stroke-width="1" fill="none"/>
+      <text x="40" y="52" class="t-accent" font-size="16" font-weight="bold">Loyiha nomi: [Luminous Gogo]</text>
+      <rect x="360" y="30" width="120" height="30" rx="6" class="fb" fill="none" stroke="currentColor"/>
+      <text x="420" y="50" text-anchor="middle" class="t-head" font-size="13">Rotate / Del / Undo</text>
+      <rect x="520" y="30" width="80" height="30" rx="6" class="fg" fill="none" stroke="currentColor"/>
+      <text x="560" y="50" text-anchor="middle" class="t-head" font-size="13">Code</text>
+      <rect x="620" y="30" width="130" height="30" rx="6" class="fg" fill="none" stroke="currentColor"/>
+      <text x="685" y="50" text-anchor="middle" class="t-head" font-size="13">Start Simulation</text>
+      <rect x="770" y="30" width="110" height="30" rx="6" class="fa" fill="none" stroke="currentColor"/>
+      <text x="825" y="50" text-anchor="middle" class="t-head" font-size="13">Send To / Share</text>
+
+      <!-- Center Workplane -->
+      <rect x="40" y="90" width="570" height="230" rx="8" class="lb" stroke-width="1" stroke-dasharray="4,4" fill="none"/>
+      <text x="325" y="190" text-anchor="middle" class="t-muted" font-size="20">WORKPLANE (Ish maydoni)</text>
+      <text x="325" y="220" text-anchor="middle" class="t-muted" font-size="14">Komponentlar shu maydonga joylashtiriladi va simlar bilan ulanadi</text>
+
+      <!-- Right Component Sidebar -->
+      <rect x="630" y="90" width="250" height="230" rx="8" class="lc" stroke-width="1" fill="none"/>
+      <text x="650" y="120" class="t-head" font-size="15" font-weight="bold">Components [Basic]</text>
+      <rect x="645" y="135" width="220" height="28" rx="4" class="la" fill="none" stroke="currentColor"/>
+      <text x="660" y="154" class="t-muted" font-size="13">Qidiruv (Search...)</text>
+      <rect x="645" y="175" width="220" height="40" rx="4" class="fa" fill="none" stroke="currentColor"/>
+      <text x="755" y="200" text-anchor="middle" class="t-head" font-size="13">Resistor (Qarshilik)</text>
+      <rect x="645" y="225" width="220" height="40" rx="4" class="fb" fill="none" stroke="currentColor"/>
+      <text x="755" y="250" text-anchor="middle" class="t-head" font-size="13">LED (Yorug'lik diodi)</text>
+      <rect x="645" y="275" width="220" height="40" rx="4" class="fg" fill="none" stroke="currentColor"/>
+      <text x="755" y="300" text-anchor="middle" class="t-head" font-size="13">Arduino Uno R3</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Yuqori Boshqaruv Asboblari</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="rotate-cw" data-anim="spin"></i></div>
+      <h3>Rotate (Burish — R)</h3>
+      <p>Tanlangan detalni soat millari yo'nalishida 30 gradusga buradi.</p>
+      <p class="t-muted">Sxemalarni chiroyli va qulay joylashtirish uchun ishlatiladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="trash"></i></div>
+      <h3>Delete (O'chirish — Del)</h3>
+      <p>Keraksiz detal yoki xato tortilgan simni ish maydonidan olib tashlaydi.</p>
+      <p class="t-muted">Klaviaturadagi Del yoki Backspace tugmasi orqali tezkor o'chiriladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Orqaga Qaytarish va Eslatmalar</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="undo"></i></div>
+      <h3>Undo &amp; Redo</h3>
+      <p><strong>Undo (Ctrl+Z):</strong> Oxirgi qilingan amalni bekor qiladi.</p>
+      <p><strong>Redo (Ctrl+Y):</strong> Bekor qilingan amalni qayta tiklaydi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="file-text"></i></div>
+      <h3>Notes (Eslatmalar — N)</h3>
+      <p>Sxema ustiga matnli tushuntirish va ko'rsatmalar yozib qoldirish imkonini beradi.</p>
+      <p class="t-muted">Eslatmalarni ko'z belgisi orqali yashirish yoki ko'rsatish mumkin.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Ulovchi Simlar va Muhandislik Ranglari</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="spline"></i></div>
+      <h3>Sim Tortish Texnikasi</h3>
+      <p>Komponent piniga bir marta bosiladi va kerakli tomonga tortiladi.</p>
+      <p>Bo'sh joyga bosish orqali simda 90 gradusli burilish nuqtasi (burchak) hosil qilinadi.</p>
+      <p class="t-muted">Toza simlar sxemani o'qishni osonlashtiradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Ranglar Standarti</h3>
+      <p><strong class="t-accent">Qizil:</strong> Musbat qutb — VCC (+5V, +3.3V) quvvat manbai.</p>
+      <p><strong>Qora:</strong> Manfiy qutb — GND (Ground — Yer / Umumiy sim).</p>
+      <p class="t-head"><strong>Yashil / Sariq / Moviy:</strong> Sensor signallari va ma'lumot uzatish liniyalari.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Komponentlar Kutubxonasi va Qidiruv</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="list-filter"></i></div>
+      <h3>Basic Toifasi</h3>
+      <p>Eng ko'p qo'llaniladigan 20 ta detal: Rezistor, LED, Tugma, Batareya, Breadboard, Arduino.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>All Toifasi</h3>
+      <p>Barcha sensorlar, masofa o'lchagich, PIR, gaz datchigi, LCD displey, motorlar va relalar.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="search"></i></div>
+      <h3>Qidiruv (Search)</h3>
+      <p>Komponent nomini ingliz tilida yozib topish: <code>Arduino</code>, <code>Servo</code>, <code>Sensor</code>, <code>LED</code>.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Komponent Parametrlarini Sozlash</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+      <h3>Rezistor Qiymatini Belgilash</h3>
+      <p>Rezistor ustiga bosilganda sozlash oynasi ochiladi:</p>
+      <p><strong>Resistance:</strong> Qarshilik soni (masalan, 220);</p>
+      <p><strong>Birlik:</strong> <code>Ω</code> (Om), <code>kΩ</code> (kilo-om), <code>MΩ</code> (mega-om).</p>
+      <p class="t-accent">Muhim: Qiymat o'zgarganda rang chiziqlari ham o'zgaradi!</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sun"></i></div>
+      <h3>LED Rangini O'zgartirish</h3>
+      <p>LED tanlanganda "Color" menyusi ochiladi:</p>
+      <p>Qizil (Red), Yashil (Green), Sariq (Yellow), Zangori (Orange), Ko'k (Blue), Oq (White).</p>
+      <p class="t-muted">Har bir rang o'ziga xos to'lqin uzunligi va fizik kuchlanishiga ega.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Start Simulation Qanday Ishlaydi?</h2>
+  <div class="fragment fade-up">
+    <svg viewBox="0 0 900 280" width="100%" height="220" style="display:block; margin:auto;">
+      <rect x="30" y="40" width="240" height="200" rx="12" class="la" stroke-width="2" fill="none"/>
+      <text x="150" y="80" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">1. Sxema Tayyor</text>
+      <text x="150" y="125" text-anchor="middle" class="t-muted" font-size="14">Detallar ulandi</text>
+      <text x="150" y="155" text-anchor="middle" class="t-muted" font-size="14">Simlar tortildi</text>
+      <text x="150" y="185" text-anchor="middle" class="t-muted" font-size="14">Kod yozildi</text>
+
+      <path d="M 285 140 L 335 140" stroke="currentColor" stroke-width="3" class="t-accent"/>
+
+      <rect x="350" y="40" width="240" height="200" rx="12" class="lb" stroke-width="2" fill="none"/>
+      <text x="470" y="80" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">2. Start Simulation</text>
+      <circle cx="470" cy="130" r="30" class="fg" fill="currentColor"/>
+      <text x="470" y="137" text-anchor="middle" font-size="16" font-weight="bold">PLAY</text>
+      <text x="470" y="195" text-anchor="middle" class="t-muted" font-size="13">Virtual tok ulanadi</text>
+
+      <path d="M 605 140 L 655 140" stroke="currentColor" stroke-width="3" class="t-accent"/>
+
+      <rect x="670" y="40" width="200" height="200" rx="12" class="lc" stroke-width="2" fill="none"/>
+      <text x="770" y="80" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">3. Natija</text>
+      <text x="770" y="125" text-anchor="middle" class="t-head" font-size="14">LED yonadi</text>
+      <text x="770" y="155" text-anchor="middle" class="t-head" font-size="14">Motor aylanadi</text>
+      <text x="770" y="185" text-anchor="middle" class="t-accent" font-size="14">Yoki xato ko'rinadi</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tutashuv Animatsiyasi: Overcurrent</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="flame" data-anim="bounce"></i></div>
+      <h3 class="t-accent">Rezistorsiz Ulanish (Xato)</h3>
+      <p>Agar 9V batareyaga rezistorsiz LED ulab simulyatsiya boshlansa:</p>
+      <p>LED ustida portlash / tutun belgisi paydo bo'ladi.</p>
+      <p class="t-muted">Ogohlantirish: Tok kuchi 915 mA ga yetdi, ruxsat etilgan me'yor esa 20 mA!</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check" data-anim="pulse"></i></div>
+      <h3 class="t-head">Rezistorli Ulanish (To'g'ri)</h3>
+      <p>LED oldiga 220–330 Om rezistor ulanganda:</p>
+      <p>Tok kuchi xavfsiz 15–20 mA gacha cheklanadi.</p>
+      <p class="t-muted">LED barqaror nur taratadi va hech qanday shikastlanish bo'lmaydi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Code Muharriri: 3 Xil Rejim</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="blocks"></i></div>
+      <h3>Blocks (Vizual)</h3>
+      <p>Scratch kabi rangli mantiqiy bloklarni birlashtirib dasturlash usuli.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="split"></i></div>
+      <h3>Blocks + Text</h3>
+      <p>Bloklarni surish orqali yonida C++ kodining hosil bo'lishini kuzatish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="file-code"></i></div>
+      <h3>Text (Faqat C++)</h3>
+      <p>Haqiqiy Arduino IDE kodi: <code>setup()</code>, <code>loop()</code>, <code>pinMode()</code> va <code>digitalWrite()</code>.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Loyihani Nomlash va Ulashish (Share)</h2>
+  <div class="stepper">
+    <div class="step fragment fade-up">
+      <div class="num">1</div>
+      <h3>Nomni O'zgartirish</h3>
+      <p>Yuqori chap burchakdagi tasodifiy nom ustiga bosib, <code>9-sinf_IoT_Laboratoriya_01</code> deb yoziladi.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">2</div>
+      <h3>Bulutga Saqlanish</h3>
+      <p>Tinkercad har bir o'zgarishni darhol avtomatik saqlab boradi.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">3</div>
+      <h3>Havolani Olish</h3>
+      <p>"Send To" -> "Invite people" -> "Generate new link" orqali o'qituvchiga havola yuboriladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Interaktiv Kartochkalar</h2>
+  <div class="cards two">
+    <div class="flip fragment fade-up">
+      <div class="flip-in">
+        <div class="face front fa">
+          <h3><i data-ic="circle-question-mark"></i> Workplane nima?</h3>
+          <p class="t-muted">Javobni ko'rish uchun kartani aylantiring</p>
+        </div>
+        <div class="face back fb">
+          <h3>Asosiy Ishchi Maydon</h3>
+          <p>Komponentlar tortib keltiriladigan, simlar bilan ulanadigan cheksiz virtual tajriba maydoni.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip fragment fade-up">
+      <div class="flip-in">
+        <div class="face front fa">
+          <h3><i data-ic="circle-question-mark"></i> Klaviaturadagi 'R' tugmasi nima qiladi?</h3>
+          <p class="t-muted">Javobni ko'rish uchun kartani aylantiring</p>
+        </div>
+        <div class="face back fg">
+          <h3>Rotate (Burish)</h3>
+          <p>Tanlangan detalni soat millari bo'yicha 30 gradusga burib beradi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tezkor Test Savoli</h2>
+  <div class="quiz">
+    <div class="q">Tinkercad Circuits muhitida rezistor qarshilik qiymatini 220 Om qilish uchun qaysi parametr to'g'ri tanlanishi kerak?</div>
+    <div class="opts">
+      <div class="opt">A) Resistance: 220, Birlik: kΩ (kilo-om)</div>
+      <div class="opt" data-ok>B) Resistance: 220, Birlik: Ω (Om)</div>
+      <div class="opt">C) Resistance: 220, Birlik: MΩ (mega-om)</div>
+      <div class="opt">D) Faqat rang chiziqlarini bo'yash kerak</div>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Xulosa va Keyingi Qadam</h1>
+  <p>2-hafta 4-dars yakunlari</p>
+</section>
+
+<section>
+  <h2>Bugungi Darsda Nimani O'rgandik?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Xavfsiz Simulyatsiya</h3>
+      <p>Apparatlarni xarid qilmasdan va kuydirib qo'yishdan qo'rqmasdan laboratoriya qilishni o'rgandik.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="panel-top"></i></div>
+      <h3>Circuits Interfeysi</h3>
+      <p>Workplane, asboblar (R, Del, Notes), sim ranglari standarti va parametrlar bilan tanishdik.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-play"></i></div>
+      <h3>Start Simulation</h3>
+      <p>Elektr tokini ulab sxemani sinovdan o'tkazish va kod yozish rejimlarini tushunib oldik.</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

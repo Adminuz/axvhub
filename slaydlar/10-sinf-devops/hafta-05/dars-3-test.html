@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Test: 15-dars. Foydalanuvchilar, sudoers va SSH</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Test: 15-dars. Foydalanuvchilar, sudoers va SSH</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">5-hafta · 15-dars</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Foydalanuvchi uy papkasi bilan yaratiladigan flag?</p>
+    <div class="opts">
+      <button class="opt" type="button">-L</button>
+      <button class="opt" type="button" data-ok>-m</button>
+      <button class="opt" type="button">-r</button>
+      <button class="opt" type="button">-a</button>
+    </div>
+    <div class="explain"><code>useradd -m</code> uy papkasini yaratadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q"><code>usermod -aG docker ali</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">ali ni o'chiradi</button>
+      <button class="opt" type="button" data-ok>ali ni docker guruhiga qo'shadi</button>
+      <button class="opt" type="button">ali parolini o'zgartiradi</button>
+      <button class="opt" type="button">docker ni o'chiradi</button>
+    </div>
+    <div class="explain"><code>-aG</code> guruhga qo'shadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>usermod -G</code> ni <code>-a</code> siz ishlatsak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Hech narsa o'zgarmaydi</button>
+      <button class="opt" type="button">Hisob o'chadi</button>
+      <button class="opt" type="button" data-ok>Eski guruhlar o'chadi</button>
+      <button class="opt" type="button">Parol o'chadi</button>
+    </div>
+    <div class="explain"><code>-a</code> bo'lmasa guruhlar ro'yxati almashtiriladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>userdel -r</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Parolni tiklaydi</button>
+      <button class="opt" type="button" data-ok>Hisobni uy papkasi bilan o'chiradi</button>
+      <button class="opt" type="button">Hisobni bloklaydi</button>
+      <button class="opt" type="button">Guruh yaratadi</button>
+    </div>
+    <div class="explain"><code>-r</code> uy papkasini ham o'chiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">sudoers ni tahrirlash xavfsiz buyrug'i?</p>
+    <div class="opts">
+      <button class="opt" type="button">nano /etc/sudoers</button>
+      <button class="opt" type="button">vi /etc/passwd</button>
+      <button class="opt" type="button">cat /etc/shadow</button>
+      <button class="opt" type="button" data-ok>sudo visudo</button>
+    </div>
+    <div class="explain"><code>visudo</code> sintaksisni tekshiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Parol xeshlari qaysi faylda?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>/etc/shadow</button>
+      <button class="opt" type="button">/etc/hosts</button>
+      <button class="opt" type="button">/etc/group</button>
+      <button class="opt" type="button">/etc/fstab</button>
+    </div>
+    <div class="explain"><code>/etc/shadow</code> faqat root o'qiydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">SSH uchun zamonaviy algoritm?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>ed25519</button>
+      <button class="opt" type="button">md5</button>
+      <button class="opt" type="button">rot13</button>
+      <button class="opt" type="button">base64</button>
+    </div>
+    <div class="explain"><code>ed25519</code> zamonaviy va tez.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Serverga o'tkaziladigan kalit?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Ochiq (.pub)</button>
+      <button class="opt" type="button">Shaxsiy</button>
+      <button class="opt" type="button">Hech qaysi</button>
+      <button class="opt" type="button">Ikkalasi</button>
+    </div>
+    <div class="explain">Shaxsiy kalit hech qachon uzatilmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>ssh-copy-id</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Shaxsiy kalitni nusxalaydi</button>
+      <button class="opt" type="button">Parolni o'zgartiradi</button>
+      <button class="opt" type="button">Serverni o'chiradi</button>
+      <button class="opt" type="button" data-ok>Ochiq kalitni serverga o'rnatadi</button>
+    </div>
+    <div class="explain">Kalitni serverdagi <code>authorized_keys</code> ga qo'shadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>PermitRootLogin no</code> nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Hammaga ruxsat beradi</button>
+      <button class="opt" type="button">Parolni o'chiradi</button>
+      <button class="opt" type="button" data-ok>SSH orqali root kirishini taqiqlaydi</button>
+      <button class="opt" type="button">Portni o'zgartiradi</button>
+    </div>
+    <div class="explain">Root bilan to'g'ridan-to'g'ri SSH kirish taqiqlanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: 15-dars konspekti va slaydlari</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

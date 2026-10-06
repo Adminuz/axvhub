@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Birinchi «Hello World» ilovasini yaratish</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Birinchi «Hello World» ilovasini yaratish</h1>
+  <p class="muted">Android Studio'da ilk loyiha: activity_main.xml, MainActivity va Gradle build</p>
+  <span class="badge">9-sinf</span>
+  <span class="badge">Android dasturlash</span>
+  <span class="badge">3-hafta · 8-dars</span>
+</section>
+
+<section>
+  <h2>Bugungi dars maqsadlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="smartphone"></i></div>
+      <h3>Yangi loyiha</h3>
+      <p>Empty Views Activity shabloni va parametrlarni to'g'ri sozlash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layout-grid"></i></div>
+      <h3>XML dizayn</h3>
+      <p>Split rejimida TextView sozlash va matn o'lchamini o'zgartirish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="play"></i></div>
+      <h3>Gradle build</h3>
+      <p>Kodni yig'ish, APK yaratish va ishga tushirish zanjiri.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Loyiha yaratish qadamlari</h1>
+  <p>New Project oynasidagi muhim parametrlar</p>
+</section>
+
+<section>
+  <h2>Parametrlarni to'ldirish</h2>
+  <div class="timeline">
+    <div class="tl fragment"><b>1. Shablon:</b> Empty Views Activity (klassik XML + Kotlin modeli).</div>
+    <div class="tl fragment"><b>2. Name & Package:</b> <code>SalomDunyo</code> va <code>uz.edu.salomdunyo</code>.</div>
+    <div class="tl fragment"><b>3. Language:</b> Kotlin (zamonaviy rasmiy til).</div>
+    <div class="tl fragment"><b>4. Minimum SDK:</b> API 24: Android 7.0 (qurilmalarning 96% qamraydi).</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>XML maket bilan ishlash</h1>
+  <p>Layout Editor va Split rejimi imkoniyatlari</p>
+</section>
+
+<section>
+  <h2>Split rejimi — eng qulay usul</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <h3>Chapda kod, o'ngda ekran</h3>
+        <p>XML kodiga o'zgartirish kiritishingiz bilan, o'ng tarafdagi virtual telefon ekranida natija bir zumda ko'rinadi.</p>
+        <p class="muted">Fayl manzili: <code>res/layout/activity_main.xml</code>.</p>
+      </div>
+    </div>
+    <div>
+      <div class="callout good fragment fade-up">
+        <h4>Tezkor tugmalar:</h4>
+        <p>Design, Split va Code rejimlarini oynaning yuqori o'ng burchagidagi tugmalar orqali almashtirasiz.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>TextView komponenti kodi</h2>
+  <pre><code class="language-xml" data-trim data-noescape data-line-numbers="1-8|4|5|6">
+&lt;TextView
+    android:id="@+id/tvHello"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Salom, Dunyo!"
+    android:textSize="26sp"
+    android:textColor="@color/primary"
+    android:textStyle="bold" /&gt;
+  </code></pre>
+  <div class="callout warn"><i data-ic="sparkles"></i>Matn o'lchami faqat <code>sp</code> (scale-independent pixels) birligida belgilanadi!</div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>strings.xml bilan ishlash</h1>
+  <p>Extract String Resource amaliyoti</p>
+</section>
+
+<section>
+  <h2>Nega sariq ogohlantirish chiqadi?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <h3>Hardcoded string xatosi</h3>
+      <p class="muted">Matnni to'g'ridan-to'g'ri XML ichida yozish yaxshi amaliyot emas.</p>
+      <p>Ilova bir nechta tilga tarjima qilinishi kerak bo'lganda chalkashlik yuzaga keladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <h3>Alt + Enter sehrli tugmasi</h3>
+      <p>Kursorni matn ustiga qo'yib <code>Alt + Enter</code> bosiladi.</p>
+      <p class="good">Matn avtomatik ravishda <code>res/values/strings.xml</code> fayliga o'tadi.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>MainActivity.kt siri</h1>
+  <p>Kod qanday qilib XML dizayn bilan bog'lanadi?</p>
+</section>
+
+<section>
+  <h2>setContentView funksiyasi</h2>
+  <pre><code class="language-kotlin" data-trim data-noescape data-line-numbers="1-8|6|7">
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+}
+  </code></pre>
+  <div class="callout good fragment fade-up">
+    <h4>setContentView nima qiladi?</h4>
+    <p>U Kotlin kodini <code>activity_main.xml</code> bilan biriktirib, barcha tugma va matnlarni ekranga chizib beradi.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">05</div>
+  <h1>Gradle Build mexanizmi</h1>
+  <p>"Run" bosilganda nima sodir bo'ladi?</p>
+</section>
+
+<section>
+  <h2>Kodni yig'ish zanjiri</h2>
+  <div class="timeline">
+    <div class="tl fragment"><b>1. Kompilyatsiya:</b> Kotlin kodi baytkodga o'giriladi.</div>
+    <div class="tl fragment"><b>2. aapt2:</b> XML fayllar va rasmlar binar formatga paketlanadi.</div>
+    <div class="tl fragment"><b>3. d8:</b> Baytkod Android tushunadigan <code>.dex</code> ga aylanadi.</div>
+    <div class="tl fragment"><b>4. APK yig'ilishi:</b> Hamma qismlar bitta APK faylga birlashadi.</div>
+    <div class="tl fragment"><b>5. ADB orqali ochish:</b> Ilova telefonga o'rnatilib, ekranda ochiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>15 daqiqa</span></h2>
+  <div class="task">
+    <span class="level easy">Oson</span>
+    Android Studio'da SalomDunyo loyihasini yarating va Split rejimini oching.
+  </div>
+  <div class="task">
+    <span class="level mid">O'rta</span>
+    Ekrondagi matnni o'z ism-familiyangizga o'zgartiring va 28sp to'q yashil rang bering.
+  </div>
+  <div class="task">
+    <span class="level hard">Qiyin</span>
+    <code>Alt + Enter</code> orqali matnni <code>strings.xml</code> fayliga o'tkazing.
+  </div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Bugun o'rgandik</h3>
+      <p>Empty Views Activity shablonida ilk ilovani yaratdik. XML dizayn va Kotlin mantiqini setContentView orqali bog'ladik.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="book-open"></i></div>
+      <h3>Keyingi dars</h3>
+      <p>9-dars: Simulyator va Emulator farqi, AVD (Android Virtual Device) yaratish va virtualizatsiya.</p>
+    </div>
+  </div>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>11-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>11-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">4-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Shellda muvaffaqiyatli buyruq qaysi chiqish kodini qaytaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">1</button>
+      <button class="opt" type="button" data-ok>0</button>
+      <button class="opt" type="button">-1</button>
+      <button class="opt" type="button">255</button>
+    </div>
+    <div class="explain">0 muvaffaqiyat, boshqa son xato degani.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q"><code>$?</code> nimani saqlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Oxirgi buyruqning chiqish kodini</button>
+      <button class="opt" type="button">Argumentlar sonini</button>
+      <button class="opt" type="button">Joriy papkani</button>
+      <button class="opt" type="button">Oxirgi buyruq matnini</button>
+    </div>
+    <div class="explain"><code>$?</code> faqat oxirgi bajarilgan buyruq kodini beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Qaysi operator sonlarni solishtirish uchun?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>=</code></button>
+      <button class="opt" type="button" data-ok><code>-eq</code></button>
+      <button class="opt" type="button"><code>-z</code></button>
+      <button class="opt" type="button"><code>-d</code></button>
+    </div>
+    <div class="explain"><code>-eq</code> son tengligi uchun, <code>=</code> matn uchun.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>[ -d papka ]</code> nimani tekshiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Fayl borligini</button>
+      <button class="opt" type="button" data-ok>Papka borligini</button>
+      <button class="opt" type="button">Ruxsatni</button>
+      <button class="opt" type="button">Bo'shligini</button>
+    </div>
+    <div class="explain"><code>-d</code> directory, ya'ni papka bor-yo'qligi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>if</code> blokini qaysi so'z yopadi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>end</code></button>
+      <button class="opt" type="button"><code>done</code></button>
+      <button class="opt" type="button" data-ok><code>fi</code></button>
+      <button class="opt" type="button"><code>endif</code></button>
+    </div>
+    <div class="explain"><code>if</code> <code>fi</code> bilan, sikl esa <code>done</code> bilan tugaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>[$A -eq 5]</code> nega ishlamaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Qavs atrofida bo'sh joy yo'q</button>
+      <button class="opt" type="button"><code>-eq</code> mavjud emas</button>
+      <button class="opt" type="button"><code>A</code> katta harfda</button>
+      <button class="opt" type="button"><code>then</code> yo'q</button>
+    </div>
+    <div class="explain"><code>[</code> alohida buyruq, atrofida bo'sh joy shart.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>echo $((9 / 2))</code> natijasi?</p>
+    <div class="opts">
+      <button class="opt" type="button">4.5</button>
+      <button class="opt" type="button">5</button>
+      <button class="opt" type="button" data-ok>4</button>
+      <button class="opt" type="button">1</button>
+    </div>
+    <div class="explain">Bash butun sonlar bilan ishlaydi, bo'lish kasrni tashlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>mkdir x &amp;&amp; cd x</code> da <code>cd x</code> qachon bajariladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Doim</button>
+      <button class="opt" type="button" data-ok><code>mkdir</code> muvaffaqiyatli bo'lsa</button>
+      <button class="opt" type="button"><code>mkdir</code> xato bersa</button>
+      <button class="opt" type="button">Hech qachon</button>
+    </div>
+    <div class="explain"><code>&amp;&amp;</code> ikkinchi buyruqni faqat birinchisi 0 qaytarsa bajaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>[ -f config.txt ] || echo "yo'q"</code> qachon "yo'q" chiqaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Fayl bor bo'lsa</button>
+      <button class="opt" type="button" data-ok>Fayl yo'q bo'lsa</button>
+      <button class="opt" type="button">Har doim</button>
+      <button class="opt" type="button">Hech qachon</button>
+    </div>
+    <div class="explain"><code>||</code> chap tomon xato (yolg'on) bo'lsa o'ng tomonni bajaradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Skript ikki marta ishlaganda xato bermasligi uchun papkani qanday yaratgan ma'qul?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>mkdir backup</code></button>
+      <button class="opt" type="button" data-ok><code>[ -d backup ] || mkdir backup</code></button>
+      <button class="opt" type="button"><code>rm backup; mkdir backup</code></button>
+      <button class="opt" type="button"><code>mkdir backup backup</code></button>
+    </div>
+    <div class="explain">Shart bilan tekshirish skriptni idempotent qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="circle-check"></i></div><h3>Natijangiz</h3><p>9-10 to'g'ri: shartlarni yaxshi tushundingiz.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="book-open"></i></div><h3>Takrorlang</h3><p><code>[ ]</code> sintaksisi, son/matn operatorlari, <code>&amp;&amp;</code> va <code>||</code>.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="rocket"></i></div><h3>Keyingi qadam</h3><p>12-dars: <code>for</code>, <code>while</code>, <code>until</code>.</p></div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

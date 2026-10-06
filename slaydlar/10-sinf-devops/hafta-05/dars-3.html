@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Foydalanuvchilar, sudoers va SSH</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Foydalanuvchilar, sudoers va SSH</h1>
+  <p class="muted">useradd, passwd, usermod, groups, sudo, visudo, sudoers, ssh-keygen, ssh-copy-id, sshd_config</p>
+  <span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">5-hafta · 15-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimalarni o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="user-plus" data-anim="pulse"></i></div><h3>Foydalanuvchilar</h3><p>useradd va usermod</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="key-round" data-anim="float"></i></div><h3>sudo va sudoers</h3><p>Huquqni cheklash</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="lock-keyhole" data-anim="blink"></i></div><h3>SSH kalitlar</h3><p>Parolsiz xavfsiz ulanish</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">Cron qatorida nechta vaqt maydoni bor?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>5</button>
+    <button class="opt" type="button">3</button>
+    <button class="opt" type="button">4</button>
+    <button class="opt" type="button">7</button>
+    </div>
+    <div class="explain">Daqiqa, soat, kun, oy, hafta kuni.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Foydalanuvchilar</h1>
+  <p>useradd va usermod</p>
+</section>
+
+<section>
+  <h2>Hisob hayot sikli</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">useradd -m</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">passwd</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">usermod -aG</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">userdel -r</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Yaratish, parol, guruh, o'chirish</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Foydalanuvchi buyruqlari</h2>
+  <pre><code class="language-bash" data-trim data-line-numbers="1|2|3|4-5|6|7">
+sudo useradd -m -s /bin/bash ali
+sudo passwd ali
+id ali
+sudo usermod -aG docker ali
+groups ali
+sudo usermod -L ali
+sudo userdel -r ali
+  </code></pre>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i><code>usermod -G docker ali</code> (<code>-a</code> siz) ali ning boshqa guruhlarini o'chirib yuboradi. Doim <code>-aG</code> yozing.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Foydalanuvchini mavjud guruhlarini saqlagan holda yangi guruhga qo'shish buyrug'i?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>usermod -aG guruh ali</button>
+    <button class="opt" type="button">usermod -G guruh ali</button>
+    <button class="opt" type="button">useradd guruh</button>
+    <button class="opt" type="button">userdel guruh</button>
+    </div>
+    <div class="explain"><code>-a</code> (append) guruhlarni saqlaydi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>sudo va sudoers</h1>
+  <p>Huquqni cheklash</p>
+</section>
+
+<section>
+  <h2>sudo qaror yo'li</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">sudo buyruq</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">sudoers</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">tekshiriladi</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="145" text-anchor="middle" font-size="22">Parol</text><text class="t-head" x="625" y="171" text-anchor="middle" font-size="22">so'raladi</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">Buyruq</text><text class="t-head" x="875" y="171" text-anchor="middle" font-size="22">bajariladi</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Ruxsat bo'lmasa, urinish qayd etiladi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>sudoers qoidalari</h2>
+  <pre><code class="language-bash" data-trim data-line-numbers="1|2|4|6|7">
+sudo usermod -aG sudo ali
+sudo visudo
+# ali bitta foydalanuvchi uchun:
+ali ALL=(ALL:ALL) ALL
+# guruh uchun:
+%sudo ALL=(ALL:ALL) ALL
+sudo -l
+  </code></pre>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i><code>NOPASSWD</code> parolsiz sudo beradi: faqat juda zarur va cheklangan buyruqlar uchun. <code>sudoers</code> ni oddiy muharrirda tahrirlash xatosi sudo ni butunlay buzishi mumkin.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>/etc/sudoers</code> ni qaysi buyruq bilan tahrirlash xavfsiz?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>sudo visudo</button>
+    <button class="opt" type="button">nano /etc/sudoers</button>
+    <button class="opt" type="button">cat /etc/sudoers</button>
+    <button class="opt" type="button">rm /etc/sudoers</button>
+    </div>
+    <div class="explain"><code>visudo</code> sintaksisni tekshiradi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>SSH kalitlar</h1>
+  <p>Parolsiz xavfsiz ulanish</p>
+</section>
+
+<section>
+  <h2>Kalit bilan kirish</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">ssh-keygen</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">ssh-copy-id</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">ssh ali@server</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">Parolsiz</text><text class="t-head" x="875" y="171" text-anchor="middle" font-size="22">kirish</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Shaxsiy kalit hech qachon uzatilmaydi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>SSH kalit buyruqlari</h2>
+  <pre><code class="language-bash" data-trim data-line-numbers="1|2-3|4-5|7-8|9">
+ssh-keygen -t ed25519 -C "ali@maktab"
+ssh-copy-id ali@192.168.1.10
+ssh ali@192.168.1.10
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/id_ed25519
+# sshd_config (serverda):
+PasswordAuthentication no
+PermitRootLogin no
+sudo systemctl restart ssh
+  </code></pre>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i><code>sshd_config</code> ni o'zgartirishdan oldin joriy SSH sessiyani yopmang va boshqa terminalda kalit bilan kirishni sinab ko'ring: aks holda serverdan chiqib qolishingiz mumkin. Shaxsiy kalitni (<code>id_ed25519</code>) hech kimga bermang.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Serverga qaysi kalit joylanadi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Ochiq (.pub)</button>
+    <button class="opt" type="button">Shaxsiy</button>
+    <button class="opt" type="button">Ikkalasi</button>
+    <button class="opt" type="button">Hech qaysi</button>
+    </div>
+    <div class="explain">Ochiq kalit serverda, shaxsiy kalit sizda qoladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Parol va SSH kalit</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>Parol</h3>Eslab qolish kerak, taxmin qilinishi va tarmoqda tutilishi mumkin</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>SSH kalit</h3>Uzun kriptografik juftlik, parolsiz kirish, tajovuzkor taxmin qila olmaydi</div>
+  </div>
+  <div class="card accent fragment mt"><p>Serverlarda kalit bilan kirish va parolni o'chirish tavsiya etiladi.</p></div>
+</section>
+
+<section>
+  <h2>Atamalar. Bosing</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>sudo</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Buyruqni administrator huquqida bajarish</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>sudoers</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Kim sudo ishlata olishini belgilovchi fayl</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>authorized_keys</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Serverdagi ruxsat etilgan ochiq kalitlar</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>ed25519</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Zamonaviy SSH kalit algoritmi</p></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Yangi dasturchini qo'shish</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="user-plus" data-anim="pulse"></i></div><h3>1. Hisob</h3><p><code>useradd -m</code> va <code>passwd</code>.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="users"></i></div><h3>2. Guruh</h3><p><code>usermod -aG sudo</code> yoki kerakli guruh.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="key-round"></i></div><h3>3. Kalit</h3><p><code>ssh-copy-id</code> bilan kirish kaliti.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>Muhim fayllar</h2>
+    <table>
+      <thead><tr><th>Fayl</th><th>Nima saqlaydi</th><th>Ruxsat</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td>/etc/passwd</td><td>foydalanuvchilar ro'yxati</td><td>hamma o'qiydi</td></tr>
+        <tr class="fragment"><td>/etc/shadow</td><td>parol xeshlari</td><td>faqat root</td></tr>
+        <tr class="fragment"><td>/etc/group</td><td>guruhlar</td><td>hamma o'qiydi</td></tr>
+        <tr class="fragment"><td>/etc/sudoers</td><td>sudo qoidalari</td><td>faqat visudo</td></tr>
+        <tr class="fragment"><td>~/.ssh/authorized_keys</td><td>ruxsat etilgan kalitlar</td><td>600</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: kalit yaratish</p>
+  </section>
+  <section>
+    <h2>Kalit yaratish va tekshirish</h2>
+    <ol class="steps-n">
+      <li class="fragment"><code>ssh-keygen -t ed25519</code> ni bajaring, Enter bosing.</li>
+      <li class="fragment"><code>ls ~/.ssh</code> da <code>id_ed25519</code> va <code>.pub</code> ni ko'ring.</li>
+      <li class="fragment"><code>cat ~/.ssh/id_ed25519.pub</code> — faqat shu qismni ulashing.</li>
+    </ol>
+  </section>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">Foydalanuvchini guruhga qo'shish</h2>
+  <pre data-id="c"><code class="language-bash" data-trim>
+id ali
+  </code></pre>
+</section>
+<section data-auto-animate>
+  <h2 data-id="t">Foydalanuvchini guruhga qo'shish</h2>
+  <pre data-id="c"><code class="language-bash" data-trim data-line-numbers="2-3">
+id ali
+sudo usermod -aG docker ali
+id ali
+  </code></pre>
+</section>
+
+<section>
+  <h2>Xavfsizlik raqamlarda</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="700" data-suf="">0</span></div><div class="l"> ruxsat: ~/.ssh papkasi</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="600" data-suf="">0</span></div><div class="l"> ruxsat: authorized_keys va shaxsiy kalit</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="2" data-suf="">0</span></div><div class="l"> kalit: shaxsiy va ochiq</div></div>
+  </div>
+  <p class="small fragment">Noto'g'ri ruxsat SSH ni kalitni rad etishga majbur qiladi.</p>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Hisob yaratish: <code>ali</code> foydalanuvchisini uy papkasi va bash bilan yarating va parol bering.</div>
+  <div class="task"><span class="level mid">O'rta</span>Guruhga qo'shish: <code>ali</code> ni <code>docker</code> guruhiga mavjud guruhlarini saqlagan holda qo'shing va tekshiring.</div>
+  <div class="task"><span class="level mid">O'rta</span>Sudo huquqi: <code>ali</code> ga sudo huquqini xavfsiz usulda bering.</div>
+  <div class="task"><span class="level hard">Qiyin</span>SSH kirish: Kalit juftligini yarating, ochiq kalitni serverga o'tkazing va ulaning; ruxsatlarni to'g'rilang.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Foydalanuvchilar</h3><p>useradd -m, passwd, usermod -aG, userdel -r.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>sudo</h3><p>visudo, sudo guruhi, NOPASSWD ehtiyot bilan.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>SSH kalit</h3><p>ed25519, ssh-copy-id, parolni o'chirish.</p></div>
+  </div>
+  <p class="small fragment mt">Uyga vazifa: foydalanuvchi, sudo va SSH kalit amaliyoti.</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="git-branch" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: Git ilg'or texnikalari</h1>
+  <p class="muted">stash, rebase, cherry-pick, reflog</p>
+  <span class="badge">6-hafta · 16-dars</span>
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

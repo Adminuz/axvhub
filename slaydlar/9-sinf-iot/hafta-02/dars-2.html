@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Virtual Elektron Komponentlar Bilan Ishlash</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Virtual Elektron Komponentlar Bilan Ishlash</h1>
+  <p class="muted">Breadboard arxitekturasi, rezistorlar, LED, batareyalar va virtual multimetr bilan o'lchash</p>
+  <span class="badge">9-sinf</span><span class="badge">IoT</span><span class="badge">2-hafta · 5-dars</span>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Breadboard: Maket Plata</h1>
+  <p>Elektron zanjirlarni lehimlamasdan tez va xavfsiz prototiplash asosi</p>
+</section>
+
+<section>
+  <h2>Breadboard Nima Uchun Kerak?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="wrench" data-anim="bounce"></i></div>
+      <h3 class="t-head">Lehimsiz Prototip</h3>
+      <p>Simlarni kavsharlamasdan (payka qilmasdan) teshiklarga suqib, bir necha soniyada zanjir hosil qilish mumkin.</p>
+      <p class="t-muted">Xato bo'lsa darhol sug'urib, boshqa joyga ko'chirish oson.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check" data-anim="pulse"></i></div>
+      <h3 class="t-head">Xavfsiz va Qayta Ishlatiluvchi</h3>
+      <p>Bitta breadboard ustida yuzlab turli loyihalarni qayta-qayta yig'ish va sinovdan o'tkazish imkoniyati.</p>
+      <p class="t-muted">Ichidagi metall prujinalar detallarni mahkam ushlab turadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Breadboard Ichki Ulanish Sxemasi</h2>
+  <div class="fragment fade-up">
+    <svg viewBox="0 0 900 340" width="100%" height="250" style="display:block; margin:auto;">
+      <!-- Outer breadboard body -->
+      <rect x="50" y="30" width="800" height="280" rx="16" class="la" stroke-width="2" fill="none"/>
+      
+      <!-- Top Power rails -->
+      <line x1="80" y1="65" x2="820" y2="65" stroke="currentColor" stroke-width="4" class="t-accent"/>
+      <text x="70" y="70" class="t-accent" font-size="18" font-weight="bold">+</text>
+      <text x="450" y="58" text-anchor="middle" class="t-accent" font-size="12">Gorizontal quvvat shinasi (+VCC)</text>
+
+      <line x1="80" y1="95" x2="820" y2="95" stroke="currentColor" stroke-width="4" class="t-head"/>
+      <text x="70" y="100" class="t-head" font-size="20" font-weight="bold">-</text>
+      <text x="450" y="112" text-anchor="middle" class="t-muted" font-size="12">Gorizontal yer shinasi (-GND)</text>
+
+      <!-- Center terminal strips (vertical) -->
+      <g stroke="currentColor" stroke-width="3" class="fg">
+        <line x1="180" y1="140" x2="180" y2="200"/>
+        <line x1="260" y1="140" x2="260" y2="200"/>
+        <line x1="340" y1="140" x2="340" y2="200"/>
+        <line x1="420" y1="140" x2="420" y2="200"/>
+        <line x1="500" y1="140" x2="500" y2="200"/>
+        <line x1="580" y1="140" x2="580" y2="200"/>
+        <line x1="660" y1="140" x2="660" y2="200"/>
+        <line x1="740" y1="140" x2="740" y2="200"/>
+      </g>
+      <text x="450" y="175" text-anchor="middle" class="t-head" font-size="14">Markaziy 5 talik teshiklar vertikal (ustun bo'yicha) tutashgan</text>
+
+      <!-- Middle Divider -->
+      <line x1="80" y1="215" x2="820" y2="215" stroke="currentColor" stroke-width="2" stroke-dasharray="6,6" class="t-muted"/>
+      <text x="450" y="235" text-anchor="middle" class="t-muted" font-size="12">O'rta ariqcha (DIP chip sloti — yuqori va quyi qatorlarni ajratadi)</text>
+
+      <!-- Bottom Power rails -->
+      <line x1="80" y1="265" x2="820" y2="265" stroke="currentColor" stroke-width="4" class="t-head"/>
+      <line x1="80" y1="290" x2="820" y2="290" stroke="currentColor" stroke-width="4" class="t-accent"/>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Breadboardda Keng Tarqalgan Xato</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-alert" data-anim="bounce"></i></div>
+      <h3 class="t-accent">Bitta Ustunga Ikki Oyoq (Xato!)</h3>
+      <p>Agar rezistor yoki LED ning ikkala oyog'i bitta vertikal 5 talik ustunga suqilsa:</p>
+      <p class="t-muted">Ichki metall chiziq ikkala oyoqni to'g'ridan-to'g'ri tutashtirib qo'yadi (Qisqa tutashuv). Tok detal orqali o'tmaydi!</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check" data-anim="pulse"></i></div>
+      <h3 class="t-head">Turli Ustunlarga Ulanish (To'g'ri)</h3>
+      <p>Komponent oyoqlari har doim turli xil vertikal ustunlarga yoki markaziy ariqchaning ikki tarafiga o'rnatiladi.</p>
+      <p class="t-muted">Shunda tok detal ichidan oqib o'tadi va sxema bekamu ko'st ishlaydi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Rezistorlar va LED</h1>
+  <p>Tokni cheklash qonuniyati va yorug'lik chiqaruvchi yarimo'tkazgichlar</p>
+</section>
+
+<section>
+  <h2>Rezistor: Elektr Tokini Cheklovchi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+      <h3>Qarshilik Parametrlari</h3>
+      <p>Rezistor elektr tokining oqishiga to'sqinlik qiladi. Birligi — <strong>Om (Ω)</strong>.</p>
+      <p>1 kilo-om (kΩ) = 1 000 Ω; 1 mega-om (MΩ) = 1 000 000 Ω.</p>
+      <p class="t-muted">Rezistorning musbat yoki manfiy qutbi bo'lmaydi, istalgan tomoni bilan ulanadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="activity"></i></div>
+      <h3>Nega Rezistor Shart?</h3>
+      <p>LED o'zidan o'tadigan tokni o'zi cheklay olmaydi. Agar rezistor qo'yilmasa, tok cheksiz oshib ketadi va LED yonib ketadi.</p>
+      <p class="t-accent">220–330 Om rezistor tokni xavfsiz 15–20 mA oralig'ida ushlab turadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Rezistorlarning Rang Kodlari</h2>
+  <div class="fragment fade-up">
+    <svg viewBox="0 0 880 260" width="100%" height="200" style="display:block; margin:auto;">
+      <!-- Resistor body -->
+      <path d="M 120 130 L 220 130" stroke="currentColor" stroke-width="8" class="t-muted"/>
+      <path d="M 660 130 L 760 130" stroke="currentColor" stroke-width="8" class="t-muted"/>
+      
+      <!-- Body contour -->
+      <rect x="220" y="80" width="440" height="100" rx="30" class="la" stroke-width="3" fill="none"/>
+
+      <!-- Color bands for 220 Ohm -->
+      <!-- Band 1: Red (2) -->
+      <rect x="280" y="80" width="28" height="100" class="fn" fill="currentColor"/>
+      <text x="294" y="210" text-anchor="middle" class="t-accent" font-size="14">Qizil (2)</text>
+
+      <!-- Band 2: Red (2) -->
+      <rect x="360" y="80" width="28" height="100" class="fn" fill="currentColor"/>
+      <text x="374" y="210" text-anchor="middle" class="t-accent" font-size="14">Qizil (2)</text>
+
+      <!-- Band 3: Brown (x10) -->
+      <rect x="440" y="80" width="28" height="100" class="fb" fill="currentColor"/>
+      <text x="454" y="210" text-anchor="middle" class="t-head" font-size="14">Jigarrang (x10)</text>
+
+      <!-- Band 4: Gold (+-5%) -->
+      <rect x="580" y="80" width="28" height="100" class="fg" fill="currentColor"/>
+      <text x="594" y="210" text-anchor="middle" class="t-muted" font-size="14">Oltin (+-5%)</text>
+
+      <text x="440" y="50" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">220 Om Rezistor: 2 - 2 - x10 = 220 Om</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>LED: Yorug'lik Diodining Qutblari</h2>
+  <div class="fragment fade-up">
+    <svg viewBox="0 0 880 260" width="100%" height="200" style="display:block; margin:auto;">
+      <!-- LED Dome -->
+      <path d="M 380 120 C 380 60, 500 60, 500 120 Z" class="fn" fill="none" stroke="currentColor" stroke-width="4"/>
+      <rect x="370" y="120" width="140" height="20" rx="4" class="fn" fill="none" stroke="currentColor" stroke-width="4"/>
+      
+      <!-- Anode Leg (Long, bent) -->
+      <path d="M 410 140 L 410 180 L 390 200 L 390 240" stroke="currentColor" stroke-width="5" class="t-accent" fill="none"/>
+      <text x="350" y="235" text-anchor="end" class="t-accent" font-size="16" font-weight="bold">ANOD (+)</text>
+      <text x="350" y="255" text-anchor="end" class="t-muted" font-size="12">Uzunroq oyoq</text>
+
+      <!-- Cathode Leg (Short, straight) -->
+      <path d="M 470 140 L 470 240" stroke="currentColor" stroke-width="5" class="t-head" fill="none"/>
+      <text x="510" y="235" text-anchor="start" class="t-head" font-size="16" font-weight="bold">KATOD (-)</text>
+      <text x="510" y="255" text-anchor="start" class="t-muted" font-size="12">Qisqa va tekislangan tomon</text>
+
+      <!-- Photons -->
+      <path d="M 520 80 L 560 60" stroke="currentColor" stroke-width="3" class="fg"/>
+      <path d="M 530 105 L 570 85" stroke="currentColor" stroke-width="3" class="fg"/>
+      <text x="610" y="80" class="t-head" font-size="14">Yorug'lik nurlanishi</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>LED Ranglari va Kuchlanish Tushuvlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sun"></i></div>
+      <h3 class="t-accent">Qizil / Sariq LED</h3>
+      <p>Ochilish kuchlanishi: <strong>1.8V – 2.1V</strong>.</p>
+      <p class="t-muted">Kam quvvat talab qiladi, oddiy indikatorlar uchun eng maqbul variant.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sun"></i></div>
+      <h3 class="t-head">Yashil LED</h3>
+      <p>Ochilish kuchlanishi: <strong>2.0V – 2.4V</strong>.</p>
+      <p class="t-muted">Inson ko'zi yashil yorug'likka eng sezgir hisoblanadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sun"></i></div>
+      <h3 class="t-head">Ko'k / Oq LED</h3>
+      <p>Ochilish kuchlanishi: <strong>3.0V – 3.3V</strong>.</p>
+      <p class="t-muted">Yuqori energiya talab qiladi, 3V tanga batareyada rezistorsiz ham yonishi mumkin.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Virtual Multimetr</h1>
+  <p>Kuchlanish, tok kuchi va qarshilikni to'g'ri o'lchash qoidalari</p>
+</section>
+
+<section>
+  <h2>Multimetrni Ulashning Oltin Qoidalari</h2>
+  <div class="fragment fade-up">
+    <svg viewBox="0 0 900 300" width="100%" height="230" style="display:block; margin:auto;">
+      <!-- Box 1: Voltmeter Parallel -->
+      <rect x="40" y="30" width="380" height="240" rx="14" class="la" stroke-width="2" fill="none"/>
+      <text x="230" y="65" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Voltmetr (V) — PARALLEL</text>
+      <text x="230" y="95" text-anchor="middle" class="t-muted" font-size="13">Zanjirni uzmasdan komponentning ikki uchiga ulanadi</text>
+
+      <circle cx="150" cy="180" r="24" class="fn" fill="currentColor"/>
+      <text x="150" y="186" text-anchor="middle" font-size="14" font-weight="bold">LED</text>
+      <path d="M 150 140 L 150 120 L 310 120 L 310 160" stroke="currentColor" stroke-width="3" class="t-accent" fill="none"/>
+      <circle cx="310" cy="180" r="24" class="fg" fill="currentColor"/>
+      <text x="310" y="186" text-anchor="middle" font-size="16" font-weight="bold">V</text>
+
+      <!-- Box 2: Ammeter Series -->
+      <rect x="480" y="30" width="380" height="240" rx="14" class="lb" stroke-width="2" fill="none"/>
+      <text x="670" y="65" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Ampermetr (A) — KETMA-KET</text>
+      <text x="670" y="95" text-anchor="middle" class="t-muted" font-size="13">Zanjir uzilib, tok asbob ichidan o'tishi kerak</text>
+
+      <line x1="530" y1="180" x2="590" y2="180" stroke="currentColor" stroke-width="4" class="t-accent"/>
+      <circle cx="620" cy="180" r="24" class="fg" fill="currentColor"/>
+      <text x="620" y="186" text-anchor="middle" font-size="16" font-weight="bold">A</text>
+      <line x1="644" y1="180" x2="710" y2="180" stroke="currentColor" stroke-width="4" class="t-accent"/>
+      <circle cx="740" cy="180" r="24" class="fn" fill="currentColor"/>
+      <text x="740" y="186" text-anchor="middle" font-size="14" font-weight="bold">LED</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Slide Switch va Tugmalar</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="toggle-left"></i></div>
+      <h3>Slide Switch (Suriluvchi kalit)</h3>
+      <p>3 ta oyoqqa ega: Terminal 1, Common (o'rta oyoq), Terminal 2.</p>
+      <p>Kalit surilganda o'rta oyoq chap yoki o'ng terminalga tutashadi.</p>
+      <p class="t-muted">Doimiy yoqilgan yoki o'chirilgan holatda turadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="mouse-pointer-click" data-anim="bounce"></i></div>
+      <h3>Push Button (Bosiluvchi tugma)</h3>
+      <p>4 ta oyoqqa ega bo'lib, faqat bosib turilgandagina zanjirni tutashtiradi.</p>
+      <p>Qo'l qo'yib yuborilganda prujina ta'sirida zanjir yana uziladi.</p>
+      <p class="t-muted">Qo'ng'iroq yoki buyruq berish uchun ishlatiladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Amaliy Tajriba: To'liq Sxemani Yig'ish</h2>
+  <div class="stepper">
+    <div class="step fragment fade-up">
+      <div class="num">1</div>
+      <h3>Quvvatni Ulang</h3>
+      <p>9V batareyani breadboardning yuqori `+` va `-` shinalariga qizil va qora sim bilan ulang.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">2</div>
+      <h3>Kalit va Rezistor</h3>
+      <p>`+` dan simni kalitga, kalitdan 330 Om rezistorga, rezistordan LED anodiga ulang.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">3</div>
+      <h3>GND ga Qaytish</h3>
+      <p>LED katodidan qora sim orqali `-` (GND) shinasiga ulab zanjirni yoping.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Interaktiv Kartochkalar</h2>
+  <div class="cards two">
+    <div class="flip fragment fade-up">
+      <div class="flip-in">
+        <div class="face front fa">
+          <h3><i data-ic="circle-question-mark"></i> LED katodi qaysi qutbga ulanadi?</h3>
+          <p class="t-muted">Javobni ko'rish uchun aylantiring</p>
+        </div>
+        <div class="face back fb">
+          <h3>Manfiy Qutbga (- GND)</h3>
+          <p>Katod — qisqa oyoq bo'lib, zanjirning yer (GND) tomoniga ulanadi.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip fragment fade-up">
+      <div class="flip-in">
+        <div class="face front fa">
+          <h3><i data-ic="circle-question-mark"></i> Tok kuchini o'lchashda ampermetr qanday ulanadi?</h3>
+          <p class="t-muted">Javobni ko'rish uchun aylantiring</p>
+        </div>
+        <div class="face back fg">
+          <h3>Ketma-ket Ulanadi</h3>
+          <p>Zanjir uziladi va ampermetr oraliqqa qo'yiladi, shunda barcha tok asbob orqali o'tadi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tezkor Test Savoli</h2>
+  <div class="quiz">
+    <div class="q">Breadboard ustidagi markaziy 5 talik teshiklar bir-biri bilan qaysi tartibda tutashgan?</div>
+    <div class="opts">
+      <div class="opt">A) Butun plata bo'ylab gorizontal chiziq bo'yicha</div>
+      <div class="opt" data-ok>B) Ustun bo'yicha vertikal 5 talik guruhlarda</div>
+      <div class="opt">C) Diagonal yo'nalishda</div>
+      <div class="opt">D) Ular umuman bir-biri bilan tutashmagan</div>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Xulosa va Keyingi Qadam</h1>
+  <p>2-hafta 5-dars yakunlari</p>
+</section>
+
+<section>
+  <h2>Bugungi Darsda Nimani O'rgandik?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="grid-3x3"></i></div>
+      <h3>Breadboard Qoidalari</h3>
+      <p>Quvvat shinalari gorizontal, markaziy kontaktlar vertikal ulanishini o'rgandik.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sun"></i></div>
+      <h3>Rezistor va LED</h3>
+      <p>Tokni cheklovchi 220–330 Om rezistor va LED qutblari (Anod/Katod) bilan tanishdik.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="gauge"></i></div>
+      <h3>Multimetr bilan O'lchash</h3>
+      <p>Kuchlanishni parallel, tok kuchini ketma-ket ulash orqali real ko'rsatkichlarni oldik.</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

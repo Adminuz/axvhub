@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Android ekotizimi va Google xizmatlari (2-qism)</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Android ekotizimi va Google xizmatlari (2-qism)</h1>
+  <p class="muted">Xavfsiz integratsiya: SHA-1, google-services.json va zamonaviy AAB formati</p>
+  <span class="badge">9-sinf</span>
+  <span class="badge">Android dasturlash</span>
+  <span class="badge">2-hafta · 5-dars</span>
+</section>
+
+<section>
+  <h2>Bugungi dars maqsadlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="terminal"></i></div>
+      <h3>SHA-1 barmoq izi</h3>
+      <p>Terminal orqali Keystore xeshini olish va Firebase'ga ulash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="file-code"></i></div>
+      <h3>google-services.json</h3>
+      <p>Loyiha konfiguratsiyasi va app/ jildiga to'g'ri joylashtirish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="package"></i></div>
+      <h3>APK vs AAB</h3>
+      <p>Google Play uchun ixcham va dinamik App Bundle standarti.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Ilova identifikatori</h1>
+  <p>applicationId va Package Name qoidalari</p>
+</section>
+
+<section>
+  <h2>applicationId nima?</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <h3>Unikal global nom</h3>
+        <p>Google Play do'konidagi har bir ilovaning yagona "pasport" raqamidir.</p>
+        <p class="muted">Teskari domen formatida belgilanadi: <code>uz.edu.myapp</code>.</p>
+      </div>
+    </div>
+    <div>
+      <div class="callout warn fragment fade-up">
+        <h4>Muhim qoida:</h4>
+        <p>Ilova bir marta Google Play'da nashr etilgach, uning <code>applicationId</code> nomini o'zgartirib bo'lmaydi!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Raqamli barmoq izi: SHA-1</h1>
+  <p>Google Cloud va Firebase bilan xavfsiz tasdiqlash</p>
+</section>
+
+<section>
+  <h2>Nega SHA-1 kerak?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Shaxsni tasdiqlash</h3>
+      <p>Google faqat sizning kompyuteringizda yaratilgan ilovadan kelgan API so'rovlarni qabul qiladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="lock"></i></div>
+      <h3>Begonalardan himoya</h3>
+      <p>Begona shaxs sizning <code>applicationId</code> nomingizdan foydalana olmaydi.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>SHA-1 olish buyrug'i</h2>
+  <pre><code class="language-bash">./gradlew signingReport</code></pre>
+  <div class="callout good fragment fade-up">
+    <h4>Terminal natijasi:</h4>
+    <p><code>SHA1: 4B:12:8A:99:32:DE:01:54:...</code></p>
+    <p class="muted">Ushbu kodni nusxalab, Firebase Console sozlamalariga kiritamiz.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>google-services.json</h1>
+  <p>Loyihaning "tug'ilganlik guvohnomasi"</p>
+</section>
+
+<section>
+  <h2>google-services.json vazifasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="file-code"></i></div>
+      <h3>Loyiha ID</h3>
+      <p>Firebase loyihasining unikal identifikatori.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="key"></i></div>
+      <h3>API kalitlar</h3>
+      <p>Google serverlari bilan bog'lanish kalitlari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="server"></i></div>
+      <h3>Baza manzili</h3>
+      <p>Firestore va Storage server URL manzillari.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Joylashuvi: Qat'iy qoida!</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <h3>Fayl qayerga qo'yiladi?</h3>
+        <p>Faylni Android Studio loyihasining <code>app/</code> katalogi ichiga joylashtirish shart!</p>
+        <p class="muted">Loyiha ildiz papkasiga emas, balki aynan <code>app/</code> ichiga!</p>
+      </div>
+    </div>
+    <div>
+      <div class="callout bad fragment fade-up">
+        <h4>Ko'p uchraydigan xato:</h4>
+        <p>Agar fayl noto'g'ri joylashtirilsa, Gradle loyihani yig'ishda darhol xatolik chiqaradi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>API kalitlar xavfsizligi</h1>
+  <p>local.properties orqali himoyalash</p>
+</section>
+
+<section>
+  <h2>Xavfsizlikning oltin qoidasi</h2>
+  <div class="callout warn fragment fade-up">
+    <h4>Hech qachon ochiq kodda kalit qoldirmang!</h4>
+    <p>Agar API kalitni MainActivity yoki Manifestda qoldirsangiz va kodni GitHubga yuklasangiz, botlar uni daqiqalar ichida o'g'irlab oladi.</p>
+  </div>
+  <div class="cards two mt">
+    <div class="card fragment fade-up">
+      <h3>local.properties fayli</h3>
+      <p><code>MAPS_KEY=AIzaSy...</code></p>
+      <p class="muted">Ushbu fayl .gitignore'da bo'lib, GitHubga chiqmaydi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <h3>BuildConfig orqali uzatish</h3>
+      <p>Gradle ushbu kalitni xavfsiz tarzda faqat kompilyatsiya paytida kodga uzatadi.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">05</div>
+  <h1>APK va AAB formatlari</h1>
+  <p>Google Play do'konining zamonaviy standarti</p>
+</section>
+
+<section>
+  <h2>APK va AAB taqqoslashi</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>Eski APK</h3>
+      <p>Barcha telefonlar resurslarini bitta faylga jamlaydi.</p>
+      <p class="muted">Hajmi juda katta (masalan, 60 MB).</p>
+      <p>Foydalanuvchi keraksiz qismlarni ham yuklaydi.</p>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>Zamonaviy AAB</h3>
+      <p>Android App Bundle.</p>
+      <p class="good">Hajmi 30-50% ga kichikroq (25 MB).</p>
+      <p>Google Play faqat shu telefonga kerakli qismlarni yuboradi.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Dynamic Delivery mexanizmi</h2>
+  <div class="timeline">
+    <div class="tl fragment"><b>1. Yuklash:</b> Dasturchi Google Play'ga bitta umumiy AAB faylini yuklaydi.</div>
+    <div class="tl fragment"><b>2. Tahlil:</b> Foydalanuvchi "Yuklab olish"ni bosganda, Play Store uning telefon modelini aniqlaydi.</div>
+    <div class="tl fragment"><b>3. Moslashtirish:</b> Faqat kerakli protsessor kodi va kerakli ekran o'lchami rasmlari yetkaziladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>15 daqiqa</span></h2>
+  <div class="task">
+    <span class="level easy">Oson</span>
+    O'zingiz yaratmoqchi bo'lgan mobil ilova uchun unikal <code>applicationId</code> yozing.
+  </div>
+  <div class="task">
+    <span class="level mid">O'rta</span>
+    SHA-1 olish buyrug'ini va uning Firebase'dagi vazifasini tushuntiring.
+  </div>
+  <div class="task">
+    <span class="level hard">Qiyin</span>
+    Nega AAB formati internet trafigi va telefon xotirasini tejashini asoslang.
+  </div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Bugun o'rgandik</h3>
+      <p>SHA-1 ilovaning raqamli pasporti, google-services.json app/ papkasiga qo'yiladi. AAB formati ilovani 30-50% ga ixchamlashtiradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="book-open"></i></div>
+      <h3>Keyingi dars</h3>
+      <p>6-dars: Android Studio va Android SDK bilan tanishuv: interfeys, SDK Manager va SDK Build-Tools.</p>
+    </div>
+  </div>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

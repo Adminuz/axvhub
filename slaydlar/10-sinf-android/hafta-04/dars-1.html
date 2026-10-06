@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>GitLab va Bitbucket'da jamoaviy ish jarayonlari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 10-dars: GitLab va Bitbucket'da jamoaviy ish jarayonlari -->
+
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>GitLab va Bitbucket'da jamoaviy ish jarayonlari</h1>
+  <p class="muted">Platformalar, guruhlar va rollar, Merge Request, Code Review va Pipeline</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">4-hafta &middot; 10-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimani o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="git-fork" data-anim="float"></i></div><h3>Platformalar</h3><p>GitHub, GitLab va Bitbucket: vazifasi va farqi</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="users" data-anim="pulse"></i></div><h3>Jamoa va rollar</h3><p>Group, Team, access va roles, Issue tracker, Kanban</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="git-pull-request" data-anim="draw"></i></div><h3>MR va Pipeline</h3><p>Merge Request, Code Review va CI/CD pipeline</p></div>
+  </div>
+
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Platformalar</h1>
+  <p>Git bitta, uni joylashtiradigan "uy"lar esa bir nechta</p>
+</section>
+
+<section>
+  <h2>Git markazda, platformalar atrofda</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 360">
+      <g class="fragment" data-tip="Git: kompyuteringizdagi versiya nazorati dasturi. Platformalar uni bulutga chiqaradi.">
+        <rect class="fn" x="380" y="130" width="240" height="100" rx="18"/>
+        <text class="t-head" x="500.0" y="172" text-anchor="middle" font-size="24">Git</text>
+        <text class="t-muted" x="500.0" y="204" text-anchor="middle" font-size="22">lokal vosita</text>
+      </g>
+      <g class="fragment" data-tip="GitHub: ochiq loyihalar, profil, Star, Fork, Actions.">
+        <rect class="fa" x="30" y="30" width="260" height="100" rx="18"/>
+        <text class="t-head" x="160.0" y="72" text-anchor="middle" font-size="24">GitHub</text>
+        <text class="t-muted" x="160.0" y="104" text-anchor="middle" font-size="22">eng yirik</text>
+      </g>
+      <g class="fragment" data-tip="GitLab: Merge Request, Issue tracker, Pipeline bitta joyda.">
+        <rect class="fc" x="370" y="260" width="260" height="90" rx="18"/>
+        <text class="t-head" x="500.0" y="297" text-anchor="middle" font-size="24">GitLab</text>
+        <text class="t-muted" x="500.0" y="329" text-anchor="middle" font-size="22">DevOps</text>
+      </g>
+      <g class="fragment" data-tip="Bitbucket: jamoalar uchun repository va Bitbucket Pipelines.">
+        <rect class="fb" x="710" y="30" width="260" height="100" rx="18"/>
+        <text class="t-head" x="840.0" y="72" text-anchor="middle" font-size="24">Bitbucket</text>
+        <text class="t-muted" x="840.0" y="104" text-anchor="middle" font-size="22">Pipelines</text>
+      </g>
+      <g class="fragment">
+        <line class="ln flowing" x1="380" y1="160" x2="303" y2="109" stroke-width="4"/>
+        <polygon class="ar-a" points="290,100 308,101 298,116"/>
+      </g>
+      <g class="fragment">
+        <line class="ln flowing" x1="500" y1="230" x2="500" y2="244" stroke-width="4"/>
+        <polygon class="ar-c" points="500,260 491,244 509,244"/>
+      </g>
+      <g class="fragment">
+        <line class="ln flowing" x1="620" y1="160" x2="697" y2="109" stroke-width="4"/>
+        <polygon class="ar-b" points="710,100 702,116 692,101"/>
+      </g>
+    </svg>
+  </div>
+  <p class="small">Qismni bosing: izoh chiqadi. Hammasi Git bilan ishlaydi.</p>
+
+  
+</section>
+
+<section>
+  <h2>Uchta platforma: umumiy va farqli</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="git-fork"></i></div><h3>GitHub</h3><p>Eng yirik ekotizim: Pull Request, Issues, Actions, Star va Fork</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="git-merge"></i></div><h3>GitLab</h3><p>Merge Request, Issue tracker, pipeline va DevOps imkoniyatlari</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="git-branch"></i></div><h3>Bitbucket</h3><p>Repository boshqaruvi, jamoalar, Bitbucket Pipelines</p></div>
+  </div>
+  <div class="callout tip"><i data-ic="lightbulb"></i>Umumiy: repository, guruhlar, Issue tracker, Code Review, CI/CD.</div>
+
+  
+</section>
+
+<section data-auto-animate>
+  <h2>Loyihani klonlash</h2>
+  <pre class="terminal" data-id="k"><code class="language-bash" data-trim data-noescape>
+git clone https://gitlab.com/guruh/maktab-jadvali.git
+</code></pre>
+  <p>Klon: serverdagi loyihaning to'liq nusxasi, tarixi bilan. Platforma farqi yo'q.</p>
+
+  
+</section>
+
+<section data-auto-animate>
+  <h2>Klon, keyin o'z branch</h2>
+  <pre class="terminal" data-id="k"><code class="language-bash" data-trim data-noescape>
+git clone https://gitlab.com/guruh/maktab-jadvali.git
+cd maktab-jadvali
+git checkout -b feature/lessons-screen
+git remote -v
+</code></pre>
+  <p>Avval klon, keyin alohida branch: asosiy kodga tegmaymiz.</p>
+
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Jamoa, rollar va vazifalar</h1>
+  <p>Kim nima qila oladi va ish qanday bo'linadi</p>
+</section>
+
+<section>
+  <h2>Guruh, loyiha va a'zolar</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 380">
+      <g class="fragment" data-tip="Group: bir necha loyiha va odamlarni birlashtiruvchi guruh.">
+        <rect class="fa" x="330" y="20" width="340" height="90" rx="18"/>
+        <text class="t-head" x="500.0" y="57" text-anchor="middle" font-size="24">Group</text>
+        <text class="t-muted" x="500.0" y="89" text-anchor="middle" font-size="22">maktab-it-jamoasi</text>
+      </g>
+      <g class="fragment" data-tip="Repository: kod, branchlar va commitlar shu yerda.">
+        <rect class="fc" x="40" y="200" width="260" height="90" rx="18"/>
+        <text class="t-head" x="170.0" y="237" text-anchor="middle" font-size="24">Loyiha 1</text>
+        <text class="t-muted" x="170.0" y="269" text-anchor="middle" font-size="22">maktab-jadvali</text>
+      </g>
+      <g class="fragment" data-tip="Boshqa loyiha ham shu guruh ichida.">
+        <rect class="fc" x="370" y="200" width="260" height="90" rx="18"/>
+        <text class="t-head" x="500.0" y="237" text-anchor="middle" font-size="24">Loyiha 2</text>
+        <text class="t-muted" x="500.0" y="269" text-anchor="middle" font-size="22">oshxona-menyu</text>
+      </g>
+      <g class="fragment" data-tip="Team: har bir a'zoga alohida huquq (rol) beriladi.">
+        <rect class="fb" x="700" y="200" width="260" height="90" rx="18"/>
+        <text class="t-head" x="830.0" y="237" text-anchor="middle" font-size="24">A'zolar</text>
+        <text class="t-muted" x="830.0" y="269" text-anchor="middle" font-size="22">rollar bilan</text>
+      </g>
+      <g class="fragment">
+        <line class="la flowing" x1="400" y1="110" x2="215" y2="193" stroke-width="4"/>
+        <polygon class="ar-a" points="200,200 211,185 218,202"/>
+      </g>
+      <g class="fragment">
+        <line class="la flowing" x1="500" y1="110" x2="500" y2="184" stroke-width="4"/>
+        <polygon class="ar-a" points="500,200 491,184 509,184"/>
+      </g>
+      <g class="fragment">
+        <line class="lb flowing" x1="600" y1="110" x2="805" y2="194" stroke-width="4"/>
+        <polygon class="ar-b" points="820,200 802,202 809,186"/>
+      </g>
+    </svg>
+  </div>
+  <p class="small">Qismlarni bosing.</p>
+
+  
+</section>
+
+<section>
+  <h2>Atamalarni aylantiring</h2>
+  <div class="cards three">
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="users"></i></div><h3>Group</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Loyihalar va odamlarni bir joyda boshqarish uchun guruh.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="user-plus"></i></div><h3>Team</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Loyiha ustida ishlaydigan jamoa a'zolari.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="key-round"></i></div><h3>Role</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>A'zoning huquq darajasi: kim ko'radi, kim o'zgartiradi.</p></div>
+    </div></div>
+  </div>
+
+  
+</section>
+
+<section>
+  <section>
+    <h2>Access va roles</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="lock" data-anim="pulse"></i></div><h3>Kirish huquqi</h3><p>Har bir a'zo loyihada faqat o'z vazifasiga yetarli huquq oladi.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="shield-check"></i></div><h3>Nega kerak?</h3><p>Tasodifiy xato asosiy kodni buzmasligi uchun.</p></div>
+  </div>
+    <p class="muted">Chuqurroq: pastga</p>
+    
+  </section>
+  <section>
+    <h2>Minimal huquq tamoyili</h2>
+    <ul>
+      <li class="fragment">Yangi a'zoga avval eng kam huquq bering</li>
+      <li class="fragment">Asosiy branchga bevosita yozishni cheklang</li>
+      <li class="fragment">O'zgarish faqat Merge Request orqali kirsin</li>
+    </ul>
+    <p class="small">GitLab'da rollar: Guest, Reporter, Developer, Maintainer, Owner (qo'shimcha ma'lumot).</p>
+    
+  </section>
+</section>
+
+<section>
+  <h2>Issue tracker va Kanban doskasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 370">
+      <g>
+        <rect class="fn" x="30" y="20" width="300" height="330" rx="18"/>
+        <text class="t-head" x="180" y="64" text-anchor="middle" font-size="28">To Do</text>
+      </g>
+      <g>
+        <rect class="fb" x="350" y="20" width="300" height="330" rx="18"/>
+        <text class="t-head" x="500" y="64" text-anchor="middle" font-size="28">In Progress</text>
+      </g>
+      <g>
+        <rect class="fg" x="670" y="20" width="300" height="330" rx="18"/>
+        <text class="t-head" x="820" y="64" text-anchor="middle" font-size="28">Done</text>
+      </g>
+      <g class="fragment">
+        <rect class="fa" x="50" y="90" width="260" height="64" rx="12"/>
+        <text class="t-head" x="180" y="132" text-anchor="middle" font-size="22">Login ekrani</text>
+      </g>
+      <g class="fragment">
+        <rect class="fa" x="50" y="170" width="260" height="64" rx="12"/>
+        <text class="t-head" x="180" y="212" text-anchor="middle" font-size="22">Profil xatosi</text>
+      </g>
+      <g class="fragment">
+        <rect class="fa" x="370" y="90" width="260" height="64" rx="12"/>
+        <text class="t-head" x="500" y="132" text-anchor="middle" font-size="22">Darslar ro'yxati</text>
+      </g>
+      <g class="fragment">
+        <rect class="fa" x="690" y="90" width="260" height="64" rx="12"/>
+        <text class="t-head" x="820" y="132" text-anchor="middle" font-size="22">README</text>
+      </g>
+      <g class="fragment">
+        <line class="lb flowing" x1="312" y1="122" x2="352" y2="122" stroke-width="4"/>
+        <polygon class="ar-b" points="368,122 352,131 352,113"/>
+      </g>
+      <g class="fragment">
+        <line class="lg flowing" x1="632" y1="122" x2="672" y2="122" stroke-width="4"/>
+        <polygon class="ar-g" points="688,122 672,131 672,113"/>
+      </g>
+    </svg>
+  </div>
+  <p class="small">Har bir vazifa (Issue) kartochka bo'lib ustundan ustunga ko'chadi.</p>
+
+  
+</section>
+
+<section>
+  <h2>Jamoada branch nomlash</h2>
+  <pre><code class="language-text" data-trim data-noescape>
+feature/login
+bugfix/profile-crash
+hotfix/payment-error
+refactor/home-screen
+</code></pre>
+  <div class="chips"><span class="chip">feature: yangi funksiya</span><span class="chip">bugfix: xato</span><span class="chip">hotfix: zudlik bilan</span><span class="chip t">refactor: tartiblash</span></div>
+
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Merge Request va Pipeline</h1>
+  <p>Kodni tekshirib qo'shish va jarayonni avtomatlashtirish</p>
+</section>
+
+<section>
+  <h2>Bir tushuncha, ikki nom</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">GitHub</button><button type="button">GitLab</button></div>
+    <div class="swap-p"><div class="card"><div class="icon"><i data-ic="git-pull-request"></i></div><h3>Pull Request (PR)</h3><p>Branchdagi o'zgarishni asosiy branchga qo'shish uchun rasmiy so'rov.</p></div></div>
+    <div class="swap-p"><div class="card accent"><div class="icon"><i data-ic="git-merge"></i></div><h3>Merge Request (MR)</h3><p>Aynan shu mazmun, faqat GitLab shunday ataydi.</p></div></div>
+  </div>
+
+  
+</section>
+
+<section>
+  <h2>Code Review: 4 qadam</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="git-pull-request-create" data-anim="float"></i></div><h3>1. MR ochiladi</h3><p>Branch push qilinadi va Merge Request yaratiladi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="message-circle-code" data-anim="pulse"></i></div><h3>2. Sharh qoldiriladi</h3><p>Jamoa a'zolari kodni satrma-satr ko'radi, fikr yozadi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="code-xml" data-anim="spin"></i></div><h3>3. Tuzatiladi</h3><p>Muallif sharhni inobatga olib, kodni yangilaydi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="circle-check" data-anim="bounce"></i></div><h3>4. Approve va merge</h3><p>Tasdiqlangach, kod asosiy branchga qo'shiladi.</p></div></div>
+  </div>
+
+  
+</section>
+
+<section>
+  <h2>Pipeline: ketma-ket avtomatik bosqichlar</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <g class="fragment">
+        <rect class="fa" x="20" y="120" width="150" height="100" rx="18"/>
+        <text class="t-head" x="95.0" y="178" text-anchor="middle" font-size="24">Commit</text>
+      </g>
+      <g class="fragment">
+        <line class="la flowing" x1="172" y1="170" x2="202" y2="170" stroke-width="4"/>
+        <polygon class="ar-a" points="218,170 202,179 202,161"/>
+      </g>
+      <g class="fragment">
+        <rect class="fc" x="220" y="120" width="150" height="100" rx="18"/>
+        <text class="t-head" x="295.0" y="178" text-anchor="middle" font-size="24">Build</text>
+      </g>
+      <g class="fragment">
+        <line class="la flowing" x1="372" y1="170" x2="402" y2="170" stroke-width="4"/>
+        <polygon class="ar-a" points="418,170 402,179 402,161"/>
+      </g>
+      <g class="fragment">
+        <rect class="fb" x="420" y="120" width="150" height="100" rx="18"/>
+        <text class="t-head" x="495.0" y="178" text-anchor="middle" font-size="24">Test</text>
+      </g>
+      <g class="fragment">
+        <line class="la flowing" x1="572" y1="170" x2="602" y2="170" stroke-width="4"/>
+        <polygon class="ar-a" points="618,170 602,179 602,161"/>
+      </g>
+      <g class="fragment">
+        <rect class="fn" x="620" y="120" width="150" height="100" rx="18"/>
+        <text class="t-head" x="695.0" y="178" text-anchor="middle" font-size="24">Review</text>
+      </g>
+      <g class="fragment">
+        <line class="la flowing" x1="772" y1="170" x2="802" y2="170" stroke-width="4"/>
+        <polygon class="ar-a" points="818,170 802,179 802,161"/>
+      </g>
+      <g class="fragment">
+        <rect class="fg" x="820" y="120" width="150" height="100" rx="18"/>
+        <text class="t-head" x="895.0" y="178" text-anchor="middle" font-size="24">Deploy</text>
+      </g>
+        <text class="t-muted" x="500" y="290" text-anchor="middle" font-size="24">Hammasi qo'lda ish qilmasdan, avtomatik bajariladi</text>
+    </svg>
+  </div>
+
+  
+</section>
+
+<section>
+  <h2>Pipeline sozlash: .gitlab-ci.yml (namuna)</h2>
+  <pre><code class="language-yaml" data-trim data-noescape data-line-numbers="1-2|3-6|7-10">
+stages:
+  - build
+  - test
+build_job:
+  stage: build
+  script:
+    - ./gradlew assembleDebug
+test_job:
+  stage: test
+  script:
+    - ./gradlew test
+</code></pre>
+  <p class="small">O'quv namunasi: bosqichlar (stages) ketma-ket ishlaydi.</p>
+
+  
+</section>
+
+<section>
+  <h2>Raqamlarda bugungi dars</h2>
+  <div class="stats">
+    <div class="stat fragment"><div class="v"><span class="count" data-to="3" data-suf="">0</span></div><div class="l">platforma</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="3" data-suf="">0</span></div><div class="l">Kanban ustuni</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="4" data-suf="">0</span></div><div class="l">Code Review qadami</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="5" data-suf="">0</span></div><div class="l">pipeline bosqichi</div></div>
+  </div>
+
+  
+</section>
+
+<section>
+  <h2>Odatiy xatolar</h2>
+  <div class="callout bad"><i data-ic="circle-x"></i>Hamma to'g'ridan-to'g'ri main branchga yozadi: bitta xato butun loyihani buzadi.</div>
+  <div class="callout warn"><i data-ic="triangle-alert"></i>Rol juda keng beriladi: tasodifiy o'zgarish xavfi ortadi.</div>
+  <div class="callout warn"><i data-ic="triangle-alert"></i>Branch nomi "test2" kabi tushunarsiz: maqsad bilinmaydi.</div>
+  <div class="callout tip"><i data-ic="lightbulb"></i>Yechim: feature branch + Merge Request + review.</div>
+
+  
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">GitLab'da Pull Request qanday ataladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Commit Request</button>
+      <button class="opt" type="button" data-ok>Merge Request</button>
+      <button class="opt" type="button">Push Request</button>
+      <button class="opt" type="button">Branch Request</button>
+    </div>
+    <div class="explain">To'g'ri: Merge Request. Mazmuni PR bilan bir xil.</div>
+  </div>
+
+  
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>30 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Guruh, loyiha va a'zolar sxemasini daftarda chizing va har a'zoga rol yozing.</div>
+  <div class="task"><span class="level mid">O'rta</span>Branch nomlari ro'yxatini tuzing: feature, bugfix, hotfix, refactor uchun 1 tadan.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Merge Request sharhi yozing: "UI zo'r, rang sxemasini Material3 ga moslang" kabi konstruktiv 3 ta fikr.</div>
+
+  
+</section>
+
+<section>
+  <h2>Xulosa</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="git-fork"></i></div><h3>Platformalar</h3><p>GitHub, GitLab, Bitbucket: Git bitta, "uy"lar bir nechta.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="users"></i></div><h3>Rollar</h3><p>Har kim faqat kerakli huquqqa ega bo'lsin.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="git-merge"></i></div><h3>MR = PR</h3><p>Kod review dan o'tib, asosiy branchga qo'shiladi.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="workflow"></i></div><h3>Pipeline</h3><p>Build va test avtomatik ishlaydi.</p></div>
+  </div>
+
+  
+</section>
+
+<section>
+  <h2>Uyga vazifa va anons</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="users"></i></div><h3>1. Jamoa sxemasi</h3><p>O'z jamoangiz uchun guruh, rollar va Kanban ustunlarini rejalang.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="terminal"></i></div><h3>2. Pipeline rejasi</h3><p>Android loyihangiz uchun pipeline bosqichlarini yozing.</p></div>
+  </div>
+  <p class="muted mt">Keyingi dars: Branch, Merge va Pull Request jarayonlari.</p>
+
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>3-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>3-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">Business Intelligence</span><span class="badge">3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">DBMS (MBBT) nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Ma'lumotlar bazasini yaratish, boshqarish va himoyalash dasturi</button>
+      <button class="opt" type="button">Faqat jadval dizayni</button>
+      <button class="opt" type="button">Elektron pochta xizmati</button>
+      <button class="opt" type="button">Bitta fayl turi</button>
+    </div>
+    <div class="explain">PostgreSQL, MySQL, SQL Server va Oracle DBMS misollari.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Relatsion modelni 1970-yilda kim ishlab chiqqan?</p>
+    <div class="opts">
+      <button class="opt" type="button">Hadley Wickham</button>
+      <button class="opt" type="button" data-ok>Edgar F. Codd</button>
+      <button class="opt" type="button">Pito Salas</button>
+      <button class="opt" type="button">Richard Devens</button>
+    </div>
+    <div class="explain">Relatsion model ma'lumotlarni jadvallar (relations) ko'rinishida ifodalaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Relatsion jadvalda Row (satr, Tuple) nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ob'ekt xususiyati</button>
+      <button class="opt" type="button">Butun baza</button>
+      <button class="opt" type="button" data-ok>Ob'ektning bitta aniq namunasi (bitta yozuv)</button>
+      <button class="opt" type="button">Jadvalning nomi</button>
+    </div>
+    <div class="explain">Satr bitta talaba kabi bitta yozuv, ustun esa xususiyat (Ism, Yosh).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Primary Key haqida qaysi gap to'g'ri?</p>
+    <div class="opts">
+      <button class="opt" type="button">Takrorlanishi mumkin</button>
+      <button class="opt" type="button">NULL bo'lishi mumkin</button>
+      <button class="opt" type="button">Boshqa jadvalga havola qiladi</button>
+      <button class="opt" type="button" data-ok>Har bir satrni noyob aniqlaydi, NULL bo'lmaydi va takrorlanmaydi</button>
+    </div>
+    <div class="explain">PK jadvaldagi satrni takrorlanmas tarzda aniqlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Foreign Key nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Boshqa jadvaldagi Primary Key ga havola qiluvchi ustun</button>
+      <button class="opt" type="button">Jadvaldagi eng uzun ustun</button>
+      <button class="opt" type="button">Parol maydoni</button>
+      <button class="opt" type="button">Takrorlanmas satr raqami</button>
+    </div>
+    <div class="explain">FK jadvallar o'rtasida mantiqiy bog'lanish yaratadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Bitta sinfda ko'plab o'quvchilar, bitta o'quvchi faqat bitta sinfda. Bu qaysi munosabat?</p>
+    <div class="opts">
+      <button class="opt" type="button">1:1</button>
+      <button class="opt" type="button" data-ok>1:N (birga-ko'p)</button>
+      <button class="opt" type="button">M:N</button>
+      <button class="opt" type="button">N:N emas, bunday munosabat yo'q</button>
+    </div>
+    <div class="explain">Bir tomonda bitta, ikkinchi tomonda ko'p yozuv bo'lsa, 1:N.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Ko'pga-ko'p (M:N) munosabat relatsion bazada qanday amalga oshiriladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ikki jadvalni to'g'ridan-to'g'ri birlashtirib</button>
+      <button class="opt" type="button">Bitta katakda ro'yxat yozib</button>
+      <button class="opt" type="button" data-ok>Oraliq Junction (ko'prik) jadval orqali</button>
+      <button class="opt" type="button">Primary Key ni o'chirib</button>
+    </div>
+    <div class="explain">Junction Table M:N ni ikkita 1:N ga ajratadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Referensial yaxlitlik nimadan himoya qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Fayl nusxalanishidan</button>
+      <button class="opt" type="button">Jadval sarlavhasi yo'qolishidan</button>
+      <button class="opt" type="button">Dastur sekin ishlashidan</button>
+      <button class="opt" type="button" data-ok>Mavjud bo'lmagan xaridorga buyurtma yozilishidan</button>
+    </div>
+    <div class="explain">FK qiymati faqat asosiy jadvaldagi mavjud PK qiymatiga teng bo'la oladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>Buyurtmalar(buyurtma_id, xaridor_id, sana)</code> jadvalida <code>xaridor_id</code> qanday kalit bo'lishi mumkin?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Foreign Key</button>
+      <button class="opt" type="button">Primary Key</button>
+      <button class="opt" type="button">Hech qanday kalit bo'la olmaydi</button>
+      <button class="opt" type="button">Junction Table</button>
+    </div>
+    <div class="explain"><code>xaridor_id</code> Xaridorlar jadvalidagi PK ga havola qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Talabalar va Kurslar o'rtasida ko'pga-ko'p aloqa kerak. Qaysi yechim to'g'ri?</p>
+    <div class="opts">
+      <button class="opt" type="button">Talabalar jadvaliga barcha kurslarni bitta katakda yozish</button>
+      <button class="opt" type="button" data-ok>Uchinchi <code>TalabaKurslari</code> jadvali, ikkala PK ni FK sifatida saqlaydi</button>
+      <button class="opt" type="button">Kurslar jadvalini o'chirish</button>
+      <button class="opt" type="button">Ikkala jadvalga bir xil Primary Key berish</button>
+    </div>
+    <div class="explain">Ko'prik jadval ikkala jadval kalitini o'zida saqlab, aloqani ikkita 1:N ga ajratadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: DBMS, Primary Key, Foreign Key, munosabat turlari, Junction Table.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

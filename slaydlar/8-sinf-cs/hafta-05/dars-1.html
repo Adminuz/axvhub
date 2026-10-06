@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Bulutli xizmatlar</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Bulutli xizmatlar</h1>
+  <p class="muted">3-qism: sinxronlash, xavfsizlik va guruhli mini-loyiha</p>
+  <span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">5-hafta · 13-dars</span>
+  
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">Jamoadosh hujjatni o'qishi va izoh qoldirishi kerak, lekin matnni o'zgartirmasligi kerak. Qaysi ruxsat?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ko'ruvchi</button>
+      <button class="opt" type="button" data-ok>Izohlovchi</button>
+      <button class="opt" type="button">Muharrir</button>
+      <button class="opt" type="button">Egasi</button>
+    </div>
+    <div class="explain">Izohlovchi — o'qiydi va izoh yozadi, matnni o'zgartirmaydi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Sinxronlash</h1>
+  <p>Qurilma va bulut — ikki tomonlama oyna</p>
+</section>
+
+<section>
+  <h2>Qanday ishlaydi?</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <g data-tip="Telefon: rasm olindi yoki o'chirildi — o'zgarish bulutga yuboriladi."><rect class="fa la" x="60" y="90" width="140" height="190" rx="18" stroke-width="3"/><text class="t-head" x="130" y="192" text-anchor="middle" font-size="22">Telefon</text></g>
+      <g class="fragment" data-tip="Bulut — internetdagi serverlar; o'zgarishni qabul qilib, boshqa qurilmalarga tarqatadi."><line class="la flowing" x1="205" y1="160" x2="370" y2="120" stroke-width="4" marker-end="url(#ar-a)"/><ellipse class="fb lb pulse" cx="500" cy="110" rx="130" ry="70" stroke-width="4"/><text class="t-head" x="500" y="118" text-anchor="middle" font-size="26">Bulut</text></g>
+      <g class="fragment" data-tip="Kompyuter: sinxronlangan papka avtomatik yangilanadi (Drive for desktop, OneDrive, Dropbox)."><line class="lb flowing" x1="630" y1="120" x2="790" y2="160" stroke-width="4" marker-end="url(#ar-b)"/><rect class="fc lc" x="795" y="110" width="170" height="120" rx="10" stroke-width="3"/><text class="t-head" x="880" y="178" text-anchor="middle" font-size="22">Kompyuter</text></g>
+      <g class="fragment"><text class="t-accent" x="500" y="270" text-anchor="middle" font-size="22">o'chirish ham sinxronlanadi!</text></g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Sinxronlash — zaxira nusxa emas</h2>
+  <div class="vs">
+    <div class="side fragment"><h3><i data-ic="refresh-cw" data-anim="spin"></i> Sinxronlash</h3>Hamma joyda bir xil holat. Xato o'chirilsa — hamma joydan o'chadi.</div>
+    <div class="mid">≠</div>
+    <div class="side b fragment"><h3><i data-ic="archive"></i> Zaxira nusxa</h3>Alohida saqlangan nusxa. Qutqaruv: <b>Savat</b> va <b>versiya tarixi</b>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Oflayn rejim</h2>
+  <ol class="steps-n">
+    <li class="fragment">Internet yo'q — hujjatni baribir tahrirlaysiz</li>
+    <li class="fragment">O'zgarishlar qurilmada vaqtincha saqlanadi</li>
+    <li class="fragment">Internet qaytdi — bulutga avtomatik yuklanadi</li>
+  </ol>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Joy va xavfsizlik</h1>
+  <p>Qancha joy bor va uni qanday himoya qilamiz?</p>
+</section>
+
+<section>
+  <h2>Bepul hajm</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="15" data-suf=" GB">0</span></div><div class="l">Google Drive (Gmail bilan umumiy)</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="5" data-suf=" GB">0</span></div><div class="l">OneDrive</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="2" data-suf=" GB">0</span></div><div class="l">Dropbox</div></div>
+  </div>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Joy tugadi? Hajm bo'yicha saralang, katta videolarni o'chiring va <b>Savatni tozalang</b>.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Fayllarni o'chirdingiz, lekin Drive'da joy bo'shamadi. Sabab?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Fayllar Savatda turibdi</button>
+      <button class="opt" type="button">Internet sekin</button>
+      <button class="opt" type="button">Parol eski</button>
+      <button class="opt" type="button">Sinxronlash o'chiq</button>
+    </div>
+    <div class="explain">Savatdagi fayllar ham joy egallaydi — uni tozalash kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Bulutda xavfsizlik — 5 qoida</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="key-round"></i></div><h3>Kuchli parol</h3><p>12+ belgi, har xizmatga boshqa.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="smartphone" data-anim="pulse"></i></div><h3>2FA</h3><p>Parol + telefondagi kod.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="user-check"></i></div><h3>Eng kam ruxsat</h3><p>Ko'ruvchi yetarli bo'lsa — Muharrir emas.</p></div>
+  </div>
+  <div class="cards two mt">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="link"></i></div><h3>Ochiq havola</h3><p>Shaxsiy hujjat — hech qachon «Havolasi bor har kim».</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="log-out"></i></div><h3>Chiqish</h3><p>Begona kompyuterda — albatta Sign out.</p></div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>Ruxsatlar auditi</h2>
+    <table>
+      <thead><tr><th>Fayl</th><th>Hozir</th><th>Kerak</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td>Baholar</td><td>Havolasi bor har kim — Muharrir</td><td>Cheklangan, Ko'ruvchi</td></tr>
+        <tr class="fragment"><td>Gazeta</td><td>3 guruhdosh — Muharrir</td><td>to'g'ri</td></tr>
+        <tr class="fragment"><td>Pasport skani</td><td>Havolasi bor har kim</td><td>darhol Cheklangan</td></tr>
+        <tr class="fragment"><td>Eski taqdimot</td><td>5 begona — Muharrir</td><td>olib tashlash</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: qanday tekshiramiz</p>
+  </section>
+  <section>
+    <h2>Qanday tekshiramiz?</h2>
+    <ol class="steps-n">
+      <li>Faylni tanlang → <b>Ulashish</b></li>
+      <li>Odamlar ro'yxati va ruxsatlarni ko'ring</li>
+      <li>«Umumiy kirish»: <b>Cheklangan</b> bo'lsin</li>
+      <li>Loyiha tugadi — keraksizlarni olib tashlang</li>
+    </ol>
+  </section>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Mini-loyiha</h1>
+  <p>«Bulutdagi sinf loyihasi»</p>
+</section>
+
+<section>
+  <h2>Loyiha zanjiri</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="folder-plus"></i></div><h3>1. Papka</h3><p><code>5-hafta_Loyiha_GuruhNomi</code> umumiy papkasi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="users"></i></div><h3>2. Ruxsat</h3><p>A'zolar — Muharrir, mentor — Izohlovchi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="kanban"></i></div><h3>3. Reja</h3><p>Trello: 3 ustun, 6+ karta, mas'ul va muddat.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="sheet"></i></div><h3>4. Jadval</h3><p>Sheets: nom, sabab, ball, <code>=SUM()</code>.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="presentation"></i></div><h3>5. Taqdimot</h3><p>Slides: 5 slayd, har kim kamida 1 ta.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="shield-check"></i></div><h3>6. Audit</h3><p>Izohlar javoblangan, ochiq havola yo'q.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Mavzu tanlang</h2>
+  <div class="cards three">
+    <div class="flip" style="min-height:170px"><div class="flip-in"><div class="face front"><div class="icon"><i data-ic="school"></i></div><h3>Maktabimiz</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>«Maktabimizdagi eng yaxshi 5 joy» — rasm va sabab.</p></div></div></div>
+    <div class="flip" style="min-height:170px"><div class="flip-in"><div class="face front"><div class="icon"><i data-ic="gamepad-2"></i></div><h3>O'yinlar</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>«Sevimli o'yinlar reytingi» — Sheets'da ball.</p></div></div></div>
+    <div class="flip" style="min-height:170px"><div class="flip-in"><div class="face front"><div class="icon"><i data-ic="map"></i></div><h3>Ekskursiya</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>«Sinf ekskursiyasi rejasi» — byudjet va marshrut.</p></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Mini-loyiha <span class="timer"><i data-ic="timer"></i>35 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Umumiy papka va to'g'ri ruxsatlar (5 daqiqa).</div>
+  <div class="task"><span class="level mid">O'rta</span>Trello rejasi va Sheets jadvali (10 daqiqa).</div>
+  <div class="task"><span class="level mid">O'rta</span>5 slaydli taqdimot, izohlar va javoblar (15 daqiqa).</div>
+  <div class="task"><span class="level hard">Qiyin</span>Ruxsatlar auditi va 2 daqiqalik taqdimot (5 daqiqa).</div>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="kopr">Ko'prik: versiya tarixi</h2>
+  <p>Google Docs: <b>kim</b>, <b>qachon</b>, <b>nimani</b> o'zgartirdi — saqlanadi.</p>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="kopr">Ko'prik: versiya tarixi → Git</h2>
+  <p>Dasturchilar kod uchun xuddi shu vazifani <b>Git</b> bilan bajaradi va kodni <b>GitHub</b> bulutida jamoa bilan saqlaydi.</p>
+  <div class="callout tip"><i data-ic="git-branch"></i>Keyingi dars — Git va GitHub bilan tanishuv.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Sinxronlash</h3><p>Bir xil holat; zaxira emas — Savat va versiya tarixi.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Xavfsizlik</h3><p>Parol, 2FA, eng kam ruxsat, Chiqish.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Loyiha</h3><p>Papka → ruxsat → reja → jadval → taqdimot → audit.</p></div>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="git-fork" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: Git va GitHub</h1>
+  <p class="muted">Versiya nazorati, repository va commit</p>
+  <span class="badge">5-hafta · 14-dars</span>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>grep, sed, awk va xargs</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>grep, sed, awk va xargs</h1>
+  <p class="muted">grep, regex, sed, awk, xargs, quvur zanjirlari</p>
+  <span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">5-hafta · 13-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimalarni o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="search" data-anim="pulse"></i></div><h3>grep va regex</h3><p>Qidirish va naqsh</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="scissors" data-anim="float"></i></div><h3>sed va awk</h3><p>Almashtirish va ustunlar</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="workflow" data-anim="blink"></i></div><h3>xargs va zanjir</h3><p>Natijani argumentga</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q"><code>uniq</code> dan oldin nega <code>sort</code> kerak?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok><code>uniq</code> faqat ketma-ket takrorlarni ko'radi</button>
+    <button class="opt" type="button"><code>sort</code> tezlashtiradi</button>
+    <button class="opt" type="button"><code>uniq</code> faylni o'chiradi</button>
+    <button class="opt" type="button">Kerak emas</button>
+    </div>
+    <div class="explain"><code>uniq</code> faqat yonma-yon takrorlangan qatorlarni birlashtiradi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>grep va regex</h1>
+  <p>Qidirish va naqsh</p>
+</section>
+
+<section>
+  <h2>grep qanday ishlaydi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Matn oqimi</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">Naqsh (regex)</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Mos qatorlar</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Chiqish</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Faqat naqshga mos qatorlar o'tadi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>app.log va grep</h2>
+  <pre><code class="language-bash" data-trim data-line-numbers="1-7|8-9|10|11|12|13|14">
+cat &gt; app.log &lt;&lt;'EOF'
+2025-03-01 10:00:01 INFO server started port=8080
+2025-03-01 10:00:05 WARN disk 85%
+2025-03-01 10:01:12 ERROR db timeout user=ali
+2025-03-01 10:02:30 INFO login user=vali
+2025-03-01 10:03:44 ERROR db timeout user=soli
+EOF
+grep ERROR app.log
+grep -c ERROR app.log
+grep -n -i "login" app.log
+grep -v INFO app.log
+grep -E "ERROR|WARN" app.log
+grep "user=a.i" app.log
+grep "^2025" app.log
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i><code>grep -c ERROR app.log</code> ikkita ERROR qatori bo'lgani uchun <code>2</code> chiqaradi. Naqshni tirnoqqa oling: shell <code>*</code> va <code>$</code> belgilarini o'zgartirmasin.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>grep -v INFO app.log</code> nimani chiqaradi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>INFO bo'lmagan qatorlarni</button>
+    <button class="opt" type="button">Faqat INFO qatorlarni</button>
+    <button class="opt" type="button">Qatorlar sonini</button>
+    <button class="opt" type="button">Faylni o'chiradi</button>
+    </div>
+    <div class="explain"><code>-v</code> mos kelmagan qatorlarni ko'rsatadi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>sed va awk</h1>
+  <p>Almashtirish va ustunlar</p>
+</section>
+
+<section>
+  <h2>Matnni qayta ishlash</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Kirish matni</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">sed: almashtir</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="145" text-anchor="middle" font-size="22">awk: ustun</text><text class="t-head" x="625" y="171" text-anchor="middle" font-size="22">tanla</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Hisobot</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">sed qatorlarni, awk ustunlarni boshqaradi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>sed va awk misollari</h2>
+  <pre><code class="language-bash" data-trim data-line-numbers="1|2|3|5|6|7|8">
+sed 's/ERROR/XATO/' app.log
+sed -n '3,5p' app.log
+sed '/INFO/d' app.log
+
+awk '{print $3}' app.log
+awk '$3=="ERROR" {print $NF}' app.log
+awk '{print $3}' app.log | sort | uniq -c
+awk -F: '{print $1}' /etc/passwd
+  </code></pre>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i><code>sed -i</code> faylni o'zgartiradi. Avval <code>-i.bak</code> bilan nusxa oling yoki natijani ekranda tekshiring.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>awk '{print $3}' app.log</code> nimani chiqaradi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Har qatorning 3-ustunini</button>
+    <button class="opt" type="button">3-qatorni</button>
+    <button class="opt" type="button">Oxirgi ustunni</button>
+    <button class="opt" type="button">Qatorlar sonini</button>
+    </div>
+    <div class="explain"><code>$3</code> — bo'sh joy bilan ajratilgan uchinchi maydon.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>xargs va zanjir</h1>
+  <p>Natijani argumentga</p>
+</section>
+
+<section>
+  <h2>Qo'llanmadagi zanjir</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">ps aux</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">grep nginx</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">awk: PID</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">xargs kill</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Har bosqich keyingisiga kirish beradi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>xargs misollari</h2>
+  <pre><code class="language-bash" data-trim data-line-numbers="1|3|4|5|6">
+ps aux | grep nginx | awk '{print $2}' | xargs kill -9
+
+ps aux | grep [n]ginx | awk '{print $2}'
+find . -name "*.log" | xargs grep -l ERROR
+echo "a b c" | xargs -n 1 echo
+ls *.txt | xargs -I {} cp {} yedek/
+  </code></pre>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i><code>[n]ginx</code> naqshi <code>grep</code> ning o'zini topmaydi. Avval <code>kill</code> siz natijani ko'ring, so'ng <code>xargs kill</code> qo'shing; imkon bo'lsa <code>kill -9</code> o'rniga oddiy <code>kill</code> ishlating.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>xargs</code> nima qiladi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Oldingi chiqishni keyingi buyruqqa argument qilib beradi</button>
+    <button class="opt" type="button">Faylni o'chiradi</button>
+    <button class="opt" type="button">Matnni tartiblaydi</button>
+    <button class="opt" type="button">Tarmoqni tekshiradi</button>
+    </div>
+    <div class="explain"><code>xargs</code> stdin ni argumentlarga aylantiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>grep, sed va awk</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>grep</h3>Qatorlarni qidiradi va filtrlaydi (ERROR bor qatorlar)</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>sed / awk</h3>sed qatorni o'zgartiradi, awk ustunni tanlaydi va hisoblaydi</div>
+  </div>
+  <div class="card accent fragment mt"><p>Qidirish uchun grep, almashtirish uchun sed, ustun uchun awk.</p></div>
+</section>
+
+<section>
+  <h2>Atamalar. Bosing</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>regex</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Matn naqshini yozish tili</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>^ va $</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Qator boshi va oxiri</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>$NF</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>awk: oxirgi maydon</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>xargs</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Chiqishni argumentga aylantiradi</p></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Log tahlili bosqichlari</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="search" data-anim="pulse"></i></div><h3>1. Toping</h3><p><code>grep ERROR app.log</code> bilan kerakli qatorlar.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="columns-3"></i></div><h3>2. Ajrating</h3><p><code>awk '{print $NF}'</code> bilan kerakli ustun.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="chart-column"></i></div><h3>3. Sanang</h3><p><code>sort | uniq -c</code> bilan takrorlar soni.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>Muhim naqshlar</h2>
+    <table>
+      <thead><tr><th>Belgi</th><th>Ma'nosi</th><th>Misol</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td>^</td><td>qator boshi</td><td>^2025</td></tr>
+        <tr class="fragment"><td>$</td><td>qator oxiri</td><td>ali$</td></tr>
+        <tr class="fragment"><td>.</td><td>istalgan bitta belgi</td><td>a.i</td></tr>
+        <tr class="fragment"><td>*</td><td>0 yoki ko'p takror</td><td>ab*</td></tr>
+        <tr class="fragment"><td>[0-9]</td><td>raqam</td><td>[0-9][0-9]%</td></tr>
+        <tr class="fragment"><td>a|b</td><td>yoki (grep -E)</td><td>ERROR|WARN</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: tekshiruv</p>
+  </section>
+  <section>
+    <h2>Natijani tekshirish</h2>
+    <ol class="steps-n">
+      <li class="fragment"><code>app.log</code> ni yarating (heredoc).</li>
+      <li class="fragment"><code>grep -c ERROR app.log</code> bilan 2 chiqishini tekshiring.</li>
+      <li class="fragment"><code>awk '{print $3}' app.log | sort | uniq -c</code> bilan sanoqni oling.</li>
+    </ol>
+  </section>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">Foydalanuvchilarni ajratish</h2>
+  <pre data-id="c"><code class="language-bash" data-trim>
+grep ERROR app.log
+  </code></pre>
+</section>
+<section data-auto-animate>
+  <h2 data-id="t">Foydalanuvchilarni ajratish</h2>
+  <pre data-id="c"><code class="language-bash" data-trim data-line-numbers="1|2-3">
+grep ERROR app.log | awk '{print $NF}'
+# user=ali
+# user=soli
+  </code></pre>
+</section>
+
+<section>
+  <h2>app.log raqamlarda</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="5" data-suf="">0</span></div><div class="l"> qator: butun log</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="2" data-suf="">0</span></div><div class="l"> ta ERROR qatori</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="3" data-suf="">0</span></div><div class="l"> xil daraja: INFO, WARN, ERROR</div></div>
+  </div>
+  <p class="small fragment">Quvur bilan bir necha soniyada hisobot tayyor.</p>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>ERROR sanash: <code>app.log</code> da ERROR qatorlari sonini toping.</div>
+  <div class="task"><span class="level mid">O'rta</span>Foydalanuvchilar: ERROR qatorlaridagi foydalanuvchi nomlarini (user=...) chiqaring.</div>
+  <div class="task"><span class="level mid">O'rta</span>Almashtirish: <code>sed</code> bilan ERROR so'zini XATO ga almashtirib, faqat shu qatorlarni chiqaring.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Daraja hisoboti: Har bir daraja (INFO, WARN, ERROR) necha marta uchraganini eng ko'pidan boshlab chiqaring.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>grep</h3><p>Qidiradi: <code>-i -n -v -c -r -E</code>.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>sed va awk</h3><p>sed almashtiradi, awk ustunlarni ishlaydi.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>xargs</h3><p>Chiqishni argumentga aylantiradi; ehtiyot bo'ling.</p></div>
+  </div>
+  <p class="small fragment mt">Uyga vazifa: app.log tahlili: grep, sed, awk va xargs.</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="clock" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: cron va monitoring</h1>
+  <p class="muted">crontab, at, htop, iotop</p>
+  <span class="badge">5-hafta · 14-dars</span>
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

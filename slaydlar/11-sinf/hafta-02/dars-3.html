@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Code Review va Branch Protection</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 11-sinf · 2-hafta · 6-dars: Code Review metodologiyasi, etikasi va Branch Protection -->
+
+<!-- 1. SARLAVHA -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Code Review va Branch Protection</h1>
+  <p class="muted">Kodni jamoa bilan sayqallaymiz, main tarmog'ini esa qulflaymiz</p>
+  <span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">2-hafta · 6-dars</span>
+  
+</section>
+
+<!-- 2. MAQSADLAR -->
+<section>
+  <h2>Bugun nimani o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="search" data-anim="draw"></i></div><h3>Code Review</h3><p>Nima uchun kerak va qanday o'tkaziladi</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="heart-handshake" data-anim="float"></i></div><h3>Etika va daraja</h3><p>Odamni emas, kodni tahlil qilamiz. Blocker va Nitpick</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="shield-check" data-anim="pulse"></i></div><h3>Branch Protection</h3><p>main tarmog'ini qulflaymiz</p></div>
+  </div>
+  
+</section>
+
+<!-- 3. RAQAMLAR -->
+<section>
+  <h2>Review hajmi muhim</h2>
+  <div class="stats">
+    <div class="stat fragment"><div class="v"><span class="count" data-to="200" data-suf="-400">0</span></div><div class="l">qator: eng samarali tekshirish hajmi</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="600" data-suf="+">0</span></div><div class="l">qatordan keyin xatoni ilg'ash keskin pasayadi</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="70" data-suf="%">0</span></div><div class="l">gacha tushadi (SmartBear tadqiqoti)</div></div>
+  </div>
+  <p class="small mt">Xulosa: PR kichik bo'lsin, review sifatli bo'ladi.</p>
+  
+</section>
+
+<!-- 4. BO'LIM 01 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Code Review nima?</h1>
+  <p>Birlashtirishdan oldin boshqa muhandis kodni o'qib, tahlil qiladi</p>
+</section>
+
+<!-- 5. SXEMA: review sikli (5 qadam) -->
+<section>
+  <h2>Review sikli</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 330">
+      <g class="fragment" data-tip="Author yangi branch ochib, o'zgarishni commit qiladi."><rect class="fa" x="25" y="50" width="150" height="110" rx="20"/><text class="t-head" x="100" y="115" text-anchor="middle" font-size="26">Branch</text></g>
+      <g class="fragment"><line class="ln flowing" x1="178" y1="105" x2="218" y2="105"/><polygon class="ar-a" points="224,105 210,97 210,113"/></g>
+      <g class="fragment" data-tip="Author Pull Request ochadi: What, Why, How yoziladi."><rect class="fa" x="225" y="50" width="150" height="110" rx="20"/><text class="t-head" x="300" y="115" text-anchor="middle" font-size="26">PR</text></g>
+      <g class="fragment"><line class="ln flowing" x1="378" y1="105" x2="418" y2="105"/><polygon class="ar-a" points="424,105 410,97 410,113"/></g>
+      <g class="fragment" data-tip="Reviewer diff'ni o'qiydi, inline sharh va suggestion yozadi."><rect class="fc" x="425" y="50" width="150" height="110" rx="20"/><text class="t-head" x="500" y="115" text-anchor="middle" font-size="26">Review</text></g>
+      <g class="fragment"><line class="ln flowing" x1="578" y1="105" x2="618" y2="105"/><polygon class="ar-b" points="624,105 610,97 610,113"/></g>
+      <g class="fragment" data-tip="Author sharhlarni hisobga olib kodni tuzatadi va qayta yuboradi."><rect class="fb" x="625" y="50" width="150" height="110" rx="20"/><text class="t-head" x="700" y="115" text-anchor="middle" font-size="26">Tuzatish</text></g>
+      <g class="fragment"><line class="ln flowing" x1="778" y1="105" x2="818" y2="105"/><polygon class="ar-g" points="824,105 810,97 810,113"/></g>
+      <g class="fragment" data-tip="Approve olingach PR main ga birlashtiriladi."><rect class="fg" x="825" y="50" width="150" height="110" rx="20"/><text class="t-head" x="900" y="115" text-anchor="middle" font-size="26">Merge</text></g>
+      <g class="fragment">
+        <path class="lb flowing" d="M 700 165 L 700 270 L 515 270 L 515 172" fill="none"/>
+        <polygon class="ar-b" points="515,166 507,180 523,180"/>
+        <text class="t-accent" x="607" y="250" text-anchor="middle" font-size="22">qayta ko'rib chiqish</text>
+      </g>
+    </svg>
+  </div>
+  <p class="small">Qismlar ustiga bosing. Tuzatish va Review bir necha marta takrorlanishi mumkin.</p>
+  
+</section>
+
+<!-- 6. NEGA KERAK: 4 sabab -->
+<section>
+  <h2>Nega Code Review kerak?</h2>
+  <div class="cards four">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="bug" data-anim="wiggle"></i></div><h3>Xatolar</h3><p>Yangi nigoh xatoni erta ilg'aydi</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="lock" data-anim="pulse"></i></div><h3>Xavfsizlik</h3><p>Ochiq parol, SQL inyeksiya, ruxsatsiz kirish</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="users" data-anim="float"></i></div><h3>Bilim almashish</h3><p>Yosh dasturchi tajribalidan o'rganadi</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="sparkles"></i></div><h3>Kod tozaligi</h3><p>Yagona format va me'moriy uslub</p></div>
+  </div>
+  
+</section>
+
+<!-- 7. FLIP: rollar -->
+<section>
+  <h2>Rollar: bosing va aylantiring</h2>
+  <div class="cards three">
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face"><div class="icon"><i data-ic="user-pen"></i></div><h3>Author</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Kodni yozgan va Pull Request ochgan muallif.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face"><div class="icon"><i data-ic="eye"></i></div><h3>Reviewer</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Kodni o'qib, tahlil qilib, fikr bildiruvchi tekshiruvchi.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face"><div class="icon"><i data-ic="message-square-text"></i></div><h3>Inline Comment</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Kodning aynan bitta qatoriga qoldirilgan aniq sharh.</p></div>
+    </div></div>
+  </div>
+  
+</section>
+
+<!-- 8. BO'LIM 02 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Review etikasi</h1>
+  <p>Bu kim aqlliroq ekanini isbotlash musobaqasi emas</p>
+</section>
+
+<!-- 9. VS: yomon va yaxshi sharh -->
+<section>
+  <h2>Kodni tanqid qiling, shaxsni emas</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>Noto'g'ri</h3><em>«Sen bu yerda juda xunuk va sekin kod yozgansan.»</em></div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>To'g'ri</h3><em>«Bu sikl katta ro'yxatlarda sekinlashishi mumkin. Keling, uni lug'at (hashmap) orqali O(1) tezlikka keltiramiz.»</em></div>
+  </div>
+  <div class="callout tip fragment"><i data-ic="lightbulb"></i>Dalil va taklif bor: sharh hujum emas, hamkorlik.</div>
+  
+</section>
+
+<!-- 10. BUYRUQ EMAS, SAVOL (vertikal) -->
+<section>
+  <section>
+    <h2>Buyruq emas, savol bering</h2>
+    <div class="vs">
+      <div class="side fragment"><h3>Noto'g'ri</h3><em>«Bu funksiyani 3 ga bo'l!»</em></div>
+      <div class="mid">VS</div>
+      <div class="side b fragment"><h3>To'g'ri</h3><em>«Funksiya 80 qatordan oshibdi. Testlash osonroq bo'lishi uchun 2 ta kichik funksiyaga ajratsak qanday qaraysiz?»</em></div>
+    </div>
+    <p class="small mt">Sabab keltiring. Yaxshi yechimni ham maqtang. <span class="muted">Pastga ↓</span></p>
+  </section>
+  <section>
+    <h2>Maqtashni unutmang</h2>
+    <div class="quote">«Ajoyib yechim, menga juda yoqdi!»</div>
+    <p class="mt">Review faqat xato topish emas. Nafis algoritm yozgan hamkasbga shunday sharh qoldiring.</p>
+  </section>
+  <section>
+    <h2>Psixologik xavfsizlik</h2>
+    <ul>
+      <li class="fragment">Dasturchi kodiga o'z farzandidek bog'lanadi</li>
+      <li class="fragment">Keskin sharh g'ururga tegadi va tushkunlikka soladi</li>
+      <li class="fragment">So'zni to'g'ri tanlash texnik bilimdan kam emas</li>
+    </ul>
+  </section>
+  
+</section>
+
+<!-- 11. QUIZ 1 -->
+<section>
+  <h2>Mini-test: qaysi sharh yaxshi?</h2>
+  <div class="quiz">
+    <p class="q">Hamkasbingiz sekin sikl yozgan. Qaysi sharh professional?</p>
+    <div class="opts">
+      <button class="opt" type="button">Nega bunday bema'ni sikl yozding?</button>
+      <button class="opt" type="button" data-ok>Ikkinchi sikl katta ma'lumotda sekinlashishi mumkin. Keling, tezlashtirish yo'lini ko'ramiz.</button>
+      <button class="opt" type="button">Buni qayta yoz!</button>
+      <button class="opt" type="button">Hech narsa yozmayman, o'zim tuzataman.</button>
+    </div>
+    <div class="explain">To'g'ri: sabab bor, shaxs emas kod tahlil qilinadi, taklif hamkorlik ohangida.</div>
+  </div>
+  
+</section>
+
+<!-- 12. REVIEWER 5 SAVOL -->
+<section>
+  <h2>Reviewer uchun 5 ta savol</h2>
+  <ol class="steps-n">
+    <li class="fragment"><b>Mantiq:</b>&nbsp;kod vazifani to'g'ri bajaryaptimi?</li>
+    <li class="fragment"><b>Chekka holatlar:</b>&nbsp;bo'sh ro'yxat, nol, xato parol</li>
+    <li class="fragment"><b>Xavfsizlik:</b>&nbsp;ochiq parol yoki shifrlanmagan ma'lumot yo'qmi?</li>
+    <li class="fragment"><b>O'qilishi:</b>&nbsp;6 oydan keyin tushunish oson bo'ladimi?</li>
+    <li class="fragment"><b>Testlar:</b>&nbsp;unit testlar qo'shilganmi?</li>
+  </ol>
+  
+</section>
+
+<!-- 13. BO'LIM 03 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Blocker va Nitpick</h1>
+  <p>Pashshadan fil yasamang: jiddiylikni ajrating</p>
+</section>
+
+<!-- 14. SXEMA: Blocker vs Nitpick -->
+<section>
+  <h2>Sharhning jiddiylik darajasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <g data-tip="Blocker: tizim qulaydi, xavfsizlik zaifligi, noto'g'ri biznes mantiq yoki testlar yo'q."><rect class="fb" x="20" y="30" width="280" height="130" rx="20"/><text class="t-head" x="160" y="85" text-anchor="middle" font-size="30">Blocker</text><text class="t-muted" x="160" y="125" text-anchor="middle" font-size="22">kritik xato</text></g>
+      <g data-tip="Nitpick: nom, bo'sh qator, shaxsiy ta'b. Sharh boshiga nit: yoziladi."><rect class="fc" x="700" y="30" width="280" height="130" rx="20"/><text class="t-head" x="840" y="85" text-anchor="middle" font-size="30">Nitpick</text><text class="t-muted" x="840" y="125" text-anchor="middle" font-size="22">mayda maslahat</text></g>
+      <g data-tip="Reviewer har bir sharhni jiddiylik bo'yicha tasniflaydi."><rect class="fn" x="360" y="30" width="280" height="130" rx="20"/><text class="t-head" x="500" y="85" text-anchor="middle" font-size="28">Jiddiylik?</text><text class="t-muted" x="500" y="125" text-anchor="middle" font-size="22">reviewer hal qiladi</text></g>
+      <g class="fragment"><line class="lb" x1="358" y1="95" x2="312" y2="95"/><polygon class="ar-b" points="304,95 318,87 318,103"/></g>
+      <g class="fragment"><line class="lc" x1="642" y1="95" x2="688" y2="95"/><polygon class="ar-c" points="696,95 682,87 682,103"/></g>
+      <g class="fragment"><line class="lb" x1="160" y1="165" x2="160" y2="214"/><polygon class="ar-b" points="160,222 152,208 168,208"/>
+        <rect class="fb" x="20" y="226" width="280" height="90" rx="20"/><text class="t-head" x="160" y="262" text-anchor="middle" font-size="26">Request changes</text><text class="t-muted" x="160" y="296" text-anchor="middle" font-size="22">merge taqiqlanadi</text></g>
+      <g class="fragment"><line class="lc" x1="840" y1="165" x2="840" y2="214"/><polygon class="ar-c" points="840,222 832,208 848,208"/>
+        <rect class="fc" x="700" y="226" width="280" height="90" rx="20"/><text class="t-head" x="840" y="262" text-anchor="middle" font-size="26">nit: ixtiyoriy</text><text class="t-muted" x="840" y="296" text-anchor="middle" font-size="22">PR to'xtamaydi</text></g>
+    </svg>
+  </div>
+  <p class="small">Qismlarni bosing: izoh chiqadi.</p>
+  
+</section>
+
+<!-- 15. SWAP: ro'yxatlar -->
+<section>
+  <h2>Misollar: qaysi biri qaysi?</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">Blocker</button><button type="button">Nitpick</button></div>
+    <div class="swap-p"><div class="card accent2">
+      <h3>Tuzatish majburiy</h3>
+      <ul>
+        <li>Tizim qulashiga olib keladigan xato</li>
+        <li>Token ochiq qolgan (xavfsizlik)</li>
+        <li>Biznes mantiq noto'g'ri ishlaydi</li>
+        <li>Testlar yo'q</li>
+      </ul>
+    </div></div>
+    <div class="swap-p"><div class="card teal">
+      <h3>Ixtiyoriy, `nit:` bilan</h3>
+      <ul>
+        <li>O'zgaruvchini boshqacha atash</li>
+        <li>Ortiqcha bitta bo'sh qator</li>
+        <li>Shaxsiy ta'bga bog'liq mayda uslub</li>
+      </ul>
+    </div></div>
+  </div>
+  
+</section>
+
+<!-- 16. QUIZ 2 -->
+<section>
+  <h2>Mini-test: Blocker yoki Nitpick?</h2>
+  <div class="quiz">
+    <p class="q">Login funksiyasi bo'sh parolda server 500 xatosi berib qulaydi. Bu nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Nitpick: nit: bilan yozaman</button>
+      <button class="opt" type="button" data-ok>Blocker: Request changes</button>
+      <button class="opt" type="button">Nitpick: e'tibor bermayman</button>
+      <button class="opt" type="button">Faqat Comment qoldiraman</button>
+    </div>
+    <div class="explain">To'g'ri: server qulashi kritik xato, tuzatilmaguncha merge qilib bo'lmaydi.</div>
+  </div>
+  
+</section>
+
+<!-- 17. BO'LIM 04 -->
+<section class="sec">
+  <div class="num">04</div>
+  <h1>GitHub review asboblari</h1>
+  <p>Files changed, inline sharh va suggestion</p>
+</section>
+
+<!-- 18-19. AUTO-ANIMATE: Files changed -->
+<section data-auto-animate>
+  <h2>Files changed</h2>
+  <div class="browser" data-id="pr" style="width:560px"><div class="bar"><i></i><i></i><i></i><span>github.com/jamoa/loyiha/pull/7</span></div><div class="page"><p><b>calculate.py</b></p><p>+ qator ustiga kursor olib boring va <b>+</b> bosing</p></div></div>
+</section>
+<section data-auto-animate>
+  <h2>Files changed</h2>
+  <div class="browser" data-id="pr" style="width:1000px"><div class="bar"><i></i><i></i><i></i><span>github.com/jamoa/loyiha/pull/7</span></div><div class="page"><p><b>calculate.py</b></p><p>+ qator ustiga kursor olib boring va <b>+</b> bosing</p><p><b>Reviewer:</b> Bu sikl katta ro'yxatda sekin. Taklif kodini ko'ring. <b>[Commit suggestion]</b></p></div></div>
+  
+</section>
+
+<!-- 20. KOD: suggestion -->
+<section>
+  <h2>Taklif kodi (suggestion)</h2>
+  <pre><code class="language-markdown" data-trim data-noescape data-line-numbers="1-4|1|2-3|4">
+```suggestion
+def calculate_total(items):
+    return sum(item.price for item in items)
+```
+  </code></pre>
+  <div class="callout tip"><i data-ic="zap"></i>Author bitta bosishda <code>Commit suggestion</code> qiladi: o'z kompyuterida yozishi shart emas.</div>
+  
+</section>
+
+<!-- 21. SXEMA: 3 ta yakuniy qaror -->
+<section>
+  <h2>Review yakuni: 3 ta qaror</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <g data-tip="Reviewer Pull Request'ni ko'rib chiqib, yakuniy qaror beradi."><rect class="fa" x="20" y="110" width="220" height="120" rx="20"/><text class="t-head" x="130" y="182" text-anchor="middle" font-size="30">PR</text></g>
+      <g class="fragment"><path class="la" d="M 242 170 L 420 170 M 420 60 L 420 280" fill="none"/>
+        <line class="la" x1="420" y1="60" x2="604" y2="60"/><polygon class="ar-a" points="614,60 600,52 600,68"/>
+        <line class="lg" x1="420" y1="170" x2="604" y2="170"/><polygon class="ar-g" points="614,170 600,162 600,178"/>
+        <line class="lb" x1="420" y1="280" x2="604" y2="280"/><polygon class="ar-b" points="614,280 600,272 600,288"/></g>
+      <g class="fragment" data-tip="Comment: shunchaki savol berish. Tasdiqlamaydi ham, bloklamaydi ham."><rect class="fa" x="620" y="20" width="360" height="80" rx="18"/><text class="t-head" x="800" y="68" text-anchor="middle" font-size="24">Comment: faqat savol</text></g>
+      <g class="fragment" data-tip="Approve: kod talabga javob beradi, mergaga ruxsat."><rect class="fg" x="620" y="130" width="360" height="80" rx="18"/><text class="t-head" x="800" y="178" text-anchor="middle" font-size="24">Approve: merge mumkin</text></g>
+      <g class="fragment" data-tip="Request changes: jiddiy xato bor, qayta ishlab ko'rsatish talab qilinadi."><rect class="fb" x="620" y="240" width="360" height="80" rx="18"/><text class="t-head" x="800" y="288" text-anchor="middle" font-size="24">Request changes: tuzat</text></g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 22. BO'LIM 05 -->
+<section class="sec">
+  <div class="num">05</div>
+  <h1>Branch Protection</h1>
+  <p>Hatto jamoa sardori ham main ni xato bilan buza olmaydi</p>
+</section>
+
+<!-- 23. SXEMA: himoyalangan main -->
+<section>
+  <h2>Himoyalangan main</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 400">
+      <g data-tip="Feature branch: dasturchi shu yerda ishlaydi."><rect class="fa" x="20" y="130" width="190" height="110" rx="20"/><text class="t-head" x="115" y="195" text-anchor="middle" font-size="26">feature</text></g>
+      <g class="fragment"><line class="ln flowing" x1="212" y1="185" x2="258" y2="185"/><polygon class="ar-a" points="266,185 252,177 252,193"/></g>
+      <g class="fragment" data-tip="Pull Request ochiladi, reviewer kodni ko'radi."><rect class="fc" x="270" y="130" width="200" height="110" rx="20"/><text class="t-head" x="370" y="195" text-anchor="middle" font-size="26">Pull Request</text></g>
+      <g class="fragment"><line class="ln flowing" x1="472" y1="185" x2="518" y2="185"/><polygon class="ar-b" points="526,185 512,177 512,193"/></g>
+      <g class="fragment" data-tip="Qoida: kamida 1 approve va CI testlari muvaffaqiyatli o'tishi shart."><rect class="fb" x="530" y="80" width="230" height="210" rx="20"/><text class="t-head" x="645" y="135" text-anchor="middle" font-size="28">Qulf</text><text x="645" y="195" text-anchor="middle" font-size="24">1 approve</text><text x="645" y="240" text-anchor="middle" font-size="24">CI yashil</text></g>
+      <g class="fragment"><line class="lg flowing" x1="762" y1="185" x2="808" y2="185"/><polygon class="ar-g" points="816,185 802,177 802,193"/></g>
+      <g class="fragment" data-tip="main: har doim ishlaydigan, tekshirilgan kod."><rect class="fg" x="820" y="130" width="160" height="110" rx="20"/><text class="t-head" x="900" y="195" text-anchor="middle" font-size="28">main</text></g>
+      <g class="fragment"><path class="lb flowing" d="M 115 244 L 115 365 L 900 365 L 900 248" fill="none"/>
+        <polygon class="ar-b" points="900,244 892,258 908,258"/>
+        <text class="t-accent" x="500" y="345" text-anchor="middle" font-size="24">to'g'ridan-to'g'ri push: rad etiladi</text></g>
+    </svg>
+  </div>
+  <p class="small">Qismlarni bosing. Pastki yo'l main ga yopiq.</p>
+  
+</section>
+
+<!-- 24. TERMINAL -->
+<section>
+  <h2>Push rad etiladi</h2>
+  <pre class="terminal"><code class="language-bash" data-trim data-line-numbers="1|2-3">
+git push origin main
+remote: error: GH006: Protected branch update failed
+remote: for refs/heads/main.
+  </code></pre>
+  <div class="callout warn"><i data-ic="shield-ban" data-anim="pulse"></i>Xato matnida GH006 kodini ko'rasiz: bu himoya ishlayotganining belgisi.</div>
+  
+</section>
+
+<!-- 25. STEPPER: sozlash -->
+<section>
+  <h2>Sozlash: qadam-baqadam</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="settings" data-anim="spin"></i></div><h3>1. Settings, Branches</h3><p>Repo ichida <code>Settings</code>, chap menyudan <code>Branches</code>, so'ng qoida qo'shish.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="git-branch"></i></div><h3>2. Branch name pattern</h3><p>Maydonga <code>main</code> deb yozing.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="git-pull-request"></i></div><h3>3. Require a pull request</h3><p>To'g'ridan-to'g'ri <code>git push origin main</code> butunlay bloklanadi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="user-check"></i></div><h3>4. Require approvals</h3><p>Kamida 1 nafar (yoki 2) boshqa muhandis Approve bosmaguncha Merge nofaol.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>5. Status checks, Save</h3><p>CI testlari o'tmaguncha merge taqiqlanadi. Keyin <code>Save changes</code>.</p></div></div>
+  </div>
+  
+</section>
+
+<!-- 26. BYPASS -->
+<section>
+  <h2>Hatto xo'jayin ham buza olmaydi</h2>
+  <div class="quote">«Do not allow bypassing the above settings»</div>
+  <ul class="mt">
+    <li class="fragment">Professional kompaniyalarda bu band yoqiladi</li>
+    <li class="fragment">Repo egasi ham kamida bitta muhandis tasdig'isiz main ga kod qo'sha olmaydi</li>
+  </ul>
+  
+</section>
+
+<!-- 27. TOPSHIRIQ -->
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>SQL kodiga xavfsizlik sharhi yozing: <code>"... name = '" + user_input + "'"</code></div>
+  <div class="task"><span class="level mid">O'rta</span>Repoda <code>main</code> uchun Branch Protection (1 approve) sozlang va push'ni sinang</div>
+  <div class="task"><span class="level hard">Qiyin</span>Hamkasb PR'iga Request changes bering, tuzatilgach Approve va squash merge</div>
+  
+</section>
+
+<!-- 28. XULOSA -->
+<section>
+  <h2>Xulosa</h2>
+  <div class="cards two">
+    <div class="card"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Bugun o'rgandik</h3><p>Review etikasi, Blocker va Nitpick, suggestion, Branch Protection</p></div>
+    <div class="card"><div class="icon"><i data-ic="book-open"></i></div><h3>Uyga vazifa</h3><p>Portfolio repoda main himoyasi va PR'da 2 ta inline sharh (biri suggestion)</p></div>
+  </div>
+  <div class="callout"><i data-ic="rocket" data-anim="float"></i>Keyingi hafta: Clean Code va SOLID tamoyillari (SRP, OCP, LSP, ISP, DIP)</div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>UX va UI dizayn: nima farq qiladi?</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 1-hafta · 1-dars: UX va UI dizayn tushunchalari -->
+
+      <!-- 1. SARLAVHA -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>UX va UI dizayn: nima farq qiladi?</h1>
+        <p class="muted">Bugun ilovalarga dizayner ko'zi bilan qarashni boshlaymiz</p>
+        <span class="badge">9-sinf</span><span class="badge">UX/UI dizayn va Advanced Front-end</span><span class="badge">1-hafta · 1-dars</span>
+        
+      </section>
+
+      <!-- 2. REJA -->
+      <section>
+        <h2>Bugun nimani o'rganamiz?</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="heart" data-anim="pulse"></i></div><h3>UX nima?</h3><p>Foydalanuvchi tajribasi: qulaymi?</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="palette" data-anim="float"></i></div><h3>UI nima?</h3><p>Interfeys: qanday ko'rinadi?</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="puzzle"></i></div><h3>Farqi va o'rni</h3><p>Qayerda ishlanadi va nega muhim</p></div>
+        </div>
+        
+      </section>
+
+      <!-- 3. SAVOL -->
+      <section>
+        <h2>Boshlaymiz: g'azablantirgan ilova</h2>
+        <div class="quote">Qaysi ilova yoki sayt sizni oxirgi marta g'azablantirdi? Nega?</div>
+        <div class="chips mt">
+          <span class="chip fragment">«Tugmani topolmadim»</span>
+          <span class="chip t fragment">«Juda sekin»</span>
+          <span class="chip fragment">«Hammasi chalkash»</span>
+          <span class="chip t fragment">«Reklama yopib qo'ydi»</span>
+        </div>
+        <div class="callout tip fragment"><i data-ic="lightbulb" data-anim="blink"></i>Siz hozir UX muammolarini sanadingiz. Bugun shuni nomi bilan ataymiz.</div>
+        
+      </section>
+
+      <!-- 4. BO'LIM 01 -->
+      <section class="sec">
+        <div class="num">01</div>
+        <h1>UX: foydalanuvchi tajribasi</h1>
+        <p>Odam maqsadiga qanchalik oson yetadi?</p>
+      </section>
+
+      <!-- 5. ESHIK MISOLI (SVG 1) -->
+      <section>
+        <h2>Eshik misoli: ko'rinmas muammo</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 400">
+            <rect class="fn" x="90" y="30" width="240" height="280" rx="14"/>
+            <rect class="fb" x="285" y="150" width="16" height="80" rx="8"/>
+            <text class="t-head" x="210" y="180" text-anchor="middle" font-size="28">Chiroyli eshik</text>
+            <text class="t-muted" x="210" y="350" text-anchor="middle" font-size="24">tutqich «torting» deydi</text>
+            <g class="fragment"><path class="lb flowing" d="M270 190 L190 190"/><polygon class="ar-b" points="180,190 196,180 196,200"/></g>
+            <g class="fragment"><text class="t-accent pulse" x="500" y="200" text-anchor="middle" font-size="90">?</text></g>
+            <rect class="fn" x="670" y="30" width="240" height="280" rx="14"/>
+            <rect class="fg" x="700" y="140" width="110" height="100" rx="12"/>
+            <text class="t-head" x="755" y="200" text-anchor="middle" font-size="26">Itaring</text>
+            <text class="t-muted" x="790" y="350" text-anchor="middle" font-size="24">plastina aniq aytadi</text>
+            <g class="fragment"><path class="lg flowing" d="M640 190 L690 190"/><polygon class="ar-g" points="698,190 682,180 682,200"/></g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 6. UX TA'RIFI -->
+      <section>
+        <h2>UX (User Experience)</h2>
+        <div class="quote">Foydalanuvchi tajribasi: u maqsadiga erisha oladimi va buni bajarish qanchalik oddiy yoki murakkab?</div>
+        <div class="cards four mt">
+          <div class="flip" style="min-height:190px"><div class="flip-in"><div class="face front"><div class="icon"><i data-ic="target"></i></div><h3>Maqsad</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Kerakli ishni bajara oladimi</p></div></div></div>
+          <div class="flip" style="min-height:190px"><div class="flip-in"><div class="face front"><div class="icon"><i data-ic="zap"></i></div><h3>Tezlik</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Qancha vaqt ketadi</p></div></div></div>
+          <div class="flip" style="min-height:190px"><div class="flip-in"><div class="face front"><div class="icon"><i data-ic="hand"></i></div><h3>Qulaylik</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Nechta qadam, tushunarlimi</p></div></div></div>
+          <div class="flip" style="min-height:190px"><div class="flip-in"><div class="face front"><div class="icon"><i data-ic="heart"></i></div><h3>His-tuyg'u</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Ishonch yoki g'azab</p></div></div></div>
+        </div>
+        
+      </section>
+
+      <!-- 7. QADAMLAR SONI (SVG 2) -->
+      <section>
+        <h2>Bir maqsad, ikki yo'l</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <text class="t-head" x="40" y="45" font-size="28">Xabar yuborish: 3 qadam</text>
+            <g class="fragment">
+              <line class="ln" x1="120" y1="100" x2="500" y2="100"/>
+              <circle class="fa" cx="120" cy="100" r="26"/><circle class="fa" cx="310" cy="100" r="26"/><circle class="fg" cx="500" cy="100" r="26"/>
+              <text class="t-muted" x="560" y="110" font-size="24">tez va aniq</text>
+            </g>
+            <text class="t-head" x="40" y="205" font-size="28">Chalkash xizmat: 7 qadam</text>
+            <g class="fragment">
+              <line class="ln" x1="80" y1="270" x2="860" y2="270"/>
+              <circle class="fb" cx="80" cy="270" r="26"/><circle class="fb" cx="210" cy="270" r="26"/><circle class="fb" cx="340" cy="270" r="26"/><circle class="fb" cx="470" cy="270" r="26"/><circle class="fb" cx="600" cy="270" r="26"/><circle class="fb" cx="730" cy="270" r="26"/><circle class="fn" cx="860" cy="270" r="26"/>
+              <text class="t-muted" x="900" y="278" font-size="24">?</text>
+            </g>
+          </svg>
+        </div>
+        <div class="callout warn fragment"><i data-ic="triangle-alert" data-anim="wiggle"></i>Maqsad bir xil, lekin tajriba butunlay boshqacha. Qadam qancha ko'p bo'lsa, odam shuncha tez ketib qoladi.</div>
+        
+      </section>
+
+      <!-- 8. UX DIZAYNER (flow) + VERTIKAL -->
+      <section>
+        <section>
+          <h2>UX dizayner nima qiladi?</h2>
+          <div class="flow">
+            <div class="step"><span class="icon"><i data-ic="search" data-anim="draw"></i></span>Muammoni o'rganadi</div>
+            <div class="arrow"><i data-ic="arrow-right"></i></div>
+            <div class="step"><span class="icon"><i data-ic="pen-tool"></i></span>Sketch, wireframe, prototip</div>
+            <div class="arrow"><i data-ic="arrow-right"></i></div>
+            <div class="step"><span class="icon"><i data-ic="users"></i></span>Test qiladi</div>
+            <div class="arrow"><i data-ic="arrow-right"></i></div>
+            <div class="step"><span class="icon"><i data-ic="rocket" data-anim="bounce"></i></span>Yaxshilaydi</div>
+          </div>
+          <p class="muted mt">Chuqurroq bilish uchun pastga ↓</p>
+          
+        </section>
+        <section>
+          <h2>UX faqat ekran emas</h2>
+          <div class="cards three">
+            <div class="card fragment fade-up"><div class="icon"><i data-ic="clock"></i></div><h3>Kutish vaqti</h3><p>Buyurtma qancha kutiladi</p></div>
+            <div class="card fragment fade-up"><div class="icon"><i data-ic="message-circle"></i></div><h3>Aloqa</h3><p>Yordam xizmati qanday javob beradi</p></div>
+            <div class="card fragment fade-up"><div class="icon"><i data-ic="smartphone"></i></div><h3>Ilova</h3><p>Biz kursda shu qismga e'tibor beramiz</p></div>
+          </div>
+        </section>
+      </section>
+
+      <!-- 9. BO'LIM 02 -->
+      <section class="sec">
+        <div class="num">02</div>
+        <h1>UI: foydalanuvchi interfeysi</h1>
+        <p>Mahsulot qanday ko'rinadi va qanday tuzilgan?</p>
+      </section>
+
+      <!-- 10. UI TA'RIFI + GOOGLE MAPS ANATOMIYASI (SVG 3) -->
+      <section>
+        <h2>UI anatomiyasi: Google Maps</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 440">
+            <rect class="fn" x="380" y="10" width="240" height="420" rx="34"/>
+            <g data-tip="Qidiruv paneli: manzil yoki joy nomini yozish joyi."><rect class="fn" x="400" y="40" width="200" height="44" rx="22"/>
+            <text class="t-muted" x="500" y="70" text-anchor="middle" font-size="22">Qidiruv</text></g>
+            <g data-tip="Xarita: ko'chalar va joylashuv. Asosiy UI elementi."><rect class="fc" x="400" y="98" width="200" height="236" rx="12"/>
+            <path class="ln" d="M400 200 L600 160 M470 98 L520 334 M560 98 L440 334"/>
+            <circle class="fb pulse" cx="505" cy="205" r="14"/></g>
+            <g data-tip="Tugma: bosilganda amal bajariladi (masalan, joylashuvim)."><circle class="fa" cx="568" cy="298" r="24"/></g>
+            <g data-tip="Menyu: ilovaning bo'limlari orasida o'tish paneli."><rect class="fn" x="400" y="348" width="200" height="60" rx="14"/>
+            <circle class="fa" cx="450" cy="378" r="12"/><circle class="fa" cx="500" cy="378" r="12"/><circle class="fa" cx="550" cy="378" r="12"/></g>
+            <g class="fragment"><text class="t-accent" x="40" y="75" font-size="26">Qidiruv paneli</text><line class="la" x1="270" y1="68" x2="396" y2="62"/></g>
+            <g class="fragment"><text class="t-accent" x="40" y="215" font-size="26">Xarita</text><line class="la" x1="270" y1="208" x2="396" y2="208"/></g>
+            <g class="fragment"><text class="t-accent" x="660" y="305" font-size="26">Tugma</text><line class="lb" x1="650" y1="298" x2="596" y2="298"/></g>
+            <g class="fragment"><text class="t-accent" x="660" y="385" font-size="26">Menyu</text><line class="lb" x1="650" y1="378" x2="580" y2="378"/></g>
+          </svg>
+        </div>
+        <p class="small">Telefon qismlarini bosing yoki ustiga olib boring.</p>
+        
+      </section>
+
+      <!-- 11. UI TA'RIFI -->
+      <section>
+        <h2>UI (User Interface)</h2>
+        <div class="quote">Interfeysning qanday ko'rinishi va qanday tuzilishi. Foydalanuvchi ko'zi bilan ko'radigan hamma narsa.</div>
+        <div class="cards four mt">
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="palette"></i></div><h3>Ranglar</h3><p>Kayfiyat va urg'u</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="type"></i></div><h3>Shriftlar</h3><p>O'qish oson bo'lsin</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="paintbrush"></i></div><h3>Ikon va grafika</h3><p>Bir uslubda</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="layers"></i></div><h3>Uyg'unlik</h3><p>Hamma ekran bir xil</p></div>
+        </div>
+        
+      </section>
+
+      <!-- 12. UI ASBOB-USKUNALARI (SVG 4) -->
+      <section>
+        <h2>UI dizayner asboblari</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <g class="fragment">
+              <rect class="fa" x="40" y="60" width="70" height="70" rx="12"/><rect class="fb" x="125" y="60" width="70" height="70" rx="12"/><rect class="fc" x="210" y="60" width="70" height="70" rx="12"/>
+              <rect class="fg" x="82" y="145" width="70" height="70" rx="12"/><rect class="fn" x="167" y="145" width="70" height="70" rx="12"/>
+              <text class="t-head" x="160" y="270" text-anchor="middle" font-size="28">Ranglar</text>
+            </g>
+            <g class="fragment">
+              <text class="t-accent" x="500" y="190" text-anchor="middle" font-size="130">Aa</text>
+              <text class="t-head" x="500" y="270" text-anchor="middle" font-size="28">Shrift</text>
+            </g>
+            <g class="fragment">
+              <rect class="fa" x="720" y="60" width="240" height="64" rx="32"/>
+              <text class="t-head" x="840" y="102" text-anchor="middle" font-size="26">Davom etish</text>
+              <rect class="fn" x="720" y="146" width="240" height="56" rx="12"/>
+              <text class="t-muted" x="745" y="182" font-size="24">Ismingiz</text>
+              <svg x="900" y="150" width="48" height="48" viewBox="0 0 24 24" class="ic-s" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+              <text class="t-head" x="840" y="270" text-anchor="middle" font-size="28">Tugma, maydon, ikon</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 13. BO'LIM 03 -->
+      <section class="sec">
+        <div class="num">03</div>
+        <h1>Farq va bog'liqlik</h1>
+        <p>Ikkalasi ham kerak, lekin bir narsa emas</p>
+      </section>
+
+      <!-- 14. JADVAL -->
+      <section>
+        <h2>UI va UX farqi</h2>
+        <table>
+          <thead><tr><th>UI dizayn</th><th>UX dizayn</th></tr></thead>
+          <tbody>
+            <tr class="fragment"><td>Tashqi ko'rinishni tayyorlaydi</td><td>Umumiy tajribani shakllantiradi</td></tr>
+            <tr class="fragment"><td>Ranglar, tugmalar, shriftlar</td><td>Qulaylik, tezlik, hissiy tajriba</td></tr>
+            <tr class="fragment"><td>Ko'zga ko'rinadigan qismlar</td><td>Foydalanuvchining ichki his-tuyg'ulari</td></tr>
+          </tbody>
+        </table>
+        
+      </section>
+
+      <!-- 15. RESTORAN (SVG 5) -->
+      <section>
+        <h2>Restoran o'xshatishi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 380">
+            <rect class="fa" x="30" y="20" width="450" height="340" rx="22"/>
+            <svg x="225" y="40" width="60" height="60" viewBox="0 0 24 24" class="ic-s" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <text class="t-head" x="255" y="140" text-anchor="middle" font-size="34">UX</text>
+            <g class="fragment"><text x="255" y="195" text-anchor="middle" font-size="26" class="t-muted">kutish vaqti</text></g>
+            <g class="fragment"><text x="255" y="245" text-anchor="middle" font-size="26" class="t-muted">menyu tushunarli</text></g>
+            <g class="fragment"><text x="255" y="295" text-anchor="middle" font-size="26" class="t-muted">to'lash oson</text></g>
+            <rect class="fb" x="520" y="20" width="450" height="340" rx="22"/>
+            <svg x="715" y="40" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/></svg>
+            <text class="t-head" x="745" y="140" text-anchor="middle" font-size="34">UI</text>
+            <g class="fragment"><text x="745" y="195" text-anchor="middle" font-size="26" class="t-muted">idish va bezak</text></g>
+            <g class="fragment"><text x="745" y="245" text-anchor="middle" font-size="26" class="t-muted">taom ko'rinishi</text></g>
+            <g class="fragment"><text x="745" y="295" text-anchor="middle" font-size="26" class="t-muted">stol, yorug'lik</text></g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 16-17. AVTO-ANIMATSIYA: tuzilma -> ko'rinish -->
+      <section data-auto-animate>
+        <h2>Bir sahifa: avval tuzilma</h2>
+        <div class="browser" data-id="bw" style="width:760px"><div class="bar"><i></i><i></i><i></i><span>kafe.uz</span></div>
+          <div class="page">
+            <div data-id="hd" style="height:40px;background:#d9d9d9;border-radius:6px;margin-bottom:10px"></div>
+            <div data-id="hr" style="height:90px;background:#d9d9d9;border-radius:6px"></div>
+            <div data-id="bt" style="width:150px;height:40px;background:#d9d9d9;border-radius:6px;margin-top:12px"></div>
+          </div>
+        </div>
+        
+      </section>
+      <section data-auto-animate>
+        <h2>Keyin ko'rinish qo'shiladi</h2>
+        <div class="browser" data-id="bw" style="width:760px"><div class="bar"><i></i><i></i><i></i><span>kafe.uz</span></div>
+          <div class="page">
+            <div data-id="hd" style="height:40px;background:#4f46e5;color:#fff;border-radius:6px;margin-bottom:10px;padding:4px 14px;font-weight:700">AXV Kafe</div>
+            <div data-id="hr" style="height:90px;background:#fde68a;border-radius:6px;padding:10px 14px;font-weight:700">Bugungi menyu: 3 ta yangi taom</div>
+            <div data-id="bt" style="width:200px;height:40px;background:#16a34a;color:#fff;border-radius:20px;margin-top:12px;padding:6px 14px;font-weight:700">Buyurtma berish</div>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 18. KVADRANT (SVG 6) -->
+      <section>
+        <h2>Ikkalasi ham kerak</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 440">
+            <rect class="fb" x="70" y="10" width="440" height="190" rx="16"/>
+            <rect class="fg" x="520" y="10" width="440" height="190" rx="16"/>
+            <rect class="fn" x="70" y="210" width="440" height="190" rx="16"/>
+            <rect class="fa" x="520" y="210" width="440" height="190" rx="16"/>
+            <g class="fragment"><text class="t-head" x="290" y="95" text-anchor="middle" font-size="28">Ishlaydi, lekin xunuk</text><text class="t-muted" x="290" y="140" text-anchor="middle" font-size="24">ishonch uyg'otmaydi</text></g>
+            <g class="fragment"><text class="t-head" x="740" y="95" text-anchor="middle" font-size="28">Yaxshi UX + yaxshi UI</text><text class="t-muted" x="740" y="140" text-anchor="middle" font-size="24">qaytib kelamiz</text></g>
+            <g class="fragment"><text class="t-head" x="290" y="295" text-anchor="middle" font-size="28">Ikkalasi yomon</text><text class="t-muted" x="290" y="340" text-anchor="middle" font-size="24">o'chirib tashlaymiz</text></g>
+            <g class="fragment"><text class="t-head" x="740" y="295" text-anchor="middle" font-size="28">Chiroyli, lekin chalkash</text><text class="t-muted" x="740" y="340" text-anchor="middle" font-size="24">foydalanib bo'lmaydi</text></g>
+            <text class="t-accent" x="35" y="110" text-anchor="middle" font-size="26" transform="rotate(-90 35 110)">UX yaxshi</text>
+            <text class="t-accent" x="35" y="330" text-anchor="middle" font-size="26" transform="rotate(-90 35 330)">UX yomon</text>
+            <text class="t-muted" x="290" y="430" text-anchor="middle" font-size="24">UI xunuk</text>
+            <text class="t-muted" x="740" y="430" text-anchor="middle" font-size="24">UI chiroyli</text>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 19. ODATIY XATO -->
+      <section>
+        <h2>Odatiy xato</h2>
+        <div class="vs">
+          <div class="side fragment"><h3>Noto'g'ri</h3>«UX = chiroyli dizayn»</div>
+          <div class="mid">VS</div>
+          <div class="side b fragment"><h3>To'g'ri</h3>Chiroylilik asosan UI. UX: tezlik, tushunarlilik, qadamlar, his-tuyg'u.</div>
+        </div>
+        <div class="callout bad fragment"><i data-ic="triangle-alert"></i>Chiroyli ilovani yomon UX bilan chiqarsangiz, uni foydalanuvchi o'chirib tashlaydi.</div>
+      </section>
+
+      <!-- 20. BO'LIM 04 -->
+      <section class="sec">
+        <div class="num">04</div>
+        <h1>Qayerda va nega?</h1>
+        <p>Dizaynerlar qayerda ishlaydi va nega bu muhim</p>
+      </section>
+
+      <!-- 21. QAYERDA ISHLAYDI (SVG 7) -->
+      <section>
+        <section>
+          <h2>Dizaynerlar qayerda ishlaydi?</h2>
+          <div class="illus">
+            <svg viewBox="0 0 1000 380">
+              <g class="fragment"><line class="ln" x1="320" y1="175" x2="250" y2="70"/><rect class="fa" x="30" y="30" width="260" height="70" rx="16"/><text class="t-head" x="160" y="76" text-anchor="middle" font-size="26">Veb-saytlar</text></g>
+              <g class="fragment"><line class="ln" x1="300" y1="190" x2="290" y2="190"/><rect class="fb" x="30" y="155" width="260" height="70" rx="16"/><text class="t-head" x="160" y="201" text-anchor="middle" font-size="26">Mobil ilovalar</text></g>
+              <g class="fragment"><line class="ln" x1="320" y1="205" x2="250" y2="310"/><rect class="fc" x="30" y="280" width="260" height="70" rx="16"/><text class="t-head" x="160" y="326" text-anchor="middle" font-size="26">Dashboardlar</text></g>
+              <g class="fragment"><line class="ln" x1="680" y1="175" x2="750" y2="70"/><rect class="fg" x="710" y="30" width="260" height="70" rx="16"/><text class="t-head" x="840" y="76" text-anchor="middle" font-size="26">Internet platforma</text></g>
+              <g class="fragment"><line class="ln" x1="710" y1="190" x2="710" y2="190"/><rect class="fa" x="710" y="155" width="260" height="70" rx="16"/><text class="t-head" x="840" y="201" text-anchor="middle" font-size="26">Aqlli qurilmalar</text></g>
+              <g class="fragment"><line class="ln" x1="680" y1="205" x2="750" y2="310"/><rect class="fb" x="710" y="280" width="260" height="70" rx="16"/><text class="t-head" x="840" y="326" text-anchor="middle" font-size="26">Boshqa IT-mahsulot</text></g>
+              <circle class="fa" cx="500" cy="190" r="100"/>
+              <text class="t-head" x="500" y="186" text-anchor="middle" font-size="28">UX/UI</text>
+              <text class="t-muted" x="500" y="220" text-anchor="middle" font-size="24">dizayner</text>
+            </svg>
+          </div>
+          <p class="muted">Sizning telefoningizdagi hamma ilova kimdir dizayn qilgan. ↓</p>
+          
+        </section>
+        <section>
+          <h2>Hayotingizdan misollar</h2>
+          <div class="chips">
+            <span class="chip">Telegram</span><span class="chip t">Instagram</span><span class="chip">O'yinlar</span><span class="chip t">Elektron jurnal</span><span class="chip">To'lov ilovalari</span><span class="chip t">Aqlli soat</span>
+          </div>
+        </section>
+      </section>
+
+      <!-- 22. NEGA MUHIM -->
+      <section>
+        <h2>Nega bu muhim?</h2>
+        <div class="flow">
+          <div class="step"><span class="icon"><i data-ic="thumbs-up"></i></span>Qulay va chiroyli mahsulot</div>
+          <div class="arrow"><i data-ic="arrow-right"></i></div>
+          <div class="step"><span class="icon"><i data-ic="heart"></i></span>Foydalanuvchi mamnun</div>
+          <div class="arrow"><i data-ic="arrow-right"></i></div>
+          <div class="step"><span class="icon"><i data-ic="trophy"></i></span>Raqobatda yutadi</div>
+          <div class="arrow"><i data-ic="arrow-right"></i></div>
+          <div class="step"><span class="icon"><i data-ic="shield-check"></i></span>Brendga ishonch</div>
+        </div>
+        <div class="quote mt fragment">Qulay ilova qoladi. Qulay bo'lmagan ilova o'chirib tashlanadi.</div>
+        
+      </section>
+
+      <!-- 23.1 QUIZ -->
+      <section>
+        <h2>Tezkor savol 1</h2>
+        <div class="quiz">
+          <p class="q">«Tugma rangi ko'k» UX ga tegishlimi yoki UI ga?</p>
+          <div class="opts">
+          <button class="opt" type="button">UX</button>
+          <button class="opt" type="button" data-ok>UI</button>
+          </div>
+          <div class="explain">UI: ko'rinish bilan bog'liq.</div>
+        </div>
+        
+      </section>
+
+      <!-- 23.2 QUIZ -->
+      <section>
+        <h2>Tezkor savol 2</h2>
+        <div class="quiz">
+          <p class="q">«To'lov 2 bosishda bajariladi» qaysi biriga tegishli?</p>
+          <div class="opts">
+          <button class="opt" type="button" data-ok>UX</button>
+          <button class="opt" type="button">UI</button>
+          </div>
+          <div class="explain">UX: qulaylik va qadamlar soni.</div>
+        </div>
+        
+      </section>
+
+      <!-- 24. AMALIY -->
+      <section>
+        <h2>Amaliyot <span class="timer"><i data-ic="timer" data-anim="spin"></i>23 daqiqa</span></h2>
+        <div class="task"><span class="level easy">Oson</span>6 ta gapni UX yoki UI ga ajrating (daftarda).</div>
+        <div class="task"><span class="level mid">O'rta</span>Telegram yoki Instagram: 2 ta yaxshi UX, 1 ta yomon UX, 2 ta UI elementini jadvalga yozing.</div>
+        <div class="task"><span class="level hard">Qiyin</span>Maktab oshxonasi «Buyurtma» ekranini qog'ozda 2 xil UI da chizing (UX bir xil).</div>
+        
+      </section>
+
+      <!-- 25. XULOSA -->
+      <section>
+        <h2>Xulosa</h2>
+        <div class="cards two">
+          <div class="card"><div class="icon"><i data-ic="circle-check"></i></div><h3>Bugun o'rgandik</h3><p>UX: tajriba va qulaylik. UI: ko'rinish. Ikkalasi bir-birini to'ldiradi. Dizaynerlar veb, ilova, dashboard va qurilmalarda ishlaydi.</p></div>
+          <div class="card"><div class="icon"><i data-ic="book-open"></i></div><h3>Uyga vazifa</h3><p>Kunda ishlatadigan ilovada 1 ta yaxshi va 1 ta yomon UX nuqtasini toping (20-25 daqiqa).</p></div>
+        </div>
+        
+      </section>
+
+      <!-- 26. KO'PRIK -->
+      <section>
+        <h2>Keyingi darsda</h2>
+        <div class="flow">
+          <div class="step"><span class="icon"><i data-ic="lightbulb"></i></span>Yaxshi UX nimadan iborat?</div>
+          <div class="arrow"><i data-ic="arrow-right"></i></div>
+          <div class="step"><span class="icon"><i data-ic="layers"></i></span>UX/UI tamoyillari</div>
+          <div class="arrow"><i data-ic="arrow-right"></i></div>
+          <div class="step"><span class="icon"><i data-ic="eye"></i></span>Yaxshi va yomon dizayn</div>
+        </div>
+        <p class="muted mt">3-darsdan boshlab biz foydalanuvchilarni o'rganamiz.</p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

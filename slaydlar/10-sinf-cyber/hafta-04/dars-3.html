@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Ping va traceroute: marshrutni tahlil qilish</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Ping va traceroute: marshrutni tahlil qilish</h1>
+  <p class="muted">Paket internet bo'ylab qaysi yo'ldan o'tadi va qayerda sekinlashadi?</p>
+  <span class="badge">10-sinf Kiberxavfsizlik</span><span class="badge">4-hafta · 12-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi reja</h2>
+  <div class="cards three"><div class="card fragment fade-up"><div class="icon"><i data-ic="activity" data-anim="pulse"></i></div><h3>ping</h3><p>Qurilma tirikmi? Javob vaqti va paket yo'qolishi</p></div><div class="card fragment fade-up"><div class="icon"><i data-ic="route" data-anim="float"></i></div><h3>tracert / traceroute</h3><p>Paket o'tgan har bir router (hop)</p></div><div class="card fragment fade-up"><div class="icon"><i data-ic="gauge" data-anim="draw"></i></div><h3>Natijani o'qish</h3><p>Kechikish, TTL, * * * nimani bildiradi</p></div></div>
+  
+</section>
+
+<section class="sec"><div class="num">01</div><h1>Ping</h1><p>Kichik «echo» paketi yuboramiz va javobni kutamiz</p></section>
+
+<section>
+  <h2>Ping qanday ishlaydi</h2>
+  <div class="illus">
+<svg viewBox="0 0 1000 320">
+<rect class="fa" x="30" y="80" width="230" height="150" rx="20"/><text class="t-head" x="145" y="165" text-anchor="middle" font-size="30">Siz</text>
+<rect class="fb" x="740" y="80" width="230" height="150" rx="20"/><text class="t-head" x="855" y="165" text-anchor="middle" font-size="30">Server</text>
+<g class="fragment"><line class="la flowing" x1="270" y1="125" x2="730" y2="125"/><polygon class="ar-a" points="735,125 718,115 718,135"/><text class="t-accent" x="500" y="105" text-anchor="middle" font-size="24">echo so'rovi</text></g>
+<g class="fragment"><line class="lc flowing" x1="730" y1="190" x2="270" y2="190"/><polygon class="ar-c" points="265,190 282,180 282,200"/><text x="500" y="228" text-anchor="middle" font-size="24" fill="var(--teal)">echo javobi</text></g>
+<g class="fragment"><text class="t-head" x="500" y="285" text-anchor="middle" font-size="26">borib-kelish vaqti = RTT</text></g>
+</svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Ping nimani aytadi?</h2>
+  <div class="cards three"><div class="card fragment fade-up"><div class="icon"><i data-ic="circle-check" data-anim="pulse"></i></div><h3>Faolmi?</h3><p>Qurilma tarmoqda faol yoki faol emasligi</p></div><div class="card fragment fade-up"><div class="icon"><i data-ic="timer" data-anim="spin"></i></div><h3>Latency</h3><p>Javob vaqti millisekundlarda</p></div><div class="card fragment fade-up"><div class="icon"><i data-ic="package" data-anim="blink"></i></div><h3>Packet loss</h3><p>Yo'qolgan paketlar foizi</p></div></div>
+  
+</section>
+
+<section>
+  <h2>Buyruq: google.com</h2>
+  <pre class="terminal"><code class="language-bash" data-trim data-noescape data-line-numbers="1|2-3|4">
+C:\&gt; ping google.com
+Javob: vaqt=163ms TTL=105
+Javob: vaqt=163ms TTL=105
+Paketlar: yuborildi=4, yo'qolish=0%
+(qo'llanmadagi misolning qisqartirilgani)
+</code></pre>
+  
+</section>
+
+<section>
+  <h2>google.com: natijani o'qish</h2>
+  <div class="stats">
+<div class="stat fragment"><div class="v"><span class="count" data-to="163" data-suf=" ms">0</span></div><div class="l">o'rtacha vaqt: katta, 30-60 ms kutiladi</div></div>
+<div class="stat fragment"><div class="v"><span class="count" data-to="0" data-suf="%">0</span></div><div class="l">yo'qotish: aloqa barqaror</div></div>
+<div class="stat fragment"><div class="v"><span class="count" data-to="105">0</span></div><div class="l">TTL</div></div></div>
+  
+</section>
+
+<section>
+  <h2>TTL dan hop sonini topamiz</h2>
+  <div class="illus">
+<svg viewBox="0 0 1000 320">
+<g data-tip="Windows server TTL ni 128 qilib jo'natadi."><rect class="fa" x="40" y="60" width="270" height="130" rx="20"/><text class="t-head" x="175" y="115" text-anchor="middle" font-size="30">Boshlang'ich</text><text class="t-accent" x="175" y="160" text-anchor="middle" font-size="30">128</text></g>
+<g class="fragment" data-tip="Ping natijasidagi TTL qiymati."><rect class="fb" x="365" y="60" width="270" height="130" rx="20"/><text class="t-head" x="500" y="115" text-anchor="middle" font-size="30">Natijada</text><text class="t-accent" x="500" y="160" text-anchor="middle" font-size="30">105</text></g>
+<g class="fragment" data-tip="128 - 105 = 23 ta marshrutizator (hop)."><rect class="fg pulse" x="690" y="60" width="270" height="130" rx="20"/><text class="t-head" x="825" y="115" text-anchor="middle" font-size="30">Hop soni</text><text class="t-accent" x="825" y="160" text-anchor="middle" font-size="30">23</text></g>
+<text class="t-muted" x="500" y="260" text-anchor="middle" font-size="24">Linux uchun boshlang'ich TTL = 64</text>
+</svg>
+  </div><p class="small">Qutini bosing.</p>
+  
+</section>
+
+<section>
+  <h2>daryo.uz: yo'qotish nimani bildiradi?</h2>
+  <div class="swap">
+<div class="swap-tabs"><button type="button">Natija</button><button type="button">Xulosa</button></div>
+<div class="swap-p"><div class="card"><h3>14 ms, 25% yo'qotish, TTL=110</h3><p>Juda tez javob, 1 ta paket yo'qolgan, 18 hop.</p></div></div>
+<div class="swap-p"><div class="card accent"><h3>Xavfli emas</h3><p>Server yoki provayder ICMP ni bloklagan bo'lishi mumkin. Sayt «men tirikman» xabariga javob bermaydi.</p></div></div></div>
+  
+</section>
+
+<section>
+<section>
+  <h2>ICMP va xavfsizlik</h2>
+  <p>Firewall qoidasi: tashqaridan kiruvchi ping (ICMP Echo Request) ko'pincha taqiqlanadi.</p>
+  <p class="muted">Pastga bosing: ping6</p>
+</section>
+<section>
+  <h2>IPv4 va IPv6</h2>
+  <p><code>ping</code> IPv4 uchun ishlaydi. IPv6 tarmog'ida <code>ping6</code> buyrug'i kerak.</p>
+</section>
+</section>
+
+<section class="sec"><div class="num">02</div><h1>Traceroute</h1><p>Paket qaysi routerlar orqali o'tadi?</p></section>
+
+<section>
+  <h2>Hop: har bir router bitta qadam</h2>
+  <div class="illus">
+<svg viewBox="0 0 1000 300">
+<g data-tip="1-hop: uyingizdagi Wi-Fi router."><rect class="fa" x="20" y="90" width="150" height="110" rx="16"/><text class="t-head" x="95" y="155" text-anchor="middle" font-size="26">Router</text></g>
+<g class="fragment" data-tip="Provayder ichidagi hoplar."><line class="ln flowing" x1="175" y1="145" x2="230" y2="145"/><rect class="fb" x="235" y="90" width="150" height="110" rx="16"/><text class="t-head" x="310" y="155" text-anchor="middle" font-size="26">Provayder</text></g>
+<g class="fragment" data-tip="O'zbekistonning asosiy internet uzeli va chiqish nuqtasi."><line class="ln flowing" x1="390" y1="145" x2="445" y2="145"/><rect class="fc" x="450" y="90" width="150" height="110" rx="16"/><text class="t-head" x="525" y="155" text-anchor="middle" font-size="26">UZ uzel</text></g>
+<g class="fragment" data-tip="Transit uzellar: Rossiya yoki Yevropa."><line class="ln flowing" x1="605" y1="145" x2="660" y2="145"/><rect class="fn" x="665" y="90" width="150" height="110" rx="16"/><text class="t-head" x="740" y="155" text-anchor="middle" font-size="26">Transit</text></g>
+<g class="fragment" data-tip="Oxirgi hop: Google serverining o'zi."><line class="ln flowing" x1="820" y1="145" x2="855" y2="145"/><rect class="fg pulse" x="860" y="90" width="125" height="110" rx="16"/><text class="t-head" x="922" y="155" text-anchor="middle" font-size="26">Server</text></g>
+<text class="t-accent" x="500" y="260" text-anchor="middle" font-size="24">Har bir hop uchun javob vaqti 3 marta o'lchanadi</text>
+</svg>
+  </div><p class="small">Hop ustiga bosing.</p>
+  
+</section>
+
+<section>
+  <h2>Buyruq: tracert google.com</h2>
+  <pre class="terminal"><code class="language-bash" data-trim data-noescape data-line-numbers="1|2-3|4-5|6">
+C:\&gt; tracert google.com
+ 1  172.16.4.1       uy routeri
+ 2  195.158.2.217    mahalliy provayder
+ 5  84.54.64.157     UZ asosiy uzel
+ 8  195.69.189.250   tranzit uzel
+13  142.251.140.174  Google serveri
+</code></pre>
+  
+</section>
+
+<section>
+  <h2>Natijani tahlil qilish</h2>
+  <div class="timeline">
+<div class="tl fragment"><b>1-4 hop.</b> Uy routeri va provayder ichi</div>
+<div class="tl fragment"><b>5-7 hop.</b> O'zbekistonning asosiy uzeli, chiqish nuqtasi</div>
+<div class="tl fragment"><b>8-10 hop.</b> Tranzit uzel, Google tarmog'iga kirish</div>
+<div class="tl fragment"><b>11-13 hop.</b> Google ichidagi routerlar va server</div></div>
+<p class="small">Jami 13 bosqich, o'rtacha 100 ms atrofida: odatiy holat.</p>
+  
+</section>
+
+<section>
+  <h2>daryo.uz: yulduzchalar</h2>
+  <div class="vs"><div class="side fragment"><h3>5-18 hop: * * *</h3>Routerlar ICMP ga javob bermadi</div><div class="mid">VS</div><div class="side b fragment"><h3>19-hop</h3>Server o'zi javob berdi: faol va yaqin</div></div>
+<div class="callout tip mt"><i data-ic="lightbulb"></i>Ko'p provayderlar traceroute so'rovini bloklaydi: bu oddiy holat.</div>
+  
+</section>
+
+<section>
+  <h2>Atamalar: bosing</h2>
+  <div class="cards four">
+<div class="flip" style="min-height:190px"><div class="flip-in"><div class="face front"><h3>RTT</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Borib-kelish vaqti (Round-trip time).</p></div></div></div>
+<div class="flip" style="min-height:190px"><div class="flip-in"><div class="face front"><h3>Hop</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Yo'ldagi router: paketni keyingi bosqichga yuboradi.</p></div></div></div>
+<div class="flip" style="min-height:190px"><div class="flip-in"><div class="face front"><h3>Latency</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Javob vaqti, kechikish.</p></div></div></div>
+<div class="flip" style="min-height:190px"><div class="flip-in"><div class="face front"><h3>Packet loss</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Yo'qolgan paketlar.</p></div></div></div></div>
+  
+</section>
+
+<section class="sec"><div class="num">03</div><h1>Flaglar va amaliyot</h1><p>Buyruq harakatini o'zgartiramiz</p></section>
+
+<section>
+  <h2>tracert flaglari</h2>
+  <table><thead><tr><th>Flag</th><th>Nima qiladi</th></tr></thead><tbody>
+<tr class="fragment"><td><code>-d</code></td><td>DNS nomlarini izlamaydi, faqat IP</td></tr>
+<tr class="fragment"><td><code>-h 15</code></td><td>Maksimal hop sonini belgilaydi (standart 30)</td></tr>
+<tr class="fragment"><td><code>-w 1000</code></td><td>Har hopga kutish vaqti, ms (standart 4000)</td></tr>
+<tr class="fragment"><td><code>-4</code> / <code>-6</code></td><td>Faqat IPv4 / faqat IPv6</td></tr></tbody></table>
+  
+</section>
+
+<section data-auto-animate>
+  <h2>tracert: -d oldin va keyin</h2>
+  <div class="card" data-id="t"><h3>tracert google.com</h3><p>«Resolving host...» kutish bor.</p></div>
+</section>
+<section data-auto-animate>
+  <h2>tracert: -d oldin va keyin</h2>
+  <div class="card accent" data-id="t" style="font-size:1.1em"><h3>tracert -d google.com</h3><p>DNS izlanmaydi: IP darhol chiqadi, natija tezroq.</p></div>
+</section>
+
+<section>
+  <h2>Odatiy xatolar</h2>
+  <div class="callout bad"><i data-ic="triangle-alert"></i>«* * *» = hujum yoki xato. Noto'g'ri: ko'pincha ICMP bloklangan.</div>
+<div class="callout bad"><i data-ic="triangle-alert"></i>«Paket yo'qolsa, sayt ishlamaydi.» Noto'g'ri: sayt ping ga javob bermasligi mumkin.</div>
+<div class="callout warn"><i data-ic="triangle-alert"></i>Linux/Mac da <code>tracert</code> emas, <code>traceroute</code>.</div>
+  
+</section>
+
+<section>
+  <h2>Mini-test 1</h2>
+  <div class="quiz"><p class="q">ping buyrug'i nimani o'lchaydi?</p><div class="opts"><button class="opt" type="button">Faqat IP manzilni</button><button class="opt" type="button" data-ok>Echo paketining borib-kelish vaqtini (RTT)</button><button class="opt" type="button">Serverdagi fayllar sonini</button><button class="opt" type="button">Parol kuchini</button></div><div class="explain">Ping kichik echo paketini yuboradi va javob qaytish vaqti (RTT) ni o'lchaydi.</div></div>
+</section>
+
+<section>
+  <h2>Mini-test 2</h2>
+  <div class="quiz"><p class="q">tracert natijasida bir nechta qatorda * * * chiqdi, oxirgi hopda server javob berdi. Bu nima?</p><div class="opts"><button class="opt" type="button">Server o'chirilgan</button><button class="opt" type="button" data-ok>Routerlar ICMP ga javob bermagan, oddiy holat</button><button class="opt" type="button">Kompyuter virus yuqtirgan</button><button class="opt" type="button">Internet uzilgan</button></div><div class="explain">Ko'p provayderlar traceroute so'rovini bloklaydi; oxirgi hopda server javob bergani uning faolligini bildiradi.</div></div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>15 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>4 ta turli saytga ping yuboring, natijalarni yozing.</div><div class="task"><span class="level mid">O'rta</span>Shu saytlarga tracert yuboring va hop sonini solishtiring.</div><div class="task"><span class="level hard">Qiyin</span>Flaglardan foydalanib jadval va hisobot tayyorlang.</div>
+</section>
+
+<section>
+  <h2>Xulosa</h2>
+  <div class="cards two"><div class="card"><div class="icon"><i data-ic="circle-check" data-anim="float"></i></div><h3>Bugun o'rgandik</h3><p>ping, RTT, TTL, tracert, hop, * * *, flaglar</p></div><div class="card"><div class="icon"><i data-ic="book-open" data-anim="float"></i></div><h3>Uyga vazifa</h3><p>4 saytga ping va tracert jadvali</p></div></div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

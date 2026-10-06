@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>List: o‘zgaruvchan ro‘yxat</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+      <!-- 1. SARLAVHA -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>List: o‘zgaruvchan ro‘yxat</h1>
+        <p class="muted">Yaratamiz, indeks bilan olamiz, qo‘shamiz va o‘chiramiz</p>
+        <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">4-hafta · 12-dars</span>
+        
+      </section>
+
+      <!-- 2. REJA -->
+      <section>
+        <h2>Bugun nimalarni o‘rganamiz?</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="list" data-anim="float"></i></div><h3>List nima?</h3><p>Tartibli, turli tipli, mutable</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="hash" data-anim="bounce"></i></div><h3>Indeks va slicing</h3><p>String bilan bir xil qoidalar</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="settings" data-anim="spin"></i></div><h3>5 ta metod</h3><p><code>append</code>, <code>insert</code>, <code>remove</code>, <code>pop</code>, <code>clear</code></p></div>
+        </div>
+      </section>
+
+      <!-- 3. MUAMMO -->
+      <section>
+        <h2>Muammo: 30 ta o‘quvchi - 30 ta o‘zgaruvchi?</h2>
+        <div class="swap">
+          <div class="swap-tabs"><button type="button">List’siz</button><button type="button">List bilan</button></div>
+          <div class="swap-p"><div class="card"><h3>Alohida o‘zgaruvchilar</h3><p><code>fan1 = "Matematika"</code>, <code>fan2 = "Fizika"</code>, <code>fan3 = ...</code> - har yangi fan uchun yangi o‘zgaruvchi.</p></div></div>
+          <div class="swap-p"><div class="card accent"><h3>Bitta list</h3><p><code>fanlar = ["Matematika", "Fizika", "Informatika"]</code> - qo‘shish ham, o‘chirish ham oson.</p></div></div>
+        </div>
+      </section>
+
+      <!-- 4. SEC 01 -->
+      <section class="sec">
+        <div class="num">01</div>
+        <h1>List nima?</h1>
+        <p>Tartibli (ordered) elementlar to‘plami</p>
+      </section>
+
+      <!-- 5. SVG 1: XUSUSIYATLAR -->
+      <section>
+        <h2>List xususiyatlari</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <rect class="fn" x="250" y="20" width="500" height="80" rx="16"/>
+            <text class="t-head" x="500" y="72" text-anchor="middle" font-size="30">[1, "Ali", 3.14, True]</text>
+            <g class="fragment" data-tip="Elementlar ketma-ket saqlanadi: indeks bor">
+              <line class="la flowing" x1="380" y1="100" x2="170" y2="190"/>
+              <rect class="fa" x="30" y="190" width="280" height="120" rx="16"/><text class="t-head" x="170" y="240" text-anchor="middle" font-size="26">Tartibli</text><text class="t-muted" x="170" y="280" text-anchor="middle" font-size="22">indeks bor</text>
+            </g>
+            <g class="fragment" data-tip="Bir xil yoki turli tipdagi qiymatlar">
+              <line class="lc flowing" x1="500" y1="100" x2="500" y2="190"/>
+              <rect class="fc" x="360" y="190" width="280" height="120" rx="16"/><text class="t-head" x="500" y="240" text-anchor="middle" font-size="26">Turli tiplar</text><text class="t-muted" x="500" y="280" text-anchor="middle" font-size="22">son, matn, bool</text>
+            </g>
+            <g class="fragment" data-tip="Elementlarni o'zgartirish, qo'shish, o'chirish mumkin">
+              <line class="lg flowing" x1="620" y1="100" x2="830" y2="190"/>
+              <rect class="fg pulse" x="690" y="190" width="280" height="120" rx="16"/><text class="t-head" x="830" y="240" text-anchor="middle" font-size="26">Mutable</text><text class="t-muted" x="830" y="280" text-anchor="middle" font-size="22">o‘zgaruvchan</text>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <!-- 6. YARATISH -->
+      <section>
+        <h2>List yaratish (1.57, 1.58-rasm)</h2>
+        <pre><code class="language-python" data-trim data-line-numbers="1|2|3|4">
+a = [10, 20, 30]
+b = ["olma", "banan", "gilos"]
+c = [1, "Ali", 3.14, True]   # turli tiplar
+bosh = []                    # bo'sh list
+        </code></pre>
+        <div class="callout tip fragment"><i data-ic="lightbulb"></i>Kvadrat qavs <code>[ ]</code>, elementlar orasida vergul.</div>
+      </section>
+
+      <!-- 7. SEC 02 -->
+      <section class="sec">
+        <div class="num">02</div>
+        <h1>Indeks va slicing</h1>
+        <p>String’dagi bilan bir xil (1.59, 1.60-rasm)</p>
+      </section>
+
+      <!-- 8. SVG 2: INDEKS -->
+      <section>
+        <section>
+          <h2>List indekslari</h2>
+          <div class="illus">
+            <svg viewBox="0 0 1000 300">
+              <text class="t-accent" x="140" y="50" text-anchor="middle" font-size="24">0</text><text class="t-accent" x="320" y="50" text-anchor="middle" font-size="24">1</text><text class="t-accent" x="500" y="50" text-anchor="middle" font-size="24">2</text><text class="t-accent" x="680" y="50" text-anchor="middle" font-size="24">3</text><text class="t-accent" x="860" y="50" text-anchor="middle" font-size="24">4</text>
+              <rect class="fa" x="60" y="70" width="160" height="100" rx="14"/><text class="t-head" x="140" y="132" text-anchor="middle" font-size="32">"a"</text>
+              <rect class="fa" x="240" y="70" width="160" height="100" rx="14"/><text class="t-head" x="320" y="132" text-anchor="middle" font-size="32">"b"</text>
+              <rect class="fa" x="420" y="70" width="160" height="100" rx="14"/><text class="t-head" x="500" y="132" text-anchor="middle" font-size="32">"c"</text>
+              <rect class="fa" x="600" y="70" width="160" height="100" rx="14"/><text class="t-head" x="680" y="132" text-anchor="middle" font-size="32">"d"</text>
+              <rect class="fa" x="780" y="70" width="160" height="100" rx="14"/><text class="t-head" x="860" y="132" text-anchor="middle" font-size="32">"e"</text>
+              <text class="t-muted" x="140" y="205" text-anchor="middle" font-size="24">-5</text><text class="t-muted" x="320" y="205" text-anchor="middle" font-size="24">-4</text><text class="t-muted" x="500" y="205" text-anchor="middle" font-size="24">-3</text><text class="t-muted" x="680" y="205" text-anchor="middle" font-size="24">-2</text><text class="t-muted" x="860" y="205" text-anchor="middle" font-size="24">-1</text>
+              <g class="fragment"><rect class="fb" x="240" y="225" width="520" height="14" rx="7"/><text class="t-accent" x="500" y="280" text-anchor="middle" font-size="26">a[1:4] -&gt; ['b', 'c', 'd']</text></g>
+            </svg>
+          </div>
+          <p class="small">Barcha kesishlar: pastga</p>
+        </section>
+        <section>
+          <h2>Slicing: kodda</h2>
+          <pre><code class="language-python" data-trim data-line-numbers="1|2-3|4-6|7">
+a = ["a", "b", "c", "d", "e"]
+print(a[0])      # a
+print(a[-1])     # e
+print(a[1:4])    # ['b', 'c', 'd']
+print(a[:3])     # ['a', 'b', 'c']
+print(a[::2])    # ['a', 'c', 'e']
+print(a[::-1])   # ['e', 'd', 'c', 'b', 'a']
+          </code></pre>
+        </section>
+      </section>
+
+      <!-- 9. MUTABLE vs STRING -->
+      <section>
+        <h2>List o‘zgaruvchan - string esa yo‘q (1.61-rasm)</h2>
+        <div class="vs">
+          <div class="side fragment"><h3>string</h3><code>s = "Python"</code><br><code>s[0] = "J"</code><br>-&gt; <code>TypeError</code></div>
+          <div class="mid">VS</div>
+          <div class="side b fragment"><h3>list</h3><code>a = [10, 20, 30]</code><br><code>a[1] = 99</code><br>-&gt; <code>[10, 99, 30]</code></div>
+        </div>
+      </section>
+
+      <!-- 10. MINI-TEST 1 -->
+      <section>
+        <h2>Mini-test</h2>
+        <div class="quiz">
+          <p class="q"><code>a = [4, 5, 3]</code>; <code>a[2] = 5</code>; <code>print(a)</code> nima chiqaradi?</p>
+          <div class="opts">
+            <button class="opt" type="button"><code>TypeError</code></button>
+            <button class="opt" type="button"><code>[4, 5, 3, 5]</code></button>
+            <button class="opt" type="button"><code>[5, 5, 3]</code></button>
+            <button class="opt" type="button" data-ok><code>[4, 5, 5]</code></button>
+          </div>
+          <div class="explain">List mutable: 2-indeksdagi 3 o‘rniga 5 yozildi.</div>
+        </div>
+      </section>
+
+      <!-- 11. SEC 03 -->
+      <section class="sec">
+        <div class="num">03</div>
+        <h1>List metodlari</h1>
+        <p>Qo‘shish va o‘chirish (1.62-1.66-rasm)</p>
+      </section>
+
+      <!-- 12. SVG 3: append va insert -->
+      <section>
+        <h2>append() va insert() (1.62, 1.63-rasm)</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <text class="t-accent" x="40" y="50" font-size="26">a.append(3)</text>
+            <rect class="fn" x="40" y="70" width="110" height="80" rx="12"/><text class="t-head" x="95" y="122" text-anchor="middle" font-size="30">1</text>
+            <rect class="fn" x="160" y="70" width="110" height="80" rx="12"/><text class="t-head" x="215" y="122" text-anchor="middle" font-size="30">2</text>
+            <g class="fragment"><rect class="fg pulse" x="280" y="70" width="110" height="80" rx="12"/><text class="t-head" x="335" y="122" text-anchor="middle" font-size="30">3</text><text class="t-muted" x="560" y="122" text-anchor="middle" font-size="24">oxiriga qo‘shadi</text></g>
+            <text class="t-accent" x="40" y="220" font-size="26">a.insert(1, 99)</text>
+            <rect class="fn" x="40" y="240" width="110" height="80" rx="12"/><text class="t-head" x="95" y="292" text-anchor="middle" font-size="30">1</text>
+            <g class="fragment"><rect class="fb pulse" x="160" y="240" width="110" height="80" rx="12"/><text class="t-head" x="215" y="292" text-anchor="middle" font-size="30">99</text></g>
+            <rect class="fn" x="280" y="240" width="110" height="80" rx="12"/><text class="t-head" x="335" y="292" text-anchor="middle" font-size="30">2</text>
+            <rect class="fn" x="400" y="240" width="110" height="80" rx="12"/><text class="t-head" x="455" y="292" text-anchor="middle" font-size="30">3</text>
+            <g class="fragment"><text class="t-muted" x="560" y="270" font-size="24">list.insert(index, value)</text><text class="t-muted" x="560" y="305" font-size="24">qolganlari o‘ngga suriladi</text></g>
+          </svg>
+        </div>
+      </section>
+
+      <!-- 13. SVG 4: remove, pop, clear -->
+      <section>
+        <h2>remove(), pop(), clear() (1.64-1.66-rasm)</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 380">
+            <g data-tip="remove(qiymat) - birinchi uchragan qiymatni o'chiradi">
+              <text class="t-accent" x="40" y="45" font-size="24">[1, 2, 2, 3].remove(2)</text>
+              <rect class="fn" x="40" y="60" width="90" height="70" rx="12"/><text class="t-head" x="85" y="106" text-anchor="middle" font-size="28">1</text>
+              <g class="fragment"><rect class="fb" x="140" y="60" width="90" height="70" rx="12" opacity="0.35"/><line class="lb" x1="145" y1="65" x2="225" y2="125"/></g>
+              <text class="t-head" x="185" y="106" text-anchor="middle" font-size="28">2</text>
+              <rect class="fn" x="240" y="60" width="90" height="70" rx="12"/><text class="t-head" x="285" y="106" text-anchor="middle" font-size="28">2</text>
+              <rect class="fn" x="340" y="60" width="90" height="70" rx="12"/><text class="t-head" x="385" y="106" text-anchor="middle" font-size="28">3</text>
+              <text class="t-muted fragment" x="470" y="106" font-size="22">-&gt; [1, 2, 3]  (birinchi 2 o‘chdi)</text>
+            </g>
+            <g data-tip="pop() - oxirgisini, pop(i) - i-indeksdagini olib tashlaydi va qaytaradi">
+              <text class="t-accent" x="40" y="185" font-size="24">x = [10, 20, 30].pop()</text>
+              <rect class="fn" x="40" y="200" width="90" height="70" rx="12"/><text class="t-head" x="85" y="246" text-anchor="middle" font-size="26">10</text>
+              <rect class="fn" x="140" y="200" width="90" height="70" rx="12"/><text class="t-head" x="185" y="246" text-anchor="middle" font-size="26">20</text>
+              <g class="fragment"><rect class="fg" x="300" y="200" width="90" height="70" rx="12"/><text class="t-head" x="345" y="246" text-anchor="middle" font-size="26">30</text><line class="lg flowing" x1="240" y1="235" x2="290" y2="235"/></g>
+              <text class="t-muted fragment" x="470" y="246" font-size="22">x = 30, qoldi [10, 20]</text>
+            </g>
+            <g data-tip="clear() - hammasini o'chiradi">
+              <text class="t-accent" x="40" y="320" font-size="24">a.clear()</text>
+              <g class="fragment"><rect class="fn" x="200" y="290" width="120" height="60" rx="12"/><text class="t-head" x="260" y="330" text-anchor="middle" font-size="28">[ ]</text><text class="t-muted" x="470" y="330" font-size="22">bo‘sh list</text></g>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 14. KOD (auto-animate) -->
+      <section data-auto-animate>
+        <h2>Metodlar ketma-ket</h2>
+        <pre data-id="lm"><code class="language-python" data-trim>
+a = [1, 2]
+        </code></pre>
+      </section>
+      <section data-auto-animate>
+        <h2>Metodlar ketma-ket</h2>
+        <pre data-id="lm"><code class="language-python" data-trim data-line-numbers="1|2|3|4|5|6">
+a = [1, 2]
+a.append(3)       # [1, 2, 3]
+a.insert(0, 0)    # [0, 1, 2, 3]
+a.remove(2)       # [0, 1, 3]
+x = a.pop()       # x = 3, a = [0, 1]
+a.clear()         # []
+        </code></pre>
+      </section>
+
+      <!-- 15. STEPPER: remove vs pop -->
+      <section>
+        <h2>remove() yoki pop()?</h2>
+        <div class="stepper">
+          <div class="stp on"><div class="card"><div class="icon"><i data-ic="search" data-anim="pulse"></i></div><h3>Qiymatni bilasiz</h3><p>Lekin qayerdaligini bilmaysiz -&gt; <code>remove("Adabiyot")</code></p></div></div>
+          <div class="stp"><div class="card"><div class="icon"><i data-ic="hash"></i></div><h3>Indeksni bilasiz</h3><p>Va olingan qiymat kerak -&gt; <code>odam = navbat.pop(0)</code></p></div></div>
+          <div class="stp"><div class="card"><div class="icon"><i data-ic="trash"></i></div><h3>Hammasini o‘chirish</h3><p><code>clear()</code> -&gt; <code>[]</code></p></div></div>
+        </div>
+      </section>
+
+      <!-- 16. FLIP: metodlar -->
+      <section>
+        <h2>Metod - vazifa. Bosing</h2>
+        <div class="cards three">
+          <div class="flip" style="min-height:160px"><div class="flip-in"><div class="face front"><h3><code>append(v)</code></h3><span class="flip-hint">bosing</span></div><div class="face back"><p>oxiriga qo‘shadi</p></div></div></div>
+          <div class="flip" style="min-height:160px"><div class="flip-in"><div class="face front"><h3><code>insert(i, v)</code></h3><span class="flip-hint">bosing</span></div><div class="face back"><p><code>i</code>-indeksga qo‘shadi</p></div></div></div>
+          <div class="flip" style="min-height:160px"><div class="flip-in"><div class="face front"><h3><code>remove(v)</code></h3><span class="flip-hint">bosing</span></div><div class="face back"><p>qiymat bo‘yicha birinchisini o‘chiradi</p></div></div></div>
+        </div>
+        <div class="cards two mt">
+          <div class="flip" style="min-height:140px"><div class="flip-in"><div class="face front"><h3><code>pop()</code> / <code>pop(i)</code></h3><span class="flip-hint">bosing</span></div><div class="face back"><p>oxirgisini / <code>i</code>-indeksdagini olib tashlaydi</p></div></div></div>
+          <div class="flip" style="min-height:140px"><div class="flip-in"><div class="face front"><h3><code>clear()</code></h3><span class="flip-hint">bosing</span></div><div class="face back"><p>hammasini o‘chiradi</p></div></div></div>
+        </div>
+      </section>
+
+      <!-- 17. MINI-TEST 2 -->
+      <section>
+        <h2>Bashorat qiling</h2>
+        <div class="quiz">
+          <p class="q"><code>a = [1, 2, 2, 3]</code>; <code>a.remove(2)</code>; <code>x = a.pop(0)</code>; <code>print(x, a)</code></p>
+          <div class="opts">
+            <button class="opt" type="button"><code>1 [2, 2, 3]</code></button>
+            <button class="opt" type="button" data-ok><code>1 [2, 3]</code></button>
+            <button class="opt" type="button"><code>3 [1, 2]</code></button>
+            <button class="opt" type="button"><code>2 [1, 3]</code></button>
+          </div>
+          <div class="explain"><code>remove(2)</code> -&gt; <code>[1, 2, 3]</code>; <code>pop(0)</code> 1 ni oladi -&gt; <code>[2, 3]</code>.</div>
+        </div>
+      </section>
+
+      <!-- 18. MINI-LOYIHA -->
+      <section>
+        <h2>Mini-loyiha: talabaning fanlari</h2>
+        <pre><code class="language-python" data-trim data-line-numbers="1-2|3|4|5|6">
+ism = "Ali Valiyev"
+fanlar = ["Matematika", "Fizika", "Informatika"]
+fanlar.append("Ingliz tili")
+fanlar.insert(1, "Adabiyot")
+fanlar.remove("Fizika")
+print(ism, "fanlari:", fanlar, "| jami:", len(fanlar))
+        </code></pre>
+        
+      </section>
+
+      <!-- 19. ODATIY XATOLAR + count -->
+      <section>
+        <h2>Odatiy xatolar</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="triangle-alert" data-anim="wiggle"></i></div><h3><code>a[10]</code></h3><p>Bunday indeks yo‘q -&gt; <code>IndexError</code></p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="search"></i></div><h3><code>remove(99)</code></h3><p>Bunday qiymat yo‘q -&gt; <code>ValueError</code></p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="list"></i></div><h3><code>insert(99)</code></h3><p>2 ta argument kerak: indeks va qiymat</p></div>
+        </div>
+        <div class="stats mt">
+          <div class="stat"><div class="v"><span class="count" data-to="5">0</span></div><div class="l">asosiy metod</div></div>
+        </div>
+      </section>
+
+      <!-- 20. AMALIYOT -->
+      <section>
+        <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+        <div class="task"><span class="level easy">Oson</span><code>["olma", "banan", "gilos"]</code>: 0- va -1-elementni chiqaring, oxiriga <code>"nok"</code> qo‘shing.</div>
+        <div class="task"><span class="level mid">O'rta</span><code>[10, 20, 30]</code> boshiga 5 ni kiriting, oxirgisini <code>pop()</code> qilib chiqaring.</div>
+        <div class="task"><span class="level hard">Qiyin</span>Talabaning fanlari: <code>append</code>, <code>insert</code>, <code>remove</code>, <code>pop</code> - har qadamdan keyin ro‘yxatni chiqaring.</div>
+      </section>
+
+      <!-- 21. XULOSA -->
+      <section>
+        <h2>Xulosa</h2>
+        <div class="cards two">
+          <div class="card"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Bugun o‘rgandik</h3><p>List: tartibli, turli tipli, mutable. Indeks va slicing. <code>append</code>, <code>insert</code>, <code>remove</code>, <code>pop</code>, <code>clear</code>.</p></div>
+          <div class="card"><div class="icon"><i data-ic="book-open"></i></div><h3>Uyga vazifa</h3><p><code>list_mashq.py</code>: filmlar, metodlar zanjiri, talabaning fanlari.</p></div>
+        </div>
+        <p class="fragment mt">Keyingi hafta: <b>tuple, set va dict</b>.</p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

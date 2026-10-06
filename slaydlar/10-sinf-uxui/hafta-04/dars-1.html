@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Prototip va uning turlari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 10-dars: Prototip va ularning turlari (Low-fidelity vs High-fidelity) -->
+
+<!-- 1. SARLAVHA -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Prototip va uning turlari</h1>
+  <p class="muted">Low-fidelity va High-fidelity: g'oyani qurishdan oldin sinab ko'ramiz</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced UX/UI</span><span class="badge">4-hafta · 10-dars</span>
+  
+</section>
+
+<!-- 2. BUGUN NIMANI O'RGANAMIZ -->
+<section>
+  <h2>Bugun nimani o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="pencil-ruler" data-anim="float"></i></div>
+      <h3>Prototip nima</h3>
+      <p>Ta'rif, 5 maqsad va prototiplashning 4 bosqichi</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers" data-anim="pulse"></i></div>
+      <h3>Prototip turlari</h3>
+      <p>Statik va dinamik; qora-oq va rangli (low va high fidelity)</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layout-template" data-anim="draw"></i></div>
+      <h3>Sahifa bloklari</h3>
+      <p>Navigatsiya, axborot, xizmat, dizayner va reklama bloklari</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. BO'LIM 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Prototip nima va nega kerak?</h1>
+  <p>Qurishdan oldin sinab ko'rish</p>
+</section>
+
+<!-- 4. TA'RIF + 3 MISOL -->
+<section>
+  <h2>Prototip: soddalashtirilgan namuna</h2>
+  <div class="quote">
+    Prototip asosiy funksiyalar va foydalanuvchi bilan o'zaro ta'sir qanday bo'lishini vaqt va pul sarflamasdan oldin ko'rsatadi.
+  </div>
+  <div class="cards three mt">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="house" data-anim="float"></i></div>
+      <h3>Arxitektor</h3>
+      <p>Binoning maketini yaratadi</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="plane" data-anim="bounce"></i></div>
+      <h3>Aviatsiya muhandisi</h3>
+      <p>Aerodinamik quvurda modelni sinaydi</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="smartphone" data-anim="pulse"></i></div>
+      <h3>Dizayner</h3>
+      <p>Interfeys prototipini yaratadi</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 5. ILLYUSTRATSIYA 1: MAKET VA QURILISH -->
+<section>
+  <h2>Nega prototip vaqt va pulni tejaydi?</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 380">
+      <rect class="fg" x="30" y="60" width="270" height="170" rx="22"/>
+      <text class="t-head" x="165" y="125" text-anchor="middle" font-size="30">Prototip</text>
+      <text class="t-muted" x="165" y="170" text-anchor="middle" font-size="22">arzon va tez</text>
+      <text class="t-muted" x="165" y="205" text-anchor="middle" font-size="22">o'zgartirish oson</text>
+      <g class="fragment">
+        <line class="lg flowing" x1="310" y1="145" x2="365" y2="145"/>
+        <polygon class="ar-g" points="372,145 355,135 355,155"/>
+        <rect class="fc" x="380" y="60" width="270" height="170" rx="22"/>
+        <text class="t-head" x="515" y="125" text-anchor="middle" font-size="30">Sinov</text>
+        <text class="t-muted" x="515" y="170" text-anchor="middle" font-size="22">xatolar erta</text>
+        <text class="t-muted" x="515" y="205" text-anchor="middle" font-size="22">topiladi</text>
+      </g>
+      <g class="fragment">
+        <line class="lb flowing" x1="660" y1="145" x2="715" y2="145"/>
+        <polygon class="ar-b" points="722,145 705,135 705,155"/>
+        <rect class="fb" x="730" y="60" width="240" height="170" rx="22"/>
+        <text class="t-head" x="850" y="125" text-anchor="middle" font-size="30">Mahsulot</text>
+        <text class="t-muted" x="850" y="170" text-anchor="middle" font-size="22">o'zgartirish</text>
+        <text class="t-muted" x="850" y="205" text-anchor="middle" font-size="22">qimmat</text>
+      </g>
+      <g class="fragment">
+        <rect class="fn" x="130" y="280" width="740" height="70" rx="16"/>
+        <text class="t-accent" x="500" y="324" text-anchor="middle" font-size="26">Karton maketni o'zgartirish oson, qurilgan devorni buzish qimmat</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 6. 5 MAQSAD -->
+<section>
+  <h2>Prototipning 5 ta maqsadi</h2>
+  <ol class="steps-n">
+    <li class="fragment">Dizayn g'oyalarini ishlab chiqish va yaxshilash</li>
+    <li class="fragment">Jamoa ichida umumiy tushuncha yaratish</li>
+    <li class="fragment">Menejer yoki mijozni g'oyalarga ishontirish</li>
+    <li class="fragment">Texnik imkoniyatlarni tekshirish</li>
+    <li class="fragment">Foydalanuvchilar bilan dizaynni sinab ko'rish</li>
+  </ol>
+</section>
+
+<!-- 7. BO'LIM 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Prototiplashning 4 bosqichi</h1>
+  <p>Jarayon va iteratsiya</p>
+</section>
+
+<!-- 8. ILLYUSTRATSIYA 2: 4 BOSQICH -->
+<section>
+  <h2>4 bosqich: g'oyadan sinovgacha</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 400">
+      <g class="fragment" data-tip="Konseptual dizayn: dastlabki g'oya, yondashuv va asosiy tuzilma.">
+        <rect class="fa" x="20" y="60" width="210" height="150" rx="20"/>
+        <text class="t-accent" x="125" y="105" text-anchor="middle" font-size="30">1</text>
+        <text class="t-head" x="125" y="145" text-anchor="middle" font-size="22">Konseptual</text>
+        <text class="t-head" x="125" y="175" text-anchor="middle" font-size="22">dizayn</text>
+      </g>
+      <g class="fragment" data-tip="O'zaro ta'sir dizayni (Interaction Design): ekranlar orasidagi bog'liqlik, o'tishlar, foydalanuvchi yo'li.">
+        <rect class="fc" x="270" y="60" width="210" height="150" rx="20"/>
+        <text class="t-accent" x="375" y="105" text-anchor="middle" font-size="30">2</text>
+        <text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">O'zaro ta'sir</text>
+        <text class="t-head" x="375" y="175" text-anchor="middle" font-size="22">dizayni</text>
+      </g>
+      <g class="fragment" data-tip="Ekran dizayni: har bir sahifaning ko'rinishi, elementlar joylashuvi, interfeys shakli.">
+        <rect class="fb" x="520" y="60" width="210" height="150" rx="20"/>
+        <text class="t-accent" x="625" y="105" text-anchor="middle" font-size="30">3</text>
+        <text class="t-head" x="625" y="145" text-anchor="middle" font-size="22">Ekran</text>
+        <text class="t-head" x="625" y="175" text-anchor="middle" font-size="22">dizayni</text>
+      </g>
+      <g class="fragment" data-tip="Sinovdan o'tkazish: foydalanuvchilar bilan tekshirish, evristik tahlil, yangi iteratsiya.">
+        <rect class="fg" x="770" y="60" width="210" height="150" rx="20"/>
+        <text class="t-accent" x="875" y="105" text-anchor="middle" font-size="30">4</text>
+        <text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">Sinovdan</text>
+        <text class="t-head" x="875" y="175" text-anchor="middle" font-size="22">o'tkazish</text>
+      </g>
+      <g class="fragment">
+        <path class="ln flowing" d="M875 225 L875 330 L125 330 L125 225"/>
+        <polygon class="ar-a" points="125,215 115,235 135,235"/>
+        <text class="t-accent" x="500" y="318" text-anchor="middle" font-size="24">Iteratsiya: sinovdan keyin yaxshilaymiz</text>
+      </g>
+      <text class="t-muted" x="500" y="385" text-anchor="middle" font-size="22">Bosqichni bosing yoki ustiga boring</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 9. VERTIKAL: ITERATSIYA -->
+<section>
+  <section>
+    <h2>Birinchi prototip noto'g'ri chiqsa-chi?</h2>
+    <div class="callout tip"><i data-ic="lightbulb" data-anim="pulse"></i>Hujjat: bu tabiiy. Muhim: oddiy variantni tez yaratib, sinash.</div>
+    <p class="muted mt">Chuqurroq ko'rish uchun pastga</p>
+  </section>
+  <section>
+    <h2>Iteratsiya sikli</h2>
+    <div class="flow">
+      <div class="step"><span class="icon"><i data-ic="pencil" data-anim="wiggle"></i></span>Oddiy variant</div>
+      <div class="arrow"><i data-ic="arrow-right"></i></div>
+      <div class="step"><span class="icon"><i data-ic="users"></i></span>Sinov</div>
+      <div class="arrow"><i data-ic="arrow-right"></i></div>
+      <div class="step"><span class="icon"><i data-ic="refresh-cw" data-anim="spin"></i></span>Yaxshilash</div>
+    </div>
+  </section>
+</section>
+
+<!-- 10. BO'LIM 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Prototip turlari</h1>
+  <p>Statik va dinamik; qora-oq va rangli</p>
+</section>
+
+<!-- 11. ILLYUSTRATSIYA 3: TURLAR DARAXTI -->
+<section>
+  <h2>Prototip turlari xaritasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 420">
+      <rect class="fn" x="380" y="20" width="240" height="70" rx="16"/>
+      <text class="t-head" x="500" y="65" text-anchor="middle" font-size="28">Prototiplar</text>
+      <g class="fragment">
+        <path class="ln" d="M440 90 L440 125 L200 125 L200 150"/>
+        <rect class="fa" x="30" y="150" width="340" height="80" rx="16"/>
+        <text class="t-head" x="200" y="200" text-anchor="middle" font-size="26">Statik (rasm)</text>
+      </g>
+      <g class="fragment">
+        <path class="ln" d="M560 90 L560 125 L800 125 L800 150"/>
+        <rect class="fb" x="630" y="150" width="340" height="80" rx="16"/>
+        <text class="t-head" x="800" y="200" text-anchor="middle" font-size="26">Dinamik (interaktiv)</text>
+      </g>
+      <g class="fragment" data-tip="Qog'oz prototipi: ekranlar qo'lda chiziladi, o'zgartirish juda oson.">
+        <rect class="fn" x="10" y="280" width="190" height="60" rx="12"/>
+        <text class="t-head" x="105" y="318" text-anchor="middle" font-size="22">Qog'oz</text>
+      </g>
+      <g class="fragment" data-tip="Wireframe: interfeysning eng soddalashtirilgan konturli skeleti.">
+        <rect class="fn" x="210" y="280" width="190" height="60" rx="12"/>
+        <text class="t-head" x="305" y="318" text-anchor="middle" font-size="22">Wireframe</text>
+      </g>
+      <g class="fragment" data-tip="Grafik muharrirlardagi statik rasmlar: Figma, Photoshop, Illustrator.">
+        <rect class="fn" x="110" y="350" width="190" height="60" rx="12"/>
+        <text class="t-head" x="205" y="388" text-anchor="middle" font-size="22">Grafik rasm</text>
+      </g>
+      <g class="fragment" data-tip="Dinamik prototip: har ekran alohida slayd, tugma bosilganda o'tishlar taqlid qilinadi.">
+        <rect class="fn" x="630" y="280" width="340" height="60" rx="12"/>
+        <text class="t-head" x="800" y="318" text-anchor="middle" font-size="22">Tugma bosilsa ekran almashadi</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 12. STATIK VS DINAMIK -->
+<section>
+  <h2>Statik va dinamik prototip</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>Statik</h3>
+      Rasm yoki bosma. Qog'oz prototipi: o'zgartirish oson, e'tibor mazmunga, arzon.
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>Dinamik</h3>
+      Ekranlar orasida o'tish taqlid qilinadi. Murakkab o'zaro ta'sirni sinaydi, lekin xatoni tuzatish mashaqqatliroq.
+    </div>
+  </div>
+</section>
+
+<!-- 13. SWAP: LOW VS HIGH -->
+<section>
+  <h2>Low-fidelity va High-fidelity</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">Qora-oq wireframe</button><button type="button">Rangli prototip</button></div>
+    <div class="swap-p">
+      <div class="card">
+        <h3>Past detallashgan (low-fidelity)</h3>
+        <ul>
+          <li>Sahifa sxemalariga asoslangan</li>
+          <li>Eng tez va arzon, o'zgartirish oson</li>
+          <li>Fokus: tuzilma, mazmun, mantiq</li>
+        </ul>
+      </div>
+    </div>
+    <div class="swap-p">
+      <div class="card accent">
+        <h3>Yuqori detallashgan (high-fidelity)</h3>
+        <ul>
+          <li>Mijoz qabul qilgan vizual dizaynga asoslangan</li>
+          <li>Yakuniy natijaga o'xshash, ko'pincha interaktiv</li>
+          <li>Mijoz va ishlab chiquvchi bilan muloqotni osonlashtiradi</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14. AUTO-ANIMATE: WIREFRAME -->
+<section data-auto-animate>
+  <h2>Wireframe: faqat tuzilma</h2>
+  <div class="browser" data-id="maket" style="width:560px">
+    <div class="bar"><i></i><i></i><i></i><span>maktab.uz</span></div>
+    <div class="page"><h3>Maktab sayti</h3><p>Menyu | Qidiruv</p></div>
+  </div>
+</section>
+<section data-auto-animate>
+  <h2>Rangli prototip: yakuniyga yaqin</h2>
+  <div class="browser" data-id="maket" style="width:1000px">
+    <div class="bar"><i></i><i></i><i></i><span>maktab.uz</span></div>
+    <div class="page"><h3>Maktab sayti: qabul ochiq</h3><p>Bosh sahifa | Qabul | Yangiliklar | Aloqa</p><p>Rang, shrift va rasm bilan to'liq maket</p></div>
+  </div>
+</section>
+
+<!-- 15. MINI-TEST -->
+<section>
+  <h2>Bilimingizni sinang</h2>
+  <div class="quiz">
+    <p class="q">Qora-oq wireframe qaysi yondashuvga kiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Yuqori detallashgan, tayyor rangli maket</button>
+      <button class="opt" type="button" data-ok>Past detallashgan (low-fidelity)</button>
+      <button class="opt" type="button">Faqat dinamik prototip</button>
+      <button class="opt" type="button">Dasturlash bosqichi</button>
+    </div>
+    <div class="explain">To'g'ri: sahifa sxemalariga asoslangan qora-oq prototip past detallashgan yondashuv hisoblanadi.</div>
+  </div>
+</section>
+
+<!-- 16. BO'LIM 4 -->
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Sahifa tartibining qurilish bloklari</h1>
+  <p>Navigatsiya, axborot, xizmat, dizayner, reklama</p>
+</section>
+
+<!-- 17. ILLYUSTRATSIYA 4: SAHIFA BLOKLARI -->
+<section>
+  <h2>Sahifa 5 xil blokdan quriladi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 440">
+      <rect class="fn" x="40" y="10" width="920" height="420" rx="16"/>
+      <g class="fragment" data-tip="Navigatsiya: logotip, qidiruv, menyu, breadcrumbs, podval.">
+        <rect class="fa" x="60" y="25" width="880" height="75" rx="10"/>
+        <text class="t-head" x="500" y="72" text-anchor="middle" font-size="26">Navigatsiya: logo | menyu | qidiruv</text>
+      </g>
+      <g class="fragment" data-tip="Axborot: mundarija, joriy ma'lumotlar, Bo'lim (yangilik), galereya.">
+        <rect class="fc" x="60" y="115" width="520" height="150" rx="10"/>
+        <text class="t-head" x="320" y="198" text-anchor="middle" font-size="26">Axborot (yangiliklar)</text>
+      </g>
+      <g class="fragment" data-tip="Xizmat: tilni tanlash, bo'sh blok, bosma versiya.">
+        <rect class="fg" x="600" y="115" width="340" height="70" rx="10"/>
+        <text class="t-head" x="770" y="160" text-anchor="middle" font-size="26">Xizmat (til)</text>
+      </g>
+      <g class="fragment" data-tip="Dizayner bloki: bezash uchun rasm, kontentning asosiy elementi emas.">
+        <rect class="fb" x="600" y="195" width="340" height="70" rx="10"/>
+        <text class="t-head" x="770" y="240" text-anchor="middle" font-size="26">Dizayner (bezak)</text>
+      </g>
+      <g class="fragment" data-tip="Reklama: Nom va shior, Mualliflik huquqi.">
+        <rect class="fa" x="60" y="285" width="880" height="55" rx="10"/>
+        <text class="t-head" x="500" y="322" text-anchor="middle" font-size="26">Reklama: nom va shior</text>
+      </g>
+      <g class="fragment" data-tip="Podval (footer): matnli havolalar, tez yuklanishi kerak.">
+        <rect class="fa" x="60" y="355" width="880" height="60" rx="10"/>
+        <text class="t-head" x="500" y="394" text-anchor="middle" font-size="26">Podval: havolalar | mualliflik huquqi</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 18. NAVIGATSIYA: 3 MUAMMO (STEPPER) -->
+<section>
+  <h2>Navigatsiya hal qiladigan 3 muammo</h2>
+  <div class="stepper">
+    <div class="stp on">
+      <div class="card">
+        <div class="icon"><i data-ic="route" data-anim="float"></i></div>
+        <h3>1. Yo'l</h3>
+        <p>Sahifaning bir nuqtasidan boshqasiga o'tish yo'li. Hamma sahifani hammasiga bog'lab bo'lmaydi: elementlar tanlanadi, havolalar ishlashi shart.</p>
+      </div>
+    </div>
+    <div class="stp">
+      <div class="card">
+        <div class="icon"><i data-ic="layers" data-anim="pulse"></i></div>
+        <h3>2. Elementlar orasidagi munosabat</h3>
+        <p>Qaysi element muhimroq, ular bir-biridan nimasi bilan farq qiladi.</p>
+      </div>
+    </div>
+    <div class="stp">
+      <div class="card">
+        <div class="icon"><i data-ic="map-pin" data-anim="bounce"></i></div>
+        <h3>3. Joriy sahifaga munosabat</h3>
+        <p>Element mazmuni va foydalanuvchi ko'rib turgan sahifa orasidagi bog'liqlik.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 19. NAVIGATSIYA BLOKLARI -->
+<section>
+  <h2>Navigatsiya bloklari</h2>
+  <div class="chips">
+    <span class="chip">Asosiy sahifaga (logo)</span>
+    <span class="chip">Qidiruv</span>
+    <span class="chip">Gorizontal menyu</span>
+    <span class="chip">Vertikal menyu</span>
+    <span class="chip">Ikkilamchi navigatsiya</span>
+    <span class="chip">Tanlov navigatsiyasi</span>
+    <span class="chip">Avtorizatsiya</span>
+    <span class="chip">Podval</span>
+    <span class="chip t">Breadcrumbs</span>
+  </div>
+  <div class="callout tip mt"><i data-ic="lightbulb"></i>Logotip odatda yuqori chapda, qidiruv yuqori o'ngda; qidiruvni yashirish tavsiya etilmaydi.</div>
+</section>
+
+<!-- 20. FLIP -->
+<section>
+  <h2>Qaysi blok?</h2>
+  <p class="muted">Kartani bosing</p>
+  <div class="cards three mt">
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="languages"></i></div><h3>Til tanlash</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Xizmat bloki</p></div>
+    </div></div>
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="newspaper"></i></div><h3>Yangiliklar</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Axborot bloki: «Bo'lim» (nomi, mazmuni, to'liq variantga havola)</p></div>
+    </div></div>
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="megaphone"></i></div><h3>Nom va shior</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Reklama bloki</p></div>
+    </div></div>
+  </div>
+</section>
+
+<!-- 21. AMALIYOT -->
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>15 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Statik yoki dinamik: qo'lda chizilgan ekranlar; tugmalar bosilganda almashadigan Figma namoyishi.</div>
+  <div class="task"><span class="level mid">O'rta</span>Blok turini aniqlang: logotip havolasi, til tanlash, breadcrumbs, mualliflik huquqi.</div>
+  <div class="task"><span class="level hard">Qiyin</span>A4 da maktab sayti bosh sahifasining qog'oz prototipi: kamida 7 blok. Sherigingiz «Qabul qoidalarini topish» vazifasini sinaydi.</div>
+</section>
+
+<!-- 22. ODATIY XATOLAR -->
+<section>
+  <h2>Odatiy xatolar</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-alert"></i></div>
+      <h3>Prototip = tayyor sayt</h3>
+      <p>Prototip soddalashtirilgan namuna, tayyor mahsulot emas.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-alert"></i></div>
+      <h3>Birinchi variantni mukammal qilish</h3>
+      <p>Avval oddiy variant, sinov, keyin takomillashtirish.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-alert"></i></div>
+      <h3>Wireframega rang qo'shish</h3>
+      <p>Rang va rasm e'tiborni mazmundan chalg'itadi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-alert"></i></div>
+      <h3>Qidiruvni yashirish</h3>
+      <p>Chiroyli bo'lsin deb qidiruvni yashirish tavsiya etilmaydi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 23. XULOSA -->
+<section>
+  <h2>Xulosa</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="5" data-suf="">0</span></div><div class="l">maqsad</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="4" data-suf="">0</span></div><div class="l">bosqich</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="3" data-suf="">0</span></div><div class="l">navigatsiya muammosi</div></div>
+  </div>
+  <div class="cards two mt">
+    <div class="card">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Bugun o'rgandik</h3>
+      <p>Prototip, turlari, low va high fidelity, sahifa bloklari</p>
+    </div>
+    <div class="card accent">
+      <div class="icon"><i data-ic="sparkles"></i></div>
+      <h3>Keyingi dars</h3>
+      <p><b>UX flow diagrammalari</b> va axborot arxitekturasi</p>
+    </div>
+  </div>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>6-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>6-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">2-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">R8 yoqilganda Release ilova JSON parsing paytida nega qulashi mumkin?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>R8 data class maydonlarini ishlatilmagan deb o'chiradi yoki nomini o'zgartiradi, Gson ularni topa olmaydi</button>
+      <button class="opt" type="button">Internet uzilgani uchun</button>
+      <button class="opt" type="button">Kotlin versiyasi eski</button>
+      <button class="opt" type="button">Manifest xato</button>
+    </div>
+    <div class="explain">Refleksiya maydonlarga matnli nomlari orqali kiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Refleksiya (Reflection) nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ekran akslantirish</button>
+      <button class="opt" type="button" data-ok>Obyekt maydonlariga kod orqali emas, matnli nomlari orqali kirish texnologiyasi</button>
+      <button class="opt" type="button">Rasm qayta ishlash</button>
+      <button class="opt" type="button">Gradle plagini</button>
+    </div>
+    <div class="explain">Gson, Moshi, Retrofit, Room shunday ishlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>-keep class com.xorazmiy.app.data.model.** { *; }</code> qoidasi nimani qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Paketni o'chiradi</button>
+      <button class="opt" type="button">Faqat nomlarni qisqartiradi</button>
+      <button class="opt" type="button" data-ok>Paketdagi barcha klasslar va a'zolarini o'zgarishsiz saqlaydi</button>
+      <button class="opt" type="button">Ogohlantirishlarni yashiradi</button>
+    </div>
+    <div class="explain"><code>-keep</code> klass nomini ham, a'zolarini ham saqlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>-keepclassmembers</code> qoidasining farqi nimada?</p>
+    <div class="opts">
+      <button class="opt" type="button">Klassni to'liq o'chiradi</button>
+      <button class="opt" type="button">Faqat metodlarni chalkashtiradi</button>
+      <button class="opt" type="button">Ogohlantirishni bostiradi</button>
+      <button class="opt" type="button" data-ok>Klass nomi obfuskatsiya qilinishi mumkin, lekin belgilangan a'zolari saqlanadi</button>
+    </div>
+    <div class="explain">Masalan, <code>@SerializedName</code> bilan belgilangan maydonlar saqlanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>-keepattributes Signature</code> nima uchun kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Generic turlar va annotatsiya kabi metadata saqlanishi uchun</button>
+      <button class="opt" type="button">Rasmlarni saqlash uchun</button>
+      <button class="opt" type="button">APK ni imzolash uchun</button>
+      <button class="opt" type="button">Loglarni yashirish uchun</button>
+    </div>
+    <div class="explain">Kutubxonalar generic turlarni va annotatsiyalarni o'qiydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>-dontwarn okio.**</code> nima qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Okio ni o'chiradi</button>
+      <button class="opt" type="button" data-ok>Tashqi kutubxonalardagi ahamiyatsiz ogohlantirishlarni bostiradi</button>
+      <button class="opt" type="button">Okio ni saqlab qoladi</button>
+      <button class="opt" type="button">Xatolarni tuzatadi</button>
+    </div>
+    <div class="explain">Faqat ogohlantirishni yashiradi; kod o'zgarmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>@Keep</code> annotatsiyasining afzalligi nimada?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ilovani tezlashtiradi</button>
+      <button class="opt" type="button">Hajmni kamaytiradi</button>
+      <button class="opt" type="button" data-ok>Qoida kodning o'zida yoziladi, klass nomi o'zgarsa ProGuard faylini yangilash shart emas</button>
+      <button class="opt" type="button">Faqat Java'da ishlaydi</button>
+    </div>
+    <div class="explain">Refaktoringda xato ehtimoli kamayadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>mapping.txt</code> fayli qayerda joylashadi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>app/src/main/mapping.txt</code></button>
+      <button class="opt" type="button"><code>gradle/mapping.txt</code></button>
+      <button class="opt" type="button"><code>res/raw/mapping.txt</code></button>
+      <button class="opt" type="button" data-ok><code>app/build/outputs/mapping/release/mapping.txt</code></button>
+    </div>
+    <div class="explain">Fayl R8 yaratgan asl va chalkash nomlar xaritasini saqlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Google Play'ga chiqarilgan versiyaning <code>mapping.txt</code> yo'qolsa nima bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Release foydalanuvchilaridagi crash sababini aniqlab bo'lmaydi</button>
+      <button class="opt" type="button">Ilova ishlamay qoladi</button>
+      <button class="opt" type="button">Play uni qayta yaratadi</button>
+      <button class="opt" type="button">Hech narsa</button>
+    </div>
+    <div class="explain">Retrace stacktrace'ni asl nomlarga qaytarish uchun shu faylni talab qiladi, shuning uchun har versiyaniki arxivlanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Kodda <code>getIdentifier("avatar_" + id, ...)</code> bilan rasm olinadi va <code>shrinkResources true</code>. Rasmlarni saqlash uchun nima qilinadi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>minifyEnabled false</code> qilinadi</button>
+      <button class="opt" type="button" data-ok><code>res/raw/keep.xml</code> da <code>tools:keep="@drawable/avatar_*"</code> yoziladi</button>
+      <button class="opt" type="button"><code>@Keep</code> rasmga qo'yiladi</button>
+      <button class="opt" type="button">Rasmlar <code>build/</code> ga ko'chiriladi</button>
+    </div>
+    <div class="explain">R8 dinamik chaqirilgan resursni ishlatilmagan deb o'chirmasligi uchun pattern ko'rsatiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: Reflection muammosi, <code>-keep</code> qoidalari, <code>@Keep</code>, <code>mapping.txt</code>, <code>keep.xml</code>.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

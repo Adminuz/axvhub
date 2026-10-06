@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Test: 15-dars. Data Mart</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Test: 15-dars. Data Mart</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">BI &amp; ML</span><span class="badge">5-hafta · 15-dars</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">Data Mart nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Butun ombor zaxirasi</button>
+      <button class="opt" type="button">Bitta jadval ustuni</button>
+      <button class="opt" type="button" data-ok>Soha uchun mo'ljallangan analitik qism</button>
+      <button class="opt" type="button">Dasturlash tili</button>
+    </div>
+    <div class="explain">Mart — mavzuga yo'naltirilgan qism.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">DWH va Data Mart farqi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Farq yo'q</button>
+      <button class="opt" type="button" data-ok>DWH butun tashkilot, mart bitta soha uchun</button>
+      <button class="opt" type="button">Mart kattaroq</button>
+      <button class="opt" type="button">DWH faqat bitta jadval</button>
+    </div>
+    <div class="explain">Mart — DWH ning kichik, mavzuli qismi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>VIEW</code> nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Jadval nusxasi</button>
+      <button class="opt" type="button" data-ok>Saqlangan <code>SELECT</code> so'rovi</button>
+      <button class="opt" type="button">Indeks</button>
+      <button class="opt" type="button">Trigger</button>
+    </div>
+    <div class="explain">Ma'lumot saqlamaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">VIEW ning afzalligi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Murakkab JOIN larni yashiradi</button>
+      <button class="opt" type="button">Tezlikni 100 baravar oshiradi</button>
+      <button class="opt" type="button">Joy egallaydi</button>
+      <button class="opt" type="button">Ma'lumotni o'chiradi</button>
+    </div>
+    <div class="explain">Tahlilchi oddiy <code>SELECT</code> yozadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Tez o'qiladigan, lekin yangilash kerak mart turi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>VIEW</code></button>
+      <button class="opt" type="button" data-ok><code>CREATE TABLE ... AS SELECT</code></button>
+      <button class="opt" type="button"><code>DROP</code></button>
+      <button class="opt" type="button"><code>ALTER</code></button>
+    </div>
+    <div class="explain">Jadval mart nusxa saqlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Conformed dimension nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat bitta martga tegishli</button>
+      <button class="opt" type="button">Fakt jadval</button>
+      <button class="opt" type="button" data-ok>Martlar o'rtasida umumiy dimension</button>
+      <button class="opt" type="button">Indeks</button>
+    </div>
+    <div class="explain">Martlar natijalari mos tushishini ta'minlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>mart_yuklama</code> da nisbat qanday hisoblanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>oquvchilar + oqituvchilar</code></button>
+      <button class="opt" type="button"><code>oquvchilar - oqituvchilar</code></button>
+      <button class="opt" type="button"><code>oquvchilar * oqituvchilar</code></button>
+      <button class="opt" type="button" data-ok><code>1.0 * oquvchilar / oqituvchilar</code></button>
+    </div>
+    <div class="explain"><code>1.0 *</code> butun bo'linmadan saqlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">2024-yilda qaysi hudud «Yuqori» toifada?</p>
+    <div class="opts">
+      <button class="opt" type="button">Samarqand (12.92)</button>
+      <button class="opt" type="button">Buxoro (13.05)</button>
+      <button class="opt" type="button">Andijon (13.58)</button>
+      <button class="opt" type="button" data-ok>Toshkent (15.16)</button>
+    </div>
+    <div class="explain"><code>&gt; 14</code> — Yuqori.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Mart hujjatida nima bo'lmaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Nomi</button>
+      <button class="opt" type="button">Maqsadi</button>
+      <button class="opt" type="button">Manba</button>
+      <button class="opt" type="button" data-ok>Foydalanuvchi parollari</button>
+    </div>
+    <div class="explain">Parollar hujjatda saqlanmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Mart nomi uchun odatiy prefiks?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>tmp_</code></button>
+      <button class="opt" type="button"><code>x_</code></button>
+      <button class="opt" type="button"><code>del_</code></button>
+      <button class="opt" type="button" data-ok><code>mart_</code></button>
+    </div>
+    <div class="explain">Masalan, <code>mart_oquvchilar</code>.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: 15-dars konspekti va slaydlari</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

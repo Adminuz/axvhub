@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>2-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>2-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">BI &amp; ML</span><span class="badge">3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">ERD (Entity-Relationship Diagram) nimani aks ettiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Obyektlar, ularning xususiyatlari va orasidagi bog'lanishlarni</button>
+      <button class="opt" type="button">Faqat SQL so'rovlar tezligini</button>
+      <button class="opt" type="button">Faqat fayl hajmini</button>
+      <button class="opt" type="button">Python kodining xatolarini</button>
+    </div>
+    <div class="explain">ERD - bazaning ko'rgazmali chizmasi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">ERD dagi "Entity" nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ustunning ma'lumot turi</button>
+      <button class="opt" type="button" data-ok>Ma'lumot to'planadigan aniq narsa (masalan, Maktab, O'quvchi)</button>
+      <button class="opt" type="button">Jadvaldagi bitta qiymat</button>
+      <button class="opt" type="button">Foydalanuvchi paroli</button>
+    </div>
+    <div class="explain">Entity to'rtburchak bilan belgilanadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Dasturiy injiniringdagi asosiy qoida qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Avval kod yoz, keyin loyihala</button>
+      <button class="opt" type="button">Chizma chizmasdan darhol kod yoz</button>
+      <button class="opt" type="button" data-ok>Avval loyihala (ERD), keyin kod yoz (CREATE TABLE)</button>
+      <button class="opt" type="button">Faqat jadval nomi yetarli</button>
+    </div>
+    <div class="explain">Chizmasiz boshlangan arxitekturani keyin qayta qurish juda qimmatga tushadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Bitta viloyatda ko'p maktab, har bir maktab bitta viloyatda. Bu qaysi kardinallik?</p>
+    <div class="opts">
+      <button class="opt" type="button">1:1</button>
+      <button class="opt" type="button">M:N</button>
+      <button class="opt" type="button">N:0</button>
+      <button class="opt" type="button" data-ok>1:N</button>
+    </div>
+    <div class="explain">Eng ko'p ishlatiladigan relyatsion model.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">M:N munosabatni relyatsion bazada qanday yechish kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Oraliq (Junction) jadval orqali ikkita 1:N ga ajratish</button>
+      <button class="opt" type="button">Ustunga bir nechta ID ni massiv qilib yozish</button>
+      <button class="opt" type="button">Ikkala jadvalni birlashtirish</button>
+      <button class="opt" type="button">M:N ni CSV ga o'tkazish</button>
+    </div>
+    <div class="explain">Junction jadval ikki FK ga ega bo'lib, M:N ni ikki 1:N ga aylantiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>oquvchi_togarak</code> oraliq jadvalida qaysi ikki FK bor?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>maktab_id</code> va <code>hudud_id</code></button>
+      <button class="opt" type="button" data-ok><code>oquvchi_id</code> va <code>togarak_id</code></button>
+      <button class="opt" type="button"><code>kpi_id</code> va <code>yil</code></button>
+      <button class="opt" type="button">Faqat <code>togarak_id</code></button>
+    </div>
+    <div class="explain">Oquvchilar va togaraklar jadvalini bog'lovchi ikki FK.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q"><code>yillik_kpi</code> jadvalida <code>UNIQUE (hudud_id, yil)</code> nima uchun qo'yilgan?</p>
+    <div class="opts">
+      <button class="opt" type="button">Yillar tartibda bo'lishi uchun</button>
+      <button class="opt" type="button">Hududlar sonini cheklash uchun</button>
+      <button class="opt" type="button" data-ok>Bir hududning bir yildagi statistikasi ikki marta kiritilmasligi uchun</button>
+      <button class="opt" type="button">FK ni o'chirish uchun</button>
+    </div>
+    <div class="explain">Bu duplikat yozuvlarning oldini oladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q">Chen notatsiyasida obyektlar qanday chiziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat doira</button>
+      <button class="opt" type="button">Qarg'a oyog'i belgisi bilan</button>
+      <button class="opt" type="button">Faqat matn ro'yxati</button>
+      <button class="opt" type="button" data-ok>To'rtburchak (atribut oval, munosabat romb)</button>
+    </div>
+    <div class="explain">Chen modelida entity - to'rtburchak, atribut - oval, relationship - romb.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q"><code>oquvchilar (oquvchi_id, ism, maktab_raqami, hudud_nomi)</code> bitta jadvali nima uchun yomon?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Maktab va hudud ma'lumotlari takrorlanadi (redundancy), update anomaly kelib chiqadi</button>
+      <button class="opt" type="button">Chunki unda PK bor</button>
+      <button class="opt" type="button">Chunki ustunlari kam</button>
+      <button class="opt" type="button">Chunki matn ustunlari bor</button>
+    </div>
+    <div class="explain">To'g'ri model: <code>hududlar</code>, <code>maktablar</code>, <code>oquvchilar</code> alohida jadvallarga ajratiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">Kutubxonada kitobxon va kitob M:N. <code>ijara_tarixi</code> jadvaliga qaysi ustunlar FK bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>ijara_id</code> va <code>olingan_sana</code></button>
+      <button class="opt" type="button" data-ok><code>kitobxon_id</code> va <code>kitob_id</code></button>
+      <button class="opt" type="button">Faqat <code>topshirilgan_sana</code></button>
+      <button class="opt" type="button">Hech qaysi ustun</button>
+    </div>
+    <div class="explain">Oraliq jadval ikkala jadval PK'iga havola qiladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: ERD, kardinallik, Junction table, Maktab tahliliy platformasi modeli.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

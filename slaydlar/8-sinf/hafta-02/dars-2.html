@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Jadval teglari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 5-dars (2-hafta, 2-dars): Jadval teglari. Faqat slaydlar. -->
+
+<!-- 1. SARLAVHA -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Jadval teglari</h1>
+  <p class="muted">Qator, ustun va katakchalar: ma'lumotni tartibga solamiz</p>
+  <span class="badge">8-sinf</span><span class="badge">Web Full-stack</span><span class="badge">2-hafta · 5-dars</span>
+  
+</section>
+
+<!-- 2. REJA -->
+<section>
+  <h2>Bugungi yo'l xaritasi <span class="timer"><i data-ic="timer"></i>80 daqiqa</span></h2>
+  <div class="timeline">
+    <div class="tl fragment"><b>0–10.</b> Takrorlash: rasmlar, <code>alt</code>, ro'yxatlar</div>
+    <div class="tl fragment"><b>10–30.</b> Jadval: <code>table</code>, <code>tr</code>, <code>td</code>, <code>th</code>, <code>caption</code></div>
+    <div class="tl fragment"><b>30–40.</b> <code>thead</code>, <code>tbody</code>, <code>tfoot</code></div>
+    <div class="tl fragment"><b>45–55.</b> <code>colspan</code> va <code>rowspan</code></div>
+    <div class="tl fragment"><b>55–80.</b> Amaliyot, nazorat, xulosa</div>
+  </div>
+  
+</section>
+
+<!-- 3. TAKRORLASH: flip -->
+<section>
+  <h2>Takrorlash: 4-dars</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="eye-off" data-anim="blink"></i></div><h3>Rasm yuklanmay qolsa?</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Yordamga <code>alt</code> keladi: rasm o'rnida matn chiqadi.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="list-tree" data-anim="float"></i></div><h3>Ichma-ich ro'yxat qoidasi?</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Ichki ro'yxat <code>&lt;li&gt;</code> ichiga kiradi.</p></div>
+    </div></div>
+  </div>
+  
+</section>
+
+<!-- 4. BO'LIM 01 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Jadval asoslari</h1>
+  <p><code>table</code>, <code>tr</code>, <code>td</code>, <code>th</code>, <code>caption</code></p>
+</section>
+
+<!-- 5. Jadval hayotda -->
+<section>
+  <h2>Jadval hayotda qayerda?</h2>
+  <div class="cards four">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="calendar-days" data-anim="float"></i></div><h3>Dars jadvali</h3><p>Kun va dars kesishmasi</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="trophy" data-anim="bounce"></i></div><h3>Turnir</h3><p>Futbol chempionati jadvali</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="shopping-cart" data-anim="wiggle"></i></div><h3>Narxlar</h3><p>Internet-do'kon tovarlari</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="receipt-text" data-anim="pulse"></i></div><h3>Xarid cheki</h3><p>Mahsulot, soni, jami</p></div>
+  </div>
+  <p class="mt">Jadval: ma'lumotni <em>qator</em> va <em>ustun</em> kesishmasida tartibli ko'rsatish vositasi.</p>
+  
+</section>
+
+<!-- 6. SVG: jadval anatomiyasi -->
+<section>
+  <h2>Jadvalning anatomiyasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <rect class="la" x="30" y="45" width="490" height="255" rx="14" stroke-dasharray="10 8"/>
+      <g data-tip="th: sarlavha katakchasi. Matn qalin va o'rtada turadi."><rect class="fb" x="40" y="60" width="150" height="70" rx="10"/><text class="t-head" x="115" y="105" text-anchor="middle" font-size="24">Kun</text></g>
+      <g data-tip="th: sarlavha katakchasi. Matn qalin va o'rtada turadi."><rect class="fb" x="200" y="60" width="150" height="70" rx="10"/><text class="t-head" x="275" y="105" text-anchor="middle" font-size="24">Harorat</text></g>
+      <g data-tip="th: sarlavha katakchasi. Matn qalin va o'rtada turadi."><rect class="fb" x="360" y="60" width="150" height="70" rx="10"/><text class="t-head" x="435" y="105" text-anchor="middle" font-size="24">Havo</text></g>
+      <g data-tip="td: oddiy ma'lumot katakchasi."><rect class="fa" x="40" y="140" width="150" height="70" rx="10"/><text x="115" y="185" text-anchor="middle" font-size="24">Dushanba</text></g>
+      <g data-tip="td: oddiy ma'lumot katakchasi."><rect class="fa" x="200" y="140" width="150" height="70" rx="10"/><text x="275" y="185" text-anchor="middle" font-size="24">+22</text></g>
+      <g data-tip="td: oddiy ma'lumot katakchasi."><rect class="fa" x="360" y="140" width="150" height="70" rx="10"/><text x="435" y="185" text-anchor="middle" font-size="24">Quyoshli</text></g>
+      <g data-tip="td: oddiy ma'lumot katakchasi."><rect class="fa" x="40" y="220" width="150" height="70" rx="10"/><text x="115" y="265" text-anchor="middle" font-size="24">Seshanba</text></g>
+      <g data-tip="td: oddiy ma'lumot katakchasi."><rect class="fa" x="200" y="220" width="150" height="70" rx="10"/><text x="275" y="265" text-anchor="middle" font-size="24">+25</text></g>
+      <g data-tip="td: oddiy ma'lumot katakchasi."><rect class="fa" x="360" y="220" width="150" height="70" rx="10"/><text x="435" y="265" text-anchor="middle" font-size="24">Bulutli</text></g>
+      <g class="fragment"><rect class="fn" x="580" y="45" width="380" height="55" rx="12"/><text class="t-head" x="770" y="82" text-anchor="middle" font-size="24">&lt;table&gt; butun jadval</text></g>
+      <g class="fragment"><rect class="fc" x="580" y="115" width="380" height="55" rx="12"/><text class="t-head" x="770" y="152" text-anchor="middle" font-size="24">&lt;tr&gt; bitta qator</text></g>
+      <g class="fragment"><rect class="fb" x="580" y="185" width="380" height="55" rx="12"/><text class="t-head" x="770" y="222" text-anchor="middle" font-size="24">&lt;th&gt; sarlavha katak</text></g>
+      <g class="fragment"><rect class="fa" x="580" y="255" width="380" height="55" rx="12"/><text class="t-head" x="770" y="292" text-anchor="middle" font-size="24">&lt;td&gt; ma'lumot katak</text></g>
+    </svg>
+  </div>
+  <p class="small">Katakchalar ustiga olib boring yoki bosing.</p>
+  
+</section>
+
+<!-- 7. Beshta teg -->
+<section>
+  <h2>Besh asosiy teg</h2>
+  <ol class="steps-n">
+    <li class="fragment"><code>&lt;table&gt;</code> jadval konteyneri</li>
+    <li class="fragment"><code>&lt;tr&gt;</code> table row: gorizontal qator</li>
+    <li class="fragment"><code>&lt;td&gt;</code> table data: oddiy katakcha</li>
+    <li class="fragment"><code>&lt;th&gt;</code> table header: qalin, o'rtada</li>
+    <li class="fragment"><code>&lt;caption&gt;</code> jadval nomi, <code>table</code> ning birinchi bolasi</li>
+  </ol>
+  
+</section>
+
+<!-- 8. SVG: qatorlar bo'yicha yoziladi -->
+<section>
+  <h2>HTML jadvalni qatorlar bo'yicha yozadi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 350">
+      <g class="fragment">
+        <rect class="fc" x="40" y="30" width="120" height="70" rx="12"/><text class="t-head" x="100" y="75" text-anchor="middle" font-size="24">&lt;tr&gt; 1</text>
+        <rect class="fb" x="180" y="30" width="240" height="70" rx="12"/><text x="300" y="75" text-anchor="middle" font-size="22">&lt;th&gt;Fan&lt;/th&gt;</text>
+        <rect class="fb" x="440" y="30" width="240" height="70" rx="12"/><text x="560" y="75" text-anchor="middle" font-size="22">&lt;th&gt;Baho&lt;/th&gt;</text>
+        <rect class="fb" x="700" y="30" width="240" height="70" rx="12"/><text x="820" y="75" text-anchor="middle" font-size="22">&lt;th&gt;Kim&lt;/th&gt;</text>
+      </g>
+      <g class="fragment">
+        <rect class="fc" x="40" y="115" width="120" height="70" rx="12"/><text class="t-head" x="100" y="160" text-anchor="middle" font-size="24">&lt;tr&gt; 2</text>
+        <rect class="fa" x="180" y="115" width="240" height="70" rx="12"/><text x="300" y="160" text-anchor="middle" font-size="22">&lt;td&gt;Fizika&lt;/td&gt;</text>
+        <rect class="fa" x="440" y="115" width="240" height="70" rx="12"/><text x="560" y="160" text-anchor="middle" font-size="22">&lt;td&gt;5&lt;/td&gt;</text>
+        <rect class="fa" x="700" y="115" width="240" height="70" rx="12"/><text x="820" y="160" text-anchor="middle" font-size="22">&lt;td&gt;Ali&lt;/td&gt;</text>
+      </g>
+      <g class="fragment">
+        <rect class="fc" x="40" y="200" width="120" height="70" rx="12"/><text class="t-head" x="100" y="245" text-anchor="middle" font-size="24">&lt;tr&gt; 3</text>
+        <rect class="fa" x="180" y="200" width="240" height="70" rx="12"/><text x="300" y="245" text-anchor="middle" font-size="22">&lt;td&gt;Tarix&lt;/td&gt;</text>
+        <rect class="fa" x="440" y="200" width="240" height="70" rx="12"/><text x="560" y="245" text-anchor="middle" font-size="22">&lt;td&gt;4&lt;/td&gt;</text>
+        <rect class="fa" x="700" y="200" width="240" height="70" rx="12"/><text x="820" y="245" text-anchor="middle" font-size="22">&lt;td&gt;Vali&lt;/td&gt;</text>
+      </g>
+      <g class="fragment"><line class="la flowing" x1="180" y1="300" x2="920" y2="300"/><polygon class="ar-a" points="935,300 918,290 918,310"/><text class="t-accent" x="560" y="338" text-anchor="middle" font-size="24">chapdan o'ngga, yuqoridan pastga</text></g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 9. Kod: birinchi jadval -->
+<section>
+  <h2>Birinchi jadval</h2>
+  <pre><code class="language-html" data-trim data-noescape data-line-numbers="1-11|2|3-6|7-10">
+&lt;table border="1"&gt;
+  &lt;caption&gt;Haftalik ob-havo&lt;/caption&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Kun&lt;/th&gt;
+    &lt;th&gt;Harorat&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Dushanba&lt;/td&gt;
+    &lt;td&gt;+22°C&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+  </code></pre>
+  
+</section>
+
+<!-- 10-11. AUTO-ANIMATE: kod o'sadi -->
+<section data-auto-animate>
+  <h2>Jadval qadam-baqadam o'sadi</h2>
+  <pre data-id="kod"><code class="language-html" data-trim data-noescape>
+&lt;table&gt;
+  &lt;tr&gt;&lt;td&gt;Dushanba&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+  </code></pre>
+  <p class="small">Faqat <code>td</code>: ramka yo'q, sarlavha yo'q.</p>
+</section>
+<section data-auto-animate>
+  <h2>Jadval qadam-baqadam o'sadi</h2>
+  <pre data-id="kod"><code class="language-html" data-trim data-noescape>
+&lt;table border="1"&gt;
+  &lt;caption&gt;Ob-havo&lt;/caption&gt;
+  &lt;tr&gt;&lt;th&gt;Kun&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Dushanba&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+  </code></pre>
+  <p class="small"><code>border</code>, <code>caption</code> va <code>th</code> qo'shildi.</p>
+  
+</section>
+
+<!-- 12. Brauzerdagi natija -->
+<section>
+  <h2>Brauzerda natija</h2>
+  <div class="browser"><div class="bar"><i></i><i></i><i></i><span>obhavo.html</span></div>
+    <div class="page">
+      <table border="1">
+        <caption>Haftalik ob-havo</caption>
+        <tr><th>Kun</th><th>Harorat</th></tr>
+        <tr><td>Dushanba</td><td>+22°C</td></tr>
+        <tr><td>Seshanba</td><td>+25°C</td></tr>
+      </table>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 13. th va td: taqqoslash + vertikal qo'shimcha -->
+<section>
+  <section>
+    <h2>th yoki td?</h2>
+    <div class="vs">
+      <div class="side fragment"><h3>&lt;th&gt;</h3>Sarlavha katakchasi. Qalin va o'rtaga tekislangan.</div>
+      <div class="mid">VS</div>
+      <div class="side b fragment"><h3>&lt;td&gt;</h3>Oddiy ma'lumot katakchasi. Chapga tekislangan.</div>
+    </div>
+    <p class="small mt">Pastga bosing: <code>border="1"</code> nima uchun kerak?</p>
+    
+  </section>
+  <section>
+    <h2>Nega <code>border="1"</code>?</h2>
+    <div class="swap">
+      <div class="swap-tabs"><button type="button">Ramkasiz</button><button type="button">Ramka bilan</button></div>
+      <div class="swap-p"><div class="card"><h3>Brauzer chiziq chizmaydi</h3><p>Katakchalar chegarasi ko'rinmaydi, jadval matn uyumiga o'xshaydi.</p></div></div>
+      <div class="swap-p"><div class="card accent"><h3>Vaqtincha ramka</h3><p>Katakchalarni ko'z bilan tekshiramiz. Keyingi haftalarda CSS bilan chiroyli bezaymiz.</p></div></div>
+    </div>
+    
+  </section>
+  <section>
+    <h2>Bilasizmi?</h2>
+    <div class="quote">1990-yillarda butun saytlarning maketi jadval bilan yasalgan edi.</div>
+    <ul class="mt">
+      <li class="fragment">Menyu, logotip va yangiliklar bitta katta jadval ichida turgan</li>
+      <li class="fragment">Bugun jadval faqat ma'lumot uchun, dizayn CSS bilan qilinadi</li>
+    </ul>
+    
+  </section>
+</section>
+
+<!-- 14. BO'LIM 02 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Semantik bo'limlar</h1>
+  <p><code>thead</code>, <code>tbody</code>, <code>tfoot</code></p>
+</section>
+
+<!-- 15. SVG: uch bo'lim -->
+<section>
+  <h2>Jadvalning uch qismi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 360">
+      <g class="fragment" data-tip="thead: sarlavhalar qatori turadigan yuqori qism. Chop etilganda har varaqda takrorlanadi.">
+        <rect class="fb" x="40" y="30" width="220" height="70" rx="12"/><text class="t-head" x="150" y="76" text-anchor="middle" font-size="26">&lt;thead&gt;</text>
+        <rect class="fb" x="280" y="30" width="680" height="70" rx="12"/>
+        <text class="t-head" x="400" y="76" text-anchor="middle" font-size="24">Mahsulot</text><text class="t-head" x="620" y="76" text-anchor="middle" font-size="24">Miqdori</text><text class="t-head" x="840" y="76" text-anchor="middle" font-size="24">Narxi</text>
+      </g>
+      <g class="fragment" data-tip="tbody: jadvalning asosiy ma'lumot qatorlari.">
+        <rect class="fa" x="40" y="115" width="220" height="130" rx="12"/><text class="t-head" x="150" y="187" text-anchor="middle" font-size="26">&lt;tbody&gt;</text>
+        <rect class="fa" x="280" y="115" width="680" height="130" rx="12"/>
+        <text x="400" y="160" text-anchor="middle" font-size="24">Non</text><text x="620" y="160" text-anchor="middle" font-size="24">2 dona</text><text x="840" y="160" text-anchor="middle" font-size="24">6 000</text>
+        <text x="400" y="217" text-anchor="middle" font-size="24">Sut</text><text x="620" y="217" text-anchor="middle" font-size="24">1 litr</text><text x="840" y="217" text-anchor="middle" font-size="24">11 000</text>
+      </g>
+      <g class="fragment" data-tip="tfoot: yakuniy, xulosa yoki jami hisob qatori.">
+        <rect class="fg" x="40" y="260" width="220" height="70" rx="12"/><text class="t-head" x="150" y="306" text-anchor="middle" font-size="26">&lt;tfoot&gt;</text>
+        <rect class="fg" x="280" y="260" width="680" height="70" rx="12"/>
+        <text class="t-head" x="510" y="306" text-anchor="middle" font-size="24">Jami to'lov:</text><text class="t-head" x="840" y="306" text-anchor="middle" font-size="24">17 000</text>
+      </g>
+    </svg>
+  </div>
+  <p class="small">Bo'limni bosing: vazifasi chiqadi.</p>
+  
+</section>
+
+<!-- 16. Kod: semantik jadval -->
+<section>
+  <h2>Semantik jadval: chek</h2>
+  <pre><code class="language-html" data-trim data-noescape data-line-numbers="1-12|2-4|5-8|9-11">
+&lt;table border="1"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;Mahsulot&lt;/th&gt;&lt;th&gt;Miqdori&lt;/th&gt;&lt;th&gt;Narxi&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;Non&lt;/td&gt;&lt;td&gt;2 dona&lt;/td&gt;&lt;td&gt;6 000&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Sut&lt;/td&gt;&lt;td&gt;1 litr&lt;/td&gt;&lt;td&gt;11 000&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;&lt;th colspan="2"&gt;Jami to'lov:&lt;/th&gt;&lt;th&gt;17 000&lt;/th&gt;&lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;
+  </code></pre>
+  
+</section>
+
+<!-- 17. Mini-test 1 -->
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Uzun jadval chop etilganda brauzer har varaq tepasida nimani takrorlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">&lt;td&gt;</button>
+      <button class="opt" type="button" data-ok>&lt;thead&gt;</button>
+      <button class="opt" type="button">&lt;caption&gt;</button>
+      <button class="opt" type="button">border</button>
+    </div>
+    <div class="explain">To'g'ri: <code>thead</code> sarlavhalarni har varaqda takrorlaydi, pastda <code>tfoot</code> turadi.</div>
+  </div>
+  
+</section>
+
+<!-- 18. BO'LIM 03 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Katakchalarni birlashtirish</h1>
+  <p><code>colspan</code> va <code>rowspan</code></p>
+</section>
+
+<!-- 19. SVG: colspan -->
+<section>
+  <h2><code>colspan</code>: ustunlarni birlashtirish</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <rect class="fn" x="40" y="30" width="200" height="70" rx="10"/><text class="t-head" x="140" y="75" text-anchor="middle" font-size="24">Kun</text>
+      <rect class="fn" x="250" y="30" width="200" height="70" rx="10"/><text class="t-head" x="350" y="75" text-anchor="middle" font-size="24">Vaqt</text>
+      <rect class="fn" x="460" y="30" width="200" height="70" rx="10"/><text class="t-head" x="560" y="75" text-anchor="middle" font-size="24">Fan</text>
+      <g class="fragment">
+        <rect class="fb pulse" x="40" y="120" width="620" height="80" rx="10"/>
+        <text class="t-head" x="350" y="152" text-anchor="middle" font-size="24">Katta tanaffus (20 daqiqa)</text>
+        <text class="t-accent" x="350" y="184" text-anchor="middle" font-size="22">colspan="3"</text>
+      </g>
+      <rect class="fa" x="40" y="220" width="200" height="70" rx="10"/><text x="140" y="265" text-anchor="middle" font-size="24">Dushanba</text>
+      <rect class="fa" x="250" y="220" width="200" height="70" rx="10"/><text x="350" y="265" text-anchor="middle" font-size="24">10:30</text>
+      <rect class="fa" x="460" y="220" width="200" height="70" rx="10"/><text x="560" y="265" text-anchor="middle" font-size="24">Informatika</text>
+      <g class="fragment">
+        <rect class="fc" x="700" y="120" width="260" height="80" rx="12"/>
+        <text class="t-head" x="830" y="172" text-anchor="middle" font-size="28">1 ta td = 3</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 20. SVG: rowspan -->
+<section>
+  <h2><code>rowspan</code>: qatorlarni birlashtirish</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+      <rect class="fn" x="40" y="20" width="200" height="70" rx="10"/><text class="t-head" x="140" y="65" text-anchor="middle" font-size="24">Kun</text>
+      <rect class="fn" x="250" y="20" width="200" height="70" rx="10"/><text class="t-head" x="350" y="65" text-anchor="middle" font-size="24">Vaqt</text>
+      <rect class="fn" x="460" y="20" width="200" height="70" rx="10"/><text class="t-head" x="560" y="65" text-anchor="middle" font-size="24">Fan</text>
+      <g class="fragment">
+        <rect class="fb pulse" x="40" y="100" width="200" height="160" rx="10"/>
+        <text class="t-head" x="140" y="170" text-anchor="middle" font-size="24">Dushanba</text>
+        <text class="t-accent" x="140" y="205" text-anchor="middle" font-size="22">rowspan="2"</text>
+      </g>
+      <rect class="fa" x="250" y="100" width="200" height="70" rx="10"/><text x="350" y="145" text-anchor="middle" font-size="24">08:30</text>
+      <rect class="fa" x="460" y="100" width="200" height="70" rx="10"/><text x="560" y="145" text-anchor="middle" font-size="24">Algebra</text>
+      <rect class="fa" x="250" y="190" width="200" height="70" rx="10"/><text x="350" y="235" text-anchor="middle" font-size="24">09:25</text>
+      <rect class="fa" x="460" y="190" width="200" height="70" rx="10"/><text x="560" y="235" text-anchor="middle" font-size="24">Fizika</text>
+      <g class="fragment">
+        <rect class="fc" x="700" y="100" width="260" height="160" rx="12"/>
+        <text class="t-head" x="830" y="150" text-anchor="middle" font-size="24">Pastki qatorda</text>
+        <text class="t-head" x="830" y="185" text-anchor="middle" font-size="24">1 ta td kam</text>
+        <text class="t-head" x="830" y="220" text-anchor="middle" font-size="24">yoziladi</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 21. Stepper: hisob qoidasi -->
+<section>
+  <h2>Hisob qoidasi: qadam-baqadam</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="columns-3" data-anim="float"></i></div><h3>1. Ustunlar sonini aniqla</h3><p>Jadval 3 ustunli bo'lsa, har qatorda jami 3 katak hisoblanadi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="table-cells-merge" data-anim="pulse"></i></div><h3>2. Birlashtirish bormi?</h3><p><code>colspan="2"</code> katak 2 ta o'rinni egallaydi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="calculator" data-anim="draw"></i></div><h3>3. Hisobla</h3><p>2 + 1 = 3. Qatorda yana faqat bitta oddiy <code>td</code> yoziladi.</p></div></div>
+  </div>
+  
+</section>
+
+<!-- 22. Kod: rowspan -->
+<section>
+  <h2><code>rowspan</code> kodda</h2>
+  <pre><code class="language-html" data-trim data-noescape data-line-numbers="1-7|2|6">
+&lt;tr&gt;
+  &lt;td rowspan="2"&gt;Dushanba&lt;/td&gt;
+  &lt;td&gt;Matematika&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;Fizika&lt;/td&gt;
+&lt;/tr&gt;
+  </code></pre>
+  <div class="callout warn"><i data-ic="triangle-alert" data-anim="wiggle"></i>Ikkinchi qatorda "Dushanba" yozilmaydi: uni yuqoridagi <code>rowspan</code> egallagan.</div>
+  
+</section>
+
+<!-- 23. Xato / To'g'ri (swap) -->
+<section>
+  <h2>Xato va to'g'ri</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">Xato</button><button type="button">To'g'ri</button></div>
+    <div class="swap-p"><div class="card accent2"><h3>3 ustunli jadval, colspan="2"</h3><p>Qatorda 3 ta <code>td</code> yozildi: 2 + 3 = 5 o'rin, jadval buzildi.</p></div></div>
+    <div class="swap-p"><div class="card teal"><h3>2 + 1 = 3</h3><p>Qatorda birlashgan <code>td</code> va yana bitta <code>td</code>: yig'indi ustunlar soniga teng.</p></div></div>
+  </div>
+  
+</section>
+
+<!-- 24. Mini-test 2 -->
+<section>
+  <h2>Mini-test: hisobla</h2>
+  <div class="quiz">
+    <p class="q">Jadval 3 ustunli. Qatorda bitta <code>colspan="2"</code> katak bor. Yana nechta <code>td</code> yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">0 ta</button>
+      <button class="opt" type="button" data-ok>1 ta</button>
+      <button class="opt" type="button">2 ta</button>
+      <button class="opt" type="button">3 ta</button>
+    </div>
+    <div class="explain">To'g'ri: 2 + 1 = 3. Birlashgan katak 2 ta o'rinni egallaydi.</div>
+  </div>
+  
+</section>
+
+<!-- 25. Raqamlarda -->
+<section>
+  <h2>Bugun nimani yig'dik</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="5" data-suf=" teg">0</span></div><div class="l">table, tr, td, th, caption</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="3" data-suf=" qism">0</span></div><div class="l">thead, tbody, tfoot</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="2" data-suf=" atribut">0</span></div><div class="l">colspan va rowspan</div></div>
+  </div>
+  
+</section>
+
+<!-- 26. AMALIYOT -->
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer" data-anim="spin"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Dushanbadan jumagacha dars jadvali: Kun, 1-dars, 2-dars, 3-dars (<code>thead</code> bilan).</div>
+  <div class="task"><span class="level mid">O'rta</span>Xarid cheki: mahsulot, miqdori, narxi va <code>tfoot</code> da <code>colspan</code> bilan "Jami to'lov".</div>
+  <div class="task"><span class="level hard">Qiyin</span>Ikki kunlik jadval: Dushanba <code>rowspan</code>, o'rtada "Katta tanaffus" <code>colspan="3"</code>.</div>
+  
+</section>
+
+<!-- 27. Tezkor nazorat -->
+<section>
+  <h2>Tezkor nazorat</h2>
+  <ol class="steps-n">
+    <li class="fragment"><code>tr</code>, <code>td</code>, <code>th</code> nimaning qisqartmasi?</li>
+    <li class="fragment"><code>th</code> ichidagi matn qanday ko'rinadi?</li>
+    <li class="fragment">3 ta ustunni birlashtirish: qaysi atribut?</li>
+    <li class="fragment">2 ta qatorni birlashtirish-chi?</li>
+    <li class="fragment"><code>thead</code>, <code>tbody</code>, <code>tfoot</code> nima uchun kerak?</li>
+  </ol>
+  
+</section>
+
+<!-- 28. XULOSA -->
+<section>
+  <h2>Xulosa</h2>
+  <div class="cards two">
+    <div class="card"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Bugun o'rgandik</h3><p>Jadval qatorlar bo'yicha yoziladi. <code>th</code> sarlavha, <code>td</code> ma'lumot. Bo'limlar: <code>thead</code>, <code>tbody</code>, <code>tfoot</code>. Birlashtirish: <code>colspan</code>, <code>rowspan</code>.</p></div>
+    <div class="card"><div class="icon"><i data-ic="rocket" data-anim="float"></i></div><h3>Keyingi dars (6-dars)</h3><p>Foydalanuvchi bilan muloqot: ro'yxatdan o'tish formasi, <code>form</code>, <code>input</code>, <code>button</code>.</p></div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

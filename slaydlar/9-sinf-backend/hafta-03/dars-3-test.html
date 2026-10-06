@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>9-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>9-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q"><code>match / case</code> operatori qaysi Python versiyasidan boshlab kiritilgan?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Python 3.10</button>
+      <button class="opt" type="button">Python 2.7</button>
+      <button class="opt" type="button">Python 3.6</button>
+      <button class="opt" type="button">Python 3.4</button>
+    </div>
+    <div class="explain"><code>match / case</code> (Pattern Matching) 3.10 versiyasida paydo bo'ldi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q"><code>match qiymat:</code> qatorida <code>qiymat</code> nima?</p>
+    <div class="opts">
+      <button class="opt" type="button">Funksiya nomi</button>
+      <button class="opt" type="button" data-ok>Tekshiriladigan o'zgaruvchi</button>
+      <button class="opt" type="button">Sikl hisoblagichi</button>
+      <button class="opt" type="button">Kalit so'z</button>
+    </div>
+    <div class="explain"><code>case</code> lar shu qiymatga mos variantlarni solishtiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q"><code>case _:</code> nima vazifani bajaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Birinchi variantni bajaradi</button>
+      <button class="opt" type="button">Xato beradi</button>
+      <button class="opt" type="button" data-ok>Yuqoridagi variantlarning hech biri mos kelmasa ishlaydi (<code>else</code> ga o'xshaydi)</button>
+      <button class="opt" type="button">Dasturni to'xtatadi</button>
+    </div>
+    <div class="explain"><code>_</code> — wildcard, boshqa barcha holatlarni ushlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q"><code>case 6 | 7:</code> dagi <code>|</code> belgisi nimani bildiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">6 va 7 ning yig'indisi</button>
+      <button class="opt" type="button">Taqqoslash <code>6 &gt; 7</code></button>
+      <button class="opt" type="button">Qoldiq olish</button>
+      <button class="opt" type="button" data-ok>6 yoki 7 variantlaridan istalgani</button>
+    </div>
+    <div class="explain">Bitta <code>case</code> da bir nechta variantni <code>|</code> bilan yozish mumkin.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q">Kod: <code>tanlov = 2</code>; <code>case 1:</code> Dastur boshlandi, <code>case 2:</code> Sozlamalar ochildi, <code>case 3:</code> Dastur yopildi. Natija?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>Sozlamalar ochildi</code></button>
+      <button class="opt" type="button"><code>Dastur boshlandi</code></button>
+      <button class="opt" type="button"><code>Dastur yopildi</code></button>
+      <button class="opt" type="button"><code>Noto'g'ri tanlov</code></button>
+    </div>
+    <div class="explain"><code>tanlov</code> 2 ga teng, <code>case 2</code> ishlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q">Shu menyuda <code>tanlov = 7</code> va <code>case _:</code> da <code>Noto'g'ri tanlov</code> bo'lsa, natija?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>Dastur yopildi</code></button>
+      <button class="opt" type="button" data-ok><code>Noto'g'ri tanlov</code></button>
+      <button class="opt" type="button">Hech narsa chiqmaydi</button>
+      <button class="opt" type="button"><code>Sozlamalar ochildi</code></button>
+    </div>
+    <div class="explain">1, 2, 3 ga mos kelmagani uchun <code>case _</code> ishlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Kod: <code>kun = 6</code>; <code>case 1 | 2 | 3 | 4 | 5:</code> Ish kuni; <code>case 6 | 7:</code> Dam olish kuni!. Natija?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>Ish kuni (dars bor)</code></button>
+      <button class="opt" type="button"><code>Noto'g'ri raqam</code></button>
+      <button class="opt" type="button" data-ok><code>Dam olish kuni!</code></button>
+      <button class="opt" type="button">Ikkalasi</button>
+    </div>
+    <div class="explain">6 ikkinchi <code>case</code> ga mos keladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>n = 20</code> bo'lsa, <code>[1, n]</code> oralig'ida 3 ga karrali nechta son bor?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>7</code> ta</button>
+      <button class="opt" type="button"><code>5</code> ta</button>
+      <button class="opt" type="button"><code>20</code> ta</button>
+      <button class="opt" type="button" data-ok><code>6</code> ta: <code>3 6 9 12 15 18</code></button>
+    </div>
+    <div class="explain">20 gacha 3 ga qoldiqsiz bo'linadiganlar: 3, 6, 9, 12, 15, 18.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">Xato topish: <code>while i &lt;= n:</code> ichida <code>if i % 3 == 0:</code> va uning ichida <code>print(i)</code> hamda <code>i += 1</code>. Muammo nimada?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok><code>i += 1</code> faqat <code>if</code> ichida, shart yolg'on bo'lsa <code>i</code> o'zgarmaydi — cheksiz sikl</button>
+      <button class="opt" type="button"><code>print</code> o'rniga <code>input</code> kerak</button>
+      <button class="opt" type="button"><code>%</code> operatori while da ishlamaydi</button>
+      <button class="opt" type="button">Muammo yo'q</button>
+    </div>
+    <div class="explain"><code>i += 1</code> <code>if</code> dan tashqarida, <code>while</code> ichida bo'lishi kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q"><code>oy = 13</code> bo'lsa, <code>1</code>-<code>12</code> uchun <code>case</code> lar va <code>case _:</code> Xato! 1-12 oralig'ida son kiriting. Natija?</p>
+    <div class="opts">
+      <button class="opt" type="button"><code>Dekabr</code></button>
+      <button class="opt" type="button" data-ok><code>Xato! 1–12 oralig'ida son kiriting</code></button>
+      <button class="opt" type="button">Hech narsa chiqmaydi</button>
+      <button class="opt" type="button"><code>Yanvar</code></button>
+    </div>
+    <div class="explain">13 hech bir <code>case</code> ga mos kelmaydi, <code>case _</code> ishlaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: <code>match / case</code>, <code>case _</code>, <code>|</code> belgisi, menyu va hafta kuni misollari, 3 ga karralilar (<code>for</code> va <code>while</code>).</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Build Variantlari va Product Flavors</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 2-dars: Build variantlari va Product Flavors -->
+
+<!-- 1. SARLAVHA -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Build Variantlari va Product Flavors</h1>
+  <p class="muted">Debug vs Release, R8 optimallashtirish, BuildConfig va Free vs Paid arxitekturasi</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">1-hafta · 2-dars</span>
+</section>
+
+<!-- 2. BUGUN NIMANI O'RGANAMIZ? -->
+<section>
+  <h2>Bugun nimani o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check" data-anim="pulse"></i></div>
+      <h3>Debug vs Release</h3>
+      <p>Dasturchi rejimi va Google Play uchun optimallashtirilgan yakuniy mahsulot farqlari</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="boxes" data-anim="float"></i></div>
+      <h3>Product Flavors</h3>
+      <p>Bitta kod bazasidan bir nechta mustaqil ilovalar (Free, Pro, Client, Driver) yaratish</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="code" data-anim="draw"></i></div>
+      <h3>BuildConfig</h3>
+      <p>Gradle orqali Kotlin kodiga o'zgaruvchilar uzatish va dinamik muhitlarni boshqarish</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. BO'LIM 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Build Types: Debug va Release</h1>
+  <p>Yig'ish rejimlari, nosozliklarni qidirish va xavfsiz optimallashtirish</p>
+</section>
+
+<!-- 4. DEBUG VS RELEASE MOHIYATI -->
+<section>
+  <h2>Ikkita mutlaqo turli maqsad</h2>
+  <div class="quote">
+    «Debug rejimi — dasturchining ustaxonasi bo'lsa, Release rejimi — xaridor ko'radigan yaltiroq do'kon vitrinasidir.»
+  </div>
+  <div class="cards two mt">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="terminal"></i></div>
+      <h3>Debug rejimi</h3>
+      <p>Kompilyatsiya maksimal tezlikda bo'ladi. Barcha loglar ochiq, kod o'zgartirilmaydi, disk raskadrovka qilish oson.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Release rejimi</h3>
+      <p>Google Play uchun tayyor mahsulot. Keraksiz kodlar o'chiriladi, fayl hajmi siqiladi va xavfsizlik uchun kod chalkashtiriladi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. ILLYUSTRATSIYA 1: DEBUG VS RELEASE (SVG) -->
+<section>
+  <h2>Debug va Release rejimlarining taqqoslovi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="30" width="880" height="420" rx="20" class="fa" />
+      <rect x="40" y="30" width="880" height="420" rx="20" class="la" fill="none" stroke-width="2" />
+      
+      <!-- Debug Paneli -->
+      <g transform="translate(80, 70)">
+        <rect x="0" y="0" width="370" height="340" rx="16" class="fb" />
+        <rect x="0" y="0" width="370" height="340" rx="16" class="lb" fill="none" stroke-width="2" />
+        <text x="185" y="45" text-anchor="middle" class="t-head" font-size="20" font-weight="700">DEBUG BUILD</text>
+        <text x="185" y="70" text-anchor="middle" class="t-muted" font-size="12">Ishlab chiqish va test rejimi</text>
+        
+        <rect x="25" y="100" width="320" height="45" rx="8" class="fa" />
+        <text x="40" y="128" class="t-head" font-size="13">debuggable: true (Logcat ochiq)</text>
+        
+        <rect x="25" y="155" width="320" height="45" rx="8" class="fa" />
+        <text x="40" y="183" class="t-head" font-size="13">minifyEnabled: false (Tez yig'ish)</text>
+        
+        <rect x="25" y="210" width="320" height="45" rx="8" class="fa" />
+        <text x="40" y="238" class="t-accent" font-size="13">applicationIdSuffix: ".debug"</text>
+        
+        <rect x="25" y="265" width="320" height="45" rx="8" class="fa" />
+        <text x="40" y="293" class="t-muted" font-size="13">Hajmi kattaroq, kod ochiq ko'rinadi</text>
+      </g>
+      
+      <!-- Release Paneli -->
+      <g transform="translate(510, 70)">
+        <rect x="0" y="0" width="370" height="340" rx="16" class="fb" />
+        <rect x="0" y="0" width="370" height="340" rx="16" class="la" fill="none" stroke-width="2" />
+        <text x="185" y="45" text-anchor="middle" class="t-head" font-size="20" font-weight="700">RELEASE BUILD</text>
+        <text x="185" y="70" text-anchor="middle" class="t-accent" font-size="12">Google Play va foydalanuvchilar uchun</text>
+        
+        <rect x="25" y="100" width="320" height="45" rx="8" class="fa" />
+        <text x="40" y="128" class="t-head" font-size="13">debuggable: false (Loglar yopiq)</text>
+        
+        <rect x="25" y="155" width="320" height="45" rx="8" class="fg" />
+        <text x="40" y="183" class="fn" font-size="13" font-weight="600">minifyEnabled: true (R8 optimallashtirish)</text>
+        
+        <rect x="25" y="210" width="320" height="45" rx="8" class="fa" />
+        <text x="40" y="238" class="t-head" font-size="13">Obfuscation (Klass nomlari a, b, c)</text>
+        
+        <rect x="25" y="265" width="320" height="45" rx="8" class="fa" />
+        <text x="40" y="293" class="t-accent" font-size="13">Minimal hajm, to'liq imzolangan (Sign)</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 6. BO'LIM 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Product Flavors: Mahsulot Variantlari</h1>
+  <p>Bitta kod bazasidan bir nechta turli ilovalarni chiqarish san'ati</p>
+</section>
+
+<!-- 7. PRODUCT FLAVORS MAQSADI -->
+<section>
+  <h2>Nega Product Flavors kerak?</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="boxes"></i></div>
+      <h3>Kodni nusxalamaslik</h3>
+      <p>Free va Paid versiyalar uchun 2 ta loyiha ochish xavfli. Flavors orqali 95% umumiy kod bir joyda saqlanadi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="smartphone"></i></div>
+      <h3>Parallel o'rnatish</h3>
+      <p><code>applicationIdSuffix</code> orqali bitta smartfonga bir vaqtning o'zida ham Free, ham Paid ilovani o'rnatish mumkin.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+      <h3>Moslashuvchanlik</h3>
+      <p>Har bir variant uchun o'ziga xos rasm, ilova nomi va maxsus funksiyalar to'plamini biriktirish mumkin.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8. ILLYUSTRATSIYA 2: FLAVORS STRUKTURASI (SVG) -->
+<section>
+  <h2>Bitta kod bazasidan bir nechta ilova</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="30" width="880" height="420" rx="20" class="fa" />
+      <rect x="40" y="30" width="880" height="420" rx="20" class="la" fill="none" stroke-width="2" />
+      
+      <!-- Markaziy Umumiy Kod Bazasi -->
+      <g transform="translate(340, 60)">
+        <rect x="0" y="0" width="280" height="110" rx="14" class="fb" />
+        <rect x="0" y="0" width="280" height="110" rx="14" class="la" fill="none" stroke-width="2" />
+        <text x="140" y="38" text-anchor="middle" class="t-head" font-size="16" font-weight="700">COMMON SOURCE CODE</text>
+        <text x="140" y="62" text-anchor="middle" class="t-accent" font-size="12">src/main (95% umumiy kod)</text>
+        <text x="140" y="88" text-anchor="middle" class="t-muted" font-size="11">Ma'lumotlar bazasi, tarmoq, dizayn</text>
+      </g>
+      
+      <!-- Tarmoqlanish chiziqlari -->
+      <path d="M 480 170 L 480 230 L 250 230 L 250 270" class="la" fill="none" stroke-width="2" />
+      <path d="M 480 170 L 480 230 L 710 230 L 710 270" class="la" fill="none" stroke-width="2" />
+      
+      <!-- Free Flavor -->
+      <g transform="translate(110, 270)">
+        <rect x="0" y="0" width="280" height="150" rx="14" class="fa" />
+        <rect x="0" y="0" width="280" height="150" rx="14" class="lb" fill="none" stroke-width="2" />
+        <text x="140" y="35" text-anchor="middle" class="t-head" font-size="16" font-weight="700">FREE FLAVOR</text>
+        <text x="140" y="60" text-anchor="middle" class="t-muted" font-size="12">applicationIdSuffix: ".free"</text>
+        <text x="140" y="85" text-anchor="middle" class="t-muted" font-size="12">Reklamalar (Banner Ads)</text>
+        <text x="140" y="110" text-anchor="middle" class="t-accent" font-size="12">IS_PAID = false</text>
+      </g>
+      
+      <!-- Paid Flavor -->
+      <g transform="translate(570, 270)">
+        <rect x="0" y="0" width="280" height="150" rx="14" class="fg" />
+        <text x="140" y="35" text-anchor="middle" class="fn" font-size="16" font-weight="700">PAID / PRO FLAVOR</text>
+        <text x="140" y="60" text-anchor="middle" class="fn" font-size="12" opacity="0.9">applicationIdSuffix: ".pro"</text>
+        <text x="140" y="85" text-anchor="middle" class="fn" font-size="12" opacity="0.9">Reklamasiz, barcha funksiyalar</text>
+        <text x="140" y="110" text-anchor="middle" class="fn" font-size="12" font-weight="700">IS_PAID = true</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- 9. BO'LIM 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Build Variants Matritsasi</h1>
+  <p>Product Flavors va Build Types kesishmasi</p>
+</section>
+
+<!-- 10. MATRITSA FORMULASI -->
+<section>
+  <h2>Build Variant formulasi</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="cpu" data-anim="pulse"></i></div>
+      <h3>Matematik formula</h3>
+      <p>$$\text{Build Variants} = \text{Flavors soni} \times \text{Build Types soni}$$</p>
+      <p class="t-muted">2 ta Flavor (Free, Paid) va 2 ta Type (Debug, Release) bo'lsa, jami 4 ta mustaqil variant hosil bo'ladi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="refresh-cw"></i></div>
+      <h3>Tezkor almashtirish</h3>
+      <p>Android Studio'dagi <strong>Build Variants</strong> oynasi orqali dasturchi bitta bosish bilan ilovaning kerakli variantini yig'ishi va emulyatorda tekshirishi mumkin.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 11. ILLYUSTRATSIYA 3: BUILD VARIANTS MATRITSASI (SVG) -->
+<section>
+  <h2>2x2 Build Variants matritsasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="30" width="880" height="420" rx="20" class="fa" />
+      <rect x="40" y="30" width="880" height="420" rx="20" class="la" fill="none" stroke-width="2" />
+      
+      <!-- Sarlavhalar -->
+      <text x="430" y="80" text-anchor="middle" class="t-head" font-size="16" font-weight="700">Debug Type</text>
+      <text x="730" y="80" text-anchor="middle" class="t-head" font-size="16" font-weight="700">Release Type</text>
+      <text x="180" y="195" text-anchor="middle" class="t-head" font-size="16" font-weight="700">Free Flavor</text>
+      <text x="180" y="335" text-anchor="middle" class="t-head" font-size="16" font-weight="700">Paid Flavor</text>
+      
+      <!-- Matritsa hujayrasi 1: freeDebug -->
+      <g transform="translate(300, 110)">
+        <rect x="0" y="0" width="260" height="110" rx="12" class="fb" />
+        <rect x="0" y="0" width="260" height="110" rx="12" class="lb" fill="none" stroke-width="1.5" />
+        <text x="130" y="45" text-anchor="middle" class="t-head" font-size="17" font-weight="700">freeDebug</text>
+        <text x="130" y="75" text-anchor="middle" class="t-muted" font-size="12">Bepul versiyani testlash</text>
+        <text x="130" y="95" text-anchor="middle" class="t-muted" font-size="11">Logcat ochiq, tez yig'iladi</text>
+      </g>
+      
+      <!-- Matritsa hujayrasi 2: freeRelease -->
+      <g transform="translate(600, 110)">
+        <rect x="0" y="0" width="260" height="110" rx="12" class="fb" />
+        <rect x="0" y="0" width="260" height="110" rx="12" class="lb" fill="none" stroke-width="1.5" />
+        <text x="130" y="45" text-anchor="middle" class="t-head" font-size="17" font-weight="700">freeRelease</text>
+        <text x="130" y="75" text-anchor="middle" class="t-accent" font-size="12">Google Play Bepul versiya</text>
+        <text x="130" y="95" text-anchor="middle" class="t-muted" font-size="11">R8 siqilgan, reklamali</text>
+      </g>
+      
+      <!-- Matritsa hujayrasi 3: paidDebug -->
+      <g transform="translate(300, 250)">
+        <rect x="0" y="0" width="260" height="110" rx="12" class="fb" />
+        <rect x="0" y="0" width="260" height="110" rx="12" class="lb" fill="none" stroke-width="1.5" />
+        <text x="130" y="45" text-anchor="middle" class="t-head" font-size="17" font-weight="700">paidDebug</text>
+        <text x="130" y="75" text-anchor="middle" class="t-muted" font-size="12">VIP versiyani testlash</text>
+        <text x="130" y="95" text-anchor="middle" class="t-muted" font-size="11">Barcha funksiyalar ochiq</text>
+      </g>
+      
+      <!-- Matritsa hujayrasi 4: paidRelease -->
+      <g transform="translate(600, 250)">
+        <rect x="0" y="0" width="260" height="110" rx="12" class="fg" />
+        <text x="130" y="45" text-anchor="middle" class="fn" font-size="17" font-weight="700">paidRelease</text>
+        <text x="130" y="75" text-anchor="middle" class="fn" font-size="12" opacity="0.9">Google Play VIP versiya</text>
+        <text x="130" y="95" text-anchor="middle" class="fn" font-size="11" opacity="0.9">Kodni himoyalangan, to'liq</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- 12. BO'LIM 4 -->
+<section class="sec">
+  <div class="num">04</div>
+  <h1>BuildConfig va Dinamik Boshqaruv</h1>
+  <p>Gradle o'zgaruvchilarini Kotlin kodiga xavfsiz uzatish</p>
+</section>
+
+<!-- 13. BUILDCONFIG MOHIYATI -->
+<section>
+  <h2>BuildConfig qanday ishlaydi?</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="code"></i></div>
+      <h3>buildConfigField</h3>
+      <p>Gradle konfiguratsiyasida turli variantlar uchun o'zgaruvchilar e'lon qilinadi:</p>
+      <pre><code>buildConfigField "boolean", "IS_PAID", "true"
+buildConfigField "String", "BASE_URL", "\"https://api.uz/\""</code></pre>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="terminal"></i></div>
+      <h3>Kotlin kodida chaqirish</h3>
+      <p>Ilova kodida ushbu o'zgaruvchilar statik tarzda ishlatiladi:</p>
+      <pre><code>if (BuildConfig.IS_PAID) {
+    enableVipFeatures()
+}</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- 14. ILLYUSTRATSIYA 4: BUILDCONFIG KOPRIGI (SVG) -->
+<section>
+  <h2>Gradle dan Kotlin kodiga o'tish ko'prigi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="30" width="880" height="420" rx="20" class="fa" />
+      <rect x="40" y="30" width="880" height="420" rx="20" class="la" fill="none" stroke-width="2" />
+      
+      <!-- Qadam 1: build.gradle -->
+      <g transform="translate(80, 110)">
+        <rect x="0" y="0" width="240" height="260" rx="14" class="fb" />
+        <rect x="0" y="0" width="240" height="260" rx="14" class="lb" fill="none" stroke-width="2" />
+        <text x="120" y="45" text-anchor="middle" class="t-head" font-size="16" font-weight="700">1. build.gradle</text>
+        <text x="120" y="70" text-anchor="middle" class="t-muted" font-size="12">Konfiguratsiya sozlamasi</text>
+        <rect x="15" y="100" width="210" height="120" rx="8" class="fa" />
+        <text x="25" y="130" class="t-accent" font-size="11">buildConfigField</text>
+        <text x="25" y="150" class="t-head" font-size="11">"boolean", "IS_PAID"</text>
+        <text x="25" y="170" class="t-muted" font-size="11">"true"</text>
+      </g>
+      
+      <!-- Chiziq 1 -> 2 -->
+      <line x1="320" y1="240" x2="360" y2="240" class="la" stroke-width="3" />
+      <polygon points="360,235 370,240 360,245" class="fg" />
+      
+      <!-- Qadam 2: BuildConfig.java -->
+      <g transform="translate(370, 110)">
+        <rect x="0" y="0" width="240" height="260" rx="14" class="fa" />
+        <rect x="0" y="0" width="240" height="260" rx="14" class="la" fill="none" stroke-width="2" />
+        <text x="120" y="45" text-anchor="middle" class="t-head" font-size="16" font-weight="700">2. BuildConfig.java</text>
+        <text x="120" y="70" text-anchor="middle" class="t-muted" font-size="12">Avtomatik yaratilgan klass</text>
+        <rect x="15" y="100" width="210" height="120" rx="8" class="fb" />
+        <text x="25" y="130" class="t-muted" font-size="11">// Generated by Gradle</text>
+        <text x="25" y="150" class="t-head" font-size="11">public static final</text>
+        <text x="25" y="170" class="t-accent" font-size="11">boolean IS_PAID = true;</text>
+      </g>
+      
+      <!-- Chiziq 2 -> 3 -->
+      <line x1="610" y1="240" x2="650" y2="240" class="la" stroke-width="3" />
+      <polygon points="650,235 660,240 650,245" class="fg" />
+      
+      <!-- Qadam 3: MainActivity.kt -->
+      <g transform="translate(660, 110)">
+        <rect x="0" y="0" width="240" height="260" rx="14" class="fg" />
+        <text x="120" y="45" text-anchor="middle" class="fn" font-size="16" font-weight="700">3. Kotlin Kodi</text>
+        <text x="120" y="70" text-anchor="middle" class="fn" font-size="12" opacity="0.9">Ilova logikasi</text>
+        <rect x="15" y="100" width="210" height="120" rx="8" class="fa" />
+        <text x="25" y="130" class="t-head" font-size="11">if (BuildConfig.IS_PAID)</text>
+        <text x="35" y="150" class="t-accent" font-size="11">showProFeatures()</text>
+        <text x="25" y="175" class="t-head" font-size="11">else</text>
+        <text x="35" y="195" class="t-muted" font-size="11">showAdBanner()</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- 15. STEPPER: FLAVOR SOZLASH -->
+<section>
+  <h2>Product Flavor yaratish bosqichlari</h2>
+  <div class="stepper">
+    <div class="step fragment">
+      <div class="num">1</div>
+      <h3>flavorDimensions</h3>
+      <p>O'lchov guruhini e'lon qiling: <code>flavorDimensions "tier"</code>.</p>
+    </div>
+    <div class="step fragment">
+      <div class="num">2</div>
+      <h3>productFlavors</h3>
+      <p><code>free</code> va <code>pro</code> bloklarini ochib, ularga tegishli <code>applicationIdSuffix</code> bering.</p>
+    </div>
+    <div class="step fragment">
+      <div class="num">3</div>
+      <h3>Sync Now</h3>
+      <p>Oynaning yuqorisidagi "Sync Now" tugmasini bosing va Gradle loyihani yangilashini kuting.</p>
+    </div>
+    <div class="step fragment">
+      <div class="num">4</div>
+      <h3>Build Variant</h3>
+      <p>"Build Variants" panelidan kerakli variantni tanlang va emulyatorda ishga tushiring.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 16. TAQQOSLASH -->
+<section>
+  <h2>Havaskor vs Professional yondashuv</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-question-mark"></i></div>
+      <h3>Xato: Nusxalash (Copy-Paste)</h3>
+      <p>Free va Pro uchun alohida ikkita Android loyihasi ochish.</p>
+      <p>Biror xato topilsa, ikkala loyihada ham qayta tuzatishga majbur bo'lish.</p>
+      <p>Server URL'larini kod ichida qo'lda o'zgartirib yurish.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>To'g'ri: Product Flavors</h3>
+      <p>Yagona kod bazasi (Single codebase).</p>
+      <p>Bir necha soniyada yangi variantni yig'ish imkoniyati.</p>
+      <p><code>buildConfigField</code> orqali barcha muhitlarni avtomatlashtirish.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 17. QUIZ -->
+<section>
+  <h2>Tezkor bilim sinovi</h2>
+  <div class="quiz">
+    <div class="q">Loyihada 3 ta Product Flavor va 2 ta Build Type bo'lsa, jami nechta Build Variant hosil bo'ladi?</div>
+    <div class="opts">
+      <div class="opt">5 ta variant (3 + 2 = 5)</div>
+      <div class="opt" data-ok>6 ta variant (3 x 2 = 6)</div>
+      <div class="opt">Faqat 2 ta asosiy variant (Debug va Release)</div>
+      <div class="opt">Variantlar sonini dasturchi qo'lda kiritadi</div>
+    </div>
+  </div>
+</section>
+
+<!-- 18. AMALIY LAB -->
+<section>
+  <h2>Amaliy laboratoriya mashg'uloti</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="boxes"></i></div>
+      <h3>1. Flavors sozlash</h3>
+      <p><code>app/build.gradle</code> faylida <code>free</code> va <code>pro</code> flavorlarini e'lon qiling. Ularga alohida <code>applicationIdSuffix</code> bering.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="code"></i></div>
+      <h3>2. BuildConfig tekshiruvi</h3>
+      <p><code>buildConfigField</code> orqali <code>IS_PAID</code> bayrog'ini uzating. Kotlin kodida foydalanuvchi statusini Toast orqali chiqaring.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 19. XULOSA -->
+<section>
+  <h2>Darsning asosiy xulosalari</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Xavfsizlik va Tezlik</h3>
+      <p>Debug tezkor testlash uchun, Release esa R8 orqali xavfsiz va siqilgan mahsulot yaratish uchun xizmat qiladi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="boxes"></i></div>
+      <h3>Bitta kod — ko'p ilovalar</h3>
+      <p>Product Flavors yordamida bitta loyihani o'nlab turli mijozlar va muhitlar uchun samarali boshqarish mumkin.</p>
+    </div>
+  </div>
+  <p class="muted mt">Keyingi dars: Dependency management va Version Catalog (libs.versions.toml)</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

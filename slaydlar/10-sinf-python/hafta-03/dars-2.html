@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Statik va Media Fayllar</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 1-slayd: Sarlavha -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Statik va Media Fayllar</h1>
+  <p class="muted">Fayllarni yuklash (Multipart upload), saqlash va FileResponse orqali ko'chirib olish</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">3-hafta &middot; 8-dars</span>
+  
+</section>
+
+<!-- 2-slayd: Dars rejasi -->
+<section>
+  <h2>Dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="folder" data-anim="pulse"></i></div>
+      <h3>Static vs Media</h3>
+      <p>Dasturchi fayllari va foydalanuvchi fayllari farqi, STATIC_ROOT va MEDIA_ROOT sozlamalari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="upload" data-anim="float"></i></div>
+      <h3>Multipart Upload</h3>
+      <p>MultiPartParser, Pillow kutubxonasi, rasm formati va hajmini tekshirish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="download" data-anim="spin"></i></div>
+      <h3>FileResponse</h3>
+      <p>Oqimli (streaming) fayl uzatish, xavfsiz download actionlari.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3-slayd: Bo'lim 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Static va Media fayllar</h1>
+  <p>Fayllarning turlari va saqlanish o'rni</p>
+</section>
+
+<!-- 4-slayd: SVG Sxema: Static vs Media -->
+<section>
+  <h2>Fayllar qayerda saqlanadi?</h2>
+  <p>Dasturchi kodi bilan keladigan va foydalanuvchi yuklagan fayllar</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300" width="100%" height="300">
+      <!-- Static -->
+      <rect x="50" y="50" width="410" height="220" rx="14" class="fa"></rect>
+      <text x="255" y="90" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Statik fayllar (Static)</text>
+      <text x="255" y="130" text-anchor="middle" class="t-muted" font-size="15">Dasturchi yozgan fayllar</text>
+      <text x="255" y="160" text-anchor="middle" class="t-muted" font-size="14">style.css, app.js, logo.png</text>
+      <text x="255" y="195" text-anchor="middle" class="t-accent" font-size="14">STATIC_ROOT: collectstatic orqali</text>
+      <text x="255" y="225" text-anchor="middle" class="t-muted" font-size="14">Nginx orqali tarqatiladi</text>
+
+      <!-- Media -->
+      <rect x="540" y="50" width="410" height="220" rx="14" class="fb"></rect>
+      <text x="745" y="90" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Media fayllar (Media)</text>
+      <text x="745" y="130" text-anchor="middle" class="t-head" font-size="15">Foydalanuvchilar yuklagan fayllar</text>
+      <text x="745" y="160" text-anchor="middle" class="t-muted" font-size="14">Post muqovasi, avatar, PDF hujjat</text>
+      <text x="745" y="195" text-anchor="middle" class="t-accent" font-size="14">MEDIA_ROOT: media/ papkasida</text>
+      <text x="745" y="225" text-anchor="middle" class="t-head" font-size="14">Bazada faqat yo'li saqlanadi!</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 5-slayd: settings/base.py sozlamasi -->
+<section>
+  <h2>settings/base.py sozlamalari</h2>
+  <pre><code class="language-python" data-trim data-noescape data-line-numbers="1-12|1-2|4-5|7-12"># Statik fayllar (CSS, JS)
+STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR.parent / "staticfiles"
+
+# Media fayllar (Uploads)
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR.parent / "media"
+
+# src/config/urls.py (Development muhitda serve qilish)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, 
+                          document_root=settings.MEDIA_ROOT)</code></pre>
+</section>
+
+<!-- 6-slayd: Bo'lim 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Fayl yuklash (Upload)</h1>
+  <p>Multipart/form-data va Pillow tekshiruvi</p>
+</section>
+
+<!-- 7-slayd: SVG Sxema: Multipart upload oqimi -->
+<section>
+  <h2>Fayl yuklash oqimi</h2>
+  <p>Mijozdan to server diskigacha bo'lgan yo'l</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300" width="100%" height="300">
+      <!-- 1. Mijoz -->
+      <rect x="30" y="60" width="200" height="180" rx="12" class="fc"></rect>
+      <text x="130" y="105" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">1. Frontend</text>
+      <text x="130" y="145" text-anchor="middle" class="t-accent" font-size="13">multipart/form-data</text>
+      <text x="130" y="175" text-anchor="middle" class="t-muted" font-size="13">photo.jpg</text>
+      <text x="130" y="205" text-anchor="middle" class="t-muted" font-size="13">POST /upload-cover/</text>
+
+      <!-- Strelka 1 -->
+      <path d="M 235 150 L 285 150" class="la flowing" stroke-width="3"></path>
+      <polygon points="280,145 290,150 280,155" class="ar-a"></polygon>
+
+      <!-- 2. Parser & Serializer -->
+      <rect x="295" y="60" width="230" height="180" rx="12" class="fb"></rect>
+      <text x="410" y="105" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">2. DRF Parser</text>
+      <text x="410" y="145" text-anchor="middle" class="t-accent" font-size="14">MultiPartParser</text>
+      <text x="410" y="175" text-anchor="middle" class="t-muted" font-size="13">Hajm: &le; 5 MB</text>
+      <text x="410" y="205" text-anchor="middle" class="t-muted" font-size="13">MIME: JPEG/PNG/WEBP</text>
+
+      <!-- Strelka 2 -->
+      <path d="M 530 150 L 580 150" class="la flowing" stroke-width="3"></path>
+      <polygon points="575,145 585,150 575,155" class="ar-a"></polygon>
+
+      <!-- 3. Server Diski -->
+      <rect x="590" y="60" width="180" height="180" rx="12" class="fg"></rect>
+      <text x="680" y="105" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">3. Fayl Diski</text>
+      <text x="680" y="145" text-anchor="middle" class="t-head" font-size="14">media/covers/</text>
+      <text x="680" y="175" text-anchor="middle" class="t-muted" font-size="13">Fayl saqlanadi</text>
+      <text x="680" y="205" text-anchor="middle" class="t-accent" font-size="13">Diskka yozildi</text>
+
+      <!-- Strelka 3 -->
+      <path d="M 775 150 L 825 150" class="lg flowing" stroke-width="3"></path>
+      <polygon points="820,145 830,150 820,155" class="ar-g"></polygon>
+
+      <!-- 4. MB Yo'li -->
+      <rect x="835" y="60" width="140" height="180" rx="12" class="fa"></rect>
+      <text x="905" y="105" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">4. Baza</text>
+      <text x="905" y="145" text-anchor="middle" class="t-accent" font-size="13">URL satri</text>
+      <text x="905" y="175" text-anchor="middle" class="t-muted" font-size="12">"covers/..."</text>
+      <text x="905" y="205" text-anchor="middle" class="t-muted" font-size="12">50 bayt</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 8-slayd: Rasm yuklash kodi -->
+<section>
+  <h2>PostViewSet da upload_cover actioni</h2>
+  <pre><code class="language-python" data-trim data-noescape data-line-numbers="1-15|2-6|8-12">@action(
+    methods=["post"],
+    detail=True,
+    url_path="upload-cover",
+    parser_classes=[MultiPartParser, FormParser],
+)
+def upload_cover(self, request, slug=None):
+    post = self.get_object()
+    serializer = PostCoverUploadSerializer(post, data=request.data, partial=True)
+    serializer.is_valid(raise_exception=True)
+    serializer.save()
+    return Response(serializer.data, status=status.HTTP_200_OK)</code></pre>
+</section>
+
+<!-- 9-slayd: Bo'lim 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Faylni yuklab olish (Download)</h1>
+  <p>FileResponse va oqimli uzatish</p>
+</section>
+
+<!-- 10-slayd: FileResponse kodi -->
+<section>
+  <h2>download_cover actioni</h2>
+  <pre><code class="language-python" data-trim data-noescape data-line-numbers="1-12|6|8-12">@action(methods=["get"], detail=True, url_path="download-cover")
+def download_cover(self, request, slug=None):
+    post = self.get_object()
+    if not post.cover_image:
+        raise Http404("Muqova rasmi topilmadi")
+
+    return FileResponse(
+        post.cover_image.open("rb"),
+        as_attachment=True,
+        filename=post.cover_image.name.split("/")[-1]
+    )</code></pre>
+  <div class="callout tip">
+    <i data-ic="circle-check"></i>
+    <code>as_attachment=True</code> parametri brauzerda rasmni shunchaki ko'rsatmasdan, kompyuterga yuklab olishni boshlaydi.
+  </div>
+</section>
+
+<!-- 11-slayd: Interaktiv Flip Card -->
+<section>
+  <h2>Atamalarni eslab qolamiz</h2>
+  <div class="cards three">
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="folder"></i></div>
+          <h3>Static vs Media</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Fayl turlari</h3>
+          <p>Statik — dasturchi fayllari; Media — foydalanuvchi yuklagan fayllar.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="upload"></i></div>
+          <h3>Multipart</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Fayl uzatish</h3>
+          <p>Rasmlar va hujjatlarni HTTP orqali uzatuvchi ikkilik kontent formati.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="download"></i></div>
+          <h3>FileResponse</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Oqimli uzatuvchi</h3>
+          <p>Fayllarni server xotirasini band qilmasdan oqim shaklida yetkazadi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12-slayd: Mini-test Quiz -->
+<section>
+  <h2>Tezkor bilim tekshiruvi</h2>
+  <div class="quiz">
+    <p class="q">Nima uchun rasmlarning o'zi ma'lumotlar bazasida emas, server diskida saqlanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Chunki ma'lumotlar bazasida rasm maydoni umuman mavjud emas</button>
+      <button class="opt" type="button" data-ok>Baza hajmi haddan tashqari shishib ketmasligi va o'qish tezligi pasaymasligi uchun</button>
+      <button class="opt" type="button">Faqat qora va oq rasmlar bazada saqlanishi mumkinligi sababli</button>
+    </div>
+    <div class="explain">
+      To'g'ri! Katta hajmdagi fayllarni diskda yoki bulutli xotirada saqlash va bazada faqat uning yo'lini (path) yozib qo'yish jahon standartidir.
+    </div>
+  </div>
+</section>
+
+<!-- 13-slayd: Odatiy xato -->
+<section>
+  <h2>Dasturchilar ko'p yo'l qo'yadigan xatolar</h2>
+  <div class="callout bad">
+    <i data-ic="circle-alert"></i>
+    Xato: Fayl yuklashda uning hajmi va formatini tekshirmaslik (foydalanuvchi virusli yoki 500 MB li fayl yuklashi mumkin).
+  </div>
+  <div class="callout tip">
+    <i data-ic="circle-check"></i>
+    To'g'ri: Har doim serializerda <code>validate_cover_image</code> orqali MIME turi va maksimal hajmni qat'iy tekshiring.
+  </div>
+</section>
+
+<!-- 14-slayd: Amaliy topshiriq -->
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>15 daqiqa</span></h2>
+  <div class="task">
+    <span class="level easy">Oson</span>
+    <code>settings/base.py</code> ga <code>STATIC_ROOT</code> va <code>MEDIA_ROOT</code> sozlamalarini kiriting.
+  </div>
+  <div class="task">
+    <span class="level mid">O'rta</span>
+    <code>PostCoverUploadSerializer</code> klassini 5 MB va JPEG/PNG tekshiruvi bilan yozing.
+  </div>
+  <div class="task">
+    <span class="level hard">Qiyin</span>
+    <code>upload_cover</code> va <code>download_cover</code> actionlarini sinovdan o'tkazing.
+  </div>
+</section>
+
+<!-- 15-slayd: Xulosa -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h2>Darsni yakunlaymiz</h2>
+  <p class="muted">Keyingi darsda: APIni avtomatlashtirilgan testlash va Swagger / ReDoc hujjatlashtirish!</p>
+  <div class="chips">
+    <span class="chip">STATIC_ROOT &amp; MEDIA_ROOT</span>
+    <span class="chip">MultiPartParser</span>
+    <span class="chip">Pillow validatsiyasi</span>
+    <span class="chip">FileResponse Download</span>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

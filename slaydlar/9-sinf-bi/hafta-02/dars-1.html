@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Excelda Saralash, Filtrlash va Formatlash</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Excelda Saralash, Filtrlash va Formatlash</h1>
+  <p class="muted">Katta ma'lumotlar to'plamini tartibga solish, filtrlash va vizual tahlil</p>
+  <span class="badge">9-sinf</span><span class="badge">Business Intelligence</span><span class="badge">2-hafta · 4-dars</span>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Ma'lumotlarni Saralash (Sort)</h1>
+  <p>Alifbo, sonlar, sanalar va ko'p darajali tartiblash tamoyillari</p>
+</section>
+
+<section>
+  <h2>Saralash (Sort) nima uchun kerak?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="arrow-up-down"></i></div>
+      <h3>Mantiqiy Tartib</h3>
+      <p>Katta jadvallardagi betartib qatorlarni alifbo, qiymat yoki sana bo'yicha tartibga soladi.</p>
+      <p class="t-muted">Eng katta savdoni yoki eng yangi xaridlarni darhol ko'rish imkoni.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers" data-anim="pulse"></i></div>
+      <h3>Ko'p Darajali Saralash</h3>
+      <p>Bir vaqtning o'zida bir nechta ustun bo'yicha ketma-ketlik o'rnatish imkoniyati.</p>
+      <p class="t-muted">Avval Viloyat bo'yicha, keyin Savdo summasi bo'yicha tartiblash.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Saralash turlari taqqosi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="50" y="40" width="320" height="160" rx="8" class="fn ln"></rect>
+      <text x="210" y="75" class="t-head" text-anchor="middle">Bitta ustunli saralash</text>
+      <text x="210" y="105" class="t-muted" text-anchor="middle">A → Z yoki Z → A</text>
+      <text x="210" y="135" class="t-muted" text-anchor="middle">Eng kichikdan eng kattaga</text>
+      <text x="210" y="165" class="t-accent" text-anchor="middle">Oddiy va tezkor</text>
+
+      <rect x="430" y="40" width="320" height="160" rx="8" class="fa la"></rect>
+      <text x="590" y="75" class="t-head" text-anchor="middle">Ko'p darajali (Multi-level)</text>
+      <text x="590" y="105" class="t-muted" text-anchor="middle">1-daraja: Viloyat (A → Z)</text>
+      <text x="590" y="135" class="t-muted" text-anchor="middle">2-daraja: Summa (Max → Min)</text>
+      <text x="590" y="165" class="t-accent" text-anchor="middle">Add Level orqali sozlanadi</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Odatiy xato: Qatorlarning ajralib ketishi</h2>
+  <div class="callout warn">
+    <strong>Xavfli xato: Faqat bitta ustunni belgilab saralash!</strong>
+    <p>Agar siz faqat familiyalar ustunini belgilab saralasangiz, baholar va telefon raqamlari o'z joyida qolib, ma'lumotlar aralashib ketadi!</p>
+  </div>
+  <div class="callout good">
+    <strong>To'g'ri qoida: "Expand the selection"</strong>
+    <p>Doimo bitta katak ustida turib saralang yoki butun jadvalni tanlang. Shunda Excel butun satrni birgalikda siljitadi.</p>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Ma'lumotlarni Filtrlash (Filter)</h1>
+  <p>Shartlar bo'yicha kerakli qatorlarni saralab ajratib olish</p>
+</section>
+
+<section>
+  <h2>Filtrlash mexanizmi qanday ishlaydi?</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="40" y="70" width="180" height="110" rx="8" class="fn ln"></rect>
+      <text x="130" y="110" class="t-head" text-anchor="middle">Boshlang'ich Jadval</text>
+      <text x="130" y="140" class="t-muted" text-anchor="middle">1 000 ta qator</text>
+
+      <line x1="220" y1="125" x2="320" y2="125" class="la ar-a flowing"></line>
+      <text x="270" y="110" class="t-accent" text-anchor="middle">Filtr sharti</text>
+
+      <rect x="320" y="60" width="220" height="130" rx="8" class="fa la"></rect>
+      <text x="430" y="100" class="t-head" text-anchor="middle">Natijaviy Ekran</text>
+      <text x="430" y="130" class="t-accent" text-anchor="middle">45 ta mos qator</text>
+      <text x="430" y="155" class="t-muted" text-anchor="middle">(955 tasi yashirildi)</text>
+
+      <line x1="540" y1="125" x2="620" y2="125" class="lg ar-g flowing"></line>
+
+      <circle cx="680" cy="125" r="45" class="fg lg"></circle>
+      <text x="680" y="120" class="t-head" text-anchor="middle">Xulosa</text>
+      <text x="680" y="140" class="t-muted" text-anchor="middle">Aniq tahlil</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Sonli va Matnli Filtrlar</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3><i data-ic="binary"></i> Sonli Filtrlar</h3>
+      <ul>
+        <li><strong>Greater Than:</strong> Belgilangan sondan katta</li>
+        <li><strong>Between:</strong> Minimal va maksimal oraliq</li>
+        <li><strong>Top 10:</strong> Eng yuqori 10 ta ko'rsatkich</li>
+        <li><strong>Above Average:</strong> O'rtachadan yuqori</li>
+      </ul>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3><i data-ic="file-text"></i> Matnli Filtrlar</h3>
+      <ul>
+        <li><strong>Equals:</strong> Aynan mos keluvchi so'z</li>
+        <li><strong>Begins With:</strong> Berilgan harfdan boshlanuvchi</li>
+        <li><strong>Contains:</strong> Tarkibida qidirilgan so'z bor</li>
+        <li><strong>Ends With:</strong> Berilgan harf bilan tugovchi</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tezkor Klaviatura: AutoFilter</h2>
+  <div class="cards two">
+    <div class="card">
+      <div class="icon"><i data-ic="table"></i></div>
+      <h3>Ctrl + Shift + L</h3>
+      <p>Jadvalning barcha sarlavhalariga filtr strelkalarini bir bosishda yoqadi yoki o'chiradi.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="arrow-down"></i></div>
+      <h3>Alt + Pastga Strelka</h3>
+      <p>Sichqonchasiz tanlangan ustunning filtr menyusini ochadi va bo'sh joy (Space) bilan tanlaydi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Interaktiv tahlil: Filtr turini tanlang</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:220px">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="circle-question-mark"></i></div>
+          <h3>1-Vaziyat</h3>
+          <p>"Toshkent shahridagi 1 mln dan 3 mln so'mgacha bo'lgan barcha xaridlarni ko'rish kerak".</p>
+          <span class="flip-hint">bosing</span>
+        </div>
+        <div class="face back">
+          <h3>Yechim: Number Filters > Between</h3>
+          <p>Shahar bo'yicha Toshkent belgilanadi va Summa ustunida Between (Oraliq) filtri qo'llanadi.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip" style="min-height:220px">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="circle-question-mark"></i></div>
+          <h3>2-Vaziyat</h3>
+          <p>"Elektron pochtasi @gmail.com bilan tugaydigan barcha mijozlarni ajratib olish".</p>
+          <span class="flip-hint">bosing</span>
+        </div>
+        <div class="face back">
+          <h3>Yechim: Text Filters > Ends With</h3>
+          <p>Email ustunida "Ends With" (Tugaydi) filtri tanlanadi va <code>@gmail.com</code> yoziladi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Shartli Formatlash (Conditional Formatting)</h1>
+  <p>Qoidalar asosida ma'lumotlarni avtomatik ranglar bilan ajratish</p>
+</section>
+
+<section>
+  <h2>Shartli formatlash mexanizmi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="40" y="80" width="180" height="90" rx="8" class="fn ln"></rect>
+      <text x="130" y="115" class="t-head" text-anchor="middle">Katakdagi qiymat</text>
+      <text x="130" y="145" class="t-muted" text-anchor="middle">Masalan: 120 000</text>
+
+      <line x1="220" y1="125" x2="330" y2="125" class="la ar-a flowing"></line>
+      <text x="275" y="110" class="t-accent" text-anchor="middle">Qoida</text>
+
+      <rect x="330" y="70" width="220" height="110" rx="8" class="fa la"></rect>
+      <text x="440" y="105" class="t-head" text-anchor="middle">Tekshiruv: > 100 000?</text>
+      <text x="440" y="135" class="t-muted" text-anchor="middle">Ha (True) bo'lsa</text>
+      <text x="440" y="160" class="t-accent" text-anchor="middle">Yashil rang qo'yilsin</text>
+
+      <line x1="550" y1="125" x2="630" y2="125" class="lg ar-g flowing"></line>
+
+      <rect x="630" y="80" width="130" height="90" rx="8" class="fg lg"></rect>
+      <text x="695" y="115" class="t-head" text-anchor="middle">Yashil fon</text>
+      <text x="695" y="145" class="t-muted" text-anchor="middle">Vizual signal</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Shartli formatlash qoidalari</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sparkles"></i></div>
+      <h3>Highlight Cells & Top/Bottom</h3>
+      <ul>
+        <li><strong>Greater Than / Less Than:</strong> Chegaradan oshganlar</li>
+        <li><strong>Duplicate Values:</strong> Takroriylarni qizil qilish</li>
+        <li><strong>Top 10%:</strong> Eng yetakchi xodimlarni belgilash</li>
+      </ul>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="chart-bar"></i></div>
+      <h3>Data Bars & Color Scales</h3>
+      <ul>
+        <li><strong>Data Bars:</strong> Katak ichidagi mini-gistogramma</li>
+        <li><strong>Color Scales:</strong> Issiqlik xaritasi (Heatmap)</li>
+        <li><strong>Icon Sets:</strong> Svetofor (qizil, sariq, yashil) belgilari</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Heatmap va Data Bars vizual taqqosi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="50" y="40" width="320" height="160" rx="8" class="fg lg"></rect>
+      <text x="210" y="75" class="t-head" text-anchor="middle">Data Bars</text>
+      <rect x="80" y="95" width="220" height="22" rx="4" class="fa"></rect>
+      <rect x="80" y="125" width="160" height="22" rx="4" class="fa"></rect>
+      <rect x="80" y="155" width="90" height="22" rx="4" class="fa"></rect>
+      <text x="310" y="112" class="t-head">95</text>
+      <text x="310" y="142" class="t-head">68</text>
+      <text x="310" y="172" class="t-head">32</text>
+
+      <rect x="430" y="40" width="320" height="160" rx="8" class="fn ln"></rect>
+      <text x="590" y="75" class="t-head" text-anchor="middle">Color Scales (Heatmap)</text>
+      <rect x="460" y="95" width="260" height="25" rx="4" class="fg"></rect>
+      <text x="590" y="112" class="t-head" text-anchor="middle">Yuqori: Yashil</text>
+      <rect x="460" y="125" width="260" height="25" rx="4" class="fb"></rect>
+      <text x="590" y="142" class="t-head" text-anchor="middle">O'rtacha: Sariq</text>
+      <rect x="460" y="155" width="260" height="25" rx="4" class="fa"></rect>
+      <text x="590" y="172" class="t-head" text-anchor="middle">Past: Qizil/To'q</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tezkor Sinov: Saralash qoidasi</h2>
+  <div class="quiz">
+    <p class="q">Bir nechta ustun bo'yicha ketma-ket saralash Excelda qanday amalga oshiriladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat bitta ustunni tanlash orqali</button>
+      <button class="opt" type="button" data-ok>Data > Sort > Add Level tugmasi orqali</button>
+      <button class="opt" type="button">Jadvalni o'chirib qayta yozish orqali</button>
+      <button class="opt" type="button">Ctrl+Z tugmasi bilan</button>
+    </div>
+    <div class="explain">To'g'ri javob: Add Level orqali yangi saralash pog'onasi qo'shiladi!</div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tezkor Sinov: Shartli formatlash</h2>
+  <div class="quiz">
+    <p class="q">Ro'yxatdagi aynan bir xil takrorlangan telefon raqamlarini topish uchun qaysi qoida tanlanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Top 10 Items</button>
+      <button class="opt" type="button">Data Bars</button>
+      <button class="opt" type="button" data-ok>Highlight Cells Rules > Duplicate Values</button>
+      <button class="opt" type="button">Color Scales</button>
+    </div>
+    <div class="explain">To'g'ri javob: Duplicate Values takrorlangan qiymatlarni darhol rang bilan ajratadi!</div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Amaliy topshiriqlar <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Shaharlar aholisini kamayish tartibida saralang va 50 000 dan qimmat tovarlarni filtrlang.</div>
+  <div class="task"><span class="level mid">O'rta</span>Bo'limlar va narxlar bo'yicha 2 darajali saralashni va Between filtri orqali oraliqni ajrating.</div>
+  <div class="task"><span class="level hard">Qiyin</span>10 ta viloyat bo'yicha hosildorlikka Data Bars va Color Scales shartli formatlashini qo'llang.</div>
+  
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Bugun nimalarni bildik?</h3>
+      <ul>
+        <li>Saralash (A-Z, Z-A) va ko'p darajali tartib</li>
+        <li>Filtrlash (AutoFilter: Ctrl+Shift+L)</li>
+        <li>Shartli va oraliq (Between) filtrlar</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="sparkles" data-anim="pulse"></i></div>
+      <h3>Vizual Kuch</h3>
+      <ul>
+        <li>Shartli formatlash qoidalari</li>
+        <li>Duplicate Values bilan takroriylarni topish</li>
+        <li>Data Bars va Heatmap (Color Scales)</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>5-dars testi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>5-dars testi</h1>
+  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">2-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Savol 1/10</h2>
+  <div class="quiz">
+    <p class="q">R8 ning ProGuard dan asosiy farqi nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>R8 D8 DEX kompilyatoriga o'rnatilgan, shu sabab tezroq ishlaydi</button>
+      <button class="opt" type="button">R8 faqat rasmlar bilan ishlaydi</button>
+      <button class="opt" type="button">R8 faqat Java uchun</button>
+      <button class="opt" type="button">R8 Git'ning qismi</button>
+    </div>
+    <div class="explain">ProGuard alohida tashqi vosita edi va build vaqtini cho'zardi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 2/10</h2>
+  <div class="quiz">
+    <p class="q">Code Shrinking (Tree Shaking) qanday ishlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Rasmlarni siqadi</button>
+      <button class="opt" type="button" data-ok>Kirish nuqtasidan boshlab tahlil qilib, chaqirilmagan klass va metodlarni olib tashlaydi</button>
+      <button class="opt" type="button">Nomlarni chalkashtiradi</button>
+      <button class="opt" type="button">Kutubxonalarni yangilaydi</button>
+    </div>
+    <div class="explain">Hech qayerda ishlatilmagan «qurigan shoxlar» butunlay o'chiriladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 3/10</h2>
+  <div class="quiz">
+    <p class="q">Resource Shrinking nimani qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Kodni chalkashtiradi</button>
+      <button class="opt" type="button">Ilova ikonkasini o'zgartiradi</button>
+      <button class="opt" type="button" data-ok>Kodda ishlatilmagan rasm, audio va XML resurslarni paketdan olib tashlaydi</button>
+      <button class="opt" type="button">Gradle versiyasini tanlaydi</button>
+    </div>
+    <div class="explain"><code>shrinkResources true</code> <code>res/</code> papkasini tekshiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 4/10</h2>
+  <div class="quiz">
+    <p class="q">Quyidagilardan qaysi biri Optimization bosqichiga kiradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Klass nomini <code>a</code> ga almashtirish</button>
+      <button class="opt" type="button">Ishlatilmagan rasmlarni o'chirish</button>
+      <button class="opt" type="button">Kutubxonani yuklash</button>
+      <button class="opt" type="button" data-ok>Hech qachon bajarilmaydigan <code>if (false)</code> shartlarni o'chirish va kichik funksiyalarni inline qilish</button>
+    </div>
+    <div class="explain">Nomlarni qisqartirish bu Obfuscation, rasm o'chirish bu Resource Shrinking.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 5/10</h2>
+  <div class="quiz">
+    <p class="q"><code>UserDataManager</code> klassining <code>class a</code> bo'lib qolishi qaysi bosqich natijasi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Obfuscation</button>
+      <button class="opt" type="button">Shrinking</button>
+      <button class="opt" type="button">Optimization</button>
+      <button class="opt" type="button">Manifest Merging</button>
+    </div>
+    <div class="explain">Obfuscation ma'noli nomlarni qisqa harflarga almashtiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 6/10</h2>
+  <div class="quiz">
+    <p class="q"><code>shrinkResources true</code> nega <code>minifyEnabled true</code> talab qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ular bir xil parametr</button>
+      <button class="opt" type="button" data-ok>Resurs qaysi kodda ishlatilishini bilish uchun avval kod qisqartirilishi kerak</button>
+      <button class="opt" type="button">Faqat Debug uchun</button>
+      <button class="opt" type="button">Gradle shunday xohlagan</button>
+    </div>
+    <div class="explain">Aks holda ishlatilmagan resurslarni aniqlab bo'lmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 7/10</h2>
+  <div class="quiz">
+    <p class="q">Debug rejimida <code>minifyEnabled true</code> yoqish nega yomon?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ilova ochilmaydi</button>
+      <button class="opt" type="button">Google Play rad etadi</button>
+      <button class="opt" type="button" data-ok>Yig'ish sekinlashadi va Logcat tahlili qiyinlashadi</button>
+      <button class="opt" type="button">Rasmlar yo'qoladi</button>
+    </div>
+    <div class="explain">Minifikatsiya faqat <code>release</code> rejimida yoqilishi kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 8/10</h2>
+  <div class="quiz">
+    <p class="q"><code>getDefaultProguardFile('proguard-android-optimize.txt')</code> nima uchun qo'shiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ilova nomini belgilash uchun</button>
+      <button class="opt" type="button">Keshni tozalash uchun</button>
+      <button class="opt" type="button">Kutubxona ulash uchun</button>
+      <button class="opt" type="button" data-ok>Google tavsiya etgan standart optimallashtirish qoidalarini olish uchun</button>
+    </div>
+    <div class="explain">U ko'rsatilmasa, yuzlab standart qoidalar chetda qoladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 9/10</h2>
+  <div class="quiz">
+    <p class="q">R8 yig'ish vaqtiga qanday ta'sir qiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>D8 bilan birlashgani uchun vaqtni 2-3 barobar tejaydi</button>
+      <button class="opt" type="button">Vaqtni ikki barobar oshiradi</button>
+      <button class="opt" type="button">Ta'sir qilmaydi</button>
+      <button class="opt" type="button">Faqat Debug'ni tezlashtiradi</button>
+    </div>
+    <div class="explain">R8 Kotlin/Java kodini bir vaqtda ham qisqartiradi, ham DEX ga aylantiradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Savol 10/10</h2>
+  <div class="quiz">
+    <p class="q">APK 70 MB, hamda JADX bilan kodni osongina o'qish mumkin. Eng mos chora qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Debug'da <code>applicationIdSuffix</code> qo'shish</button>
+      <button class="opt" type="button" data-ok>Release da <code>minifyEnabled true</code> va <code>shrinkResources true</code> yoqish</button>
+      <button class="opt" type="button"><code>versionCode</code> ni oshirish</button>
+      <button class="opt" type="button"><code>compileSdk</code> ni kamaytirish</button>
+    </div>
+    <div class="explain">R8 hajmni kamaytiradi (shrinking), nomlarni chalkashtiradi (obfuscation).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Natijangiz</h2>
+  <div class="cards three">
+    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
+    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
+    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
+  </div>
+  <p class="small mt">Takrorlang: ProGuard va R8, Shrinking, Optimization, Obfuscation, <code>minifyEnabled</code>/<code>shrinkResources</code>.</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

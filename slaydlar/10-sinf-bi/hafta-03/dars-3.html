@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>SQL analitik operatorlari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="logo">
+  <p class="badge"><i data-ic="database"></i> 9-dars · 3-hafta</p>
+  <h1>SQL analitik operatorlari</h1>
+  <p>SELECT · WHERE · ORDER BY · LIMIT · TOP-N tahlili</p>
+  <p class="small">10-sinf BI · Ma'lumotlar muhandisligi va Machine Learning</p>
+  
+</section>
+
+<section>
+  <h2>Avvalgi darsdan savol-javob</h2>
+  <div class="cards two">
+    <div class="card accent">
+      <div class="icon"><i data-ic="check"></i></div>
+      <h3>ERD eslatma</h3>
+      <ul>
+        <li>1:N — bir hudud, ko'p maktab</li>
+        <li>M:N — Junction table kerak</li>
+        <li>PK → FK orqali bog'lanish</li>
+        <li>SQLite da FK: <code>PRAGMA foreign_keys = ON</code></li>
+      </ul>
+    </div>
+    <div class="card teal">
+      <div class="icon"><i data-ic="database"></i></div>
+      <h3><code>maktab.db</code> sxema</h3>
+      <ul>
+        <li><code>hududlar(id, nomi)</code></li>
+        <li><code>maktablar(id, nomi, turi, hudud_id)</code></li>
+        <li><code>yillik_kpi(id, hudud_id, yil, oquvchilar_soni, ...)</code></li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>SQL buyruqlar guruhlari</h2>
+  <div class="cards three">
+    <div class="card">
+      <div class="icon"><i data-ic="pencil"></i></div>
+      <h3>DDL</h3>
+      <p><strong>Data Definition Language</strong></p>
+      <p>CREATE · ALTER · DROP</p>
+      <p>Jadval tuzilmasini boshqarish</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="rows-3"></i></div>
+      <h3>DML</h3>
+      <p><strong>Data Manipulation Language</strong></p>
+      <p>INSERT · UPDATE · DELETE</p>
+      <p>Ma'lumotlarni o'zgartirish</p>
+    </div>
+    <div class="card accent">
+      <div class="icon"><i data-ic="search"></i></div>
+      <h3>DQL — Bugun!</h3>
+      <p><strong>Data Query Language</strong></p>
+      <p>SELECT</p>
+      <p>Ma'lumotlarni o'qish va tahlil qilish</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>SQL mantiqiy ijro tartibi</h2>
+  <p class="muted">Biz yozgan tartib ≠ kompyuter bajaradigan tartib</p>
+  <div class="flow">
+    <div class="step">
+      <div class="icon"><i data-ic="table"></i></div>
+      <span>FROM</span>
+    </div>
+    <div class="arrow"><i data-ic="arrow-big-right"></i></div>
+    <div class="step">
+      <div class="icon"><i data-ic="funnel"></i></div>
+      <span>WHERE</span>
+    </div>
+    <div class="arrow"><i data-ic="arrow-big-right"></i></div>
+    <div class="step">
+      <div class="icon"><i data-ic="sigma"></i></div>
+      <span>GROUP BY</span>
+    </div>
+    <div class="arrow"><i data-ic="arrow-big-right"></i></div>
+    <div class="step">
+      <div class="icon"><i data-ic="list-filter"></i></div>
+      <span>HAVING</span>
+    </div>
+    <div class="arrow"><i data-ic="arrow-big-right"></i></div>
+    <div class="step">
+      <div class="icon"><i data-ic="search"></i></div>
+      <span>SELECT</span>
+    </div>
+    <div class="arrow"><i data-ic="arrow-big-right"></i></div>
+    <div class="step">
+      <div class="icon"><i data-ic="arrow-down-narrow-wide"></i></div>
+      <span>ORDER BY</span>
+    </div>
+    <div class="arrow"><i data-ic="arrow-big-right"></i></div>
+    <div class="step">
+      <div class="icon"><i data-ic="hash"></i></div>
+      <span>LIMIT</span>
+    </div>
+  </div>
+  <p class="small mt"><i data-ic="info"></i> WHERE SELECT dan <strong>OLDIN</strong> bajariladi — alias ni WHERE ichida ishlatib bo'lmaydi!</p>
+  
+</section>
+
+<section>
+  <h2>SELECT — asosiy sintaksis</h2>
+  <pre><code>-- Barcha ustunlar
+SELECT * FROM yillik_kpi;
+
+-- Aniq ustunlar
+SELECT hudud_id, yil, oquvchilar_soni
+FROM yillik_kpi;
+
+-- Arifmetika va AS taxallus
+SELECT
+  hudud_id,
+  yil,
+  ROUND(oquvchilar_soni * 1.0
+        / maktablar_soni, 1) AS maktab_yuklamasi
+FROM yillik_kpi;</code></pre>
+  
+</section>
+
+<section>
+  <h2>WHERE: solishtirish va mantiqiy operatorlar</h2>
+  <div class="cards two">
+    <div class="card">
+      <div class="icon"><i data-ic="equal"></i></div>
+      <h3>Solishtirish</h3>
+      <pre><code>= != &gt; &lt; &gt;= &lt;=</code></pre>
+      <pre><code>WHERE yil = 2024
+  AND oquvchilar_soni &gt; 300000</code></pre>
+    </div>
+    <div class="card teal">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>Mantiqiy</h3>
+      <pre><code>AND  OR  NOT</code></pre>
+      <pre><code>WHERE yil = 2024
+   OR yil = 2023
+-- yoki qisqaroq:
+WHERE yil IN (2023, 2024)</code></pre>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>WHERE: BETWEEN, IN, LIKE</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="arrow-left-right"></i></div>
+      <h3>BETWEEN</h3>
+      <pre><code>WHERE yil
+  BETWEEN 2022
+  AND 2024</code></pre>
+      <p>Ikkala chegara <strong>kiradi</strong></p>
+    </div>
+    <div class="card accent fragment">
+      <div class="icon"><i data-ic="list-ordered"></i></div>
+      <h3>IN</h3>
+      <pre><code>WHERE hudud_id
+  IN (1, 3, 5)</code></pre>
+      <p>OR zanjirini qisqartiradi</p>
+    </div>
+    <div class="card teal fragment">
+      <div class="icon"><i data-ic="text-cursor"></i></div>
+      <h3>LIKE</h3>
+      <pre><code>WHERE nomi
+  LIKE 'Toshkent%'</code></pre>
+      <p><code>%</code> = ixtiyoriy belgilar<br><code>_</code> = aynan 1 belgi</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>IS NULL — bo'sh qiymatlar</h2>
+  <div class="vs">
+    <div class="side">
+      <h3><i data-ic="circle-x"></i> NOTO'G'RI</h3>
+      <pre><code>-- Bu DOIM FALSE qaytaradi!
+WHERE turi = NULL</code></pre>
+      <p>NULL == NULL — matematik jihatdan noto'g'ri. NULL = "noma'lum"</p>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b">
+      <h3><i data-ic="circle-check"></i> TO'G'RI</h3>
+      <pre><code>-- Bo'sh qiymatlar
+WHERE turi IS NULL
+
+-- Bo'sh emas
+WHERE turi IS NOT NULL</code></pre>
+    </div>
+  </div>
+  <p class="small mt fragment"><i data-ic="info"></i> Noma'lumni noma'lum bilan taqqoslab bo'lmaydi — IS NULL ishlatamiz!</p>
+  
+</section>
+
+<section>
+  <h2>ORDER BY — saralash</h2>
+  <pre><code>-- Bir ustun bo'yicha kamayish tartibi
+SELECT hudud_id, yil, oquvchilar_soni
+FROM yillik_kpi
+WHERE yil = 2024
+ORDER BY oquvchilar_soni DESC;
+
+-- Ko'p ustunli saralash
+SELECT hudud_id, yil, oquvchilar_soni
+FROM yillik_kpi
+ORDER BY yil DESC,        -- avval yangi yillar
+         oquvchilar_soni DESC;  -- teng yillarda ko'proq birinchi</code></pre>
+  <div class="cards two" style="margin-top:0.5em">
+    <div class="card">
+      <div class="icon"><i data-ic="arrow-down-wide-narrow"></i></div>
+      <h3>DESC</h3>
+      <p>Kattadan kichikka (kamayish)</p>
+    </div>
+    <div class="card teal">
+      <div class="icon"><i data-ic="arrow-down-narrow-wide"></i></div>
+      <h3>ASC</h3>
+      <p>Kichikdan kattaga (o'sish) — standart</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>LIMIT va OFFSET — TOP-N va sahifalash</h2>
+  <div class="cards two">
+    <div class="card accent">
+      <div class="icon"><i data-ic="trophy"></i></div>
+      <h3>TOP-N tahlili</h3>
+      <pre><code>-- TOP-5 hudud (2024-yil)
+SELECT h.nomi, k.oquvchilar_soni
+FROM yillik_kpi k
+JOIN hududlar h ON h.id = k.hudud_id
+WHERE k.yil = 2024
+ORDER BY k.oquvchilar_soni DESC
+LIMIT 5;</code></pre>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>Sahifalash (Pagination)</h3>
+      <pre><code>-- 1-sahifa (1-3 yozuv)
+LIMIT 3 OFFSET 0
+
+-- 2-sahifa (4-6 yozuv)
+LIMIT 3 OFFSET 3
+
+-- N-sahifa formulasi:
+LIMIT size OFFSET (page-1)*size</code></pre>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Amaliyot: Python + sqlite3</h2>
+  <pre><code>import sqlite3
+
+conn = sqlite3.connect("data/maktab.db")
+conn.execute("PRAGMA foreign_keys = ON")
+cur = conn.cursor()
+
+# TOP-10 hudud — 2024-yil bo'yicha
+sql = """
+SELECT h.nomi, k.oquvchilar_soni
+FROM yillik_kpi k
+JOIN hududlar h ON h.id = k.hudud_id
+WHERE k.yil = 2024
+ORDER BY k.oquvchilar_soni DESC
+LIMIT 10;
+"""
+
+cur.execute(sql)
+print(f"{'Hudud':<25} {'O\'quvchilar soni':>18}")
+print("-" * 45)
+for nomi, son in cur.fetchall():
+    print(f"{nomi:<25} {son:>18,}")
+
+conn.close()</code></pre>
+  
+</section>
+
+<section>
+  <h2>Murakkab filtr misoli</h2>
+  <pre><code>-- 2022-2024 da, o'quvchisi 400 000 dan ortiq hududlar,
+-- maktab yuklamasi bilan, eng ko'p yuklamali birinchi
+SELECT
+  h.nomi                                          AS hudud,
+  k.yil,
+  k.oquvchilar_soni,
+  ROUND(k.oquvchilar_soni * 1.0
+        / k.maktablar_soni, 1)                   AS maktab_yuklamasi
+FROM yillik_kpi k
+JOIN hududlar h ON h.id = k.hudud_id
+WHERE k.yil BETWEEN 2022 AND 2024
+  AND k.oquvchilar_soni &gt; 400000
+ORDER BY k.yil DESC, maktab_yuklamasi DESC
+LIMIT 6;</code></pre>
+  <p class="small fragment"><i data-ic="info"></i> ORDER BY da alias (<code>maktab_yuklamasi</code>) ishlatish mumkin, lekin WHERE da emas — mantiqiy ijro tartibini eslang!</p>
+  
+</section>
+
+<section>
+  <h2>Xatolarni toping va tuzating!</h2>
+  <pre><code>-- XATOLAR MAVJUD — Toping!
+SELECT nomi, oquvchilar_soni
+FROM yillik_kpi, hududlar
+WHERE hudud_id = NULL
+AND yil = 2024
+ORDERBY oquvchilar_soni DESC
+LIMIT 10;</code></pre>
+  <div class="cards three fragment">
+    <div class="card">
+      <div class="icon"><i data-ic="circle-x"></i></div>
+      <h3>Xato 1</h3>
+      <p><code>= NULL</code> → <code>IS NULL</code> yoki <code>IS NOT NULL</code></p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="circle-x"></i></div>
+      <h3>Xato 2</h3>
+      <p><code>FROM tbl1, tbl2</code> — JOIN aniq yozilmagan</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="circle-x"></i></div>
+      <h3>Xato 3</h3>
+      <p><code>ORDERBY</code> → <code>ORDER BY</code> (bo'sh joy yetishmayapti)</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>3-hafta: O'rganilgan mavzular</h2>
+  <div class="illus">
+    <svg viewBox="0 0 700 320">
+      <defs>
+        <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="var(--teal)" stop-opacity="0.8"/>
+        </linearGradient>
+      </defs>
+      <!-- 7-dars -->
+      <rect x="20" y="20" width="190" height="130" rx="14" fill="var(--card)" stroke="var(--accent)" stroke-width="2"/>
+      <text x="115" y="48" text-anchor="middle" font-size="13" font-weight="bold">7-dars</text>
+      <text x="115" y="68" text-anchor="middle" font-size="11">RDBMS · PK · FK</text>
+      <text x="115" y="86" text-anchor="middle" font-size="11">Constraints</text>
+      <text x="115" y="104" text-anchor="middle" font-size="11">CHECK · NOT NULL</text>
+      <text x="115" y="122" text-anchor="middle" font-size="11">UNIQUE · DEFAULT</text>
+      <!-- 8-dars -->
+      <rect x="255" y="20" width="190" height="130" rx="14" fill="var(--card)" stroke="var(--teal)" stroke-width="2"/>
+      <text x="350" y="48" text-anchor="middle" font-size="13" font-weight="bold">8-dars</text>
+      <text x="350" y="68" text-anchor="middle" font-size="11">ERD dizayn</text>
+      <text x="350" y="86" text-anchor="middle" font-size="11">SQLite yaratish</text>
+      <text x="350" y="104" text-anchor="middle" font-size="11">Junction table</text>
+      <text x="350" y="122" text-anchor="middle" font-size="11">maktab.db</text>
+      <!-- 9-dars -->
+      <rect x="490" y="20" width="190" height="130" rx="14" fill="var(--card)" stroke="var(--accent2)" stroke-width="2"/>
+      <text x="585" y="48" text-anchor="middle" font-size="13" font-weight="bold">9-dars</text>
+      <text x="585" y="68" text-anchor="middle" font-size="11">SELECT · WHERE</text>
+      <text x="585" y="86" text-anchor="middle" font-size="11">BETWEEN · IN · LIKE</text>
+      <text x="585" y="104" text-anchor="middle" font-size="11">ORDER BY · LIMIT</text>
+      <text x="585" y="122" text-anchor="middle" font-size="11">TOP-N · Pagination</text>
+      <!-- Arrows between -->
+      <line x1="210" y1="85" x2="255" y2="85" stroke="var(--line)" stroke-width="2" marker-end="url(#arr)"/>
+      <line x1="445" y1="85" x2="490" y2="85" stroke="var(--line)" stroke-width="2" marker-end="url(#arr)"/>
+      <!-- Bottom common -->
+      <rect x="20" y="200" width="660" height="80" rx="14" fill="url(#g1)" opacity="0.15" stroke="var(--line)"/>
+      <text x="350" y="230" text-anchor="middle" font-size="13" font-weight="bold">Umumiy natija</text>
+      <text x="350" y="252" text-anchor="middle" font-size="12">maktab.db — O'zbekiston ta'lim KPI tahlil platformasi</text>
+      <text x="350" y="272" text-anchor="middle" font-size="11">Python sqlite3 orqali TOP-N va Pagination</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Bilasizmi?</h2>
+  <div class="cards two">
+    <div class="card">
+      <div class="icon"><i data-ic="book"></i></div>
+      <h3>SQL tarixi</h3>
+      <p>SQL 1974-yilda IBM muhandislari tomonidan yaratilgan. Dastlab <strong>SEQUEL</strong> (Structured English Query Language) deb atalgan. Bugun dunyoda eng ko'p ishlatiladigan ma'lumotlar bazasi tili!</p>
+    </div>
+    <div class="card teal">
+      <div class="icon"><i data-ic="school"></i></div>
+      <h3>O'zbekiston ta'limi</h3>
+      <p>2024-yilgi statistikaga ko'ra O'zbekiston umumta'lim maktablarida <strong>6,5 milliondan</strong> ortiq o'quvchi ta'lim olmoqda. SQL TOP-N orqali hududiy tahlil qilish mumkin.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tezkor savol-javob</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="hash"></i></div>
+      <p>SQL da SELECT va WHERE qaysi tartibda <strong>bajariladi</strong>?</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="equal"></i></div>
+      <p><code>BETWEEN 10 AND 20</code> va <code>&gt;=10 AND &lt;=20</code> bir xilmi?</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="text-cursor"></i></div>
+      <p><code>LIKE 'A_or'</code> qanday so'zlarga mos keladi?</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-x"></i></div>
+      <p><code>= NULL</code> o'rniga nima yozish kerak va nima uchun?</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <p>4-sahifada <code>LIMIT 10 OFFSET ?</code> qancha bo'ladi?</p>
+    </div>
+    <div class="card accent fragment">
+      <div class="icon"><i data-ic="arrow-down-wide-narrow"></i></div>
+      <p>Ko'p ustunli ORDER BY da ustunlar qanday ajratiladi?</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>3-hafta yakuni va uyga vazifa</h2>
+  <div class="cards two">
+    <div class="card teal">
+      <div class="icon"><i data-ic="check"></i></div>
+      <h3>3-hafta natijasi</h3>
+      <ul>
+        <li><i data-ic="circle-check"></i> RDBMS, PK, FK, Constraints</li>
+        <li><i data-ic="circle-check"></i> ERD dizayn, SQLite yaratish</li>
+        <li><i data-ic="circle-check"></i> SELECT, WHERE, ORDER BY, LIMIT</li>
+        <li><i data-ic="circle-check"></i> TOP-N va Pagination</li>
+      </ul>
+    </div>
+    <div class="card accent">
+      <div class="icon"><i data-ic="book"></i></div>
+      <h3>Uyga vazifa</h3>
+      <ul>
+        <li>5 ta viloyat uchun 3 yillik KPI kiriting</li>
+        <li>Yuklama (&gt;700) filtri qo'llang</li>
+        <li>TOP-3 ta hududni Python da chiqaring</li>
+        <li>LIMIT va ORDER BY izohlab bezing</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small mt fragment"><i data-ic="zap"></i> <strong>Keyingi hafta:</strong> SQL agregat funksiyalari — COUNT, SUM, AVG, GROUP BY, HAVING</p>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

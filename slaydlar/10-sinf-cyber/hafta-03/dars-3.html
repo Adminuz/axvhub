@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Tarmoq asoslari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="Logo">
+  <h1>Tarmoq asoslari</h1>
+  <p class="muted">Mijoz-server arxitekturasi, topologiyalar, OSI va TCP/IP modellari</p>
+  <span class="badge">10-sinf Kiberxavfsizlik · 3-hafta</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="network" data-anim="pulse"></i></div>
+      <h3>Mijoz-Server va LAN/WAN</h3>
+      <p>Tarmoq turlari va geografik miqyoslar.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="git-fork" data-anim="float"></i></div>
+      <h3>Tarmoq topologiyalari</h3>
+      <p>Shina, Yulduz, Halqa va Mesh topologiyalari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers" data-anim="wiggle"></i></div>
+      <h3>OSI 7 sathi va TCP/IP</h3>
+      <p>Standart model va ma'lumotlar enkapsulyatsiyasi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="radio" data-anim="float"></i></div>
+      <h3>TCP vs UDP</h3>
+      <p>3-Way Handshake va uzluksiz oqim protokollari.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Kompyuter tarmoqlari va LAN/WAN</h1>
+  <p>Mijoz-server modeli va tarmoq miqyoslari</p>
+  
+</section>
+
+<section>
+  <h2>Tarmoqlarning hududiy turlari</h2>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="bluetooth"></i></div>
+      <h3>PAN (Personal Area Network)</h3>
+      <p class="muted">10 metrgacha</p>
+      <p>Shaxsiy gadjetlar: Bluetooth naushnik, smartfon va soat o'rtasida.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="building"></i></div>
+      <h3>LAN (Local Area Network)</h3>
+      <p class="muted">2.5 km gacha</p>
+      <p>Bino, maktab, universitet yoki ofis ichidagi lokal tarmoq.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="map"></i></div>
+      <h3>MAN (Metropolitan Area Network)</h3>
+      <p class="muted">Shahar miqyosida</p>
+      <p>Butun shahar bo'ylab tashkil etilgan korporativ yoki provayder tarmog'i.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="globe"></i></div>
+      <h3>WAN (Wide Area Network)</h3>
+      <p class="muted">Global miqyosda</p>
+      <p>Davlatlar va qit'alarni bog'lovchi global megatarmoq (Internet).</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Tarmoq topologiyalari</h1>
+  <p>Qurilmalarning geometrik bog'lanish shakllari</p>
+  
+</section>
+
+<section>
+  <h2>Asosiy topologiyalar</h2>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sparkles"></i></div>
+      <h3>Yulduz (Star) — Standart</h3>
+      <p>Barcha kompyuterlar markaziy Switch ga ulangan. Bitta kabel uzilsa boshqalarga ta'sir qilmaydi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="minus"></i></div>
+      <h3>Shina (Bus) — Eskirgan</h3>
+      <p>Bitta umumiy magistral kabel. Kabel o'rtasidan uzilsa, butun tarmoq ishdan chiqadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle"></i></div>
+      <h3>Halqa (Ring)</h3>
+      <p>Paketlar aylanma yo'nalishda uzatiladi. Har bir kompyuter retranslyator vazifasini bajaradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="grid-2x2"></i></div>
+      <h3>Mesh (To'liq bog'langan)</h3>
+      <p>Har bir tugun barcha boshqasi bilan alohida ulangan. Maksimal ishonchli, ammo qimmat.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>OSI 7 sathi va TCP/IP</h1>
+  <p>Tarmoq protokollari va ma'lumotlar enkapsulyatsiyasi</p>
+  
+</section>
+
+<section>
+  <h2>OSI 7 sathli etalon modeli</h2>
+  <table class="fragment fade-up">
+      <thead>
+        <tr>
+          <th>№</th>
+          <th>Sath nomi</th>
+          <th>PDU</th>
+          <th>Protokollar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>7</td>
+          <td>Tadbiqiy (Application)</td>
+          <td>Data</td>
+          <td>HTTP, HTTPS, DNS, SSH, FTP</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Taqdimot (Presentation)</td>
+          <td>Data</td>
+          <td>SSL/TLS, JPEG, ASCII</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Seans (Session)</td>
+          <td>Data</td>
+          <td>NetBIOS, RPC, Sockets</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Transport</td>
+          <td>Segment</td>
+          <td>TCP, UDP (Portlar: 80, 443)</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Tarmoq (Network)</td>
+          <td>Packet</td>
+          <td>IP (IPv4/IPv6), ICMP, ARP</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Kanal (Data Link)</td>
+          <td>Frame</td>
+          <td>Ethernet, Wi-Fi (MAC manzil)</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Fizik (Physical)</td>
+          <td>Bits</td>
+          <td>Kabel, Optika, Radio signallar</td>
+        </tr>
+      </tbody>
+    </table>
+  
+</section>
+
+<section>
+  <h2>Enkapsulyatsiya jarayoni</h2>
+  <div class="timeline">
+    <div class="tl fragment"><b>7-5. Ma'lumot (Data):</b> Foydalanuvchi yozgan xabar yoki HTTP so'rovi.</div>
+    <div class="tl fragment"><b>4. Segment (TCP sarlavhasi):</b> Port raqamlari qo'shiladi (Port 443 -> Port 51234).</div>
+    <div class="tl fragment"><b>3. Paket (IP sarlavhasi):</b> Manba va maqsad IP manzillari qo'shiladi.</div>
+    <div class="tl fragment"><b>2-1. Freym va Bitlar:</b> MAC manzil qo'shiladi va kabel orqali 0 va 1 signallari uzatiladi.</div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>TCP vs UDP</h1>
+  <p>Ishonchli va kafolatli aloqa vs Tezkor oqim</p>
+  
+</section>
+
+<section>
+  <h2>TCP: 3-Way Handshake</h2>
+  <div class="cols">
+    <div>
+      <div class="card fragment fade-up">
+        <h3>1. SYN</h3>
+        <p>Mijoz: «Men siz bilan ulanmoqchiman!»</p>
+      </div>
+      <div class="card fragment fade-up">
+        <h3>2. SYN-ACK</h3>
+        <p>Server: «Qabul qildim, men ham tayyorman!»</p>
+      </div>
+      <div class="card fragment fade-up">
+        <h3>3. ACK</h3>
+        <p>Mijoz: «Tasdiqlayman, ma'lumotni boshladik!»</p>
+      </div>
+    </div>
+    <div class="fragment fade-up">
+      <svg viewBox="0 0 350 250">
+        <line x1="60" y1="20" x2="60" y2="230" stroke="currentColor" stroke-width="2" class="t-muted" />
+        <line x1="290" y1="20" x2="290" y2="230" stroke="currentColor" stroke-width="2" class="t-muted" />
+        <text x="60" y="15" text-anchor="middle" class="t-head">Mijoz</text>
+        <text x="290" y="15" text-anchor="middle" class="t-head">Server</text>
+        <line x1="60" y1="60" x2="290" y2="100" stroke="currentColor" stroke-width="2" class="t-accent" />
+        <text x="175" y="70" text-anchor="middle" class="t-accent">1. SYN</text>
+        <line x1="290" y1="110" x2="60" y2="150" stroke="currentColor" stroke-width="2" class="t-accent" />
+        <text x="175" y="125" text-anchor="middle" class="t-accent">2. SYN-ACK</text>
+        <line x1="60" y1="160" x2="290" y2="200" stroke="currentColor" stroke-width="2" class="t-accent" />
+        <text x="175" y="175" text-anchor="middle" class="t-accent">3. ACK</text>
+      </svg>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>UDP: Nega u kerak?</h2>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="video"></i></div>
+      <h3>Jonli video va ovoz</h3>
+      <p>Zoom, Telegram qo'ng'iroqlari. Bitta kadr yo'qolsa, efir to'xtamasligi kerak, keyingi kadr ko'rsatiladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="gamepad-2"></i></div>
+      <h3>Onlayn o'yinlar</h3>
+      <p>Minimal kechikish (ping). Eski koordinatalarni kutishning keragi yo'q, yangi holat muhim.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="globe"></i></div>
+      <h3>DNS qidiruvlari</h3>
+      <p>Sayt IP sini topish uchun bir zumda bitta so'rov yuborish kifoya.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="zap"></i></div>
+      <h3>Maksimal tezlik</h3>
+      <p>Ortiqcha sarlavhalar va tasdiqlashlarsiz ma'lumotni to'g'ridan-to'g'ri oqizish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">05</div>
+  <h1>Amaliy laboratoriya buyruqlari</h1>
+  <p>ipconfig, ping va traceroute bilan tarmoq diagnostikasi</p>
+  
+</section>
+
+<section>
+  <h2>Tarmoq diagnostikasi buyruqlari</h2>
+  <pre><code class="language-bash"># IP va MAC manzilni ko'rish (Windows)
+ipconfig /all
+
+# IP va MAC manzilni ko'rish (Linux/macOS)
+ip a
+
+# Tarmoq aloqasini tekshirish (Ping)
+ping 1.1.1.1
+
+# Marshrutni tekshirish (Traceroute)
+tracert daryo.uz</code></pre>
+  
+</section>
+
+<section class="sec">
+  <div class="num">06</div>
+  <h1>Amaliy topshiriqlar</h1>
+  <p>OSI va tarmoq tahlili vazifalari</p>
+  
+</section>
+
+<section>
+  <h2>Darsning amaliy vazifalari</h2>
+  <div class="cols">
+    <div class="task fragment fade-up">
+      <span class="level easy">Oson</span>
+      <h4>1. MAC vs IP</h4>
+      <p>Nima uchun kompyuterga ham fizik MAC, ham mantiqiy IP manzil kerak?</p>
+    </div>
+    <div class="task fragment fade-up">
+      <span class="level easy">Oson</span>
+      <h4>2. TCP Handshake</h4>
+      <p>SYN, SYN-ACK, ACK xabarlarining vazifasini tushuntiring.</p>
+    </div>
+    <div class="task fragment fade-up">
+      <span class="level mid">O'rta</span>
+      <h4>3. UDP tanlanishi</h4>
+      <p>Nega jonli video muloqotda TCP emas, UDP tanlanadi?</p>
+    </div>
+    <div class="task fragment fade-up">
+      <span class="level hard">Qiyin</span>
+      <h4>4. Mesh topologiyasi</h4>
+      <p>Harbiy va bank serverlarida nima sababdan Mesh topologiyasi qo'llaniladi?</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Xulosa: 3-hafta sarhisobi</h2>
+  <div class="card fragment fade-up">
+    <div class="icon"><i data-ic="shield-check"></i></div>
+    <h3>1-9 darslar yakunlandi!</h3>
+    <p>Kiberxavfsizlik asoslari, tahdidlar, CIA triadasi, xavfsizlik tafakkuri va tarmoq modellari to'liq o'zlashtirildi.</p>
+  </div>
+  <div class="cols">
+    <div class="card fragment fade-up">
+      <h4>Poydevor mustahkam</h4>
+      <p>Endi o'quvchilar tarmoq xavfsizligining amaliy qismiga tayyor.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <h4>Keyingi qadamlar</h4>
+      <p>Keyingi haftalarda Wireshark, nmap, firewall va VPN chuqurroq o'rganiladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="shield-check" data-anim="pulse"></i></div>
+  <h1>E'tiboringiz uchun rahmat!</h1>
+  <p class="muted">3-hafta muvaffaqiyatli yakunlandi! Uyga vazifalarni topshirishni unutmang.</p>
+  <span class="badge">10-sinf Kiberxavfsizlik</span>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

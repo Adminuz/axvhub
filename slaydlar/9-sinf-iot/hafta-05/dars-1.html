@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Arduino va Raspberry Pi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Arduino va Raspberry Pi</h1>
+  <p class="muted">IoT uchun asosiy qurilmalar: mikrokontroller va mikrokompyuter taqqosi</p>
+  <span class="badge">9-sinf</span><span class="badge">IoT</span><span class="badge">5-hafta · 13-dars</span>
+  
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">DIP switch'ning 2 ta kaliti Arduino'ga ulansa, nechta holatni ajrata olamiz?</p>
+    <div class="opts">
+      <button class="opt" type="button">2</button>
+      <button class="opt" type="button" data-ok>4</button>
+      <button class="opt" type="button">8</button>
+      <button class="opt" type="button">16</button>
+    </div>
+    <div class="explain">2 bit: 00, 01, 10, 11 — jami 4 ta holat.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>IoT qurilmalari zanjiri</h1>
+  <p>Kim sezadi, kim o'ylaydi, kim harakat qiladi?</p>
+</section>
+
+<section>
+  <h2>Zanjir</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+      <g data-tip="Sensor: harorat, namlik, yorug'lik, harakat, gazni sezib raqamli ma'lumotga aylantiradi."><rect class="fc lc" x="20" y="100" width="190" height="100" rx="14" stroke-width="3"/><text class="t-head" x="115" y="158" text-anchor="middle" font-size="26">Sensor</text></g>
+      <g class="fragment" data-tip="Mikrokontroller yoki mikrokompyuter: ma'lumotni qayta ishlaydi va qaror qabul qiladi."><line class="la flowing" x1="210" y1="150" x2="270" y2="150" stroke-width="4" marker-end="url(#ar-a)"/><rect class="fa la pulse" x="275" y="80" width="220" height="140" rx="14" stroke-width="4"/><text class="t-head" x="385" y="145" text-anchor="middle" font-size="26">Miya</text><text class="t-muted" x="385" y="180" text-anchor="middle" font-size="22">MCU / Pi</text></g>
+      <g class="fragment" data-tip="Tarmoq: Wi-Fi, Bluetooth, LoRaWAN, ZigBee, NFC, mobil tarmoq."><line class="lb flowing" x1="495" y1="120" x2="590" y2="70" stroke-width="4" marker-end="url(#ar-b)"/><rect class="fb lb" x="595" y="20" width="190" height="90" rx="14" stroke-width="3"/><text class="t-head" x="690" y="74" text-anchor="middle" font-size="26">Tarmoq</text></g>
+      <g class="fragment" data-tip="Aktuator: chiroq yoqish, eshik qulflash, nasos, motor."><line class="lg flowing" x1="495" y1="180" x2="590" y2="230" stroke-width="4" marker-end="url(#ar-g)"/><rect class="fg lg" x="595" y="190" width="190" height="90" rx="14" stroke-width="3"/><text class="t-head" x="690" y="244" text-anchor="middle" font-size="26">Aktuator</text></g>
+      <g class="fragment"><text class="t-accent" x="890" y="74" text-anchor="middle" font-size="22">bulut</text><text class="t-accent" x="890" y="244" text-anchor="middle" font-size="22">harakat</text></g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Ikki xil «miya»</h2>
+  <div class="vs">
+    <div class="side fragment"><h3><i data-ic="cpu"></i> Mikrokontroller</h3>Arduino, ESP32, STM32: kichik, kam quvvatli, signal va aktuatorni boshqaradi.</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3><i data-ic="monitor"></i> Mikrokompyuter</h3>Raspberry Pi: kuchli, OS bor — murakkab hisob, AI, katta ma'lumot.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Arduino</h1>
+  <p>Ochiq kodli mikrokontroller platformasi</p>
+</section>
+
+<section>
+  <h2>Arduino platformasi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="circuit-board" data-anim="float"></i></div><h3>Apparat</h3><p>Platalar: Uno, Mega, Nano, Micro, Due. UNO markazida ATmega328P.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="code-xml"></i></div><h3>Dasturiy qism</h3><p>Arduino IDE: C/C++ ga o'xshash sintaksis, USB orqali yuklash.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Arduino UNO anatomiyasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 360">
+      <rect class="fa la" x="200" y="60" width="600" height="250" rx="16" stroke-width="3"/>
+      <g class="fragment" data-tip="ATmega328P — platadagi mikrokontroller: protsessor, xotira va portlar bitta chipda."><rect class="fn ln" x="430" y="160" width="200" height="70" rx="6" stroke-width="3"/><text class="t-head" x="530" y="203" text-anchor="middle" font-size="22">ATmega328P</text></g>
+      <g class="fragment" data-tip="Raqamli pinlar: LED, tugma, rele. ~ belgili pinlar PWM ham beradi."><rect class="fb lb" x="300" y="70" width="460" height="36" rx="4" stroke-width="2"/><text class="t-head" x="530" y="96" text-anchor="middle" font-size="22">raqamli pinlar 0–13 (~PWM)</text></g>
+      <g class="fragment" data-tip="Analog kirish pinlari A0–A5: harorat, yorug'lik darajasini o'lchash."><rect class="fc lc" x="520" y="262" width="240" height="36" rx="4" stroke-width="2"/><text class="t-head" x="640" y="288" text-anchor="middle" font-size="22">analog A0–A5</text></g>
+      <g class="fragment" data-tip="USB: kompyuterga ulanadi, dastur yuklanadi va quvvat beriladi."><rect class="fn ln" x="160" y="110" width="90" height="70" rx="6" stroke-width="3"/><text class="t-muted" x="120" y="100" font-size="22">USB</text></g>
+      <g class="fragment"><text class="t-muted" x="500" y="345" text-anchor="middle" font-size="22">sichqoncha bilan qismlar ustiga boring</text></g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Arduino kodi</h2>
+  <pre class="terminal"><code class="language-cpp" data-trim data-noescape data-line-numbers="1-3|4-9|5-6|7-8">
+void setup() {
+  pinMode(13, OUTPUT);      // bir marta: pin chiqish
+}
+void loop() {               // cheksiz takror
+  digitalWrite(13, HIGH);   // LED yonadi
+  delay(1000);
+  digitalWrite(13, LOW);    // LED o'chadi
+  delay(1000);
+}
+</code></pre>
+</section>
+
+<section>
+  <h2>Arduino: kuchli va zaif tomonlar</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="thumbs-up"></i></div><h3>Afzallik</h3><p>Oson dasturlanadi, arzon, boshlovchiga qulay, kutubxona va modullar juda ko'p.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="wifi-off" data-anim="blink"></i></div><h3>Cheklov</h3><p>Ichida Wi-Fi va Bluetooth yo'q (modul kerak), hisoblash quvvati past.</p></div>
+  </div>
+  <p class="small mt">Qo'llanish: oddiy avtomatlashtirish, robototexnika, sensor tizimlari, o'quv loyihalari.</p>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Raspberry Pi</h1>
+  <p>Kaftdagi kompyuter</p>
+</section>
+
+<section>
+  <h2>Raspberry Pi tuzilishi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 360">
+      <rect class="fg lg" x="150" y="40" width="700" height="280" rx="16" stroke-width="3"/>
+      <g class="fragment" data-tip="ARM protsessor — «miya»; GPU — video va grafika."><rect class="fn ln" x="400" y="130" width="180" height="100" rx="8" stroke-width="3"/><text class="t-head" x="490" y="175" text-anchor="middle" font-size="22">ARM CPU</text><text class="t-muted" x="490" y="205" text-anchor="middle" font-size="22">+ GPU</text></g>
+      <g class="fragment" data-tip="RAM — vaqtinchalik xotira: 512 MB dan 8 GB gacha."><rect class="fa la" x="610" y="140" width="110" height="80" rx="6" stroke-width="3"/><text class="t-head" x="665" y="187" text-anchor="middle" font-size="22">RAM</text></g>
+      <g class="fragment" data-tip="GPIO pinlar: sensor, aktuator, LED, motorlar ulanadi."><rect class="fb lb" x="200" y="55" width="560" height="34" rx="4" stroke-width="2"/><text class="t-head" x="480" y="80" text-anchor="middle" font-size="22">GPIO pinlar</text></g>
+      <g class="fragment" data-tip="Portlar: USB, HDMI, Ethernet, kamera va ekran."><rect class="fc lc" x="860" y="120" width="70" height="60" rx="4" stroke-width="2"/><rect class="fc lc" x="860" y="200" width="70" height="60" rx="4" stroke-width="2"/><text class="t-muted" x="895" y="290" text-anchor="middle" font-size="22">USB, LAN</text><rect class="fc lc" x="230" y="280" width="120" height="30" rx="4" stroke-width="2"/><text class="t-muted" x="290" y="345" text-anchor="middle" font-size="22">HDMI</text></g>
+      <g class="fragment" data-tip="microSD: operatsion tizim va doimiy ma'lumot shu kartada."><rect class="fn ln" x="100" y="160" width="60" height="70" rx="4" stroke-width="2"/><text class="t-muted" x="60" y="150" font-size="22">microSD</text></g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Operatsion tizim va dasturlash</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="terminal" data-anim="pulse"></i></div><h3>Raspberry Pi OS</h3><p>Linux asosida; Ubuntu va boshqalar ham. Fayllar, brauzer, tarmoq.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="layers"></i></div><h3>Multitasking</h3><p>Bir vaqtda bir nechta dastur ishlaydi.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="file-code"></i></div><h3>Tillar</h3><p>Python (eng qulay), C/C++, Java, Node.js.</p></div>
+  </div>
+</section>
+
+<section data-auto-animate>
+  <h2>Bir vazifa — ikki kod</h2>
+  <pre class="terminal" data-id="kod"><code class="language-cpp" data-trim data-noescape>
+// Arduino: kod to'g'ridan-to'g'ri chipda
+digitalWrite(13, HIGH); delay(1000);
+digitalWrite(13, LOW);  delay(1000);
+</code></pre>
+</section>
+
+<section data-auto-animate>
+  <h2>Bir vazifa — ikki kod</h2>
+  <pre class="terminal" data-id="kod"><code class="language-python" data-trim data-noescape>
+# Raspberry Pi: Python dasturi Linux ichida
+from gpiozero import LED
+from time import sleep
+led = LED(17)
+while True:
+    led.on();  sleep(1)
+    led.off(); sleep(1)
+</code></pre>
+  <p class="small">gpiozero, RPi.GPIO — qo'llanmada tilga olingan Python kutubxonalari.</p>
+</section>
+
+<section>
+  <section>
+    <h2>Raspberry Pi modellari</h2>
+    <table>
+      <thead><tr><th>Model</th><th>Protsessor</th><th>RAM</th><th>Qo'llanish</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td>Zero W</td><td>1 yadro ARM11</td><td>512 MB</td><td>mini IoT</td></tr>
+        <tr class="fragment"><td>3 B+</td><td>4 yadro 1.4 GHz</td><td>1 GB</td><td>aqlli uy, kamera</td></tr>
+        <tr class="fragment"><td>4</td><td>4 yadro 1.5 GHz</td><td>2–8 GB</td><td>gateway, server</td></tr>
+        <tr class="fragment"><td>5</td><td>yangi ARM</td><td>4–8 GB</td><td>AI, yirik loyiha</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: Pico haqida</p>
+  </section>
+  <section>
+    <h2>Diqqat: Raspberry Pi Pico</h2>
+    <div class="callout warn"><i data-ic="triangle-alert"></i>Pico / Pico W — <b>mikrokontroller</b> (RP2040, 264 KB SRAM). Operatsion tizimi yo'q.</div>
+    <p class="mt">Juda arzon, real vaqt boshqaruvi va portativ loyihalar uchun — Arduino'ga yaqin.</p>
+  </section>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Qaysi qurilma to'liq operatsion tizimda ishlaydi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Arduino UNO</button>
+      <button class="opt" type="button">Raspberry Pi Pico</button>
+      <button class="opt" type="button" data-ok>Raspberry Pi 4</button>
+      <button class="opt" type="button">ATmega328P</button>
+    </div>
+    <div class="explain">Raspberry Pi 4 — Raspberry Pi OS (Linux). Pico va Arduino — mikrokontrollerlar.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Taqqoslash va tanlash</h1>
+  <p>Qaysi loyihaga qaysi qurilma?</p>
+</section>
+
+<section>
+  <h2>Yonma-yon</h2>
+  <table>
+    <thead><tr><th>Mezon</th><th>Arduino UNO</th><th>Raspberry Pi 4</th></tr></thead>
+    <tbody>
+      <tr class="fragment"><td>OS</td><td>yo'q, bitta dastur</td><td>Linux</td></tr>
+      <tr class="fragment"><td>Tarmoq</td><td>modul kerak</td><td>Wi-Fi, BT, Ethernet</td></tr>
+      <tr class="fragment"><td>Til</td><td>C/C++</td><td>Python, C/C++, Java</td></tr>
+      <tr class="fragment"><td>Energiya</td><td>juda kam</td><td>ko'p</td></tr>
+      <tr class="fragment"><td>Narx</td><td>arzon</td><td>qimmatroq</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Tanlash mezonlari</h2>
+  <div class="cards three">
+    <div class="flip" style="min-height:170px"><div class="flip-in"><div class="face front"><div class="icon"><i data-ic="puzzle"></i></div><h3>Murakkablik</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Oddiy → Arduino yoki Pico. Video, aqlli uy markazi → Pi 3/4.</p></div></div></div>
+    <div class="flip" style="min-height:170px"><div class="flip-in"><div class="face front"><div class="icon"><i data-ic="wifi"></i></div><h3>Internet</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Wi-Fi kerak → ESP8266/ESP32 yoki Raspberry Pi.</p></div></div></div>
+    <div class="flip" style="min-height:170px"><div class="flip-in"><div class="face front"><div class="icon"><i data-ic="battery-medium"></i></div><h3>Energiya</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Batareya → kam quvvatli MCU. Pi — elektrga ulangan.</p></div></div></div>
+  </div>
+  <p class="small mt">Yana: pinlar va interfeyslar (GPIO, SPI, I2C, PWM), kutubxonalar, byudjet.</p>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Maktab kirishida yuzni taniydigan kamera tizimi uchun qaysi qurilma mos?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Raspberry Pi 4</button>
+      <button class="opt" type="button">Arduino UNO</button>
+      <button class="opt" type="button">Raspberry Pi Pico</button>
+      <button class="opt" type="button">DIP switch</button>
+    </div>
+    <div class="explain">Kamera porti, kuchli protsessor va OS — AI modeli uchun kerak.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriqlar <span class="timer"><i data-ic="timer"></i>25 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Aqlli issiqxona zanjiri: sensor, MCU, Wi-Fi, nasos — rollarni ayting.</div>
+  <div class="task"><span class="level easy">Oson</span>Uch ta'rifga qurilma nomini toping.</div>
+  <div class="task"><span class="level mid">O'rta</span>Arduino UNO va Pi 4: 6 mezonli jadval va misollar.</div>
+  <div class="task"><span class="level hard">Qiyin</span>3 ta loyihaga qurilma tanlang va 2 mezon bilan asoslang.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Arduino</h3><p>Oddiy, arzon, real vaqt; Wi-Fi yo'q.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Raspberry Pi</h3><p>Linux, kamera, AI, server; ko'p energiya.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Tanlash</h3><p>Murakkablik, internet, energiya, pinlar, byudjet.</p></div>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="wifi" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: ESP8266 va ESP32</h1>
+  <p class="muted">Ichida Wi-Fi bor arzon mikrokontrollerlar</p>
+  <span class="badge">5-hafta · 14-dars</span>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>
