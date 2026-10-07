@@ -260,29 +260,39 @@
         <h2>Daraxtsimon papkalar tuzilmasi</h2>
         <div class="illus">
           <svg viewBox="0 0 1000 340">
-            <!-- Ildiz disk -->
-            <rect class="fa" x="80" y="140" width="160" height="60" rx="10"/>
-            <text class="t-head" x="160" y="177" text-anchor="middle" font-size="18">Disk C:\</text>
+            <!-- Ildiz disk: C:\ -->
+            <rect class="fa" x="40" y="140" width="140" height="55" rx="10"/>
+            <text class="t-head" x="110" y="174" text-anchor="middle" font-size="17">Disk C:\</text>
 
-            <line class="la" x1="240" y1="170" x2="360" y2="100"/>
-            <line class="la" x1="240" y1="170" x2="360" y2="240"/>
+            <!-- Chiziqlar: C:\ -> Maktab\ va Musiqa\ -->
+            <line class="la" x1="180" y1="167" x2="250" y2="97"/>
+            <line class="la" x1="180" y1="167" x2="250" y2="237"/>
 
             <!-- 1-darajali papkalar -->
-            <rect class="fc fragment" x="360" y="70" width="180" height="60" rx="10"/>
-            <text class="t-head fragment" x="450" y="107" text-anchor="middle" font-size="17">Maktab\</text>
+            <rect class="fc fragment" x="250" y="70" width="160" height="55" rx="10"/>
+            <text class="t-head fragment" x="330" y="104" text-anchor="middle" font-size="16">Maktab\</text>
 
-            <rect class="fc fragment" x="360" y="210" width="180" height="60" rx="10"/>
-            <text class="t-head fragment" x="450" y="247" text-anchor="middle" font-size="17">Musiqa\</text>
+            <rect class="fc fragment" x="250" y="210" width="160" height="55" rx="10"/>
+            <text class="t-head fragment" x="330" y="244" text-anchor="middle" font-size="16">Musiqa\</text>
 
-            <!-- 2-darajali papka va fayllar -->
-            <line class="la" x1="540" y1="100" x2="680" y2="60"/>
-            <line class="la" x1="540" y1="100" x2="680" y2="140"/>
+            <!-- Chiziq: Maktab\ -> 8-sinf_Darslar\ -->
+            <line class="la fragment" x1="410" y1="97" x2="480" y2="97"/>
 
-            <rect class="fb fragment" x="680" y="30" width="220" height="55" rx="8"/>
-            <text class="t-head fragment" x="790" y="65" text-anchor="middle" font-size="16">8-sinf_Darslar\</text>
+            <!-- 2-darajali papka: 8-sinf_Darslar\ -->
+            <rect class="fb fragment" x="480" y="70" width="200" height="55" rx="8"/>
+            <text class="t-head fragment" x="580" y="104" text-anchor="middle" font-size="16">8-sinf_Darslar\</text>
 
-            <rect class="fn fragment" x="680" y="115" width="220" height="55" rx="8"/>
-            <text class="t-head fragment" x="790" y="150" text-anchor="middle" font-size="16">referat.docx</text>
+            <!-- Chiziq: 8-sinf_Darslar\ -> referat.docx -->
+            <line class="la fragment" x1="680" y1="97" x2="750" y2="97"/>
+
+            <!-- 3-darajali fayl: referat.docx -->
+            <rect class="fn fragment" x="750" y="70" width="190" height="55" rx="8"/>
+            <text class="t-head fragment" x="845" y="104" text-anchor="middle" font-size="16">referat.docx</text>
+
+            <!-- Chiziq va fayl: Musiqa\ -> qoshiq.mp3 -->
+            <line class="la fragment" x1="410" y1="237" x2="480" y2="237"/>
+            <rect class="fn fragment" x="480" y="210" width="200" height="55" rx="8"/>
+            <text class="t-head fragment" x="580" y="244" text-anchor="middle" font-size="16">qoshiq.mp3</text>
           </svg>
         </div>
         <p class="muted">To'liq manzil: <code>C:\Maktab\8-sinf_Darslar\referat.docx</code></p>
