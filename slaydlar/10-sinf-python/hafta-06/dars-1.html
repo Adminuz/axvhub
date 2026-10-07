@@ -1,101 +1,316 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>Fayllar (UploadFile)</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Fayllar (UploadFile)</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Fayllar (UploadFile)</h1></header>
-<div class="badges"><span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">6-hafta · 16-dars</span><span class="badge">UploadFile va File, fayl validatsiyasi (tur, hajm), xavfsiz saqlash, yuklab olish (FileResponse)</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "<code>limit<\/code> ga nima uchun yuqori chegara (<code>le=100<\/code>) qo'yamiz?", "o": ["Serverni haddan tashqari yuklamaslik uchun", "Chiroyli bo'lishi uchun", "Tezroq yozish uchun", "Sababi yo'q"], "a": 0, "e": "Aks holda <code>limit=1000000<\/code> bilan serverni yuklash mumkin."}, {"q": "Fayl yuklash uchun qaysi paket kerak?", "o": ["python-multipart", "requests", "pillow", "aiofiles"], "a": 0, "e": "multipart/form-data ni o'qish uchun <code>python-multipart<\/code> kerak."}, {"q": "Fayl hajmi chegaradan oshsa qaysi status qaytariladi?", "o": ["413", "415", "404", "200"], "a": 0, "e": "413 — Payload Too Large."}, {"q": "Path traversal nima?", "o": ["Nomga <code>../<\/code> qo'yib, papkadan chiqib ketish urinishi", "Fayl hajmini oshirish", "Parolni topish", "Rasmni siqish"], "a": 0, "e": "Tashqi fayllarga kirishga urinish."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Fayllar (UploadFile)</h1>
+  <p class="muted">UploadFile va File, fayl validatsiyasi (tur, hajm), xavfsiz saqlash, yuklab olish (FileResponse)</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">6-hafta · 16-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimalarni o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="upload" data-anim="pulse"></i></div><h3>UploadFile va File</h3><p>Fayl qabul qilish</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="shield-check" data-anim="float"></i></div><h3>Validatsiya va xavfsiz saqlash</h3><p>Tur, hajm, nom</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="download" data-anim="blink"></i></div><h3>Yuklab olish</h3><p>FileResponse</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q"><code>limit</code> ga nima uchun yuqori chegara (<code>le=100</code>) qo'yamiz?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Serverni haddan tashqari yuklamaslik uchun</button>
+    <button class="opt" type="button">Chiroyli bo'lishi uchun</button>
+    <button class="opt" type="button">Tezroq yozish uchun</button>
+    <button class="opt" type="button">Sababi yo'q</button>
+    </div>
+    <div class="explain">Aks holda <code>limit=1000000</code> bilan serverni yuklash mumkin.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>UploadFile va File</h1>
+  <p>Fayl qabul qilish</p>
+</section>
+
+<section>
+  <h2>Fayl yo'li</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="145" text-anchor="middle" font-size="22">Mijoz faylni</text><text class="t-head" x="125" y="171" text-anchor="middle" font-size="22">tanlaydi</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">multipart</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">so'rov</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">UploadFile</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">await read()</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Server fayl obyektini oladi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Fayl qabul qilish</h2>
+  <pre><code class="language-python" data-trim data-line-numbers="1-3|5-6|7|8-10">
+from fastapi import FastAPI, File, UploadFile
+
+app = FastAPI()
+
+@app.post("/books/{book_id}/cover")
+async def upload_cover(book_id: int, file: UploadFile = File(...)):
+    data = await file.read()
+    return {"filename": file.filename,
+            "type": file.content_type,
+            "size": len(data)}
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Fayl yuboruvchi endpoint da <code>Body</code> (JSON) bilan <code>File</code> ni aralashtirib bo'lmaydi: qo'shimcha maydonlar <code>Form(...)</code> bilan beriladi.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Fayl yuklash uchun qaysi paket kerak?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>python-multipart</button>
+    <button class="opt" type="button">requests</button>
+    <button class="opt" type="button">pillow</button>
+    <button class="opt" type="button">aiofiles</button>
+    </div>
+    <div class="explain">multipart/form-data ni o'qish uchun <code>python-multipart</code> kerak.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Validatsiya va xavfsiz saqlash</h1>
+  <p>Tur, hajm, nom</p>
+</section>
+
+<section>
+  <h2>Tekshiruv zanjiri</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Tur (415)</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">Hajm (413)</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Xavfsiz nom</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Diskka yozish</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Har bir qadam xato bersa to'xtaydi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Validatsiya va saqlash</h2>
+  <pre><code class="language-python" data-trim data-line-numbers="1-2|4-6|7-9|10-11">
+ALLOWED = {"image/jpeg": ".jpg", "image/png": ".png"}
+MAX_SIZE = 2 * 1024 * 1024
+
+ext = ALLOWED.get(file.content_type)
+if ext is None:
+    raise HTTPException(415, "Faqat JPEG yoki PNG")
+data = await file.read(MAX_SIZE + 1)
+if len(data) &gt; MAX_SIZE:
+    raise HTTPException(413, "Fayl 2 MB dan katta")
+name = f"{book_id}_{uuid4().hex}{ext}"
+(UPLOAD_DIR / name).write_bytes(data)
+  </code></pre>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i><code>content_type</code> ni mijoz yuboradi, uni soxtalashtirish mumkin: jiddiy loyihada fayl sarlavhasi (magic bytes) ham tekshiriladi.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Fayl hajmi chegaradan oshsa qaysi status qaytariladi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>413</button>
+    <button class="opt" type="button">415</button>
+    <button class="opt" type="button">404</button>
+    <button class="opt" type="button">200</button>
+    </div>
+    <div class="explain">413 — Payload Too Large.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Yuklab olish</h1>
+  <p>FileResponse</p>
+</section>
+
+<section>
+  <h2>Yuklab olish</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">GET /files/nom</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">resolve()</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="145" text-anchor="middle" font-size="22">Papka</text><text class="t-head" x="625" y="171" text-anchor="middle" font-size="22">ichidami?</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">FileResponse</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Papkadan chiqsa 404</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Xavfsiz yuklab olish</h2>
+  <pre><code class="language-python" data-trim data-line-numbers="1-2|3|4-5|6">
+@app.get("/files/{name}")
+async def download(name: str):
+    path = (UPLOAD_DIR / name).resolve()
+    if path.parent != UPLOAD_DIR.resolve() or not path.is_file():
+        raise HTTPException(404, "Fayl topilmadi")
+    return FileResponse(path)
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Foydalanuvchining o'z fayli bo'lsa, <code>get_current_user</code> bilan egasini ham tekshiring.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Path traversal nima?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Nomga <code>../</code> qo'yib, papkadan chiqib ketish urinishi</button>
+    <button class="opt" type="button">Fayl hajmini oshirish</button>
+    <button class="opt" type="button">Parolni topish</button>
+    <button class="opt" type="button">Rasmni siqish</button>
+    </div>
+    <div class="explain">Tashqi fayllarga kirishga urinish.</div>
+  </div>
+</section>
+
+<section>
+  <h2>bytes va UploadFile</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>bytes</h3>Butun fayl xotiraga olinadi</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>UploadFile</h3>Katta fayl diskda turadi, <code>filename</code> va <code>content_type</code> bor</div>
+  </div>
+  <div class="card accent fragment mt"><p>Fayl uchun <code>UploadFile</code> tavsiya etiladi.</p></div>
+</section>
+
+<section>
+  <h2>Atamalar. Bosing</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>UploadFile</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Yuklangan faylni ifodalovchi obyekt</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>multipart</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Fayl yuboriladigan so'rov formati</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>413</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Fayl juda katta</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>415</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Fayl turi qo'llab-quvvatlanmaydi</p></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Yuklash endpointini yozish</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="file-plus" data-anim="pulse"></i></div><h3>1. Qabul qiling</h3><p>UploadFile = File(...).</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="shield-check"></i></div><h3>2. Tekshiring</h3><p>Tur va hajm.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="save"></i></div><h3>3. Saqlang</h3><p>uuid4 nomi bilan.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>Fayl xatolari</h2>
+    <table>
+      <thead><tr><th>Holat</th><th>Status</th><th>Sabab</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td>Tur noto'g'ri</td><td>415</td><td>ruxsat etilmagan content_type</td></tr>
+        <tr class="fragment"><td>Hajm katta</td><td>413</td><td>MAX_SIZE dan oshdi</td></tr>
+        <tr class="fragment"><td>Fayl yo'q</td><td>404</td><td>yo'l noto'g'ri</td></tr>
+        <tr class="fragment"><td>Muvaffaqiyat</td><td>201</td><td>fayl saqlandi</td></tr>
+        <tr class="fragment"><td>Fayl yuborilmadi</td><td>422</td><td><code>file</code> maydoni yo'q</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: statuslar</p>
+  </section>
+  <section>
+    <h2>Swagger da sinash</h2>
+    <ol class="steps-n">
+      <li class="fragment"><code>uvicorn app.main:app --reload</code> ni ishga tushiring.</li>
+      <li class="fragment"><code>/docs</code> da <code>POST /books/1/cover</code> ga PNG yuklang.</li>
+      <li class="fragment"><code>/files/&lt;nom&gt;</code> bilan yuklab oling; <code>.txt</code> bilan 415 ni tekshiring.</li>
+    </ol>
+  </section>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">Xavfsiz nom</h2>
+  <pre data-id="c"><code class="language-python" data-trim>
+path = UPLOAD_DIR / file.filename
+  </code></pre>
+</section>
+<section data-auto-animate>
+  <h2 data-id="t">Xavfsiz nom</h2>
+  <pre data-id="c"><code class="language-python" data-trim data-line-numbers="1|1">
+path = UPLOAD_DIR / f"{uuid4().hex}.png"
+  </code></pre>
+</section>
+
+<section>
+  <h2>Fayllar raqamlarda</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="2" data-suf="">0</span></div><div class="l"> MB — namunadagi hajm chegarasi</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="3" data-suf="">0</span></div><div class="l"> ta tekshiruv: tur, hajm, nom</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="2" data-suf="">0</span></div><div class="l"> ta xato kodi: 413 va 415</div></div>
+  </div>
+  <p class="small fragment">Foydalanuvchi yuborgan hamma narsani tekshiring.</p>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Fayl qabul qiling: <code>/upload</code> endpointi yozing: fayl nomi va hajmini qaytarsin.</div>
+  <div class="task"><span class="level easy">Oson</span>Tur tekshiruvi: Faqat PNG va JPEG ga ruxsat bering, boshqasida 415.</div>
+  <div class="task"><span class="level mid">O'rta</span>Hajm chegarasi: 2 MB dan katta faylga 413 qaytaring.</div>
+  <div class="task"><span class="level mid">O'rta</span>Xavfsiz nom: Faylni <code>uuid4</code> nomi bilan saqlang.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Yuklab olish: <code>/files/{name}</code> endpointini path traversal dan himoyalab yozing.</div>
+  <div class="task"><span class="level hard">Bonus</span>Bazaga bog'lash: <code>Book.cover</code> maydoniga fayl nomini yozing.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Qabul</h3><p><code>UploadFile = File(...)</code>, <code>python-multipart</code>.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Tekshiruv</h3><p>Tur (415), hajm (413), <code>uuid4</code> nomi.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Yuklab olish</h3><p><code>FileResponse</code> va path traversal himoyasi.</p></div>
+  </div>
+  <p class="small fragment mt">Uyga vazifa: Fayl yuklash va yuklab olish.</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="package-check" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: Loyihani yakunlash</h1>
+  <p class="muted">Struktura, sozlamalar, xatolar</p>
+  <span class="badge">6-hafta · 17-dars</span>
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

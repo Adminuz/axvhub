@@ -1,101 +1,488 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>HTML5 semantik elementlari</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>HTML5 semantik elementlari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>HTML5 semantik elementlari</h1></header>
-<div class="badges"><span class="badge">8-sinf</span><span class="badge">Web Full-stack</span><span class="badge">3-hafta · 7-dars</span><span class="badge">header, nav, main, section, article, aside, footer arxitekturasi</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "Bitta HTML sahifasida nechta &lt;main&gt; tegi bo'lishi mumkin?", "o": ["Cheksiz, har bir bo'lim uchun bittadan", "Faqat 1 ta", "Kamida 2 ta (yuqori va quyi)"], "a": 1, "e": "To'g'ri! &lt;main&gt; sahifaning yagona, takrorlanmas asosiy qismi bo'lib, har bir sahifada qat'iy ravishda faqat bitta bo'lishi shart."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- SLIDE 1: Hero -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>HTML5 semantik elementlari</h1>
+  <p class="muted">header, nav, main, section, article, aside, footer arxitekturasi</p>
+  <span class="badge">8-sinf</span><span class="badge">Web Full-stack</span><span class="badge">3-hafta · 7-dars</span>
+  
+</section>
+
+<!-- SLIDE 2: Reja -->
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="code-xml" data-anim="float"></i></div>
+      <h3>01. Semantika nima?</h3>
+      <p>HTML4 «div sho'rvasi» muammosi va HTML5 inqilobi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layout-grid" data-anim="pulse"></i></div>
+      <h3>02. 7 ta tayanch teg</h3>
+      <p>header, nav, main, section, article, aside, footer vazifalari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="search" data-anim="wiggle"></i></div>
+      <h3>03. SEO va a11y</h3>
+      <p>Qidiruv tizimlari va screen readerlar uchun toza arxitektura.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 3: Bo'lim 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>HTML5 va Semantika tushunchasi</h1>
+  <p>«Div sho'rvasi»dan professional kodlashga o'tish</p>
+  
+</section>
+
+<!-- SLIDE 4: SVG 1 - HTML4 vs HTML5 taqqoslash -->
+<section>
+  <h2>HTML4 «Div sho'rvasi» vs HTML5 Semantika</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 320">
+      <!-- HTML4 Side -->
+      <g class="fragment">
+        <rect x="50" y="40" width="380" height="250" rx="14" class="fn ln" stroke-width="2"/>
+        <text x="240" y="70" text-anchor="middle" class="t-accent" font-size="18" font-weight="bold">Eski HTML4 (Nosemantik)</text>
+        
+        <rect x="70" y="90" width="340" height="35" rx="6" class="fn ln"/>
+        <text x="240" y="112" text-anchor="middle" class="t-muted" font-size="14">&lt;div id='header'&gt;</text>
+        
+        <rect x="70" y="135" width="340" height="30" rx="6" class="fn ln"/>
+        <text x="240" y="155" text-anchor="middle" class="t-muted" font-size="14">&lt;div id='nav'&gt;</text>
+        
+        <rect x="70" y="175" width="340" height="65" rx="6" class="fn ln"/>
+        <text x="240" y="210" text-anchor="middle" class="t-muted" font-size="14">&lt;div id='content'&gt;</text>
+        
+        <rect x="70" y="250" width="340" height="30" rx="6" class="fn ln"/>
+        <text x="240" y="270" text-anchor="middle" class="t-muted" font-size="14">&lt;div id='footer'&gt;</text>
+      </g>
+
+      <!-- HTML5 Side -->
+      <g class="fragment">
+        <rect x="530" y="40" width="380" height="250" rx="14" class="fa la" stroke-width="2"/>
+        <text x="720" y="70" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Zamonaviy HTML5 (Semantik)</text>
+        
+        <rect x="550" y="90" width="340" height="35" rx="6" class="fa la"/>
+        <text x="720" y="112" text-anchor="middle" class="t-head" font-size="14" font-weight="bold">&lt;header&gt;</text>
+        
+        <rect x="550" y="135" width="340" height="30" rx="6" class="fc lc"/>
+        <text x="720" y="155" text-anchor="middle" class="t-head" font-size="14" font-weight="bold">&lt;nav&gt;</text>
+        
+        <rect x="550" y="175" width="340" height="65" rx="6" class="fb lb"/>
+        <text x="720" y="210" text-anchor="middle" class="t-head" font-size="14" font-weight="bold">&lt;main&gt; (&lt;article&gt;, &lt;section&gt;)</text>
+        
+        <rect x="550" y="250" width="340" height="30" rx="6" class="fg lg"/>
+        <text x="720" y="270" text-anchor="middle" class="t-head" font-size="14" font-weight="bold">&lt;footer&gt;</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 5: VS: Nosemantik vs Semantik -->
+<section>
+  <h2>Nosemantik va Semantik elementlar</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3><i data-ic="code-xml"></i> Nosemantik teglar</h3>
+      <p>Hech qanday ma'no anglatmaydi, faqat konteyner yoki stillash uchun xizmat qiladi:</p>
+      <ul>
+        <li><code>&lt;div&gt;</code> — blokli konteyner</li>
+        <li><code>&lt;span&gt;</code> — satr ichidagi konteyner</li>
+      </ul>
+      <div class="callout tip">Faqat CSS dizayni uchun ishlatiladi</div>
+    </div>
+    <div class="side b fragment">
+      <h3><i data-ic="sparkles"></i> Semantik teglar</h3>
+      <p>Brauzerga ham, dasturchiga ham blokning mohiyatini aniq bildirib turadi:</p>
+      <ul>
+        <li><code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code></li>
+        <li><code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code></li>
+        <li><code>&lt;footer&gt;</code></li>
+      </ul>
+      <div class="callout tip">Google qidiruvi va ekran o'quvchilar uchun qulay</div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 6: Statistika -->
+<section>
+  <h2>Semantik kodlash raqamlarda</h2>
+  <div class="stats">
+    <div class="stat">
+      <div class="v"><span class="count" data-to="95" data-suf=" %">0</span></div>
+      <div class="l">Dunyodagi yetakchi saytlar HTML5 semantikasidan foydalanadi</div>
+    </div>
+    <div class="stat">
+      <div class="v"><span class="count" data-to="3" data-suf=" barobar">0</span></div>
+      <div class="l">Qidiruv robotlari sahifani tezroq tahlil qiladi</div>
+    </div>
+    <div class="stat">
+      <div class="v"><span class="count" data-to="100" data-suf=" %">0</span></div>
+      <div class="l">Zamonaviy barcha brauzerlar to'liq qo'llab-quvvatlaydi</div>
+    </div>
+  </div>
+  <div class="callout tip fragment fade-up">
+    To'g'ri semantika — professional front-end dasturchining eng birinchi belgisi!
+  </div>
+  
+</section>
+
+<!-- SLIDE 7: Bo'lim 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Asosiy semantik teglar anatomiyasi</h1>
+  <p>7 ta asosiy blok va ularning aniq vazifalari</p>
+  
+</section>
+
+<!-- SLIDE 8: SVG 2 - Sahifa strukturasi -->
+<section>
+  <h2>Veb-sahifaning semantik skeleti</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 320">
+      <!-- Header -->
+      <g class="fragment">
+        <rect x="80" y="20" width="800" height="45" rx="8" class="fa la" stroke-width="2"/>
+        <text x="480" y="48" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">&lt;header&gt; — Logotip, sarlavha va shior</text>
+      </g>
+
+      <!-- Nav -->
+      <g class="fragment">
+        <rect x="80" y="73" width="800" height="35" rx="6" class="fc lc" stroke-width="2"/>
+        <text x="480" y="96" text-anchor="middle" class="t-head" font-size="14" font-weight="bold">&lt;nav&gt; — Asosiy menyu havolalari</text>
+      </g>
+
+      <!-- Main container -->
+      <rect x="80" y="116" width="560" height="145" rx="8" class="fb lb" stroke-width="2"/>
+      <text x="360" y="138" text-anchor="middle" class="t-accent" font-size="15" font-weight="bold">&lt;main&gt; — Sahifaning yagona asosiy qismi</text>
+
+      <!-- Section inside main -->
+      <g class="fragment">
+        <rect x="95" y="148" width="530" height="50" rx="6" class="fn ln"/>
+        <text x="360" y="178" text-anchor="middle" class="t-head" font-size="13">&lt;section&gt; — Mavzuli bo'lim</text>
+      </g>
+
+      <!-- Article inside main -->
+      <g class="fragment">
+        <rect x="95" y="204" width="530" height="50" rx="6" class="fg lg"/>
+        <text x="360" y="234" text-anchor="middle" class="t-head" font-size="13">&lt;article&gt; — Mustaqil yangilik yoki post</text>
+      </g>
+
+      <!-- Aside sidebar -->
+      <g class="fragment">
+        <rect x="655" y="116" width="225" height="145" rx="8" class="fn ln" stroke-width="2"/>
+        <text x="767" y="170" text-anchor="middle" class="t-head" font-size="15" font-weight="bold">&lt;aside&gt;</text>
+        <text x="767" y="195" text-anchor="middle" class="t-muted" font-size="12">Yon panel (sidebar)</text>
+        <text x="767" y="218" text-anchor="middle" class="t-accent" font-size="12">Reklama / Muallif</text>
+      </g>
+
+      <!-- Footer -->
+      <g class="fragment">
+        <rect x="80" y="269" width="800" height="38" rx="8" class="fn ln" stroke-width="2"/>
+        <text x="480" y="293" text-anchor="middle" class="t-muted" font-size="14">&lt;footer&gt; — Mualliflik huquqi (Copyright) va aloqa ma'lumotlari</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 9: Interaktiv Swap: article vs section -->
+<section>
+  <h2>&lt;article&gt; yoki &lt;section&gt;?</h2>
+  <div class="swap">
+    <div class="swap-tabs">
+      <button class="on" type="button">&lt;article&gt; (Mustaqil maqola)</button>
+      <button type="button">&lt;section&gt; (Mavzuli bo'lim)</button>
+    </div>
+    <div class="swap-p on">
+      <div class="cards two">
+        <div class="card">
+          <h3>O'zicha to'liq ma'noga ega</h3>
+          <p>Ushbu blokni boshqa saytga yoki gazeta sahifasiga ko'chirib o'tkazsangiz ham o'z mustaqil ma'nosini yo'qotmaydi.</p>
+        </div>
+        <div class="card">
+          <h3>Qayerda ishlatiladi?</h3>
+          <p>Blog posti, yangilik xabari, mahsulot kartochkasi, foydalanuvchi sharhi yoki forumdagi izoh.</p>
+        </div>
+      </div>
+    </div>
+    <div class="swap-p">
+      <div class="cards two">
+        <div class="card">
+          <h3>Mavzuni birlashtiruvchi qism</h3>
+          <p>Sahifaning ma'lum bir mantiqiy bobini yoki bo'limini ifodalaydi. Odatda o'zining <code>&lt;h2&gt;</code> sarlavhasiga ega bo'ladi.</p>
+        </div>
+        <div class="card">
+          <h3>Qayerda ishlatiladi?</h3>
+          <p>«Biz haqimizda», «Xizmatlar», «Aloqa bo'limi» yoki bitta maqola ichidagi alohida fasllar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 10: main va aside qoidalari -->
+<section>
+  <h2>&lt;main&gt; va &lt;aside&gt; qat'iy qoidalari</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="layout-grid"></i></div>
+      <h3>&lt;main&gt; — Faqat 1 ta!</h3>
+      <p>Sahifada takrorlanmaydigan asosiy kontent. Qat'iy qoida: butun bitta HTML sahifasida faqat <strong>bitta</strong> <code>&lt;main&gt;</code> bo'lishi mumkin.</p>
+      <div class="callout tip">header, nav yoki footer ichiga aslo qo'yilmaydi!</div>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="compass"></i></div>
+      <h3>&lt;aside&gt; — Qo'shimcha ma'lumot</h3>
+      <p>Asosiy mavzuga bevosita aloqador bo'lmagan yon bloklar: qidiruv paneli, o'xshash maqolalar, reklama yoki muallif xabari.</p>
+      <div class="callout tip">Sidebar yoki chekka panel sifatida ishlatiladi</div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 11: Bo'lim 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Amaliy struktura va kodlash</h1>
+  <p>To'liq semantik blog sahifasini qadam-baqadam yig'ish</p>
+  
+</section>
+
+<!-- SLIDE 12: SVG 3 - Article anatomiyasi -->
+<section>
+  <h2>&lt;article&gt; tegi ichki anatomiyasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- Article frame -->
+      <rect x="120" y="30" width="720" height="250" rx="12" class="fg lg" stroke-width="2"/>
+      
+      <!-- Inner Header -->
+      <g class="fragment">
+        <rect x="150" y="55" width="660" height="55" rx="8" class="fa la"/>
+        <text x="480" y="82" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">&lt;header&gt; — Maqola sarlavhasi va metama'lumot</text>
+        <text x="480" y="100" text-anchor="middle" class="t-muted" font-size="12">&lt;h3&gt;HTML5 sirlari&lt;/h3&gt; | Sana: 2026-10-04 | Muallif: Sardor</text>
+      </g>
+
+      <!-- Inner Paragraph -->
+      <g class="fragment">
+        <rect x="150" y="125" width="660" height="75" rx="8" class="fn ln"/>
+        <text x="480" y="155" text-anchor="middle" class="t-head" font-size="14">&lt;p&gt;Maqolaning asosiy matni va tahlillari...&lt;/p&gt;</text>
+        <text x="480" y="180" text-anchor="middle" class="t-muted" font-size="13">Barcha yangilik yoki o'quv materiali shu yerda yoziladi</text>
+      </g>
+
+      <!-- Inner Footer -->
+      <g class="fragment">
+        <rect x="150" y="215" width="660" height="45" rx="8" class="fn ln"/>
+        <text x="480" y="243" text-anchor="middle" class="t-muted" font-size="13">&lt;footer&gt; — Maqola teglari: #html5 #web | Manbalar&lt;/footer&gt;</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 13: Stepper: Semantik sahifa qurish bosqichlari -->
+<section>
+  <h2>Semantik sahifa qurish bosqichlari</h2>
+  <div class="stepper">
+    <div class="stp on">
+      <h3>1-qadam: Karkasni belgilash</h3>
+      <p>Sahifaning yuqori qismini <code>&lt;header&gt;</code> va <code>&lt;nav&gt;</code> bilan, pastki qismini <code>&lt;footer&gt;</code> bilan ajrating.</p>
+    </div>
+    <div class="stp">
+      <h3>2-qadam: Asosiy mazmunni o'rash</h3>
+      <p>Barcha noyob ma'lumotlarni yagona <code>&lt;main&gt;</code> bloki ichiga joylashtiring.</p>
+    </div>
+    <div class="stp">
+      <h3>3-qadam: Bo'limlar va maqolalar</h3>
+      <p>Main ichida mavzularni <code>&lt;section&gt;</code>, mustaqil postlarni <code>&lt;article&gt;</code> va yondosh axborotni <code>&lt;aside&gt;</code> ga bo'ling.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 14: SVG 4 - SEO va Screen Reader -->
+<section>
+  <h2>Google Bot va Screen Reader qanday ko'radi?</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- Search Engine Bot -->
+      <g class="fragment">
+        <rect x="60" y="70" width="220" height="160" rx="14" class="fc lc" stroke-width="2"/>
+        <text x="170" y="125" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Google / Yandex Bot</text>
+        <text x="170" y="155" text-anchor="middle" class="t-muted" font-size="13">&lt;article&gt; va &lt;h1&gt; ni</text>
+        <text x="170" y="180" text-anchor="middle" class="t-accent" font-size="13">darhol indekslaydi</text>
+      </g>
+
+      <path d="M 280 150 L 370 150" class="lc flowing" stroke-width="3" fill="none" marker-end="url(#ar-c)"/>
+
+      <!-- Semantics Hub -->
+      <g class="fragment">
+        <rect x="370" y="55" width="220" height="190" rx="16" class="fa la" stroke-width="2"/>
+        <text x="480" y="105" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Semantik Daraxt</text>
+        <text x="480" y="140" text-anchor="middle" class="t-muted" font-size="14">&lt;header&gt; -&gt; Kirish</text>
+        <text x="480" y="168" text-anchor="middle" class="t-accent" font-size="14">&lt;main&gt; -&gt; Asosiy maqola</text>
+        <text x="480" y="196" text-anchor="middle" class="t-muted" font-size="14">&lt;footer&gt; -&gt; Muallif</text>
+      </g>
+
+      <path d="M 590 150 L 680 150" class="lg flowing" stroke-width="3" fill="none" marker-end="url(#ar-g)"/>
+
+      <!-- Screen Reader -->
+      <g class="fragment">
+        <rect x="680" y="70" width="220" height="160" rx="14" class="fg lg" stroke-width="2"/>
+        <text x="790" y="125" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Screen Reader</text>
+        <text x="790" y="155" text-anchor="middle" class="t-muted" font-size="13">Foydalanuvchi bir tugma</text>
+        <text x="790" y="180" text-anchor="middle" class="t-accent" font-size="13">bilan &lt;main&gt; ga o'tadi</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 15: Flip card: Ikki oltin qoida -->
+<section>
+  <h2>Dasturchining ikki oltin qoidasi</h2>
+  <div class="cards two">
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="triangle-alert"></i></div>
+          <h3>&lt;main&gt; ichma-ich bo'lmasin</h3>
+          <p class="muted">Bosganda qoidani ko'ring</p>
+        </div>
+        <div class="face back">
+          <h3>Qoida</h3>
+          <p>Har bir HTML hujjatida faqat bitta <code>&lt;main&gt;</code> bo'ladi. U hech qachon header yoki footer ichiga yozilmaydi.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="code-xml"></i></div>
+          <h3>Qachon &lt;div&gt; ishlatish kerak?</h3>
+          <p class="muted">Bosganda qoidani ko'ring</p>
+        </div>
+        <div class="face back">
+          <h3>Qoida</h3>
+          <p>Faqat CSS dizayni, flexbox/grid joylashuv yoki chiroyli ramka berish uchun <code>&lt;div&gt;</code> ishlatish to'g'ri hisoblanadi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 16: Kod namunasi -->
+<section>
+  <h2>To'liq semantik shablon kodi</h2>
+  <pre><code class="language-html">&lt;header&gt;
+  &lt;h1&gt;IT Blog&lt;/h1&gt;
+  &lt;nav&gt;&lt;a href="#"&gt;Bosh sahifa&lt;/a&gt; | &lt;a href="#"&gt;Aloqa&lt;/a&gt;&lt;/nav&gt;
+&lt;/header&gt;
+&lt;main&gt;
+  &lt;section&gt;
+    &lt;h2&gt;So'nggi postlar&lt;/h2&gt;
+    &lt;article&gt;
+      &lt;h3&gt;HTML5 sirlari&lt;/h3&gt;
+      &lt;p&gt;Semantika veb-saytni yanada qulay qiladi...&lt;/p&gt;
+    &lt;/article&gt;
+  &lt;/section&gt;
+  &lt;aside&gt;&lt;h3&gt;Muallif haqida&lt;/h3&gt;&lt;/aside&gt;
+&lt;/main&gt;
+&lt;footer&gt;&lt;p&gt;&copy; 2026 Barcha huquqlar himoyalangan.&lt;/p&gt;&lt;/footer&gt;</code></pre>
+  
+</section>
+
+<!-- SLIDE 17: Quiz -->
+<section>
+  <h2>O'zingizni sinab ko'ring</h2>
+  <div class="quiz">
+    <p class="q">Bitta HTML sahifasida nechta &lt;main&gt; tegi bo'lishi mumkin?</p>
+    <div class="opts">
+      <button class="opt" type="button">Cheksiz, har bir bo'lim uchun bittadan</button>
+      <button class="opt" type="button" data-ok>Faqat 1 ta</button>
+      <button class="opt" type="button">Kamida 2 ta (yuqori va quyi)</button>
+    </div>
+    <div class="explain">
+      To'g'ri! &lt;main&gt; sahifaning yagona, takrorlanmas asosiy qismi bo'lib, har bir sahifada qat'iy ravishda faqat bitta bo'lishi shart.
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 18: Amaliy topshiriq -->
+<section class="task">
+  <div class="badge">Amaliy topshiriq · 20 daqiqa</div>
+  <h2>Semantik blog sahifasini yarating</h2>
+  <ol>
+    <li>Sayt nomini <code>&lt;header&gt;</code> va menyuni <code>&lt;nav&gt;</code> ichiga joylang.</li>
+    <li>Sahifada bitta <code>&lt;main&gt;</code> oching.</li>
+    <li>Main ichida 2 ta yangilik maqolasini <code>&lt;article&gt;</code> shaklida yozing.</li>
+    <li>Yon tomonga muallif haqida <code>&lt;aside&gt;</code> bloki qo'shing.</li>
+    <li>Sahifa pastiga <code>&lt;footer&gt;</code> qo'yib, mualliflik huquqini belgilang.</li>
+  </ol>
+  
+</section>
+
+<!-- SLIDE 19: Xulosa -->
+<section>
+  <h2>Bugungi dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <h3>Biz o'rgandik:</h3>
+      <ul>
+        <li>HTML5 semantika tushunchasi</li>
+        <li>7 ta asosiy semantik element</li>
+        <li>&lt;article&gt; va &lt;section&gt; farqi</li>
+        <li>SEO va ekran o'quvchilar uchun afzalliklari</li>
+      </ul>
+    </div>
+    <div class="card fragment">
+      <h3>Keyingi darsda:</h3>
+      <p><strong>8-dars:</strong> HTML5 multimedia va interaktiv elementlar: &lt;video&gt;, &lt;audio&gt;, &lt;details&gt;, &lt;progress&gt; va &lt;figure&gt; bilan ishlash.</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

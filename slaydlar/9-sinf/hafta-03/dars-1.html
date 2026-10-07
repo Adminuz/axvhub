@@ -1,101 +1,440 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>Axure RP: Dinamik panellar va interaksiyalar</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Axure RP: Dinamik panellar va interaksiyalar</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Axure RP: Dinamik panellar va interaksiyalar</h1></header>
-<div class="badges"><span class="badge">9-sinf</span><span class="badge">UX/UI dizayn</span><span class="badge">3-hafta · 7-dars</span><span class="badge">Statik karkasdan chertiladigan interaktiv prototip sari</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "Bitta blok ichida bir nechta tablarni yangi sahifa ochmasdan ko'rsatish uchun qaysi vosita ishlatiladi?", "o": ["Rectangle vositasi", "Dynamic Panel (Dinamik panel)", "Browser Window elementi"], "a": 1, "e": "To'g'ri javob: Dynamic Panel bir nechta State'larni (holatlarni) o'zida saqlay oladi."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- SLIDE 1: Hero -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Axure RP: Dinamik panellar va interaksiyalar</h1>
+  <p class="muted">Statik karkasdan chertiladigan interaktiv prototip sari</p>
+  <span class="badge">9-sinf</span><span class="badge">UX/UI dizayn</span><span class="badge">3-hafta · 7-dars</span>
+  
+</section>
+
+<!-- SLIDE 2: Reja -->
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="mouse-pointer-click" data-anim="float"></i></div>
+      <h3>01. Interaksiyalar mantiqi</h3>
+      <p>Trigger, Action va Target tamoyili orqali elementlarni jonlantirish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers" data-anim="pulse"></i></div>
+      <h3>02. Dinamik panellar</h3>
+      <p>Dynamic Panels: bitta joyda bir nechta holatlarni (States) boshqarish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="external-link" data-anim="wiggle"></i></div>
+      <h3>03. Navigatsiya va Preview</h3>
+      <p>Sahifalararo bog'lanish va brauzerda real vaqtda sinab ko'rish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 3: Bo'lim 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Interaksiyalar mantiqi (Interactions)</h1>
+  <p>Foydalanuvchi harakati va tizimning unga munosabati</p>
+  
+</section>
+
+<!-- SLIDE 4: SVG 1 - Trigger Action Target -->
+<section>
+  <h2>Interaktivlikning 3 tayanch ustuni</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- 1. Trigger -->
+      <g class="fragment">
+        <rect x="40" y="60" width="240" height="180" rx="14" class="fa la" stroke-width="2"/>
+        <text x="160" y="105" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">1. Trigger (Hodisa)</text>
+        <text x="160" y="145" text-anchor="middle" class="t-muted" font-size="14">Foydalanuvchi nima qildi?</text>
+        <text x="160" y="175" text-anchor="middle" class="t-accent" font-size="13">OnClick / OnHover</text>
+        <text x="160" y="200" text-anchor="middle" class="t-muted" font-size="12">Klaviaturani bosish</text>
+      </g>
+
+      <!-- Arrow 1 -->
+      <path d="M 290 150 L 350 150" class="la" stroke-width="3" marker-end="url(#arr)" class="fragment"/>
+
+      <!-- 2. Action -->
+      <g class="fragment">
+        <rect x="360" y="60" width="240" height="180" rx="14" class="fb lb" stroke-width="2"/>
+        <text x="480" y="105" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">2. Action (Amal)</text>
+        <text x="480" y="145" text-anchor="middle" class="t-muted" font-size="14">Tizim nima bajarishi kerak?</text>
+        <text x="480" y="175" text-anchor="middle" class="t-accent" font-size="13">Open Link / Set State</text>
+        <text x="480" y="200" text-anchor="middle" class="t-muted" font-size="12">Ko'rsatish yoki yashirish</text>
+      </g>
+
+      <!-- Arrow 2 -->
+      <path d="M 610 150 L 670 150" class="lb" stroke-width="3" marker-end="url(#arr)" class="fragment"/>
+
+      <!-- 3. Target -->
+      <g class="fragment">
+        <rect x="680" y="60" width="240" height="180" rx="14" class="fc lc" stroke-width="2"/>
+        <text x="800" y="105" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">3. Target (Nishon)</text>
+        <text x="800" y="145" text-anchor="middle" class="t-muted" font-size="14">Qaysi obyekt o'zgaradi?</text>
+        <text x="800" y="175" text-anchor="middle" class="t-accent" font-size="13">Book_details.html</text>
+        <text x="800" y="200" text-anchor="middle" class="t-muted" font-size="12">Modal oyna / Menyu</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 5: Hodisalar turlari -->
+<section>
+  <h2>Axure RP dagi asosiy hodisalar (Events)</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="mouse-pointer-click"></i></div>
+      <h3>OnClick</h3>
+      <p>Element ustiga sichqoncha yoki barmoq bilan chertilganda sodir bo'ladi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="hand"></i></div>
+      <h3>OnMouseEnter / Leave</h3>
+      <p>Kursor element ustiga kelganda (Hover) va undan uzoqlashganda ishlaydi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="keyboard"></i></div>
+      <h3>OnKeyUp / Down</h3>
+      <p>Matn kiritish maydoniga foydalanuvchi klaviaturada yozayotganda ishlaydi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 6: Asosiy Action turlari -->
+<section>
+  <h2>Eng ko'p qo'llaniladigan Action turlari</h2>
+  <div class="cards four">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="external-link"></i></div>
+      <h3>Open Link</h3>
+      <p>Boshqa sahifaga yo'naltirish.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>Set Panel State</h3>
+      <p>Dinamik panel holatini o'zgartirish.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="eye"></i></div>
+      <h3>Show / Hide</h3>
+      <p>Elementni ko'rsatish yoki yashirish.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="arrow-down"></i></div>
+      <h3>Scroll to Widget</h3>
+      <p>Sahifaning kerakli joyiga tushirish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 7: Bo'lim 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Dinamik panellar (Dynamic Panels)</h1>
+  <p>Bitta ekranda bir nechta holatlarni (States) boshqarish san'ati</p>
+  
+</section>
+
+<!-- SLIDE 8: SVG 2 - Dynamic Panel States -->
+<section>
+  <h2>Dinamik panel qanday ishlaydi?</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- Container -->
+      <rect x="50" y="40" width="860" height="230" rx="16" class="fn ln" stroke-width="2" stroke-dasharray="6"/>
+      <text x="80" y="70" class="t-accent" font-size="14" font-weight="bold">Dynamic Panel: Book_Tabs</text>
+
+      <!-- State 1 -->
+      <g class="fragment">
+        <rect x="90" y="90" width="360" height="150" rx="10" class="fa la" stroke-width="2"/>
+        <text x="270" y="125" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">State 1: Mundarija</text>
+        <line x1="120" y1="150" x2="380" y2="150" class="la" stroke-width="2"/>
+        <line x1="120" y1="175" x2="340" y2="175" class="la" stroke-width="2"/>
+        <line x1="120" y1="200" x2="300" y2="200" class="la" stroke-width="2"/>
+      </g>
+
+      <!-- Switch icon -->
+      <path d="M 480 165 L 500 165" class="lc" stroke-width="3" class="fragment"/>
+
+      <!-- State 2 -->
+      <g class="fragment">
+        <rect x="520" y="90" width="360" height="150" rx="10" class="fb lb" stroke-width="2"/>
+        <text x="700" y="125" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">State 2: O'quvchilar fikri</text>
+        <circle cx="560" cy="170" r="16" class="fb lb" stroke-width="2"/>
+        <line x1="590" y1="165" x2="840" y2="165" class="lb" stroke-width="2"/>
+        <line x1="590" y1="185" x2="760" y2="185" class="lb" stroke-width="2"/>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 9: Qayerda qo'llaniladi -->
+<section>
+  <h2>Dinamik panel qayerlarda kerak?</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="layout-grid"></i></div>
+      <h3>Tablar (Vkladkalar)</h3>
+      <p>Sahifani qayta yuklamasdan «Tavsif», «Xarakteristika» yoki «Sharhlar»ga o'tish.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="copy"></i></div>
+      <h3>Modal oynalar (Popup)</h3>
+      <p>«Kirish» yoki «Savatcha» bosilganda ekranning markazida paydo bo'ladigan oyna.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+      <h3>Slayderlar (Karusel)</h3>
+      <p>Bosh sahifadagi aksiyalar va yangi kitoblar bannerlarini surib ko'rish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 10: .swap - Yangi sahifa vs Dynamic Panel -->
+<section>
+  <h2>Tablar: Yangi sahifa yoki Dinamik panel?</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">Yangi sahifalar ochish</button><button type="button">Dinamik panel ishlatish</button></div>
+    <div class="swap-p"><div class="card"><h3>Noxush usul: sahifalar ko'payib ketadi</h3><p>Har bir tab uchun alohida sahifa yaratilsa, menyu va header nusxalanadi, kichik o'zgarish butun loyihada chalkashlik keltirib chiqaradi.</p></div></div>
+    <div class="swap-p"><div class="card accent"><h3>Professional usul: Dynamic Panel</h3><p>Bitta ramka ichida State 1 va State 2 almashadi. Tez, oson boshqariladi va haqiqiy veb-dastur kabi ishlaydi.</p></div></div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 11: Naming va ierarxiya -->
+<section>
+  <h2>Elementlarni to'g'ri nomlash odobi</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="tag"></i></div>
+      <h3>Tugmalar</h3>
+      <p><code>btn_submit</code>, <code>btn_login</code>, <code>btn_back</code> kabi aniq prefiks bilan nomlash.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>Panellar</h3>
+      <p><code>dp_book_tabs</code>, <code>dp_modal_auth</code> ko'rinishida dinamik panellarni belgilash.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="folder"></i></div>
+      <h3>Sahifalar</h3>
+      <p><code>Home_books</code>, <code>Book_details</code>, <code>Search_results</code> deb mantiqiy nom qo'yish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 12: Bo'lim 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Sahifalararo navigatsiya</h1>
+  <p>«Home_books» dan «Book_details» ga o'tishni loyihalash</p>
+  
+</section>
+
+<!-- SLIDE 13: .stepper: O'tishni ulash -->
+<section>
+  <h2>Sahifani ulash bosqichlari</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="mouse-pointer"></i></div><h3>1. Elementni tanlash</h3><p>Kitob kartasi yoki tugmani belgilang.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="zap"></i></div><h3>2. New Interaction</h3><p>Interactions panelida <code>Click or Tap</code> hodisasini tanlang.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="external-link"></i></div><h3>3. Open Link</h3><p>Loyiha sahifalari ro'yxatidan <code>Book_details</code> ni bosing.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="play"></i></div><h3>4. Preview</h3><p>Brauzerda tekshiring: rasm bosilganda yangi sahifa ochiladi.</p></div></div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 14: SVG 3 - E-kutubxona User Flow Wireframe -->
+<section>
+  <h2>E-kutubxona wireframe navigatsiyasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- Screen 1: Home_books -->
+      <g class="fragment">
+        <rect x="40" y="40" width="380" height="220" rx="10" class="fa la" stroke-width="2"/>
+        <rect x="60" y="60" width="340" height="25" rx="4" class="fb lb" stroke-width="1"/>
+        <text x="75" y="77" class="t-head" font-size="12">Header &bull; Qidiruv</text>
+        <!-- Cards -->
+        <rect x="60" y="100" width="95" height="120" rx="6" class="fc lc" stroke-width="2"/>
+        <text x="107" y="165" text-anchor="middle" class="t-accent" font-size="11">Kitob 1</text>
+        <rect x="170" y="100" width="95" height="120" rx="6" class="fn ln" stroke-width="1"/>
+        <text x="217" y="165" text-anchor="middle" class="t-muted" font-size="11">Kitob 2</text>
+        <rect x="280" y="100" width="95" height="120" rx="6" class="fn ln" stroke-width="1"/>
+        <text x="327" y="165" text-anchor="middle" class="t-muted" font-size="11">Kitob 3</text>
+      </g>
+
+      <!-- Connecting line -->
+      <path d="M 155 160 C 350 160, 400 90, 520 90" class="lc" stroke-width="3" stroke-dasharray="4" marker-end="url(#arr)" class="fragment"/>
+
+      <!-- Screen 2: Book_details -->
+      <g class="fragment">
+        <rect x="540" y="40" width="380" height="220" rx="10" class="fb lb" stroke-width="2"/>
+        <rect x="560" y="60" width="110" height="140" rx="6" class="fc lc" stroke-width="2"/>
+        <text x="615" y="135" text-anchor="middle" class="t-head" font-size="12">Katta muqova</text>
+        <line x1="690" y1="75" x2="890" y2="75" class="lb" stroke-width="3"/>
+        <line x1="690" y1="95" x2="850" y2="95" class="lb" stroke-width="2"/>
+        <rect x="690" y="120" width="120" height="30" rx="6" class="fa la" stroke-width="2"/>
+        <text x="750" y="140" text-anchor="middle" class="t-accent" font-size="11">O'qishni boshlash</text>
+        <!-- Tabs at bottom -->
+        <rect x="560" y="215" width="340" height="30" rx="4" class="fn ln" stroke-width="1"/>
+        <text x="630" y="235" text-anchor="middle" class="t-muted" font-size="11">Tavsif | Fikrlar</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 15: Browser Mockup -->
+<section>
+  <h2>Brauzerda ko'rinishi (Preview)</h2>
+  <div class="browser" data-id="box" style="width:780px">
+    <div class="bar"><i></i><i></i><i></i><span>http://127.0.0.1:32767/home_books.html</span></div>
+    <div class="page" style="min-height:220px; padding: 15px;">
+      <h3 class="t-head">Online E-Kutubxona</h3>
+      <p class="t-muted">Dasturchilik va sun'iy intellekt kitoblari kolleksiyasi</p>
+      <div class="cards three" style="margin-top: 15px;">
+        <div class="card" style="padding: 10px; border: 2px solid var(--accent);"><p class="t-accent" style="margin:0;">[Tanlangan kitob]</p><span class="badge">Clickable</span></div>
+        <div class="card" style="padding: 10px;"><p class="t-muted" style="margin:0;">Kitob 2</p></div>
+        <div class="card" style="padding: 10px;"><p class="t-muted" style="margin:0;">Kitob 3</p></div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 16: Low-fi vs High-fi prototiplar -->
+<section>
+  <h2>Prototiplar darajasi</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="pencil"></i></div>
+      <h3>Low-fidelity (Past aniqlik)</h3>
+      <p>Monoxrom (kulrang), oddiy shakllar, faqat navigatsiya va mantiqni tekshirish uchun xizmat qiladi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="sparkles"></i></div>
+      <h3>High-fidelity (Yuqori aniqlik)</h3>
+      <p>Ranglar, tipografiya, rasmlar va animatsiyalar bilan yakuniy mahsulotga 100% o'xshash model.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 17: .quiz -->
+<section>
+  <h2>Tezkor viktorina</h2>
+  <div class="quiz">
+    <p class="q">Bitta blok ichida bir nechta tablarni yangi sahifa ochmasdan ko'rsatish uchun qaysi vosita ishlatiladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Rectangle vositasi</button>
+      <button class="opt" type="button" data-ok>Dynamic Panel (Dinamik panel)</button>
+      <button class="opt" type="button">Browser Window elementi</button>
+    </div>
+    <div class="explain">To'g'ri javob: Dynamic Panel bir nechta State'larni (holatlarni) o'zida saqlay oladi.</div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 18: Amaliy topshiriq -->
+<section>
+  <h2>Bugungi amaliy vazifa <span class="timer"><i data-ic="timer"></i>25 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>2 ta sahifa yarating: <code>Home_books</code> va <code>Book_details</code> hamda ular o'rtasida o'tishni ulang.</div>
+  <div class="task"><span class="level mid">O'rta</span><code>Book_details</code> sahifasida 2 ta holatli (Mundarija va Fikrlar) Dinamik panel yarating.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Orqaga qaytuvchi tugmaga <code>Open Link in Parent Window</code> amali orqali bosh sahifaga qaytishni biriktiring.</div>
+  
+</section>
+
+<!-- SLIDE 19: Xatolardan saqlanish -->
+<section>
+  <h2>Prototip yaratishdagi 3 ta katta xato</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-alert"></i></div>
+      <h3>Ranglarga chalg'ish</h3>
+      <p>Wireframe bosqichida rang va bezakka berilib, foydalanuvchi mantiqini unutish.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-alert"></i></div>
+      <h3>Nomlamaslik</h3>
+      <p>Yuzlab elementlarni «Rectangle 45», «Panel 12» deb qoldirib, adashib ketish.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-alert"></i></div>
+      <h3>Orqaga yo'l yo'qligi</h3>
+      <p>Foydalanuvchi yangi ekranga o'tgach, orqaga qaytish tugmasini loyihalashni unutish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 20: Xulosa -->
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="check"></i></div>
+      <h3>Interaksiyalar</h3>
+      <p>Trigger &rarr; Action &rarr; Target mantiqi tizimni jonlantiradi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="check"></i></div>
+      <h3>Dynamic Panels</h3>
+      <p>Tablar va modal oynalar uchun ixcham va qudratli konteyner.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="check"></i></div>
+      <h3>Real sinov</h3>
+      <p>Preview yordamida loyiha qulayligini kod yozishdan oldin baholash.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 21: Keyingi dars -->
+<section class="hero">
+  <div class="icon"><i data-ic="text-cursor-input" data-anim="float"></i></div>
+  <h1>Keyingi dars: Formalar va Kiritish maydonlari</h1>
+  <p class="muted">Text Field, Dropdown, Checkbox va xatolik holatlari (Validation states)</p>
+  <span class="badge">3-hafta · 8-dars</span>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

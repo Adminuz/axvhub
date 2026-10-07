@@ -1,101 +1,475 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>Zamonaviy kompyuterlar va ularning arxitekturasi</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Zamonaviy kompyuterlar va ularning arxitekturasi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Zamonaviy kompyuterlar va ularning arxitekturasi</h1></header>
-<div class="badges"><span class="badge">8-sinf</span><span class="badge">Foundation</span><span class="badge">1-hafta · 1-dars</span><span class="badge">Kompyuter turlari, fon Neyman tamoyili, CPU, RAM va ma'lumot saqlash texnologiyalari</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "Kompyuter elektr tarmog'idan uzilganda (o'chganda) qaysi xotiradagi barcha ma'lumotlar o'chib ketadi?", "o": ["SSD disk", "RAM (Tezkor xotira)", "HDD qattiq disk", "Flesh-xotira (Flash drive)"], "a": 1, "e": "To'g'ri! RAM — uchuvchan xotira. Tok uzilishi bilan undagi ma'lumotlar yo'qoladi. Doimiy ma'lumotlar esa SSD yoki HDD da saqlanadi."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+      <!-- 1. SARLAVHA -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>Zamonaviy kompyuterlar va ularning arxitekturasi</h1>
+        <p class="muted">Kompyuter turlari, fon Neyman tamoyili, CPU, RAM va ma'lumot saqlash texnologiyalari</p>
+        <span class="badge">8-sinf</span><span class="badge">Foundation</span><span class="badge">1-hafta · 1-dars</span>
+        
+      </section>
+
+      <!-- 2. Reja -->
+      <section>
+        <h2>Bugun nimalarni o'rganamiz?</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="laptop" data-anim="float"></i></div>
+            <h3>Kompyuter turlari</h3>
+            <p>Desktop, laptop, server va superkompyuterlar</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="cpu" data-anim="pulse"></i></div>
+            <h3>Fon Neyman modeli</h3>
+            <p>Arxitekturaning 4 ta asosiy tayanch bloki</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="hard-drive" data-anim="spin"></i></div>
+            <h3>Ichki komponentlar</h3>
+            <p>CPU, RAM, ROM, SSD va tizimli shinalar</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 3. Savol / Munozara -->
+      <section>
+        <h2>Siz qanday kompyuterlardan foydalanasiz?</h2>
+        <div class="chips">
+          <span class="chip fragment">Smartfon</span>
+          <span class="chip t fragment">Noutbuk</span>
+          <span class="chip fragment">Desktop PC</span>
+          <span class="chip t fragment">Planshet</span>
+          <span class="chip fragment">Smart soat</span>
+        </div>
+        <div class="callout tip fragment">
+          <i data-ic="sparkles"></i>
+          Bugungi kunda hatto avtomobil, televizor va mikroto'lqinli pechlar ichida ham mikrokompyuterlar ishlamoqda!
+        </div>
+        
+      </section>
+
+      <!-- 4. SEC 01 -->
+      <section class="sec">
+        <div class="num">01</div>
+        <h1>Kompyuter turlari</h1>
+        <p>Vazifasi va hisoblash quvvati bo'yicha tasnif</p>
+      </section>
+
+      <!-- 5. Kartalar: 4 ta kompyuter turi -->
+      <section>
+        <h2>Asosiy kompyuter turlari</h2>
+        <div class="cards four">
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="monitor" data-anim="float"></i></div>
+            <h3>Desktop PC</h3>
+            <p>Statsionar, tizim bloki va monitor alohida, quvvatli va oson yangilanadi</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="laptop" data-anim="float"></i></div>
+            <h3>Noutbuk</h3>
+            <p>Ixcham, batareyali, barcha qismlari bitta korpusda jamlangan</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="server" data-anim="pulse"></i></div>
+            <h3>Server</h3>
+            <p>Tarmoqdagi millionlab so'rovlarga 24/7 rejimida to'xtovsiz xizmat ko'rsatadi</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="zap" data-anim="draw"></i></div>
+            <h3>Superkompyuter</h3>
+            <p>Sekundiga kvadtrillionlab hisob-kitoblarni bajaradigan ulkan majmualar</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 6. SVG ILLUS 1: Hisoblash ekotizimi -->
+      <section>
+        <h2>Hisoblash qurilmalari ekotizimi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <g class="fragment"><line class="ln flowing" x1="220" y1="80" x2="440" y2="160"/></g>
+            <g class="fragment"><line class="ln flowing" x1="220" y1="280" x2="440" y2="200"/></g>
+            <g class="fragment"><line class="ln flowing" x1="780" y1="80" x2="560" y2="160"/></g>
+            <g class="fragment"><line class="ln flowing" x1="780" y1="280" x2="560" y2="200"/></g>
+            <circle class="fa pulse" cx="500" cy="180" r="75"/>
+            <text class="t-head" x="500" y="175" text-anchor="middle" font-size="24">Bulut / Server</text>
+            <text class="t-muted" x="500" y="202" text-anchor="middle" font-size="16">Global Tarmoq</text>
+            <g class="fragment">
+              <rect class="fn" x="30" y="40" width="190" height="80" rx="14"/>
+              <text class="t-head" x="125" y="75" text-anchor="middle" font-size="19">Desktop PC</text>
+              <text class="t-muted" x="125" y="98" text-anchor="middle" font-size="14">Kuchli ish stoli</text>
+            </g>
+            <g class="fragment">
+              <rect class="fn" x="30" y="240" width="190" height="80" rx="14"/>
+              <text class="t-head" x="125" y="275" text-anchor="middle" font-size="19">Noutbuk</text>
+              <text class="t-muted" x="125" y="298" text-anchor="middle" font-size="14">Harakatchan</text>
+            </g>
+            <g class="fragment">
+              <rect class="fn" x="780" y="40" width="190" height="80" rx="14"/>
+              <text class="t-head" x="875" y="75" text-anchor="middle" font-size="19">Smartfon</text>
+              <text class="t-muted" x="875" y="98" text-anchor="middle" font-size="14">Mobil mijoz</text>
+            </g>
+            <g class="fragment">
+              <rect class="fn" x="780" y="240" width="190" height="80" rx="14"/>
+              <text class="t-head" x="875" y="275" text-anchor="middle" font-size="19">Superkompyuter</text>
+              <text class="t-muted" x="875" y="298" text-anchor="middle" font-size="14">Ilmiy hisob-kitob</text>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 7. VS taqqoslash: Desktop vs Laptop -->
+      <section>
+        <h2>Desktop PC va Noutbuk taqqoslovi</h2>
+        <div class="vs">
+          <div class="side fragment">
+            <h3>Desktop PC</h3>
+            <p>Yuqori unumdorlik va kuchli sovitish. Qismlarini (RAM, GPU, SSD) osongina yangilash mumkin. Statsionar ishlaydi.</p>
+          </div>
+          <div class="mid">VS</div>
+          <div class="side b fragment">
+            <h3>Noutbuk (Laptop)</h3>
+            <p>O'zi bilan olib yurish juda qulay. Akkumulyatori bor, tok o'chsa ham ishlaydi. Qismlarini yangilash esa cheklangan.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. SEC 02 -->
+      <section class="sec">
+        <div class="num">02</div>
+        <h1>Fon Neyman arxitekturasi</h1>
+        <p>1945-yildan buyon o'zgarmas tamoyil</p>
+      </section>
+
+      <!-- 9. Fon Neyman iqtibos / qoida -->
+      <section>
+        <h2>Jon fon Neyman tamoyili (1945)</h2>
+        <div class="quote">
+          «Har qanday universal kompyuter arifmetik-mantiqiy hisoblash bloki, xotira qurilmasi hamda kiritish-chiqarish mexanizmlaridan tashkil topishi kerak.»
+        </div>
+        <p class="muted">Bugungi eng zamonaviy iPhone yoki superkompyuter ham aynan shu klassik 4 blok asosida ishlaydi.</p>
+        
+      </section>
+
+      <!-- 10. SVG ILLUS 2: Fon Neyman sxemasi -->
+      <section>
+        <h2>Kompyuter arxitekturasi sxemasi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 380">
+            <!-- Shinalar magistrali -->
+            <line class="la flowing" x1="120" y1="200" x2="880" y2="200"/>
+            <text class="t-accent" x="500" y="190" text-anchor="middle" font-size="16">Tizimli shina (Ma'lumotlar va buyruqlar magistrali)</text>
+            <!-- Kiritish -->
+            <g class="fragment">
+              <rect class="fn" x="80" y="60" width="180" height="90" rx="14"/>
+              <text class="t-head" x="170" y="100" text-anchor="middle" font-size="20">Kiritish qurilmalari</text>
+              <text class="t-muted" x="170" y="125" text-anchor="middle" font-size="14">Klaviatura, sichqoncha</text>
+              <line class="la" x1="170" y1="150" x2="170" y2="200"/>
+              <polygon class="ar-a" points="170,200 165,190 175,190"/>
+            </g>
+            <!-- CPU -->
+            <g class="fragment">
+              <rect class="fa" x="380" y="50" width="240" height="110" rx="16"/>
+              <text class="t-head" x="500" y="95" text-anchor="middle" font-size="22">Markaziy protsessor</text>
+              <text class="t-head" x="500" y="120" text-anchor="middle" font-size="17">CPU (ALU + CU)</text>
+              <text class="t-muted" x="500" y="142" text-anchor="middle" font-size="14">Boshqaruv va hisoblash</text>
+              <line class="la" x1="500" y1="160" x2="500" y2="200"/>
+            </g>
+            <!-- Chiqarish -->
+            <g class="fragment">
+              <rect class="fn" x="740" y="60" width="180" height="90" rx="14"/>
+              <text class="t-head" x="830" y="100" text-anchor="middle" font-size="20">Chiqarish qurilmalari</text>
+              <text class="t-muted" x="830" y="125" text-anchor="middle" font-size="14">Monitor, dinamik, printer</text>
+              <line class="la" x1="830" y1="200" x2="830" y2="150"/>
+              <polygon class="ar-a" points="830,150 825,160 835,160"/>
+            </g>
+            <!-- Xotira -->
+            <g class="fragment">
+              <rect class="fc" x="360" y="240" width="280" height="100" rx="16"/>
+              <text class="t-head" x="500" y="280" text-anchor="middle" font-size="22">Xotira qurilmasi</text>
+              <text class="t-head" x="500" y="305" text-anchor="middle" font-size="16">Tezkor (RAM) + Doimiy (SSD/HDD)</text>
+              <text class="t-muted" x="500" y="325" text-anchor="middle" font-size="14">Dasturlar va ma'lumotlar ombori</text>
+              <line class="lc" x1="500" y1="200" x2="500" y2="240"/>
+            </g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 11. Flip karta: CPU atamasi -->
+      <section>
+        <h2>Asosiy atama: CPU nima?</h2>
+        <div class="flip">
+          <div class="flip-in">
+            <div class="face front">
+              <i data-ic="cpu" data-anim="pulse"></i>
+              <h3>CPU — Markaziy protsessor</h3>
+              <p class="muted">Kartani bosib ta'rifni oching</p>
+            </div>
+            <div class="face back">
+              <h3>Central Processing Unit</h3>
+              <p>Kompyuterning barcha matematik hisoblashlari va mantiqiy amallarini sekundiga milliardlab marotaba bajaruvchi eng asosiy mikrosxemasi.</p>
+            </div>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 12. SEC 03 -->
+      <section class="sec">
+        <div class="num">03</div>
+        <h1>Tizim bloki va uning komponentlari</h1>
+        <p>Qopqoq ostida nimalar yashiringan?</p>
+      </section>
+
+      <!-- 13. Kartalar: Tizim bloki qismlari -->
+      <section>
+        <h2>Tizim blokining asosiy a'zolari</h2>
+        <div class="cards two">
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="layers" data-anim="float"></i></div>
+            <h3>Ona plata (Motherboard)</h3>
+            <p>Barcha qurilmalarni birlashtiruvchi markaziy magistral. Elektr toki va signallar shu orqali o'tadi.</p>
+          </div>
+          <div class="card fragment fade-up">
+            <div class="icon"><i data-ic="zap" data-anim="bounce"></i></div>
+            <h3>Quvvat bloki (Power Supply)</h3>
+            <p>Rozetkadagi 220V o'zgaruvchan tokni kompyuter uchun xavfsiz bo'lgan 12V, 5V, 3.3V doimiy tokka aylantiradi.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 14. SVG ILLUS 3: Xotira ierarxiyasi -->
+      <section>
+        <h2>Xotira ierarxiyasi: Tezlik va Hajm</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <!-- Piramida darajalari -->
+            <polygon class="fa" points="500,40 400,120 600,120"/>
+            <text class="t-head" x="500" y="85" text-anchor="middle" font-size="16">CPU Register / Kesh</text>
+            <text class="t-muted" x="500" y="105" text-anchor="middle" font-size="12">Juda tez, bir necha MB</text>
+            
+            <polygon class="fb fragment" points="400,125 300,220 700,220 600,125"/>
+            <text class="t-head fragment" x="500" y="165" text-anchor="middle" font-size="19">Tezkor xotira (RAM)</text>
+            <text class="t-muted fragment" x="500" y="190" text-anchor="middle" font-size="14">Tez, 8 GB – 32 GB (Vaqtinchalik)</text>
+            
+            <polygon class="fc fragment" points="300,225 180,330 820,330 700,225"/>
+            <text class="t-head fragment" x="500" y="270" text-anchor="middle" font-size="20">Doimiy saqlash (SSD / HDD)</text>
+            <text class="t-muted fragment" x="500" y="295" text-anchor="middle" font-size="15">Katta sig'im: 512 GB – 2 TB+ (Doimiy)</text>
+
+            <line class="la" x1="120" y1="50" x2="120" y2="320"/>
+            <text class="t-accent" x="110" y="180" font-size="15" text-anchor="end">Hajm ortadi</text>
+            <line class="la" x1="880" y1="320" x2="880" y2="50"/>
+            <text class="t-accent" x="890" y="180" font-size="15" text-anchor="start">Tezlik ortadi</text>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 15. Protsessor statistikalari (.stats) -->
+      <section>
+        <h2>Protsessor quvvati ko'rsatkichlari</h2>
+        <div class="stats">
+          <div class="stat">
+            <div class="v"><span class="count" data-to="8" data-suf=" ta">0</span></div>
+            <div class="l">Protsessor yadrolari (Cores)</div>
+          </div>
+          <div class="stat">
+            <div class="v"><span class="count" data-to="4" data-suf=".2 GHz">0</span></div>
+            <div class="l">Takt chastotasi (Milliard amal/sek)</div>
+          </div>
+          <div class="stat">
+            <div class="v"><span class="count" data-to="16" data-suf=" GB">0</span></div>
+            <div class="l">Tavsiya etilgan RAM hajmi</div>
+          </div>
+        </div>
+        <p class="muted">Takt chastotasi har bir yadro sekundiga necha milliard impuls bajara olishini ko'rsatadi.</p>
+      </section>
+
+      <!-- 16. SWAP: RAM va SSD -->
+      <section>
+        <h2>Xotiralarni taqqoslash: RAM va SSD</h2>
+        <div class="swap">
+          <div class="swap-tabs">
+            <button type="button">RAM (Tezkor xotira)</button>
+            <button type="button">SSD (Doimiy xotira)</button>
+          </div>
+          <div class="swap-p">
+            <div class="callout tip">
+              <h3>RAM — Ish stoli</h3>
+              <p>Hozirgi vaqtda ochilgan o'yinlar, brauzer tablari va dasturlar aynan RAM ichida yashaydi. Kompyuter o'chirilishi bilan uning ichi butunlay bo'shaydi!</p>
+            </div>
+          </div>
+          <div class="swap-p">
+            <div class="callout tip">
+              <h3>SSD — Shkaf / Kitob javoni</h3>
+              <p>Rasmlar, filmlar va o'rnatilgan dasturlar diskda saqlanadi. Kompyuter o'chsa ham ma'lumotlar yillar davomida xavfsiz saqlanadi.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 17. STEPPER: Dastur qanday ishga tushadi -->
+      <section>
+        <h2>Dasturning ishga tushish zanjiri</h2>
+        <div class="stepper">
+          <div class="stp on">
+            <h3>1. Foydalanuvchi buyruq beradi</h3>
+            <p>Siz dastur belgisiga (masalan, brauzerga) sichqoncha bilan ikki marta bosasiz.</p>
+          </div>
+          <div class="stp">
+            <h3>2. SSD dan RAM ga yuklanadi</h3>
+            <p>Dasturning kodlari doimiy diskdan o'ta tezkor RAM xotiraga ko'chiriladi.</p>
+          </div>
+          <div class="stp">
+            <h3>3. CPU buyruqlarni bajaradi</h3>
+            <p>Protsessor RAM dagi buyruqlarni birin-ketin o'qib, hisob-kitoblarni amalga oshiradi.</p>
+          </div>
+          <div class="stp">
+            <h3>4. Monitorga natija chiqadi</h3>
+            <p>Grafik protsessor (GPU) oynani chizib, sizga dastur interfeysini ko'rsatadi.</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- 18. SVG ILLUS 4: Kiritish va Chiqarish qurilmalari -->
+      <section>
+        <h2>Kiritish va chiqarish qurilmalari</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 340">
+            <!-- Kiritish bloki -->
+            <rect class="fn" x="50" y="40" width="380" height="260" rx="18"/>
+            <text class="t-accent" x="240" y="80" text-anchor="middle" font-size="22">Kiritish qurilmalari (Input)</text>
+            <text class="t-head" x="240" y="125" text-anchor="middle" font-size="18">Klaviatura, Sichqoncha</text>
+            <text class="t-head" x="240" y="165" text-anchor="middle" font-size="18">Mikrofon, Skaner</text>
+            <text class="t-head" x="240" y="205" text-anchor="middle" font-size="18">Veb-kamera, Touchpad</text>
+            <text class="t-muted" x="240" y="255" text-anchor="middle" font-size="15">Inson axborotini raqamga aylantiradi</text>
+
+            <!-- O'rtadagi bog'lovchi o'qlar -->
+            <line class="la flowing" x1="430" y1="170" x2="570" y2="170"/>
+            <polygon class="ar-a" points="570,170 555,162 555,178"/>
+
+            <!-- Chiqarish bloki -->
+            <rect class="fn" x="570" y="40" width="380" height="260" rx="18"/>
+            <text class="t-accent" x="760" y="80" text-anchor="middle" font-size="22">Chiqarish qurilmalari (Output)</text>
+            <text class="t-head" x="760" y="125" text-anchor="middle" font-size="18">Monitor (Ekran), Proyektor</text>
+            <text class="t-head" x="760" y="165" text-anchor="middle" font-size="18">Dinamiklar (Kolonkalar)</text>
+            <text class="t-head" x="760" y="205" text-anchor="middle" font-size="18">Naushnik, Printer</text>
+            <text class="t-muted" x="760" y="255" text-anchor="middle" font-size="15">Natijani insonga qulay shaklda beradi</text>
+          </svg>
+        </div>
+      </section>
+
+      <!-- 19. Odatiy xato -->
+      <section>
+        <h2>Ko'p uchraydigan adashish</h2>
+        <div class="callout bad">
+          <i data-ic="triangle-alert"></i>
+          «Mening telefonimda 256 GB operativ xotira (RAM) bor!»
+        </div>
+        <div class="callout tip fragment">
+          <i data-ic="circle-check"></i>
+          To'g'risi: 256 GB — bu doimiy xotira (SSD yoki fleshka). Operativ xotira (RAM) odatda 4 GB, 8 GB yoki 16 GB bo'ladi!
+        </div>
+      </section>
+
+      <!-- 20. Amaliyot darchasi -->
+      <section>
+        <h2>Amaliyot: Parametrlarni tekshirish</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up">
+            <h3>Ctrl + Shift + Esc</h3>
+            <p>Task Manager ochiladi. Performance bo'limida CPU, RAM va Disk bandligini jonli ko'ring.</p>
+          </div>
+          <div class="card fragment fade-up">
+            <h3>Win + R → msinfo32</h3>
+            <p>Tizim ma'lumotlari oynasi. Protsessor modeli, yadrolar soni va BIOS versiyasi ko'rinadi.</p>
+          </div>
+          <div class="card fragment fade-up">
+            <h3>Win + R → dxdiag</h3>
+            <p>DirectX diagnostikasi. Videokarta (GPU) nomi va grafik xotirasi ko'rsatiladi.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 21. QUIZ -->
+      <section>
+        <h2>Tezkor sinov</h2>
+        <div class="quiz">
+          <p class="q">Kompyuter elektr tarmog'idan uzilganda (o'chganda) qaysi xotiradagi barcha ma'lumotlar o'chib ketadi?</p>
+          <div class="opts">
+            <button class="opt" type="button">SSD disk</button>
+            <button class="opt" type="button" data-ok>RAM (Tezkor xotira)</button>
+            <button class="opt" type="button">HDD qattiq disk</button>
+            <button class="opt" type="button">Flesh-xotira (Flash drive)</button>
+          </div>
+          <div class="explain">To'g'ri! RAM — uchuvchan xotira. Tok uzilishi bilan undagi ma'lumotlar yo'qoladi. Doimiy ma'lumotlar esa SSD yoki HDD da saqlanadi.</div>
+        </div>
+      </section>
+
+      <!-- 22. Amaliy vazifa -->
+      <section class="task">
+        <div class="badge">Amaliy topshiriq · 15 daqiqa</div>
+        <h2>O'z kompyuteringiz pasportini tuzing</h2>
+        <ol>
+          <li><code>Ctrl + Shift + Esc</code> tugmalarini bosib Task Manager'ni oching.</li>
+          <li>Protsessor (CPU) modeli va joriy chastotasini aniqlang.</li>
+          <li>O'rnatilgan RAM hajmini (GB) daftaringizga yozing.</li>
+          <li>Disk turini (SSD yoki HDD) aniqlang.</li>
+        </ol>
+      </section>
+
+      <!-- 23. Xulosa -->
+      <section>
+        <h2>Bugungi dars xulosasi</h2>
+        <div class="cards two">
+          <div class="card">
+            <h3>Biz o'rgandik:</h3>
+            <ul>
+              <li>Kompyuter turlari: Desktop, Noutbuk, Server, Superkompyuter</li>
+              <li>Fon Neyman modelining 4 tayanch bloki</li>
+              <li>CPU (Aql) va RAM (Ish stoli) vazifalari</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Keyingi dars:</h3>
+            <p><strong>2-dars:</strong> Operatsion tizimlar va Windows muhitida ishlash. Ish stoli, Start menyusi va dasturlarni boshqarish.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

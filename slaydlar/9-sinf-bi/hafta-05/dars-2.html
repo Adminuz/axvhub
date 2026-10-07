@@ -1,101 +1,317 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>SQL: ORDER BY, LIMIT va OFFSET</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>SQL: ORDER BY, LIMIT va OFFSET</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>SQL: ORDER BY, LIMIT va OFFSET</h1></header>
-<div class="badges"><span class="badge">9-sinf</span><span class="badge">Business Intelligence</span><span class="badge">5-hafta · 14-dars</span><span class="badge">ORDER BY, ASC, DESC, TOP, OFFSET–FETCH, LIMIT</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "<code>WHERE Soni &lt; 5 OR Narx &lt; 100000<\/code> nechta qator qaytaradi (Soni: 25, 12, 4, 3, 18, 6; Narx: 80k, 150k, 1.9M, 7.5M, 120k, 3.2M)?", "o": ["3", "2", "1", "6"], "a": 0, "e": "Sichqoncha (80k), Monitor (4) va Noutbuk (3)."}, {"q": "<code>ORDER BY Narx DESC<\/code> da birinchi qaysi mahsulot chiqadi?", "o": ["Noutbuk", "Sichqoncha", "Monitor", "Quloqchin"], "a": 0, "e": "<code>DESC<\/code> — kamayish tartibi: eng qimmat birinchi."}, {"q": "<code>ORDER BY Kategoriya, Narx DESC<\/code> da <code>Narx DESC<\/code> qachon ishlaydi?", "o": ["Kategoriya qiymatlari teng bo'lganda", "Har doim birinchi", "Hech qachon", "Faqat <code>WHERE<\/code> bilan"], "a": 0, "e": "Ikkinchi ustun faqat birinchisi teng bo'lgan qatorlarni tartiblaydi."}, {"q": "Sahifa hajmi 5 bo'lsa, 3-sahifa uchun <code>OFFSET<\/code> nechta qatorni o'tkazadi?", "o": ["10", "15", "5", "3"], "a": 0, "e": "(3 - 1) * 5 = 10."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>SQL: ORDER BY, LIMIT va OFFSET</h1>
+  <p class="muted">ORDER BY, ASC, DESC, TOP, OFFSET–FETCH, LIMIT</p>
+  <span class="badge">9-sinf</span><span class="badge">Business Intelligence</span><span class="badge">5-hafta · 14-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimalarni o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="arrow-down-up" data-anim="pulse"></i></div><h3>ORDER BY</h3><p>Natijani tartiblash</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="list-ordered" data-anim="float"></i></div><h3>Bir nechta ustun</h3><p>Birlamchi va ikkilamchi saralash</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="layers" data-anim="blink"></i></div><h3>TOP va OFFSET</h3><p>Cheklash va sahifalash</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q"><code>WHERE Soni &lt; 5 OR Narx &lt; 100000</code> nechta qator qaytaradi (Soni: 25, 12, 4, 3, 18, 6; Narx: 80k, 150k, 1.9M, 7.5M, 120k, 3.2M)?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>3</button>
+    <button class="opt" type="button">2</button>
+    <button class="opt" type="button">1</button>
+    <button class="opt" type="button">6</button>
+    </div>
+    <div class="explain">Sichqoncha (80k), Monitor (4) va Noutbuk (3).</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>ORDER BY</h1>
+  <p>Natijani tartiblash</p>
+</section>
+
+<section>
+  <h2>ORDER BY qaerda ishlaydi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">FROM jadval</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">WHERE filtr</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="145" text-anchor="middle" font-size="22">SELECT</text><text class="t-head" x="625" y="171" text-anchor="middle" font-size="22">ustunlar</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">ORDER BY</text><text class="t-head" x="875" y="171" text-anchor="middle" font-size="22">tartib</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Tartiblash eng oxirgi qadamlardan biri</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>ASC va DESC</h2>
+  <pre><code class="language-sql" data-trim data-line-numbers="1-3|5-7">
+SELECT Nomi, Narx
+FROM Mahsulotlar
+ORDER BY Narx ASC;
+
+SELECT Nomi, Narx
+FROM Mahsulotlar
+ORDER BY Narx DESC;
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i><code>ASC</code> yozilmasa ham o'sish tartibi bo'ladi. <code>DESC</code> da avval Noutbuk (7 500 000), oxirida Sichqoncha (80 000).</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>ORDER BY Narx DESC</code> da birinchi qaysi mahsulot chiqadi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Noutbuk</button>
+    <button class="opt" type="button">Sichqoncha</button>
+    <button class="opt" type="button">Monitor</button>
+    <button class="opt" type="button">Quloqchin</button>
+    </div>
+    <div class="explain"><code>DESC</code> — kamayish tartibi: eng qimmat birinchi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Bir nechta ustun</h1>
+  <p>Birlamchi va ikkilamchi saralash</p>
+</section>
+
+<section>
+  <h2>Ikki bosqichli tartib</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="145" text-anchor="middle" font-size="22">1: Kategoriya</text><text class="t-head" x="125" y="171" text-anchor="middle" font-size="22">A-Z</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">Teng</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">bo'lsa: Narx</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="145" text-anchor="middle" font-size="22">DESC: qimmat</text><text class="t-head" x="625" y="171" text-anchor="middle" font-size="22">birinchi</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Natija tayyor</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Ikkinchi ustun faqat teng qiymatlarda ishlaydi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Ko'p ustunli saralash</h2>
+  <pre><code class="language-sql" data-trim data-line-numbers="1-3|5-8">
+SELECT Kategoriya, Nomi, Narx
+FROM Mahsulotlar
+ORDER BY Kategoriya ASC, Narx DESC;
+
+SELECT Nomi, Narx * Soni AS Qiymat
+FROM Mahsulotlar
+WHERE Kategoriya &lt;&gt; N'Ekran'
+ORDER BY Qiymat DESC;
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Birinchi so'rovda Aksessuar ichida: Klaviatura, Quloqchin, Sichqoncha (narxi kamayish tartibida); Kompyuter ichida: Noutbuk, Planshet.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>ORDER BY Kategoriya, Narx DESC</code> da <code>Narx DESC</code> qachon ishlaydi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Kategoriya qiymatlari teng bo'lganda</button>
+    <button class="opt" type="button">Har doim birinchi</button>
+    <button class="opt" type="button">Hech qachon</button>
+    <button class="opt" type="button">Faqat <code>WHERE</code> bilan</button>
+    </div>
+    <div class="explain">Ikkinchi ustun faqat birinchisi teng bo'lgan qatorlarni tartiblaydi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>TOP va OFFSET</h1>
+  <p>Cheklash va sahifalash</p>
+</section>
+
+<section>
+  <h2>Sahifalash mantiqi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="145" text-anchor="middle" font-size="22">ORDER BY</text><text class="t-head" x="125" y="171" text-anchor="middle" font-size="22">Narx DESC</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">OFFSET 2:</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">2 ta o'tkaz</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="145" text-anchor="middle" font-size="22">FETCH NEXT</text><text class="t-head" x="625" y="171" text-anchor="middle" font-size="22">2: 2 ta ol</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">2-sahifa</text><text class="t-head" x="875" y="171" text-anchor="middle" font-size="22">tayyor</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">OFFSET = (sahifa - 1) * sahifa hajmi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>TOP, OFFSET-FETCH, LIMIT</h2>
+  <pre><code class="language-sql" data-trim data-line-numbers="1-3|5-9|11-12">
+SELECT TOP 3 Nomi, Narx
+FROM Mahsulotlar
+ORDER BY Narx DESC;
+
+SELECT Nomi, Narx
+FROM Mahsulotlar
+ORDER BY Narx DESC
+OFFSET 2 ROWS
+FETCH NEXT 2 ROWS ONLY;
+
+-- PostgreSQL / MySQL / SQLite:
+-- ... ORDER BY Narx DESC LIMIT 2 OFFSET 2;
+  </code></pre>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i>Birinchi so'rov: Noutbuk, Planshet, Monitor. Ikkinchi so'rov 2 ta qatorni o'tkazib: Monitor, Klaviatura (2-sahifa, hajmi 2).</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Sahifa hajmi 5 bo'lsa, 3-sahifa uchun <code>OFFSET</code> nechta qatorni o'tkazadi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>10</button>
+    <button class="opt" type="button">15</button>
+    <button class="opt" type="button">5</button>
+    <button class="opt" type="button">3</button>
+    </div>
+    <div class="explain">(3 - 1) * 5 = 10.</div>
+  </div>
+</section>
+
+<section>
+  <h2>TOP va OFFSET–FETCH</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>TOP</h3>Tez va oddiy: <code>TOP 3</code> birinchi 3 qatorni oladi</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>OFFSET–FETCH</h3>Sahifalash uchun: o'tkazib yuboradi va keyingi qismni oladi</div>
+  </div>
+  <div class="card accent fragment mt"><p><code>OFFSET–FETCH</code> faqat <code>ORDER BY</code> bilan ishlaydi.</p></div>
+</section>
+
+<section>
+  <h2>Saralash atamalari. Bosing</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>ASC</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>O'sish tartibi: 1, 2, 3; A-Z (standart)</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>DESC</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Kamayish tartibi: 3, 2, 1; Z-A</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>OFFSET</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Natija boshidan o'tkazib yuboriladigan qatorlar soni</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>FETCH / LIMIT</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Qaytariladigan qatorlar soni</p></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Eng qimmat N ta mahsulot</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="arrow-down-wide-narrow" data-anim="pulse"></i></div><h3>1. Tartiblang</h3><p><code>ORDER BY Narx DESC</code> — eng qimmat birinchi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="scissors"></i></div><h3>2. Cheklang</h3><p><code>TOP 3</code> yoki <code>OFFSET ... FETCH</code> qo'shing.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="circle-check"></i></div><h3>3. Tekshiring</h3><p>Natijada Noutbuk, Planshet, Monitor bo'lishi kerak.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>Cheklash usullari</h2>
+    <table>
+      <thead><tr><th>DBMS</th><th>Birinchi N qator</th><th>Sahifalash</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td>SQL Server</td><td><code>TOP N</code></td><td><code>OFFSET n ROWS FETCH NEXT m ROWS ONLY</code></td></tr>
+        <tr class="fragment"><td>PostgreSQL</td><td><code>LIMIT N</code></td><td><code>LIMIT m OFFSET n</code></td></tr>
+        <tr class="fragment"><td>MySQL</td><td><code>LIMIT N</code></td><td><code>LIMIT m OFFSET n</code></td></tr>
+        <tr class="fragment"><td>SQLite</td><td><code>LIMIT N</code></td><td><code>LIMIT m OFFSET n</code></td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: so'rov tartibi</p>
+  </section>
+  <section>
+    <h2>So'rov qismlarining yozilish tartibi</h2>
+    <ol class="steps-n">
+      <li class="fragment"><code>SELECT</code> — ustunlar (<code>TOP</code> shu yerda).</li>
+      <li class="fragment"><code>FROM</code> va <code>WHERE</code> — jadval va filtr.</li>
+      <li class="fragment"><code>ORDER BY</code>, keyin <code>OFFSET ... FETCH</code> — eng oxirida.</li>
+    </ol>
+  </section>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">Tartib qo'shamiz</h2>
+  <pre data-id="c"><code class="language-sql" data-trim>
+SELECT Nomi, Narx
+FROM Mahsulotlar;
+  </code></pre>
+</section>
+<section data-auto-animate>
+  <h2 data-id="t">Tartib qo'shamiz</h2>
+  <pre data-id="c"><code class="language-sql" data-trim data-line-numbers="1|2-3">
+SELECT TOP 3 Nomi, Narx
+FROM Mahsulotlar
+ORDER BY Narx DESC;
+  </code></pre>
+</section>
+
+<section>
+  <h2>Raqamlarda saralash</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="2" data-suf="">0</span></div><div class="l">tartib turi: ASC, DESC</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="3" data-suf="">0</span></div><div class="l">eng qimmat mahsulotlar: TOP 3</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="2" data-suf="">0</span></div><div class="l">2-sahifada o'tkaziladigan qator (hajm 2)</div></div>
+  </div>
+  <p class="small fragment">Tartibsiz <code>TOP</code> qaysi qatorlar kelishini kafolatlamaydi.</p>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Narx bo'yicha saralash: Mahsulotlarni narxi bo'yicha o'sish tartibida, so'ng kamayish tartibida chiqaring.</div>
+  <div class="task"><span class="level easy">Oson</span>Eng qimmat 3 ta: Eng qimmat 3 ta mahsulot nomi va narxini chiqaring.</div>
+  <div class="task"><span class="level mid">O'rta</span>Ko'p ustunli saralash: Avval kategoriya bo'yicha alifbo tartibida, kategoriya ichida narx bo'yicha kamayish tartibida chiqaring.</div>
+  <div class="task"><span class="level hard">Qiyin</span>2-sahifa: Mahsulotlarni narxi kamayish tartibida sahifalang (sahifa hajmi 2). 2-sahifani chiqaring.</div>
+  <div class="task"><span class="level hard">Bonus</span>Ombor qiymati reytingi: Aksessuar bo'lmagan mahsulotlardan ombor qiymati (<code>Narx * Soni</code>) bo'yicha eng yuqori 2 tasini taxallus bilan chiqaring.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>ORDER BY</h3><p><code>ASC</code> (standart) va <code>DESC</code> bilan tartiblash.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Ko'p ustun</h3><p>Birinchi teng bo'lsa, keyingisi ishlaydi.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Sahifalash</h3><p><code>TOP</code>, <code>OFFSET ... FETCH</code>, <code>LIMIT ... OFFSET</code>.</p></div>
+  </div>
+  <p class="small fragment mt">Uyga vazifa: saralash va sahifalash bo'yicha 8 ta so'rov.</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="circle-slash" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: SQL: NULL va ma'lumot turlari</h1>
+  <p class="muted">NULL bilan ishlash, <code>IS NULL</code>, <code>COALESCE</code>, turlar</p>
+  <span class="badge">5-hafta · 15-dars</span>
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

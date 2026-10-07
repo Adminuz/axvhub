@@ -1,101 +1,308 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>Unix/Linux muhiti</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Unix/Linux muhiti</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Unix/Linux muhiti</h1></header>
-<div class="badges"><span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">6-hafta · 16-dars</span><span class="badge">Fayl tizimi iyerarxiyasi, chmod/chown/umask, systemd va journalctl, loglar, tarmoq diagnostikasi buyruqlari</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "Oraliq nazoratdan keyin eng ko'p ball yo'qotilgan mavzu qaysi edi?", "o": ["O'zingizning javobingiz", "Faqat Git", "Faqat REST", "Hech biri"], "a": 0, "e": "Kuchsiz mavzuni aniqlab, qisqa takrorlang."}, {"q": "<code>-rwxr-x---<\/code> ruxsat oktalda?", "o": ["750", "755", "640", "700"], "a": 0, "e": "7 (rwx) + 5 (r-x) + 0 (---) = 750."}, {"q": "Xizmat <code>failed<\/code> bo'lsa, birinchi nima qilinadi?", "o": ["<code>journalctl -u nom<\/code> bilan logni o'qish", "Serverni o'chirish", "Xizmatni o'chirish", "Hech narsa"], "a": 0, "e": "Sabab logda yozilgan bo'ladi."}, {"q": "Qaysi buyruq tinglayotgan portlarni jarayon bilan ko'rsatadi?", "o": ["ss -lntp", "ip route", "dig A", "ping"], "a": 0, "e": "<code>ss -lntp<\/code> portlar va PID ni ko'rsatadi."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Unix/Linux muhiti</h1>
+  <p class="muted">Fayl tizimi iyerarxiyasi, chmod/chown/umask, systemd va journalctl, loglar, tarmoq diagnostikasi buyruqlari</p>
+  <span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">6-hafta · 16-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimalarni o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="folder-tree" data-anim="pulse"></i></div><h3>Fayl tizimi</h3><p>Iyerarxiya</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="settings" data-anim="float"></i></div><h3>systemd va loglar</h3><p>Xizmatlar</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="network" data-anim="blink"></i></div><h3>Tarmoq diagnostikasi</h3><p>Birinchi yordam</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">Oraliq nazoratdan keyin eng ko'p ball yo'qotilgan mavzu qaysi edi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>O'zingizning javobingiz</button>
+    <button class="opt" type="button">Faqat Git</button>
+    <button class="opt" type="button">Faqat REST</button>
+    <button class="opt" type="button">Hech biri</button>
+    </div>
+    <div class="explain">Kuchsiz mavzuni aniqlab, qisqa takrorlang.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Fayl tizimi</h1>
+  <p>Iyerarxiya</p>
+</section>
+
+<section>
+  <h2>Ruxsat hisobi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">r=4 w=2 x=1</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">Egasi / guruh</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">/ boshqalar</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">7 5 0</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">chmod 750</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Har doira alohida hisoblanadi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Navigatsiya va ruxsat</h2>
+  <pre><code class="language-bash" data-trim data-line-numbers="1-2|3|4|5-7">
+pwd
+ls -la
+chmod 750 script.sh
+chown odil:dev script.sh
+umask 022
+touch yangi.txt &amp;&amp; mkdir yangi_katalog
+ls -ld yangi.txt yangi_katalog
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Oddiy ishlarni oddiy foydalanuvchi sifatida bajaring, <code>sudo</code> ni faqat zarur bo'lganda ishlating (minimal ruxsat qoidasi). Konfiguratsiyani <code>sudoedit</code>, sudoers ni <code>visudo</code> bilan tahrirlang.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>-rwxr-x---</code> ruxsat oktalda?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>750</button>
+    <button class="opt" type="button">755</button>
+    <button class="opt" type="button">640</button>
+    <button class="opt" type="button">700</button>
+    </div>
+    <div class="explain">7 (rwx) + 5 (r-x) + 0 (---) = 750.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>systemd va loglar</h1>
+  <p>Xizmatlar</p>
+</section>
+
+<section>
+  <h2>Xizmat bilan ishlash</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">status</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">Xato: failed</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">journalctl -u</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">Tuzatish</text><text class="t-head" x="875" y="171" text-anchor="middle" font-size="22">va restart</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Doim logdan boshlang</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Xizmat va loglar</h2>
+  <pre><code class="language-bash" data-trim data-line-numbers="1|2-3|4|5-6">
+systemctl status nginx
+sudo systemctl restart nginx
+sudo systemctl enable nginx
+journalctl -u nginx -f
+df -h
+du -sh /var/log/* | sort -h | tail
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i><code>enable</code> xizmatni server qayta yonganda ham avtomatik ishga tushiradi; <code>start</code> faqat hozir ishga tushiradi.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Xizmat <code>failed</code> bo'lsa, birinchi nima qilinadi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok><code>journalctl -u nom</code> bilan logni o'qish</button>
+    <button class="opt" type="button">Serverni o'chirish</button>
+    <button class="opt" type="button">Xizmatni o'chirish</button>
+    <button class="opt" type="button">Hech narsa</button>
+    </div>
+    <div class="explain">Sabab logda yozilgan bo'ladi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Tarmoq diagnostikasi</h1>
+  <p>Birinchi yordam</p>
+</section>
+
+<section>
+  <h2>Tekshiruv zanjiri</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="145" text-anchor="middle" font-size="22">Port</text><text class="t-head" x="125" y="171" text-anchor="middle" font-size="22">ochiqmi? ss</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">DNS</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">to'g'rimi? dig</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="145" text-anchor="middle" font-size="22">HTTP javobi?</text><text class="t-head" x="625" y="171" text-anchor="middle" font-size="22">curl -I</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">Log:</text><text class="t-head" x="875" y="171" text-anchor="middle" font-size="22">tail, grep</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Pastdan yuqoriga tekshiring</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Diagnostika</h2>
+  <pre><code class="language-bash" data-trim data-line-numbers="1|2|3|4|5|6">
+ip a
+ss -lntp
+curl -I https://example.com
+dig A example.com
+grep -i error error.log | tail -n 50
+awk '{print $1}' access.log | sort | uniq -c | sort -nr | head
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i><code>ss -lntp</code> ni ko'p holda <code>sudo</code> bilan yozing: jarayon nomlarini ko'rsatish uchun huquq kerak.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Qaysi buyruq tinglayotgan portlarni jarayon bilan ko'rsatadi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>ss -lntp</button>
+    <button class="opt" type="button">ip route</button>
+    <button class="opt" type="button">dig A</button>
+    <button class="opt" type="button">ping</button>
+    </div>
+    <div class="explain"><code>ss -lntp</code> portlar va PID ni ko'rsatadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Ruxsat 777 va minimal ruxsat</h2>
+  <div class="vs">
+    <div class="side fragment"><h3><code>chmod 777</code></h3>Hamma yozishi va bajarishi mumkin, xavfli</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>Minimal ruxsat</h3>Faqat kerak bo'lgan huquq (masalan 640, 750)</div>
+  </div>
+  <div class="card accent fragment mt"><p>Server xavfsizligining birinchi qoidasi.</p></div>
+</section>
+
+<section>
+  <h2>Atamalar. Bosing</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>umask</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Yangi fayl ruxsatining standarti</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>systemd</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Linux xizmatlarini boshqaruvchi tizim</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>journalctl</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Xizmat loglarini ko'rish buyrug'i</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>quvur |</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Bir buyruq chiqishini keyingisiga berish</p></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Server birinchi yordam</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="activity" data-anim="pulse"></i></div><h3>1. Holat</h3><p><code>systemctl status</code>.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="file-search"></i></div><h3>2. Log</h3><p><code>journalctl -u ... -f</code>.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="network"></i></div><h3>3. Tarmoq</h3><p><code>ss -lntp</code>, <code>curl -I</code>.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>Ruxsat oktali</h2>
+    <table>
+      <thead><tr><th>Belgi</th><th>Oktal</th><th>Ma'no</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td><code>r</code></td><td>4</td><td>o'qish</td></tr>
+        <tr class="fragment"><td><code>w</code></td><td>2</td><td>yozish</td></tr>
+        <tr class="fragment"><td><code>x</code></td><td>1</td><td>bajarish</td></tr>
+        <tr class="fragment"><td><code>rw-</code></td><td>6</td><td>o'qish + yozish</td></tr>
+        <tr class="fragment"><td><code>rwx</code></td><td>7</td><td>to'liq ruxsat</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: 2.2-jadval</p>
+  </section>
+  <section>
+    <h2>Skriptga ruxsat berish</h2>
+    <ol class="steps-n">
+      <li class="fragment"><code>touch script.sh</code> bilan fayl yarating.</li>
+      <li class="fragment"><code>chmod 750 script.sh</code> va <code>ls -l</code> bilan tekshiring.</li>
+      <li class="fragment"><code>./script.sh</code> ni ishga tushirib ko'ring.</li>
+    </ol>
+  </section>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">Xavfli ruxsat</h2>
+  <pre data-id="c"><code class="language-bash" data-trim>
+chmod 777 script.sh
+  </code></pre>
+</section>
+<section data-auto-animate>
+  <h2 data-id="t">Xavfli ruxsat</h2>
+  <pre data-id="c"><code class="language-bash" data-trim data-line-numbers="1|1">
+chmod 750 script.sh
+  </code></pre>
+</section>
+
+<section>
+  <h2>Linux raqamlarda</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="3" data-suf="">0</span></div><div class="l"> ta ruxsat doirasi: egasi, guruh, boshqalar</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="750" data-suf="">0</span></div><div class="l"> — <code>rwxr-x---</code> oktali</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="644" data-suf="">0</span></div><div class="l"> — <code>umask 022</code> da oddiy fayl</div></div>
+  </div>
+  <p class="small fragment">Ruxsatlar — tizim xavfsizligi asosi.</p>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Oktal hisob: <code>rw-r-----</code> ruxsatni oktalda yozing va <code>chmod</code> buyrug'ini keltiring.</div>
+  <div class="task"><span class="level easy">Oson</span>Katalog vazifasi: <code>/etc</code>, <code>/var/log</code>, <code>/home/odil</code> nimaga xizmat qiladi?</div>
+  <div class="task"><span class="level mid">O'rta</span>umask: <code>umask 022</code> da yangi fayl va katalog ruxsatini hisoblang.</div>
+  <div class="task"><span class="level mid">O'rta</span>Ruxsatni to'g'rilang: <code>deploy.sh</code> ni faqat egasi bajara oladigan, guruh o'qiydigan qiling.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Xizmatni tiklang: <code>nginx</code> <code>failed</code> bo'ldi. Sababini toping va qayta ishga tushiring.</div>
+  <div class="task"><span class="level hard">Bonus</span>Eng ko'p IP: <code>access.log</code> dan eng ko'p kirgan 5 ta IP ni chiqaring.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Fayl tizimi</h3><p><code>/etc</code>, <code>/var/log</code>, <code>/home</code>; <code>chmod</code>, <code>chown</code>, <code>umask</code>.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Xizmatlar</h3><p><code>systemctl</code>, <code>journalctl</code>.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Diagnostika</h3><p><code>ss -lntp</code>, <code>curl -I</code>, <code>dig</code>, quvur.</p></div>
+  </div>
+  <p class="small fragment mt">Uyga vazifa: Linux buyruqlari va ruxsatlar.</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="key" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: SSH kalitlari</h1>
+  <p class="muted">Xavfsiz masofaviy ulanish</p>
+  <span class="badge">6-hafta · 17-dars</span>
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

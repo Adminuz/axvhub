@@ -1,101 +1,311 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>Liderlik va vaqtni boshqarish</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Liderlik va vaqtni boshqarish</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Liderlik va vaqtni boshqarish</h1></header>
-<div class="badges"><span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">5-hafta · 14-dars</span><span class="badge">liderlik uslublari, delegatsiya, ownership, erta signal, SMART, Eisenhower, timeboxing</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "Mini-retro oxirida nima qo'yiladi?", "o": ["Owner va deadline", "Faqat sana", "Ovoz", "Hech narsa"], "a": 0, "e": "Har actionga owner va deadline."}, {"q": "Qaysi holatda avtoritar uslub o'rinli?", "o": ["Prod da insident, vaqt cheklangan", "Uzoq muddatli dizayn", "Kunlik reja", "Retro"], "a": 0, "e": "Inqirozda tezkor qaror kerak."}, {"q": "Erta signal qaysi qismlardan iborat?", "o": ["Fakt, sabab, taklif, deadline", "Ayb, jazo", "Salom, rahmat", "Rasm, havola"], "a": 0, "e": "Fakt, sabab, taklif, deadline."}, {"q": "Muhim, lekin shoshilinch bo'lmagan vazifa Eisenhower da nima qilinadi?", "o": ["Rejalashtiriladi", "Rad etiladi", "Delegatsiya qilinadi", "Darrov bajariladi"], "a": 0, "e": "B kvadrant: rejalashtiriladi."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Liderlik va vaqtni boshqarish</h1>
+  <p class="muted">liderlik uslublari, delegatsiya, ownership, erta signal, SMART, Eisenhower, timeboxing</p>
+  <span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">5-hafta · 14-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimalarni o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="crown" data-anim="pulse"></i></div><h3>Liderlik asoslari</h3><p>Uslub, ishonch, delegatsiya</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="shield-check" data-anim="float"></i></div><h3>Mas'uliyat va hisobdorlik</h3><p>Ownership va erta signal</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="timer" data-anim="blink"></i></div><h3>Vaqtni boshqarish</h3><p>SMART, Eisenhower, timeboxing</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">Mini-retro oxirida nima qo'yiladi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Owner va deadline</button>
+    <button class="opt" type="button">Faqat sana</button>
+    <button class="opt" type="button">Ovoz</button>
+    <button class="opt" type="button">Hech narsa</button>
+    </div>
+    <div class="explain">Har actionga owner va deadline.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Liderlik asoslari</h1>
+  <p>Uslub, ishonch, delegatsiya</p>
+</section>
+
+<section>
+  <h2>Delegatsiya</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Natija</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">Cheklov</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">va resurs</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Erkinlik</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Checkpoint</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Mikro-nazorat emas, aniq nazorat nuqtalari</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Delegatsiya namunasi</h2>
+  <pre><code class="language-text" data-trim data-line-numbers="1-2|3-4|5-6|7">
+Natija: hafta oxirigacha checkout P95 ni
+        480 ms dan 300 ms gacha tushirish.
+Cheklov: arxitekturani buzmaymiz, budjet yo'q.
+Resurs: Grafana, profiling loglari, staging.
+Erkinlik: usulni o'zing tanlaysan;
+        orkestratsiya bo'yicha Tech Lead bilan kelish.
+Checkpoint: du va chor, 15:00, 10 daqiqa.
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Motivatsiya uchligi: ma'no, o'sish, avtonomiya. «Shunchaki qil» o'rniga vazifa nimaga xizmat qilishini tushuntiring.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Qaysi holatda avtoritar uslub o'rinli?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Prod da insident, vaqt cheklangan</button>
+    <button class="opt" type="button">Uzoq muddatli dizayn</button>
+    <button class="opt" type="button">Kunlik reja</button>
+    <button class="opt" type="button">Retro</button>
+    </div>
+    <div class="explain">Inqirozda tezkor qaror kerak.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Mas'uliyat va hisobdorlik</h1>
+  <p>Ownership va erta signal</p>
+</section>
+
+<section>
+  <h2>Erta signal</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Fakt</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">Sabab</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Taklif</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Deadline</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Raqam, diagnostika, reja va muddat</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Erta signal namunasi</h2>
+  <pre><code class="language-text" data-trim data-line-numbers="1-4|6-9">
+Fakt:     P95 kechikish 480 -&gt; 610 ms
+Sabab:    kesh invalidatsiyasi noto'g'ri ishladi
+Taklif:   TTL 5 -&gt; 60 s, A/B-test
+Deadline: juma, 18:00
+
+Post-mortem:
+1) Nima bo'ldi?
+2) Nega bo'ldi?
+3) Qanday oldini olamiz?
+  </code></pre>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i>Muammoni jim yashirish ertaga qimmatroq tushadi. Raqam bilan erta xabar bering.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Erta signal qaysi qismlardan iborat?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Fakt, sabab, taklif, deadline</button>
+    <button class="opt" type="button">Ayb, jazo</button>
+    <button class="opt" type="button">Salom, rahmat</button>
+    <button class="opt" type="button">Rasm, havola</button>
+    </div>
+    <div class="explain">Fakt, sabab, taklif, deadline.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Vaqtni boshqarish</h1>
+  <p>SMART, Eisenhower, timeboxing</p>
+</section>
+
+<section>
+  <h2>Eisenhower</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Hozir qiling</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">Rejalashtiring</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="145" text-anchor="middle" font-size="22">Delegatsiya</text><text class="t-head" x="625" y="171" text-anchor="middle" font-size="22">qiling</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Rad eting</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Muhim va shoshilinch bo'yicha 4 kvadrant</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>SMART va kunlik yakun</h2>
+  <pre><code class="language-text" data-trim data-line-numbers="1-3|5-8">
+SMART maqsad:
+"Checkout API P95 ni 480 ms dan 300 ms gacha
+tushirish, regressiyasiz, 3 hafta ichida."
+
+Kun yakuni (10 daqiqa):
+- Bugungi 3 yutuq
+- 1 to'siq
+- Ertaga eng ustuvor 1 ish
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>«Performance ni yaxshilaymiz» maqsad emas. Raqam va muddat qo'ying, aks holda uni tekshirib bo'lmaydi.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Muhim, lekin shoshilinch bo'lmagan vazifa Eisenhower da nima qilinadi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Rejalashtiriladi</button>
+    <button class="opt" type="button">Rad etiladi</button>
+    <button class="opt" type="button">Delegatsiya qilinadi</button>
+    <button class="opt" type="button">Darrov bajariladi</button>
+    </div>
+    <div class="explain">B kvadrant: rejalashtiriladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Vaqt bilan ishlash</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>Reaktiv</h3>Kelgan vazifani darrov qilish, 7 ta ochiq task, kalendar 100% to'la</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>Proaktiv</h3>Ustuvorlik, 3 ta WIP, fokus bloklar, kalendarning 30–40% i bo'sh</div>
+  </div>
+  <div class="card accent fragment mt"><p>Barqaror tezlik doimiy shoshilishdan yaxshi.</p></div>
+</section>
+
+<section>
+  <h2>Atamalar. Bosing</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>Ownership</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Natijaga egalik qilish</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>DoD</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Definition of Done: tugallanish mezoni</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>Timeboxing</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Vazifaga oldindan vaqt berish</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>WIP</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Bir vaqtda ochiq vazifalar soni</p></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Haftani rejalash</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="target" data-anim="pulse"></i></div><h3>1. Maqsad</h3><p>3 ta «katta tosh» ni tanlang.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="layout-grid"></i></div><h3>2. Matritsa</h3><p>Vazifalarni Eisenhower bo'yicha joylang.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="calendar"></i></div><h3>3. Kalendar</h3><p>Fokus bloklarni qo'ying, 30–40% bo'sh qoldiring.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>Liderlik uslublari</h2>
+    <table>
+      <thead><tr><th>Uslub</th><th>Qachon samarali</th><th>Xavfi</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td>Avtoritar</td><td>inqiroz, insident</td><td>motivatsiyani pasaytiradi</td></tr>
+        <tr class="fragment"><td>Demokratik</td><td>muhokama, dizayn</td><td>qaror sekinlashadi</td></tr>
+        <tr class="fragment"><td>Situatsion</td><td>yetuk jamoa</td><td>sezgirlik talab qiladi</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: tekshirish</p>
+  </section>
+  <section>
+    <h2>Delegatsiya mashqi</h2>
+    <ol class="steps-n">
+      <li class="fragment">Bitta vazifani tanlang.</li>
+      <li class="fragment">Natija, cheklov, resurs, erkinlik, checkpoint ni yozing.</li>
+      <li class="fragment">Mentorga xabarni o'qib bering va fikr oling.</li>
+    </ol>
+  </section>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">Maqsadni SMART qilish</h2>
+  <pre data-id="c"><code class="language-text" data-trim>
+Saytni tezlashtiramiz.
+  </code></pre>
+</section>
+<section data-auto-animate>
+  <h2 data-id="t">Maqsadni SMART qilish</h2>
+  <pre data-id="c"><code class="language-text" data-trim data-line-numbers="1|2-3">
+Bosh sahifa yuklanish vaqtini 4 s dan 2 s gacha tushirish,
+Lighthouse bilan o'lchab, 2 hafta ichida.
+  </code></pre>
+</section>
+
+<section>
+  <h2>Vaqt raqamlarda</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="3" data-suf="">0</span></div><div class="l"> ta «katta tosh» haftada</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="3" data-suf="">0</span></div><div class="l"> ta WIP limiti</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="70" data-suf="%">0</span></div><div class="l"> gacha to'ldirilgan kalendar</div></div>
+  </div>
+  <p class="small fragment">Qo'llanma tavsiyasi: kalendar 60–70% to'ldiriladi.</p>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Uslubni tanlang: Quyidagi holatlarda qaysi uslub o'rinli: (a) prod da insident; (b) yangi funksiya dizayni; (c) tajribali jamoa. Sababini yozing.</div>
+  <div class="task"><span class="level mid">O'rta</span>SMART qiling: «Kodni yaxshilaymiz» maqsadini SMART ga aylantiring.</div>
+  <div class="task"><span class="level mid">O'rta</span>Eisenhower matritsasi: 6 ta vazifani matritsaga joylang: prod xatosi; PR review; yangi texnologiyani o'rganish; spam email; hamkasb so'ragan kichik so'rov; hisobot.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Delegatsiya va erta signal: Bitta vazifani 5 qismli delegatsiya shaklida yozing, so'ng kechikish haqida erta signal (fakt, sabab, taklif, deadline) yozing.</div>
+  <div class="task"><span class="level hard">Bonus</span>Post-mortem: O'tgan haftadagi xatongiz uchun 3 savolli post-mortem yozing.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Liderlik</h3><p>Yo'nalish, resurs, standart; uslub vaziyatga qarab; delegatsiya.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Mas'uliyat</h3><p>Ownership, erta signal, DoD, post-mortem.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Vaqt</h3><p>SMART, Eisenhower, timeboxing, WIP, fokus.</p></div>
+  </div>
+  <p class="small fragment mt">Uyga vazifa: delegatsiya xabari va haftalik reja.</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="clipboard-check" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: ORALIQ NAZORAT</h1>
+  <p class="muted">I bob bo'yicha amaliy nazorat</p>
+  <span class="badge">5-hafta · 15-dars</span>
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

@@ -1,101 +1,334 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>Sikllar va matnli oqimlar</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Sikllar va matnli oqimlar</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Sikllar va matnli oqimlar</h1></header>
-<div class="badges"><span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">4-hafta · 12-dars</span><span class="badge">for, while, until va quvurlar bilan matnni qayta ishlash</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 12-dars. Sikllar va matnli oqimlar -->
+
+
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Sikllar va matnli oqimlar</h1>
+  <p class="muted">for, while, until va quvurlar bilan matnni qayta ishlash</p>
+  <span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">4-hafta · 12-dars</span>
+</section>
+
+<section>
+  <h2>Bugungi dars maqsadlari</h2>
+<div class="cards three">
+ <div class="card fragment fade-up"><div class="icon"><i data-ic="repeat" data-anim="spin"></i></div><h3>for sikli</h3><p>Ro'yxat, diapazon <code>{1..5}</code> va fayllar bo'yicha takrorlash.</p></div>
+ <div class="card fragment fade-up"><div class="icon"><i data-ic="refresh-cw" data-anim="pulse"></i></div><h3>while va until</h3><p>Shart bo'yicha takrorlash, <code>break</code> va <code>continue</code>.</p></div>
+ <div class="card fragment fade-up"><div class="icon"><i data-ic="file-text" data-anim="float"></i></div><h3>Matnli oqimlar</h3><p><code>while read</code> va quvur: <code>sort | uniq | wc</code>.</p></div>
 </div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "<code>for i in {1..5}; do [ $i -eq 3 ] &amp;&amp; break; echo $i; done<\/code> nima chiqaradi?", "o": ["1 2 3 4 5", "1 2", "1 2 3", "2 4"], "a": 1, "e": "<code>i<\/code> 3 bo'lganda <code>break<\/code> siklni to'xtatadi, shuning uchun faqat 1 va 2 chiqadi."}, {"q": "Fayldagi noyob qatorlar sonini qaysi quvur beradi?", "o": ["<code>uniq f | sort | wc -l<\/code>", "<code>wc -l | sort f<\/code>", "<code>sort f | uniq | wc -l<\/code>", "<code>cat f | head -1<\/code>"], "a": 2, "e": "Avval <code>sort<\/code> bir xil qatorlarni yonma-yon qiladi, <code>uniq<\/code> takrorni olib tashlaydi, <code>wc -l<\/code> sanaydi."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  
+</section>
+
+<section>
+  <h2>Dars raqamlarda</h2>
+<div class="stats">
+ <div class="stat fragment"><div class="v"><span class="count" data-to="3" data-suf=" ta">0</span></div><div class="l">sikl turi: for, while, until</div></div>
+ <div class="stat fragment"><div class="v"><span class="count" data-to="2" data-suf=" ta">0</span></div><div class="l">boshqaruv: break va continue</div></div>
+ <div class="stat fragment"><div class="v"><span class="count" data-to="1" data-suf=" ta">0</span></div><div class="l">quvur bilan butun tahlil zanjiri</div></div>
+</div>
+<div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Qo'llanmada: <code>for pkg in docker.io ... ; do sudo apt-get remove $pkg; done</code></div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>for sikli</h1>
+  <p>Ro'yxatdagi har bir element uchun</p>
+</section>
+
+<section>
+  <h2>for qanday aylanadi?</h2>
+<div class="illus">
+<svg viewBox="0 0 1000 310">
+<g data-tip="for shu elementlarni birin-ketin oladi."><rect class="fa" x="30" y="50" width="250" height="100" rx="14"/><text class="t-head" x="155.0" y="96.0" text-anchor="middle" font-size="24">ro'yxat</text><text class="t-muted" x="155.0" y="126.0" text-anchor="middle" font-size="22">Ali Vali Soli</text></g><g class="fragment"><line class="la flowing" x1="280" y1="100" x2="364" y2="100"/><polygon class="ar-a" points="370,100 357,105 357,95"/></g><g class="fragment" data-tip="Har aylanishda yangi qiymat oladi."><rect class="fb" x="380" y="50" width="250" height="100" rx="14"/><text class="t-head" x="505.0" y="96.0" text-anchor="middle" font-size="24">ISM</text><text class="t-muted" x="505.0" y="126.0" text-anchor="middle" font-size="22">joriy element</text></g><g class="fragment"><line class="lb flowing" x1="630" y1="100" x2="714" y2="100"/><polygon class="ar-b" points="720,100 707,105 707,95"/></g><g class="fragment" data-tip="Blok har element uchun bir marta bajariladi."><rect class="fg" x="730" y="50" width="240" height="100" rx="14"/><text class="t-head" x="850.0" y="96.0" text-anchor="middle" font-size="24">blok</text><text class="t-muted" x="850.0" y="126.0" text-anchor="middle" font-size="22">do ... done</text></g><g class="fragment"><path class="lc flowing" d="M850 150 C850 250 500 250 500 160" fill="none"/><polygon class="ar-c" points="500,152 494,166 506,166"/></g><text class="t-accent" x="500" y="285" text-anchor="middle" font-size="26">3 element = 3 aylanish</text>
+</svg>
+</div><p class="small">Qismlar ustiga bosing.</p>
+  
+</section>
+
+<section>
+  <h2>for ning to'rt ko'rinishi</h2>
+<div class="swap">
+ <div class="swap-tabs"><button type="button">Ro'yxat</button><button type="button">Diapazon</button><button type="button">C uslub</button><button type="button">Fayllar</button></div>
+ <div class="swap-p"><pre><code class="language-bash" data-trim>for ISM in Ali Vali Soli; do
+  echo "Salom, $ISM"
+done</code></pre></div>
+ <div class="swap-p"><pre><code class="language-bash" data-trim>for i in {1..5}; do
+  echo $i
+done</code></pre></div>
+ <div class="swap-p"><pre><code class="language-bash" data-trim>for ((i=0; i&lt;3; i++)); do
+  echo $i
+done</code></pre></div>
+ <div class="swap-p"><pre><code class="language-bash" data-trim>for F in *.txt; do
+  echo "Fayl: $F"
+done</code></pre></div>
+</div>
+  
+</section>
+
+<section>
+  <h2>Natija</h2>
+<pre><code class="language-bash" data-trim data-noescape data-line-numbers="1-4|1|2|3">
+for i in {1..5}; do
+  echo "Aylanish: $i"
+done
+echo "Tugadi"
+</code></pre>
+<div class="terminal"><div class="bar">Terminal</div><pre><code class="language-bash">Aylanish: 1
+Aylanish: 2
+Aylanish: 3
+Aylanish: 4
+Aylanish: 5
+Tugadi</code></pre></div>
+  
+</section>
+
+<section>
+  <h2>Hayotiy o'xshatish</h2>
+<div class="quote">Sikl: o'qituvchi 30 ta daftarni birin-ketin tekshiradi. Daftar o'zgaradi, tekshirish qoidasi bir xil.</div>
+<ul class="steps-n">
+ <li class="fragment">Keyingi daftarni ol.</li>
+ <li class="fragment">Qoidaga ko'ra tekshir.</li>
+ <li class="fragment">Daftar qolmadimi? Qaytadan.</li>
+</ul>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>while va until</h1>
+  <p>Shart bo'yicha takrorlash</p>
+</section>
+
+<section>
+  <h2>while va until: ko'zgu juftlik</h2>
+<div class="vs">
+ <div class="side fragment"><h3>while</h3><pre><code class="language-bash" data-trim>n=3
+while [ $n -gt 0 ]; do ...</code></pre>Shart <b>rost</b> ekan davom etadi.</div>
+ <div class="mid">VS</div>
+ <div class="side b fragment"><h3>until</h3><pre><code class="language-bash" data-trim>k=0
+until [ $k -ge 3 ]; do ...</code></pre>Shart <b>rost bo'lmaguncha</b> davom etadi.</div>
+</div>
+  
+</section>
+
+<section>
+  <h2>while ichida</h2>
+<div class="illus">
+<svg viewBox="0 0 1000 310">
+<g data-tip="Hisoblagich o&#x27;zgaruvchisi."><rect class="fa" x="30" y="60" width="230" height="100" rx="14"/><text class="t-head" x="145.0" y="106.0" text-anchor="middle" font-size="24">n = 3</text><text class="t-muted" x="145.0" y="136.0" text-anchor="middle" font-size="22">boshlang'ich</text></g><g class="fragment"><line class="la flowing" x1="260" y1="110" x2="344" y2="110"/><polygon class="ar-a" points="350,110 337,115 337,105"/></g><g class="fragment" data-tip="Har aylanishdan oldin shart tekshiriladi."><rect class="fb" x="360" y="60" width="260" height="100" rx="14"/><text class="t-head" x="490.0" y="118.0" text-anchor="middle" font-size="24">n &gt; 0 ?</text></g><g class="fragment"><line class="lg flowing" x1="620" y1="110" x2="704" y2="110"/><polygon class="ar-g" points="710,110 697,115 697,105"/></g><g class="fragment" data-tip="Blok bajariladi va hisoblagich kamayadi."><rect class="fg" x="720" y="60" width="250" height="100" rx="14"/><text class="t-head" x="845.0" y="118.0" text-anchor="middle" font-size="24">echo; n-1</text></g><g class="fragment"><path class="lc flowing" d="M845 160 C845 250 490 250 490 168" fill="none"/><polygon class="ar-c" points="490,160 484,174 496,174"/></g><text class="t-accent" x="500" y="285" text-anchor="middle" font-size="24">n = 0 bo'lganda shart yolg'on: sikl tugaydi</text>
+</svg>
+</div><p class="small">Qismlarni bosing.</p>
+  
+</section>
+
+<section>
+  <h2>while va until kodi</h2>
+<pre><code class="language-bash" data-trim data-noescape data-line-numbers="1-5|6-9|4|8">
+n=3
+while [ $n -gt 0 ]; do
+  echo $n
+  n=$((n - 1))
+done
+k=0
+until [ $k -ge 3 ]; do
+  echo $k; k=$((k + 1))
+done
+</code></pre>
+<div class="callout tip"><i data-ic="circle-check"></i><code>while true; do ...; done</code> cheksiz sikl; <code>Ctrl+C</code> bilan to'xtatiladi (qo'llanmada yuklama berish misoli).</div>
+  
+</section>
+
+<section data-auto-animate>
+  <h2>Cheksiz sikl xatosi</h2>
+<pre><code class="language-bash" data-trim data-noescape data-line-numbers="1-4">
+n=3
+while [ $n -gt 0 ]; do
+  echo $n
+done
+</code></pre>
+<p class="small">n o'zgarmaydi: shart doim rost. <code>Ctrl+C</code>!</p>
+</section>
+
+<section data-auto-animate>
+  <h2>Cheksiz sikl xatosi</h2>
+<pre><code class="language-bash" data-trim data-noescape data-line-numbers="1-5">
+n=3
+while [ $n -gt 0 ]; do
+  echo $n
+  n=$((n - 1))
+done
+</code></pre>
+<p class="small">Hisoblagich kamaygani uchun sikl tugaydi.</p>
+</section>
+
+<section>
+  <section>
+    <h2>break va continue</h2>
+    <div class="vs">
+     <div class="side"><h3>break</h3>Siklni butunlay to'xtatadi va undan chiqadi.</div>
+     <div class="mid">VS</div>
+     <div class="side b"><h3>continue</h3>Joriy aylanishni tashlab, keyingisiga o'tadi.</div>
+    </div>
+    <p class="muted">Pastga bosing: misol.</p>
+  </section>
+  <section>
+    <h2>Qo'shimcha: misol</h2>
+    <pre><code class="language-bash" data-trim>for i in 1 2 3 4 5; do
+  [ $i -eq 2 ] &amp;&amp; continue
+  [ $i -eq 4 ] &amp;&amp; break
+  echo $i
+done   # 1 3</code></pre>
+    
+  </section>
+</section>
+
+<section>
+  <h2>Tezkor bilim sinovi</h2>
+<div class="quiz">
+  <p class="q"><code>for i in {1..5}; do [ $i -eq 3 ] &amp;&amp; break; echo $i; done</code> nima chiqaradi?</p>
+  <div class="opts">
+    <button class="opt" type="button">1 2 3 4 5</button>
+    <button class="opt" type="button" data-ok>1 2</button>
+    <button class="opt" type="button">1 2 3</button>
+    <button class="opt" type="button">2 4</button>
+  </div>
+  <div class="explain"><code>i</code> 3 bo'lganda <code>break</code> siklni to'xtatadi, shuning uchun faqat 1 va 2 chiqadi.</div>
+</div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Matnli oqimlar</h1>
+  <p>Fayl va quvur bilan ishlash</p>
+</section>
+
+<section>
+  <h2>Uch oqim: stdin, stdout, stderr</h2>
+<div class="illus">
+<svg viewBox="0 0 1000 290">
+<g data-tip="Foydalanuvchi kiritadigan ma&#x27;lumot."><rect class="fa" x="20" y="100" width="220" height="110" rx="14"/><text class="t-head" x="130.0" y="151.0" text-anchor="middle" font-size="24">klaviatura</text><text class="t-muted" x="130.0" y="181.0" text-anchor="middle" font-size="22">yoki fayl</text></g><g class="fragment"><line class="la flowing" x1="240" y1="155" x2="324" y2="155"/><polygon class="ar-a" points="330,155 317,160 317,150"/></g><g class="fragment" data-tip="Qo&#x27;llanma: jarayon buyruqning bajarilishi."><rect class="fb" x="340" y="80" width="300" height="150" rx="14"/><text class="t-head" x="490.0" y="151.0" text-anchor="middle" font-size="24">jarayon</text><text class="t-muted" x="490.0" y="181.0" text-anchor="middle" font-size="22">buyruq</text></g><g class="fragment"><line class="lg flowing" x1="640" y1="120" x2="724" y2="120"/><polygon class="ar-g" points="730,120 717,125 717,115"/></g><g class="fragment" data-tip="Jarayon ishlab chiqargan natija."><rect class="fg" x="740" y="70" width="240" height="80" rx="14"/><text class="t-head" x="860.0" y="106.0" text-anchor="middle" font-size="24">stdout</text><text class="t-muted" x="860.0" y="136.0" text-anchor="middle" font-size="22">natija</text></g><g class="fragment"><line class="lb flowing" x1="640" y1="195" x2="724" y2="195"/><polygon class="ar-b" points="730,195 717,200 717,190"/></g><g class="fragment" data-tip="Xato xabarlari alohida oqimda."><rect class="fn" x="740" y="170" width="240" height="80" rx="14"/><text class="t-head" x="860.0" y="206.0" text-anchor="middle" font-size="24">stderr</text><text class="t-muted" x="860.0" y="236.0" text-anchor="middle" font-size="22">xatolar</text></g><text class="t-accent" x="130" y="75" text-anchor="middle" font-size="26">stdin</text>
+</svg>
+</div><p class="small">Qismlarni bosing.</p>
+  
+</section>
+
+<section>
+  <h2>Quvur: matn zanjiri</h2>
+<div class="illus">
+<svg viewBox="0 0 1000 310">
+<g data-tip="Klaviatura yoki fayldan kelgan ma&#x27;lumot."><rect class="fa" x="20" y="50" width="200" height="100" rx="14"/><text class="t-head" x="120.0" y="96.0" text-anchor="middle" font-size="24">stdin</text><text class="t-muted" x="120.0" y="126.0" text-anchor="middle" font-size="22">kirish</text></g><g class="fragment"><line class="la flowing" x1="220" y1="100" x2="284" y2="100"/><polygon class="ar-a" points="290,100 277,105 277,95"/></g><g class="fragment" data-tip="Qatorlarni tartiblaydi."><rect class="fb" x="300" y="50" width="190" height="100" rx="14"/><text class="t-head" x="395.0" y="108.0" text-anchor="middle" font-size="24">sort</text></g><g class="fragment"><line class="lb flowing" x1="490" y1="100" x2="534" y2="100"/><polygon class="ar-b" points="540,100 527,105 527,95"/></g><g class="fragment" data-tip="Takrorlarni sanab birlashtiradi."><rect class="fc" x="550" y="50" width="190" height="100" rx="14"/><text class="t-head" x="645.0" y="108.0" text-anchor="middle" font-size="24">uniq -c</text></g><g class="fragment"><line class="lc flowing" x1="740" y1="100" x2="784" y2="100"/><polygon class="ar-c" points="790,100 777,105 777,95"/></g><g class="fragment" data-tip="Natija ekranga chiqadi."><rect class="fg" x="800" y="50" width="180" height="100" rx="14"/><text class="t-head" x="890.0" y="96.0" text-anchor="middle" font-size="24">stdout</text><text class="t-muted" x="890.0" y="126.0" text-anchor="middle" font-size="22">ekran</text></g><text class="t-head" x="500" y="230" text-anchor="middle" font-size="30">sort royxat.txt | uniq -c</text><text class="t-muted" x="500" y="280" text-anchor="middle" font-size="24">quvur: bir buyruq chiqishi = keyingisining kirishi</text>
+</svg>
+</div><p class="small">Qismlarni bosing.</p>
+  
+</section>
+
+<section>
+  <h2>Faylni qatorma-qator o'qish</h2>
+<pre><code class="language-bash" data-trim data-noescape data-line-numbers="1-6|3|4-5|6">
+#!/bin/bash
+N=0
+while read -r QATOR; do
+  N=$((N + 1))
+  echo "$N. $QATOR"
+done &lt; royxat.txt
+</code></pre>
+<div class="callout warn"><i data-ic="triangle-alert"></i><code>done &lt; royxat.txt</code> ni unutsangiz, <code>read</code> klaviaturadan kutadi.</div>
+  
+</section>
+
+<section>
+  <h2>Quvur amalda</h2>
+<div class="terminal"><div class="bar">Terminal</div><pre><code class="language-bash">$ printf "a\nb\nc\na\n" &gt; royxat.txt
+$ sort royxat.txt | uniq -c
+   2 a
+   1 b
+   1 c
+$ cut -d: -f1 /etc/passwd | head -2
+$ ls ~ | wc -l</code></pre></div>
+<div class="callout tip"><i data-ic="lightbulb"></i>Qo'llanma: <code>uniq</code> faqat <b>ketma-ket</b> takrorlarni oladi, shuning uchun avval <code>sort</code>.</div>
+  
+</section>
+
+<section>
+  <h2>Tahlil zanjirini yig'amiz</h2>
+<div class="stepper"><div class="stp on"><div class="card"><div class="icon"><i data-ic="file-text" data-anim="float"></i></div><h3>1. Manba</h3><p><code>cat royxat.txt</code>: matn oqimi.</p></div></div><div class="stp"><div class="card"><div class="icon"><i data-ic="list" data-anim="pulse"></i></div><h3>2. Tartiblash</h3><p><code>| sort</code>: bir xil qatorlar yonma-yon.</p></div></div><div class="stp"><div class="card"><div class="icon"><i data-ic="layers" data-anim="spin"></i></div><h3>3. Birlashtirish</h3><p><code>| uniq</code> yoki <code>uniq -c</code>.</p></div></div><div class="stp"><div class="card"><div class="icon"><i data-ic="hash" data-anim="bounce"></i></div><h3>4. Sanash</h3><p><code>| wc -l</code>: noyob qatorlar soni.</p></div></div></div>
+  
+</section>
+
+<section>
+  <h2>Odatiy xatolar</h2>
+<ul class="steps-n">
+ <li class="fragment">Siklda hisoblagich o'zgarmaydi: cheksiz sikl.</li>
+ <li class="fragment"><code>done &lt; fayl</code> yo'q: <code>read</code> klaviaturani kutadi.</li>
+ <li class="fragment"><code>sort</code> siz <code>uniq</code>: takrorlar qoladi.</li>
+ <li class="fragment"><code>for F in $(ls)</code>: nomida bo'sh joy bo'lsa buziladi.</li>
+ <li class="fragment"><code>until</code> shartini <code>while</code> kabi o'qish.</li>
+</ul>
+</section>
+
+<section>
+  <h2>Tezkor bilim sinovi</h2>
+<div class="quiz">
+  <p class="q">Fayldagi noyob qatorlar sonini qaysi quvur beradi?</p>
+  <div class="opts">
+    <button class="opt" type="button"><code>uniq f | sort | wc -l</code></button>
+    <button class="opt" type="button"><code>wc -l | sort f</code></button>
+    <button class="opt" type="button" data-ok><code>sort f | uniq | wc -l</code></button>
+    <button class="opt" type="button"><code>cat f | head -1</code></button>
+  </div>
+  <div class="explain">Avval <code>sort</code> bir xil qatorlarni yonma-yon qiladi, <code>uniq</code> takrorni olib tashlaydi, <code>wc -l</code> sanaydi.</div>
+</div>
+  
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>25 daqiqa</span></h2>
+<div class="task"><span class="level easy">Oson</span><code>for</code> bilan 1 dan 10 gacha sonlarni chiqaring.</div>
+<div class="task"><span class="level mid">O'rta</span><code>while</code> bilan 10 dan 1 gacha sanab, oxirida "Start!" deng.</div>
+<div class="task"><span class="level hard">Qiyin</span><code>/etc/passwd</code> foydalanuvchi nomlarini <code>cut</code> va <code>while read</code> bilan raqamlab chiqaring, jami sonni ko'rsating.</div>
+</section>
+
+<section>
+  <h2>Bugungi dars xulosasi</h2>
+<div class="cards three">
+ <div class="card fragment fade-up"><div class="icon"><i data-ic="circle-check" data-anim="float"></i></div><h3>O'rgandik</h3><p><code>for</code>, <code>while</code>, <code>until</code>, <code>break</code>, <code>continue</code>, <code>while read</code>, quvurlar.</p></div>
+ <div class="card fragment fade-up"><div class="icon"><i data-ic="book-open" data-anim="float"></i></div><h3>Uyga vazifa</h3><p><code>hisobot.sh</code>: qatorlarni raqamlash va noyob qatorlar soni.</p></div>
+ <div class="card fragment fade-up"><div class="icon"><i data-ic="rocket" data-anim="float"></i></div><h3>Keyingi dars</h3><p>5-hafta: <code>grep</code>, <code>sed</code>, <code>awk</code>, <code>xargs</code>.</p></div>
+</div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

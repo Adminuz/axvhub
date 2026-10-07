@@ -1,101 +1,470 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>HTML5 global atributlari va I bob yakuni</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>HTML5 global atributlari va I bob yakuni</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>HTML5 global atributlari va I bob yakuni</h1></header>
-<div class="badges"><span class="badge">8-sinf</span><span class="badge">Web Full-stack</span><span class="badge">3-hafta · 9-dars</span><span class="badge">id, class, data-*, contenteditable, hidden, zamonaviy formalar</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "Dasturchiga HTML elementi ichida o'zining shaxsiy maxsus ma'lumotlarini xavfsiz saqlash imkonini beruvchi global atribut qaysi?", "o": ["contenteditable", "data-*", "tabindex"], "a": 1, "e": "To'g'ri! data-* (masalan: data-id=\"10\", data-narx=\"500\") orqali istalgan shaxsiy ma'lumotni saqlash va keyin JavaScript bilan o'qish mumkin."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- SLIDE 1: Hero -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>HTML5 global atributlari va I bob yakuni</h1>
+  <p class="muted">id, class, data-*, contenteditable, hidden, zamonaviy formalar</p>
+  <span class="badge">8-sinf</span><span class="badge">Web Full-stack</span><span class="badge">3-hafta · 9-dars</span>
+  
+</section>
+
+<!-- SLIDE 2: Reja -->
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="tag" data-anim="float"></i></div>
+      <h3>01. Global atributlar</h3>
+      <p>id, class, title, data-*, hidden va contenteditable xususiyatlari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sliders-horizontal" data-anim="pulse"></i></div>
+      <h3>02. Yangi formalar</h3>
+      <p>type="color", type="range", type="date" boshqaruv elementlari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="award" data-anim="wiggle"></i></div>
+      <h3>03. Katta loyiha</h3>
+      <p>I bob bo'yicha to'liq shaxsiy interaktiv portfolio yaratish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 3: Bo'lim 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>HTML5 Global atributlari</h1>
+  <p>Barcha teglar bilan birga ishlaydigan universal parametrlar</p>
+  
+</section>
+
+<!-- SLIDE 4: SVG 1 - Maxsus vs Global -->
+<section>
+  <h2>Maxsus va Global atributlar farqi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- Specific attributes -->
+      <g class="fragment">
+        <rect x="60" y="50" width="390" height="200" rx="14" class="fn ln" stroke-width="2"/>
+        <text x="255" y="90" text-anchor="middle" class="t-accent" font-size="20" font-weight="bold">Maxsus (Spesifik) atributlar</text>
+        <text x="255" y="125" text-anchor="middle" class="t-muted" font-size="14">Faqat muayyan tegda ishlaydi:</text>
+        <rect x="90" y="150" width="330" height="35" rx="6" class="fn ln"/>
+        <text x="255" y="173" text-anchor="middle" class="t-head" font-size="13">&lt;a href="..."&gt; | &lt;img src="..."&gt;</text>
+        <text x="255" y="215" text-anchor="middle" class="t-muted" font-size="12">href ni img da yoki p da ishlatib bo'lmaydi</text>
+      </g>
+
+      <!-- Global attributes -->
+      <g class="fragment">
+        <rect x="510" y="50" width="390" height="200" rx="14" class="fa la" stroke-width="2"/>
+        <text x="705" y="90" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Global atributlar</text>
+        <text x="705" y="125" text-anchor="middle" class="t-muted" font-size="14">Barcha teglarda istisnosiz ishlaydi:</text>
+        <rect x="540" y="150" width="330" height="35" rx="6" class="fa la"/>
+        <text x="705" y="173" text-anchor="middle" class="t-head" font-size="13" font-weight="bold">id, class, title, data-*, hidden</text>
+        <text x="705" y="215" text-anchor="middle" class="t-accent" font-size="12">p, h1, div, section, a, img — barchasiga qo'shiladi</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 5: VS: id vs class -->
+<section>
+  <h2>id va class: Qaysi birini qachon ishlatamiz?</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3><i data-ic="tag"></i> id (Yagona identifikator)</h3>
+      <ul>
+        <li>Sahifada faqat bitta elementga beriladi</li>
+        <li>Takrorlanmas yagona nom (Pasport kabi)</li>
+        <li>CSS da <code>#nomi</code> bilan, JavaScript da oson topiladi</li>
+      </ul>
+      <div class="callout tip">Misol: <code>id="asosiy-menyusi"</code></div>
+    </div>
+    <div class="side b fragment">
+      <h3><i data-ic="sliders-horizontal"></i> class (Sinf nomi)</h3>
+      <ul>
+        <li>Bir nechta elementlarga bir xil berilishi mumkin</li>
+        <li>Umumiy guruh yoki dizayn shabloni</li>
+        <li>Bitta elementda bir nechta class bo'lishi mumkin</li>
+      </ul>
+      <div class="callout tip">Misol: <code>class=&quot;card highlighted&quot;</code></div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 6: SVG 2 - data-* atributi -->
+<section>
+  <h2>data-* orqali yashirin ma'lumot saqlash</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- HTML Element -->
+      <g class="fragment">
+        <rect x="80" y="60" width="360" height="180" rx="14" class="fb lb" stroke-width="2"/>
+        <text x="260" y="100" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">HTML Element</text>
+        <rect x="100" y="120" width="320" height="95" rx="8" class="fn ln"/>
+        <text x="260" y="145" text-anchor="middle" class="t-accent" font-size="13">data-id="101"</text>
+        <text x="260" y="170" text-anchor="middle" class="t-accent" font-size="13">data-narx="950"</text>
+        <text x="260" y="195" text-anchor="middle" class="t-accent" font-size="13">data-toifa="smartfon"</text>
+      </g>
+
+      <!-- Connection Arrow -->
+      <path d="M 440 150 L 520 150" class="lb flowing" stroke-width="4" fill="none" marker-end="url(#ar-b)"/>
+
+      <!-- JavaScript Reader -->
+      <g class="fragment">
+        <rect x="520" y="60" width="360" height="180" rx="14" class="fg lg" stroke-width="2"/>
+        <text x="700" y="100" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Dasturchi / JavaScript</text>
+        <rect x="540" y="120" width="320" height="95" rx="8" class="fn ln"/>
+        <text x="700" y="150" text-anchor="middle" class="t-head" font-size="13">element.dataset.narx</text>
+        <text x="700" y="185" text-anchor="middle" class="t-muted" font-size="13">Ma'lumot bir zumda o'qiladi!</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 7: Sehrli atributlar: contenteditable va hidden -->
+<section>
+  <h2>Sehrli atributlar: contenteditable va hidden</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="pen-line"></i></div>
+      <h3>contenteditable="true"</h3>
+      <p>Elementni brauzerda Word kabi to'g'ridan-to'g'ri tahrirlanadigan qiladi. Matnni o'chirish, qo'shish mumkin.</p>
+      <div class="callout tip">Google Docs yoki Notion kabi dasturlar asosida turadi</div>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="eye-off"></i></div>
+      <h3>hidden</h3>
+      <p>Mantiqiy atribut. Agar elementga yozilsa, u sahifada ko'rinmay turadi. JavaScript orqali ochib-yopish uchun qulay.</p>
+      <div class="callout tip">Vaqtinchalik xabarlarni berkitishda ishlatiladi</div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 8: Bo'lim 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Yangi HTML5 forma boshqaruvlari</h1>
+  <p>Rang tanlash, slayder va kalendarlar</p>
+  
+</section>
+
+<!-- SLIDE 9: SVG 3 - Yangi inputlar -->
+<section>
+  <h2>HTML5 zamonaviy input turlari</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- Input 1: Color -->
+      <g class="fragment">
+        <rect x="40" y="50" width="200" height="200" rx="12" class="fa la" stroke-width="2"/>
+        <text x="140" y="90" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">type="color"</text>
+        <circle cx="140" cy="140" r="30" class="fb"/>
+        <text x="140" y="200" text-anchor="middle" class="t-muted" font-size="13">Ranglar palitrasi</text>
+        <text x="140" y="225" text-anchor="middle" class="t-accent" font-size="12">Bir klikda tanlash</text>
+      </g>
+
+      <!-- Input 2: Range -->
+      <g class="fragment">
+        <rect x="265" y="50" width="200" height="200" rx="12" class="fc lc" stroke-width="2"/>
+        <text x="365" y="90" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">type="range"</text>
+        <rect x="290" y="135" width="150" height="10" rx="5" class="fn ln"/>
+        <circle cx="370" cy="140" r="14" class="fc"/>
+        <text x="365" y="200" text-anchor="middle" class="t-muted" font-size="13">Slayder boshqaruvi</text>
+        <text x="365" y="225" text-anchor="middle" class="t-accent" font-size="12">min="0" max="100"</text>
+      </g>
+
+      <!-- Input 3: Date -->
+      <g class="fragment">
+        <rect x="495" y="50" width="200" height="200" rx="12" class="fb lb" stroke-width="2"/>
+        <text x="595" y="90" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">type="date"</text>
+        <rect x="535" y="115" width="120" height="50" rx="6" class="fn ln"/>
+        <text x="595" y="145" text-anchor="middle" class="t-head" font-size="13">2026-10-04</text>
+        <text x="595" y="200" text-anchor="middle" class="t-muted" font-size="13">Kalendar oynasi</text>
+        <text x="595" y="225" text-anchor="middle" class="t-accent" font-size="12">Avtomatik sana</text>
+      </g>
+
+      <!-- Input 4: Number -->
+      <g class="fragment">
+        <rect x="720" y="50" width="200" height="200" rx="12" class="fg lg" stroke-width="2"/>
+        <text x="820" y="90" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">type="number"</text>
+        <rect x="760" y="115" width="120" height="50" rx="6" class="fn ln"/>
+        <text x="820" y="145" text-anchor="middle" class="t-head" font-size="14" font-weight="bold">42</text>
+        <text x="820" y="200" text-anchor="middle" class="t-muted" font-size="13">Faqat raqamlar</text>
+        <text x="820" y="225" text-anchor="middle" class="t-accent" font-size="12">min="1" max="100"</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 10: Interaktiv Swap: Eski vs Zamonaviy forma -->
+<section>
+  <h2>Eski usul vs HTML5 yangi forma</h2>
+  <div class="swap">
+    <div class="swap-tabs">
+      <button class="on" type="button">Eski usul (HTML4)</button>
+      <button type="button">HTML5 yangi inputlar</button>
+    </div>
+    <div class="swap-p on">
+      <div class="cards two">
+        <div class="card">
+          <h3>Faqat oddiy matn</h3>
+          <p>Sana yoki rang kiritish uchun foydalanuvchi matn yozishga majbur edi (xatolar juda ko'p bo'lardi).</p>
+        </div>
+        <div class="card">
+          <h3>Og'ir JavaScript</h3>
+          <p>Kalendar yoki rang tanlash uchun uchinchi tomon murakkab kutubxonalarini ulash talab qilingan.</p>
+        </div>
+      </div>
+    </div>
+    <div class="swap-p">
+      <div class="cards two">
+        <div class="card">
+          <h3>Ichki brauzer imkoniyati</h3>
+          <p><code>type="color"</code>, <code>type="date"</code> yozilishi bilan brauzer o'zining chiroyli boshqaruvini chiqaradi.</p>
+        </div>
+        <div class="card">
+          <h3>Avtomatik validatsiya</h3>
+          <p>Noto'g'ri qiymat kiritilsa, brauzerning o'zi xatoni ko'rsatib formasini yuborishga yo'l qo'ymaydi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 11: Bo'lim 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>I bob yakuniy loyihasi</h1>
+  <p>Shaxsiy interaktiv veb-portfolio qurish</p>
+  
+</section>
+
+<!-- SLIDE 12: SVG 4 - I bob me'morchiligi -->
+<section>
+  <h2>I bob: Biz bosib o'tgan me'morchilik yo'li</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- Step 1 -->
+      <g class="fragment">
+        <rect x="30" y="80" width="190" height="140" rx="12" class="fn ln" stroke-width="2"/>
+        <text x="125" y="125" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">1. Asoslar</text>
+        <text x="125" y="155" text-anchor="middle" class="t-muted" font-size="13">Internet, DNS</text>
+        <text x="125" y="180" text-anchor="middle" class="t-accent" font-size="12">HTML strukturasi</text>
+      </g>
+
+      <path d="M 220 150 L 270 150" class="ln flowing" stroke-width="3" fill="none" marker-end="url(#ar-a)"/>
+
+      <!-- Step 2 -->
+      <g class="fragment">
+        <rect x="270" y="80" width="190" height="140" rx="12" class="fc lc" stroke-width="2"/>
+        <text x="365" y="125" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">2. Kontent</text>
+        <text x="365" y="155" text-anchor="middle" class="t-muted" font-size="13">Rasm, jadval, ro'yxat</text>
+        <text x="365" y="180" text-anchor="middle" class="t-accent" font-size="12">Interaktiv formalar</text>
+      </g>
+
+      <path d="M 460 150 L 510 150" class="lc flowing" stroke-width="3" fill="none" marker-end="url(#ar-c)"/>
+
+      <!-- Step 3 -->
+      <g class="fragment">
+        <rect x="510" y="80" width="190" height="140" rx="12" class="fa la" stroke-width="2"/>
+        <text x="605" y="125" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">3. Semantika</text>
+        <text x="605" y="155" text-anchor="middle" class="t-muted" font-size="13">header, main, article</text>
+        <text x="605" y="180" text-anchor="middle" class="t-accent" font-size="12">Video, audio, details</text>
+      </g>
+
+      <path d="M 700 150 L 750 150" class="la flowing" stroke-width="3" fill="none" marker-end="url(#ar-a)"/>
+
+      <!-- Step 4 -->
+      <g class="fragment">
+        <rect x="750" y="80" width="180" height="140" rx="12" class="fg lg" stroke-width="2"/>
+        <text x="840" y="125" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">4. Tayyor loyiha</text>
+        <text x="840" y="155" text-anchor="middle" class="t-muted" font-size="13">Global atributlar</text>
+        <text x="840" y="180" text-anchor="middle" class="t-accent" font-size="12">To'liq veb-sahifa!</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 13: Stepper: Portfolio loyihasini qurish -->
+<section>
+  <h2>Portfolio loyihasini yig'ish bosqichlari</h2>
+  <div class="stepper">
+    <div class="stp on">
+      <h3>1-qadam: Header va Profil</h3>
+      <p>Logotip, navigatsiya va shaxsiy fotosurat (<code>&lt;figure&gt;</code> va <code>&lt;figcaption&gt;</code> bilan).</p>
+    </div>
+    <div class="stp">
+      <h3>2-qadam: Ko'nikmalar va Multimedia</h3>
+      <p>O'rganilgan texnologiyalar jadvali, <code>&lt;progress&gt;</code> va audio pleer.</p>
+    </div>
+    <div class="stp">
+      <h3>3-qadam: Muloqot formasi</h3>
+      <p>Ism, rang tanlash, uchrashuv sanasi va fikr-mulohaza maydoni.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 14: Flip card: tabindex va validatsiya -->
+<section>
+  <h2>Foydalanish qulayligi (UX)</h2>
+  <div class="cards two">
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+          <h3>tabindex atributi</h3>
+          <p class="muted">Bosganda qoidani ko'ring</p>
+        </div>
+        <div class="face back">
+          <h3>Qoida</h3>
+          <p>Klaviaturadagi Tab tugmasi bosilganda fokus qaysi maydonga sakrashini boshqaradi. Tezkor forma to'ldirish uchun juda muhim.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="circle-check"></i></div>
+          <h3>Avtomatik validatsiya</h3>
+          <p class="muted">Bosganda qoidani ko'ring</p>
+        </div>
+        <div class="face back">
+          <h3>Qoida</h3>
+          <p><code>required</code>, <code>min</code>, <code>max</code> va <code>pattern</code> atributlari orqali foydalanuvchi xato kiritishini oldini olamiz.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 15: I bob yutuqlari statistika -->
+<section>
+  <h2>I bob yutuqlari raqamlarda</h2>
+  <div class="stats">
+    <div class="stat">
+      <div class="v"><span class="count" data-to="9" data-suf=" ta dars">0</span></div>
+      <div class="l">HTML bo'yicha to'liq o'zlashtirilgan darslar</div>
+    </div>
+    <div class="stat">
+      <div class="v"><span class="count" data-to="35" data-suf=" +">0</span></div>
+      <div class="l">Amaliyotda o'rganilgan HTML teglari</div>
+    </div>
+    <div class="stat">
+      <div class="v"><span class="count" data-to="100" data-suf=" %">0</span></div>
+      <div class="l">II bob — CSS dizayniga to'liq tayyorgarlik</div>
+    </div>
+  </div>
+  <div class="callout tip fragment fade-up">
+    Tabriklaymiz! Siz veb-sahifaning mukammal semantik skeletini qurishni o'rgandingiz!
+  </div>
+  
+</section>
+
+<!-- SLIDE 16: Kod namunasi -->
+<section>
+  <h2>Portfolio loyihasi kodi</h2>
+  <pre><code class="language-html">&lt;section id="haqimda"&gt;
+  &lt;h2 contenteditable="true"&gt;Men haqimda&lt;/h2&gt;
+  &lt;figure&gt;
+    &lt;img src="avatar.jpg" alt="Jasur" width="200"&gt;
+    &lt;figcaption&gt;Jasur Karimov — Front-end dasturchi&lt;/figcaption&gt;
+  &lt;/figure&gt;
+  &lt;p&gt;HTML darajam: &lt;progress value="95" max="100"&gt;&lt;/progress&gt;&lt;/p&gt;
+  &lt;input type="color" title="Rang tanlang"&gt;
+&lt;/section&gt;</code></pre>
+  
+</section>
+
+<!-- SLIDE 17: Quiz -->
+<section>
+  <h2>O'zingizni sinab ko'ring</h2>
+  <div class="quiz">
+    <p class="q">Dasturchiga HTML elementi ichida o'zining shaxsiy maxsus ma'lumotlarini xavfsiz saqlash imkonini beruvchi global atribut qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">contenteditable</button>
+      <button class="opt" type="button" data-ok>data-*</button>
+      <button class="opt" type="button">tabindex</button>
+    </div>
+    <div class="explain">
+      To'g'ri! data-* (masalan: data-id="10", data-narx="500") orqali istalgan shaxsiy ma'lumotni saqlash va keyin JavaScript bilan o'qish mumkin.
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 18: Amaliy topshiriq -->
+<section class="task">
+  <div class="badge">Amaliy topshiriq · 25 daqiqa</div>
+  <h2>I bob yakuniy loyihasini quring</h2>
+  <ol>
+    <li>O'zingiz haqida 1 sahifalik to'liq veb-sahifa (portfolio) yarating.</li>
+    <li>Semantik bloklarni qo'llang (<code>header</code>, <code>nav</code>, <code>main</code>, <code>footer</code>).</li>
+    <li>Surat va izohni <code>&lt;figure&gt;</code> bilan joylang.</li>
+    <li>Muloqot formasida <code>color</code> va <code>date</code> inputlarini sinang.</li>
+    <li>Sarlavhalardan biriga <code>contenteditable="true"</code> qo'shing.</li>
+  </ol>
+  
+</section>
+
+<!-- SLIDE 19: Xulosa va II bobga ko'prik -->
+<section>
+  <h2>I bob xulosasi va II bobga ko'prik</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <h3>I bobda o'rganildi:</h3>
+      <ul>
+        <li>HTML hujjati arxitekturasi</li>
+        <li>Matnlar, jadvallar, formalar</li>
+        <li>HTML5 semantik teglari</li>
+        <li>Multimedia va global atributlar</li>
+      </ul>
+    </div>
+    <div class="card fragment">
+      <h3>Keyingi haftada (4-hafta):</h3>
+      <p><strong>II bob: CSS texnologiyasi va sahifa dizayni.</strong> Ranglar, shriftlar, selektorlar, box model va sahifalarni chiroyli stillashga kirishamiz!</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

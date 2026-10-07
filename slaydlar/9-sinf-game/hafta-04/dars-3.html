@@ -1,101 +1,274 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>Personaj va Obyekt Spraytlarini Chizish</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Personaj va Obyekt Spraytlarini Chizish</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Personaj va Obyekt Spraytlarini Chizish</h1></header>
-<div class="badges"><span class="badge">9-sinf</span><span class="badge">Game Design</span><span class="badge">4-hafta · 12-dars</span><span class="badge">O'yin uchun ikonka va spraytlar (2-qism): piksel-art, soya-yorug'lik, idle animatsiya</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "Qahramon spraytini qaysi formatda eksport qilamiz?", "o": ["JPG", "PNG (shaffof fon)", "SVG", "PDF"], "a": 1, "e": "PNG to'liq shaffoflikni saqlaydi va o'yin dvijoklari uni yaxshi qabul qiladi."}, {"q": "Hech narsaga ulanmagan yolg'iz piksel qanday ataladi?", "o": ["Doubles", "Orphan piksel", "Jaggies", "Outline"], "a": 1, "e": "Orphan piksel shovqin hosil qiladi — uni o'chirish kerak."}, {"q": "Piksel-art spraytni kattalashtirishda qaysi interpolyatsiya tanlanadi?", "o": ["Bicubic Smoother", "Bilinear", "Nearest Neighbor", "Automatic"], "a": 2, "e": "Nearest Neighbor yangi «oraliq» ranglar yaratmaydi — piksellar keskin qoladi."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Personaj va Obyekt Spraytlarini Chizish</h1>
+  <p class="muted">O'yin uchun ikonka va spraytlar (2-qism): piksel-art, soya-yorug'lik, idle animatsiya</p>
+  <span class="badge">9-sinf</span><span class="badge">Game Design</span><span class="badge">4-hafta · 12-dars</span>
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">Qahramon spraytini qaysi formatda eksport qilamiz?</p>
+    <div class="opts">
+      <button class="opt" type="button">JPG</button>
+      <button class="opt" type="button" data-ok>PNG (shaffof fon)</button>
+      <button class="opt" type="button">SVG</button>
+      <button class="opt" type="button">PDF</button>
+    </div>
+    <div class="explain">PNG to'liq shaffoflikni saqlaydi va o'yin dvijoklari uni yaxshi qabul qiladi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Personaj va obyekt</h1>
+  <p>Ikki xil talab, bitta uslub</p>
+</section>
+
+<section>
+  <h2>Personaj va obyekt spraytlari</h2>
+  <table>
+    <thead><tr><th></th><th>Personaj</th><th>Obyekt</th></tr></thead>
+    <tbody>
+      <tr class="fragment"><td>Misollar</td><td>qahramon, dushman, NPC</td><td>tanga, zelye, sandiq, kalit</td></tr>
+      <tr class="fragment"><td>Talab</td><td>xarakter, holatlar (idle, yurish, sakrash)</td><td>vazifasi bir qarashda tushunilsin</td></tr>
+      <tr class="fragment"><td>Animatsiya</td><td>deyarli doim</td><td>oddiy (aylanish, yaltirash) yoki yo'q</td></tr>
+      <tr class="fragment"><td>Rang</td><td>eng yuqori kontrast</td><td>rang kodlash: oltin — tanga, qizil — jon</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Sprayt yaratishning 6 bosqichi</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="ruler"></i></div><h3>1. Uslub va o'lcham</h3><p>Qahramon 32×32, mayda obyekt 16×16. Bitta masshtab.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="user"></i></div><h3>2. Siluyet</h3><p>Bitta to'q rang: bosh, tana, qo'l-oyoq, o'ziga xos detal.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="paint-bucket"></i></div><h3>3. Flat ranglar</h3><p>Palitradan har qismga bitta rang, jami 4–6.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="sun"></i></div><h3>4. Soya va yorug'lik</h3><p>Manba yuqori chapda, hue shifting bilan.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="square"></i></div><h3>5. Kontur</h3><p>1 px, eng to'q rangdan (qora emas).</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="download"></i></div><h3>6. Eksport va test</h3><p>Shaffof PNG, o'yin fonida tekshirish.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Siluyet testi</h2>
+  <div class="vs">
+    <div class="side fragment"><h3><i data-ic="eye-off"></i> Tanilmaydi</h3>Qora dog' — kimligi noma'lum, detallar yo'qoladi.</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3><i data-ic="eye"></i> Tanilishi</h3>Shlyapa, qilich, katta bosh — qora rangda ham kimligi aniq.</div>
+  </div>
+  <div class="callout tip mt"><i data-ic="lightbulb"></i>Siluyet qora rangda ham tanilsa — dizayn yaxshi.</div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Photoshop va piksel-art</h1>
+  <p>Har bir piksel — ataylab</p>
+</section>
+
+<section>
+  <h2>Photoshop sozlamalari</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="grid-3x3"></i></div><h3>Piksel to'ri</h3><p>Preferences → Guides, Grid &amp; Slices → Gridline Every 1 pixel.</p><p class="t-muted">View → Show → Grid (<code>Ctrl + '</code>).</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="pencil"></i></div><h3>Pencil Tool, 1 px</h3><p><code>Shift + B</code> bilan almashtiriladi. Brush emas — u chetlarni xiralashtiradi.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="eraser"></i></div><h3>Eraser va Bucket</h3><p>Eraser — Mode: Pencil. Paint Bucket — Anti-alias o'chiq.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="maximize-2"></i></div><h3>Nearest Neighbor</h3><p>Kattalashtirishda piksellar keskin qoladi.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Brush yoki Pencil?</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="brush" data-anim="wiggle"></i></div><h3>Brush Tool</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Anti-aliasing — chetda yarim shaffof «xira» piksellar. Piksel-art uchun yaramaydi.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="pencil" data-anim="bounce"></i></div><h3>Pencil Tool</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Qattiq chet: har bosish — aniq bitta piksel. Piksel-art asbobi.</p></div>
+    </div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Piksel-art qoidalari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="target"></i></div><h3>Bir piksel — bir qaror</h3><p>Har piksel ataylab qo'yiladi.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="trending-up"></i></div><h3>Jaggies'dan qoching</h3><p>Chiziq bo'laklari tekis: 2-2-2 yoki 3-2-1.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="circle-dot"></i></div><h3>Orphan piksel</h3><p>Yolg'iz piksel — shovqin, o'chiring.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="square"></i></div><h3>Doubles</h3><p>2 px qalinlashgan konturni 1 px ga tushiring.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="palette"></i></div><h3>Kam rang</h3><p>Qahramon 4–6, sahna 16–32 rang.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="sun"></i></div><h3>Bitta manba</h3><p>Yorug'lik barcha spraytlarda yuqori chapdan.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Chiziq ritmi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 280">
+      <g class="fragment" data-tip="Tekis ritm 2-2-2: bo'laklar bir xil uzunlikda — chiziq silliq ko'rinadi.">
+        <rect class="fb lb" x="60" y="200" width="40" height="40" stroke-width="2"/><rect class="fb lb" x="100" y="200" width="40" height="40" stroke-width="2"/>
+        <rect class="fb lb" x="140" y="160" width="40" height="40" stroke-width="2"/><rect class="fb lb" x="180" y="160" width="40" height="40" stroke-width="2"/>
+        <rect class="fb lb" x="220" y="120" width="40" height="40" stroke-width="2"/><rect class="fb lb" x="260" y="120" width="40" height="40" stroke-width="2"/>
+        <rect class="fb lb" x="300" y="80" width="40" height="40" stroke-width="2"/><rect class="fb lb" x="340" y="80" width="40" height="40" stroke-width="2"/>
+        <text class="t-head" x="220" y="50" text-anchor="middle" font-size="26">2-2-2-2 · silliq</text>
+      </g>
+      <g class="fragment" data-tip="Tartibsiz ritm 1-3-1-2: jaggies, chiziq «sinib» ko'rinadi.">
+        <rect class="fc lc" x="580" y="200" width="40" height="40" stroke-width="2"/>
+        <rect class="fc lc" x="620" y="160" width="40" height="40" stroke-width="2"/><rect class="fc lc" x="660" y="160" width="40" height="40" stroke-width="2"/><rect class="fc lc" x="700" y="160" width="40" height="40" stroke-width="2"/>
+        <rect class="fc lc" x="740" y="120" width="40" height="40" stroke-width="2"/>
+        <rect class="fc lc" x="780" y="80" width="40" height="40" stroke-width="2"/><rect class="fc lc" x="820" y="80" width="40" height="40" stroke-width="2"/>
+        <text class="t-head" x="740" y="50" text-anchor="middle" font-size="26">1-3-1-2 · jaggies</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Hech narsaga ulanmagan yolg'iz piksel qanday ataladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Doubles</button>
+      <button class="opt" type="button" data-ok>Orphan piksel</button>
+      <button class="opt" type="button">Jaggies</button>
+      <button class="opt" type="button">Outline</button>
+    </div>
+    <div class="explain">Orphan piksel shovqin hosil qiladi — uni o'chirish kerak.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Qahramon va obyektlar</h1>
+  <p>32×32 namunasi qatlamlar bilan</p>
+</section>
+
+<section>
+  <h2>Qahramon: 5 qatlam</h2>
+  <pre class="terminal"><code data-trim data-noescape>
+Qatlamlar (pastdan yuqoriga):
+  01_siluyet   - to'q ko'k-binafsha, keyin yashiriladi
+  02_flat      - asosiy ranglar
+  03_soya      - soyalar (Clipping Mask)
+  04_yoruglik  - yorug'lik dog'lari (Clipping Mask)
+  05_kontur    - 1 px kontur
+</code></pre>
+  <p class="small">Nisbat: bosh ~12 px, tana ~10 px, oyoq ~8 px, tepada va pastda 1 px bo'sh joy. Ko'z — 1×2 px.</p>
+</section>
+
+<section>
+  <h2>Proporsiya: 32 px qahramon</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <g class="fragment" data-tip="Bosh ~12 px — chibi uslubida katta bosh qahramonni tanitadi."><rect class="fa la" x="400" y="20" width="200" height="120" rx="16" stroke-width="3"/><text class="t-head" x="500" y="88" text-anchor="middle" font-size="24">bosh · 12 px</text></g>
+      <g class="fragment" data-tip="Tana ~10 px: kiyim rangi, qo'llar."><rect class="fb lb" x="420" y="145" width="160" height="100" rx="12" stroke-width="3"/><text class="t-head" x="500" y="202" text-anchor="middle" font-size="24">tana · 10</text></g>
+      <g class="fragment" data-tip="Oyoqlar ~8 px. Idle animatsiyada joyida qoladi."><rect class="fc lc" x="430" y="250" width="60" height="75" rx="8" stroke-width="3"/><rect class="fc lc" x="510" y="250" width="60" height="75" rx="8" stroke-width="3"/><text class="t-muted" x="680" y="295" font-size="22">oyoq · 8 px</text></g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Obyekt spraytlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="coins" data-anim="spin"></i></div><h3>Tanga 16×16</h3><p>Oltin doira, to'q-jigarrang kontur, yuqori chapda oq yaltiroq.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="flask-conical" data-anim="bounce"></i></div><h3>Zelye 16×16</h3><p>Shisha siluyeti, ichida qizil (jon) yoki moviy (mana), oq aks.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="package"></i></div><h3>Sandiq 32×32</h3><p>Yog'och, oltin qoplama, qulf — «ochish mumkin» signali.</p></div>
+  </div>
+  <p class="small mt">Obyektlar personajdan oddiyroq va kamroq to'yingan (bonuslardan tashqari).</p>
+</section>
+
+<section>
+  <h2>Idle animatsiya: 2 kadr</h2>
+  <div class="flow">
+    <div class="step"><span class="icon"><i data-ic="copy" data-anim="float"></i></span>Guruh nusxasi (Ctrl + J)</div>
+    <div class="arrow"><i data-ic="arrow-right"></i></div>
+    <div class="step"><span class="icon"><i data-ic="arrow-down" data-anim="bounce"></i></span>Tana va bosh 1 px pastga</div>
+    <div class="arrow"><i data-ic="arrow-right"></i></div>
+    <div class="step"><span class="icon"><i data-ic="film" data-anim="pulse"></i></span>Timeline: 2 kadr × 0.5 s</div>
+  </div>
+  <div class="callout tip mt"><i data-ic="lightbulb"></i>Window → Timeline → Create Frame Animation, Looping: Forever. Oyoqlar joyida qoladi.</div>
+</section>
+
+<section>
+  <h2>Eksport va test</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="download"></i></div><h3>PNG</h3><p>100% — dvijok uchun, 800% — prezentatsiya (Nearest Neighbor).</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="contrast"></i></div><h3>Fon testi</h3><p>10-dars lokatsiya fonida kulrang testdan o'tadimi?</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="ruler"></i></div><h3>Masshtab testi</h3><p>Yonma-yon: tanga qahramondan kattami?</p></div>
+  </div>
+  <p class="small mt">Kadrlar: <code>sprayt_qahramon_idle_01.png</code>, <code>_02.png</code> yoki namoyish uchun GIF.</p>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Piksel-art spraytni kattalashtirishda qaysi interpolyatsiya tanlanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Bicubic Smoother</button>
+      <button class="opt" type="button">Bilinear</button>
+      <button class="opt" type="button" data-ok>Nearest Neighbor</button>
+      <button class="opt" type="button">Automatic</button>
+    </div>
+    <div class="explain">Nearest Neighbor yangi «oraliq» ranglar yaratmaydi — piksellar keskin qoladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriqlar <span class="timer"><i data-ic="timer"></i>25 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Qahramoningiz siluyetini 32×32 da bitta to'q rangda chizing.</div>
+  <div class="task"><span class="level easy">Oson</span>Photoshop'ni sozlang: grid 1 px, Pencil, Nearest Neighbor.</div>
+  <div class="task"><span class="level mid">O'rta</span>Qahramonni 5 qatlamda yakunlang: flat, soya, yorug'lik, kontur.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Tanga, zelye, sandiq to'plami va 2 kadrli idle animatsiya.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>6 bosqich</h3><p>O'lcham → siluyet → flat → soya → kontur → eksport.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Piksel-art</h3><p>Pencil 1 px, grid, jaggies, orphan, doubles.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Idle</h3><p>2 kadr, 1 px siljish, 0.5 s.</p></div>
+  </div>
+  <p class="small mt">Uyga vazifa: qahramon + 3 obyekt spraytlari va idle kadrlari (PNG).</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="layout-grid" data-anim="float"></i></div>
+  <h1>Keyingi dars: sprayt sheet</h1>
+  <p class="muted">Sprayt sheet (atlas) tayyorlash va optimallashtirish</p>
+  <span class="badge">5-hafta · 13-dars</span>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

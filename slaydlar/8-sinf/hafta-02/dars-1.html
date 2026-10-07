@@ -1,101 +1,388 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>Rasm va ro'yxat teglari</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Rasm va ro'yxat teglari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Rasm va ro'yxat teglari</h1></header>
-<div class="badges"><span class="badge">8-sinf</span><span class="badge">Web Full-stack</span><span class="badge">2-hafta · 4-dars</span><span class="badge">&amp;lt;img&amp;gt;, &amp;lt;figure&amp;gt;, &amp;lt;ul&amp;gt;, &amp;lt;ol&amp;gt;, &amp;lt;dl&amp;gt;: sahifani boyitamiz va tartibga solamiz</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "alt atributi nima uchun kerak?", "o": ["Rasmni kattalashtirish uchun", "Rasm ochilmasa matn chiqishi va screen reader uchun", "Rasm manzilini yozish uchun", "Rasmga ramka qo'yish uchun"], "a": 1, "e": "To'g'ri: alt rasm o'rnini bosadigan matn. Qidiruv tizimlari (SEO) va ko'zi ojizlar ham shundan foydalanadi."}, {"q": "Ichki &lt;ul&gt; qaysi teg ichiga yoziladi?", "o": ["Tashqi &lt;ul&gt; dan keyin", "&lt;body&gt; ichiga", "Ota ro'yxatning &lt;li&gt; tegi ichiga", "&lt;dl&gt; ichiga"], "a": 2, "e": "To'g'ri: ichki ro'yxat doim ota ro'yxatning li tegi ichida ochiladi va yopiladi."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 4-dars: Rasm va royxat teglari (2-hafta, 1-dars). -->
+
+<!-- 1. SARLAVHA -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Rasm va ro'yxat teglari</h1>
+  <p class="muted">&lt;img&gt;, &lt;figure&gt;, &lt;ul&gt;, &lt;ol&gt;, &lt;dl&gt;: sahifani boyitamiz va tartibga solamiz</p>
+  <span class="badge">8-sinf</span><span class="badge">Web Full-stack</span><span class="badge">2-hafta · 4-dars</span>
+  
+</section>
+
+<!-- 2. REJA -->
+<section>
+  <h2>Bugun nimani o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="image" data-anim="float"></i></div><h3>Rasm va yo'llar</h3><p>&lt;img&gt;, nisbiy va mutlaq yo'l, alt, &lt;figure&gt;</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="list-ordered" data-anim="pulse"></i></div><h3>Uch xil ro'yxat</h3><p>&lt;ul&gt;, &lt;ol&gt; va ta'riflar ro'yxati &lt;dl&gt;</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="folder-tree" data-anim="bounce"></i></div><h3>Ichma-ich ro'yxat</h3><p>Ro'yxat ichida ro'yxat: to'g'ri tuzilma</p></div>
+  </div>
+  
+</section>
+
+<!-- 3. BO'LIM 01 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Sahifaga rasm qo'yish</h1>
+  <p>&lt;img&gt; tegi, atributlari va fayl yo'llari</p>
+</section>
+
+<!-- 4. SVG: img anatomiyasi -->
+<section>
+  <h2>&lt;img&gt; tegining tuzilishi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+      <g data-tip="img: yopilmaydigan (void) va inline teg. Ichiga matn yozilmaydi, hamma narsa atributlarda."><rect class="fa" x="20" y="30" width="130" height="70" rx="16"/><text class="t-head" x="85" y="76" text-anchor="middle" font-size="28">&lt;img</text></g>
+      <g data-tip="src: rasm faylining manzili. Majburiy atribut."><rect class="fc" x="165" y="30" width="270" height="70" rx="16"/><text class="t-head" x="300" y="76" text-anchor="middle" font-size="26">src="foto.jpg"</text></g>
+      <g data-tip="alt: rasm ochilmasa chiqadigan matn. Screen reader va SEO uchun muhim."><rect class="fb" x="450" y="30" width="270" height="70" rx="16"/><text class="t-head" x="585" y="76" text-anchor="middle" font-size="26">alt="Tog'lar"</text></g>
+      <g data-tip="width va height: piksellarda, birliksiz. Sahifa yuklanganda sakrashni oldini oladi."><rect class="fg" x="735" y="30" width="245" height="70" rx="16"/><text class="t-head" x="857" y="76" text-anchor="middle" font-size="26">width="600"</text></g>
+      <g class="fragment"><line class="la" x1="85" y1="105" x2="85" y2="170"/><polygon class="ar-a" points="85,176 75,160 95,160"/><rect class="fa" x="20" y="180" width="130" height="90" rx="16"/><text class="t-head" x="85" y="218" text-anchor="middle" font-size="26">teg</text><text class="t-muted" x="85" y="250" text-anchor="middle" font-size="22">yopilmaydi</text></g>
+      <g class="fragment"><line class="lc" x1="300" y1="105" x2="300" y2="170"/><polygon class="ar-c" points="300,176 290,160 310,160"/><rect class="fc" x="165" y="180" width="270" height="90" rx="16"/><text class="t-head" x="300" y="218" text-anchor="middle" font-size="26">manzil</text><text class="t-muted" x="300" y="250" text-anchor="middle" font-size="22">majburiy</text></g>
+      <g class="fragment"><line class="lb" x1="585" y1="105" x2="585" y2="170"/><polygon class="ar-b" points="585,176 575,160 595,160"/><rect class="fb" x="450" y="180" width="270" height="90" rx="16"/><text class="t-head" x="585" y="218" text-anchor="middle" font-size="26">tavsif</text><text class="t-muted" x="585" y="250" text-anchor="middle" font-size="22">SEO, screen reader</text></g>
+      <g class="fragment"><line class="lg" x1="857" y1="105" x2="857" y2="170"/><polygon class="ar-g" points="857,176 847,160 867,160"/><rect class="fg" x="735" y="180" width="245" height="90" rx="16"/><text class="t-head" x="857" y="218" text-anchor="middle" font-size="26">o'lcham</text><text class="t-muted" x="857" y="250" text-anchor="middle" font-size="22">sakrashsiz</text></g>
+    </svg>
+  </div>
+  <p class="small">Qismning ustiga olib boring yoki bosing.</p>
+  
+</section>
+
+<!-- 5. KOD: img -->
+<section>
+  <h2>Birinchi rasm</h2>
+  <pre><code class="language-html" data-trim data-noescape data-line-numbers="1|2|3|4">
+&lt;img src="images/tabiat.jpg"
+     alt="Tog'lar va ko'l manzarasi"
+     width="600" height="400"
+     title="Tog' ko'li"&gt;
+  </code></pre>
+  <div class="callout warn"><i data-ic="triangle-alert"></i>alt ni hech qachon bo'sh qoldirmang.</div>
+  
+</section>
+
+<!-- 6. FLIP: atributlar -->
+<section>
+  <h2>Asosiy atributlar: bosing</h2>
+  <div class="cards four">
+    <div class="flip" style="min-height:230px"><div class="flip-in">
+      <div class="face"><div class="icon"><i data-ic="link"></i></div><h3>src</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Source: rasm faylining manzili. Majburiy.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:230px"><div class="flip-in">
+      <div class="face"><div class="icon"><i data-ic="accessibility"></i></div><h3>alt</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Alternative text: rasm yuklanmasa yoki ko'zi ojizlar uchun matn.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:230px"><div class="flip-in">
+      <div class="face"><div class="icon"><i data-ic="ruler"></i></div><h3>width / height</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Piksellardagi o'lcham, birliksiz yoziladi.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:230px"><div class="flip-in">
+      <div class="face"><div class="icon"><i data-ic="lightbulb"></i></div><h3>title</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Kursor rasm ustiga kelganda chiquvchi maslahat.</p></div>
+    </div></div>
+  </div>
+  
+</section>
+
+<!-- 7. QUIZ -->
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">alt atributi nima uchun kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Rasmni kattalashtirish uchun</button>
+      <button class="opt" type="button" data-ok>Rasm ochilmasa matn chiqishi va screen reader uchun</button>
+      <button class="opt" type="button">Rasm manzilini yozish uchun</button>
+      <button class="opt" type="button">Rasmga ramka qo'yish uchun</button>
+    </div>
+    <div class="explain">To'g'ri: alt rasm o'rnini bosadigan matn. Qidiruv tizimlari (SEO) va ko'zi ojizlar ham shundan foydalanadi.</div>
+  </div>
+  
+</section>
+
+<!-- 8. SVG: fayl yo'llari -->
+<section>
+  <h2>Rasm qayerda? Fayl yo'llari</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 400">
+      <g data-tip="Loyiha papkasi: barcha fayllar shu yerda."><rect class="fa" x="20" y="10" width="360" height="46" rx="12"/><text class="t-head" x="40" y="43" font-size="26">sayt/</text></g>
+      <g data-tip="index.html: bosh sahifa."><rect class="fn" x="50" y="68" width="330" height="46" rx="12"/><text class="t-head" x="70" y="101" font-size="26">index.html</text></g>
+      <g data-tip="images: rasmlar papkasi."><rect class="fb" x="50" y="126" width="330" height="46" rx="12"/><text class="t-head" x="70" y="159" font-size="26">images/</text></g>
+      <g data-tip="tabiat.jpg: rasm fayli."><rect class="fn" x="90" y="184" width="290" height="46" rx="12"/><text class="t-head" x="110" y="217" font-size="26">tabiat.jpg</text></g>
+      <g data-tip="darslar: ichki papka."><rect class="fb" x="50" y="242" width="330" height="46" rx="12"/><text class="t-head" x="70" y="275" font-size="26">darslar/</text></g>
+      <g data-tip="dars.html: ichki papkadagi sahifa."><rect class="fn" x="90" y="300" width="290" height="46" rx="12"/><text class="t-head" x="110" y="333" font-size="26">dars.html</text></g>
+      <g class="fragment"><line class="lc flowing" x1="390" y1="91" x2="505" y2="91"/><polygon class="ar-c" points="510,91 494,81 494,101"/><rect class="fc" x="515" y="48" width="465" height="86" rx="16"/><text class="t-muted" x="535" y="82" font-size="22">index.html ichida:</text><text class="t-head" x="535" y="116" font-size="26">src="images/tabiat.jpg"</text></g>
+      <g class="fragment"><line class="lb flowing" x1="390" y1="323" x2="505" y2="323"/><polygon class="ar-b" points="510,323 494,313 494,333" /><rect class="fb" x="515" y="280" width="465" height="86" rx="16"/><text class="t-muted" x="535" y="314" font-size="22">dars.html ichida:</text><text class="t-head" x="535" y="348" font-size="26">src="../images/tabiat.jpg"</text></g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 9. SWAP: mutlaq va nisbiy -->
+<section>
+  <h2>Mutlaq va nisbiy yo'l</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">Mutlaq</button><button type="button">Nisbiy</button></div>
+    <div class="swap-p"><div class="card accent"><h3>Mutlaq yo'l (absolute)</h3><p>To'liq internet manzili: <code>https://example.com/logo.png</code>. Boshqa saytdagi rasmga ishora qiladi.</p></div></div>
+    <div class="swap-p"><div class="card teal"><h3>Nisbiy yo'l (relative)</h3><p>HTML fayl turgan joyga nisbatan: <code>foto.jpg</code>, <code>images/foto.jpg</code>, <code>../foto.jpg</code>, <code>../../images/foto.jpg</code>.</p></div></div>
+  </div>
+  <div class="chips"><span class="chip">foto.jpg: bir papkada</span><span class="chip t">images/: ichki papka</span><span class="chip">../: bir pog'ona yuqori</span></div>
+  
+</section>
+
+<!-- 10. VERTIKAL: width/height va CLS -->
+<section>
+  <section>
+    <h2>Nega width va height yoziladi?</h2>
+    <div class="vs">
+      <div class="side fragment"><h3>O'lchamsiz</h3>Brauzer rasm hajmini bilmaydi: yuklangach matn pastga sakraydi.</div>
+      <div class="mid">VS</div>
+      <div class="side b fragment"><h3>O'lcham bilan</h3>Brauzer joyni oldindan ajratadi: sahifa qotmay ochiladi.</div>
+    </div>
+    <p class="small mt">Pastga ↓: bu hodisaning nomi nima?</p>
+    
+  </section>
+  <section>
+    <h2>CLS: Layout Shift</h2>
+    <div class="callout tip"><i data-ic="lightbulb"></i>CLS (Cumulative Layout Shift): sahifa yuklanayotganda elementlarning kutilmagan siljishi.</div>
+    <div class="callout"><i data-ic="rocket"></i>Zamonaviy brauzerlarda <code>loading="lazy"</code>: rasm skroll qilib yaqinlashganda yuklanadi.</div>
+  </section>
+</section>
+
+<!-- 11-12. AUTO-ANIMATE: img dan figure ga -->
+<section data-auto-animate>
+  <h2>Rasmga izoh qo'shamiz</h2>
+  <pre data-id="kod"><code class="language-html" data-trim data-noescape>
+&lt;img src="images/samarqand.jpg"
+     alt="Registon maydoni"
+     width="600"&gt;
+  </code></pre>
+  
+</section>
+<section data-auto-animate>
+  <h2>Rasmga izoh qo'shamiz</h2>
+  <pre data-id="kod"><code class="language-html" data-trim data-noescape data-line-numbers="1,5|2-4|3">
+&lt;figure&gt;
+  &lt;img src="images/samarqand.jpg"
+       alt="Registon maydoni" width="600"&gt;
+  &lt;figcaption&gt;1-rasm. Registon maydoni&lt;/figcaption&gt;
+&lt;/figure&gt;
+  </code></pre>
+  
+</section>
+
+<!-- 13. SVG: figure anatomiyasi -->
+<section>
+  <h2>&lt;figure&gt; ichida nima bor?</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <g data-tip="figure: rasm va izohni bitta mustaqil blokka birlashtiradi (block element)."><rect class="fa" x="260" y="15" width="480" height="310" rx="22"/><text class="t-accent" x="285" y="55" font-size="28">&lt;figure&gt;</text></g>
+      <g class="fragment" data-tip="img: rasmning o'zi."><rect class="fc" x="295" y="80" width="410" height="140" rx="16"/><text class="t-head" x="500" y="158" text-anchor="middle" font-size="30">&lt;img&gt;</text><text class="t-muted" x="500" y="195" text-anchor="middle" font-size="22">rasm</text></g>
+      <g class="fragment" data-tip="figcaption: rasm tagidagi izoh matni."><rect class="fb" x="295" y="240" width="410" height="65" rx="16"/><text class="t-head" x="500" y="282" text-anchor="middle" font-size="26">&lt;figcaption&gt;</text></g>
+      <g class="fragment"><line class="lc flowing" x1="235" y1="150" x2="298" y2="150"/><polygon class="ar-c" points="302,150 286,140 286,160"/><text class="t-head" x="20" y="144" font-size="26">rasm</text><text class="t-muted" x="20" y="176" font-size="22">asosiy</text></g>
+      <g class="fragment"><line class="lb flowing" x1="765" y1="272" x2="708" y2="272"/><polygon class="ar-b" points="704,272 720,262 720,282"/><text class="t-head" x="775" y="266" font-size="26">izoh</text><text class="t-muted" x="775" y="298" font-size="22">1-rasm...</text></g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 14. BO'LIM 02 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Ro'yxatlar</h1>
+  <p>Tartibsiz, tartibli va ta'riflar ro'yxati</p>
+</section>
+
+<!-- 15. SVG: uch ro'yxat -->
+<section>
+  <h2>Uch xil ro'yxat</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 380">
+      <g data-tip="ul (Unordered List): tartib ahamiyatsiz. Har band li bilan beriladi."><rect class="fa" x="20" y="15" width="300" height="350" rx="22"/><text class="t-accent" x="170" y="62" text-anchor="middle" font-size="30">&lt;ul&gt;</text><text class="t-muted" x="170" y="96" text-anchor="middle" font-size="22">tartibsiz</text>
+        <g class="fragment"><text class="t-head" x="60" y="160" font-size="26">• Olma</text><text class="t-head" x="60" y="215" font-size="26">• Banan</text><text class="t-head" x="60" y="270" font-size="26">• Apelsin</text></g></g>
+      <g data-tip="ol (Ordered List): tartib muhim: bosqichlar, algoritm, g'oliblar."><rect class="fc" x="350" y="15" width="300" height="350" rx="22"/><text class="t-accent" x="500" y="62" text-anchor="middle" font-size="30">&lt;ol&gt;</text><text class="t-muted" x="500" y="96" text-anchor="middle" font-size="22">tartibli</text>
+        <g class="fragment"><text class="t-head" x="390" y="160" font-size="26">1. Tuxumni chaqing</text><text class="t-head" x="390" y="215" font-size="26">2. Tuz soling</text><text class="t-head" x="390" y="270" font-size="26">3. Qovuring</text></g></g>
+      <g data-tip="dl (Description List): atama (dt) va ta'rif (dd) juftliklari."><rect class="fb" x="680" y="15" width="300" height="350" rx="22"/><text class="t-accent" x="830" y="62" text-anchor="middle" font-size="30">&lt;dl&gt;</text><text class="t-muted" x="830" y="96" text-anchor="middle" font-size="22">ta'riflar</text>
+        <g class="fragment"><text class="t-head" x="710" y="160" font-size="26">HTML</text><text class="t-muted" x="740" y="195" font-size="22">sahifa skeleti</text><text class="t-head" x="710" y="250" font-size="26">CSS</text><text class="t-muted" x="740" y="285" font-size="22">sahifa dizayni</text></g></g>
+    </svg>
+  </div>
+  <p class="small">Qutiga bosing: izoh chiqadi.</p>
+  
+</section>
+
+<!-- 16. KOD: ul va ol -->
+<section>
+  <h2>&lt;ul&gt; va &lt;ol&gt; kodda</h2>
+  <pre><code class="language-html" data-trim data-noescape data-line-numbers="1-5|6-10">
+&lt;ul&gt;
+  &lt;li&gt;Olma&lt;/li&gt;
+  &lt;li&gt;Banan&lt;/li&gt;
+  &lt;li&gt;Apelsin&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+  &lt;li&gt;Tuxumni chaqing&lt;/li&gt;
+  &lt;li&gt;Tuz solib aralashtiring&lt;/li&gt;
+  &lt;li&gt;Tovada 5 daqiqa qovuring&lt;/li&gt;
+&lt;/ol&gt;
+  </code></pre>
+  
+</section>
+
+<!-- 17. STEPPER: ol atributlari -->
+<section>
+  <h2>&lt;ol&gt; atributlari</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="hash" data-anim="float"></i></div><h3>1. type</h3><p><code>type="A"</code> (A, B, C), <code>"a"</code>, <code>"I"</code> (rim raqami), <code>"i"</code>, <code>"1"</code>: raqam turi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="arrow-right" data-anim="bounce"></i></div><h3>2. start</h3><p><code>start="5"</code>: raqamlash 5 dan boshlanadi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="arrow-down" data-anim="bounce"></i></div><h3>3. reversed</h3><p><code>reversed</code>: teskari sanaydi (3, 2, 1). Top-10 yoki raketa uchun ayni muddao.</p></div></div>
+  </div>
+  
+</section>
+
+<!-- 18. DL: kod + natija -->
+<section>
+  <h2>Ta'riflar ro'yxati &lt;dl&gt;</h2>
+  <div class="cols">
+    <pre><code class="language-html" data-trim data-noescape data-line-numbers="1,6|2,4|3,5">
+&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;Sahifa skeleti&lt;/dd&gt;
+  &lt;dt&gt;CSS&lt;/dt&gt;
+  &lt;dd&gt;Sahifa dizayni&lt;/dd&gt;
+&lt;/dl&gt;
+    </code></pre>
+    <div class="browser"><div class="bar"><i></i><i></i><i></i><span>lugat.html</span></div><div class="page"><dl><dt><b>HTML</b></dt><dd>Sahifa skeleti</dd><dt><b>CSS</b></dt><dd>Sahifa dizayni</dd></dl></div></div>
+  </div>
+  <div class="chips"><span class="chip">dl: konteyner</span><span class="chip t">dt: atama</span><span class="chip">dd: ta'rif</span></div>
+  
+</section>
+
+<!-- 19. BO'LIM 03 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Ichma-ich ro'yxatlar</h1>
+  <p>Ro'yxat ichida ro'yxat: qayerga yoziladi?</p>
+</section>
+
+<!-- 20. SVG: nested -->
+<section>
+  <h2>Ichki ro'yxat qayerda turadi?</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 380">
+      <g data-tip="Tashqi ul: ota ro'yxat."><rect class="fa" x="20" y="15" width="580" height="350" rx="22"/><text class="t-accent" x="45" y="55" font-size="28">&lt;ul&gt;</text></g>
+      <g data-tip="Ota li: ichki ro'yxat shu teg ichida ochilib yopiladi."><rect class="fb" x="50" y="70" width="520" height="280" rx="18"/><text class="t-head" x="75" y="108" font-size="26">&lt;li&gt; Meva</text></g>
+      <g class="fragment" data-tip="Ichki ul: ota li ichida joylashadi."><rect class="fc" x="85" y="125" width="450" height="205" rx="16"/><text class="t-accent" x="110" y="162" font-size="26">&lt;ul&gt;</text>
+        <rect class="fg" x="120" y="180" width="380" height="45" rx="10"/><text class="t-head" x="140" y="212" font-size="24">&lt;li&gt; Olma</text>
+        <rect class="fg" x="120" y="240" width="380" height="45" rx="10"/><text class="t-head" x="140" y="272" font-size="24">&lt;li&gt; Uzum</text></g>
+      <g class="fragment"><line class="lc flowing" x1="700" y1="228" x2="545" y2="228"/><polygon class="ar-c" points="540,228 556,218 556,238"/><text class="t-head" x="640" y="176" font-size="26">ichki ro'yxat</text><text class="t-muted" x="640" y="274" font-size="22">ota li ichida</text></g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 21. VS: xato / to'g'ri -->
+<section>
+  <h2>Odatiy xato</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>Xato</h3>
+<pre><code class="language-html" data-trim data-noescape>
+&lt;ul&gt;
+  &lt;li&gt;Meva&lt;/li&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Olma&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/ul&gt;
+</code></pre></div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>To'g'ri</h3>
+<pre><code class="language-html" data-trim data-noescape>
+&lt;ul&gt;
+  &lt;li&gt;Meva
+    &lt;ul&gt;
+      &lt;li&gt;Olma&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre></div>
+  </div>
+  
+</section>
+
+<!-- 22. QUIZ 2 -->
+<section>
+  <h2>Mini-test: ichma-ich</h2>
+  <div class="quiz">
+    <p class="q">Ichki &lt;ul&gt; qaysi teg ichiga yoziladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Tashqi &lt;ul&gt; dan keyin</button>
+      <button class="opt" type="button">&lt;body&gt; ichiga</button>
+      <button class="opt" type="button" data-ok>Ota ro'yxatning &lt;li&gt; tegi ichiga</button>
+      <button class="opt" type="button">&lt;dl&gt; ichiga</button>
+    </div>
+    <div class="explain">To'g'ri: ichki ro'yxat doim ota ro'yxatning li tegi ichida ochiladi va yopiladi.</div>
+  </div>
+  
+</section>
+
+<!-- 23. BILASIZMI -->
+<section>
+  <h2>Bilasizmi?</h2>
+  <div class="stats">
+    <div class="stat fragment"><div class="v"><span class="count" data-to="1991" data-suf="">0</span></div><div class="l">birinchi sahifada rasm yo'q edi</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="1993" data-suf="">0</span></div><div class="l">NCSA Mosaic: &lt;img&gt; paydo bo'ldi</div></div>
+  </div>
+  <div class="callout tip"><i data-ic="sparkles" data-anim="blink"></i>Menyular ham aslida CSS bilan bezalgan oddiy &lt;ul&gt; va &lt;li&gt;.</div>
+  
+</section>
+
+<!-- 24. AMALIY -->
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer" data-anim="spin"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>retsept.html: taom nomi, &lt;figure&gt; bilan rasm, masalliqlar &lt;ul&gt; va bosqichlar &lt;ol&gt;</div>
+  <div class="task"><span class="level mid">O'rta</span>IT lug'ati: kamida 4 atama, &lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;</div>
+  <div class="task"><span class="level hard">Qiyin</span>Kurs mundarijasi: &lt;ol&gt; ichida &lt;ol type="a"&gt;</div>
+  
+</section>
+
+<!-- 25. XULOSA -->
+<section>
+  <h2>Xulosa</h2>
+  <div class="cards two">
+    <div class="card"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Bugun o'rgandik</h3><p>img, src, alt, yo'llar, figure; ul, ol, dl va ichma-ich ro'yxatlar</p></div>
+    <div class="card"><div class="icon"><i data-ic="book-open"></i></div><h3>Keyingi dars</h3><p>Jadvallar: table, tr, td, th</p></div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

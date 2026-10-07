@@ -1,101 +1,543 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>Kompyuter xavfsizligi va antivirus dasturlari</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Kompyuter xavfsizligi va antivirus dasturlari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Kompyuter xavfsizligi va antivirus dasturlari</h1></header>
-<div class="badges"><span class="badge">8-sinf</span><span class="badge">Foundation</span><span class="badge">2-hafta · 6-dars</span><span class="badge">Zararli dasturlardan himoyalanish, antivirus mexanizmlari, parollar va 2FA</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "Kompyuterdagi barcha fotosuratlar va fayllarni shifrlab, ochish uchun to'lov talab qiluvchi virus turi qaysi?", "o": ["Spyware (Ayg'oqchi)", "Ransomware (Tovlamachi virus)", "Adware (Reklama)"], "a": 1, "e": "To'g'ri! Ransomware barcha fayllarni shifrlab qulflaydi va tovlamachilik qiladi. Undan yagona najot — oldindan qilingan zaxira nusxa (backup)dir."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- SLIDE 1: Hero -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Kompyuter xavfsizligi va antivirus dasturlari</h1>
+  <p class="muted">Zararli dasturlardan himoyalanish, antivirus mexanizmlari, parollar va 2FA</p>
+  <span class="badge">8-sinf</span><span class="badge">Foundation</span><span class="badge">2-hafta · 6-dars</span>
+  
+</section>
+
+<!-- SLIDE 2: Reja -->
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="bug" data-anim="wiggle"></i></div>
+      <h3>01. Zararli dasturlar</h3>
+      <p>Virus, trojan, spyware va ransomware kabi tahdidlar mohiyati.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check" data-anim="pulse"></i></div>
+      <h3>02. Antiviruslar</h3>
+      <p>Windows Security, imzo tahlili, evristik tahlil va karantin.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="key" data-anim="float"></i></div>
+      <h3>03. Parol va 2FA</h3>
+      <p>Buzilmas parollar formulasi va ikki bosqichli autentifikatsiya.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 3: Bo'lim 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Zararli dasturlar (Malware)</h1>
+  <p>Kompyuter tizimiga tahdid soluvchi kiberxatarlar oilasi</p>
+  
+</section>
+
+<!-- SLIDE 4: SVG 1 - Malware tasnifi -->
+<section>
+  <h2>Zararli dasturlar (Malware) turlari</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- Main node -->
+      <rect x="380" y="30" width="200" height="50" rx="12" class="fb lb" stroke-width="2"/>
+      <text x="480" y="62" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Malware (Tahdidlar)</text>
+
+      <!-- Connecting paths -->
+      <path d="M 480 80 L 130 140 M 480 80 L 305 140 M 480 80 L 480 140 M 480 80 L 655 140 M 480 80 L 830 140" class="ln" stroke-width="2" fill="none"/>
+
+      <!-- Node 1: Virus -->
+      <g class="fragment">
+        <rect x="40" y="140" width="180" height="120" rx="10" class="fa la" stroke-width="2"/>
+        <text x="130" y="175" text-anchor="middle" class="t-head" font-size="17" font-weight="bold">Klassik Virus</text>
+        <text x="130" y="205" text-anchor="middle" class="t-muted" font-size="13">Fayllarga yopishadi</text>
+        <text x="130" y="230" text-anchor="middle" class="t-accent" font-size="12">O'z kodini ko'paytiradi</text>
+      </g>
+
+      <!-- Node 2: Trojan -->
+      <g class="fragment">
+        <rect x="230" y="140" width="150" height="120" rx="10" class="fc lc" stroke-width="2"/>
+        <text x="305" y="175" text-anchor="middle" class="t-head" font-size="17" font-weight="bold">Troyan Oti</text>
+        <text x="305" y="205" text-anchor="middle" class="t-muted" font-size="13">Foydali niqob ostida</text>
+        <text x="305" y="230" text-anchor="middle" class="t-accent" font-size="12">Tizimni topshiradi</text>
+      </g>
+
+      <!-- Node 3: Ransomware -->
+      <g class="fragment">
+        <rect x="405" y="140" width="150" height="120" rx="10" class="fb lb" stroke-width="2"/>
+        <text x="480" y="175" text-anchor="middle" class="t-head" font-size="17" font-weight="bold">Ransomware</text>
+        <text x="480" y="205" text-anchor="middle" class="t-muted" font-size="13">Fayllarni shifrlaydi</text>
+        <text x="480" y="230" text-anchor="middle" class="t-accent" font-size="12">Pul talab qiladi</text>
+      </g>
+
+      <!-- Node 4: Spyware -->
+      <g class="fragment">
+        <rect x="580" y="140" width="150" height="120" rx="10" class="fg lg" stroke-width="2"/>
+        <text x="655" y="175" text-anchor="middle" class="t-head" font-size="17" font-weight="bold">Spyware</text>
+        <text x="655" y="205" text-anchor="middle" class="t-muted" font-size="13">Ayg'oqchi dastur</text>
+        <text x="655" y="230" text-anchor="middle" class="t-accent" font-size="12">Parollarni o'g'irlaydi</text>
+      </g>
+
+      <!-- Node 5: Worm -->
+      <g class="fragment">
+        <rect x="755" y="140" width="150" height="120" rx="10" class="fn ln" stroke-width="2"/>
+        <text x="830" y="175" text-anchor="middle" class="t-head" font-size="17" font-weight="bold">Chuvalchang</text>
+        <text x="830" y="205" text-anchor="middle" class="t-muted" font-size="13">Tarmoqda tarqaladi</text>
+        <text x="830" y="230" text-anchor="middle" class="t-accent" font-size="12">O'z-o'zidan ko'payadi</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 5: Ransomware va Troyan xavfi -->
+<section>
+  <h2>Eng xavfli ikki tahdid</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="lock"></i></div>
+      <h3>Ransomware (Tovlamachi virus)</h3>
+      <p>Kompyuterdagi barcha fotosuratlar, hujjatlar va fayllarni shifrlab qulflaydi. Ekranda pul talab qilinadi.</p>
+      <div class="callout tip">Eng yaxshi himoya: Tashqi diskda muntazam zaxira nusxa (backup) saqlash!</div>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="bug"></i></div>
+      <h3>Troyan oti (Trojan Horse)</h3>
+      <p>O'zini o'yin, bepul kino yoki foydali dastur qilib ko'rsatadi. O'rnatilgach, tajovuzkorga kompyuteringizni masofadan boshqarish imkonini beradi.</p>
+      <div class="callout tip">Noma'lum saytlardan pirat dasturlarni yuklamang!</div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 6: Bo'lim 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Antivirus dasturlarining ishlashi</h1>
+  <p>Tizimni kechayu-kunduz qo'riqlovchi raqamli qalqon</p>
+  
+</section>
+
+<!-- SLIDE 7: SVG 2 - Antivirus himoya zanjiri -->
+<section>
+  <h2>Antivirus tekshiruv bosqichlari</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- Step 1 -->
+      <g class="fragment">
+        <rect x="40" y="75" width="190" height="150" rx="12" class="fa la" stroke-width="2"/>
+        <text x="135" y="120" text-anchor="middle" class="t-head" font-size="17" font-weight="bold">1. Real-vaqt nazorati</text>
+        <text x="135" y="155" text-anchor="middle" class="t-muted" font-size="13">Fayl ochilganda yoki</text>
+        <text x="135" y="180" text-anchor="middle" class="t-muted" font-size="13">yuklanganda tekshiradi</text>
+      </g>
+
+      <path d="M 230 150 L 280 150" class="la flowing" stroke-width="3" fill="none" marker-end="url(#ar-a)"/>
+
+      <!-- Step 2 -->
+      <g class="fragment">
+        <rect x="280" y="75" width="190" height="150" rx="12" class="fc lc" stroke-width="2"/>
+        <text x="375" y="120" text-anchor="middle" class="t-head" font-size="17" font-weight="bold">2. Imzo tahlili</text>
+        <text x="375" y="155" text-anchor="middle" class="t-muted" font-size="13">Baza bilan solishtirish</text>
+        <text x="375" y="180" text-anchor="middle" class="t-accent" font-size="13">Ma'lum viruslar</text>
+      </g>
+
+      <path d="M 470 150 L 520 150" class="lc flowing" stroke-width="3" fill="none" marker-end="url(#ar-c)"/>
+
+      <!-- Step 3 -->
+      <g class="fragment">
+        <rect x="520" y="75" width="190" height="150" rx="12" class="fb lb" stroke-width="2"/>
+        <text x="615" y="120" text-anchor="middle" class="t-head" font-size="17" font-weight="bold">3. Evristik tahlil</text>
+        <text x="615" y="155" text-anchor="middle" class="t-muted" font-size="13">Xatti-harakatni tekshirish</text>
+        <text x="615" y="180" text-anchor="middle" class="t-accent" font-size="13">Yangi noma'lum viruslar</text>
+      </g>
+
+      <path d="M 710 150 L 760 150" class="lb flowing" stroke-width="3" fill="none" marker-end="url(#ar-b)"/>
+
+      <!-- Step 4 -->
+      <g class="fragment">
+        <rect x="760" y="75" width="160" height="150" rx="12" class="fg lg" stroke-width="2"/>
+        <text x="840" y="120" text-anchor="middle" class="t-head" font-size="17" font-weight="bold">4. Karantin</text>
+        <text x="840" y="155" text-anchor="middle" class="t-muted" font-size="13">Faylni izolyatsiya</text>
+        <text x="840" y="180" text-anchor="middle" class="t-accent" font-size="13">qilish va zararsizlash</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 8: Swap: Tezkor vs To'liq skanerlash -->
+<section>
+  <h2>Skanerlash turlari</h2>
+  <div class="swap">
+    <div class="swap-tabs">
+      <button class="on" type="button"><i data-ic="scan"></i> Tezkor skanerlash (Quick Scan)</button>
+      <button type="button"><i data-ic="shield-check"></i> To'liq skanerlash (Full Scan)</button>
+    </div>
+    <div class="swap-p on">
+      <div class="cards two">
+        <div class="card">
+          <h3>Vaqt tejamkor (1–3 daqiqa)</h3>
+          <p>Operativ xotira (RAM), ishga tushish papkalari va asosiy Windows tizim fayllarini tezda ko'rib chiqadi.</p>
+        </div>
+        <div class="card">
+          <h3>Kundalik profilaktika</h3>
+          <p>Har kuni darsdan oldin yoki yangi fayl ko'chirgandan so'ng o'tkazish uchun eng qulay usul.</p>
+        </div>
+      </div>
+    </div>
+    <div class="swap-p">
+      <div class="cards two">
+        <div class="card">
+          <h3>Har bir faylni tekshiradi (20–60 daqiqa)</h3>
+          <p>Barcha qattiq disklar, arxivlar, ilovalar va tizim registrini boshidan oxirigacha tahlil qiladi.</p>
+        </div>
+        <div class="card">
+          <h3>Chuqur tekshiruv</h3>
+          <p>Haftada bir marta yoki kompyuterda shubhali qotishlar sezilganda to'liq skaner qilish shart.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 9: Karantin va Evristika -->
+<section>
+  <h2>Karantin va Evristik tahlil</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shield-alert"></i></div>
+      <h3>Karantin (Quarantine)</h3>
+      <p>Shubhali fayllar diskdagi maxsus shifrlangan qafasga joylanadi. U yerda fayl hech narsaga ziyon yetkaza olmaydi. Agar xato gumon bo'lsa, uni tiklash mumkin.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="refresh-cw"></i></div>
+      <h3>Bazani yangilash (Update)</h3>
+      <p>Har kuni yuz minglab yangi viruslar yoziladi. Antivirus bazasi muntazam internet orqali yangilanmasa, u yangi tahdidlarni ko'rmay qoladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 10: Statistika -->
+<section>
+  <h2>Kiberxavfsizlik raqamlarda</h2>
+  <div class="stats">
+    <div class="stat">
+      <div class="v"><span class="count" data-to="450" data-suf=" ming">0</span></div>
+      <div class="l">Har kuni dunyoda yangi paydo bo'ladigan malware namunalari</div>
+    </div>
+    <div class="stat">
+      <div class="v"><span class="count" data-to="99" data-suf=" %">0</span></div>
+      <div class="l">2FA orqali akkaunt o'g'irlanishidan himoya samarasi</div>
+    </div>
+    <div class="stat">
+      <div class="v"><span class="count" data-to="12" data-suf=" ta belgi">0</span></div>
+      <div class="l">Xavfsiz va buzilmas parolning minimal uzunligi</div>
+    </div>
+  </div>
+  <div class="callout tip fragment fade-up">
+    Dunyodagi kiberhujumlarning 80 foizi oddiy insoniy beparvolik yoki zaif parollar tufayli sodir bo'ladi!
+  </div>
+  
+</section>
+
+<!-- SLIDE 11: Bo'lim 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Parollar xavfsizligi va 2FA</h1>
+  <p>Shaxsiy akkauntlarni buzilmas qulflar bilan ta'minlash</p>
+  
+</section>
+
+<!-- SLIDE 12: SVG 3 - 2FA arxitekturasi -->
+<section>
+  <h2>2FA (Ikki bosqichli autentifikatsiya)</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- Factor 1 -->
+      <g class="fragment">
+        <rect x="50" y="70" width="220" height="160" rx="14" class="fa la" stroke-width="2"/>
+        <text x="160" y="125" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">1-Omil</text>
+        <text x="160" y="160" text-anchor="middle" class="t-muted" font-size="15">Siz biladigan narsa</text>
+        <text x="160" y="195" text-anchor="middle" class="t-accent" font-size="14">Login va Parol</text>
+      </g>
+
+      <!-- Plus sign -->
+      <text x="320" y="160" text-anchor="middle" class="t-head" font-size="36" font-weight="bold">+</text>
+
+      <!-- Factor 2 -->
+      <g class="fragment">
+        <rect x="370" y="70" width="220" height="160" rx="14" class="fc lc" stroke-width="2"/>
+        <text x="480" y="125" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">2-Omil</text>
+        <text x="480" y="160" text-anchor="middle" class="t-muted" font-size="15">Sizda bor bo'lgan narsa</text>
+        <text x="480" y="195" text-anchor="middle" class="t-accent" font-size="14">SMS kod / Authenticator</text>
+      </g>
+
+      <!-- Arrow -->
+      <path d="M 610 150 L 680 150" class="lg flowing" stroke-width="4" fill="none" marker-end="url(#ar-g)"/>
+
+      <!-- Success Node -->
+      <g class="fragment">
+        <rect x="700" y="70" width="210" height="160" rx="14" class="fg lg" stroke-width="2"/>
+        <text x="805" y="125" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Xavfsiz Kirish</text>
+        <text x="805" y="160" text-anchor="middle" class="t-muted" font-size="14">Akkaunt to'liq</text>
+        <text x="805" y="195" text-anchor="middle" class="t-accent" font-size="14">himoyalangan!</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 13: Stepper: Kuchli parol formulasi -->
+<section>
+  <h2>Buzilmas parol yaratish bosqichlari</h2>
+  <div class="stepper">
+    <div class="stp on">
+      <h3>1-qadam: Ibora tanlash</h3>
+      <pre><code>«Men 8-sinfda informatika darsini yaxshi ko'raman!»</code></pre>
+      <p class="muted">So'zma-so'z paroldan ko'ra iboralar 10 barobar kuchliroq bo'ladi.</p>
+    </div>
+    <div class="stp">
+      <h3>2-qadam: Bosh harflar va belgilar</h3>
+      <pre><code>M8@s_Idyk#2026</code></pre>
+      <p class="muted">Bosh harflar, raqamlar va maxsus belgilar (`@`, `#`, `_`) birlashtiriladi.</p>
+    </div>
+    <div class="stp">
+      <h3>3-qadam: Natija va tekshiruv</h3>
+      <pre><code>M8@s_Idyk#2026 (14 ta belgi)</code></pre>
+      <div class="callout tip">Superkompyuter bilan ham bunday parolni buzish uchun bir necha asr kerak bo'ladi!</div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 14: Zaif vs Kuchli parol -->
+<section>
+  <h2>Parollar taqqoslashi</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3><i data-ic="triangle-alert"></i> Zaif parollar (Buziladi: 1 soniya)</h3>
+      <ul>
+        <li><code>123456</code> yoki <code>12345678</code></li>
+        <li><code>qwertyuiop</code></li>
+        <li><code>jasur2010</code> (ism + yil)</li>
+        <li><code>admin123</code></li>
+      </ul>
+      <div class="callout bad">Bunday parollarni aslo qo'ymang!</div>
+    </div>
+    <div class="side b fragment">
+      <h3><i data-ic="shield-check"></i> Kuchli parollar (Buzilmaydi)</h3>
+      <ul>
+        <li><code>K!ber#8_Sinf$2026</code></li>
+        <li><code>Toshkent@Metr0_47!</code></li>
+        <li>12+ belgi, katta-kichik harflar</li>
+        <li>Raqam va simvollar aralashmasi</li>
+      </ul>
+      <div class="callout tip">Har bir sayt uchun alohida parol!</div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 15: Bo'lim 4 -->
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Fleshka va tashqi xotira kibergigiyenasi</h1>
+  <p>USB orqali virus yuqishining oldini olish choralari</p>
+  
+</section>
+
+<!-- SLIDE 16: SVG 4 - Fleshka xavfsizlik jarayoni -->
+<section>
+  <h2>USB fleshkani xavfsiz ishlatish</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- Step 1: Connect -->
+      <g class="fragment">
+        <rect x="40" y="80" width="180" height="140" rx="12" class="fa la" stroke-width="2"/>
+        <text x="130" y="125" text-anchor="middle" class="t-head" font-size="17" font-weight="bold">1. Fleshkani ulash</text>
+        <text x="130" y="160" text-anchor="middle" class="t-muted" font-size="13">USB portga ulandi</text>
+        <text x="130" y="185" text-anchor="middle" class="t-accent" font-size="12">Avto-ochish bloklangan</text>
+      </g>
+
+      <path d="M 220 150 L 270 150" class="la flowing" stroke-width="3" fill="none" marker-end="url(#ar-a)"/>
+
+      <!-- Step 2: Right Click & Scan -->
+      <g class="fragment">
+        <rect x="270" y="80" width="200" height="140" rx="12" class="fc lc" stroke-width="2"/>
+        <text x="370" y="125" text-anchor="middle" class="t-head" font-size="17" font-weight="bold">2. O'ng tugma</text>
+        <text x="370" y="160" text-anchor="middle" class="t-muted" font-size="13">«Scan with Defender»</text>
+        <text x="370" y="185" text-anchor="middle" class="t-accent" font-size="12">Tekshiruv o'tkazish</text>
+      </g>
+
+      <path d="M 470 150 L 520 150" class="lc flowing" stroke-width="3" fill="none" marker-end="url(#ar-c)"/>
+
+      <!-- Step 3: Clean -->
+      <g class="fragment">
+        <rect x="520" y="80" width="190" height="140" rx="12" class="fb lb" stroke-width="2"/>
+        <text x="615" y="125" text-anchor="middle" class="t-head" font-size="17" font-weight="bold">3. Xavfsiz ishlash</text>
+        <text x="615" y="160" text-anchor="middle" class="t-muted" font-size="13">Hujjatlarni nusxalash</text>
+        <text x="615" y="185" text-anchor="middle" class="t-accent" font-size="12">Fayllar xavfsiz</text>
+      </g>
+
+      <path d="M 710 150 L 760 150" class="lb flowing" stroke-width="3" fill="none" marker-end="url(#ar-b)"/>
+
+      <!-- Step 4: Eject -->
+      <g class="fragment">
+        <rect x="760" y="80" width="160" height="140" rx="12" class="fg lg" stroke-width="2"/>
+        <text x="840" y="125" text-anchor="middle" class="t-head" font-size="17" font-weight="bold">4. Eject qilish</text>
+        <text x="840" y="160" text-anchor="middle" class="t-muted" font-size="13">Xavfsiz ajratish</text>
+        <text x="840" y="185" text-anchor="middle" class="t-accent" font-size="12">Fleshkani sug'urish</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 17: Flip card: Kiberxavfsizlik maslahatlari -->
+<section>
+  <h2>Ikki muhim kibergigiyena maslahati</h2>
+  <div class="cards two">
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="usb"></i></div>
+          <h3>Fleshkadagi shubhali yorliqlar</h3>
+          <p class="muted">Bosganda qoidani ko'ring</p>
+        </div>
+        <div class="face back">
+          <h3>Qoida</h3>
+          <p>Agar fleshkadagi barcha papkalar yorliqqa (`.lnk`) aylanib qolsa, ularni aslo bosmang! Bu fleshka virusidir. Antivirus bilan tozalang.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="key"></i></div>
+          <h3>Parol menejerlaridan foydalanish</h3>
+          <p class="muted">Bosganda qoidani ko'ring</p>
+        </div>
+        <div class="face back">
+          <h3>Qoida</h3>
+          <p>O'nlab murakkab parollarni daftarga yozib yurmang. Brauzerdagi Google Password Manager yoki Bitwarden kabi shifrlangan omborlarga ishoning.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 18: Zaxira nusxa (Backup) -->
+<section>
+  <h2>Zaxira nusxa (Backup) — Eng kuchli vaksina</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="laptop"></i></div>
+      <h3>3 ta nusxa</h3>
+      <p>Muhim fayllaringizning kamida 3 ta nusxasi bo'lishi kerak.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="usb"></i></div>
+      <h3>2 xil xotirada</h3>
+      <p>Biri kompyuterda, ikkinchisi tashqi fleshka yoki qattiq diskda.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="globe"></i></div>
+      <h3>1 tasi bulutda</h3>
+      <p>Kamida bitta nusxa Google Drive yoki OneDrive bulutida saqlansin.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 19: Quiz -->
+<section>
+  <h2>O'zingizni sinab ko'ring</h2>
+  <div class="quiz">
+    <p class="q">Kompyuterdagi barcha fotosuratlar va fayllarni shifrlab, ochish uchun to'lov talab qiluvchi virus turi qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Spyware (Ayg'oqchi)</button>
+      <button class="opt" type="button" data-ok>Ransomware (Tovlamachi virus)</button>
+      <button class="opt" type="button">Adware (Reklama)</button>
+    </div>
+    <div class="explain">
+      To'g'ri! Ransomware barcha fayllarni shifrlab qulflaydi va tovlamachilik qiladi. Undan yagona najot — oldindan qilingan zaxira nusxa (backup)dir.
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 20: Amaliy topshiriq -->
+<section class="task">
+  <div class="badge">Amaliy topshiriq · 20 daqiqa</div>
+  <h2>Xavfsizlik amaliyoti</h2>
+  <ol>
+    <li>Windows Security orqali «Quick scan» o'tkazing va natijani ko'ring.</li>
+    <li>Antivirus bazasi yangilanganligini tekshiring.</li>
+    <li>USB fleshkani sichqonchaning o'ng tugmasi orqali alohida skanerlang.</li>
+    <li>Iboralar asosida o'zingiz uchun 14 belgili kuchli parol formulasi tuzing.</li>
+  </ol>
+  
+</section>
+
+<!-- SLIDE 21: Bob yakuni va Dars xulosasi -->
+<section>
+  <h2>I bob yakuni va Xulosa</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <h3>I bobda o'rgandik:</h3>
+      <ul>
+        <li>Kompyuter arxitekturasi va apparat vositalari</li>
+        <li>Windows muhiti, fayllar va o'lchov birliklari</li>
+        <li>Asosiy va periferiya qurilmalari, portlar</li>
+        <li>Internet, brauzerlar va elektron pochta</li>
+        <li>Antiviruslar va kiberxavfsizlik asoslari</li>
+      </ul>
+    </div>
+    <div class="card fragment">
+      <h3>Keyingi bobda (3-hafta):</h3>
+      <p><strong>II bob:</strong> Zamonaviy IT yo'nalishlari va raqamli infratuzilma asoslari. 10 barmoqda tez yozish (Touch typing) va raqamli madaniyat.</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

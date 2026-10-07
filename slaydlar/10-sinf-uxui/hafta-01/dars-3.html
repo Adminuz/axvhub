@@ -1,101 +1,487 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>Usability, Accessibility, Simplicity</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Usability, Accessibility, Simplicity</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Usability, Accessibility, Simplicity</h1></header>
-<div class="badges"><span class="badge">10-sinf</span><span class="badge">Advanced UX/UI</span><span class="badge">1-hafta · 3-dars</span><span class="badge">Interfeys tamoyillari, jahon brendlari keyslari va soddalik psixologiyasi</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "WCAG standartiga muvofiq, oddiy matn va fon o'rtasidagi minimal kontrast koeffitsiyenti kamida qancha bo'lishi shart?", "o": ["1.5 : 1", "2.0 : 1", "4.5 : 1", "10.0 : 1"], "a": 2, "e": "To'g'ri: WCAG AA darajasiga ko'ra oddiy matn uchun minimal kontrast nisbati kamida 4.5:1 bo'lishi belgilangan."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 3-dars: Interfeys dizaynida asosiy tamoyillar: Usability, Accessibility, Simplicity -->
+
+<!-- 1. SARLAVHA -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Usability, Accessibility, Simplicity</h1>
+  <p class="muted">Interfeys tamoyillari, jahon brendlari keyslari va soddalik psixologiyasi</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced UX/UI</span><span class="badge">1-hafta · 3-dars</span>
+</section>
+
+<!-- 2. BUGUN NIMANI O'RGANAMIZ? -->
+<section>
+  <h2>Bugun nimani o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="compass" data-anim="float"></i></div>
+      <h3>3 asosiy ustun</h3>
+      <p>Usability (qulaylik), Accessibility (inklyuzivlik) va Simplicity (soddalik)</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sparkles" data-anim="pulse"></i></div>
+      <h3>Jahon brendlari</h3>
+      <p>Netflix, Google, Airbnb, Apple, Slack, Microsoft va Amazon tajribasi</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="activity" data-anim="draw"></i></div>
+      <h3>Kognitiv qonunlar</h3>
+      <p>Hick qonuni, Miller qonuni (7±2) va WCAG rang kontrasti me'yorlari</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. BO'LIM 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>3 asosiy poydevor</h1>
+  <p>Har qanday muvaffaqiyatli interfeysning ajralmas ustunlari</p>
+</section>
+
+<!-- 4. UCH USTUN TUSHUNCHASI -->
+<section>
+  <h2>Usability, Accessibility va Simplicity</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="check"></i></div>
+      <h3>Usability</h3>
+      <p><b>Foydalanish qulayligi:</b> Mahsulot tez o'rganiladi, xatosiz ishlaydi va vazifani qiyinchiliksiz bajaradi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="users"></i></div>
+      <h3>Accessibility</h3>
+      <p><b>Kirish imkoniyati:</b> Barcha foydalanuvchilar, jumladan jismoniy imkoniyati cheklanganlar uchun ochiqlik.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="zap" data-anim="pulse"></i></div>
+      <h3>Simplicity</h3>
+      <p><b>Soddalik:</b> Ortiqcha bezaklardan xoli, aqliy yuklamani kamaytiruvchi toza va aniq kompozitsiya.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. ILLYUSTRATSIYA 1: UCH USTUN PIRAMIDASI -->
+<section>
+  <h2>Illyustratsiya: Mukammal Interfeys Poydevori</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 360">
+      <!-- Asos 3 blok -->
+      <rect class="fa" x="80" y="210" width="260" height="110" rx="16"/>
+      <text class="t-head" x="210" y="255" text-anchor="middle" font-size="20" font-weight="bold">Usability</text>
+      <text class="t-muted" x="210" y="285" text-anchor="middle" font-size="14">Tezlik va qulaylik</text>
+
+      <rect class="fb" x="370" y="210" width="260" height="110" rx="16"/>
+      <text class="t-head" x="500" y="255" text-anchor="middle" font-size="20" font-weight="bold">Accessibility</text>
+      <text class="t-muted" x="500" y="285" text-anchor="middle" font-size="14">Inklyuzivlik va keng qamrov</text>
+
+      <rect class="fc" x="660" y="210" width="260" height="110" rx="16"/>
+      <text class="t-head" x="790" y="255" text-anchor="middle" font-size="20" font-weight="bold">Simplicity</text>
+      <text class="t-muted" x="790" y="285" text-anchor="middle" font-size="14">Aqliy yengillik</text>
+
+      <!-- Birlashtiruvchi yuqori gumbaz -->
+      <g class="fragment">
+        <path class="la flowing" d="M 210,210 L 500,80 L 790,210" fill="none"/>
+        <rect class="fg" x="330" y="40" width="340" height="90" rx="18"/>
+        <text class="t-head" x="500" y="85" text-anchor="middle" font-size="22" font-weight="bold">Mukammal Foydalanuvchi Tajribasi</text>
+        <text class="t-muted" x="500" y="112" text-anchor="middle" font-size="14">Qoniqish, sadoqat va biznes o'sishi</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 6. BO'LIM 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Jahon brendlari amaliyoti</h1>
+  <p>Yirik kompaniyalar ushbu tamoyillarni qanday qo'llaydi?</p>
+</section>
+
+<!-- 7. ILLYUSTRATSIYA 2: BRENDLAR XARITASI -->
+<section>
+  <h2>7 Global tamoyil va yetakchi brendlar</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <!-- 7 ta kartochka -->
+      <rect class="fa" x="20" y="40" width="220" height="120" rx="14"/>
+      <text class="t-head" x="130" y="80" text-anchor="middle" font-size="18" font-weight="bold">Netflix</text>
+      <text class="t-accent" x="130" y="110" text-anchor="middle" font-size="15">Personalizatsiya (UCD)</text>
+      <text class="t-muted" x="130" y="135" text-anchor="middle" font-size="12">Shaxsiy tavsiyalar</text>
+
+      <rect class="fb" x="260" y="40" width="220" height="120" rx="14"/>
+      <text class="t-head" x="370" y="80" text-anchor="middle" font-size="18" font-weight="bold">Google</text>
+      <text class="t-accent" x="370" y="110" text-anchor="middle" font-size="15">Material Design</text>
+      <text class="t-muted" x="370" y="135" text-anchor="middle" font-size="12">Izchillik (Consistency)</text>
+
+      <rect class="fc" x="500" y="40" width="220" height="120" rx="14"/>
+      <text class="t-head" x="610" y="80" text-anchor="middle" font-size="18" font-weight="bold">Airbnb</text>
+      <text class="t-accent" x="610" y="110" text-anchor="middle" font-size="15">Accessibility</text>
+      <text class="t-muted" x="610" y="135" text-anchor="middle" font-size="12">Inkluziv filtrlash</text>
+
+      <rect class="fg" x="740" y="40" width="240" height="120" rx="14"/>
+      <text class="t-head" x="860" y="80" text-anchor="middle" font-size="18" font-weight="bold">Apple</text>
+      <text class="t-accent" x="860" y="110" text-anchor="middle" font-size="15">Simplicity (Soddalik)</text>
+      <text class="t-muted" x="860" y="135" text-anchor="middle" font-size="12">Toza minimalist til</text>
+
+      <!-- 2-qator: Slack, Microsoft, Amazon -->
+      <rect class="fb" x="80" y="185" width="260" height="120" rx="14"/>
+      <text class="t-head" x="210" y="225" text-anchor="middle" font-size="18" font-weight="bold">Slack</text>
+      <text class="t-accent" x="210" y="255" text-anchor="middle" font-size="15">Tezkor Feedback</text>
+      <text class="t-muted" x="210" y="280" text-anchor="middle" font-size="12">Interaktiv bildirishnomalar</text>
+
+      <rect class="fc" x="370" y="185" width="260" height="120" rx="14"/>
+      <text class="t-head" x="500" y="225" text-anchor="middle" font-size="18" font-weight="bold">Microsoft Office</text>
+      <text class="t-accent" x="500" y="255" text-anchor="middle" font-size="15">Flexibility</text>
+      <text class="t-muted" x="500" y="280" text-anchor="middle" font-size="12">Moslanuvchan asboblar</text>
+
+      <rect class="fg" x="660" y="185" width="260" height="120" rx="14"/>
+      <text class="t-head" x="790" y="225" text-anchor="middle" font-size="18" font-weight="bold">Amazon</text>
+      <text class="t-accent" x="790" y="255" text-anchor="middle" font-size="15">Usability (1-Click)</text>
+      <text class="t-muted" x="790" y="280" text-anchor="middle" font-size="12">Bitta harakatda xarid</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 8. KEYS: NETFLIX VA GOOGLE -->
+<section>
+  <h2>Netflix va Google tajribasi</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="tv" data-anim="float"></i></div>
+      <h3>Netflix: UCD Personalizatsiya</h3>
+      <p>Har bir tomoshabinga uning didiga mos rasm (thumbnail) ko'rsatiladi. Agar siz komediyalarni yoqtirsangiz, dramatik filmning ham kulgili sahnasi poster qilib beriladi!</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="layout-grid" data-anim="pulse"></i></div>
+      <h3>Google: Material Design Izchilligi</h3>
+      <p>Gmail, Google Drive va Maps ilovalarida tugmalar, ikonlar va harakatlar bir xil. Foydalanuvchi yangi xizmatga o'tganda ham adashmaydi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9. KEYS: AIRBNB VA APPLE -->
+<section>
+  <h2>Airbnb va Apple tajribasi</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="heart" data-anim="pulse"></i></div>
+      <h3>Airbnb: Inkluziv Accessibility</h3>
+      <p>Kresloda harakatlanuvchi sayohatchilar uchun zinasiz uylar, maxsus eshik kengliklari va ko'zi ojizlar uchun ekran o'quvchi to'liq qo'llab-quvvatlanadi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="sparkles" data-anim="draw"></i></div>
+      <h3>Apple: Toza Soddalik (Simplicity)</h3>
+      <p>Faqat eng kerakli elementlar saqlanadi. Ortiqcha tugma va jargonsiz toza interfeys insonning aqliy yuklamasini minimumga tushiradi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10. KEYS: SLACK, MS VA AMAZON -->
+<section>
+  <h2>Slack, Microsoft va Amazon</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="message-square"></i></div>
+      <h3>Slack: Feedback</h3>
+      <p>Xabar yuborilishi bilan darhol tasdiqlovchi belgilar va status o'zgarishi foydalanuvchiga ishonch bag'ishlaydi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+      <h3>Microsoft: Flexibility</h3>
+      <p>Panellarni shaxsiylashtirish, klaviatura kombinatsiyalari va shablonlar turli darajadagi mutaxassislarga moslashadi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shopping-cart" data-anim="wiggle"></i></div>
+      <h3>Amazon: 1-Click Buy</h3>
+      <p>Manzil va karta ma'lumotlarini qayta so'ramasdan bitta bosishda xarid. Usability bo'yicha dunyo rekordi!</p>
+    </div>
+  </div>
+</section>
+
+<!-- 11. FLIP KARTALAR: BRENDLAR UX SIRI -->
+<section>
+  <h2>Brendlarning UX sirlari</h2>
+  <p class="muted">Kartani bosing va ichki mexanizmni ko'ring</p>
+  <div class="cards three mt">
+    <div class="flip" style="min-height:200px">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="shopping-cart"></i></div>
+          <h3>Amazon 1-Click</h3>
+          <span class="flip-hint">bosing</span>
+        </div>
+        <div class="face back">
+          <p>Xarid bosqichlarini 5 tadan 1 tagacha kamaytirib, savdoni milliardlab dollarga oshirgan innovatsiya.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip" style="min-height:200px">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="heart"></i></div>
+          <h3>Airbnb Inkluzivlik</h3>
+          <span class="flip-hint">bosing</span>
+        </div>
+        <div class="face back">
+          <p>Maxsus ehtiyoji bor sayohatchilarga mos uylarni alohida filtrlar orqali topish imkoniyati.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip" style="min-height:200px">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="sparkles"></i></div>
+          <h3>Apple Toza Dili</h3>
+          <span class="flip-hint">bosing</span>
+        </div>
+        <div class="face back">
+          <p>Ekrandagi har bir keraksiz chiziq va pikselni olib tashlash orqali diqqatni kontentga qaratish.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. BO'LIM 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Soddalik psixologiyasi</h1>
+  <p>Inson miyasi ma'lumotni qanday qabul qiladi va qayta ishlaydi?</p>
+</section>
+
+<!-- 13. HICK QONUNI -->
+<section>
+  <h2>Hick Qonuni (Hick's Law)</h2>
+  <div class="card accent">
+    <h3>Qonunning mohiyati:</h3>
+    <p>Foydalanuvchiga qancha ko'p tanlov varianti berilsa, u qaror qabul qilishi uchun shuncha ko'p vaqt sarflaydi.</p>
+  </div>
+  <div class="cards two mt">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="activity"></i></div>
+      <h3>Matematik modeli</h3>
+      <p><code>T = b · log2(n + 1)</code> — variantlar soni (n) ortishi bilan qaror vaqti logarifmik ravishda o'sadi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="zap"></i></div>
+      <h3>UX Yechimi</h3>
+      <p>Bir vaqtda 20 ta tugma emas, balki 3-4 ta asosiy variantni ko'rsatish va qolganini bosqichma-bosqich ochish.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 14. ILLYUSTRATSIYA 3: HICK QONUNI GRAFIGI -->
+<section>
+  <h2>Hick Qonuni amaliy grafikda</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <!-- O'qlar -->
+      <line class="la" x1="120" y1="260" x2="880" y2="260"/>
+      <line class="la" x1="120" y1="260" x2="120" y2="40"/>
+      <text class="t-head" x="90" y="50" font-size="16">Vaqt (T)</text>
+      <text class="t-head" x="820" y="290" font-size="16">Variantlar soni (n)</text>
+
+      <!-- Egri chiziq -->
+      <path class="lb flowing" d="M 120,250 Q 250,140 500,105 T 860,85" fill="none" stroke-width="4"/>
+
+      <!-- Nuqtalar -->
+      <circle class="fg" cx="240" cy="180" r="7"/>
+      <text class="t-head" x="240" y="160" text-anchor="middle" font-size="14">3 ta variant: 0.8 sek</text>
+
+      <circle class="fc" cx="450" cy="115" r="7"/>
+      <text class="t-head" x="450" y="95" text-anchor="middle" font-size="14">8 ta variant: 2.1 sek</text>
+
+      <circle class="fa" cx="800" cy="88" r="7"/>
+      <text class="t-head" x="800" y="65" text-anchor="middle" font-size="14">30 ta variant: 7+ sek</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 15. MILLER QONUNI VA OQ MAYDON -->
+<section>
+  <h2>Miller Qonuni va Oq Maydon</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="layers" data-anim="pulse"></i></div>
+      <h3>Miller Qonuni: 7 ± 2</h3>
+      <p>Insonning qisqa muddatli xotirasi bir vaqtning o'zida 5 tadan 9 tagacha axborot bo'lagini sig'dira oladi.</p>
+      <div class="callout mt"><b>Amaliy chora:</b> Ma'lumotlarni mayda bloklarga bo'lish (Chunking): <code>+998 90 123 45 67</code>.</div>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="eye"></i></div>
+      <h3>Oq Maydon (White Space)</h3>
+      <p>Elementlar orasidagi bo'shliq ko'zni dam oldiradi va eng muhim tugmani vizual jihatdan ajratib ko'rsatadi.</p>
+      <div class="callout mt"><b>Qoida:</b> Bo'sh joy — bu bo'shliq emas, bu kuchli dizayn vositasidir!</div>
+    </div>
+  </div>
+</section>
+
+<!-- 16. OLDIN VA KEYIN (SWAP): MENYU SODDALIGI -->
+<section>
+  <h2>Oldin va keyin: Bosh sahifa menyusi</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">Tartibsiz 24 ta tugma</button><button type="button">Hick qonuniga mos 4 ta blok</button></div>
+    <div class="swap-p">
+      <div class="card">
+        <h3>24 ta alohida sochilgan xizmat</h3>
+        <p>Mehmonxona, aviabilet, poyezd, viza, sug'urta, yuk, VIP zal, mashina ijarasi... Foydalanuvchi ko'zi toliqib sahifani yopadi.</p>
+      </div>
+    </div>
+    <div class="swap-p">
+      <div class="card accent">
+        <h3>4 ta mantiqiy toifa (Kategoriya)</h3>
+        <p>1. Transport · 2. Yashash joyi · 3. Sayohat xizmatlari · 4. Qulayliklar. Qaror qabul qilish vaqti 70% ga tezlashdi!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 17. ACCESSIBILITY STANDARTLARI: KONTRAST -->
+<section>
+  <h2>WCAG Rang Kontrasti Standarti</h2>
+  <p class="muted">Matn va fon o'rtasidagi yorug'lik nisbati</p>
+  <div class="stats mt">
+    <div class="stat fragment">
+      <div class="v">4.5 : 1</div>
+      <div class="l">Oddiy matn uchun WCAG AA minimal kontrasti</div>
+    </div>
+    <div class="stat fragment">
+      <div class="v">3.0 : 1</div>
+      <div class="l">Katta sarlavhalar va grafik belgilar uchun me'yor</div>
+    </div>
+    <div class="stat fragment">
+      <div class="v">7.0 : 1</div>
+      <div class="l">WCAG AAA yuqori darajadagi ideal kontrast</div>
+    </div>
+  </div>
+</section>
+
+<!-- 18. ILLYUSTRATSIYA 4: KONTRAST TAQQOSLASH -->
+<section>
+  <h2>Kontrast amalda: O'qiluvchanlik</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+      <!-- Yomon kontrast -->
+      <rect class="fa" x="80" y="60" width="380" height="180" rx="16"/>
+      <circle cx="120" cy="100" r="14" fill="none" stroke="currentColor"/>
+      <text class="t-muted" x="270" y="130" text-anchor="middle" font-size="20">Och kulrang matn</text>
+      <text class="t-muted" x="270" y="165" text-anchor="middle" font-size="14">Kontrast nisbati 2.1:1 (WCAG Xato)</text>
+      <text class="t-muted" x="270" y="200" text-anchor="middle" font-size="13">Quyosh nuri ostida mutlaqo ko'rinmaydi!</text>
+
+      <!-- Yaxshi kontrast -->
+      <g class="fragment">
+        <rect class="fg" x="540" y="60" width="380" height="180" rx="16"/>
+        <text class="t-head" x="730" y="130" text-anchor="middle" font-size="20" font-weight="bold">Yuqori kontrastli matn</text>
+        <text class="t-accent" x="730" y="165" text-anchor="middle" font-size="14">Kontrast nisbati 8.5:1 (WCAG A'lo)</text>
+        <text class="t-head" x="730" y="200" text-anchor="middle" font-size="13">Har qanday ekranda va ko'zi ojizlarga ham tiniq</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 19. STEPPER: ACCESSIBILITY QADAMLARI -->
+<section>
+  <h2>Accessibility joriy qilish qadamlari</h2>
+  <div class="stepper">
+    <div class="stp on">
+      <div class="card">
+        <div class="icon"><i data-ic="eye" data-anim="float"></i></div>
+        <h3>1. Rang va kontrast</h3>
+        <p>Rangdan yagona axborot vositasi sifatida foydalanmaslik, matn kontrastini 4.5:1 dan oshirish.</p>
+      </div>
+    </div>
+    <div class="stp">
+      <div class="card">
+        <div class="icon"><i data-ic="message-square" data-anim="pulse"></i></div>
+        <h3>2. Ekran o'quvchilar (Screen Readers)</h3>
+        <p>Barcha rasmlarga ma'noli <code>alt="..."</code> matni va tugmalarga <code>aria-label</code> yozish.</p>
+      </div>
+    </div>
+    <div class="stp">
+      <div class="card">
+        <div class="icon"><i data-ic="monitor" data-anim="draw"></i></div>
+        <h3>3. Klaviatura boshqaruvi</h3>
+        <p>Faqat sichqoncha emas, balki Tab va Enter tugmalari bilan butun saytni boshqara olish imkoni.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 20. AMALIY TOPSHIRIQ -->
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Berilgan 3 ta dizayn holati bo'yicha WCAG kontrast auditini o'tkazing.</div>
+  <div class="task"><span class="level mid">O'rta</span>Hick qonuniga tayanib, 24 ta sochilgan xizmat menyusini 4 guruhga soddalashtiring.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Tez tibbiy yordam (SOS) ilovasi uchun Usability, Accessibility va Simplicity talablarini ishlab chiqing.</div>
+</section>
+
+<!-- 21. MINI TEST -->
+<section>
+  <h2>Bilimingizni sinang</h2>
+  <div class="quiz">
+    <p class="q">WCAG standartiga muvofiq, oddiy matn va fon o'rtasidagi minimal kontrast koeffitsiyenti kamida qancha bo'lishi shart?</p>
+    <div class="opts">
+      <button class="opt" type="button">1.5 : 1</button>
+      <button class="opt" type="button">2.0 : 1</button>
+      <button class="opt" type="button" data-ok>4.5 : 1</button>
+      <button class="opt" type="button">10.0 : 1</button>
+    </div>
+    <div class="explain">To'g'ri: WCAG AA darajasiga ko'ra oddiy matn uchun minimal kontrast nisbati kamida 4.5:1 bo'lishi belgilangan.</div>
+  </div>
+</section>
+
+<!-- 22. XULOSA -->
+<section>
+  <h2>1-hafta Xulosasi</h2>
+  <div class="cards two">
+    <div class="card">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>1-haftada nimalarni o'rgandik?</h3>
+      <ul class="mt">
+        <li>1-dars: UX strategik roli va biznes metrikalari (ROI, CR)</li>
+        <li>2-dars: UCD tamoyillari va 4 bosqichli iterativ sikl</li>
+        <li>3-dars: Usability, Accessibility va Simplicity me'zonlari</li>
+      </ul>
+    </div>
+    <div class="card accent">
+      <div class="icon"><i data-ic="sparkles"></i></div>
+      <h3>2-hafta rejasi</h3>
+      <p><b>Foydalanuvchi tadqiqotlari (UX Research):</b> Intervyu, so'rovnomalar, Persona va Empathy Map tuzishni o'rganamiz!</p>
+    </div>
+  </div>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

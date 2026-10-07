@@ -1,101 +1,314 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>CSS selektorlari va Box Model</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>CSS selektorlari va Box Model</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>CSS selektorlari va Box Model</h1></header>
-<div class="badges"><span class="badge">10-sinf</span><span class="badge">Advanced UX/UI</span><span class="badge">6-hafta · 16-dars</span><span class="badge">Selektor turlari, kaskad va specificity, meros, Box Model, box-sizing</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "Sahifa sarlavhasi uchun qaysi teg ishlatiladi va nechta bo'lishi kerak?", "o": ["<code>h1<\/code>, bitta", "<code>h1<\/code>, o'nta", "<code>title<\/code>, ikkita", "<code>div<\/code>, bitta"], "a": 0, "e": "Sahifada bitta <code>h1<\/code> bo'ladi."}, {"q": "<code>ul &gt; li<\/code> qaysi elementlarni tanlaydi?", "o": ["<code>ul<\/code> ning bevosita farzandi bo'lgan <code>li<\/code> larni", "Sahifadagi hamma <code>li<\/code> ni", "Faqat birinchi <code>li<\/code> ni", "Faqat <code>ul<\/code> ni"], "a": 0, "e": "<code>&gt;<\/code> — faqat bevosita bola."}, {"q": "Qaysi selektor eng kuchli?", "o": ["<code>#top a<\/code>", "<code>.menu a<\/code>", "<code>nav .menu a<\/code>", "<code>a<\/code>"], "a": 0, "e": "Id bor: 100 + 1 = 101."}, {"q": "<code>border-box<\/code> da <code>width: 300px<\/code> nimani anglatadi?", "o": ["Padding va border ni ham o'z ichiga olgan umumiy kenglik", "Faqat content kengligi", "Faqat margin", "Ekran kengligi"], "a": 0, "e": "Umumiy kenglik 300px bo'ladi."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>CSS selektorlari va Box Model</h1>
+  <p class="muted">Selektor turlari, kaskad va specificity, meros, Box Model, box-sizing</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced UX/UI</span><span class="badge">6-hafta · 16-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimalarni o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="target" data-anim="pulse"></i></div><h3>Selektorlar</h3><p>Kimni bezaymiz</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="layers" data-anim="float"></i></div><h3>Kaskad va specificity</h3><p>Kim g'olib</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="square" data-anim="blink"></i></div><h3>Box Model</h3><p>Har element quti</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">Sahifa sarlavhasi uchun qaysi teg ishlatiladi va nechta bo'lishi kerak?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok><code>h1</code>, bitta</button>
+    <button class="opt" type="button"><code>h1</code>, o'nta</button>
+    <button class="opt" type="button"><code>title</code>, ikkita</button>
+    <button class="opt" type="button"><code>div</code>, bitta</button>
+    </div>
+    <div class="explain">Sahifada bitta <code>h1</code> bo'ladi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Selektorlar</h1>
+  <p>Kimni bezaymiz</p>
+</section>
+
+<section>
+  <h2>Selektor tanlash</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Teg: p</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">Class: .card</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Id: #logo</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Holat: :hover</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Eng ko'p ishlatiladigani — class</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Selektor turlari</h2>
+  <pre><code class="language-css" data-trim data-line-numbers="1|2|3|4|5|6|7|8">
+h1 { color: navy; }
+.card { background: #fff; }
+#logo { width: 120px; }
+nav a { text-decoration: none; }
+ul &gt; li { margin-bottom: 4px; }
+a[href^="https"] { color: green; }
+a:hover { color: crimson; }
+li:nth-child(2) { font-weight: 700; }
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Class nomini vazifasiga qarab bering (<code>.card</code>, <code>.btn</code>), ko'rinishiga qarab emas (<code>.red</code>). Id ni stil uchun kam ishlating.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>ul &gt; li</code> qaysi elementlarni tanlaydi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok><code>ul</code> ning bevosita farzandi bo'lgan <code>li</code> larni</button>
+    <button class="opt" type="button">Sahifadagi hamma <code>li</code> ni</button>
+    <button class="opt" type="button">Faqat birinchi <code>li</code> ni</button>
+    <button class="opt" type="button">Faqat <code>ul</code> ni</button>
+    </div>
+    <div class="explain"><code>&gt;</code> — faqat bevosita bola.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Kaskad va specificity</h1>
+  <p>Kim g'olib</p>
+</section>
+
+<section>
+  <h2>Kaskad tartibi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Specificity</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">Teng bo'lsa:</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">tartib</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Meros</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">Brauzer</text><text class="t-head" x="875" y="171" text-anchor="middle" font-size="22">qiymati</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Eng kuchlisi yutadi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Kim g'olib?</h2>
+  <pre><code class="language-css" data-trim data-line-numbers="1|2|3|4|6-7">
+a { color: gray; }            /* 1 */
+.menu a { color: blue; }      /* 11 */
+nav .menu a { color: green; } /* 12 */
+#top a { color: red; }        /* 101 */
+
+body { font-family: Arial, sans-serif; }
+/* font-family barcha ichki teglarga o'tadi */
+  </code></pre>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i>Qoidani tuzatish uchun kuchliroq selektor yozish o'rniga, avval DevTools da qaysi qoida bosib o'tayotganini toping.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Qaysi selektor eng kuchli?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok><code>#top a</code></button>
+    <button class="opt" type="button"><code>.menu a</code></button>
+    <button class="opt" type="button"><code>nav .menu a</code></button>
+    <button class="opt" type="button"><code>a</code></button>
+    </div>
+    <div class="explain">Id bor: 100 + 1 = 101.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Box Model</h1>
+  <p>Har element quti</p>
+</section>
+
+<section>
+  <h2>Qutining qatlamlari</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Content</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">Padding</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Border</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Margin</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Ichdan tashqariga</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Box Model</h2>
+  <pre><code class="language-css" data-trim data-line-numbers="1|4|5|6|7">
+* { box-sizing: border-box; }
+
+.card {
+  width: 300px;
+  padding: 16px;
+  border: 1px solid #ccc;
+  margin: 12px auto;
 }
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i><code>margin: 0 auto</code> blokni gorizontal markazga qo'yadi (blok kengligi berilgan bo'lsa). <code>padding</code> bo'lsa — fon ichida, <code>margin</code> — fondan tashqarida.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>border-box</code> da <code>width: 300px</code> nimani anglatadi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Padding va border ni ham o'z ichiga olgan umumiy kenglik</button>
+    <button class="opt" type="button">Faqat content kengligi</button>
+    <button class="opt" type="button">Faqat margin</button>
+    <button class="opt" type="button">Ekran kengligi</button>
+    </div>
+    <div class="explain">Umumiy kenglik 300px bo'ladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>content-box va border-box</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>content-box</h3><code>width</code> faqat mazmun; padding va border qo'shiladi</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>border-box</h3><code>width</code> hammasini o'z ichiga oladi</div>
+  </div>
+  <div class="card accent fragment mt"><p>Loyihada doim <code>border-box</code> ishlating.</p></div>
+</section>
+
+<section>
+  <h2>Atamalar. Bosing</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>Selektor</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>CSS qoidasi kimga tegishli ekanini aytadi</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>Specificity</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Qoidaning kuchliligi</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>Padding</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Chegara ichidagi bo'sh joy</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>Margin</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Elementdan tashqaridagi masofa</p></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Bezash tartibi</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="target" data-anim="pulse"></i></div><h3>1. Tanlang</h3><p>Selektor yozing.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="scale"></i></div><h3>2. Kuchini bilib oling</h3><p>Specificity ni hisoblang.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="square"></i></div><h3>3. O'lchang</h3><p>DevTools da Box Model.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>Specificity jadvali</h2>
+    <table>
+      <thead><tr><th>Selektor</th><th>Kuch</th><th>Misol</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td>Inline style</td><td>1000</td><td><code>style="..."</code></td></tr>
+        <tr class="fragment"><td>Id</td><td>100</td><td><code>#logo</code></td></tr>
+        <tr class="fragment"><td>Class / pseudo</td><td>10</td><td><code>.card</code>, <code>:hover</code></td></tr>
+        <tr class="fragment"><td>Teg</td><td>1</td><td><code>p</code>, <code>a</code></td></tr>
+        <tr class="fragment"><td>Universal <code>*</code></td><td>0</td><td><code>*</code></td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: kuchlilik</p>
+  </section>
+  <section>
+    <h2>Maktab sayti kartasi</h2>
+    <ol class="steps-n">
+      <li class="fragment"><code>.card</code> class ni yarating: <code>width</code>, <code>padding</code>, <code>border</code>.</li>
+      <li class="fragment"><code>* { box-sizing: border-box; }</code> ni qo'shing va farqni DevTools da ko'ring.</li>
+      <li class="fragment"><code>.card:hover</code> uchun soya yoki rang qo'shing.</li>
+    </ol>
+  </section>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">Box Model sozlash</h2>
+  <pre data-id="c"><code class="language-css" data-trim>
+* { box-sizing: content-box; }
+.box { width: 200px; padding: 20px; }
+  </code></pre>
+</section>
+<section data-auto-animate>
+  <h2 data-id="t">Box Model sozlash</h2>
+  <pre data-id="c"><code class="language-css" data-trim data-line-numbers="1|1">
+* { box-sizing: border-box; }
+.box { width: 200px; padding: 20px; }
+  </code></pre>
+</section>
+
+<section>
+  <h2>CSS raqamlarda</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="4" data-suf="">0</span></div><div class="l"> ta qatlam: content, padding, border, margin</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="244" data-suf="px">0</span></div><div class="l"> — content-box da 200 + 40 + 4 hisobi</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="101" data-suf="">0</span></div><div class="l"> — <code>#top a</code> ning kuchi</div></div>
+  </div>
+  <p class="small fragment">Specificity va Box Model — CSS ning ikki asosiy qoidasi.</p>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Selektor yozing: Barcha <code>h2</code> ni ko'k, <code>.note</code> ni sariq fonda bering.</div>
+  <div class="task"><span class="level easy">Oson</span>Specificity: <code>nav a</code> va <code>.menu a</code> dan qaysi biri kuchli?</div>
+  <div class="task"><span class="level mid">O'rta</span>Quti hisobi: <code>content-box</code>: <code>width:200px; padding:20px; border:2px</code>. Umumiy kenglik?</div>
+  <div class="task"><span class="level mid">O'rta</span>border-box: Shu qutini umumiy kengligi 200px bo'ladigan qiling.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Hover karta: <code>.card</code> ustiga kelganda soya chiqadigan qoidani yozing.</div>
+  <div class="task"><span class="level hard">Bonus</span>Meros: <code>color</code> meros bo'ladimi, <code>border</code> ham? Misol bering.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Selektorlar</h3><p>Teg, class, id, avlod, bola, atribut.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Kaskad</h3><p>Specificity, tartib va meros.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Box Model</h3><p>Content, padding, border, margin; <code>border-box</code>.</p></div>
+  </div>
+  <p class="small fragment mt">Uyga vazifa: CSS selektorlari va Box Model.</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="columns-3" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: Flexbox</h1>
+  <p class="muted">Bir o'lchamli joylashuv</p>
+  <span class="badge">6-hafta · 17-dars</span>
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

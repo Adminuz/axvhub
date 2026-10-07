@@ -1,101 +1,420 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>Raqamli transformatsiya tushunchasi</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Raqamli transformatsiya tushunchasi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Raqamli transformatsiya tushunchasi</h1></header>
-<div class="badges"><span class="badge">8-sinf</span><span class="badge">Foundation</span><span class="badge">3-hafta · 9-dars</span><span class="badge">Davlat xizmatlari, ta'lim, fintech va qog'ozsiz hujjat aylanishi</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "Qaysi holat haqiqiy «Raqamli transformatsiya» hisoblanadi?", "o": ["Qog'oz ma'lumotnomani skanerlab PDF qilish", "Butun jarayonni onlayn avtomatlashtirib, navbat va qog'ozsiz tizimga o'tish", "Hisobotni ruchkada emas, kompyuterda chop etish"], "a": 1, "e": "To'g'ri: Jarayonning tubdan o'zgarishi va yangi raqamli model yaratilishi."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- SLIDE 1: Hero -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Raqamli transformatsiya tushunchasi</h1>
+  <p class="muted">Davlat xizmatlari, ta'lim, fintech va qog'ozsiz hujjat aylanishi</p>
+  <span class="badge">8-sinf</span><span class="badge">Foundation</span><span class="badge">3-hafta · 9-dars</span>
+  
+</section>
+
+<!-- SLIDE 2: Reja -->
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu" data-anim="float"></i></div>
+      <h3>01. Transformatsiya nima?</h3>
+      <p>Digitization, Digitalization va Digital Transformation farqi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="landmark" data-anim="pulse"></i></div>
+      <h3>02. Davlat va Biznes</h3>
+      <p>my.gov.uz portali, OneID, ERI va fintech ekotizimlari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check" data-anim="wiggle"></i></div>
+      <h3>03. Foyda va Xavfsizlik</h3>
+      <p>Tezkorlik, qulaylik, shaffoflik va kiberhimoya asoslari.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 3: Bo'lim 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Raqamli transformatsiya mohiyati</h1>
+  <p>Jarayonlarni shunchaki kompyuterlashtirish emas, tubdan yangilash</p>
+  
+</section>
+
+<!-- SLIDE 4: SVG 1 - 3 Bosqich -->
+<section>
+  <h2>Raqamlashtirishning 3 bosqichi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- Step 1 -->
+      <g class="fragment">
+        <rect x="30" y="60" width="260" height="180" rx="12" class="fa la" stroke-width="2"/>
+        <text x="160" y="105" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">1. Digitization</text>
+        <text x="160" y="145" text-anchor="middle" class="t-muted" font-size="14">Qog'ozdagi axborotni</text>
+        <text x="160" y="170" text-anchor="middle" class="t-muted" font-size="14">faylga ko'chirish</text>
+        <text x="160" y="205" text-anchor="middle" class="t-accent" font-size="13">Qog'oz &rarr; PDF / Excel</text>
+      </g>
+
+      <!-- Arrow 1 -->
+      <path d="M 305 150 L 345 150" class="la" stroke-width="3" marker-end="url(#arr)" class="fragment"/>
+
+      <!-- Step 2 -->
+      <g class="fragment">
+        <rect x="350" y="60" width="260" height="180" rx="12" class="fb lb" stroke-width="2"/>
+        <text x="480" y="105" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">2. Digitalization</text>
+        <text x="480" y="145" text-anchor="middle" class="t-muted" font-size="14">Ish jarayonini</text>
+        <text x="480" y="170" text-anchor="middle" class="t-muted" font-size="14">dasturda yuritish</text>
+        <text x="480" y="205" text-anchor="middle" class="t-accent" font-size="13">CRM / Elektron hisobot</text>
+      </g>
+
+      <!-- Arrow 2 -->
+      <path d="M 625 150 L 665 150" class="lb" stroke-width="3" marker-end="url(#arr)" class="fragment"/>
+
+      <!-- Step 3 -->
+      <g class="fragment">
+        <rect x="670" y="60" width="260" height="180" rx="12" class="fc lc" stroke-width="2"/>
+        <text x="800" y="105" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">3. Digital Transformation</text>
+        <text x="800" y="145" text-anchor="middle" class="t-muted" font-size="14">Yangi ekotizim va</text>
+        <text x="800" y="170" text-anchor="middle" class="t-muted" font-size="14">to'liq avtomatika</text>
+        <text x="800" y="205" text-anchor="middle" class="t-accent" font-size="13">my.gov.uz / Fintech</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 5: Taqqoslash -->
+<section>
+  <h2>Uch bosqichning amaliy misoli</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="file-text"></i></div>
+      <h3>Digitization</h3>
+      <p>Kitoblar ro'yxatini daftardan Excel fayliga ko'chirib yozib chiqish.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="database"></i></div>
+      <h3>Digitalization</h3>
+      <p>Har bir kitobga QR-kod qo'yib, berish-qabul qilishni kompyuter dasturida qayd etish.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="sparkles"></i></div>
+      <h3>Raqamli transformatsiya</h3>
+      <p>O'quvchi mobil ilovadan qidiradi, AI tavsiya beradi, audio tinglaydi yoki uydan bron qiladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 6: .swap bloki -->
+<section>
+  <h2>Oldin va keyin: solishtirish</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">An'anaviy usul</button><button type="button">Raqamli usul</button></div>
+    <div class="swap-p"><div class="card"><h3>An'anaviy qog'oz tizimi</h3><p>Idoralarga shaxsan borish, soatlab navbat kutilishi, qog'oz ma'lumotnomalar yig'ish va xatolar ehtimoli yuqoriligi.</p></div></div>
+    <div class="swap-p"><div class="card accent"><h3>Raqamli xizmatlar (DX)</h3><p>Uydan chiqmasdan smartfon orqali bir necha daqiqada, avtomatik ma'lumotlar bazasi va haftasiga 24/7 uzluksiz xizmat.</p></div></div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 7: Bo'lim 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Davlat xizmatlari va Elektron hukumat</h1>
+  <p>my.gov.uz portali, OneID va elektron hujjat aylanishi (EDO)</p>
+  
+</section>
+
+<!-- SLIDE 8: SVG 2 - Ekotizim -->
+<section>
+  <h2>Davlat xizmatlari ekotizimi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- Center: OneID -->
+      <circle cx="480" cy="150" r="70" class="fc lc" stroke-width="3"/>
+      <text x="480" y="145" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">OneID</text>
+      <text x="480" y="168" text-anchor="middle" class="t-muted" font-size="12">Yagona kalit</text>
+
+      <!-- Satellite 1: my.gov.uz -->
+      <g class="fragment">
+        <line x1="410" y1="150" x2="230" y2="150" class="la" stroke-width="2" stroke-dasharray="4"/>
+        <rect x="50" y="110" width="180" height="80" rx="10" class="fa la" stroke-width="2"/>
+        <text x="140" y="145" text-anchor="middle" class="t-head" font-size="15" font-weight="bold">my.gov.uz</text>
+        <text x="140" y="170" text-anchor="middle" class="t-muted" font-size="12">500+ Davlat xizmati</text>
+      </g>
+
+      <!-- Satellite 2: E-maktab -->
+      <g class="fragment">
+        <line x1="450" y1="90" x2="330" y2="40" class="lb" stroke-width="2" stroke-dasharray="4"/>
+        <rect x="230" y="10" width="180" height="60" rx="10" class="fb lb" stroke-width="2"/>
+        <text x="320" y="38" text-anchor="middle" class="t-head" font-size="14" font-weight="bold">e-maktab</text>
+        <text x="320" y="56" text-anchor="middle" class="t-muted" font-size="11">Raqamli ta'lim</text>
+      </g>
+
+      <!-- Satellite 3: EDO / ERI -->
+      <g class="fragment">
+        <line x1="510" y1="90" x2="630" y2="40" class="lc" stroke-width="2" stroke-dasharray="4"/>
+        <rect x="550" y="10" width="180" height="60" rx="10" class="fc lc" stroke-width="2"/>
+        <text x="640" y="38" text-anchor="middle" class="t-head" font-size="14" font-weight="bold">ERI & EDO</text>
+        <text x="640" y="56" text-anchor="middle" class="t-muted" font-size="11">Elektron imzo</text>
+      </g>
+
+      <!-- Satellite 4: Fintech / Banklar -->
+      <g class="fragment">
+        <line x1="550" y1="150" x2="730" y2="150" class="la" stroke-width="2" stroke-dasharray="4"/>
+        <rect x="730" y="110" width="180" height="80" rx="10" class="fa la" stroke-width="2"/>
+        <text x="820" y="145" text-anchor="middle" class="t-head" font-size="15" font-weight="bold">Fintech</text>
+        <text x="820" y="170" text-anchor="middle" class="t-muted" font-size="12">To'lov va banklar</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 9: ERI va EDO -->
+<section>
+  <h2>ERI va Qog'ozsiz hujjat aylanishi</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="key"></i></div>
+      <h3>Elektron raqamli imzo (ERI)</h3>
+      <p>Elektron hujjatga qo'yiladigan kriptografik kalit bo'lib, oddiy qog'ozdagi imzo bilan 100% teng yuridik kuchga ega.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="folder-sync"></i></div>
+      <h3>EDO tizimlari</h3>
+      <p>Kompaniyalar o'rtasida shartnomalar, hisob-fakturalar bir necha soniyada yuboriladi va millionlab varaq qog'oz tejaladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 10: .stepper -->
+<section>
+  <h2>my.gov.uz orqali xizmat olish bosqichlari</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="key"></i></div><h3>1. OneID orqali kirish</h3><p>Shaxsiy login va parol orqali tizimga xavfsiz kiriladi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="list"></i></div><h3>2. Xizmatni tanlash</h3><p>Kerakli ma'lumotnoma yoki ariza turi tanlanadi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="database"></i></div><h3>3. Avtomatik to'ldirish</h3><p>Ma'lumotlar davlat bazasidan avtomatik tortib olinadi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="qr-code"></i></div><h3>4. QR-kodli natija</h3><p>Tayyor hujjat PDF shaklida darhol yuklab olinadi.</p></div></div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 11: Bo'lim 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Ta'lim va Biznesda transformatsiya</h1>
+  <p>Fintech, elektron tijorat va masofaviy ta'lim imkoniyatlari</p>
+  
+</section>
+
+<!-- SLIDE 12: Ta'limda e-maktab -->
+<section>
+  <h2>Ta'lim sohasida raqamlashtirish</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="graduation-cap"></i></div>
+      <h3>e-maktab (Kundalik.com)</h3>
+      <p>Baholar, dars jadvallari va uyga vazifalar real vaqt rejimida yuritiladi, ota-onalarga shaffof monitoring beradi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="video"></i></div>
+      <h3>Onlayn va masofaviy ta'lim</h3>
+      <p>Dunyodagi eng yetakchi universitetlar darslari va xalqaro sertifikatlar istalgan kompyuterdan ochiq.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 13: Fintech va E-commerce -->
+<section>
+  <h2>Fintech va Raqamli banklar</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="credit-card"></i></div>
+      <h3>Fintech (Moliyaviy IT)</h3>
+      <p>Click, Payme, Uzum orqali navbatsiz, 24/7 rejimida kartadan kartaga o'tkazma, xarid va kommunal to'lovlar.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shopping-bag"></i></div>
+      <h3>E-commerce (Elektron do'kon)</h3>
+      <p>Uzum Market, Amazon kabi bozorlar orqali mahsulotlarni uydan buyurtma qilish va kuryer orqali qabul qilish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 14: Bo'lim 4 -->
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Afzalliklar va Kiberxavfsizlik</h1>
+  <p>Raqamli olamda samaradorlik va tizimli xavflardan himoya</p>
+  
+</section>
+
+<!-- SLIDE 15: SVG 3 - Afzallik vs Xatar -->
+<section>
+  <h2>Afzalliklar va Xatarlar tahlili</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- Benefits side -->
+      <g class="fragment">
+        <rect x="50" y="40" width="410" height="220" rx="12" class="fc lc" stroke-width="2"/>
+        <text x="255" y="80" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Asosiy afzalliklar</text>
+        <text x="80" y="125" class="t-muted" font-size="14">&bull; Yuqori tezlik va 24/7 qulaylik</text>
+        <text x="80" y="160" class="t-muted" font-size="14">&bull; Qog'oz va transport xarajatlarini tejash</text>
+        <text x="80" y="195" class="t-muted" font-size="14">&bull; Korrupsiya va inson omilini yo'qotish</text>
+        <text x="80" y="230" class="t-muted" font-size="14">&bull; Shaffoflik va aniq hisobotlar</text>
+      </g>
+
+      <!-- Risks side -->
+      <g class="fragment">
+        <rect x="500" y="40" width="410" height="220" rx="12" class="fa la" stroke-width="2"/>
+        <text x="705" y="80" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Yuzaga keladigan xatarlar</text>
+        <text x="530" y="125" class="t-muted" font-size="14">&bull; Hakerlik hujumlari va ma'lumotlar o'g'irlanishi</text>
+        <text x="530" y="160" class="t-muted" font-size="14">&bull; Server yoki elektr quvvati uzilishlari</text>
+        <text x="530" y="195" class="t-muted" font-size="14">&bull; Raqamli tengsizlik (internet yo'qligi)</text>
+        <text x="530" y="230" class="t-muted" font-size="14">&bull; Xodimlarning o'z vaqtida moslasha olmasligi</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 16: Kiberhimoya va Zaxiralash -->
+<section>
+  <h2>Raqamli tizimlar xavfsizligi</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="lock"></i></div>
+      <h3>Shifrlash (SSL/TLS)</h3>
+      <p>Foydalanuvchi va server o'rtasidagi ma'lumotlar tranzitda shifrlangan holatda uzatiladi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="server"></i></div>
+      <h3>Zaxira serverlar (Backup)</h3>
+      <p>Tizim buzilgan taqdirda ham boshqa serverdagi nusxa bir zumda ishga tushadi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="user-check"></i></div>
+      <h3>2FA va Biometriya</h3>
+      <p>Kirish uchun nafaqat parol, balki SMS kod yoki Face ID talab qilinadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 17: Keys-tahlil -->
+<section>
+  <h2>Amaliy keys: Raqamli kutubxona loyihasi</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="book-open"></i></div>
+      <h3>Mavjud muammo</h3>
+      <p>O'quvchilar kutubxonada qaysi kitob borligini bilishmaydi, kitoblar yo'qoladi, navbatlar yuzaga keladi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="laptop"></i></div>
+      <h3>Raqamli yechim</h3>
+      <p>Mobil ilova: QR-kod bilan kitob olish, muddatni eslatuvchi bildirishnoma va AI tavsiyalar tizimi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 18: .quiz -->
+<section>
+  <h2>Tezkor viktorina</h2>
+  <div class="quiz">
+    <p class="q">Qaysi holat haqiqiy «Raqamli transformatsiya» hisoblanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Qog'oz ma'lumotnomani skanerlab PDF qilish</button>
+      <button class="opt" type="button" data-ok>Butun jarayonni onlayn avtomatlashtirib, navbat va qog'ozsiz tizimga o'tish</button>
+      <button class="opt" type="button">Hisobotni ruchkada emas, kompyuterda chop etish</button>
+    </div>
+    <div class="explain">To'g'ri: Jarayonning tubdan o'zgarishi va yangi raqamli model yaratilishi.</div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 19: Savollar -->
+<section>
+  <h2>O'ylash uchun savol</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-question-mark"></i></div>
+      <h3>1-savol</h3>
+      <p>Raqamli transformatsiya davlat va biznesda korrupsiyaning oldini olishga qanday yordam beradi?</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-question-mark"></i></div>
+      <h3>2-savol</h3>
+      <p>Agar butun tizim raqamli bo'lsa, kutilmagan elektr uzilishida nima qilish kerak?</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 20: Dars xulosasi -->
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="check"></i></div>
+      <h3>Mohiyat</h3>
+      <p>Transformatsiya — bu yangi madaniyat va jarayonlarni tubdan osonlashtirish.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="check"></i></div>
+      <h3>Ekotizim</h3>
+      <p>my.gov.uz, OneID va ERI orqali qog'ozsiz va shaffof xizmatlar.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="check"></i></div>
+      <h3>Mas'uliyat</h3>
+      <p>Tezkorlik bilan birga qat'iy kiberxavfsizlik va zaxiralash talab etiladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 21: Keyingi dars anonsi -->
+<section class="hero">
+  <div class="icon"><i data-ic="network" data-anim="float"></i></div>
+  <h1>Keyingi dars: Internet qanday ishlaydi?</h1>
+  <p class="muted">IP-manzil, domen, hosting, DNS va xavfsiz HTTP/HTTPS protokollari</p>
+  <span class="badge">4-hafta · 10-dars</span>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

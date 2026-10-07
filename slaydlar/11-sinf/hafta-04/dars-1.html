@@ -1,101 +1,524 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>Loyihalash andozalari: Observer va hodisalar</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Loyihalash andozalari: Observer va hodisalar</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Loyihalash andozalari: Observer va hodisalar</h1></header>
-<div class="badges"><span class="badge">11-sinf</span><span class="badge">Professional IT</span><span class="badge">4-hafta · 10-dars</span><span class="badge">Publish/Subscribe · Loose coupling · Event-driven arxitektura · EventBus</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "Komponent yopildi, lekin <code>unsubscribe<\/code> chaqirilmadi. Nima bo‘ladi?", "o": ["Python o‘zi avtomatik obunani bekor qiladi", "Subject havolani ushlab turadi: xotira oqimi, eskirgan kuzatuvchi hodisa olaveradi", "Dastur darhol <code>TypeError<\/code> beradi", "Boshqa kuzatuvchilar ishlamay qoladi"], "a": 1, "e": "Ro‘yxatda havola qolgani uchun obyekt tozalanmaydi. Yechim: <code>unsubscribe<\/code> yoki weak reference."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- SLIDE 1: Hero -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Loyihalash andozalari: Observer va hodisalar</h1>
+  <p class="muted">Publish/Subscribe · Loose coupling · Event-driven arxitektura · EventBus</p>
+  <span class="badge">11-sinf</span><span class="badge">Professional IT</span><span class="badge">4-hafta · 10-dars</span>
+  
+</section>
+
+<!-- SLIDE 2: Reja -->
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="radio" data-anim="pulse"></i></div>
+      <h3>01. Observer andozasi</h3>
+      <p>Subject va Observer rollari, publish/subscribe tamoyili va bo'sh bog'liqlik.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="git-commit-vertical" data-anim="float"></i></div>
+      <h3>02. Event-driven dizayn</h3>
+      <p>Hodisalarga asoslangan arxitektura, xabarlar oqimi va xotira xatarlari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="code" data-anim="wiggle"></i></div>
+      <h3>03. EventBus va Testlar</h3>
+      <p>Python'da markaziy EventBus tizimi va soxta kuzatuvchi (mock) bilan sinash.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 3: Bo'lim 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Observer (Kuzatuvchi) andozasi</h1>
+  <p>Qattiq bog'liqlikdan (Tight Coupling) mustaqil xabarnomalarga o'tish</p>
+  
+</section>
+
+<!-- SLIDE 4: Muammo - Qattiq bog'liqlik -->
+<section>
+  <h2>Muammo: Qattiq bog'liqlik (Tight Coupling)</h2>
+  <div class="cards two">
+    <div class="card">
+      <pre><code class="language-python">class OrderService:
+    def complete_order(self, order_id):
+        # 1. Asosiy mantiq
+        db.save_status(order_id, "PAID")
+
+        # 2. Qattiq bog'langan vazifalar
+        send_email(order_id)
+        send_sms(order_id)
+        track_analytics(order_id)
+        update_bonus_points(order_id)</code></pre>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="triangle-alert"></i></div>
+      <h3>Nega bu yomon?</h3>
+      <ul>
+        <li><strong>OCP buziladi:</strong> Yangi harakat qo'shish uchun xizmat kodini tahrirlash shart.</li>
+        <li><strong>Sinov qiyin:</strong> <code>complete_order</code>ni testlash uchun barcha xizmatlarni soxtalashtirish talab etiladi.</li>
+        <li><strong>Xato zanjiri:</strong> SMS xizmati ishlamasa, butun buyurtma jarayoni to'xtashi mumkin.</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 5: SVG - Observer arxitekturasi -->
+<section>
+  <h2>Subject va Observer aloqasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 300">
+      <!-- Subject -->
+      <g class="fragment">
+        <rect x="50" y="70" width="240" height="160" rx="12" class="fa la" stroke-width="2"/>
+        <text x="170" y="110" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Subject (Publisher)</text>
+        <text x="170" y="140" text-anchor="middle" class="t-muted" font-size="13">OrderService</text>
+        <line x1="65" y1="155" x2="275" y2="155" class="la" stroke-dasharray="4"/>
+        <text x="170" y="180" text-anchor="middle" class="t-accent" font-size="13">+ subscribe(observer)</text>
+        <text x="170" y="205" text-anchor="middle" class="t-accent" font-size="13">+ notify(event_data)</text>
+      </g>
+
+      <!-- Arrows -->
+      <path d="M 290 120 L 450 70" class="la" stroke-width="2" fill="none"/>
+      <polygon class="ar-a" points="460,67 445,62 448,77"/>
+      <path d="M 290 150 L 450 150" class="la" stroke-width="2" fill="none"/>
+      <polygon class="ar-a" points="460,150 445,143 445,157"/>
+      <path d="M 290 180 L 450 230" class="la" stroke-width="2" fill="none"/>
+      <polygon class="ar-a" points="460,233 448,223 445,238"/>
+
+      <!-- Observers -->
+      <g class="fragment">
+        <rect x="470" y="30" width="220" height="70" rx="8" class="fb lb" stroke-width="1.5"/>
+        <text x="580" y="60" text-anchor="middle" class="t-head" font-size="15" font-weight="bold">EmailNotifier</text>
+        <text x="580" y="82" text-anchor="middle" class="t-muted" font-size="12">update(order_id)</text>
+
+        <rect x="470" y="115" width="220" height="70" rx="8" class="fc lc" stroke-width="1.5"/>
+        <text x="580" y="145" text-anchor="middle" class="t-head" font-size="15" font-weight="bold">AnalyticsTracker</text>
+        <text x="580" y="167" text-anchor="middle" class="t-muted" font-size="12">update(order_id)</text>
+
+        <rect x="470" y="200" width="220" height="70" rx="8" class="fg lg" stroke-width="1.5"/>
+        <text x="580" y="230" text-anchor="middle" class="t-head" font-size="15" font-weight="bold">LoyaltyService</text>
+        <text x="580" y="252" text-anchor="middle" class="t-muted" font-size="12">update(order_id)</text>
+      </g>
+
+      <!-- Badge note -->
+      <g class="fragment">
+        <rect x="730" y="90" width="180" height="120" rx="8" class="fn ln" stroke-width="1"/>
+        <text x="820" y="130" text-anchor="middle" class="t-head" font-size="14" font-weight="bold">Loose Coupling</text>
+        <text x="820" y="160" text-anchor="middle" class="t-muted" font-size="12">Subject kimlar</text>
+        <text x="820" y="180" text-anchor="middle" class="t-muted" font-size="12">ulanganini bilmaydi!</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 6: Observer interfeysi Python'da -->
+<section>
+  <h2>Observer interfeysi: Protocol orqali</h2>
+  <pre><code class="language-python">from typing import Protocol, List
+
+class OrderObserver(Protocol):
+    """Barcha kuzatuvchilar uchun yagona shartnoma (kontrakt)."""
+    def update(self, order_id: str, amount: float) -> None:
+        ...
+
+class EmailNotificationService:
+    def update(self, order_id: str, amount: float) -> None:
+        print(f"[Email] Buyurtma #{order_id} ({amount} so'm) uchun chek yuborildi.")
+
+class BonusPointsService:
+    def update(self, order_id: str, amount: float) -> None:
+        points = int(amount // 10000)
+        print(f"[Bonus] Mijozga {points} ball hisoblandi.")</code></pre>
+  
+</section>
+
+<!-- SLIDE 7: Subject realizatsiyasi -->
+<section>
+  <h2>Subject (Publisher) kodi</h2>
+  <pre><code class="language-python">class OrderSubject:
+    def __init__(self) -> None:
+        self._observers: List[OrderObserver] = []
+
+    def attach(self, observer: OrderObserver) -> None:
+        if observer not in self._observers:
+            self._observers.append(observer)
+
+    def detach(self, observer: OrderObserver) -> None:
+        self._observers.remove(observer)
+
+    def notify(self, order_id: str, amount: float) -> None:
+        for observer in self._observers:
+            try:
+                observer.update(order_id, amount)
+            except Exception as e:
+                # Bitta kuzatuvchi xatosi boshqalarni to'xtatmaydi!
+                print(f"Xatolik kuzatuvchida: {e}")</code></pre>
+  
+</section>
+
+<!-- SLIDE 8: Bo'lim 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Event-Driven arxitektura va EventBus</h1>
+  <p>Monolitdan ko'p qatlamli va mikroxizmatli tizimlarga o'tish ko'prigi</p>
+  
+</section>
+
+<!-- SLIDE 9: Observer vs EventBus -->
+<section>
+  <h2>Observer vs Centralized EventBus</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="link-2"></i></div>
+      <h3>Klassik Observer (1:N)</h3>
+      <p>Kuzatuvchilar to'g'ridan-to'g'ri bitta Subject obyektiga yopishadi (attach).</p>
+      <ul>
+        <li>Subject o'zi ro'yxatni boshqaradi.</li>
+        <li>Kichik va bitta modul ichida qulay.</li>
+        <li>Modullar ko'paysa o'zaro bog'liqlik oshishi mumkin.</li>
+      </ul>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="route"></i></div>
+      <h3>EventBus (N:M)</h3>
+      <p>Barcha hodisalar markaziy magistral (broker) orqali e'lon qilinadi va tarqatiladi.</p>
+      <ul>
+        <li>Nomli hodisalar: <code>"user:created"</code>, <code>"order:paid"</code>.</li>
+        <li>Publishers va Subscribers bir-birini umuman ko'rmaydi.</li>
+        <li>Zamonaviy Backend (Kafka, RabbitMQ, Redis) asosi.</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 10: SVG - EventBus sxemasi -->
+<section>
+  <h2>EventBus arxitekturasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 280">
+      <!-- Publishers -->
+      <g class="fragment">
+        <rect x="40" y="50" width="180" height="60" rx="8" class="fa la" stroke-width="1.5"/>
+        <text x="130" y="85" text-anchor="middle" class="t-head" font-size="14" font-weight="bold">OrderService</text>
+        <rect x="40" y="160" width="180" height="60" rx="8" class="fa la" stroke-width="1.5"/>
+        <text x="130" y="195" text-anchor="middle" class="t-head" font-size="14" font-weight="bold">AuthService</text>
+      </g>
+
+      <!-- Arrows to Bus -->
+      <path d="M 220 80 L 370 120" class="la" stroke-width="2" fill="none"/>
+      <polygon class="ar-a" points="375,121 360,115 365,129"/>
+      <path d="M 220 190 L 370 150" class="la" stroke-width="2" fill="none"/>
+      <polygon class="ar-a" points="375,149 365,141 360,155"/>
+
+      <!-- EventBus Central -->
+      <g class="fragment">
+        <rect x="380" y="40" width="200" height="190" rx="16" class="fg lg" stroke-width="2.5"/>
+        <text x="480" y="80" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">EventBus</text>
+        <text x="480" y="110" text-anchor="middle" class="t-accent" font-size="13">"order:paid"</text>
+        <text x="480" y="135" text-anchor="middle" class="t-accent" font-size="13">"user:registered"</text>
+        <line x1="400" y1="150" x2="560" y2="150" class="lg" stroke-dasharray="3"/>
+        <text x="480" y="180" text-anchor="middle" class="t-muted" font-size="12">publish(event, data)</text>
+        <text x="480" y="205" text-anchor="middle" class="t-muted" font-size="12">subscribe(event, handler)</text>
+      </g>
+
+      <!-- Arrows to Subscribers -->
+      <path d="M 580 110 L 730 65" class="la" stroke-width="2" fill="none"/>
+      <polygon class="ar-a" points="735,63 720,60 725,74"/>
+      <path d="M 580 135 L 730 135" class="la" stroke-width="2" fill="none"/>
+      <polygon class="ar-a" points="735,135 720,128 720,142"/>
+      <path d="M 580 160 L 730 205" class="la" stroke-width="2" fill="none"/>
+      <polygon class="ar-a" points="735,207 725,196 720,210"/>
+
+      <!-- Subscribers -->
+      <g class="fragment">
+        <rect x="740" y="35" width="180" height="55" rx="8" class="fb lb" stroke-width="1.5"/>
+        <text x="830" y="68" text-anchor="middle" class="t-head" font-size="13" font-weight="bold">TelegramBot</text>
+
+        <rect x="740" y="105" width="180" height="55" rx="8" class="fc lc" stroke-width="1.5"/>
+        <text x="830" y="138" text-anchor="middle" class="t-head" font-size="13" font-weight="bold">InvoicePDFGenerator</text>
+
+        <rect x="740" y="175" width="180" height="55" rx="8" class="fn ln" stroke-width="1.5"/>
+        <text x="830" y="208" text-anchor="middle" class="t-head" font-size="13" font-weight="bold">WarehouseSync</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- SLIDE 11: EventBus kodi -->
+<section>
+  <h2>Python'da oddiy EventBus kodi</h2>
+  <pre><code class="language-python">from collections import defaultdict
+from typing import Callable, Dict, List, Any
+
+class EventBus:
+    def __init__(self) -> None:
+        self._subscribers: Dict[str, List[Callable[[Any], None]]] = defaultdict(list)
+
+    def subscribe(self, event_name: str, handler: Callable[[Any], None]) -> None:
+        self._subscribers[event_name].append(handler)
+
+    def publish(self, event_name: str, payload: Any) -> None:
+        for handler in self._subscribers.get(event_name, []):
+            try:
+                handler(payload)
+            except Exception as err:
+                print(f"[EventBus Xato] {event_name} -> {handler.__name__}: {err}")
+
+# Foydalanish:
+bus = EventBus()
+bus.subscribe("book:borrowed", lambda data: print(f"Kitob berildi: {data['title']}"))
+bus.publish("book:borrowed", {"title": "Clean Architecture", "user": "Ali"})</code></pre>
+  
+</section>
+
+<!-- SLIDE 12: Xavflar va Memory Leak -->
+<section>
+  <h2>Hodisalar arxitekturasi xavflari</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="memory-stick"></i></div>
+      <h3>1. Xotira oqimi (Memory Leak)</h3>
+      <p>Kuzatuvchi obyekt o'chirilganda <code>unsubscribe</code> qilinmasa, u Subject ro'yxatida qolib GC tomonidan tozalanmaydi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shuffle"></i></div>
+      <h3>2. Tartibsiz bajarilish</h3>
+      <p>Kuzatuvchilarning chaqirilish ketma-ketligiga suyanmang. Ular bir-biriga bog'liq bo'lmasligi shart.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="repeat"></i></div>
+      <h3>3. Siklik chaqiruvlar</h3>
+      <p>A hodisasi B ni chaqirib, B hodisasi yana A ni chaqirsa cheksiz rekursiya yuzaga keladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 13: Bo'lim 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Unit Test va Mock bilan sinash</h1>
+  <p>Hodisalarni haqiqiy tashqi xizmatlarsiz 100% mustaqil tekshirish</p>
+  
+</section>
+
+<!-- SLIDE 14: Mocking Observer -->
+<section>
+  <h2>Observer'ni Mock yordamida testlash</h2>
+  <pre><code class="language-python">from unittest.mock import MagicMock
+from order_publisher import OrderSubject
+
+def test_order_subject_notifies_all_observers():
+    # 1. Arrange: Subject va soxta kuzatuvchilar
+    subject = OrderSubject()
+    mock_email = MagicMock()
+    mock_bonus = MagicMock()
+
+    subject.attach(mock_email)
+    subject.attach(mock_bonus)
+
+    # 2. Act: Hodisani e'lon qilish
+    subject.notify(order_id="ORD-101", amount=50000.0)
+
+    # 3. Assert: Har bir mock chaqirilganini tekshirish
+    mock_email.update.assert_called_once_with("ORD-101", 50000.0)
+    mock_bonus.update.assert_called_once_with("ORD-101", 50000.0)</code></pre>
+  
+</section>
+
+<!-- QO'SHIMCHA: Telegram o'xshatishi -->
+<section>
+  <h2>O‘xshatish: Telegram kanali</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 380">
+      <g data-tip="Subject: kanal postni bir marta e'lon qiladi va obunachilarni tanimaydi">
+        <rect class="fa pulse" x="390" y="20" width="220" height="90" rx="18"/>
+        <text class="t-head" x="500" y="60" text-anchor="middle" font-size="26">Kanal</text>
+        <text class="t-muted" x="500" y="92" text-anchor="middle" font-size="20">Subject: notify()</text>
+      </g>
+      <g class="fragment" data-tip="Observer: bir xil kontrakt - update(post)">
+        <line class="la flowing" x1="450" y1="110" x2="160" y2="240"/>
+        <line class="la flowing" x1="500" y1="110" x2="500" y2="240"/>
+        <line class="la flowing" x1="550" y1="110" x2="840" y2="240"/>
+        <rect class="fc" x="60" y="240" width="200" height="80" rx="14"/><text class="t-head" x="160" y="290" text-anchor="middle" font-size="22">Email</text>
+        <rect class="fc" x="400" y="240" width="200" height="80" rx="14"/><text class="t-head" x="500" y="290" text-anchor="middle" font-size="22">Analytics</text>
+        <rect class="fc" x="740" y="240" width="200" height="80" rx="14"/><text class="t-head" x="840" y="290" text-anchor="middle" font-size="22">Loyalty</text>
+      </g>
+      <g class="fragment" data-tip="Yangi obunachi qo'shish Subject kodini o'zgartirmaydi: loose coupling">
+        <text class="t-accent" x="500" y="365" text-anchor="middle" font-size="22">subscribe() / unsubscribe() - Subject kodi o‘zgarmaydi</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- QO'SHIMCHA: Sinxron va asinxron -->
+<section>
+  <h2>Sinxron Observer yoki asinxron pub/sub?</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">Sinxron Observer</button><button type="button">Asinxron pub/sub</button></div>
+    <div class="swap-p"><div class="card"><h3>Bitta jarayon ichida</h3><p>Kuzatuvchi tugamaguncha kutiladi. Juda sodda, lekin jarayon yiqilsa hodisa yo‘qoladi.</p></div></div>
+    <div class="swap-p"><div class="card accent"><h3>Xizmatlar o‘rtasida (navbat / event bus)</h3><p>E’lon qilish tez, kuzatuvchi mustaqil. Navbat hodisani saqlaydi. Infratuzilma kerak: RabbitMQ, Kafka, SQS.</p></div></div>
+  </div>
+</section>
+
+<!-- QO'SHIMCHA: Navbat sxemasi -->
+<section>
+  <h2>Event-driven: navbat orqali</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <rect class="fa" x="20" y="120" width="190" height="90" rx="16"/><text class="t-head" x="115" y="172" text-anchor="middle" font-size="22">Producer</text>
+      <g class="fragment" data-tip="Navbat: cho'qqi yukda bufer, hodisani saqlaydi">
+        <line class="la flowing" x1="210" y1="165" x2="300" y2="165"/>
+        <rect class="fn" x="300" y="110" width="360" height="110" rx="16"/>
+        <rect class="fb" x="320" y="135" width="60" height="60" rx="8"/><rect class="fb" x="395" y="135" width="60" height="60" rx="8"/><rect class="fb" x="470" y="135" width="60" height="60" rx="8"/><rect class="fb" x="545" y="135" width="60" height="60" rx="8"/>
+        <text class="t-muted" x="480" y="250" text-anchor="middle" font-size="20">message queue</text>
+      </g>
+      <g class="fragment" data-tip="Consumer'lar mustaqil masshtablanadi">
+        <line class="lc flowing" x1="660" y1="150" x2="760" y2="90"/><line class="lc flowing" x1="660" y1="180" x2="760" y2="240"/>
+        <rect class="fc" x="760" y="50" width="200" height="80" rx="14"/><text class="t-head" x="860" y="98" text-anchor="middle" font-size="22">Consumer A</text>
+        <rect class="fc" x="760" y="200" width="200" height="80" rx="14"/><text class="t-head" x="860" y="248" text-anchor="middle" font-size="22">Consumer B</text>
+      </g>
+      <g class="fragment" data-tip="Yiqilgan hodisa yutilmaydi: dead-letter queue">
+        <line class="lb" x1="480" y1="220" x2="480" y2="280" stroke-dasharray="6 6"/>
+        <rect class="fb" x="400" y="280" width="160" height="50" rx="12"/><text class="t-head" x="480" y="313" text-anchor="middle" font-size="20">DLQ</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- QO'SHIMCHA: Xavflar flip -->
+<section>
+  <h2>Xavf va yechim. Bosing</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:140px"><div class="flip-in"><div class="face front"><h3>Xotira oqimi</h3><span class="flip-hint">bosing</span></div><div class="face back"><p><code>unsubscribe</code> / weak reference</p></div></div></div>
+    <div class="flip" style="min-height:140px"><div class="flip-in"><div class="face front"><h3>Tartibga ishonish</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Tartib kafolatlanmaydi (Kafka: faqat bitta partition ichida)</p></div></div></div>
+    <div class="flip" style="min-height:140px"><div class="flip-in"><div class="face front"><h3>Takroriy hodisa</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Idempotentlik: <code>event-id</code> bo‘yicha deduplikatsiya</p></div></div></div>
+    <div class="flip" style="min-height:140px"><div class="flip-in"><div class="face front"><h3>Xatoni yutish</h3><span class="flip-hint">bosing</span></div><div class="face back"><p><code>try/except</code> + log yoki DLQ</p></div></div></div>
+  </div>
+</section>
+
+<!-- QO'SHIMCHA: Qachon kerak -->
+<section>
+  <h2>Observer qachon kerak, qachon ortiqcha?</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="circle-check" data-anim="pulse"></i></div><h3>Kerak</h3><p>Bitta hodisaga bir nechta mustaqil javob; javob beruvchilar soni o‘zgarib turadi; UI komponentlari</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="triangle-alert" data-anim="wiggle"></i></div><h3>Ortiqcha</h3><p>Bitta qabul qiluvchi, bitta aniq harakat, 5 qatorli skript: oddiy funksiya chaqirish yetarli</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="lightbulb"></i></div><h3>Qoida</h3><p>Andoza muammoni hal qilsin, murakkablik qo‘shmasin (over-engineering)</p></div></div>
+  </div>
+</section>
+
+<!-- QO'SHIMCHA: Quiz -->
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Komponent yopildi, lekin <code>unsubscribe</code> chaqirilmadi. Nima bo‘ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Python o‘zi avtomatik obunani bekor qiladi</button>
+      <button class="opt" type="button" data-ok>Subject havolani ushlab turadi: xotira oqimi, eskirgan kuzatuvchi hodisa olaveradi</button>
+      <button class="opt" type="button">Dastur darhol <code>TypeError</code> beradi</button>
+      <button class="opt" type="button">Boshqa kuzatuvchilar ishlamay qoladi</button>
+    </div>
+    <div class="explain">Ro‘yxatda havola qolgani uchun obyekt tozalanmaydi. Yechim: <code>unsubscribe</code> yoki weak reference.</div>
+  </div>
+</section>
+
+<!-- SLIDE 15: Mini-loyiha: Kutubxona boshqaruvi -->
+<section>
+  <h2>Mini-loyiha: «Kutubxona boshqaruvi»</h2>
+  <div class="card fragment">
+    <div class="icon"><i data-ic="book-open"></i></div>
+    <h3><code>book:borrowed</code> hodisasi</h3>
+    <p>O'quvchi kutubxonadan kitob olganida tizimda 3 ta mustaqil reaksiya bo'lishi kerak:</p>
+    <ul>
+      <li><strong>AuditLogger:</strong> <code>logs/library.log</code> fayliga voqeani yozadi.</li>
+      <li><strong>StudentNotification:</strong> O'quvchiga qaytarish muddati (14 kun) haqida xabar jo'natadi.</li>
+      <li><strong>InventoryTracker:</strong> Mavjud kitoblar zaxirasini bittaga kamaytiradi.</li>
+    </ul>
+  </div>
+  
+</section>
+
+<!-- SLIDE 16: Interfaol savol -->
+<section>
+  <h2>Tezkor savol: Tahlil qiling</h2>
+  <p class="muted">Kuzatuvchi ichida xatolik yuz bersa nima bo'ladi?</p>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-x"></i></div>
+      <h3>Noto'g'ri yondashuv</h3>
+      <p><code>notify()</code> ichida <code>try/except</code> yo'q. 1-kuzatuvchi yiqilsa, qolgan 4 ta kuzatuvchi hech qachon xabar olmaydi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>To'g'ri yondashuv</h3>
+      <p>Har bir kuzatuvchi chaqiruvi alohida izolyatsiya qilinadi. Xato qayd etiladi (log), ammo zanjir davom etadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- SLIDE 17: Xulosa -->
+<section>
+  <h2>Bugungi dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Bo'sh bog'liqlik</h3>
+      <p>Subject va Observer bir-birining ichki tuzilishini bilmaydi, faqat umumiy kontraktga suyanadi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>OCP himoyasi</h3>
+      <p>Yangi kuzatuvchilar mavjud kodni o'zgartirmasdan tizimga qo'shiladi va chiqariladi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-arrow-right"></i></div>
+      <h3>Keyingi dars</h3>
+      <p>11-darsda backend dunyosining asosi &mdash; <strong>REST API va HTTP protokoli</strong>ga kirishamiz.</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

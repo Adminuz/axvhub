@@ -1,101 +1,414 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>Branch, Merge va Pull Request jarayonlari</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Branch, Merge va Pull Request jarayonlari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Branch, Merge va Pull Request jarayonlari</h1></header>
-<div class="badges"><span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">4-hafta &amp;middot; 11-dars</span><span class="badge">Feature branching, merge konfliktlari, PR va Code Review</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "Konflikt qachon yuzaga keladi?", "o": ["Branch nomi uzun bo'lsa", "Commit xabari bo'sh bo'lsa", "Bir faylning bir xil satri ikki branchda turlicha o'zgarsa", "Internet uzilsa"], "a": 2, "e": "Git qaysi versiya to'g'riligini bilmaydi va to'xtab, qo'lda hal qilishni so'raydi."}, {"q": "Pull Request nima?", "o": ["Branchdagi o'zgarishni asosiy branchga qo'shish uchun rasmiy so'rov", "Fayllarni o'chirish buyrug'i", "Yangi GitHub akkaunt", "Konfliktni avtomatik hal qiluvchi dastur"], "a": 0, "e": "PR jamoaga kodni ko'rib chiqish va fikr bildirish imkonini beradi."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 11-dars: Branch, Merge va Pull Request jarayonlari -->
+
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Branch, Merge va Pull Request jarayonlari</h1>
+  <p class="muted">Feature branching, merge konfliktlari, PR va Code Review</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">4-hafta &middot; 11-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimani o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="git-branch" data-anim="float"></i></div><h3>Branch</h3><p>Loyihaning mustaqil shoxchasi: xavfsiz tajriba maydoni</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="git-merge" data-anim="pulse"></i></div><h3>Merge</h3><p>Ikki branchni bitta tarixga birlashtirish va konfliktlar</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="git-pull-request" data-anim="draw"></i></div><h3>Pull Request</h3><p>Rasmiy so'rov va jamoaviy Code Review</p></div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Branch</h1>
+  <p>Daraxtning shoxlari kabi: tanaga zarar bermaydi</p>
+</section>
+
+<section>
+  <h2>Daraxt va shoxlar</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 380">
+      <g data-tip="main: daraxt tanasi, asosiy barqaror loyiha.">
+        <rect class="fg" x="60" y="170" width="880" height="40" rx="20"/>
+        <text class="t-head" x="500" y="198" text-anchor="middle" font-size="24">main (asosiy loyiha)</text>
+      </g>
+      <g class="fragment" data-tip="feature/login: yangi funksiya shoxi.">
+        <line class="la flowing" x1="250" y1="170" x2="330" y2="70" stroke-width="6"/>
+        <rect class="fa" x="300" y="20" width="260" height="56" rx="16"/>
+        <text class="t-head" x="430" y="56" text-anchor="middle" font-size="22">feature/login</text>
+      </g>
+      <g class="fragment" data-tip="bugfix/profile-crash: xatoni tuzatish shoxi.">
+        <line class="lb flowing" x1="520" y1="210" x2="600" y2="310" stroke-width="6"/>
+        <rect class="fb" x="560" y="310" width="300" height="56" rx="16"/>
+        <text class="t-head" x="710" y="346" text-anchor="middle" font-size="22">bugfix/profile-crash</text>
+      </g>
+      <g class="fragment" data-tip="refactor/home-screen: kodni tartiblash shoxi.">
+        <line class="lc flowing" x1="760" y1="170" x2="820" y2="90" stroke-width="6"/>
+        <rect class="fc" x="650" y="30" width="300" height="56" rx="16"/>
+        <text class="t-head" x="800" y="66" text-anchor="middle" font-size="22">refactor/home-screen</text>
+      </g>
+    </svg>
+  </div>
+  <p class="small">Qismlarni bosing. Har bir shox mustaqil rivojlanadi, tana buzilmaydi.</p>
+  
+</section>
+
+<section>
+  <h2>Nega alohida branch?</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>To'g'ridan-to'g'ri main</h3>Kichik xato butun loyihani ishdan chiqaradi. Katta jamoada oqibat halokatli.</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>Alohida branch</h3>Xavfsiz va mustaqil: o'zgarish asosiy loyihaga tegmaydi.</div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Ichki ko'rinish: branch bu ko'rsatkich</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <g class="fragment"><circle class="fa" cx="100" cy="110" r="40"/><text class="t-head" x="100" y="120" text-anchor="middle" font-size="26">A</text></g>
+      <g class="fragment"><line class="ln" x1="140" y1="110" x2="200" y2="110" stroke-width="4"/><circle class="fa" cx="240" cy="110" r="40"/><text class="t-head" x="240" y="120" text-anchor="middle" font-size="26">B</text></g>
+      <g class="fragment"><line class="ln" x1="280" y1="110" x2="340" y2="110" stroke-width="4"/><circle class="fa" cx="380" cy="110" r="40"/><text class="t-head" x="380" y="120" text-anchor="middle" font-size="26">C</text></g>
+      <g class="fragment"><line class="ln" x1="420" y1="110" x2="480" y2="110" stroke-width="4"/><circle class="fg" cx="520" cy="110" r="40"/><text class="t-head" x="520" y="120" text-anchor="middle" font-size="26">D</text><text class="t-accent" x="520" y="190" text-anchor="middle" font-size="24">main</text></g>
+      <g class="fragment"><line class="lb flowing" x1="395" y1="148" x2="470" y2="250" stroke-width="4"/><circle class="fb" cx="510" cy="270" r="40"/><text class="t-head" x="510" y="280" text-anchor="middle" font-size="26">E</text></g>
+      <g class="fragment"><line class="lb" x1="550" y1="270" x2="610" y2="270" stroke-width="4"/><circle class="fb" cx="650" cy="270" r="40"/><text class="t-head" x="650" y="280" text-anchor="middle" font-size="26">F</text><text class="t-accent" x="800" y="280" text-anchor="middle" font-size="24">feature/ui</text></g>
+    </svg>
+  </div>
+  <p class="small">Commitlar zanjir, branch esa zanjirdagi nuqtaga ishora. Shuning uchun tez va yengil.</p>
+  
+</section>
+
+<section data-auto-animate>
+  <h2>Branch yaratish</h2>
+  <pre class="terminal" data-id="b"><code class="language-bash" data-trim data-noescape>
+git checkout -b login-feature
+</code></pre>
+  <p>Bitta buyruq: branch yaratadi va unga o'tadi.</p>
+  
+</section>
+
+<section data-auto-animate>
+  <h2>Branch ichida ishlash</h2>
+  <pre class="terminal" data-id="b"><code class="language-bash" data-trim data-noescape>
+git checkout -b login-feature
+git add .
+git commit -m "Login ekrani qo'shildi"
+git checkout main
+</code></pre>
+  <p>main'ga qaytsak, login kodi u yerda yo'q: o'zgarish shoxda qoldi.</p>
+  
+</section>
+
+<section>
+  <h2>Branch nomlash standarti</h2>
+  <div class="chips"><span class="chip">feature/login</span><span class="chip">bugfix/profile-crash</span><span class="chip">hotfix/payment-error</span><span class="chip t">refactor/home-screen</span></div>
+  <ul class="mt">
+    <li class="fragment">Nom branchning maqsadini bildiradi</li>
+    <li class="fragment">Jamoa bir qarashda ishni tushunadi</li>
+  </ul>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Merge</h1>
+  <p>Ikki branchni bitta tarixga birlashtirish</p>
+</section>
+
+<section>
+  <h2>Merge: shox tanaga qo'shiladi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <g><circle class="fg" cx="100" cy="100" r="36"/><circle class="fg" cx="240" cy="100" r="36"/><circle class="fg" cx="380" cy="100" r="36"/><circle class="fg" cx="520" cy="100" r="36"/>
+        <line class="ln" x1="136" y1="100" x2="204" y2="100" stroke-width="4"/><line class="ln" x1="276" y1="100" x2="344" y2="100" stroke-width="4"/><line class="ln" x1="416" y1="100" x2="484" y2="100" stroke-width="4"/>
+        <text class="t-muted" x="100" y="40" text-anchor="middle" font-size="22">main</text></g>
+      <g class="fragment"><line class="lb" x1="395" y1="130" x2="450" y2="230" stroke-width="4"/><circle class="fb" cx="490" cy="250" r="36"/><line class="lb" x1="526" y1="250" x2="584" y2="250" stroke-width="4"/><circle class="fb" cx="620" cy="250" r="36"/><text class="t-muted" x="560" y="318" text-anchor="middle" font-size="22">login-feature</text></g>
+      <g class="fragment"><line class="lg flowing" x1="556" y1="100" x2="744" y2="100" stroke-width="4"/><line class="lb flowing" x1="656" y1="236" x2="760" y2="130" stroke-width="4"/><circle class="fc pulse" cx="790" cy="100" r="44"/><text class="t-head" x="790" y="110" text-anchor="middle" font-size="26">M</text><text class="t-accent" x="880" y="200" text-anchor="middle" font-size="22">merge commit</text></g>
+    </svg>
+  </div>
+  <p class="small">Git ikki branchdagi commitlarni solishtiradi va yagona kodga birlashtiradi.</p>
+  
+</section>
+
+<section>
+  <section>
+    <h2>Merge usullari</h2>
+    <div class="cards two">
+      <div class="card fragment fade-up"><div class="icon"><i data-ic="git-merge"></i></div><h3>Oddiy merge</h3><p>Ikki tarix saqlanadi, merge commit qo'shiladi</p></div>
+      <div class="card fragment fade-up"><div class="icon"><i data-ic="git-compare"></i></div><h3>Fast-forward va squash</h3><p>Dastur ro'yxatiga kirgan usullar. Chuqurroq: pastga</p></div>
+    </div>
+    
+  </section>
+  <section>
+    <h2>Fast-forward va squash</h2>
+    <ul>
+      <li class="fragment"><b>Fast-forward:</b> main shoxdan keyin o'zgarmagan bo'lsa, pointer shunchaki oldinga suriladi</li>
+      <li class="fragment"><b>Squash:</b> bir nechta mayda commit bitta commitga birlashtiriladi</li>
+    </ul>
+    <p class="small">Aniqlik: hujjat bu ikki usulni faqat nomi bilan keltiradi, tavsif umumiy ma'lumot.</p>
+    
+  </section>
+  <section>
+    <h2>Rebase: tarixni silliqlash</h2>
+    <p>Merge ikki branchni parallel saqlaydi. Rebase esa branchni asosiy branch ustiga qaytadan "yopishtiradi".</p>
+    <div class="callout warn"><i data-ic="triangle-alert"></i>Noto'g'ri ishlatilsa xatolarga olib keladi. Jamoalarda odatda merge oldidan branchni yangilash uchun ishlatiladi.</div>
+    
+  </section>
+</section>
+
+<section>
+  <h2>Merge konflikti</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <g class="fragment" data-tip="main'da: fun loadUser()">
+        <rect class="fg" x="40" y="40" width="360" height="110" rx="18"/>
+        <text class="t-head" x="220" y="82" text-anchor="middle" font-size="24">main</text>
+        <text class="t-muted" x="220" y="122" text-anchor="middle" font-size="22">fun loadUser()</text>
+      </g>
+      <g class="fragment" data-tip="login-feature'da: fun loadUserData()">
+        <rect class="fb" x="40" y="190" width="360" height="110" rx="18"/>
+        <text class="t-head" x="220" y="232" text-anchor="middle" font-size="24">login-feature</text>
+        <text class="t-muted" x="220" y="272" text-anchor="middle" font-size="22">fun loadUserData()</text>
+      </g>
+      <g class="fragment"><line class="ln flowing" x1="400" y1="95" x2="560" y2="170" stroke-width="4"/><line class="ln flowing" x1="400" y1="245" x2="560" y2="190" stroke-width="4"/></g>
+      <g class="fragment pulse" data-tip="Git qaysi versiya to'g'riligini bilmaydi: to'xtaydi.">
+        <circle class="fc" cx="700" cy="180" r="90"/>
+        <text class="t-head" x="700" y="175" text-anchor="middle" font-size="26">CONFLICT</text>
+        <text class="t-muted" x="700" y="208" text-anchor="middle" font-size="22">bir xil qator</text>
+      </g>
+    </svg>
+  </div>
+  <p class="small">Bir faylning bir xil satri ikki branchda turlicha o'zgarsa, konflikt yuzaga keladi.</p>
+  
+</section>
+
+<section>
+  <h2>Git konfliktni shunday ko'rsatadi</h2>
+  <pre><code class="language-text" data-trim data-noescape data-line-numbers="1|2|3|4|5">
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+fun loadUser() { ... }
+=======
+fun loadUserData() { ... }
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; login-feature
+</code></pre>
+  <p class="small">Tepasi main'dagi kod, pasti login-feature'dagi kod.</p>
+  
+</section>
+
+<section>
+  <h2>Konfliktni hal qilish: 4 qadam</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="search" data-anim="pulse"></i></div><h3>1. Faylni oching</h3><p>Belgilar (&lt;&lt;&lt;, ===, &gt;&gt;&gt;) turgan joyni toping.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="list-checks" data-anim="float"></i></div><h3>2. Variantni tanlang</h3><p>Biri to'g'rimi yoki ikkisini birlashtirasizmi?</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="eraser" data-anim="wiggle"></i></div><h3>3. Belgilarni o'chiring</h3><p>Git qo'shgan belgilar qolmasin, kod to'g'ri bo'lsin.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="circle-check" data-anim="bounce"></i></div><h3>4. add va commit</h3><p>Konflikt hal bo'ldi, merge yakunlanadi.</p></div></div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Mini-test: konflikt</h2>
+  <div class="quiz">
+    <p class="q">Konflikt qachon yuzaga keladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Branch nomi uzun bo'lsa</button>
+      <button class="opt" type="button">Commit xabari bo'sh bo'lsa</button>
+      <button class="opt" type="button" data-ok>Bir faylning bir xil satri ikki branchda turlicha o'zgarsa</button>
+      <button class="opt" type="button">Internet uzilsa</button>
+    </div>
+    <div class="explain">Git qaysi versiya to'g'riligini bilmaydi va to'xtab, qo'lda hal qilishni so'raydi.</div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Pull Request va Review</h1>
+  <p>Rasmiy so'rov va jamoaviy tekshiruv</p>
+</section>
+
+<section>
+  <h2>Pull Request jarayoni</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+      <g class="fragment"><rect class="fa" x="20" y="100" width="170" height="100" rx="18"/><text class="t-head" x="105" y="158" text-anchor="middle" font-size="24">Branch</text></g>
+      <g class="fragment"><line class="la flowing" x1="192" y1="150" x2="232" y2="150" stroke-width="4"/><polygon class="ar-a" points="248,150 232,159 232,141"/></g>
+      <g class="fragment"><rect class="fb" x="250" y="100" width="170" height="100" rx="18"/><text class="t-head" x="335" y="158" text-anchor="middle" font-size="24">Push</text></g>
+      <g class="fragment"><line class="la flowing" x1="422" y1="150" x2="462" y2="150" stroke-width="4"/><polygon class="ar-a" points="478,150 462,159 462,141"/></g>
+      <g class="fragment"><rect class="fc" x="480" y="100" width="170" height="100" rx="18"/><text class="t-head" x="565" y="158" text-anchor="middle" font-size="24">PR ochish</text></g>
+      <g class="fragment"><line class="la flowing" x1="652" y1="150" x2="692" y2="150" stroke-width="4"/><polygon class="ar-a" points="708,150 692,159 692,141"/></g>
+      <g class="fragment"><rect class="fn" x="710" y="100" width="130" height="100" rx="18"/><text class="t-head" x="775" y="158" text-anchor="middle" font-size="24">Review</text></g>
+      <g class="fragment"><line class="la flowing" x1="842" y1="150" x2="862" y2="150" stroke-width="4"/><polygon class="ar-a" points="878,150 862,159 862,141"/></g>
+      <g class="fragment"><rect class="fg" x="880" y="100" width="110" height="100" rx="18"/><text class="t-head" x="935" y="158" text-anchor="middle" font-size="24">Merge</text></g>
+    </svg>
+  </div>
+  <p class="small">PR: "mana shunday o'zgarish kiritdim, iltimos tekshirib chiqing" degan rasmiy murojaat.</p>
+  
+</section>
+
+<section>
+  <h2>Feature branch modeli: "Maktab Jadvali"</h2>
+  <pre class="terminal"><code class="language-bash" data-trim data-noescape data-line-numbers="1|2-3|4">
+git checkout -b feature/lessons-screen
+git add .
+git commit -m "Lessons screen UI created"
+git push origin feature/lessons-screen
+</code></pre>
+  <p class="small">Keyin platformada PR ochiladi, jamoa ko'rib chiqadi, sharhlar hisobga olinadi va merge qilinadi.</p>
+  
+</section>
+
+<section>
+  <h2>Code Review: nimani tekshiramiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="sparkles" data-anim="float"></i></div><h3>Toza kod</h3><p>Tushunarli, ortiqcha takrorlanishsiz</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="shield-check" data-anim="pulse"></i></div><h3>Xavfsizlik</h3><p>Xavfsizlik xatolari bormi?</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="layers" data-anim="float"></i></div><h3>Arxitektura</h3><p>Qoidalarga amal qilinganmi?</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="smartphone" data-anim="wiggle"></i></div><h3>UI natijasi</h3><p>Ekran kutilgandek ishlayaptimi?</p></div>
+  </div>
+  
+</section>
+
+<section>
+  <section>
+    <h2>Branch strategiyalari</h2>
+    <div class="chips"><span class="chip">Git Flow</span><span class="chip">GitHub Flow</span><span class="chip t">Trunk Based Development</span></div>
+    <p class="muted mt">Android jamoalar ko'pincha GitHub Flow yoki Trunk Based'ni qo'llaydi. Chuqurroq: pastga</p>
+    
+  </section>
+  <section>
+    <h2>Git Flow: branch turlari</h2>
+    <ul>
+      <li class="fragment"><b>main:</b> yakuniy barqaror kod</li>
+      <li class="fragment"><b>develop:</b> rivojlanayotgan kod</li>
+      <li class="fragment"><b>feature:</b> yangi funksiyalar</li>
+      <li class="fragment"><b>release:</b> nashrga tayyor kod</li>
+      <li class="fragment"><b>hotfix:</b> zudlik bilan tuzatishlar</li>
+    </ul>
+    
+  </section>
+</section>
+
+<section>
+  <h2>PR madaniyati</h2>
+  <div class="quote">PR ochish bilan siz boshqalarning vaqtini hurmat qilasiz va kodingizga mas'uliyat bilan qaraysiz.</div>
+  <div class="chips mt"><span class="chip">toza kod</span><span class="chip">ma'noli commit</span><span class="chip">kichik PR</span><span class="chip t">hurmatli muloqot</span></div>
+  
+</section>
+
+<section>
+  <h2>Odatiy xatolar</h2>
+  <div class="callout bad"><i data-ic="circle-x"></i>To'g'ridan-to'g'ri main'ga yozish: xato butun loyihani buzadi.</div>
+  <div class="callout warn"><i data-ic="triangle-alert"></i>Konflikt belgilarini (&lt;&lt;&lt;&lt;&lt;&lt;&lt;, =======) o'chirmay commit qilish.</div>
+  <div class="callout warn"><i data-ic="triangle-alert"></i>Juda katta PR: ko'rib chiqish qiyin.</div>
+  <div class="callout tip"><i data-ic="lightbulb"></i>Yechim: feature branch, kichik PR, ma'noli commit va review.</div>
+  
+</section>
+
+<section>
+  <h2>Atamalarni aylantiring</h2>
+  <div class="cards three">
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="git-branch"></i></div><h3>Branch</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Loyihaning mustaqil shoxchasi.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="git-merge"></i></div><h3>Merge</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Ikki branchning yagona kodga aylanishi.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:210px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="git-pull-request"></i></div><h3>Pull Request</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>O'zgarishni birlashtirish uchun rasmiy so'rov.</p></div>
+    </div></div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Mini-test: PR</h2>
+  <div class="quiz">
+    <p class="q">Pull Request nima?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Branchdagi o'zgarishni asosiy branchga qo'shish uchun rasmiy so'rov</button>
+      <button class="opt" type="button">Fayllarni o'chirish buyrug'i</button>
+      <button class="opt" type="button">Yangi GitHub akkaunt</button>
+      <button class="opt" type="button">Konfliktni avtomatik hal qiluvchi dastur</button>
+    </div>
+    <div class="explain">PR jamoaga kodni ko'rib chiqish va fikr bildirish imkonini beradi.</div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Raqamlarda bugungi dars</h2>
+  <div class="stats">
+    <div class="stat fragment"><div class="v"><span class="count" data-to="3" data-suf="">0</span></div><div class="l">asosiy jarayon</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="4" data-suf="">0</span></div><div class="l">branch turi nomi</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="5" data-suf="">0</span></div><div class="l">review mezoni</div></div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>30 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Yangi branch oching, unda fayl yarating va commit qiling. main'ga qaytib faylni tekshiring.</div>
+  <div class="task"><span class="level mid">O'rta</span>Branchni main'ga merge qiling va <code>git log --oneline</code> bilan tarixni ko'ring.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Sun'iy konflikt hosil qiling, qo'lda hal qiling va merge'ni yakunlang.</div>
+  
+</section>
+
+<section>
+  <h2>Xulosa</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="git-branch"></i></div><h3>Branch</h3><p>Mustaqillik va xavfsizlik.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="git-merge"></i></div><h3>Merge</h3><p>Hammasini yagona tarixga birlashtiradi; konfliktni qo'lda hal qilamiz.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="git-pull-request"></i></div><h3>Pull Request</h3><p>Jamoaviy ko'rib chiqish orqali sifat.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="users"></i></div><h3>Madaniyat</h3><p>Kichik PR, ma'noli commit, hurmatli sharh.</p></div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Uyga vazifa va anons</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="git-branch"></i></div><h3>1. Feature branch</h3><p>feature/ nomli branch ochib, 2 commit qiling va merge qiling.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="git-merge-conflict"></i></div><h3>2. Konflikt</h3><p>Konflikt hosil qilib, qo'lda hal qiling.</p></div>
+  </div>
+  <p class="muted mt">Keyingi dars: Continuous Integration (CI/CD) tushunchasi.</p>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

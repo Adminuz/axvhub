@@ -1,101 +1,331 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>Loyihani yakunlash</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Loyihani yakunlash</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Loyihani yakunlash</h1></header>
-<div class="badges"><span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">6-hafta · 17-dars</span><span class="badge">Loyiha strukturasi, settings (.env), exception handler, CORS, Swagger/ReDoc hujjati, testlar, alembic upgrade</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "Fayl hajmi chegaradan oshsa qaysi status?", "o": ["413", "415", "404", "201"], "a": 0, "e": "413 — Payload Too Large."}, {"q": "<code>.env<\/code> fayli GitHub ga yuboriladimi?", "o": ["Yo'q, <code>.gitignore<\/code> ga qo'shiladi", "Ha, har doim", "Faqat parol bo'lsa", "Faqat dev da"], "a": 0, "e": "Maxfiy qiymatlar repozitoriyga tushmasligi kerak."}, {"q": "CORS nima uchun kerak?", "o": ["Boshqa manzildagi frontend ga API dan foydalanishga ruxsat berish", "Parolni shifrlash", "Rasmlarni siqish", "Bazani tezlatish"], "a": 0, "e": "Brauzer boshqa origin so'rovlarini cheklaydi, CORS ruxsat beradi."}, {"q": "<code>alembic upgrade head<\/code> nima qiladi?", "o": ["Bazani eng oxirgi migratsiyaga ko'taradi", "Bazani o'chiradi", "Kodni yig'adi", "Testlarni ishga tushiradi"], "a": 0, "e": "Barcha migratsiyalarni oxirigacha qo'llaydi."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Loyihani yakunlash</h1>
+  <p class="muted">Loyiha strukturasi, settings (.env), exception handler, CORS, Swagger/ReDoc hujjati, testlar, alembic upgrade</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">6-hafta · 17-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimalarni o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="folder-tree" data-anim="pulse"></i></div><h3>Struktura va sozlamalar</h3><p>Settings va .env</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="triangle-alert" data-anim="float"></i></div><h3>Xatolar va CORS</h3><p>Bir xil format</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="check-check" data-anim="blink"></i></div><h3>Hujjat, test, migratsiya</h3><p>Yakuniy tekshiruv</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">Fayl hajmi chegaradan oshsa qaysi status?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>413</button>
+    <button class="opt" type="button">415</button>
+    <button class="opt" type="button">404</button>
+    <button class="opt" type="button">201</button>
+    </div>
+    <div class="explain">413 — Payload Too Large.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Struktura va sozlamalar</h1>
+  <p>Settings va .env</p>
+</section>
+
+<section>
+  <h2>Sozlamalar yo'li</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">.env</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">Settings</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">settings.x</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Ilova</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Kod o'zgarmaydi, .env o'zgaradi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Settings sinfi</h2>
+  <pre><code class="language-python" data-trim data-line-numbers="1|4-5|6|7|9|12">
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+class Settings(BaseSettings):
+    app_name: str = "Book API"
+    debug: bool = False
+    database_url: str = "sqlite+aiosqlite:///./dev.db"
+    cors_origins: list[str] = ["http://localhost:3000"]
+
+    model_config = SettingsConfigDict(env_file=".env")
+
+
+settings = Settings()
+  </code></pre>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i><code>.env</code> da <code>DEBUG=true</code> yoki <code>CORS_ORIGINS=["https://sayt.uz"]</code> kabi yoziladi. Maxfiy qiymatlar kodda va GitHub da bo'lmasin.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>.env</code> fayli GitHub ga yuboriladimi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Yo'q, <code>.gitignore</code> ga qo'shiladi</button>
+    <button class="opt" type="button">Ha, har doim</button>
+    <button class="opt" type="button">Faqat parol bo'lsa</button>
+    <button class="opt" type="button">Faqat dev da</button>
+    </div>
+    <div class="explain">Maxfiy qiymatlar repozitoriyga tushmasligi kerak.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Xatolar va CORS</h1>
+  <p>Bir xil format</p>
+</section>
+
+<section>
+  <h2>Xato javobi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Xato yuz berdi</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">Handler</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Bir xil JSON</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Frontend</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Format hamma joyda bir xil</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Handler va CORS</h2>
+  <pre><code class="language-python" data-trim data-line-numbers="1-6|8-9|10-13">
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.cors_origins,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.exception_handler(HTTPException)
+async def http_error(request: Request, exc: HTTPException):
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"error": {"status": exc.status_code, "message": exc.detail}},
+    )
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Validatsiya xatosi uchun ham (<code>RequestValidationError</code>) shunday handler yozing va <code>422</code> qaytaring.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">CORS nima uchun kerak?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Boshqa manzildagi frontend ga API dan foydalanishga ruxsat berish</button>
+    <button class="opt" type="button">Parolni shifrlash</button>
+    <button class="opt" type="button">Rasmlarni siqish</button>
+    <button class="opt" type="button">Bazani tezlatish</button>
+    </div>
+    <div class="explain">Brauzer boshqa origin so'rovlarini cheklaydi, CORS ruxsat beradi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Hujjat, test, migratsiya</h1>
+  <p>Yakuniy tekshiruv</p>
+</section>
+
+<section>
+  <h2>Yakuniy tekshiruv</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">pytest</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">alembic</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">upgrade head</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="145" text-anchor="middle" font-size="22">/docs</text><text class="t-head" x="625" y="171" text-anchor="middle" font-size="22">tekshiruvi</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">README</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Hammasi yashil bo'lsa, loyiha tayyor</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Testlar</h2>
+  <pre><code class="language-python" data-trim data-line-numbers="1-4|6-9|12-15">
+from fastapi.testclient import TestClient
+from app.main import app
+
+client = TestClient(app)
+
+
+def test_health():
+    r = client.get("/health")
+    assert r.status_code == 200
+    assert r.json() == {"status": "ok"}
+
+
+def test_not_found_format():
+    r = client.get("/books/5")
+    assert r.status_code == 404
+    assert r.json()["error"]["message"] == "Kitob topilmadi"
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Terminalda <code>pytest -q</code> va <code>alembic upgrade head</code>. <code>alembic current</code> joriy migratsiyani ko'rsatadi.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>alembic upgrade head</code> nima qiladi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Bazani eng oxirgi migratsiyaga ko'taradi</button>
+    <button class="opt" type="button">Bazani o'chiradi</button>
+    <button class="opt" type="button">Kodni yig'adi</button>
+    <button class="opt" type="button">Testlarni ishga tushiradi</button>
+    </div>
+    <div class="explain">Barcha migratsiyalarni oxirigacha qo'llaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Kod ichida va .env da sozlama</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>Kod ichida</h3>Parol repozitoriyga tushadi, muhit almashtirish qiyin</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3><code>.env</code></h3>Maxfiy, muhitga mos, <code>.env.example</code> bilan</div>
+  </div>
+  <div class="card accent fragment mt"><p>Sozlamalarni doim <code>.env</code> da saqlang.</p></div>
+</section>
+
+<section>
+  <h2>Atamalar. Bosing</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>Settings</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Sozlamalarni <code>.env</code> dan o'quvchi sinf</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>CORS</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Boshqa manzildan so'rovga ruxsat siyosati</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>exception handler</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Xatoni bir xil javobga aylantiruvchi funksiya</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>alembic</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Baza migratsiyalari vositasi</p></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Loyihani yakunlash</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="folder-tree" data-anim="pulse"></i></div><h3>1. Tartiblang</h3><p>Struktura va Settings.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="shield"></i></div><h3>2. Mustahkamlang</h3><p>Xato formati va CORS.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="check-check"></i></div><h3>3. Tekshiring</h3><p>pytest va alembic.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>Yakuniy checklist</h2>
+    <table>
+      <thead><tr><th>Tekshiruv</th><th>Buyruq yoki joy</th><th>Natija</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td>Testlar</td><td><code>pytest -q</code></td><td>hammasi yashil</td></tr>
+        <tr class="fragment"><td>Migratsiya</td><td><code>alembic upgrade head</code></td><td>xatosiz</td></tr>
+        <tr class="fragment"><td>Hujjat</td><td><code>/docs</code>, <code>/redoc</code></td><td>to'g'ri tavsif</td></tr>
+        <tr class="fragment"><td>Maxfiylik</td><td><code>.gitignore</code></td><td><code>.env</code> yo'q</td></tr>
+        <tr class="fragment"><td>README</td><td>ishga tushirish</td><td>yo'riqnoma bor</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: checklist</p>
+  </section>
+  <section>
+    <h2>Settings qo'shish</h2>
+    <ol class="steps-n">
+      <li class="fragment"><code>pip install pydantic-settings</code> ni bajaring.</li>
+      <li class="fragment"><code>Settings</code> sinfini yozing va <code>.env</code> yarating.</li>
+      <li class="fragment"><code>settings.database_url</code> ni bazani ulashda ishlating.</li>
+    </ol>
+  </section>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">Maxfiylik xatosi</h2>
+  <pre data-id="c"><code class="language-python" data-trim>
+SECRET = "abc123"
+  </code></pre>
+</section>
+<section data-auto-animate>
+  <h2 data-id="t">Maxfiylik xatosi</h2>
+  <pre data-id="c"><code class="language-python" data-trim data-line-numbers="1|1">
+SECRET = settings.secret_key
+  </code></pre>
+</section>
+
+<section>
+  <h2>Yakuniy loyiha raqamlarda</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="3" data-suf="">0</span></div><div class="l"> ta xato: HTTPException, validatsiya, umumiy</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="3" data-suf="">0</span></div><div class="l"> ta test: health, 404, 422</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="1" data-suf="">0</span></div><div class="l"> ta komanda: alembic upgrade head</div></div>
+  </div>
+  <p class="small fragment">Yakunlash — kod ishlaydi va boshqalar uni ishga tushira oladi.</p>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Settings: <code>app_name</code> va <code>debug</code> maydonli <code>Settings</code> yozing.</div>
+  <div class="task"><span class="level easy">Oson</span><code>.env.example</code>: Maxfiy qiymatsiz <code>.env.example</code> namunasini yozing.</div>
+  <div class="task"><span class="level mid">O'rta</span>Handler: 404 xatosini <code>{"error": ...}</code> formatida qaytaring.</div>
+  <div class="task"><span class="level mid">O'rta</span>CORS: Faqat <code>http://localhost:3000</code> ga ruxsat bering.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Test: <code>/health</code> uchun test yozing.</div>
+  <div class="task"><span class="level hard">Bonus</span>Hujjat: Swagger da endpointlarni <code>tags</code> bilan guruhlang.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Sozlamalar</h3><p><code>.env</code> va <code>Settings</code>; GitHub ga yubormang.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Xato va CORS</h3><p>Bir xil JSON, kerakli origin lar.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Tekshiruv</h3><p><code>pytest</code>, <code>alembic upgrade head</code>, Swagger.</p></div>
+  </div>
+  <p class="small fragment mt">Uyga vazifa: Loyihani yakunlash.</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="container" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: Docker orqali deploy</h1>
+  <p class="muted">Dockerfile va compose</p>
+  <span class="badge">6-hafta · 18-dars</span>
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

@@ -1,101 +1,359 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>Foydalanuvchilarni Boshqarish</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Foydalanuvchilarni Boshqarish</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Foydalanuvchilarni Boshqarish</h1></header>
-<div class="badges"><span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">2-hafta &amp;middot; 4-dars</span><span class="badge">Identifikatsiya, Autentifikatsiya, Avtorizatsiya. Session va JWT tokenlar</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "Nima sababdan JWT tokenda Signature (raqamli imzo) kerak?", "o": ["Token fayl hajmini kichraytirish uchun", "Agar xaker payload ichidagi ma'lumotni o'zgartirsa, server buni darhol sezib so'rovni rad etishi uchun", "Faqat brauzer rangini o'zgartirish uchun"], "a": 1, "e": "To'g'ri! Signature tokenning daxlsizligini ta'minlaydi: u serverning maxfiy SECRET_KEY kaliti bilan imzolanadi va soxtalashtirishdan himoya qiladi."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 1-slayd: Sarlavha -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Foydalanuvchilarni Boshqarish</h1>
+  <p class="muted">Identifikatsiya, Autentifikatsiya, Avtorizatsiya. Session va JWT tokenlar</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">2-hafta &middot; 4-dars</span>
+  
+</section>
+
+<!-- 2-slayd: Dars rejasi -->
+<section>
+  <h2>Dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield" data-anim="pulse"></i></div>
+      <h3>Xavfsizlikning 3 ustuni</h3>
+      <p>Identifikatsiya, autentifikatsiya va avtorizatsiya tushunchalari va ularning farqi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="key" data-anim="float"></i></div>
+      <h3>Session vs JWT</h3>
+      <p>Stateful va Stateless autentifikatsiya, JSON Web Token anatomiyasi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="user-check" data-anim="spin"></i></div>
+      <h3>Custom User &amp; DRF</h3>
+      <p>Email orqali kiruvchi Custom User modeli va SimpleJWT sozlamalari.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3-slayd: Bo'lim 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Xavfsizlikning 3 ustuni</h1>
+  <p>Foydalanuvchini aniqlash va huquqlarni tekshirish</p>
+</section>
+
+<!-- 4-slayd: SVG Sxema: 3 ustun -->
+<section>
+  <h2>Xavfsizlikning 3 bosqichi</h2>
+  <p>Har bir foydalanuvchi tizimga kirishda shu zanjirdan o'tadi</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300" width="100%" height="300">
+      <!-- 1. Identifikatsiya -->
+      <rect x="50" y="60" width="260" height="180" rx="14" class="fa"></rect>
+      <text x="180" y="105" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">1. Identifikatsiya</text>
+      <text x="180" y="145" text-anchor="middle" class="t-accent" font-size="16">"Siz kimsiz?"</text>
+      <text x="180" y="180" text-anchor="middle" class="t-muted" font-size="14">Email / Login kiritish</text>
+      <text x="180" y="205" text-anchor="middle" class="t-muted" font-size="14">ali@mail.uz</text>
+
+      <!-- Strelka 1 -->
+      <path d="M 310 150 L 370 150" class="la flowing" stroke-width="3"></path>
+      <polygon points="360,145 370,150 360,155" class="ar-a"></polygon>
+
+      <!-- 2. Autentifikatsiya -->
+      <rect x="380" y="60" width="260" height="180" rx="14" class="fb"></rect>
+      <text x="510" y="105" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">2. Autentifikatsiya</text>
+      <text x="510" y="145" text-anchor="middle" class="t-accent" font-size="16">"Haqiqatan sizmisiz?"</text>
+      <text x="510" y="180" text-anchor="middle" class="t-muted" font-size="14">Parol / SMS / Biometrika</text>
+      <text x="510" y="205" text-anchor="middle" class="t-muted" font-size="14">Isbotlash jarayoni</text>
+
+      <!-- Strelka 2 -->
+      <path d="M 640 150 L 700 150" class="lg flowing" stroke-width="3"></path>
+      <polygon points="690,145 700,150 690,155" class="ar-g"></polygon>
+
+      <!-- 3. Avtorizatsiya -->
+      <rect x="710" y="60" width="260" height="180" rx="14" class="fg"></rect>
+      <text x="840" y="105" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">3. Avtorizatsiya</text>
+      <text x="840" y="145" text-anchor="middle" class="t-accent" font-size="16">"Nimalarga ruxsat bor?"</text>
+      <text x="840" y="180" text-anchor="middle" class="t-muted" font-size="14">Admin, Muallif, O'quvchi</text>
+      <text x="840" y="205" text-anchor="middle" class="t-muted" font-size="14">Huquq va rollar</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 5-slayd: Bo'lim 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Session vs JWT Token</h1>
+  <p>Stateful va Stateless autentifikatsiyani taqqoslash</p>
+</section>
+
+<!-- 6-slayd: SVG Sxema: Session vs JWT -->
+<section>
+  <h2>Session va JWT farqi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 310" width="100%" height="310">
+      <!-- Session -->
+      <rect x="50" y="50" width="410" height="220" rx="14" class="fn"></rect>
+      <text x="255" y="90" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Session-based (Cookie)</text>
+      <text x="255" y="130" text-anchor="middle" class="t-muted" font-size="15">Sessiya server xotirasida (RAM/DB) saqlanadi</text>
+      <text x="255" y="165" text-anchor="middle" class="t-accent" font-size="15">Stateful (Server holatni eslab turadi)</text>
+      <text x="255" y="195" text-anchor="middle" class="t-muted" font-size="14">1 mln foydalanuvchi = katta xotira sarfi</text>
+      <text x="255" y="230" text-anchor="middle" class="t-muted" font-size="14">Mobil ilovalar uchun noqulay</text>
+
+      <!-- JWT -->
+      <rect x="540" y="50" width="410" height="220" rx="14" class="fg"></rect>
+      <text x="745" y="90" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">JSON Web Token (JWT)</text>
+      <text x="745" y="130" text-anchor="middle" class="t-head" font-size="15">Faqat mijozda saqlanadi</text>
+      <text x="745" y="165" text-anchor="middle" class="t-head" font-size="15">Stateless (Server xotirani band qilmaydi)</text>
+      <text x="745" y="195" text-anchor="middle" class="t-muted" font-size="14">1 mln foydalanuvchi = 0 KB server xotirasi</text>
+      <text x="745" y="230" text-anchor="middle" class="t-head" font-size="14">Mobil, Web, Bot barchasiga mos</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 7-slayd: SVG Sxema: JWT tuzilishi -->
+<section>
+  <h2>JWT tokenining 3 qismi</h2>
+  <p>Nuqta bilan ajratilgan: Header . Payload . Signature</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300" width="100%" height="300">
+      <!-- Header -->
+      <rect x="50" y="60" width="270" height="180" rx="12" class="fa"></rect>
+      <text x="185" y="105" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">1. Header</text>
+      <text x="185" y="145" text-anchor="middle" class="t-accent" font-size="15">Algoritm &amp; Token turi</text>
+      <text x="185" y="175" text-anchor="middle" class="t-muted" font-size="14">{"alg": "HS256",</text>
+      <text x="185" y="200" text-anchor="middle" class="t-muted" font-size="14">"typ": "JWT"}</text>
+
+      <!-- Payload -->
+      <rect x="360" y="60" width="280" height="180" rx="12" class="fb"></rect>
+      <text x="500" y="105" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">2. Payload</text>
+      <text x="500" y="145" text-anchor="middle" class="t-accent" font-size="15">Foydalanuvchi ma'lumotlari</text>
+      <text x="500" y="175" text-anchor="middle" class="t-muted" font-size="14">{"user_id": 42,</text>
+      <text x="500" y="200" text-anchor="middle" class="t-muted" font-size="14">"exp": 1791108000}</text>
+
+      <!-- Signature -->
+      <rect x="680" y="60" width="270" height="180" rx="12" class="fc"></rect>
+      <text x="815" y="105" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">3. Signature</text>
+      <text x="815" y="145" text-anchor="middle" class="t-accent" font-size="15">Raqamli imzo</text>
+      <text x="815" y="175" text-anchor="middle" class="t-muted" font-size="14">HMACSHA256(</text>
+      <text x="815" y="200" text-anchor="middle" class="t-muted" font-size="14">header+payload, KEY)</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 8-slayd: Access vs Refresh Token -->
+<section>
+  <h2>Access va Refresh tokenlar juftligi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="clock"></i></div>
+      <h3>Access Token (Qisqa muddat)</h3>
+      <p>15-60 daqiqa yashaydi. Har bir API so'rovida yuboriladi: <code>Authorization: Bearer &lt;token&gt;</code>.</p>
+      <p class="muted">O'g'irlangan taqdirda ham muddati tezda tugaydi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="refresh-cw"></i></div>
+      <h3>Refresh Token (Uzoq muddat)</h3>
+      <p>7-30 kun yashaydi. Faqat yangi access token olish uchun ishlatiladi.</p>
+      <p class="muted">Foydalanuvchini har 15 daqiqada qayta login qilishdan qutqaradi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9-slayd: Bo'lim 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Custom User modeli</h1>
+  <p>Email orqali identifikatsiya va kengaytirilgan profil</p>
+</section>
+
+<!-- 10-slayd: Custom User kodi -->
+<section>
+  <h2>src/apps/accounts/models.py</h2>
+  <pre><code class="language-python" data-trim data-noescape data-line-numbers="1-15|4|6-9|11-13">class User(TimeStampedModel, AbstractBaseUser, PermissionsMixin):
+    email = models.EmailField(unique=True)
+    full_name = models.CharField(max_length=160, blank=True)
+    avatar = models.ImageField(upload_to="avatars/", blank=True, null=True)
+
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+
+    objects = UserManager()
+
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS: list[str] = []
+
+    def __str__(self) -> str:
+        return self.email</code></pre>
+</section>
+
+<!-- 11-slayd: settings/base.py sozlamasi -->
+<section>
+  <h2>SimpleJWT ni sozlash</h2>
+  <pre><code class="language-python" data-trim data-noescape data-line-numbers="1-12|1|3-7|9-12">AUTH_USER_MODEL = "accounts.User"
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
 }
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+
+from datetime import timedelta
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+}</code></pre>
+</section>
+
+<!-- 12-slayd: API orqali Token olish -->
+<section>
+  <h2>Token olish: POST /api/v1/auth/jwt/create/</h2>
+  <div class="browser">
+    <div class="bar">
+      <i></i><i></i><i></i>
+      <span>Postman / HTTP Request</span>
+    </div>
+    <div class="page">
+      <p class="muted">So'rov: {"email": "ali@mail.uz", "password": "pass"}</p>
+      <p>HTTP 200 OK</p>
+      <pre><code class="language-json">{
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- 13-slayd: Interaktiv Flip Card -->
+<section>
+  <h2>Atamalarni eslab qolamiz</h2>
+  <div class="cards three">
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="shield"></i></div>
+          <h3>Autentifikatsiya</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Haqiqiylikni isbotlash</h3>
+          <p>Foydalanuvchi kiritgan parol yoki token orqali uning kimligini tasdiqlash.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="key"></i></div>
+          <h3>JWT</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Stateless Token</h3>
+          <p>Server xotirasini band qilmaydigan, raqamli imzoli xavfsiz token.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="refresh-cw"></i></div>
+          <h3>Refresh Token</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Yangilovchi kalit</h3>
+          <p>Access token eskirganda yangisini olish uchun xizmat qiladi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14-slayd: Mini-test Quiz -->
+<section>
+  <h2>Tezkor bilim tekshiruvi</h2>
+  <div class="quiz">
+    <p class="q">Nima sababdan JWT tokenda Signature (raqamli imzo) kerak?</p>
+    <div class="opts">
+      <button class="opt" type="button">Token fayl hajmini kichraytirish uchun</button>
+      <button class="opt" type="button" data-ok>Agar xaker payload ichidagi ma'lumotni o'zgartirsa, server buni darhol sezib so'rovni rad etishi uchun</button>
+      <button class="opt" type="button">Faqat brauzer rangini o'zgartirish uchun</button>
+    </div>
+    <div class="explain">
+      To'g'ri! Signature tokenning daxlsizligini ta'minlaydi: u serverning maxfiy SECRET_KEY kaliti bilan imzolanadi va soxtalashtirishdan himoya qiladi.
+    </div>
+  </div>
+</section>
+
+<!-- 15-slayd: Odatiy xato -->
+<section>
+  <h2>Dasturchilar ko'p yo'l qo'yadigan xatolar</h2>
+  <div class="callout bad">
+    <i data-ic="circle-alert"></i>
+    Xato: JWT Payload ichida maxfiy parollar yoki bank kartasi ma'lumotlarini saqlash (JWT ochiq o'qiladi!).
+  </div>
+  <div class="callout tip">
+    <i data-ic="circle-check"></i>
+    To'g'ri: Payload ichida faqat ommaviy ma'lumotlar saqlansin: <code>user_id</code>, <code>email</code>, <code>roles</code>.
+  </div>
+</section>
+
+<!-- 16-slayd: Amaliy topshiriq -->
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>15 daqiqa</span></h2>
+  <div class="task">
+    <span class="level easy">Oson</span>
+    <code>apps/accounts/models.py</code> da <code>User</code> va <code>UserManager</code> kodini yozing.
+  </div>
+  <div class="task">
+    <span class="level mid">O'rta</span>
+    <code>AUTH_USER_MODEL = "accounts.User"</code> qilib, migratsiyani amalga oshiring.
+  </div>
+  <div class="task">
+    <span class="level hard">Qiyin</span>
+    <code>rest_framework_simplejwt</code> orqali token oling va sarlavhada <code>Bearer</code> bilan testlang.
+  </div>
+</section>
+
+<!-- 17-slayd: Xulosa -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h2>Darsni yakunlaymiz</h2>
+  <p class="muted">Keyingi darsda: Ruxsatlar (Permissions) tizimi, IsAuthorOrReadOnly va kirish huquqlarini cheklash!</p>
+  <div class="chips">
+    <span class="chip">Identifikatsiya</span>
+    <span class="chip">Autentifikatsiya</span>
+    <span class="chip">Custom User</span>
+    <span class="chip">JWT (Access &amp; Refresh)</span>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

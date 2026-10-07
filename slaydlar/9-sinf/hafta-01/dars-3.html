@@ -1,101 +1,532 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>Foydalanuvchini tushunish</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Foydalanuvchini tushunish</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Foydalanuvchini tushunish</h1></header>
-<div class="badges"><span class="badge">9-sinf</span><span class="badge">UX/UI dizayn va Advanced Front-end</span><span class="badge">1-hafta · 3-dars</span><span class="badge">Dizaynni chizishdan oldin: kim bu odam va unga nima kerak?</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "200 ta o'quvchidan qaysi ilovadan foydalanishini bilmoqchisiz.", "o": ["So'rovnoma", "Intervyu", "Kuzatuv"], "a": 0, "e": "To'g'ri: ko'p odamdan qisqa vaqtda raqamli javob olish uchun so'rovnoma."}, {"q": "O'quvchilar nega ilovani bir haftada o'chirib tashlashini bilmoqchisiz.", "o": ["So'rovnoma", "Intervyu", "Ma'lumot tahlili"], "a": 1, "e": "To'g'ri: «nega?» savoliga intervyu javob beradi."}, {"q": "O'quvchi kutubxona saytida qayerda chalkashishini ko'rmoqchisiz.", "o": ["So'rovnoma", "Kuzatuv (yoki testlash)", "Fokus guruh"], "a": 1, "e": "To'g'ri: haqiqiy xatti-harakat kuzatuvda (yoki testlashda) ko'rinadi."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 3-dars (1-hafta): Foydalanuvchi tadqiqotlari (1-qism): nega tadqiq qilamiz, usullar, persona -->
+
+      <!-- 1. SARLAVHA -->
+      <section class="hero">
+        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+        <h1>Foydalanuvchini tushunish</h1>
+        <p class="muted">Dizaynni chizishdan oldin: kim bu odam va unga nima kerak?</p>
+        <span class="badge">9-sinf</span><span class="badge">UX/UI dizayn va Advanced Front-end</span><span class="badge">1-hafta · 3-dars</span>
+        
+      </section>
+
+      <!-- 2. TAKRORLASH -->
+      <section>
+        <h2>Takrorlash: UX va UI <span class="timer"><i data-ic="timer" data-anim="spin"></i>5 daqiqa</span></h2>
+        <div class="cards two">
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="route" data-anim="float"></i></div><h3>UX nima?</h3><p>Foydalanuvchi mahsulot bilan ishlaganda boshidan kechiradigan tajriba: qulaymi, tushunarlimi, maqsadga tez yetadimi.</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="smartphone"></i></div><h3>UI nima?</h3><p>Ko'rinadigan va bosiladigan qism: tugma, rang, shrift, joylashuv.</p></div>
+        </div>
+        <div class="callout tip fragment"><i data-ic="lightbulb"></i>Savol: Telegram'da tugma kichik va yashirin bo'lsa, bu UX muammosimi yoki UI?</div>
+        
+      </section>
+
+      <!-- 3. BUGUN -->
+      <section>
+        <h2>Bugun nimani o'rganamiz?</h2>
+        <div class="cards three">
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="search" data-anim="draw"></i></div><h3>Nega tadqiqot?</h3><p>Taxmin va haqiqat farqi</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="messages-square" data-anim="wiggle"></i></div><h3>Usullar</h3><p>So'rovnoma, intervyu, kuzatuv, fokus guruh, testlash, ma'lumot tahlili</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="user-round" data-anim="float"></i></div><h3>Persona</h3><p>Foydalanuvchi portreti, ehtiyoj va og'riq nuqtalari</p></div>
+        </div>
+        <div class="stats mt">
+          <div class="stat"><div class="v"><span class="count" data-to="6" data-suf=" ta">0</span></div><div class="l">tadqiqot usuli</div></div>
+          <div class="stat"><div class="v"><span class="count" data-to="5" data-suf=" daqiqa">0</span></div><div class="l">mini-intervyu</div></div>
+          <div class="stat"><div class="v"><span class="count" data-to="1" data-suf=" ta">0</span></div><div class="l">persona kartasi</div></div>
+        </div>
+        
+      </section>
+
+      <!-- 4. BO'LIM 01 -->
+      <section class="sec">
+        <div class="num">01</div>
+        <h1>Nega tadqiqot kerak?</h1>
+        <p>Dizayner o'zi uchun emas, boshqalar uchun chizadi</p>
+      </section>
+
+      <!-- 5. ILLYUSTRATSIYA: taxmin vs ehtiyoj -->
+      <section>
+        <h2>Taxmin va haqiqat</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 440">
+            <g class="fragment"><circle class="fb" cx="380" cy="190" r="170"/>
+              <text class="t-head" x="290" y="180" text-anchor="middle" font-size="26">Dizayner</text>
+              <text class="t-muted" x="290" y="214" text-anchor="middle" font-size="24">taxmini</text></g>
+            <g class="fragment"><circle class="fa" cx="620" cy="190" r="170"/>
+              <text class="t-head" x="715" y="180" text-anchor="middle" font-size="26">Foydalanuvchi</text>
+              <text class="t-muted" x="715" y="214" text-anchor="middle" font-size="24">ehtiyoji</text></g>
+            <g class="fragment"><circle class="fg pulse" cx="500" cy="190" r="42"/>
+              <line class="lg" x1="500" y1="236" x2="500" y2="372"/>
+              <polygon class="ar-g" points="500,380 490,362 510,362"/>
+              <text class="t-accent" x="500" y="420" text-anchor="middle" font-size="26">Tadqiqot shu kesishmani topadi</text></g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 6. VS -->
+      <section>
+        <h2>Tadqiqotsiz va tadqiqot bilan</h2>
+        <div class="vs">
+          <div class="side fragment"><h3>Tadqiqotsiz</h3>
+            <ul><li>«Menga yoqadi, demak hammaga yoqadi»</li><li>Funksiyalar ko'p, ishlatiladigani kam</li><li>Foydalanuvchi chalkashadi va ketadi</li></ul></div>
+          <div class="mid">VS</div>
+          <div class="side b fragment"><h3>Tadqiqot bilan</h3>
+            <ul><li>Ehtiyoj dalilga asoslanadi</li><li>Eng muhim funksiya birinchi o'rinda</li><li>Xatolar dizaynda oldindan topiladi</li></ul></div>
+        </div>
+        
+      </section>
+
+      <!-- 7. VERTIKAL: ta'rif -->
+      <section>
+        <section>
+          <h2>Foydalanuvchi tadqiqoti</h2>
+          <div class="quote">Foydalanuvchi tadqiqoti (User Research): foydalanuvchining ehtiyoji, muammosi, odati va mahsulotdagi tajribasini o'rganish.</div>
+          <div class="chips mt"><span class="chip">Kim?</span><span class="chip">Nima kerak?</span><span class="chip t">Qayerda qiynaladi?</span></div>
+          <p class="small mt">Qo'shimcha: tadqiqot kimga ishlashini pastga bosib ko'ring ↓</p>
+        </section>
+        <section>
+          <h2>Tadqiqot qachon bo'ladi?</h2>
+          <ol class="steps-n">
+            <li class="fragment">Boshida: kimga va nima uchun qilamiz?</li>
+            <li class="fragment">Wireframe/prototipda: tushunarlimi?</li>
+            <li class="fragment">Tayyor mahsulotda: qanday ishlatilyapti?</li>
+          </ol>
+          <div class="callout tip"><i data-ic="lightbulb"></i>Eng arzon tuzatish: chizmada. Kod yozilgandan keyin o'zgartirish qimmat.</div>
+        </section>
+      </section>
+
+      <!-- 8. BO'LIM 02 -->
+      <section class="sec">
+        <div class="num">02</div>
+        <h1>Tadqiqot usullari</h1>
+        <p>Oltita asosiy usul: har birining o'z kuchi bor</p>
+      </section>
+
+      <!-- 9. ILLYUSTRATSIYA: 6 usul -->
+      <section>
+        <h2>Oltita usul</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 440">
+            <rect class="fc fragment" x="20" y="15" width="290" height="100" rx="18"/>
+            <text class="t-head fragment" x="165" y="72" text-anchor="middle" font-size="28">Intervyu</text>
+            <rect class="fc fragment" x="20" y="145" width="290" height="100" rx="18"/>
+            <text class="t-head fragment" x="165" y="202" text-anchor="middle" font-size="28">Kuzatuv</text>
+            <rect class="fc fragment" x="20" y="275" width="290" height="100" rx="18"/>
+            <text class="t-head fragment" x="165" y="332" text-anchor="middle" font-size="28">Fokus guruh</text>
+            <rect class="fb fragment" x="690" y="15" width="290" height="100" rx="18"/>
+            <text class="t-head fragment" x="835" y="72" text-anchor="middle" font-size="28">So'rovnoma</text>
+            <rect class="fb fragment" x="690" y="145" width="290" height="100" rx="18"/>
+            <text class="t-head fragment" x="835" y="202" text-anchor="middle" font-size="28">Ma'lumot tahlili</text>
+            <rect class="fa fragment" x="690" y="275" width="290" height="100" rx="18"/>
+            <text class="t-head fragment" x="835" y="332" text-anchor="middle" font-size="28">Testlash</text>
+            <g class="fragment">
+              <rect class="fn" x="390" y="130" width="220" height="130" rx="22"/>
+              <text class="t-head" x="500" y="185" text-anchor="middle" font-size="28">Foydalanuvchi</text>
+              <text class="t-head" x="500" y="222" text-anchor="middle" font-size="28">tadqiqoti</text>
+              <line class="ln" x1="312" y1="65" x2="390" y2="170"/><line class="ln" x1="312" y1="195" x2="390" y2="195"/><line class="ln" x1="312" y1="325" x2="390" y2="220"/>
+              <line class="ln" x1="688" y1="65" x2="610" y2="170"/><line class="ln" x1="688" y1="195" x2="610" y2="195"/><line class="ln" x1="688" y1="325" x2="610" y2="220"/>
+            </g>
+            <text class="t-muted" x="500" y="415" text-anchor="middle" font-size="22">feruza: sabablar (sifat) · to'q sariq: raqamlar (miqdor) · ko'k: ikkalasi</text>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 10. SIFAT VS MIQDOR -->
+      <section>
+        <h2>Sifat va miqdor</h2>
+        <div class="vs">
+          <div class="side fragment"><h3>Sifat (qualitative)</h3>
+            <p>«Nega?» savoliga javob. Motivatsiya, his-tuyg'u, sabab.</p><p class="small">Intervyu, kuzatuv, fokus guruh</p></div>
+          <div class="mid">VS</div>
+          <div class="side b fragment"><h3>Miqdor (quantitative)</h3>
+            <p>«Qancha?» savoliga javob. Raqam, foiz, statistika.</p><p class="small">So'rovnoma, ma'lumot tahlili</p></div>
+        </div>
+        <div class="callout fragment"><i data-ic="lightbulb"></i>Yaxshi tadqiqotda ikkalasi birga: raqam muammoni ko'rsatadi, suhbat sababini tushuntiradi.</div>
+        
+      </section>
+
+      <!-- 11. SO'ROVNOMA -->
+      <section>
+        <h2>So'rovnoma (Survey)</h2>
+        <div class="cols">
+          <div class="browser"><div class="bar"><i></i><i></i><i></i><span>forms.example/e-kutubxona</span></div>
+            <div class="page"><h3>E-Kutubxona haqida so'rovnoma</h3>
+              <p><b>1.</b> Haftada necha marta kitob qidirasiz?</p>
+              <p>( ) 0–1 &nbsp; ( ) 2–3 &nbsp; ( ) 4 va undan ko'p</p>
+              <p><b>2.</b> Qidirish qanchalik oson? (1–5)</p>
+              <p>( ) 1 &nbsp; ( ) 2 &nbsp; ( ) 3 &nbsp; ( ) 4 &nbsp; ( ) 5</p></div></div>
+          <ul>
+            <li class="fragment">Ko'p odamdan qisqa vaqtda javob</li>
+            <li class="fragment">Natija raqam, statistikaga qulay</li>
+            <li class="fragment">Vositalar: Google Forms, SurveyMonkey, Typeform</li>
+            <li class="fragment">Savol neytral va aniq bo'lishi shart</li>
+          </ul>
+        </div>
+        
+      </section>
+
+      <!-- 12. SAVOL SIFATI -->
+      <section>
+        <h2>Savol sifati: yomon va yaxshi</h2>
+        <div class="vs">
+          <div class="side fragment"><h3>Yomon</h3>
+            <ul><li>«Bizning ilova juda qulay, shunday emasmi?»</li><li>«Ilovani tez-tez va yoqimli ishlatasizmi?»</li><li>«Sizga tez ilova kerakmi?»</li></ul></div>
+          <div class="mid">VS</div>
+          <div class="side b fragment"><h3>Yaxshi</h3>
+            <ul><li>«Ilovada qidirish qanchalik oson? (1–5)»</li><li>«Haftada necha marta ishlatasiz?»</li><li>«Kitobni topish necha daqiqa oladi?»</li></ul></div>
+        </div>
+        <div class="callout warn fragment"><i data-ic="triangle-alert"></i>Birinchisi javobga undaydi, ikkinchisida bir savolda ikki narsa so'ralgan, uchinchisida «tez» nima ekani noaniq.</div>
+        
+      </section>
+
+      <!-- 13. INTERVYU: SXEMA -->
+      <section>
+        <h2>Intervyu: yarim tuzilgan suhbat</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 340">
+            <g class="fragment"><rect class="fa" x="20" y="60" width="190" height="150" rx="20"/>
+              <text class="t-head" x="115" y="128" text-anchor="middle" font-size="26">Savollar</text><text class="t-head" x="115" y="162" text-anchor="middle" font-size="26">tayyorlash</text></g>
+            <g class="fragment"><line class="la flowing" x1="215" y1="135" x2="270" y2="135"/><polygon class="ar-a" points="278,135 262,125 262,145"/></g>
+            <g class="fragment"><rect class="fc" x="285" y="60" width="190" height="150" rx="20"/>
+              <text class="t-head" x="380" y="128" text-anchor="middle" font-size="26">Suhbat</text><text class="t-head" x="380" y="162" text-anchor="middle" font-size="26">olib borish</text></g>
+            <g class="fragment"><line class="lc flowing" x1="480" y1="135" x2="535" y2="135"/><polygon class="ar-c" points="543,135 527,125 527,145"/></g>
+            <g class="fragment"><rect class="fb" x="550" y="60" width="190" height="150" rx="20"/>
+              <text class="t-head" x="645" y="128" text-anchor="middle" font-size="26">Javobni</text><text class="t-head" x="645" y="162" text-anchor="middle" font-size="26">yozib borish</text></g>
+            <g class="fragment"><line class="lb flowing" x1="745" y1="135" x2="800" y2="135"/><polygon class="ar-b" points="808,135 792,125 792,145"/></g>
+            <g class="fragment"><rect class="fg" x="815" y="60" width="170" height="150" rx="20"/>
+              <text class="t-head" x="900" y="128" text-anchor="middle" font-size="26">Persona</text><text class="t-head" x="900" y="162" text-anchor="middle" font-size="26">yaratish</text></g>
+            <g class="fragment"><path class="ln" d="M380 215 q0 50 40 50 h60 q40 0 40 -50"/>
+              <text class="t-accent" x="500" y="318" text-anchor="middle" font-size="24">reja bor, lekin yangi savol berish mumkin</text></g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 14. INTERVYU: maslahatlar (vertikal) -->
+      <section>
+        <section>
+          <h2>Intervyu: yaxshi savollar</h2>
+          <div class="cards three">
+            <div class="card fragment fade-up"><div class="icon"><i data-ic="message-circle-question-mark"></i></div><h3>Ochiq savol</h3><p>«Ha/yo'q» emas: «Oxirgi marta kitobni qanday qidirdingiz?»</p></div>
+            <div class="card fragment fade-up"><div class="icon"><i data-ic="repeat-2"></i></div><h3>«Nega?»</h3><p>Javobdan keyin chuqurlashing: «Nega aynan shunday qildingiz?»</p></div>
+            <div class="card fragment fade-up"><div class="icon"><i data-ic="ear" data-anim="pulse"></i></div><h3>Tinglang</h3><p>Siz kam gapirasiz, foydalanuvchi ko'p. Maslahat bermang.</p></div>
+          </div>
+          <p class="small mt">Qo'shimcha: suhbat tartibi pastda ↓</p>
+        </section>
+        <section>
+          <h2>5 daqiqalik suhbat tartibi</h2>
+          <div class="stepper">
+            <div class="stp on"><div class="card"><div class="icon"><i data-ic="hand" data-anim="wiggle"></i></div><h3>1. Tanishuv</h3><p>«Bu sinov emas, to'g'ri javob yo'q»</p></div></div>
+            <div class="stp"><div class="card"><div class="icon"><i data-ic="message-circle-question-mark"></i></div><h3>2. Oson savol</h3><p>Foydalanuvchi o'zi haqida</p></div></div>
+            <div class="stp"><div class="card"><div class="icon"><i data-ic="search" data-anim="draw"></i></div><h3>3. Asosiy</h3><p>Odat, muammo, oxirgi tajriba</p></div></div>
+            <div class="stp"><div class="card"><div class="icon"><i data-ic="circle-check"></i></div><h3>4. Yopish</h3><p>«Yana nimani aytmoqchisiz?» va rahmat</p></div></div>
+          </div>
+        </section>
+      </section>
+
+      <!-- 15. KUZATUV -->
+      <section>
+        <h2>Kuzatuv (Observation)</h2>
+        <div class="vs">
+          <div class="side fragment"><h3>Faol kuzatuv</h3><p>Tadqiqotchi ishtirok etadi: savol beradi, yo'naltiradi.</p></div>
+          <div class="mid">VS</div>
+          <div class="side b fragment"><h3>Passiv kuzatuv</h3><p>Tadqiqotchi faqat ko'radi va yozib boradi.</p></div>
+        </div>
+        <ul class="mt">
+          <li class="fragment">Yoziladi: nima qildi, qayerda to'xtadi, qayerda chalkashdi</li>
+          <li class="fragment">Odam ba'zan o'zi sezmagan muammoni ko'rsatadi</li>
+        </ul>
+        
+      </section>
+
+      <!-- 16. FOKUS GURUH + TESTLASH -->
+      <section>
+      <section>
+        <h2>Fokus guruh va testlash</h2>
+        <div class="cards two">
+          <div class="flip" style="min-height:230px"><div class="flip-in">
+            <div class="face front"><div class="icon"><i data-ic="users" data-anim="pulse"></i></div><h3>Fokus guruh</h3><span class="flip-hint">bosing</span></div>
+            <div class="face back"><p>5–10 kishi, moderator boshqaradi. G'oyani baholash, variantlarni solishtirish. Xavf: ba'zilar boshqalarga ta'sir qiladi.</p></div>
+          </div></div>
+          <div class="flip" style="min-height:230px"><div class="flip-in">
+            <div class="face front"><div class="icon"><i data-ic="mouse-pointer-click" data-anim="bounce"></i></div><h3>Testlash (usability)</h3><span class="flip-hint">bosing</span></div>
+            <div class="face back"><p>Odamga prototip beriladi va topshiriq: «kitobni toping». Qayerda to'xtashi kuzatiladi.</p></div>
+          </div></div>
+        </div>
+        
+      <p class="small mt">Qo'shimcha: testni qanday rejalashtiramiz ↓</p>
+      </section>
+
+      <!-- 17. TEST REJASI VA KO'RSATKICHLAR -->
+      <section>
+        <h2>Testni rejalashtirish</h2>
+        <div class="cols">
+          <ol class="steps-n">
+            <li class="fragment">Maqsad: qaysi ssenariyni sinaymiz</li>
+            <li class="fragment">Guruh: yosh, tajriba, maqsad</li>
+            <li class="fragment">Topshiriq: aniq harakat (kitob topish, yuklash)</li>
+            <li class="fragment">Mezon: vaqt, bosishlar soni, qoniqish</li>
+          </ol>
+          <div class="cards">
+            <div class="card fragment fade-up"><div class="icon"><i data-ic="circle-check"></i></div><h3>Muvaffaqiyat foizi</h3></div>
+            <div class="card fragment fade-up"><div class="icon"><i data-ic="timer"></i></div><h3>Vaqt</h3></div>
+            <div class="card fragment fade-up"><div class="icon"><i data-ic="octagon-alert" data-anim="blink"></i></div><h3>Xatolar soni</h3></div>
+          </div>
+        </div>
+        
+      </section>
+      </section>
+
+      <!-- 18. MA'LUMOT TAHLILI + TANLASH JADVALI -->
+      <section>
+        <h2>Qaysi usulni qachon tanlaymiz?</h2>
+        <table>
+          <thead><tr><th>Savolimiz</th><th>Usul</th></tr></thead>
+          <tbody>
+            <tr class="fragment"><td>Ko'pchilik nimani afzal ko'radi?</td><td>So'rovnoma</td></tr>
+            <tr class="fragment"><td>Nega bunday qiladi?</td><td>Intervyu</td></tr>
+            <tr class="fragment"><td>Haqiqatda qanday ishlatadi?</td><td>Kuzatuv</td></tr>
+            <tr class="fragment"><td>G'oya yoqadimi?</td><td>Fokus guruh</td></tr>
+            <tr class="fragment"><td>Interfeys tushunarlimi?</td><td>Testlash</td></tr>
+            <tr class="fragment"><td>Saytda nima sodir bo'ladi?</td><td>Ma'lumot tahlili</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 19. QUIZ -->
+      <section>
+        <section>
+          <h2>Savol: qaysi usul? (1/3)</h2>
+          <div class="quiz">
+            <p class="q">200 ta o'quvchidan qaysi ilovadan foydalanishini bilmoqchisiz.</p>
+            <div class="opts">
+              <button class="opt" type="button" data-ok>So'rovnoma</button>
+              <button class="opt" type="button">Intervyu</button>
+              <button class="opt" type="button">Kuzatuv</button>
+            </div>
+            <div class="explain">To'g'ri: ko'p odamdan qisqa vaqtda raqamli javob olish uchun so'rovnoma.</div>
+          </div>
+        </section>
+        <section>
+          <h2>Savol: qaysi usul? (2/3)</h2>
+          <div class="quiz">
+            <p class="q">O'quvchilar nega ilovani bir haftada o'chirib tashlashini bilmoqchisiz.</p>
+            <div class="opts">
+              <button class="opt" type="button">So'rovnoma</button>
+              <button class="opt" type="button" data-ok>Intervyu</button>
+              <button class="opt" type="button">Ma'lumot tahlili</button>
+            </div>
+            <div class="explain">To'g'ri: «nega?» savoliga intervyu javob beradi.</div>
+          </div>
+        </section>
+        <section>
+          <h2>Savol: qaysi usul? (3/3)</h2>
+          <div class="quiz">
+            <p class="q">O'quvchi kutubxona saytida qayerda chalkashishini ko'rmoqchisiz.</p>
+            <div class="opts">
+              <button class="opt" type="button">So'rovnoma</button>
+              <button class="opt" type="button" data-ok>Kuzatuv (yoki testlash)</button>
+              <button class="opt" type="button">Fokus guruh</button>
+            </div>
+            <div class="explain">To'g'ri: haqiqiy xatti-harakat kuzatuvda (yoki testlashda) ko'rinadi.</div>
+          </div>
+        </section>
+        
+      </section>
+
+      <!-- 20. BO'LIM 03 -->
+      <section class="sec">
+        <div class="num">03</div>
+        <h1>Persona va ehtiyojlar</h1>
+        <p>Ma'lumotlarni bitta tirik odamga aylantiramiz</p>
+      </section>
+
+      <!-- 21. ILLYUSTRATSIYA: ma'lumotdan persona -->
+      <section>
+        <h2>Persona qanday tug'iladi</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 340">
+            <g class="fragment"><rect class="fb" x="20" y="50" width="280" height="220" rx="22"/>
+              <text class="t-head" x="160" y="115" text-anchor="middle" font-size="26">Intervyu,</text>
+              <text class="t-head" x="160" y="150" text-anchor="middle" font-size="26">so'rovnoma,</text>
+              <text class="t-head" x="160" y="185" text-anchor="middle" font-size="26">kuzatuv</text>
+              <text class="t-muted" x="160" y="240" text-anchor="middle" font-size="24">xom yozuvlar</text></g>
+            <g class="fragment"><line class="lb flowing" x1="305" y1="160" x2="352" y2="160"/><polygon class="ar-b" points="360,160 344,150 344,170"/></g>
+            <g class="fragment"><rect class="fc" x="365" y="50" width="280" height="220" rx="22"/>
+              <text class="t-head" x="505" y="115" text-anchor="middle" font-size="26">Naqshlar</text>
+              <text class="t-muted" x="505" y="160" text-anchor="middle" font-size="24">takrorlanadigan</text>
+              <text class="t-muted" x="505" y="192" text-anchor="middle" font-size="24">odat, muammo,</text>
+              <text class="t-muted" x="505" y="224" text-anchor="middle" font-size="24">maqsad</text></g>
+            <g class="fragment"><line class="lc flowing" x1="650" y1="160" x2="697" y2="160"/><polygon class="ar-c" points="705,160 689,150 689,170"/></g>
+            <g class="fragment"><rect class="fg pulse" x="710" y="50" width="270" height="220" rx="22"/>
+              <svg x="810" y="68" width="70" height="70" viewBox="0 0 24 24" class="ic-s" stroke-width="1.6"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <text class="t-head" x="845" y="180" text-anchor="middle" font-size="28">Persona</text>
+              <text class="t-muted" x="845" y="220" text-anchor="middle" font-size="24">xayoliy, lekin</text>
+              <text class="t-muted" x="845" y="250" text-anchor="middle" font-size="24">real faktlardan</text></g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 22-23. AUTO-ANIMATE: persona kartasi -->
+      <section data-auto-animate>
+        <h2>Persona kartasi</h2>
+        <div class="card accent" data-id="pcard">
+          <h3>Madina, 15 yosh</h3>
+          <p>9-sinf o'quvchisi, E-Kutubxona foydalanuvchisi <span class="muted">(namuna uchun to'qilgan)</span></p>
+        </div>
+      </section>
+      <section data-auto-animate>
+        <h2>Persona kartasi</h2>
+        <div class="card accent" data-id="pcard">
+          <h3>Madina, 15 yosh</h3>
+          <p>9-sinf o'quvchisi, E-Kutubxona foydalanuvchisi <span class="muted">(namuna uchun to'qilgan)</span></p>
+          <ul>
+            <li><strong>Odat:</strong> kitobni telefonda, Telegram orqali qidiradi</li>
+            <li><strong>Motivatsiya:</strong> inshoga tezda manba topish</li>
+            <li><strong>Og'riq nuqtasi:</strong> kitob nomini aniq bilmaydi, qidiruv topmaydi</li>
+            <li><strong>Maqsad:</strong> 5 daqiqada kerakli kitobni topish</li>
+          </ul>
+        </div>
+        
+      </section>
+
+      <!-- 24. ILLYUSTRATSIYA: ehtiyoj chizmasi -->
+      <section>
+        <h2>Foydalanuvchi ehtiyojlari</h2>
+        <div class="illus">
+          <svg viewBox="0 0 1000 420">
+            <g class="fragment"><rect class="fn" x="390" y="150" width="220" height="120" rx="22"/>
+              <svg x="470" y="160" width="60" height="60" viewBox="0 0 24 24" class="ic-s" stroke-width="1.6"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <text class="t-head" x="500" y="252" text-anchor="middle" font-size="26">Madina</text></g>
+            <g class="fragment" data-tip="Maqsad aniq bo'lsa, dizayn ham aniq bo'ladi."><rect class="fa" x="350" y="10" width="300" height="100" rx="18"/>
+              <text class="t-head" x="500" y="52" text-anchor="middle" font-size="28">Maqsad</text>
+              <text class="t-muted" x="500" y="88" text-anchor="middle" font-size="24">nimaga erishmoqchi</text>
+              <line class="la" x1="500" y1="112" x2="500" y2="148"/></g>
+            <g class="fragment" data-tip="Kontekst: atrof-muhit, ya'ni qayerda, qachon, qanday sharoitda."><rect class="fc" x="20" y="150" width="300" height="120" rx="18"/>
+              <text class="t-head" x="170" y="198" text-anchor="middle" font-size="28">Kontekst</text>
+              <text class="t-muted" x="170" y="236" text-anchor="middle" font-size="24">qayerda, qachon</text>
+              <line class="lc" x1="322" y1="210" x2="388" y2="210"/></g>
+            <g class="fragment" data-tip="Og'riq nuqtalari: qiyinchilik va umidsizlik. Ssenariyning markazi."><rect class="fb" x="680" y="150" width="300" height="120" rx="18"/>
+              <text class="t-head" x="830" y="198" text-anchor="middle" font-size="28">Og'riq nuqtalari</text>
+              <text class="t-muted" x="830" y="236" text-anchor="middle" font-size="24">qiyinchilik</text>
+              <line class="lb" x1="612" y1="210" x2="678" y2="210"/></g>
+            <g class="fragment" data-tip="Odatlar: foydalanuvchi odatda nima qiladi."><rect class="fg" x="350" y="310" width="300" height="100" rx="18"/>
+              <text class="t-head" x="500" y="352" text-anchor="middle" font-size="28">Odatlar</text>
+              <text class="t-muted" x="500" y="388" text-anchor="middle" font-size="24">nima qiladi</text>
+              <line class="lg" x1="500" y1="272" x2="500" y2="308"/></g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 25. MISOL: Mobile_Book, ssenariy -->
+      <section>
+        <h2>Misol: ehtiyojdan ekranlarga</h2>
+        <p class="small">«Talaba Shaxnoza ilmiy maqola uchun elektron kitob izlaydi, topadi, o'qib chiqadi va yuklab oladi.»</p>
+        <div class="illus">
+          <svg viewBox="0 0 1000 360">
+            <g class="fragment"><rect class="fn" x="40" y="10" width="220" height="340" rx="30"/>
+              <text class="t-head" x="150" y="60" text-anchor="middle" font-size="26">Qidiruv</text>
+              <rect class="fb" x="62" y="90" width="176" height="46" rx="12"/>
+              <text class="t-muted" x="150" y="122" text-anchor="middle" font-size="22">Kitob nomi</text>
+              <rect class="fn" x="62" y="170" width="176" height="30" rx="8"/><rect class="fn" x="62" y="214" width="176" height="30" rx="8"/></g>
+            <g class="fragment"><line class="la flowing" x1="268" y1="180" x2="372" y2="180"/><polygon class="ar-a" points="380,180 364,170 364,190"/></g>
+            <g class="fragment"><rect class="fn" x="390" y="10" width="220" height="340" rx="30"/>
+              <text class="t-head" x="500" y="60" text-anchor="middle" font-size="26">Natijalar</text>
+              <rect class="fa" x="412" y="90" width="176" height="60" rx="12"/><text class="t-muted" x="500" y="128" text-anchor="middle" font-size="22">Kitob 1</text>
+              <rect class="fn" x="412" y="166" width="176" height="60" rx="12"/><text class="t-muted" x="500" y="204" text-anchor="middle" font-size="22">Kitob 2</text>
+              <rect class="fn" x="412" y="242" width="176" height="60" rx="12"/><text class="t-muted" x="500" y="280" text-anchor="middle" font-size="22">Kitob 3</text></g>
+            <g class="fragment"><line class="la flowing" x1="618" y1="180" x2="722" y2="180"/><polygon class="ar-a" points="730,180 714,170 714,190"/></g>
+            <g class="fragment"><rect class="fn" x="740" y="10" width="220" height="340" rx="30"/>
+              <text class="t-head" x="850" y="60" text-anchor="middle" font-size="26">Tafsilot</text>
+              <rect class="fc" x="800" y="80" width="100" height="120" rx="10"/>
+              <text class="t-muted" x="850" y="236" text-anchor="middle" font-size="22">Annotatsiya</text>
+              <rect class="fg pulse" x="762" y="270" width="176" height="52" rx="14"/>
+              <text class="t-head" x="850" y="304" text-anchor="middle" font-size="22">Yuklab olish</text></g>
+          </svg>
+        </div>
+        
+      </section>
+
+      <!-- 26. VERTIKAL: segmentatsiya -->
+      <section>
+        <section>
+          <h2>Bitta mahsulot, bir nechta persona</h2>
+          <div class="cards three">
+            <div class="card fragment fade-up"><div class="icon"><i data-ic="graduation-cap"></i></div><h3>O'quvchi</h3><p>Kitobni topib o'qiydi yoki yuklaydi</p></div>
+            <div class="card fragment fade-up"><div class="icon"><i data-ic="school"></i></div><h3>O'qituvchi</h3><p>O'quvchilarga manba tavsiya qiladi</p></div>
+            <div class="card fragment fade-up"><div class="icon"><i data-ic="library"></i></div><h3>Kutubxonachi</h3><p>Yangi kitob qo'shadi, tizimni yangilaydi</p></div>
+          </div>
+          <p class="small mt">Qo'shimcha: segmentatsiya pastda ↓</p>
+        </section>
+        <section>
+          <h2>Segmentatsiya</h2>
+          <div class="quote">Ehtiyoj, xatti-harakat va motivatsiyasi o'xshash odamlarni bir guruhga birlashtirish.</div>
+          <p class="mt">Har guruh uchun alohida persona: shunda har biriga mos ssenariy yoziladi.</p>
+        </section>
+      </section>
+
+      <!-- 27. ODATIY XATOLAR -->
+      <section>
+        <h2>Odatiy xatolar</h2>
+        <div class="callout bad fragment"><i data-ic="circle-x"></i>Faqat o'zining do'stlaridan so'rash: ular sizga o'xshaydi, auditoriya emas.</div>
+        <div class="callout bad fragment"><i data-ic="circle-x"></i>Javobga undaydigan savol: odam «to'g'ri» javobni aytadi, haqiqatni emas.</div>
+        <div class="callout bad fragment"><i data-ic="circle-x"></i>Persona o'ylab topiladi: intervyusiz persona shunchaki taxmin.</div>
+        <div class="callout warn fragment"><i data-ic="triangle-alert"></i>Eshitgan narsani emas, aytilgan so'zni yozing: izohni keyin qo'shasiz.</div>
+        
+      </section>
+
+      <!-- 28. AMALIY TOPSHIRIQ -->
+      <section>
+        <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>25 daqiqa</span></h2>
+        <div class="task"><span class="level easy">Oson</span>5 daqiqa: sinfdoshingizdan telefonda dars materiali/kitob qanday qidirishi haqida 5 ta ochiq savol yozing.</div>
+        <div class="task"><span class="level mid">O'rta</span>10 daqiqa: juftlikda 5 daqiqalik intervyu oling, javoblarni yozib boring, so'ng rollarni almashtiring.</div>
+        <div class="task"><span class="level hard">Qiyin</span>10 daqiqa: yozuvlaringizdan persona kartasi tuzing: ism, yosh, odat, motivatsiya, og'riq nuqtasi, maqsad.</div>
+        
+      </section>
+
+      <!-- 29. XULOSA -->
+      <section>
+        <h2>Xulosa</h2>
+        <div class="cards two">
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="circle-check"></i></div><h3>Bugun o'rgandik</h3><p>Tadqiqot taxminni dalilga aylantiradi. Oltita usul: so'rovnoma, intervyu, kuzatuv, fokus guruh, testlash, ma'lumot tahlili. Natijadan persona yig'iladi.</p></div>
+          <div class="card fragment fade-up"><div class="icon"><i data-ic="book-open"></i></div><h3>Keyingi dars</h3><p>Persona asosida ssenariy yozamiz va foydalanuvchi yo'lini (journey map) chizamiz.</p></div>
+        </div>
+        
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

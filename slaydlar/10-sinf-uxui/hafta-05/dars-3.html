@@ -1,101 +1,313 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>SEO va meta teglar</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>SEO va meta teglar</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>SEO va meta teglar</h1></header>
-<div class="badges"><span class="badge">10-sinf</span><span class="badge">Advanced UX/UI</span><span class="badge">5-hafta · 15-dars</span><span class="badge">SEO, title, description, viewport, charset, lang, Open Graph, robots</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "Maydon nomini <code>input<\/code> bilan nima bog'laydi?", "o": ["<code>label<\/code> ning <code>for<\/code> i va <code>id<\/code>", "<code>href<\/code>", "<code>alt<\/code>", "<code>src<\/code>"], "a": 0, "e": "<code>for<\/code> = <code>id<\/code>."}, {"q": "SEO ning maqsadi nima?", "o": ["Saytni qidiruvda yaxshi topiladigan qilish", "Saytni chiroyli qilish", "Rasmlarni siqish", "Parolni himoyalash"], "a": 0, "e": "SEO — qidiruv tizimlarida ko'rinish."}, {"q": "Qidiruv natijasidagi sarlavha qaysi tegdan olinadi?", "o": ["<code>title<\/code>", "<code>h6<\/code>", "<code>footer<\/code>", "<code>aside<\/code>"], "a": 0, "e": "<code>title<\/code> qidiruv natijasida sarlavha bo'ladi."}, {"q": "Ulashilgan havola kartochkasini nima boshqaradi?", "o": ["Open Graph", "<code>canonical<\/code>", "<code>charset<\/code>", "<code>lang<\/code>"], "a": 0, "e": "<code>og:<\/code> teglari kartochka matni va rasmini beradi."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>SEO va meta teglar</h1>
+  <p class="muted">SEO, title, description, viewport, charset, lang, Open Graph, robots</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced UX/UI</span><span class="badge">5-hafta · 15-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimalarni o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="search" data-anim="pulse"></i></div><h3>SEO nima</h3><p>Qidiruvda ko'rinish</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="file-text" data-anim="float"></i></div><h3>Meta teglar</h3><p>head bo'limi</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="share-2" data-anim="blink"></i></div><h3>Ulashish va robotlar</h3><p>OG, canonical, robots</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">Maydon nomini <code>input</code> bilan nima bog'laydi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok><code>label</code> ning <code>for</code> i va <code>id</code></button>
+    <button class="opt" type="button"><code>href</code></button>
+    <button class="opt" type="button"><code>alt</code></button>
+    <button class="opt" type="button"><code>src</code></button>
+    </div>
+    <div class="explain"><code>for</code> = <code>id</code>.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>SEO nima</h1>
+  <p>Qidiruvda ko'rinish</p>
+</section>
+
+<section>
+  <h2>SEO omillari</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Kontent</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">Tuzilma</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Texnik</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Natija</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Robot ham foydalanuvchi kabi tuzilmani o'qiydi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>SEO uchun yaxshi tuzilma</h2>
+  <pre><code class="language-html" data-trim data-line-numbers="2|4|5">
+&lt;main&gt;
+  &lt;h1&gt;Maktab qabuli 2026&lt;/h1&gt;
+  &lt;p&gt;Qabul qoidalari va muddatlari.&lt;/p&gt;
+  &lt;img src="bino.jpg" alt="Maktab binosi"&gt;
+  &lt;h2&gt;Hujjatlar ro'yxati&lt;/h2&gt;
+&lt;/main&gt;
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Bitta <code>h1</code>, mazmunli <code>alt</code> va ketma-ket sarlavhalar robot va foydalanuvchiga bir xil yordam beradi.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">SEO ning maqsadi nima?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Saytni qidiruvda yaxshi topiladigan qilish</button>
+    <button class="opt" type="button">Saytni chiroyli qilish</button>
+    <button class="opt" type="button">Rasmlarni siqish</button>
+    <button class="opt" type="button">Parolni himoyalash</button>
+    </div>
+    <div class="explain">SEO — qidiruv tizimlarida ko'rinish.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Meta teglar</h1>
+  <p>head bo'limi</p>
+</section>
+
+<section>
+  <h2>Qidiruv natijasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">title</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">URL</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">description</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Bosish</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Foydalanuvchi shu uchtasiga qarab tanlaydi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Asosiy meta teglar</h2>
+  <pre><code class="language-html" data-trim data-line-numbers="2|4|5|6|7">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="uz"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Qabul 2026 | 1-maktab&lt;/title&gt;
+  &lt;meta name="description" content="1-maktabga qabul: hujjatlar, muddatlar va ariza formasi."&gt;
+&lt;/head&gt;
+  </code></pre>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i><code>title</code> va <code>description</code> har sahifada har xil bo'lsin. Barcha sahifaga bir xil matn yozish — keng tarqalgan xato.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Qidiruv natijasidagi sarlavha qaysi tegdan olinadi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok><code>title</code></button>
+    <button class="opt" type="button"><code>h6</code></button>
+    <button class="opt" type="button"><code>footer</code></button>
+    <button class="opt" type="button"><code>aside</code></button>
+    </div>
+    <div class="explain"><code>title</code> qidiruv natijasida sarlavha bo'ladi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Ulashish va robotlar</h1>
+  <p>OG, canonical, robots</p>
+</section>
+
+<section>
+  <h2>Robot yo'li</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">robots.txt</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">sitemap.xml</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Sahifa</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Indeks</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Robot avval qoidalarni, keyin xaritani o'qiydi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>OG, canonical, robots</h2>
+  <pre><code class="language-html" data-trim data-line-numbers="1|2-4|5">
+&lt;link rel="canonical" href="/qabul"&gt;
+&lt;meta property="og:title" content="Qabul 2026"&gt;
+&lt;meta property="og:description" content="Hujjatlar va muddatlar."&gt;
+&lt;meta property="og:image" content="https://maktab.uz/qabul.jpg"&gt;
+&lt;meta name="robots" content="index, follow"&gt;
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i><code>noindex</code> yozilgan sahifa qidiruvda chiqmaydi. Uni bosh sahifaga tasodifan qo'yib yubormang.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Ulashilgan havola kartochkasini nima boshqaradi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Open Graph</button>
+    <button class="opt" type="button"><code>canonical</code></button>
+    <button class="opt" type="button"><code>charset</code></button>
+    <button class="opt" type="button"><code>lang</code></button>
+    </div>
+    <div class="explain"><code>og:</code> teglari kartochka matni va rasmini beradi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Meta yo'q va bor</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>Meta teglarsiz</h3><code>title</code> yo'q, mobilda mayda, ulashilganda kartochka yo'q</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>Meta teglar bilan</h3>Aniq <code>title</code> va <code>description</code>, <code>viewport</code>, Open Graph kartochka</div>
+  </div>
+  <div class="card accent fragment mt"><p>Bir necha qator <code>head</code> kodi sahifani topiladigan va qulay qiladi.</p></div>
+</section>
+
+<section>
+  <h2>Atamalar. Bosing</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>SEO</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Qidiruvda yaxshi topilish</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>meta description</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Natijadagi qisqa tavsif</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>canonical</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Asosiy manzilni ko'rsatadi</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>sitemap</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Sahifalar ro'yxati fayli</p></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Sahifani SEO ga tayyorlash</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="heading" data-anim="pulse"></i></div><h3>1. Tuzilma</h3><p>Bitta <code>h1</code>, sarlavhalar va <code>alt</code> ni tekshiring.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="tags"></i></div><h3>2. Meta</h3><p><code>title</code>, <code>description</code>, <code>viewport</code> ni yozing.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="gauge"></i></div><h3>3. Tekshiruv</h3><p>Lighthouse SEO hisobotini oling.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>Asosiy meta teglar</h2>
+    <table>
+      <thead><tr><th>Teg</th><th>Vazifasi</th><th>Tavsiya</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td><code>charset</code></td><td>belgilar kodlashi</td><td>UTF-8</td></tr>
+        <tr class="fragment"><td><code>viewport</code></td><td>mobil moslik</td><td>width=device-width</td></tr>
+        <tr class="fragment"><td><code>title</code></td><td>sarlavha</td><td>~60 belgigacha</td></tr>
+        <tr class="fragment"><td><code>description</code></td><td>qisqa tavsif</td><td>~150–160 belgi</td></tr>
+        <tr class="fragment"><td><code>lang</code></td><td>sahifa tili</td><td><code>uz</code></td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: tekshirish</p>
+  </section>
+  <section>
+    <h2>SEO tekshiruvi</h2>
+    <ol class="steps-n">
+      <li class="fragment">Sahifani oching, DevTools &gt; Lighthouse.</li>
+      <li class="fragment">Faqat SEO ni tanlab, hisobotni oling.</li>
+      <li class="fragment">Kamida 2 ta tavsiyani bajarib, qayta tekshiring.</li>
+    </ol>
+  </section>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">head ni to'ldirish</h2>
+  <pre data-id="c"><code class="language-html" data-trim>
+&lt;head&gt;
+  &lt;title&gt;Sahifa&lt;/title&gt;
+&lt;/head&gt;
+  </code></pre>
+</section>
+<section data-auto-animate>
+  <h2 data-id="t">head ni to'ldirish</h2>
+  <pre data-id="c"><code class="language-html" data-trim data-line-numbers="1-3|4-8">
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Qabul 2026 | 1-maktab&lt;/title&gt;
+  &lt;meta name="description" content="Qabul qoidalari."&gt;
+&lt;/head&gt;
+  </code></pre>
+</section>
+
+<section>
+  <h2>SEO raqamlarda</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="60" data-suf="">0</span></div><div class="l"> belgigacha tavsiya etiladigan <code>title</code></div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="160" data-suf="">0</span></div><div class="l"> belgigacha tavsiya etiladigan tavsif</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="3" data-suf="">0</span></div><div class="l"> ta asosiy omil: kontent, tuzilma, texnik</div></div>
+  </div>
+  <p class="small fragment">Belgi chegaralari taxminiy tavsiya.</p>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>title va description: Maktab bosh sahifasi uchun <code>title</code> va <code>description</code> yozing.</div>
+  <div class="task"><span class="level mid">O'rta</span>head ni to'ldiring: <code>head</code> ga <code>charset</code>, <code>viewport</code>, <code>title</code>, <code>description</code> qo'shing va <code>html</code> ga <code>lang="uz"</code> yozing.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Maktab sayti uchun SEO: 3 sahifa (bosh, qabul, aloqa) uchun takrorlanmas <code>title</code>/<code>description</code>, Open Graph va canonical yozing; Lighthouse SEO hisobotini oling.</div>
+  <div class="task"><span class="level hard">Bonus</span>noindex: <code>noindex</code> qachon kerak? Misol keltiring.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>SEO</h3><p>Kontent, tuzilma va texnik tomon.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Meta teglar</h3><p><code>charset</code>, <code>viewport</code>, <code>title</code>, <code>description</code>, <code>lang</code>.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Ulashish va robotlar</h3><p>Open Graph, <code>canonical</code>, <code>robots</code>, sitemap.</p></div>
+  </div>
+  <p class="small fragment mt">Uyga vazifa: meta teglar va SEO tahlili.</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="palette" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: CSS3 selektorlari va Box Model</h1>
+  <p class="muted">selektor, kaskad, box model</p>
+  <span class="badge">6-hafta · 16-dars</span>
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

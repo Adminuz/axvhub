@@ -1,101 +1,455 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>Dependency Management va Version Catalog</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Dependency Management va Version Catalog</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Dependency Management va Version Catalog</h1></header>
-<div class="badges"><span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">1-hafta · 3-dars</span><span class="badge">Tashqi kutubxonalar, repozitoriylar, bog'liqlik turlari va libs.versions.toml</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 3-dars: Dependency management va versiyalar bilan ishlash (Version Catalog) -->
+
+<!-- 1. SARLAVHA -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Dependency Management va Version Catalog</h1>
+  <p class="muted">Tashqi kutubxonalar, repozitoriylar, bog'liqlik turlari va libs.versions.toml</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">1-hafta · 3-dars</span>
+</section>
+
+<!-- 2. BUGUN NIMANI O'RGANAMIZ? -->
+<section>
+  <h2>Bugun nimani o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="boxes" data-anim="pulse"></i></div>
+      <h3>Dependencies & Omborlar</h3>
+      <p>Kutubxonalarning ichki anatomiyasi, Google Maven va Maven Central repozitoriylari</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers" data-anim="float"></i></div>
+      <h3>implementation vs api</h3>
+      <p>Bog'liqlik turlari, modulli inkapsulyatsiya va yig'ish tezligini optimallashtirish</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="file-code" data-anim="draw"></i></div>
+      <h3>Version Catalog (TOML)</h3>
+      <p>Sanoat standarti bo'lgan <code>libs.versions.toml</code> fayli va kutubxona to'plamlari (bundles)</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. BO'LIM 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Dependency va Repozitoriylar</h1>
+  <p>Tashqi kutubxonalar, Group ID, Artifact ID va global omborlar</p>
+</section>
+
+<!-- 4. DEPENDENCY MOHIYATI -->
+<section>
+  <h2>Dependency nima?</h2>
+  <div class="quote">
+    «Dasturchi har safar g'ildirakni qaytadan kashf qilmaydi. Tayyor va sinovdan o'tgan modullar kutubxona (dependency) deb ataladi.»
+  </div>
+  <div class="cards two mt">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="boxes"></i></div>
+      <h3>3 ta koordinata</h3>
+      <p>Har bir kutubxona uchlikdan iborat: <strong>Group ID</strong> (domen), <strong>Artifact ID</strong> (modul nomi) va <strong>Version</strong> (versiya soni).</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="folder-sync"></i></div>
+      <h3>Global omborlar</h3>
+      <p>Gradle kutubxonalarni <code>google()</code> (Android SDK, Jetpack) va <code>mavenCentral()</code> (ochiq kodli kutubxonalar) omborlaridan yuklaydi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. ILLYUSTRATSIYA 1: REPOZITORIYLAR VA KESH (SVG) -->
+<section>
+  <h2>Kutubxonalarni yuklash va kesh tizimi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="30" width="880" height="420" rx="20" class="fa" />
+      <rect x="40" y="30" width="880" height="420" rx="20" class="la" fill="none" stroke-width="2" />
+      
+      <!-- Masofaviy Repozitoriylar (Chapda) -->
+      <g transform="translate(80, 80)">
+        <rect x="0" y="0" width="240" height="140" rx="14" class="fb" />
+        <rect x="0" y="0" width="240" height="140" rx="14" class="lb" fill="none" stroke-width="1.5" />
+        <text x="120" y="40" text-anchor="middle" class="t-head" font-size="16" font-weight="700">Google Maven</text>
+        <text x="120" y="65" text-anchor="middle" class="t-accent" font-size="12">google()</text>
+        <text x="120" y="100" text-anchor="middle" class="t-muted" font-size="11">AndroidX, Jetpack, Compose</text>
+        <text x="120" y="120" text-anchor="middle" class="t-muted" font-size="11">Material Design 3</text>
+      </g>
+      
+      <g transform="translate(80, 250)">
+        <rect x="0" y="0" width="240" height="140" rx="14" class="fb" />
+        <rect x="0" y="0" width="240" height="140" rx="14" class="lb" fill="none" stroke-width="1.5" />
+        <text x="120" y="40" text-anchor="middle" class="t-head" font-size="16" font-weight="700">Maven Central</text>
+        <text x="120" y="65" text-anchor="middle" class="t-accent" font-size="12">mavenCentral()</text>
+        <text x="120" y="100" text-anchor="middle" class="t-muted" font-size="11">Retrofit, OkHttp, Coil</text>
+        <text x="120" y="120" text-anchor="middle" class="t-muted" font-size="11">Dunyodagi ochiq kutubxonalar</text>
+      </g>
+      
+      <!-- Chiziqlar markazga -->
+      <path d="M 320 150 L 420 235" class="la" fill="none" stroke-width="2" />
+      <path d="M 320 320 L 420 235" class="la" fill="none" stroke-width="2" />
+      
+      <!-- Markaz: Gradle Dependency Resolution & Cache -->
+      <g transform="translate(420, 110)">
+        <rect x="0" y="0" width="230" height="250" rx="16" class="fb" />
+        <rect x="0" y="0" width="230" height="250" rx="16" class="la" fill="none" stroke-width="2" />
+        <text x="115" y="45" text-anchor="middle" class="t-head" font-size="16" font-weight="700">GRADLE CACHE</text>
+        <text x="115" y="70" text-anchor="middle" class="t-accent" font-size="11">Lokal omborxona (~/.gradle)</text>
+        
+        <rect x="20" y="95" width="190" height="40" rx="8" class="fa" />
+        <text x="115" y="120" text-anchor="middle" class="t-head" font-size="11">.jar va .aar fayllar</text>
+        
+        <rect x="20" y="145" width="190" height="40" rx="8" class="fa" />
+        <text x="115" y="170" text-anchor="middle" class="t-muted" font-size="11">Tranzitiv tekshiruv</text>
+        
+        <rect x="20" y="195" width="190" height="40" rx="8" class="fa" />
+        <text x="115" y="220" text-anchor="middle" class="t-accent" font-size="11">Offline qayta ishlatish</text>
+      </g>
+      
+      <!-- Chiziq o'ngga -->
+      <line x1="650" y1="235" x2="720" y2="235" class="la" stroke-width="3" />
+      <polygon points="720,230 735,235 720,240" class="fg" />
+      
+      <!-- O'ng: Android App Moduli -->
+      <g transform="translate(735, 150)">
+        <rect x="0" y="0" width="160" height="170" rx="14" class="fg" />
+        <text x="80" y="45" text-anchor="middle" class="fn" font-size="16" font-weight="700">:app Modul</text>
+        <text x="80" y="75" text-anchor="middle" class="fn" font-size="11" opacity="0.9">Kompilyatsiya va</text>
+        <text x="80" y="95" text-anchor="middle" class="fn" font-size="11" opacity="0.9">DEX yig'ish</text>
+        <text x="80" y="130" text-anchor="middle" class="fn" font-size="12" font-weight="700">Tayyor APK</text>
+      </g>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 6. BO'LIM 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Bog'liqlik Konfiguratsiyalari</h1>
+  <p>implementation, api, testImplementation va ularning farqi</p>
+</section>
+
+<!-- 7. CONFIGURATIONS TURLARI -->
+<section>
+  <h2>Bog'liqlik konfiguratsiyalari</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>implementation (Standart)</h3>
+      <p>Kutubxona faqat shu modul ichida ko'rinadi. Tashqi modullardan yashiriladi, kompilyatsiya vaqtini sezilarli darajada tejaydi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="arrow-right"></i></div>
+      <h3>api (Tranzitiv eksport)</h3>
+      <p>Kutubxona ushbu modulga ulangan barcha boshqa modullarga ham ochiq bo'ladi. Yig'ish vaqtini oshirishi mumkin.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>compileOnly</h3>
+      <p>Faqat kod yozish paytida kerak, yakuniy APK hajmiga kirmaydi (masalan, annotatsiya protsessorlari).</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>testImplementation</h3>
+      <p>Faqat kompyuterda ishlaydigan lokal Unit-testlar uchun (JUnit, Mockito). Telefonga yuklanmaydi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8. ILLYUSTRATSIYA 2: IMPLEMENTATION VS API (SVG) -->
+<section>
+  <h2>implementation vs api chegaralari</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="30" width="880" height="420" rx="20" class="fa" />
+      <rect x="40" y="30" width="880" height="420" rx="20" class="la" fill="none" stroke-width="2" />
+      
+      <!-- Variant A: implementation (Yashirin) -->
+      <g transform="translate(80, 70)">
+        <rect x="0" y="0" width="370" height="340" rx="16" class="fb" />
+        <rect x="0" y="0" width="370" height="340" rx="16" class="lb" fill="none" stroke-width="1.5" />
+        <text x="185" y="45" text-anchor="middle" class="t-head" font-size="18" font-weight="700">implementation (Tavsiya)</text>
+        <text x="185" y="70" text-anchor="middle" class="t-accent" font-size="12">To'liq inkapsulyatsiya</text>
+        
+        <rect x="35" y="100" width="300" height="60" rx="10" class="fa" />
+        <text x="185" y="135" text-anchor="middle" class="t-head" font-size="13">Modul A: implementation(Retrofit)</text>
+        
+        <!-- To'siq chizig'i -->
+        <line x1="60" y1="190" x2="310" y2="190" class="la" stroke-width="2" stroke-dasharray="6 3" />
+        <text x="185" y="215" text-anchor="middle" class="t-muted" font-size="11">Kutubxona tashqariga chiqmaydi</text>
+        
+        <rect x="35" y="240" width="300" height="60" rx="10" class="fa" />
+        <text x="185" y="275" text-anchor="middle" class="t-muted" font-size="13">Modul B: Retrofit'ni KO'RMAYDI</text>
+      </g>
+      
+      <!-- Variant B: api (Ochiq) -->
+      <g transform="translate(510, 70)">
+        <rect x="0" y="0" width="370" height="340" rx="16" class="fb" />
+        <rect x="0" y="0" width="370" height="340" rx="16" class="la" fill="none" stroke-width="1.5" />
+        <text x="185" y="45" text-anchor="middle" class="t-head" font-size="18" font-weight="700">api (Tranzitiv)</text>
+        <text x="185" y="70" text-anchor="middle" class="t-muted" font-size="12">Barcha modullarga ochiq</text>
+        
+        <rect x="35" y="100" width="300" height="60" rx="10" class="fa" />
+        <text x="185" y="135" text-anchor="middle" class="t-head" font-size="13">Modul A: api(Retrofit)</text>
+        
+        <!-- Ochiq oqim chizig'i -->
+        <line x1="185" y1="160" x2="185" y2="240" class="la" stroke-width="3" />
+        <polygon points="185,240 180,230 190,230" class="fg" />
+        
+        <rect x="35" y="240" width="300" height="60" rx="10" class="fg" />
+        <text x="185" y="275" text-anchor="middle" class="fn" font-size="13" font-weight="600">Modul B: Retrofit'ni ISHLATADI</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- 9. BO'LIM 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Versiyalarni Boshqarish Evolyutsiyasi</h1>
+  <p>Tosh davridan to zamonaviy Version Cataloggacha</p>
+</section>
+
+<!-- 10. EVOLYUTSIYA BOSQICHLARI -->
+<section>
+  <h2>Versiyalashning 4 ta bosqichi</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="x"></i></div>
+      <h3>1. Hardcoded stringlar</h3>
+      <p>Versiyalar to'g'ridan-to'g'ri <code>build.gradle</code>da yozilgan. 10 ta modul bo'lsa, har birini alohida qidirib o'zgartirish talab etilgan.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-question-mark"></i></div>
+      <h3>2. ext bloklari</h3>
+      <p>Loyiha darajasida o'zgaruvchi ochilgan. Biroq IDE da avtomatik to'ldirish (autocomplete) ishlamagan.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
+      <h3>3. buildSrc</h3>
+      <p>Kotlin DSL yordamida yozilgan, ammo har bir o'zgarishda butun loyiha qayta kompilyatsiya bo'lib, vaqtni olgan.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>4. Version Catalog (TOML)</h3>
+      <p>Google tomonidan qabul qilingan sanoat standarti: barcha versiyalar bitta <code>libs.versions.toml</code> faylida saqlanadi!</p>
+    </div>
+  </div>
+</section>
+
+<!-- 11. BO'LIM 4 -->
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Version Catalog (libs.versions.toml)</h1>
+  <p>Markaziy boshqaruv, toml formati va kutubxonalar guruhlari (bundles)</p>
+</section>
+
+<!-- 12. TOML FAYLI STRUKTURASI -->
+<section>
+  <h2>libs.versions.toml faylining 4 ta bloki</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="sliders-vertical"></i></div>
+      <h3>[versions]</h3>
+      <p>Kutubxonalar va plaginlarning versiya raqamlari yagona joyda e'lon qilinadi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="boxes"></i></div>
+      <h3>[libraries]</h3>
+      <p>Kutubxonalarning Group ID, Artifact ID va versiya bog'lanishi ko'rsatiladi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="box"></i></div>
+      <h3>[bundles]</h3>
+      <p>O'zaro bog'liq bir nechta kutubxonalar (Retrofit + Gson) bitta to'plamga birlashtiriladi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="code"></i></div>
+      <h3>[plugins]</h3>
+      <p>Android va Kotlin Gradle plaginlari ro'yxati saqlanadi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 13. ILLYUSTRATSIYA 3: TOML DAN GRADLEGA (SVG) -->
+<section>
+  <h2>TOML faylining build.gradle bilan bog'lanishi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="30" width="880" height="420" rx="20" class="fa" />
+      <rect x="40" y="30" width="880" height="420" rx="20" class="la" fill="none" stroke-width="2" />
+      
+      <!-- Chap tomon: libs.versions.toml -->
+      <g transform="translate(80, 70)">
+        <rect x="0" y="0" width="370" height="340" rx="14" class="fb" />
+        <rect x="0" y="0" width="370" height="340" rx="14" class="lb" fill="none" stroke-width="2" />
+        <text x="185" y="35" text-anchor="middle" class="t-head" font-size="16" font-weight="700">gradle/libs.versions.toml</text>
+        
+        <rect x="20" y="55" width="330" height="65" rx="8" class="fa" />
+        <text x="35" y="80" class="t-muted" font-size="12">[versions]</text>
+        <text x="35" y="105" class="t-accent" font-size="12">retrofit = "2.9.0"</text>
+        
+        <rect x="20" y="130" width="330" height="85" rx="8" class="fa" />
+        <text x="35" y="155" class="t-muted" font-size="12">[libraries]</text>
+        <text x="35" y="180" class="t-head" font-size="11">retrofit-core = { group = "com.squareup.retrofit2",</text>
+        <text x="35" y="200" class="t-muted" font-size="11">name = "retrofit", version.ref = "retrofit" }</text>
+        
+        <rect x="20" y="225" width="330" height="85" rx="8" class="fa" />
+        <text x="35" y="250" class="t-muted" font-size="12">[bundles]</text>
+        <text x="35" y="275" class="t-head" font-size="11">networking = ["retrofit-core",</text>
+        <text x="35" y="295" class="t-muted" font-size="11">"retrofit-converter-gson"]</text>
+      </g>
+      
+      <!-- Bog'lovchi o'q -->
+      <line x1="450" y1="240" x2="510" y2="240" class="la" stroke-width="3" />
+      <polygon points="510,235 520,240 510,245" class="fg" />
+      
+      <!-- O'ng tomon: app/build.gradle -->
+      <g transform="translate(520, 70)">
+        <rect x="0" y="0" width="360" height="340" rx="14" class="fb" />
+        <rect x="0" y="0" width="360" height="340" rx="14" class="la" fill="none" stroke-width="2" />
+        <text x="180" y="35" text-anchor="middle" class="t-head" font-size="16" font-weight="700">app/build.gradle</text>
+        
+        <rect x="20" y="70" width="320" height="240" rx="10" class="fg" />
+        <text x="40" y="110" class="fn" font-size="14" font-weight="700">dependencies {</text>
+        <text x="60" y="150" class="fn" font-size="13">// Alohida kutubxona:</text>
+        <text x="60" y="175" class="fn" font-size="13" font-weight="600">implementation(libs.retrofit.core)</text>
+        
+        <text x="60" y="220" class="fn" font-size="13">// Butun boshli to'plam:</text>
+        <text x="60" y="245" class="fn" font-size="13" font-weight="600">implementation(libs.bundles.networking)</text>
+        <text x="40" y="285" class="fn" font-size="14" font-weight="700">}</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- 14. STEPPER: KUTUBXONA QO'SHISH -->
+<section>
+  <h2>Version Catalog ga kutubxona ulash</h2>
+  <div class="stepper">
+    <div class="step fragment">
+      <div class="num">1</div>
+      <h3>[versions]</h3>
+      <p>Kutubxona versiyasini kiriting (masalan, <code>coil = "2.6.0"</code>).</p>
+    </div>
+    <div class="step fragment">
+      <div class="num">2</div>
+      <h3>[libraries]</h3>
+      <p>Guruh, modul nomi va versiya havolasini yozing (<code>coil-compose = ...</code>).</p>
+    </div>
+    <div class="step fragment">
+      <div class="num">3</div>
+      <h3>build.gradle</h3>
+      <p><code>dependencies</code> blokiga <code>implementation libs.coil.compose</code> deb qo'shing.</p>
+    </div>
+    <div class="step fragment">
+      <div class="num">4</div>
+      <h3>Sync Now</h3>
+      <p>Sinxronizatsiya tugmasini bosing va kutubxona keshga yuklanishini kuting.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 15. TAQQOSLASH -->
+<section>
+  <h2>Eski usul vs Version Catalog</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-question-mark"></i></div>
+      <h3>Eski usul (Hardcoded)</h3>
+      <p>Versiyalar har bir modul faylida tarqoq yotadi.</p>
+      <p>IDE avtomatik to'ldirmaydi, xato yozish oson.</p>
+      <p>Kutubxonani yangilash uchun 10 ta faylni ochib chiqish kerak.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Yangi usul (Version Catalog)</h3>
+      <p>Barcha versiyalar bitta <code>libs.versions.toml</code> faylida.</p>
+      <p>To'liq autocomplete: xato yozishning iloji yo'q.</p>
+      <p>Versiyani 1 joyda o'zgartirish barcha modullarni yangilaydi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 16. QUIZ -->
+<section>
+  <h2>Tezkor bilim sinovi</h2>
+  <div class="quiz">
+    <div class="q">libs.versions.toml faylida bir nechta kutubxonalarni bitta nom bilan birlashtirish uchun qaysi bo'limdan foydalaniladi?</div>
+    <div class="opts">
+      <div class="opt">[versions] — barcha versiyalarni birlashtiradi</div>
+      <div class="opt" data-ok>[bundles] — kutubxonalarni to'plam qilib birlashtiradi</div>
+      <div class="opt">[plugins] — Gradle plaginlarini guruhlaydi</div>
+      <div class="opt">[libraries] — faqat bitta kutubxonani saqlaydi</div>
+    </div>
+  </div>
+</section>
+
+<!-- 17. AMALIY LAB -->
+<section>
+  <h2>Amaliy laboratoriya mashg'uloti</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="file-code"></i></div>
+      <h3>1. TOML faylini sozlash</h3>
+      <p><code>gradle/libs.versions.toml</code> fayliga Retrofit va Gson kutubxonalari koordinatalarini qo'shing.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="boxes"></i></div>
+      <h3>2. Bundle yaratish</h3>
+      <p>Ikkala kutubxonani <code>[bundles]</code> da <code>networking</code> nomi ostida birlashtiring va <code>build.gradle</code>da 1 qatorda ulang.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 18. XULOSA -->
+<section>
+  <h2>Darsning asosiy xulosalari</h2>
+  <div class="cards two">
+    <div class="card fragment">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Toza arxitektura</h3>
+      <p><code>implementation</code> konfiguratsiyasi loyihani modulli va tezkor yig'ilishini ta'minlaydi.</p>
+    </div>
+    <div class="card fragment">
+      <div class="icon"><i data-ic="file-code"></i></div>
+      <h3>Zamonaviy standart</h3>
+      <p>Version Catalog barcha kutubxonalar va plaginlarni markazlashgan, xavfsiz va qulay boshqarish kalitidir.</p>
+    </div>
+  </div>
+  <p class="muted mt">Keyingi hafta: Tranzitiv bog'liqliklar va ProGuard/R8 yordamida kodni optimallashtirish</p>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

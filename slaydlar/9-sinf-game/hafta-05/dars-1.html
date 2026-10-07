@@ -1,101 +1,323 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>Sprayt Sheet va Atlas</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Sprayt Sheet va Atlas</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Sprayt Sheet va Atlas</h1></header>
-<div class="badges"><span class="badge">9-sinf</span><span class="badge">Game Design</span><span class="badge">5-hafta · 13-dars</span><span class="badge">O'yin uchun ikonka va spraytlar (3-qism): tayyorlash va optimallashtirish</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "Idle animatsiyaning 2-kadrida nima o'zgaradi?", "o": ["Oyoqlar 1 px yuqoriga", "Tana va bosh 1 px pastga", "Ranglar teskari bo'ladi", "Qahramon aylanadi"], "a": 1, "e": "Oyoqlar joyida qoladi, tana va bosh 1 px pastga — qahramon «nafas oladi»."}, {"q": "Atlasning asosiy texnik foydasi qaysi?", "o": ["Ranglar yorqinroq bo'ladi", "Spraytlar avtomatik animatsiya bo'ladi", "Draw call va yuklanish kamayadi", "Fayl vektorga aylanadi"], "a": 2, "e": "Bitta fayl bir marta yuklanadi, bir atlasdagi spraytlar birga chiziladi."}, {"q": "Sheetdagi kadrlar 30, 32 va 34 px kenglikda. Nima bo'ladi?", "o": ["Dvijok to'r bo'yicha kesganda kadrlar buziladi", "Hech narsa, dvijok o'zi moslaydi", "Fayl hajmi kamayadi", "Animatsiya tezlashadi"], "a": 0, "e": "Grid By Cell Size teng kataklarni kutadi — har xil kenglik kadrlarni yarmidan kesadi."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Sprayt Sheet va Atlas</h1>
+  <p class="muted">O'yin uchun ikonka va spraytlar (3-qism): tayyorlash va optimallashtirish</p>
+  <span class="badge">9-sinf</span><span class="badge">Game Design</span><span class="badge">5-hafta · 13-dars</span>
+  
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">Idle animatsiyaning 2-kadrida nima o'zgaradi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Oyoqlar 1 px yuqoriga</button>
+      <button class="opt" type="button" data-ok>Tana va bosh 1 px pastga</button>
+      <button class="opt" type="button">Ranglar teskari bo'ladi</button>
+      <button class="opt" type="button">Qahramon aylanadi</button>
+    </div>
+    <div class="explain">Oyoqlar joyida qoladi, tana va bosh 1 px pastga — qahramon «nafas oladi».</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Sprayt sheet nima?</h1>
+  <p>Ko'p kadr — bitta fayl</p>
+</section>
+
+<section>
+  <h2>Ta'rif</h2>
+  <div class="quote">Sprayt sheet — bir nechta sprayt yoki animatsiya kadri bitta PNG faylda to'r ko'rinishida joylashgan rasm. Dvijok kerakli kadrni undan «kesib» oladi.</div>
+  <div class="cards two mt">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="film" data-anim="pulse"></i></div><h3>Animatsiya sheet</h3><p>Bitta harakat kadrlari bir qatorda: idle, yurish, sakrash.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="layout-grid" data-anim="float"></i></div><h3>Atlas</h3><p>Turli obyekt va ikonkalar bitta katta rasmda.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Alohida fayllar → bitta sheet</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320">
+      <g data-tip="Alohida fayllar: har biri alohida yuklanadi va alohida chiziladi.">
+        <rect class="fn ln" x="40" y="40" width="80" height="80" rx="8" stroke-width="3"/><rect class="fn ln" x="140" y="40" width="80" height="80" rx="8" stroke-width="3"/>
+        <rect class="fn ln" x="40" y="140" width="80" height="80" rx="8" stroke-width="3"/><rect class="fn ln" x="140" y="140" width="80" height="80" rx="8" stroke-width="3"/>
+        <text class="t-muted" x="130" y="270" text-anchor="middle" font-size="24">4 ta PNG</text>
+      </g>
+      <g class="fragment"><line class="la flowing" x1="260" y1="130" x2="440" y2="130" stroke-width="4" marker-end="url(#ar-a)"/><text class="t-accent" x="350" y="110" text-anchor="middle" font-size="22">yig'amiz</text></g>
+      <g class="fragment" data-tip="Bitta sheet: 4 kadr × 32 px = 128 px kenglik.">
+        <rect class="fa la" x="480" y="90" width="460" height="100" rx="10" stroke-width="3"/>
+        <line class="la" x1="595" y1="90" x2="595" y2="190" stroke-width="2"/><line class="la" x1="710" y1="90" x2="710" y2="190" stroke-width="2"/><line class="la" x1="825" y1="90" x2="825" y2="190" stroke-width="2"/>
+        <text class="t-head" x="537" y="148" text-anchor="middle" font-size="24">1</text><text class="t-head" x="652" y="148" text-anchor="middle" font-size="24">2</text><text class="t-head" x="767" y="148" text-anchor="middle" font-size="24">3</text><text class="t-head" x="882" y="148" text-anchor="middle" font-size="24">4</text>
+        <text class="t-accent" x="710" y="240" text-anchor="middle" font-size="24">qahramon_yurish_sheet_32x32.png</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>O'xshatish: fotoalbom</h2>
+  <div class="vs">
+    <div class="side fragment"><h3><i data-ic="mail"></i> 30 ta konvert</h3>Har rasmni alohida ochish — vaqt ketadi, tartib yo'qoladi.</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3><i data-ic="book-open"></i> Bitta albom</h3>Bir marta ochasiz, kerakli sahifani darhol topasiz.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Nega kerak?</h1>
+  <p>Dvijok nuqtai nazaridan</p>
+</section>
+
+<section>
+  <h2>Uch foyda</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="download" data-anim="bounce"></i></div><h3>Bitta yuklash</h3><p>Fayl bir marta yuklanadi — o'yin tezroq ochiladi.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="gauge"></i></div><h3>Kam draw call</h3><p>Bitta atlasdagi spraytlar birga chiziladi.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="folder"></i></div><h3>Tartib</h3><p>Kadrlar ketma-ket, jamoaga tushunarli.</p></div>
+  </div>
+  <div class="callout tip mt"><i data-ic="book-open"></i>O'quv qo'llanma: «Draw call sonini kamaytirish uchun sprite atlaslaridan foydalaning».</div>
+</section>
+
+<section>
+  <h2>Draw call nima?</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="cpu" data-anim="pulse"></i></div><h3>Draw call</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Dvijokning videokartaga «shuni chiz» degan bitta buyrug'i. Har buyruq vaqt oladi.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="smartphone"></i></div><h3>Mobil qurilma</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Telefonda buyruqlar soni ayniqsa muhim: kam draw call — ravon o'yin va kam batareya sarfi.</p></div>
+    </div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Atlasning asosiy texnik foydasi qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Ranglar yorqinroq bo'ladi</button>
+      <button class="opt" type="button">Spraytlar avtomatik animatsiya bo'ladi</button>
+      <button class="opt" type="button" data-ok>Draw call va yuklanish kamayadi</button>
+      <button class="opt" type="button">Fayl vektorga aylanadi</button>
+    </div>
+    <div class="explain">Bitta fayl bir marta yuklanadi, bir atlasdagi spraytlar birga chiziladi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Sheet tuzilishi</h1>
+  <p>Katak, qator, padding, tayanch nuqta</p>
+</section>
+
+<section>
+  <h2>Sheet anatomiyasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 380">
+      <g data-tip="1-qator: idle animatsiya, 2 kadr.">
+        <rect class="fa la" x="200" y="40" width="100" height="100" stroke-width="3"/><rect class="fa la" x="310" y="40" width="100" height="100" stroke-width="3"/>
+        <rect class="fn ln" x="420" y="40" width="100" height="100" stroke-width="2" stroke-dasharray="6 6"/><rect class="fn ln" x="530" y="40" width="100" height="100" stroke-width="2" stroke-dasharray="6 6"/>
+        <text class="t-head" x="60" y="98" font-size="24">idle</text>
+      </g>
+      <g class="fragment" data-tip="2-qator: yurish, 4 kadr — eng uzun qator kenglikni belgilaydi.">
+        <rect class="fb lb" x="200" y="150" width="100" height="100" stroke-width="3"/><rect class="fb lb" x="310" y="150" width="100" height="100" stroke-width="3"/><rect class="fb lb" x="420" y="150" width="100" height="100" stroke-width="3"/><rect class="fb lb" x="530" y="150" width="100" height="100" stroke-width="3"/>
+        <text class="t-head" x="60" y="208" font-size="24">yurish</text>
+      </g>
+      <g class="fragment" data-tip="Padding: kataklar orasidagi 1–2 px oraliq — ranglar aralashmaydi.">
+        <line class="lc" x1="305" y1="30" x2="305" y2="260" stroke-width="3" stroke-dasharray="4 6"/>
+        <text class="t-accent" x="700" y="80" font-size="24">padding 1–2 px</text>
+      </g>
+      <g class="fragment" data-tip="Tayanch nuqta: oyoq chizig'i barcha kadrlarda bir xil balandlikda.">
+        <line class="lg pulse" x1="190" y1="240" x2="640" y2="240" stroke-width="4"/>
+        <text class="t-accent" x="700" y="246" font-size="24">oyoq chizig'i (pivot)</text>
+      </g>
+      <g class="fragment"><text class="t-muted" x="415" y="320" text-anchor="middle" font-size="24">4 × 32 = 128 px · 2 × 32 = 64 px</text></g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>O'lchamni hisoblash</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="32" data-suf=" px">0</span></div><div class="l">kadr kengligi</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="6">0</span></div><div class="l">kadr (eng uzun qator)</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="192" data-suf=" px">0</span></div><div class="l">sheet kengligi</div></div>
+  </div>
+  <p class="small mt">Kenglik = kadrlar × kadr kengligi · Balandlik = qatorlar × kadr balandligi. 2 ning darajalari (64, 128, 256) qulay.</p>
+</section>
+
+<section>
+  <h2>Tayanch nuqta: oldin / keyin</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">Noto'g'ri</button><button type="button">To'g'ri</button></div>
+    <div class="swap-p"><div class="callout bad"><i data-ic="triangle-alert"></i>2-kadrda qahramon 2 px yuqorida chizilgan — o'yinda har qadamda «sakraydi».</div></div>
+    <div class="swap-p"><div class="callout tip"><i data-ic="circle-check"></i>Gorizontal guide oyoq ostida, barcha kadrlar shu chiziqda — harakat silliq.</div></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Photoshop amaliyoti</h1>
+  <p>Idle va yurish sheetini yig'amiz</p>
+</section>
+
+<section>
+  <h2>6 qadam</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="file-plus"></i></div><h3>1. Hujjat</h3><p>128×32 px (4 × 32), Background: Transparent.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="grid-3x3"></i></div><h3>2. Guide Layout</h3><p>View → New Guide Layout: Columns 4, Gutter 0.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="move"></i></div><h3>3. Kadrlarni joylash</h3><p>12-dars guruhlarini nusxalab, Move Tool (V) bilan kataklarga. Snap yoqilgan.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="layers"></i></div><h3>4. Nomlash</h3><p>Qatlamlar <code>kadr_01</code>…, guruh <code>yurish</code>.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="ruler"></i></div><h3>5. Tekshirish</h3><p>Oyoq chizig'i bir xil, kadrlar katakdan chiqmaydi.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="download"></i></div><h3>6. Eksport</h3><p>Export As → PNG, 100%, Transparency.</p></div></div>
+  </div>
+</section>
+
+<section data-auto-animate>
+  <h2>Yurish: 4 kadr</h2>
+  <div class="flow">
+    <div class="step" data-id="k1"><span class="icon"><i data-ic="footprints"></i></span>O'ng oyoq oldinda</div>
+    <div class="step" data-id="k2"><span class="icon"><i data-ic="user"></i></span>Oyoqlar birga</div>
+  </div>
+</section>
+
+<section data-auto-animate>
+  <h2>Yurish: 4 kadr</h2>
+  <div class="flow">
+    <div class="step" data-id="k1"><span class="icon"><i data-ic="footprints"></i></span>O'ng oyoq oldinda</div>
+    <div class="step" data-id="k2"><span class="icon"><i data-ic="user"></i></span>Oyoqlar birga</div>
+    <div class="step"><span class="icon"><i data-ic="footprints"></i></span>Chap oyoq oldinda</div>
+    <div class="step"><span class="icon"><i data-ic="user"></i></span>Oyoqlar birga</div>
+  </div>
+  <p class="small mt">Oyoq oldinda bo'lgan kadrlarda tana 1 px pastda. Timeline: 4 kadr × 0.15 s.</p>
+</section>
+
+<section>
+  <section>
+    <h2>Obyektlar atlasi</h2>
+    <div class="illus">
+      <svg viewBox="0 0 1000 340">
+        <g class="fragment" data-tip="1-qator: pullar va qimmatbaho buyumlar."><rect class="fb lb" x="300" y="20" width="70" height="70" stroke-width="3"/><rect class="fb lb" x="380" y="20" width="70" height="70" stroke-width="3"/><rect class="fb lb" x="460" y="20" width="70" height="70" stroke-width="3"/><text class="t-head" x="560" y="64" font-size="22">tanga, olmos</text></g>
+        <g class="fragment" data-tip="2-qator: zelyelar."><rect class="fc lc" x="300" y="100" width="70" height="70" stroke-width="3"/><rect class="fc lc" x="380" y="100" width="70" height="70" stroke-width="3"/><text class="t-head" x="560" y="144" font-size="22">qizil, moviy zelye</text></g>
+        <g class="fragment" data-tip="3-qator: kalit va sandiq."><rect class="fg lg" x="300" y="180" width="70" height="70" stroke-width="3"/><rect class="fg lg" x="380" y="180" width="70" height="70" stroke-width="3"/><text class="t-head" x="560" y="224" font-size="22">kalit, sandiq</text></g>
+        <g class="fragment" data-tip="4-qator: zaxira — yangi buyum qo'shilsa atlas o'lchami o'zgarmaydi."><rect class="fn ln" x="300" y="260" width="70" height="70" stroke-width="2" stroke-dasharray="6 6"/><rect class="fn ln" x="380" y="260" width="70" height="70" stroke-width="2" stroke-dasharray="6 6"/><text class="t-muted" x="560" y="304" font-size="22">zaxira</text></g>
+      </svg>
+    </div>
+    <p class="small">Pastga bosing: atlas qoidalari</p>
+  </section>
+  <section>
+    <h2>Atlas qoidalari</h2>
+    <div class="cards three">
+      <div class="card"><div class="icon"><i data-ic="grid-2x2"></i></div><h3>16×16 katak</h3><p>64×64 hujjatda 16 o'rin.</p></div>
+      <div class="card"><div class="icon"><i data-ic="rows-3"></i></div><h3>O'xshashlar birga</h3><p>Pullar, zelyelar, kalitlar — alohida qatorlar.</p></div>
+      <div class="card"><div class="icon"><i data-ic="palette"></i></div><h3>Bitta uslub</h3><p>Bir xil palitra, kontur va yorug'lik yo'nalishi.</p></div>
+    </div>
+  </section>
+</section>
+
+<section class="sec">
+  <div class="num">05</div>
+  <h1>Optimallashtirish</h1>
+  <p>Yengil, tartibli, sifatli</p>
+</section>
+
+<section>
+  <h2>5 qoida</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="crop"></i></div><h3>Ortiqcha joy yo'q</h3><p>Katak obyektga mos, lekin hammasi bir xil.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="copy-x"></i></div><h3>Nusxa kadr yo'q</h3><p>Dvijokda kadr vaqtini uzaytiring.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="palette"></i></div><h3>Kam rang</h3><p>16–32 rang — kichik fayl, yaxlit uslub.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="image"></i></div><h3>PNG, 100%</h3><p>Kattalashtirishni dvijok qiladi.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="tag"></i></div><h3>Aniq nom</h3><p><code>tanga_aylanish_sheet_16x16.png</code></p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Dvijokda nima bo'ladi?</h2>
+  <pre class="terminal"><code data-trim data-noescape>
+Unity: qahramon_yurish_sheet_32x32.png
+  Texture Type : Sprite (2D and UI)
+  Sprite Mode  : Multiple
+  Filter Mode  : Point (no filter)
+  Sprite Editor → Slice → Grid By Cell Size: 32 × 32
+  Natija: qahramon_yurish_0 … qahramon_yurish_3
+</code></pre>
+  <p class="small">Bu Unity bo'limida amalda o'tiladi. Bugun asosiysi: teng katak bo'lsa, kesish bir bosishda.</p>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Sheetdagi kadrlar 30, 32 va 34 px kenglikda. Nima bo'ladi?</p>
+    <div class="opts">
+      <button class="opt" type="button" data-ok>Dvijok to'r bo'yicha kesganda kadrlar buziladi</button>
+      <button class="opt" type="button">Hech narsa, dvijok o'zi moslaydi</button>
+      <button class="opt" type="button">Fayl hajmi kamayadi</button>
+      <button class="opt" type="button">Animatsiya tezlashadi</button>
+    </div>
+    <div class="explain">Grid By Cell Size teng kataklarni kutadi — har xil kenglik kadrlarni yarmidan kesadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Amaliy topshiriqlar <span class="timer"><i data-ic="timer"></i>30 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Yurish 6 kadr × 32 px: sheet o'lchamini hisoblang.</div>
+  <div class="task"><span class="level easy">Oson</span>Idle 2 kadrdan 64×32 px sheet yig'ing.</div>
+  <div class="task"><span class="level mid">O'rta</span>4 kadrli yurish animatsiyasini chizib, 128×32 sheetga joylang.</div>
+  <div class="task"><span class="level hard">Qiyin</span>64×64 obyektlar atlasi (6+ obyekt) va hajm taqqoslash.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Sheet va atlas</h3><p>Ko'p kadr — bitta PNG fayl.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Tuzilish</h3><p>Teng katak, qator, padding, tayanch nuqta.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Optimallashtirish</h3><p>Kam rang, nusxasiz, 100%, aniq nom.</p></div>
+  </div>
+  <p class="small mt">Uyga vazifa: idle + yurish sheet (128×64) va obyektlar atlasi (64×64).</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="mouse-pointer-click" data-anim="bounce"></i></div>
+  <h1>Keyingi dars: tugmalar</h1>
+  <p class="muted">UI dizayn (1-qism): tugmalar turlari va holatlari — Normal, Hover, Pressed</p>
+  <span class="badge">5-hafta · 14-dars</span>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

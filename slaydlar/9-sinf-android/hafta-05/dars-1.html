@@ -1,101 +1,312 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>Kotlin: sikllar va oraliqlar</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Kotlin: sikllar va oraliqlar</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Kotlin: sikllar va oraliqlar</h1></header>
-<div class="badges"><span class="badge">9-sinf</span><span class="badge">Android dasturlash</span><span class="badge">5-hafta · 13-dars</span><span class="badge">for, while, do-while, ranges: in, downTo, step</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "<code>val ball = 75<\/code>. <code>when (ball) { in 70..89 -&gt; \"Yaxshi\"; else -&gt; \"Boshqa\" }<\/code> nima qaytaradi?", "o": ["<code>Yaxshi<\/code>", "<code>Boshqa<\/code>", "<code>75<\/code>", "Xato"], "a": 0, "e": "75 <code>70..89<\/code> oralig'iga kiradi, shuning uchun birinchi shart bajariladi."}, {"q": "<code>for (i in 1 until 5) println(i)<\/code> qaysi sonlarni chiqaradi?", "o": ["1, 2, 3, 4", "1, 2, 3, 4, 5", "2, 3, 4, 5", "0, 1, 2, 3, 4"], "a": 0, "e": "<code>until<\/code> oxirgi chegarani kiritmaydi."}, {"q": "<code>var i = 5; while (i &lt; 3) { println(i) }<\/code> nechta marta chop etadi?", "o": ["Hech qachon", "1 marta", "3 marta", "Cheksiz"], "a": 0, "e": "Shart boshidan noto'g'ri, <code>while<\/code> tanasi ishlamaydi."}, {"q": "<code>for (n in 1..5) { if (n == 3) break; print(n) }<\/code> nima chiqaradi?", "o": ["12", "1245", "123", "12345"], "a": 0, "e": "<code>n == 3<\/code> bo'lganda sikl to'xtaydi, 3 chop etilmaydi."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Kotlin: sikllar va oraliqlar</h1>
+  <p class="muted">for, while, do-while, ranges: in, downTo, step</p>
+  <span class="badge">9-sinf</span><span class="badge">Android dasturlash</span><span class="badge">5-hafta · 13-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimalarni o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="repeat" data-anim="pulse"></i></div><h3>for sikli</h3><p>Oraliq bo'yicha takrorlash</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="rotate-cw" data-anim="float"></i></div><h3>downTo, step, while</h3><p>Teskari sanash, qadam va shartli sikllar</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="octagon-x" data-anim="blink"></i></div><h3>break va continue</h3><p>Siklni boshqarish va ichma-ich sikllar</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q"><code>val ball = 75</code>. <code>when (ball) { in 70..89 -&gt; "Yaxshi"; else -&gt; "Boshqa" }</code> nima qaytaradi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok><code>Yaxshi</code></button>
+    <button class="opt" type="button"><code>Boshqa</code></button>
+    <button class="opt" type="button"><code>75</code></button>
+    <button class="opt" type="button">Xato</button>
+    </div>
+    <div class="explain">75 <code>70..89</code> oralig'iga kiradi, shuning uchun birinchi shart bajariladi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>for sikli</h1>
+  <p>Oraliq bo'yicha takrorlash</p>
+</section>
+
+<section>
+  <h2>for sikli qanday ishlaydi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Oraliq: 1..9</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">n =</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">keyingi son</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">Tana: n * n</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">Oraliq</text><text class="t-head" x="875" y="171" text-anchor="middle" font-size="22">tugadimi?</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Oraliq tugamaguncha tana takrorlanadi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>for: kvadratlar jadvali</h2>
+  <pre><code class="language-kotlin" data-trim data-line-numbers="1|2">
+for (n in 1..9) {
+    println("$n * $n = ${n * n}")
 }
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i><code>1..9</code> ikkala chegarani ham o'z ichiga oladi; <code>1 until 9</code> esa 9 ni kiritmaydi (1..8).</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>for (i in 1 until 5) println(i)</code> qaysi sonlarni chiqaradi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>1, 2, 3, 4</button>
+    <button class="opt" type="button">1, 2, 3, 4, 5</button>
+    <button class="opt" type="button">2, 3, 4, 5</button>
+    <button class="opt" type="button">0, 1, 2, 3, 4</button>
+    </div>
+    <div class="explain"><code>until</code> oxirgi chegarani kiritmaydi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>downTo, step, while</h1>
+  <p>Teskari sanash, qadam va shartli sikllar</p>
+</section>
+
+<section>
+  <h2>while va do-while farqi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">while: shart</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">Tana</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">bajariladi</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">do-while: tana</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">Shart</text><text class="t-head" x="875" y="171" text-anchor="middle" font-size="22">tekshiriladi</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">do-while kamida bir marta ishlaydi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>while va do-while</h2>
+  <pre><code class="language-kotlin" data-trim data-line-numbers="1-5|6-10">
+var i = 10
+while (i &gt; 7) {
+    println(i)
+    i--
 }
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
+var j = -1
+do {
+    println("j = $j")
+    j--
+} while (j &gt; 0)
+  </code></pre>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i><code>do-while</code> da shart noto'g'ri bo'lsa ham tana bir marta bajariladi: <code>j = -1</code> chop etiladi.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>var i = 5; while (i &lt; 3) { println(i) }</code> nechta marta chop etadi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Hech qachon</button>
+    <button class="opt" type="button">1 marta</button>
+    <button class="opt" type="button">3 marta</button>
+    <button class="opt" type="button">Cheksiz</button>
+    </div>
+    <div class="explain">Shart boshidan noto'g'ri, <code>while</code> tanasi ishlamaydi.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>break va continue</h1>
+  <p>Siklni boshqarish va ichma-ich sikllar</p>
+</section>
+
+<section>
+  <h2>break va continue yo'li</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">Sikl boshlandi</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">n == 5 ?</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="145" text-anchor="middle" font-size="22">continue:</text><text class="t-head" x="625" y="171" text-anchor="middle" font-size="22">o'tkaz</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">break: chiq</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">continue qadamni tashlaydi, break siklni tugatadi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>continue va ichma-ich sikl</h2>
+  <pre><code class="language-kotlin" data-trim data-line-numbers="1-4|6-9">
+for (n in 1..7) {
+    if (n == 5) continue
+    print("$n ")
 }
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+println()
+for (a in 1..3) {
+    for (b in 1..3) print("${a * b}\t")
+    println()
+}
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i><code>continue</code> da 5 tashlab o'tiladi: natija <code>1 2 3 4 6 7</code>. Ichki sikl har bir <code>a</code> uchun qayta ishga tushadi.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>for (n in 1..5) { if (n == 3) break; print(n) }</code> nima chiqaradi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>12</button>
+    <button class="opt" type="button">1245</button>
+    <button class="opt" type="button">123</button>
+    <button class="opt" type="button">12345</button>
+    </div>
+    <div class="explain"><code>n == 3</code> bo'lganda sikl to'xtaydi, 3 chop etilmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>for va while: qaysi birini tanlaymiz?</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>for</h3>Takrorlash soni oldindan ma'lum: <code>for (i in 1..10)</code></div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>while</h3>Takrorlash soni noma'lum, shart bo'yicha: <code>while (qoldiq &gt; 0)</code></div>
+  </div>
+  <div class="card accent fragment mt"><p>Soni ma'lum bo'lsa <code>for</code>, shart bo'yicha bo'lsa <code>while</code> qulay.</p></div>
+</section>
+
+<section>
+  <h2>Oraliq turlari. Bosing</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>1..5</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>1, 2, 3, 4, 5: oxirgi chegara ham kiradi</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>1 until 5</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>1, 2, 3, 4: oxirgi chegara kirmaydi</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>5 downTo 1</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>5, 4, 3, 2, 1: kamayish tartibida</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>1..10 step 3</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>1, 4, 7, 10: har 3-son</p></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Siklni tanlash bosqichlari</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="list-ordered" data-anim="pulse"></i></div><h3>1. Oraliq bormi?</h3><p>Sonlar chegarasi ma'lum bo'lsa <code>for</code> ishlating.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="circle-question-mark"></i></div><h3>2. Shart bormi?</h3><p>Qachon to'xtash noma'lum bo'lsa <code>while</code>.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="repeat"></i></div><h3>3. Kamida 1 marta?</h3><p>Tana kamida bir marta ishlashi kerak bo'lsa <code>do-while</code>.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>Sikllar yonma-yon</h2>
+    <table>
+      <thead><tr><th>Sikl</th><th>Shart qachon</th><th>Eng kam ishlashi</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td>for</td><td>oraliq tugaguncha</td><td>0 marta</td></tr>
+        <tr class="fragment"><td>while</td><td>tana oldidan</td><td>0 marta</td></tr>
+        <tr class="fragment"><td>do-while</td><td>tana keyin</td><td>1 marta</td></tr>
+        <tr class="fragment"><td>break</td><td>siklni to'xtatadi</td><td>-</td></tr>
+        <tr class="fragment"><td>continue</td><td>qadamni o'tkazadi</td><td>-</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: yig'indi qoidasi</p>
+  </section>
+  <section>
+    <h2>Sikl yozish tartibi</h2>
+    <ol class="steps-n">
+      <li class="fragment">Takrorlanadigan amalni aniqlang.</li>
+      <li class="fragment">Sikl turini tanlang: <code>for</code>, <code>while</code> yoki <code>do-while</code>.</li>
+      <li class="fragment">Oraliq yoki shartni yozing va tananing ichida o'zgaruvchini yangilashni unutmang.</li>
+    </ol>
+  </section>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">Teskari hisob</h2>
+  <pre data-id="c"><code class="language-kotlin" data-trim>
+for (i in 5 downTo 1) {
+}
+  </code></pre>
+</section>
+<section data-auto-animate>
+  <h2 data-id="t">Teskari hisob</h2>
+  <pre data-id="c"><code class="language-kotlin" data-trim data-line-numbers="1-3|4">
+for (i in 5 downTo 1) {
+    println(i)
+}
+println("Start!")
+  </code></pre>
+</section>
+
+<section>
+  <h2>Raqamlarda sikllar</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="3" data-suf="">0</span></div><div class="l">sikl turi: for, while, do-while</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="4" data-suf="">0</span></div><div class="l">oraliq kalit so'zi: .., until, downTo, step</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="9" data-suf="">0</span></div><div class="l">1..9 oralig'idagi sonlar soni</div></div>
+  </div>
+  <p class="small fragment">Eslang: <code>1..9</code> - 9 ta son, <code>1 until 9</code> - 8 ta son.</p>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Kvadratlar jadvali: <code>for</code> va <code>1..9</code> oralig'i bilan 1 dan 9 gacha sonlarning kvadratlarini chiqaring.</div>
+  <div class="task"><span class="level mid">O'rta</span>Teskari hisob va qadam: <code>10 downTo 1</code> bilan teskari sanang, so'ng <code>1..20 step 5</code> bilan har 5-sonni chiqaring.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Ko'paytirish jadvali va to'xtatish: Ichma-ich sikl bilan 1 dan 5 gacha ko'paytirish jadvalini chiqaring. Natija 20 dan oshsa ichki siklni <code>break</code> bilan to'xtating, 3 ga bo'linadigan natijani <code>continue</code> bilan tashlab o'ting.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>for</h3><p>Oraliq bo'yicha: <code>..</code>, <code>until</code>, <code>downTo</code>, <code>step</code>.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>while / do-while</h3><p>Shart oldin yoki keyin tekshiriladi.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>break / continue</h3><p>To'xtatish va qadamni o'tkazish; ichma-ich sikllar.</p></div>
+  </div>
+  <p class="small fragment mt">Uyga vazifa: 1 dan 20 gacha juft sonlar, teskari hisob, ko'paytirish jadvali.</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="braces" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: Funksiyalar (1-qism)</h1>
+  <p class="muted">Funksiya e'lon qilish, parametrlar, standart qiymatlar</p>
+  <span class="badge">5-hafta · 15-dars</span>
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

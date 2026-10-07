@@ -1,101 +1,300 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>Bulutli xizmatlar</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Bulutli xizmatlar</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Bulutli xizmatlar</h1></header>
-<div class="badges"><span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">4-hafta · 11-dars</span><span class="badge">1-qism: bulutli saqlash, yuklash, ulashish va ruxsatlar</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "Sayt fayllari qayerda saqlanadi?", "o": ["Foydalanuvchining brauzerida", "Hosting serverida", "DNS da", "Domen nomida"], "a": 1, "e": "To'g'ri: hosting serveri doim internetga ochiq. Bugun xuddi shunday serverlarda sizning fayllaringiz saqlanishini ko'ramiz."}, {"q": "Ustoz inshongizdagi xatolarga izoh yozishi kerak, lekin matnni o'zi o'zgartirmasligi kerak. Qaysi ruxsat?", "o": ["Muharrir", "Izohlovchi", "Havolasi bor har kim", "Hech qanday ruxsat kerak emas"], "a": 1, "e": "To'g'ri: Izohlovchi izoh qoldiradi, lekin matnni o'zgartira olmaydi."}, {"q": "Pasport nusxasini qanday ulashish xavfli?", "o": ["Faqat onangizga email bo'yicha, Ko'ruvchi", "Hech kimga ulashmaslik", "«Havolasi bor har kim» qilib sinf guruhiga", "Cheklangan rejimda saqlash"], "a": 2, "e": "Ochiq havolani olgan har kim, hatto begona ham, hujjatni ochadi."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 11-dars: Bulutli xizmatlar (1-qism) -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Bulutli xizmatlar</h1>
+  <p class="muted">1-qism: bulutli saqlash, yuklash, ulashish va ruxsatlar</p>
+  <span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">4-hafta · 11-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi reja</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="cloud" data-anim="float"></i></div><h3>01. Bulut nima?</h3><p>Tushuncha, afzallik va xavflar.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="hard-drive" data-anim="pulse"></i></div><h3>02. Xizmatlar</h3><p>Google Drive, OneDrive, Dropbox.</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="share-2" data-anim="bounce"></i></div><h3>03. Ulashish</h3><p>Yuklash, havola va ruxsatlar.</p></div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Takrorlash: 10-dars</h2>
+  <div class="quiz">
+    <p class="q">Sayt fayllari qayerda saqlanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Foydalanuvchining brauzerida</button>
+      <button class="opt" type="button" data-ok>Hosting serverida</button>
+      <button class="opt" type="button">DNS da</button>
+      <button class="opt" type="button">Domen nomida</button>
+    </div>
+    <div class="explain">To'g'ri: hosting serveri doim internetga ochiq. Bugun xuddi shunday serverlarda sizning fayllaringiz saqlanishini ko'ramiz.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Bulut nima?</h1>
+  <p>Osmondagi emas, boshqa birovning serveri</p>
+</section>
+
+<section>
+  <h2>Fayl qayerda turadi?</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340">
+      <g class="fragment" data-tip="Sizning qurilmangiz: telefon, planshet yoki kompyuter.">
+        <rect class="fa la" x="30" y="100" width="250" height="150" rx="22" stroke-width="3"/>
+        <text class="t-head" x="155" y="168" text-anchor="middle" font-size="30">Qurilma</text>
+        <text class="t-muted" x="155" y="210" text-anchor="middle" font-size="22">telefon, kompyuter</text>
+      </g>
+      <g class="fragment">
+        <line class="la flowing" x1="290" y1="150" x2="690" y2="150" stroke-width="4"/><polygon class="ar-a" points="700,150 680,138 680,162"/>
+        <text class="t-accent" x="495" y="134" text-anchor="middle" font-size="26">yuklash</text>
+      </g>
+      <g class="fragment" data-tip="Bulut serveri: ma'lumot markazidagi minglab kompyuterlardan biri. Siz unga internet orqali kirasiz.">
+        <rect class="fb lb" x="710" y="100" width="260" height="150" rx="22" stroke-width="3"/>
+        <text class="t-head" x="840" y="168" text-anchor="middle" font-size="30">Bulut serveri</text>
+        <text class="t-muted" x="840" y="210" text-anchor="middle" font-size="22">ma'lumot markazi</text>
+      </g>
+      <g class="fragment">
+        <line class="lc flowing" x1="700" y1="215" x2="300" y2="215" stroke-width="4"/><polygon class="ar-c" points="290,215 310,203 310,227"/>
+        <text class="t-accent" x="495" y="255" text-anchor="middle" font-size="26">istalgan qurilmadan ochish</text>
+      </g>
+      <g class="fragment"><text class="t-muted" x="500" y="315" text-anchor="middle" font-size="22">ulanish internet orqali, HTTPS bilan</text></g>
+    </svg>
+  </div>
+  <p class="small">Qismlar ustiga bosing: izoh chiqadi.</p>
+  
+</section>
+
+<section>
+  <h2>Uy yoki bank?</h2>
+  <div class="vs">
+    <div class="side fragment"><h3><i data-ic="hard-drive"></i> Qurilma xotirasi</h3>Pul yostiq ostida: faqat uyda ishlatasiz, qurilma buzilsa, fayl ham yo'qoladi.</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3><i data-ic="cloud"></i> Bulut</h3>Pul bankda: istalgan bankomatdan olasiz. Fayl istalgan qurilmadan ochiladi.</div>
+  </div>
+  <div class="callout tip"><i data-ic="key-round"></i>Bank kartasining PIN kodi kabi bulut parolini ham sir saqlang.</div>
+</section>
+
+<section>
+  <h2>Bulutning afzalliklari</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="smartphone" data-anim="float"></i></div><h3>Istalgan joydan</h3><p>Uyda boshlagan referatni maktabda davom ettirasiz.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="shield-check" data-anim="pulse"></i></div><h3>Zaxira nusxa</h3><p>Telefon yo'qolsa ham rasmlar saqlanib qoladi.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="link" data-anim="bounce"></i></div><h3>Oson ulashish</h3><p>Katta videoni havola bilan yuborasiz.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="users" data-anim="wiggle"></i></div><h3>Hamkorlik</h3><p>Bir hujjatda bir vaqtda bir necha kishi ishlaydi.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="refresh-cw" data-anim="spin"></i></div><h3>Sinxronizatsiya</h3><p>Bir qurilmadagi o'zgarish boshqalarida ham paydo bo'ladi.</p></div>
+    <div class="card fragment accent"><div class="icon"><i data-ic="lightbulb"></i></div><h3>Xulosa</h3><p>Bulut - fayllaringiz uchun «bank».</p></div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Kamchilik va xavflar</h2>
+  <div class="cards two">
+    <div class="card fragment"><div class="icon"><i data-ic="wifi-off"></i></div><h3>Internetga bog'liq</h3><p>Internet bo'lmasa, oflayn rejim yoqilmagan fayl ochilmaydi.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="database"></i></div><h3>Joy cheklangan</h3><p>Bepul hajm tugasa, yangi fayl yuklanmaydi.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="eye"></i></div><h3>Maxfiylik</h3><p>Noto'g'ri ulashilgan havola orqali begona faylni ko'radi.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="key-round"></i></div><h3>Akkaunt</h3><p>Parol o'g'irlansa, barcha fayllar xavf ostida.</p></div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Bulutli saqlash xizmatlari</h1>
+  <p>Google Drive, OneDrive, Dropbox</p>
+</section>
+
+<section>
+  <h2>Uch mashhur xizmat</h2>
+  <table>
+    <thead><tr><th>Xizmat</th><th>Kompaniya</th><th>Bepul hajm</th><th>Qulay</th></tr></thead>
+    <tbody>
+      <tr class="fragment"><td>Google Drive</td><td>Google</td><td>15 GB</td><td>Docs, Sheets, Slides bilan</td></tr>
+      <tr class="fragment"><td>OneDrive</td><td>Microsoft</td><td>5 GB</td><td>Windows va Word, Excel bilan</td></tr>
+      <tr class="fragment"><td>Dropbox</td><td>Dropbox</td><td>2 GB</td><td>tez sinxronlash</td></tr>
+    </tbody>
+  </table>
+  <p class="small mt">Google Drive dagi 15 GB Gmail va Google Photos bilan umumiy. Hajmlar vaqt o'tib o'zgarishi mumkin.</p>
+  
+</section>
+
+<section>
+  <h2>15 GB qancha?</h2>
+  <div class="stats">
+    <div class="stat fragment"><div class="v"><span class="count" data-to="15" data-suf=" GB">0</span></div><div class="l">Google Drive bepul</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="3" data-suf=" MB">0</span></div><div class="l">bitta telefon rasmi (o'rtacha)</div></div>
+    <div class="stat fragment"><div class="v"><span class="count" data-to="5000" data-suf=" ta">0</span></div><div class="l">taxminan shuncha rasm sig'adi</div></div>
+  </div>
+  <p class="small mt">Hisob: 15 GB ≈ 15000 MB; 15000 : 3 = 5000.</p>
+</section>
+
+<section>
+  <h2>Akkaunt va kirish</h2>
+  <div class="flow">
+    <div class="step fragment"><span class="icon"><i data-ic="user-round-check"></i></span>Akkaunt</div>
+    <div class="arrow"><i data-ic="arrow-right"></i></div>
+    <div class="step fragment"><span class="icon"><i data-ic="globe-lock"></i></span>https va to'g'ri domen</div>
+    <div class="arrow"><i data-ic="arrow-right"></i></div>
+    <div class="step fragment"><span class="icon"><i data-ic="folder"></i></span>Fayllar</div>
+    <div class="arrow"><i data-ic="arrow-right"></i></div>
+    <div class="step fragment"><span class="icon"><i data-ic="log-out"></i></span>Chiqish</div>
+  </div>
+  <div class="callout warn mt"><i data-ic="triangle-alert"></i>Maktab kompyuterida ishdan keyin doim akkauntdan chiqing.</div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Yuklash va ulashish</h1>
+  <p>Papka, havola va ruxsatlar</p>
+</section>
+
+<section>
+  <h2>Faylni yuklash: 4 qadam</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="globe"></i></div><h3>1. Kirish</h3><p><code>drive.google.com</code> ni oching.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="folder-plus" data-anim="bounce"></i></div><h3>2. Papka</h3><p><b>Yangi → Papka</b>: <code>8-sinf CS</code>.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="cloud-upload" data-anim="float"></i></div><h3>3. Yuklash</h3><p><b>Yangi → Fayl yuklash</b> yoki faylni oynaga sudrab tashlang.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="file-text"></i></div><h3>4. Nom</h3><p>Ma'noli nom: <code>Referat_Internet_Karimov</code>.</p></div></div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Ikki xil ulashish</h2>
+  <div class="swap">
+    <div class="swap-tabs"><button type="button">Email bo'yicha</button><button type="button">Havola orqali</button></div>
+    <div class="swap-p"><div class="card"><div class="icon"><i data-ic="mail"></i></div><h3>Aniq odamga</h3><p><b>Ulashish</b> → email yozing → ruxsat tanlang → <b>Yuborish</b>. Faqat shu odam ochadi.</p></div></div>
+    <div class="swap-p"><div class="card accent"><div class="icon"><i data-ic="link"></i></div><h3>Havola</h3><p><b>Ulashish → Havolani nusxalash</b>. Umumiy kirish: <b>Cheklangan</b> yoki <b>Havolasi bor har kim</b>.</p></div></div>
+  </div>
+  <div class="callout tip"><i data-ic="key-round"></i>Havola - kalitning nusxasi: uni kimga bersangiz, o'sha eshikni ochadi.</div>
+</section>
+
+<section>
+  <h2>Ruxsat darajalari</h2>
+  <div class="cards three">
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="eye" data-anim="blink"></i></div><h3>Ko'ruvchi</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Faqat ko'radi. Dars jadvali, e'lon, tayyor taqdimot uchun.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="message-square" data-anim="wiggle"></i></div><h3>Izohlovchi</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>Ko'radi va izoh yozadi, matnni o'zgartirmaydi. Ustoz tekshiruvi uchun.</p></div>
+    </div></div>
+    <div class="flip" style="min-height:200px"><div class="flip-in">
+      <div class="face front"><div class="icon"><i data-ic="pencil" data-anim="draw"></i></div><h3>Muharrir</h3><span class="flip-hint">bosing</span></div>
+      <div class="face back"><p>O'zgartiradi, o'chiradi, ulashadi. Faqat ishonchli jamoadoshlarga.</p></div>
+    </div></div>
+  </div>
+  <p class="small mt">OneDrive va Dropbox da: Can view va Can edit.</p>
+</section>
+
+<section>
+  <h2>Eng kam ruxsat qoidasi</h2>
+  <div class="quote">Odamga ishi uchun yetadigan eng kichik ruxsatni bering.</div>
+  <div class="cards three mt">
+    <div class="card fragment"><h3>Sinfga jadval</h3><p>Ko'ruvchi</p></div>
+    <div class="card fragment"><h3>Ustoz inshoni tekshiradi</h3><p>Izohlovchi</p></div>
+    <div class="card fragment"><h3>Guruh taqdimoti</h3><p>Muharrir</p></div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Xavfsiz ulashish qoidalari</h2>
+  <div class="cards two">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-x"></i></div><h3>Shaxsiy fayl</h3><p>Pasport, parol, shaxsiy rasm - hech qachon ochiq havola bilan emas.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="users"></i></div><h3>Ochiq guruh</h3><p>Havolani ochiq guruhga tashlashdan oldin o'ylang.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="user-x"></i></div><h3>Eski ruxsatlar</h3><p>Loyiha tugagach, keraksiz ruxsatlarni olib tashlang.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="globe-lock"></i></div><h3>Soxta havola</h3><p>«Faylni ochish uchun parol kiriting» - domenni tekshiring.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Ustoz inshongizdagi xatolarga izoh yozishi kerak, lekin matnni o'zi o'zgartirmasligi kerak. Qaysi ruxsat?</p>
+    <div class="opts">
+      <button class="opt" type="button">Muharrir</button>
+      <button class="opt" type="button" data-ok>Izohlovchi</button>
+      <button class="opt" type="button">Havolasi bor har kim</button>
+      <button class="opt" type="button">Hech qanday ruxsat kerak emas</button>
+    </div>
+    <div class="explain">To'g'ri: Izohlovchi izoh qoldiradi, lekin matnni o'zgartira olmaydi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Pasport nusxasini qanday ulashish xavfli?</p>
+    <div class="opts">
+      <button class="opt" type="button">Faqat onangizga email bo'yicha, Ko'ruvchi</button>
+      <button class="opt" type="button">Hech kimga ulashmaslik</button>
+      <button class="opt" type="button" data-ok>«Havolasi bor har kim» qilib sinf guruhiga</button>
+      <button class="opt" type="button">Cheklangan rejimda saqlash</button>
+    </div>
+    <div class="explain">Ochiq havolani olgan har kim, hatto begona ham, hujjatni ochadi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Amaliy mashg'ulot <span class="timer"><i data-ic="timer"></i>25 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Bulutmi yoki qurilmami: 5 holatni ajrating. Drive da <code>8-sinf CS → 4-hafta</code> papkasini yarating.</div>
+  <div class="task"><span class="level mid">O'rta</span>4 vaziyat uchun ruxsat tanlang. 3 ta xavfli ulashishni toping va tuzating.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Drive, OneDrive, Dropbox ni 4 mezon bo'yicha taqqoslang.</div>
+  
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Bulut</h3><p>Fayllar kompaniya serverlarida, kirish - internet orqali.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Xizmatlar</h3><p>Drive 15 GB, OneDrive 5 GB, Dropbox 2 GB.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Ulashish</h3><p>Ko'ruvchi, Izohlovchi, Muharrir - eng kam ruxsat.</p></div>
+  </div>
+  <p class="small mt">Uyga vazifa: «Mening bulutim».</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="users" data-anim="float"></i></div>
+  <h1>Keyingi dars: birga ishlaymiz</h1>
+  <p class="muted">Google Docs, Sheets, Slides, Microsoft 365 va Trello</p>
+  <span class="badge">4-hafta · 12-dars</span>
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

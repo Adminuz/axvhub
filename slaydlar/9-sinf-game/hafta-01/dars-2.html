@@ -1,101 +1,422 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>O‘yinlarning Tarixi va Janrlari</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>O‘yinlarning Tarixi va Janrlari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>O‘yinlarning Tarixi va Janrlari</h1></header>
-<div class="badges"><span class="badge">9-sinf</span><span class="badge">Game Design</span><span class="badge">1-hafta · 2-dars</span><span class="badge">Qadimgi doska o'yinlaridan to zamonaviy ko'p millionli virtual olamlargacha</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>O‘yinlarning Tarixi va Janrlari</h1>
+  <p class="muted">Qadimgi doska o'yinlaridan to zamonaviy ko'p millionli virtual olamlargacha</p>
+  <span class="badge">9-sinf</span><span class="badge">Game Design</span><span class="badge">1-hafta · 2-dars</span>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>O'yinlar Tarixi va Boshlang'ich Davr</h1>
+  <p>Insoniyatning eng qadimiy ko'ngilochar va intellektual faoliyati</p>
+</section>
+
+<section>
+  <h2>Qadimgi dunyo o'yinlari</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="trophy" data-anim="pulse"></i></div>
+      <h3>Miloddan Avvalgi 2600-yil</h3>
+      <p>Mesopotamiyadagi Qirollik Ur o'yini va Qadimgi Misr Senet o'yini eng qadimiy ma'lum yodgorliklardir.</p>
+      <p class="t-muted">Odamlar tosh va yog'och donalar bilan strategik musobaqalashgan.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="compass"></i></div>
+      <h3>Qoidalar va Tuzilma</h3>
+      <p>Har qanday o'yin o'zining qat'iy qoidalari, maqsadi va g'olibi bilan o'yinchoqlardan farq qilgan.</p>
+      <p class="t-muted">Mankala va Shaxmat asrlar osha butun dunyoga tarqaldi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Kompyuter O'yinlari Xronologiyasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <line x1="40" y1="120" x2="760" y2="120" class="la ar-a"></line>
+
+      <circle cx="80" cy="120" r="14" class="fa la"></circle>
+      <text x="80" y="85" class="t-head" text-anchor="middle">1940</text>
+      <text x="80" y="155" class="t-muted" text-anchor="middle">Nimatron</text>
+      <text x="80" y="175" class="t-accent" text-anchor="middle">Elektromexanik</text>
+
+      <circle cx="230" cy="120" r="14" class="fb lb"></circle>
+      <text x="230" y="85" class="t-head" text-anchor="middle">1950</text>
+      <text x="230" y="155" class="t-muted" text-anchor="middle">Bertie the Brain</text>
+      <text x="230" y="175" class="t-accent" text-anchor="middle">4 metr kompyuter</text>
+
+      <circle cx="390" cy="120" r="14" class="fc lc"></circle>
+      <text x="390" y="85" class="t-head" text-anchor="middle">1962</text>
+      <text x="390" y="155" class="t-muted" text-anchor="middle">Spacewar!</text>
+      <text x="390" y="175" class="t-accent" text-anchor="middle">MIT, PDP-1</text>
+
+      <circle cx="550" cy="120" r="14" class="fg lg"></circle>
+      <text x="550" y="85" class="t-head" text-anchor="middle">1972</text>
+      <text x="550" y="155" class="t-muted" text-anchor="middle">Pong (Atari)</text>
+      <text x="550" y="175" class="t-accent" text-anchor="middle">Birinchi tijoriy</text>
+
+      <circle cx="700" cy="120" r="14" class="fn ln"></circle>
+      <text x="700" y="85" class="t-head" text-anchor="middle">1984</text>
+      <text x="700" y="155" class="t-muted" text-anchor="middle">Tetris</text>
+      <text x="700" y="175" class="t-accent" text-anchor="middle">Global inqilob</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Ilk Video O'yinlar Inqilobi</h1>
+  <p>Arkada zallaridan uy televizorlarigacha bo'lgan texnologik sakrash</p>
+</section>
+
+<section>
+  <h2>Spacewar! va Pong davri</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>Spacewar! (1962, MIT)</h3>
+      <p>Stiv Rassel va talabalar tomonidan yaratilgan birinchi raqamli interaktiv o'yin.</p>
+      <p class="t-muted">Ikki kosmik kema tortishish kuchi va snaryadlar bilan jang qilgan.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="tv-minimal-play"></i></div>
+      <h3>Pong va Nolan Bushnell (1972)</h3>
+      <p>Atari kompaniyasi tomonidan yaratilgan arkada tennisi o'yini sanoatni boshlab berdi.</p>
+      <p class="t-muted">Har bir barda odamlar navbat kutib tanga tashlab o'ynagan.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Uy konsollari va kartrijlar</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="tv"></i></div>
+      <h3>Magnavox Odyssey (1972)</h3>
+      <p>Ralf Baer tomonidan yaratilgan, oddiy uy televizoriga ulanuvchi dunyodagi ilk konsol.</p>
+      <p class="t-muted">Ekran ustiga maxsus rangli plyonkalar yopishtirib o'ynalgan.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="gamepad"></i></div>
+      <h3>Atari 2600 (1977)</h3>
+      <p>Olinadigan kartrijlar tizimi. Bitta konsolga turli o'yinlarni alohida sotib olish imkoni.</p>
+      <p class="t-muted">Video o'yinlarni har bir xonadonga olib kirdi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>O'yin platformalari evolyutsiyasi</h2>
+  <div class="stepper">
+    <div class="step fragment fade-up">
+      <div class="num">1</div>
+      <h3>Ulkan Laboratoriyalar</h3>
+      <p>Universitet va ilmiy markazlardagi qimmatbaho mainframe kompyuterlar.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">2</div>
+      <h3>Arkada Zallari</h3>
+      <p>Jamoat joylaridagi tangali o'yin avtomatlari va musobaqa madaniyati.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">3</div>
+      <h3>Uy Konsollari va PC</h3>
+      <p>Nintendo, Sega, PlayStation va shaxsiy kompyuterlarning kirib kelishi.</p>
+    </div>
+    <div class="step fragment fade-up">
+      <div class="num">4</div>
+      <h3>Mobil va Bulutli Davr</h3>
+      <p>Cho'ntakdagi kuchli smartfonlar, onlayn multiplayer va bulutli o'yinlar.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>O'yin Janrlarining Tasnifi</h1>
+  <p>Asosiy mexanikalar va o'yinchilar kutuvlarini belgilovchi guruhlar</p>
+</section>
+
+<section>
+  <h2>O'yin janrlari daraxti</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="20" y="25" width="220" height="90" rx="8" class="fa la"></rect>
+      <text x="40" y="55" class="t-head">Action (Harakatli)</text>
+      <text x="40" y="80" class="t-muted">Reflekslar, chaqqonlik</text>
+      <text x="40" y="100" class="t-accent">Shooter, Fighting, Platformer</text>
+
+      <rect x="290" y="25" width="220" height="90" rx="8" class="fb lb"></rect>
+      <text x="310" y="55" class="t-head">RPG (Rolli O'yinlar)</text>
+      <text x="310" y="80" class="t-muted">Qahramon rivoji, syujet</text>
+      <text x="310" y="100" class="t-accent">Skyrim, The Witcher</text>
+
+      <rect x="560" y="25" width="220" height="90" rx="8" class="fc lc"></rect>
+      <text x="580" y="55" class="t-head">Strategy (Strategiya)</text>
+      <text x="580" y="80" class="t-muted">Resurslar va rejalashtirish</text>
+      <text x="580" y="100" class="t-accent">RTS va TBS</text>
+
+      <rect x="20" y="135" width="220" height="90" rx="8" class="fg lg"></rect>
+      <text x="40" y="165" class="t-head">Puzzle (Boshqotirma)</text>
+      <text x="40" y="190" class="t-muted">Mantiq va jumboqlar</text>
+      <text x="40" y="210" class="t-accent">Tetris, Portal</text>
+
+      <rect x="290" y="135" width="220" height="90" rx="8" class="fn ln"></rect>
+      <text x="310" y="165" class="t-head">Simulation (Simulyator)</text>
+      <text x="310" y="190" class="t-muted">Real dunyoni nusxalash</text>
+      <text x="310" y="210" class="t-accent">Flight Sim, The Sims</text>
+
+      <rect x="560" y="135" width="220" height="90" rx="8" class="fa la"></rect>
+      <text x="580" y="165" class="t-head">Adventure (Sarguzasht)</text>
+      <text x="580" y="190" class="t-muted">Kvestlar va tadqiqot</text>
+      <text x="580" y="210" class="t-accent">Uncharted, Tomb Raider</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Action va Adventure janrlari</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="target"></i></div>
+      <h3>Action: Reflekslar Sinovi</h3>
+      <p>O'yinchi soniyaning har bir ulushida tugmalarni bosishi, dushmandan qochishi kerak.</p>
+      <p class="t-muted">Birinchi va uchinchi shaxs otishmalari (FPS/TPS), poygalar.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="compass"></i></div>
+      <h3>Adventure: Atrofni Tadqiq Qilish</h3>
+      <p>Bosh qahramon yangi sirlarni ochadi, kvestlar oladi va jumboqlarni yechadi.</p>
+      <p class="t-muted">Syujetga boy, immersiv va qiziqarli dunyolar.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>RPG: Rolli o'yinlar falsafasi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="swords" data-anim="pulse"></i></div>
+      <h3>Qahramonni Rivojlantirish</h3>
+      <p>O'yinchi o'z personajini tanlaydi: jangchi, sehrgar, o'g'ri. Har bir darajada yangi kuchlar ochiladi.</p>
+      <p class="t-muted">Tajriba ballari (XP), qurollar va darajalar tizimi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="wand-sparkles"></i></div>
+      <h3>Tanlov va Oqibatlar</h3>
+      <p>O'yinchi qabul qilgan qarorlar o'yin dunyosi va syujet finaliga bevosita ta'sir qiladi.</p>
+      <p class="t-muted">Chuqur shaxsiylashtirilgan o'yin tajribasi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">04</div>
+  <h1>Strategiya va Boshqotirmalar</h1>
+  <p>RTS, TBS va mantiqiy fikrlash mexanikalari</p>
+</section>
+
+<section>
+  <h2>RTS vs TBS strategiyalar</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="zap" data-anim="pulse"></i></div>
+      <h3>RTS: Real-Time Strategy</h3>
+      <p>Vaqt to'xtamaydi. Resurs yig'ish, baza qurish va hujum bir vaqtda sodir bo'ladi.</p>
+      <p class="t-muted">Tezkor qarorlar va yuqori barmoq tezligi (APM). Masalan: StarCraft.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="clock"></i></div>
+      <h3>TBS: Turn-Based Strategy</h3>
+      <p>Shaxmat kabi navbatma-navbat yuriladi. Harakat qilish uchun vaqt chegaralanmagan.</p>
+      <p class="t-muted">Chuqur global rejalashtirish va taktika. Masalan: Civilization.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>RTS va TBS qarorlar modeli</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="40" y="50" width="320" height="140" rx="8" class="fa la"></rect>
+      <text x="200" y="85" class="t-head" text-anchor="middle">RTS (Real Vaqtda)</text>
+      <text x="60" y="120" class="t-muted">Baza qurish + Jang bir vaqtda</text>
+      <text x="60" y="145" class="t-accent">Sekundiga 4-5 ta tezkor buyruq</text>
+      <text x="60" y="170" class="t-muted">Tezkor reaksiyalar hal qiladi</text>
+
+      <rect x="440" y="50" width="320" height="140" rx="8" class="fb lb"></rect>
+      <text x="600" y="85" class="t-head" text-anchor="middle">TBS (Navbatli)</text>
+      <text x="460" y="120" class="t-muted">1-o'yinchi yurishi &rarr; 2-o'yinchi</text>
+      <text x="460" y="145" class="t-accent">Uzoq muddatli rejalashtirish</text>
+      <text x="460" y="170" class="t-muted">Diplomatiya va iqtisodiyot</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Oddiy Janr vs Gibrid Janr</h2>
+  <div class="flip">
+    <div class="flip-in">
+      <div class="face front">
+        <div class="icon"><i data-ic="puzzle"></i></div>
+        <h3>An'anaviy Bitta Janr</h3>
+        <p>Faqat otishma yoki faqat poyga. O'yinchilar qoidalarini yaxshi biladi.</p>
+        <p class="t-muted">Lekin bugungi kunda o'yinchilar yangilik kutmoqda.</p>
+      </div>
+      <div class="face back">
+        <div class="icon"><i data-ic="wand-sparkles"></i></div>
+        <h3>Gibrid Janrlar (Kelajak)</h3>
+        <p>Ikkita butunlay boshqa janrni birlashtirish: Puzzle + Platformer yoki RPG + Shooter.</p>
+        <p class="t-accent">Natijada mutlaqo yangi va o'ziga rom etuvchi mexanika dunyoga keladi!</p>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">05</div>
+  <h1>Ta'limiy O'yinlar (Serious Games)</h1>
+  <p>Gamifikatsiya, o'rganish va virtual laboratoriyalar</p>
+</section>
+
+<section>
+  <h2>Gamifikatsiya va ta'limiy mexanika</h2>
+  <div class="illus">
+    <svg viewBox="0 0 800 240">
+      <rect x="30" y="70" width="200" height="100" rx="8" class="fn ln"></rect>
+      <text x="130" y="105" class="t-head" text-anchor="middle">O'quv Predmeti</text>
+      <text x="130" y="135" class="t-muted" text-anchor="middle">Kimyo, Fizika, Tarix</text>
+
+      <line x1="230" y1="120" x2="320" y2="120" class="la ar-a flowing"></line>
+      <text x="275" y="105" class="t-accent" text-anchor="middle">Gamifikatsiya</text>
+
+      <rect x="320" y="50" width="220" height="140" rx="8" class="fa la"></rect>
+      <text x="430" y="85" class="t-head" text-anchor="middle">O'yin Dvigateli</text>
+      <text x="430" y="115" class="t-muted" text-anchor="middle">Ballar va tajriba (XP)</text>
+      <text x="430" y="145" class="t-accent" text-anchor="middle">Qiziqarli qiyinchilik</text>
+      <text x="430" y="170" class="t-muted" text-anchor="middle">Tezkor fikr-mulohaza</text>
+
+      <line x1="540" y1="120" x2="620" y2="120" class="lg ar-g flowing"></line>
+
+      <rect x="620" y="70" width="160" height="100" rx="8" class="fg lg"></rect>
+      <text x="700" y="105" class="t-head" text-anchor="middle">Muvaffaqiyat</text>
+      <text x="700" y="135" class="t-muted" text-anchor="middle">Chuqur bilim</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Ta'limiy o'yinlarning kuchi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="compass"></i></div>
+      <h3>Xavfsiz Tajriba O'tkazish</h3>
+      <p>Virtual kimyo laboratoriyasida portlash yoki tibbiyot simulyatorida xato qilish xavfsizdir.</p>
+      <p class="t-muted">Xatolardan qo'rqmasdan erkin tajriba qilish imkoni.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="trophy"></i></div>
+      <h3>Minecraft: Education Edition</h3>
+      <p>Dunyo bo'ylab maktablarda geometriya, tarix va ekologiyani o'rgatuvchi global platforma.</p>
+      <p class="t-muted">O'quvchilar tarixiy shaharlarni o'z qo'llari bilan tiklaydilar.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Bilimingizni sinang</h2>
+  <div class="quiz">
+    <div class="q">Barcha o'yinchilar real vaqtda bir vaqtning o'zida harakatlanadigan strategiya qanday ataladi?</div>
+    <div class="opts">
+      <div class="opt">TBS (Turn-Based Strategy)</div>
+      <div class="opt" data-ok>RTS (Real-Time Strategy)</div>
+      <div class="opt">RPG (Role-Playing Game)</div>
+      <div class="opt">Puzzle Game</div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Amaliy topshiriqlar</h2>
+  <div class="task fragment fade-up">
+    <span class="level easy">Oson</span>
+    <p>O'zingiz yaxshi bilgan bitta o'yin nomini va uning aniq janrini yozing.</p>
+  </div>
+  <div class="task fragment fade-up">
+    <span class="level mid">O'rta</span>
+    <p>Portal o'yinidagi Action va Puzzle gibrid xususiyatlarini 2 ta misol bilan tushuntiring.</p>
+  </div>
+  <div class="task fragment fade-up">
+    <span class="level hard">Qiyin</span>
+    <p>Kimyo yoki Fizika fani bo'yicha qiziqarli ta'limiy o'yin mexanikasini loyihalang.</p>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="gamepad-2"></i></div>
+      <h3>Bugun Nimalarni O'rgandik?</h3>
+      <p>O'yinlar tarixi: Ur, Bertie, Spacewar!, Pong, Tetris.</p>
+      <p class="t-muted">Janrlar tasnifi: Action, RPG, Strategy (RTS/TBS), Puzzle.</p>
+      <p class="t-muted">Gibrid janrlar va ta'limiy o'yinlarning amaliy ahamiyati.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="trophy"></i></div>
+      <h3>Uyga Vazifa</h3>
+      <p>2 ta o'yin janrini tahlil qilish va ta'limiy o'yinga aylantirish g'oyasi.</p>
+      <p class="t-accent">Keyingi dars: O'yinlarda UI va UX ning o'rni va interfeys tiplari!</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

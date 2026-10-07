@@ -1,101 +1,325 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>Kutubxonalar va versiyalar</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Kutubxonalar va versiyalar</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Kutubxonalar va versiyalar</h1></header>
-<div class="badges"><span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">5-hafta · 15-dars</span><span class="badge">dependencies, versiya raqamlari, version catalog, force, exclude, SDK versiyalari</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "<code>free<\/code> va <code>paid<\/code> flavor hamda <code>debug<\/code> va <code>release<\/code> bo'lsa, nechta variant bo'ladi?", "o": ["4", "2", "6", "8"], "a": 0, "e": "2 x 2 = 4 ta variant."}, {"q": "<code>implementation(\"a:b:2.9.0\")<\/code> da <code>2.9.0<\/code> nima?", "o": ["Versiya raqami", "Guruh nomi", "Modul nomi", "Ombor manzili"], "a": 0, "e": "Format: <code>guruh:nom:versiya<\/code>."}, {"q": "<code>1.0.0-beta03<\/code> versiyasi haqida to'g'ri gap?", "o": ["Hali to'liq sinovdan o'tmagan bo'lishi mumkin", "Eng barqaror nashr", "Eski, ishlatilmaydi", "Faqat release da ishlaydi"], "a": 0, "e": "Alpha va beta barqaror emas, stable nashr nashrga tayyor."}, {"q": "Katalogda <code>coil-compose<\/code> bo'lsa, kodda qanday yoziladi?", "o": ["<code>libs.coil.compose<\/code>", "<code>libs.coil-compose<\/code>", "<code>libs[coil]<\/code>", "<code>coil.libs<\/code>"], "a": 0, "e": "Defis nuqta bilan almashtiriladi."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Kutubxonalar va versiyalar</h1>
+  <p class="muted">dependencies, versiya raqamlari, version catalog, force, exclude, SDK versiyalari</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">5-hafta · 15-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimalarni o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="package-plus" data-anim="pulse"></i></div><h3>dependencies</h3><p>Kutubxonani ulash</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="git-compare" data-anim="float"></i></div><h3>Versiyalar</h3><p>Raqam ma'nosi va ziddiyatlar</p></div>
+    <div class="card fragment fade-up"><div class="icon"><i data-ic="library" data-anim="blink"></i></div><h3>Version catalog</h3><p>Versiyalarni markazda boshqarish</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q"><code>free</code> va <code>paid</code> flavor hamda <code>debug</code> va <code>release</code> bo'lsa, nechta variant bo'ladi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>4</button>
+    <button class="opt" type="button">2</button>
+    <button class="opt" type="button">6</button>
+    <button class="opt" type="button">8</button>
+    </div>
+    <div class="explain">2 x 2 = 4 ta variant.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>dependencies</h1>
+  <p>Kutubxonani ulash</p>
+</section>
+
+<section>
+  <h2>Kutubxona qanday keladi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="145" text-anchor="middle" font-size="22">dependencies</text><text class="t-head" x="125" y="171" text-anchor="middle" font-size="22">yozildi</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">Sync Now</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="145" text-anchor="middle" font-size="22">Gradle</text><text class="t-head" x="625" y="171" text-anchor="middle" font-size="22">yuklaydi</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Kodda import</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Gradle kutubxonani ombordan olib keladi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Retrofit va Coil</h2>
+  <pre><code class="language-kotlin" data-trim data-line-numbers="1-4|6-12">
+dependencies {
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("io.coil-kt:coil-compose:2.3.0")
 }
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+
+// settings.gradle.kts
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+    }
 }
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Qator tuzilishi: <code>guruh:nom:versiya</code>. Versiya yozilmasa yoki noto'g'ri yozilsa, build to'xtaydi.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>implementation("a:b:2.9.0")</code> da <code>2.9.0</code> nima?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Versiya raqami</button>
+    <button class="opt" type="button">Guruh nomi</button>
+    <button class="opt" type="button">Modul nomi</button>
+    <button class="opt" type="button">Ombor manzili</button>
+    </div>
+    <div class="explain">Format: <code>guruh:nom:versiya</code>.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Versiyalar</h1>
+  <p>Raqam ma'nosi va ziddiyatlar</p>
+</section>
+
+<section>
+  <h2>Ziddiyatni hal qilish</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="145" text-anchor="middle" font-size="22">Retrofit</text><text class="t-head" x="125" y="171" text-anchor="middle" font-size="22">-&gt; OkHttp</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">Boshqa kutubxona</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">-&gt; OkHttp</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="145" text-anchor="middle" font-size="22">Gradle:</text><text class="t-head" x="625" y="171" text-anchor="middle" font-size="22">yuqori versiya</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">force: aniq</text><text class="t-head" x="875" y="171" text-anchor="middle" font-size="22">versiya</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Ikki talab bo'lsa, Gradle yuqori versiyani oladi</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>force va exclude</h2>
+  <pre><code class="language-kotlin" data-trim data-line-numbers="1-5|7-10">
+configurations.all {
+    resolutionStrategy {
+        force("com.squareup.okhttp3:okhttp:4.9.3")
+    }
 }
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+
+dependencies {
+    implementation("com.squareup.retrofit2:retrofit:2.9.0") {
+        exclude(group = "org.example", module = "unused-module")
+    }
+}
+  </code></pre>
+  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i><code>force</code> ni ehtiyotkorlik bilan ishlating: majburiy versiya boshqa kutubxonani buzishi mumkin. <code>exclude</code> loyiha hajmini kamaytiradi.</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q"><code>1.0.0-beta03</code> versiyasi haqida to'g'ri gap?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok>Hali to'liq sinovdan o'tmagan bo'lishi mumkin</button>
+    <button class="opt" type="button">Eng barqaror nashr</button>
+    <button class="opt" type="button">Eski, ishlatilmaydi</button>
+    <button class="opt" type="button">Faqat release da ishlaydi</button>
+    </div>
+    <div class="explain">Alpha va beta barqaror emas, stable nashr nashrga tayyor.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Version catalog</h1>
+  <p>Versiyalarni markazda boshqarish</p>
+</section>
+
+<section>
+  <h2>Katalogdan foydalanish</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300">
+    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="158" text-anchor="middle" font-size="22">libs.versions.toml</text></g>
+    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">[versions]</text></g>
+    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="158" text-anchor="middle" font-size="22">[libraries]</text></g>
+    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">libs.retrofit</text></g>
+      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Versiyani bir joyda yangilang</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>libs.versions.toml va dependencies</h2>
+  <pre><code class="language-toml" data-trim data-line-numbers="1-3|5-7|9-11">
+[versions]
+retrofit = "2.9.0"
+coil = "2.3.0"
+
+[libraries]
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+
+# app/build.gradle.kts
+# implementation(libs.retrofit)
+# implementation(libs.coil.compose)
+  </code></pre>
+  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Katalogdagi <code>coil-compose</code> nomi kodda <code>libs.coil.compose</code> bo'lib yoziladi (defis nuqtaga aylanadi).</div>
+</section>
+
+<section>
+  <h2>Mini-test</h2>
+  <div class="quiz">
+    <p class="q">Katalogda <code>coil-compose</code> bo'lsa, kodda qanday yoziladi?</p>
+    <div class="opts">
+    <button class="opt" type="button" data-ok><code>libs.coil.compose</code></button>
+    <button class="opt" type="button"><code>libs.coil-compose</code></button>
+    <button class="opt" type="button"><code>libs[coil]</code></button>
+    <button class="opt" type="button"><code>coil.libs</code></button>
+    </div>
+    <div class="explain">Defis nuqta bilan almashtiriladi.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Qo'lda yozish va katalog</h2>
+  <div class="vs">
+    <div class="side fragment"><h3>Qo'lda</h3><code>implementation("...retrofit:2.9.0")</code>: versiya har joyda alohida</div>
+    <div class="mid">VS</div>
+    <div class="side b fragment"><h3>Katalog bilan</h3><code>implementation(libs.retrofit)</code>: versiya <code>libs.versions.toml</code> da</div>
+  </div>
+  <div class="card accent fragment mt"><p>Katalog yangilashni va moslikni osonlashtiradi.</p></div>
+</section>
+
+<section>
+  <h2>Atamalar. Bosing</h2>
+  <div class="cards two">
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>Dependency</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Loyiha tayanadigan tashqi kutubxona</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>Transitive</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Kutubxonaning o'zi talab qiladigan boshqa kutubxonalar</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>force</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Aniq versiyani majburlash</p></div></div></div>
+    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>exclude</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Keraksiz bog'liqlikni olib tashlash</p></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Kutubxona qo'shish tartibi</h2>
+  <div class="stepper">
+    <div class="stp on"><div class="card"><div class="icon"><i data-ic="search" data-anim="pulse"></i></div><h3>1. Toping</h3><p>Rasmiy hujjatdan <code>guruh:nom:versiya</code> ni oling.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="pencil"></i></div><h3>2. Yozing</h3><p><code>dependencies {}</code> yoki katalogga qo'shing.</p></div></div>
+    <div class="stp"><div class="card"><div class="icon"><i data-ic="refresh-cw"></i></div><h3>3. Sync</h3><p><code>Sync Now</code>; xato bo'lsa logni o'qing.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>Versiya turlari</h2>
+    <table>
+      <thead><tr><th>Yozuv</th><th>Ma'nosi</th><th>Ishlatish</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td><code>2.9.0</code></td><td>stable</td><td>nashr uchun</td></tr>
+        <tr class="fragment"><td><code>1.0.0-beta03</code></td><td>beta</td><td>ehtiyotkorlik bilan</td></tr>
+        <tr class="fragment"><td><code>0.28.1-alpha</code></td><td>alpha</td><td>faqat sinov uchun</td></tr>
+        <tr class="fragment"><td><code>1.0.0-rc01</code></td><td>release candidate</td><td>nashrga yaqin</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Pastga bosing: xato bo'lsa</p>
+  </section>
+  <section>
+    <h2>Dependency xatolarini tuzatish</h2>
+    <ol class="steps-n">
+      <li class="fragment"><code>Build</code> oynasidagi birinchi qizil qatorni o'qing.</li>
+      <li class="fragment">Versiya raqami va harflarni (katta-kichik) tekshiring.</li>
+      <li class="fragment">Ziddiyat bo'lsa, <code>force</code> yoki kutubxonani yangilang.</li>
+    </ol>
+  </section>
+</section>
+
+<section data-auto-animate>
+  <h2 data-id="t">Katalogga o'tamiz</h2>
+  <pre data-id="c"><code class="language-kotlin" data-trim>
+dependencies {
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+}
+  </code></pre>
+</section>
+<section data-auto-animate>
+  <h2 data-id="t">Katalogga o'tamiz</h2>
+  <pre data-id="c"><code class="language-kotlin" data-trim data-line-numbers="2|3">
+dependencies {
+    implementation(libs.retrofit)
+}
+  </code></pre>
+</section>
+
+<section>
+  <h2>Kutubxonalar raqamlarda</h2>
+  <div class="stats">
+    <div class="stat"><div class="v"><span class="count" data-to="3" data-suf="">0</span></div><div class="l">versiya yozuv turi: stable, beta, alpha</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="2" data-suf="">0</span></div><div class="l">katalog bo'limi: versions, libraries</div></div>
+    <div class="stat"><div class="v"><span class="count" data-to="1" data-suf="">0</span></div><div class="l">joyda versiyani yangilash yetadi</div></div>
+  </div>
+  <p class="small fragment">Katalog bilan versiya bitta joyda boshqariladi.</p>
+</section>
+
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
+  <div class="task"><span class="level easy">Oson</span>Retrofit ulash: Module-level faylga Retrofit 2.9.0 ni ulang.</div>
+  <div class="task"><span class="level mid">O'rta</span>Versiya ma'nosi: <code>2.9.0</code>, <code>1.0.0-beta03</code>, <code>0.28.1-alpha</code> versiyalarining qaysi birini nashr uchun tanlaysiz va nega?</div>
+  <div class="task"><span class="level mid">O'rta</span>Katalog yozish: Retrofit va Coil ni <code>libs.versions.toml</code> ga ko'chiring va <code>dependencies</code> da <code>libs...</code> bilan ishlating.</div>
+  <div class="task"><span class="level hard">Qiyin</span>OkHttp ziddiyati: Retrofit bilan kelgan OkHttp versiyasini 4.9.3 ga majburlang.</div>
+  <div class="task"><span class="level hard">Qiyin</span>Transitive ni olib tashlash: Retrofit dan <code>org.example:unused-module</code> bog'liqligini chiqarib tashlang.</div>
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>dependencies</h3><p><code>implementation("guruh:nom:versiya")</code> va Sync.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Versiyalar</h3><p>Stable, beta, alpha; <code>force</code> va <code>exclude</code>.</p></div>
+    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Katalog</h3><p><code>libs.versions.toml</code> va <code>libs.retrofit</code>.</p></div>
+  </div>
+  <p class="small fragment mt">Uyga vazifa: Retrofit, Coil ulash va katalogga ko'chirish.</p>
+</section>
+
+<section class="hero">
+  <div class="icon"><i data-ic="terminal" data-anim="pulse"></i></div>
+  <h1>Keyingi dars: Gradle tasks va xatolar</h1>
+  <p class="muted">Gradle so'rovlarini bajarish, xatolarni aniqlash</p>
+  <span class="badge">6-hafta · 16-dars</span>
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>

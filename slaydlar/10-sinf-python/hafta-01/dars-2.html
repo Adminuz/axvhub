@@ -1,101 +1,442 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<title>DRF Loyiha va MB Loyihalash</title>
-<link rel="icon" href="../../../reveal/logo.png">
-<script src="../../../reveal/tema.js"></script>
-<style>
-:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
-[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
-.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-header img{width:40px;height:40px;object-fit:contain}
-h1{font-size:1.15rem;line-height:1.3;margin:0}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
-.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
-.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
-.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
-.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
-.opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
-.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
-.opt:hover:not(:disabled){border-color:var(--ac)}
-.opt:disabled{cursor:default}
-.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
-.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
-.explain.show{display:block}
-code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
-.foot div{max-width:720px;margin:0 auto}
-.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
-.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
-.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
-.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
-.rev small{color:var(--mut)}
-.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
-header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
-@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>DRF Loyiha va MB Loyihalash</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><img src="../../../reveal/logo.png" alt="AXV"><h1>DRF Loyiha va MB Loyihalash</h1></header>
-<div class="badges"><span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">1-hafta &amp;middot; 2-dars</span><span class="badge">NewsPortal tizimi arxitekturasi, ER diagrammasi va Clean Architecture sozlamalari</span></div>
-<div class="bar"><i id="fill"></i></div>
-<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
-<main id="card"></main>
-</div>
-<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
-<script type="application/json" id="qdata">[{"q": "Nima uchun Category va Post o'rtasida models.PROTECT qo'yish to'g'ri yondashuv hisoblanadi?", "o": ["Kategoriya o'chganda unga tegishli barcha postlar ham o'chib ketishi uchun", "Kategoriya o'chirilganda undagi maqolalar tasodifan o'chib ketishidan saqlash uchun", "Postlar sonini 10 tagacha cheklash uchun"], "a": 1, "e": "To'g'ri! models.PROTECT ma'lumotlar butunligini saqlaydi: ichida maqolalar bor kategoriyani tasodifan o'chirib yuborishning oldini oladi."}]</script>
-<script>
-(function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
-var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
-function show(){
-  var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
-  $('#fill').style.width=(i/Q.length*100)+'%';
-  var h='<p class="q">'+q.q+'</p><div class="opts">';
-  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
-}
-function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
-  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
-  window.scrollTo(0,0);
-}
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
-next.onclick=adv;
-document.addEventListener('keydown',function(e){
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
-});
-show();
-})();
-</script>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<!-- 1-slayd: Sarlavha -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>DRF Loyiha va MB Loyihalash</h1>
+  <p class="muted">NewsPortal tizimi arxitekturasi, ER diagrammasi va Clean Architecture sozlamalari</p>
+  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">1-hafta &middot; 2-dars</span>
+  
+</section>
+
+<!-- 2-slayd: Dars rejasi -->
+<section>
+  <h2>Dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="database" data-anim="pulse"></i></div>
+      <h3>MB Loyihalash (ERD)</h3>
+      <p>NewsPortal ma'lumotlar modeli: Category, Tag, Post va Comment munosabatlari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="box" data-anim="float"></i></div>
+      <h3>Virtual Muhit &amp; Paketlar</h3>
+      <p>Python venv, requirements.txt va Django REST Framework o'rnatish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers" data-anim="spin"></i></div>
+      <h3>Clean Architecture</h3>
+      <p>src/ va apps/ modulli strukturasi, .env konfiguratsiyasi va sozlamalar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3-slayd: Bo'lim 1 -->
+<section class="sec">
+  <div class="num">01</div>
+  <h1>NewsPortal loyihasi</h1>
+  <p>Mini-TT va foydalanuvchi rollari</p>
+</section>
+
+<!-- 4-slayd: Foydalanuvchi rollari -->
+<section>
+  <h2>Tizim foydalanuvchilari va rollar</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="globe"></i></div>
+      <h3>Guest (Mehmon)</h3>
+      <p>Ro'yxatdan o'tmasdan yangiliklar ro'yxatini va maqola matnini o'qish imkoniyati.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="user-check"></i></div>
+      <h3>User (Foydalanuvchi)</h3>
+      <p>Shaxsiy profilga ega bo'lish, maqolalarga izoh yozish va muhokamalarda qatnashish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield"></i></div>
+      <h3>Admin / Staff</h3>
+      <p>Maqolalarni yaratish, tahrirlash, o'chirish (CRUD) va izohlarni moderatsiya qilish.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5-slayd: SVG Sxema: NewsPortal ERD -->
+<section>
+  <h2>Ma'lumotlar bazasi sxemasi (ERD)</h2>
+  <p>Jadvallar va ularning relyatsion bog'lanishlari</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340" width="100%" height="340">
+      <!-- Category -->
+      <rect x="30" y="40" width="200" height="110" rx="10" class="fa"></rect>
+      <text x="130" y="70" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Category</text>
+      <text x="130" y="100" text-anchor="middle" class="t-muted" font-size="14">id, name, slug</text>
+      <text x="130" y="125" text-anchor="middle" class="t-muted" font-size="14">created_at</text>
+
+      <!-- Post (Markazda) -->
+      <rect x="370" y="30" width="260" height="200" rx="12" class="fb"></rect>
+      <text x="500" y="65" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Post (Yangilik)</text>
+      <text x="500" y="95" text-anchor="middle" class="t-muted" font-size="14">id, title, slug, body</text>
+      <text x="500" y="120" text-anchor="middle" class="t-muted" font-size="14">status, cover_image</text>
+      <text x="500" y="145" text-anchor="middle" class="t-accent" font-size="14">category_id (PROTECT)</text>
+      <text x="500" y="170" text-anchor="middle" class="t-muted" font-size="14">tags (ManyToMany)</text>
+      <text x="500" y="195" text-anchor="middle" class="t-muted" font-size="14">published_at</text>
+
+      <!-- Tag -->
+      <rect x="30" y="190" width="200" height="110" rx="10" class="fc"></rect>
+      <text x="130" y="220" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Tag</text>
+      <text x="130" y="250" text-anchor="middle" class="t-muted" font-size="14">id, name, slug</text>
+      <text x="130" y="275" text-anchor="middle" class="t-muted" font-size="14">created_at</text>
+
+      <!-- Comment -->
+      <rect x="760" y="60" width="210" height="150" rx="10" class="fg"></rect>
+      <text x="865" y="90" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Comment (Izoh)</text>
+      <text x="865" y="120" text-anchor="middle" class="t-muted" font-size="14">id, post_id (CASCADE)</text>
+      <text x="865" y="145" text-anchor="middle" class="t-muted" font-size="14">parent_id (self)</text>
+      <text x="865" y="170" text-anchor="middle" class="t-muted" font-size="14">body, is_approved</text>
+
+      <!-- Bog'lanishlar -->
+      <!-- Category -> Post (1 -> N) -->
+      <path d="M 230 95 L 370 95" class="la flowing" stroke-width="3"></path>
+      <polygon points="360,90 370,95 360,100" class="ar-a"></polygon>
+      <text x="300" y="85" text-anchor="middle" class="t-accent" font-size="13">1 &rarr; N</text>
+
+      <!-- Tag <-> Post (N <-> N) -->
+      <path d="M 230 245 L 430 245 L 430 230" class="lc flowing" stroke-width="3"></path>
+      <polygon points="425,235 430,225 435,235" class="ar-c"></polygon>
+      <text x="300" y="235" text-anchor="middle" class="t-accent" font-size="13">N &harr; N</text>
+
+      <!-- Post -> Comment (1 -> N) -->
+      <path d="M 630 135 L 760 135" class="lg flowing" stroke-width="3"></path>
+      <polygon points="750,130 760,135 750,140" class="ar-g"></polygon>
+      <text x="695" y="125" text-anchor="middle" class="t-accent" font-size="13">1 &rarr; N</text>
+    </svg>
+  </div>
+  
+</section>
+
+<!-- 6-slayd: Relyatsiyalar qoidasi -->
+<section>
+  <h2>Relyatsion xavfsizlik: PROTECT vs CASCADE</h2>
+  <div class="vs">
+    <div class="side">
+      <h3><i data-ic="shield"></i> models.PROTECT</h3>
+      <p>Kategoriya o'chirilganda postlar o'chib ketmasligi uchun o'chirishni taqiqlaydi.</p>
+      <p class="muted">Maqolalar ota kategoriyasiz qolib ketmaydi.</p>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b">
+      <h3><i data-ic="trash"></i> models.CASCADE</h3>
+      <p>Post o'chirilganda, unga tegishli barcha izohlar ham birga avtomatik o'chiriladi.</p>
+      <p class="muted">Baza keraksiz qoldiq ma'lumotlardan tozalanadi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7-slayd: Bo'lim 2 -->
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Virtual muhit va o'rnatish</h1>
+  <p>Loyiha izolyatsiyasi va talab qilinadigan kutubxonalar</p>
+</section>
+
+<!-- 8-slayd: SVG Sxema: Virtual muhit nima? -->
+<section>
+  <h2>Nega virtual muhit (venv) shart?</h2>
+  <p>Har bir loyihaning kutubxona va versiyalar to'qnashuvini oldini oladi</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300" width="100%" height="300">
+      <!-- Global Python -->
+      <rect x="60" y="50" width="380" height="200" rx="16" class="fn"></rect>
+      <text x="250" y="90" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Global Tizim Python</text>
+      <text x="250" y="130" text-anchor="middle" class="t-muted" font-size="15">Django 3.2 (Eski loyiha)</text>
+      <text x="250" y="165" text-anchor="middle" class="t-muted" font-size="15">Kutubxonalar to'qnashuvi xavfi</text>
+      <text x="250" y="200" text-anchor="middle" class="t-accent" font-size="15">Operatsion tizimga bog'liq</text>
+
+      <!-- Ajratilgan Venv qutisi -->
+      <rect x="560" y="50" width="380" height="200" rx="16" class="fg"></rect>
+      <text x="750" y="90" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">NewsPortal (venv)</text>
+      <text x="750" y="130" text-anchor="middle" class="t-head" font-size="15">Django 5.1 &middot; DRF 3.15</text>
+      <text x="750" y="165" text-anchor="middle" class="t-muted" font-size="15">Izolyatsiyalangan mustaqil muhit</text>
+      <text x="750" y="200" text-anchor="middle" class="t-muted" font-size="15">Faqat ushbu loyiha uchun ishlaydi</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 9-slayd: Terminal buyruqlari -->
+<section>
+  <h2>Virtual muhitni ishga tushirish</h2>
+  <p>Terminalda ketma-ket bajariladigan buyruqlar</p>
+  <div class="browser">
+    <div class="bar">
+      <i></i><i></i><i></i>
+      <span>Terminal / Bash</span>
+    </div>
+    <div class="page">
+      <pre><code class="language-bash"># 1. Virtual muhit yaratish
+python3 -m venv venv
+
+# 2. Faollashtirish (macOS / Linux)
+source venv/bin/activate
+# Windows uchun: venv\Scripts\activate
+
+# 3. Asosiy paketlarni o'rnatish
+pip install django djangorestframework python-dotenv psycopg2-binary
+
+# 4. requirements.txt hosil qilish
+pip freeze > requirements.txt</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- 10-slayd: Bo'lim 3 -->
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Clean Architecture</h1>
+  <p>Yirik kompaniyalar andozasidagi modulli loyiha strukturasi</p>
+</section>
+
+<!-- 11-slayd: Loyiha strukturasi -->
+<section>
+  <h2>NewsPortal papkalar strukturasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="folder"></i></div>
+      <h3>src/config/</h3>
+      <p>Loyiha sozlamalari, URL marshrutlar va WSGI/ASGI fayllari jamlangan boshqaruv markazi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>src/apps/</h3>
+      <p>Domenlar bo'yicha ajratilgan mustaqil ilovalar: news, comments, accounts, common.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="key"></i></div>
+      <h3>.env &amp; configs</h3>
+      <p>Maxfiy kalitlar, baza parollari va muhit o'zgaruvchilari uchun maxsus qatlam.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 12-slayd: SVG Sxema: .env ishlash tartibi -->
+<section>
+  <h2>Xavfsizlik: .env fayli qanday ishlaydi?</h2>
+  <p>Maxfiy kalitlar koddan ajratiladi va Git-ga yuklanmaydi</p>
+  <div class="illus">
+    <svg viewBox="0 0 1000 300" width="100%" height="300">
+      <!-- .env fayli -->
+      <rect x="50" y="60" width="260" height="180" rx="12" class="fc"></rect>
+      <text x="180" y="105" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">.env fayli</text>
+      <text x="180" y="145" text-anchor="middle" class="t-muted" font-size="14">SECRET_KEY=s3cr3t...</text>
+      <text x="180" y="175" text-anchor="middle" class="t-muted" font-size="14">DEBUG=True</text>
+      <text x="180" y="205" text-anchor="middle" class="t-accent" font-size="14">.gitignore orqali yashiriladi</text>
+
+      <!-- Strelka -->
+      <path d="M 310 150 L 680 150" class="la flowing" stroke-width="4"></path>
+      <polygon points="680,143 700,150 680,157" class="ar-a"></polygon>
+      <text x="505" y="135" text-anchor="middle" class="t-accent" font-size="16" font-weight="bold">load_dotenv()</text>
+
+      <!-- settings/base.py -->
+      <rect x="700" y="60" width="260" height="180" rx="12" class="fb"></rect>
+      <text x="830" y="105" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">settings/base.py</text>
+      <text x="830" y="145" text-anchor="middle" class="t-muted" font-size="14">os.getenv("SECRET_KEY")</text>
+      <text x="830" y="175" text-anchor="middle" class="t-muted" font-size="14">os.getenv("DEBUG")</text>
+      <text x="830" y="205" text-anchor="middle" class="t-head" font-size="14">Xavfsiz GitHub push!</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 13-slayd: settings/base.py kodi -->
+<section>
+  <h2>settings/base.py sozlamasi</h2>
+  <pre><code class="language-python" data-trim data-noescape data-line-numbers="1-15|5-7|9-13"># src/config/settings/base.py
+from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+load_dotenv(BASE_DIR.parent / ".env")
+
+INSTALLED_APPS = [
+    # Django standart ilovalari...
+    "rest_framework",  # DRF kutubxonasi
+    "apps.common",
+    "apps.news",
+    "apps.comments",
+]</code></pre>
+</section>
+
+<!-- 14-slayd: Migratsiyalar tushunchasi -->
+<section>
+  <h2>Django ORM va Migratsiyalar</h2>
+  <ol class="steps-n mt">
+    <li class="fragment">
+      <strong>Model yaratiladi:</strong>
+      Python klassi sifatida jadval maydonlari yoziladi (<code>models.Model</code>).
+    </li>
+    <li class="fragment">
+      <strong>makemigrations:</strong>
+      Django modellardagi o'zgarishlarni tahlil qilib, migratsiya rejasini tuzadi.
+    </li>
+    <li class="fragment">
+      <strong>migrate:</strong>
+      Ushbu reja asosida ma'lumotlar bazasida (SQLite / PostgreSQL) haqiqiy jadvallar ochiladi.
+    </li>
+  </ol>
+</section>
+
+<!-- 15-slayd: Interaktiv Stepper -->
+<section>
+  <h2>Loyihani ishga tushirish bosqichlari</h2>
+  <div class="stepper">
+    <div class="stp on">
+      <h3>1-qadam: Muhitni tayyorlash</h3>
+      <p>Terminalda <code>python3 -m venv venv</code> va <code>source venv/bin/activate</code> orqali toza muhit ochiladi.</p>
+    </div>
+    <div class="stp">
+      <h3>2-qadam: Paketlarni o'rnatish</h3>
+      <p><code>pip install django djangorestframework python-dotenv</code> buyruqlari bilan backend vositalari yuklanadi.</p>
+    </div>
+    <div class="stp">
+      <h3>3-qadam: Loyiha va sozlamalar</h3>
+      <p><code>django-admin startproject config src/</code> qilinib, <code>settings/base.py</code> ga DRF ulanadi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 16-slayd: Interaktiv Flip Card -->
+<section>
+  <h2>Atamalarni tekshiramiz</h2>
+  <div class="cards three">
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="database"></i></div>
+          <h3>ERD</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Entity-Relationship</h3>
+          <p>Jadvallar va ular orasidagi bog'lanishlar (1-N, N-N) arxitektura chizmasi.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="shield"></i></div>
+          <h3>PROTECT</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Himoya qoidasi</h3>
+          <p>Agar bog'langan postlar bo'lsa, kategoriyani o'chirishga ruxsat bermaydi.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip">
+      <div class="flip-in">
+        <div class="face front">
+          <div class="icon"><i data-ic="key"></i></div>
+          <h3>.env</h3>
+          <p>Bosing va tekshiring</p>
+        </div>
+        <div class="face back">
+          <h3>Maxfiy muhit</h3>
+          <p>Parollar va maxfiy kalitlarni koddan ajratib saqlovchi konfiguratsiya fayli.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 17-slayd: Mini-test Quiz -->
+<section>
+  <h2>Tezkor bilim tekshiruvi</h2>
+  <div class="quiz">
+    <p class="q">Nima uchun Category va Post o'rtasida models.PROTECT qo'yish to'g'ri yondashuv hisoblanadi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Kategoriya o'chganda unga tegishli barcha postlar ham o'chib ketishi uchun</button>
+      <button class="opt" type="button" data-ok>Kategoriya o'chirilganda undagi maqolalar tasodifan o'chib ketishidan saqlash uchun</button>
+      <button class="opt" type="button">Postlar sonini 10 tagacha cheklash uchun</button>
+    </div>
+    <div class="explain">
+      To'g'ri! models.PROTECT ma'lumotlar butunligini saqlaydi: ichida maqolalar bor kategoriyani tasodifan o'chirib yuborishning oldini oladi.
+    </div>
+  </div>
+</section>
+
+<!-- 18-slayd: Odatiy xato -->
+<section>
+  <h2>Dasturchilar ko'p yo'l qo'yadigan xatolar</h2>
+  <div class="callout bad">
+    <i data-ic="circle-alert"></i>
+    Xato: Maxfiy <code>SECRET_KEY</code> yoki parollarni to'g'ridan-to'g'ri <code>settings.py</code> da qoldirish va GitHub-ga yuklash.
+  </div>
+  <div class="callout tip">
+    <i data-ic="circle-check"></i>
+    To'g'ri: <code>.env</code> faylidan foydalaning va <code>.gitignore</code> fayliga <code>.env</code> ni yozib qo'ying.
+  </div>
+</section>
+
+<!-- 19-slayd: Amaliy topshiriq -->
+<section>
+  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>15 daqiqa</span></h2>
+  <div class="task">
+    <span class="level easy">Oson</span>
+    Kompyuteringizda <code>newsportal</code> papkasini oching va <code>venv</code> virtual muhitini yarating.
+  </div>
+  <div class="task">
+    <span class="level mid">O'rta</span>
+    <code>django</code> va <code>djangorestframework</code> kutubxonalarini o'rnating, <code>requirements.txt</code> hosil qiling.
+  </div>
+  <div class="task">
+    <span class="level hard">Qiyin</span>
+    <code>.env</code> faylini sozlang va <code>python manage.py migrate</code> orqali dastlabki migratsiyalarni bajaring.
+  </div>
+</section>
+
+<!-- 20-slayd: Xulosa -->
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h2>Darsni yakunlaymiz</h2>
+  <p class="muted">Keyingi darsda: Model, View va Serializerlar yozamiz hamda Routerlar orqali API endpointlarni ochamiz!</p>
+  <div class="chips">
+    <span class="chip">ERD loyihalash</span>
+    <span class="chip">Virtual muhit (venv)</span>
+    <span class="chip">Clean Architecture</span>
+    <span class="chip">.env xavfsizligi</span>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
 </body>
 </html>
