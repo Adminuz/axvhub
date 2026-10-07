@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Ctrl + Shift + G nima qiladi?", "o": ["Guruh ichidagi qatlamlarni yana alohida holatga keltiradi", "Qatlamlarni guruhlaydi", "Qatlamni nusxalaydi", "Barcha qatlamlarni birlashtiradi"], "a": 0, "e": "Ctrl + G guruhlaydi, Ctrl + Shift + G guruhni tarqatadi."}, {"q": "Qatlamni Lock (qulf) qilishdan maqsad nima?", "o": ["Qatlamni o'chirish", "Qatlam tasodifan siljimasligi yoki ustiga xato chizilmasligi", "Qatlam rangini o'zgartirish", "Qatlamni nusxalash"], "a": 1, "e": "Qulf belgisi qatlamni himoya qiladi."}, {"q": "Smart Object yaratish uchun qatlamga o'ng tugma bosilgach qaysi band tanlanadi?", "o": ["Merge Layers", "Duplicate Layer", "Convert to Smart Object", "Rasterize Layer"], "a": 2, "e": "Qatlam eskizida maxsus piktogramma paydo bo'ladi."}, {"q": "Ctrl + E nima qiladi?", "o": ["Qatlamni guruhlaydi", "Qatlamni qulflaydi", "Qatlamning dublikatini yaratadi", "Tanlangan qatlamlarni bitta qatlamga birlashtiradi"], "a": 3, "e": "Birlashtirilgach, qatlamlarni alohida tahrirlab bo'lmaydi."}, {"q": "Ambient Lighting qoidasi nimani talab qiladi?", "o": ["Barcha obyektlarning yoritilgan tomoni yorug'lik manbasi tomonda bo'lishi", "Har obyekt turli tomondan yoritilishi", "Soyalarni butunlay olib tashlash", "Barcha obyektlarni bir xil rangga bo'yash"], "a": 0, "e": "Quyosh yoki mash'ala bo'lsa, yorug'lik yo'nalishi yagona bo'ladi."}, {"q": "Kollajning masshtab va perspektiva qoidasi nima deydi?", "o": ["Hamma narsa bir o'lchamda bo'lishi kerak", "Uzoqdagi narsalar kichik, yaqindagilar katta bo'lishi kerak", "Uzoq narsalar katta bo'lishi kerak", "Perspektiva o'yinda kerak emas"], "a": 1, "e": "Nisbatlar mantiqan to'g'ri bo'lishi shart."}, {"q": "Binafsha rang o'yinda odatda nimani bildiradi?", "o": ["Tugayotgan HP", "To'liq HP", "Mistik sir, afsun va hashamat: sehrgarlar, epik o'lja", "Oddiy interfeys matni"], "a": 2, "e": "Binafsha Epic Loot va kosmik nurlar uchun ham ishlatiladi."}, {"q": "Monoxrom rang sxemasi nima?", "o": ["Rang g'ildiragida ro'parama-ro'para ranglar", "Yonma-yon 3 ta rang", "Teng tomonli uchburchakdagi 3 rang", "Bitta rangning turli och-to'q soyalaridan iborat sxema"], "a": 3, "e": "Monoxrom sokin va jiddiy muhit yaratadi."}, {"q": "Sariq/oltin rang o'yinda asosan nima uchun ishlatiladi?", "o": ["Tangalar, xazinalar va bonus ballar uchun", "Dushmanlar uchun", "Suv olami uchun", "Soyalar uchun"], "a": 0, "e": "Sariq boylik, quvonch va e'tiborni bildiradi."}, {"q": "Ko'k rang o'yinda odatda qaysi element uchun ishlatiladi?", "o": ["Tugayotgan HP paneli", "Sehr energiyasi (Mana bar) va suv olami", "Xazina tangalari", "Jangovar «Attack» tugmasi"], "a": 1, "e": "Ko'k ishonch, osoyishtalik va sovuqlik bilan bog'liq."}, {"q": "Qizil-zarg'aldoq, sariq-yashil kabi ranglar qaysi toifaga kiradi?", "o": ["Birlamchi (Primary)", "Ikkilamchi (Secondary)", "Uchlamchi (Tertiary)", "Komplementar juftlik"], "a": 2, "e": "Birlamchi rang yonidagi ikkilamchi rang bilan aralashganda hosil bo'ladi."}, {"q": "Kompozitsiya va Balans tamoyili nimani talab qiladi?", "o": ["Barcha elementlarni bir burchakka joylashtirishni", "Faqat bitta rangdan foydalanishni", "Elementlarni tasodifiy tashlashni", "Elementlar vizual og'irligiga ko'ra ekranda muvozanatli joylashishini"], "a": 3, "e": "Sahnadagi har bir elementning vizual og'irligi bor."}, {"q": "Proportsiya va Ritm tamoyiliga qaysi misol mos?", "o": ["Platformalar yoki tangalar zanjirining bir maromda takrorlanishi", "Har tanga turli o'lchamda", "Matn shriftlarining tasodifiy almashishi", "Faqat bitta tanga"], "a": 0, "e": "Ritm — mutanosiblik va takrorlanish."}, {"q": "HSB da Hue (Tus) qanday oraliqda o'lchanadi?", "o": ["0 dan 255 gacha", "0 dan 360 gradusgacha", "0 dan 100 foizgacha", "0 dan 16 gacha"], "a": 1, "e": "Saturation va Brightness esa 0-100% oralig'ida."}, {"q": "Angle (Burchakli) gradiyent qanday ko'rinish beradi?", "o": ["Markazdan tashqariga doira", "Faqat to'g'ri chiziq bo'ylab o'tish", "Markaz atrofida 360 gradusli aylanma konus", "Ikki tomonga simmetrik o'tish"], "a": 2, "e": "Linear, Radial, Angle, Reflected va Diamond — gradiyent turlari."}, {"q": "Gradient Editor da Opacity Stops nimani boshqaradi?", "o": ["Rang tusini", "Qatlam nomini", "Fayl hajmini", "Kerakli joylarda shaffoflikni (0% dan 100% gacha)"], "a": 3, "e": "Color Stops ranglarni, Opacity Stops shaffoflikni belgilaydi."}, {"q": "Sehrli aura chizish uchun qaysi juftlik mos?", "o": ["Radial Gradient va Screen rejimi", "Linear Gradient va Multiply rejimi", "Faqat Eraser", "Angle Gradient va Normal rejimi"], "a": 0, "e": "Radial markazdan tashqariga nur beradi, Screen yorug'likni qoldiradi."}, {"q": "Health bar uchun qizil-sariq-yashil gradiyent rang psixologiyasiga qanday mos keladi?", "o": ["Qizil to'liq HP ni bildiradi", "Yashil to'liq HP, qizil tugayotgan HP ni bildiradi", "Sariq doim o'lim belgisi", "Ranglarning ma'nosi yo'q"], "a": 1, "e": "Linear gradient 0% qizil, 50% sariq, 100% yashil qilib sozlanadi."}, {"q": "Uzoqdagi tog'larga chuqurlik berish uchun qaysi ikki usul uyg'un ishlaydi?", "o": ["Kontrastni oshirish va issiq rang berish", "Hajmini kattalashtirish", "Opacity ni pasaytirish (havo perspektivasi) va sovuq rang berish", "Qatlamni eng tepaga qo'yish"], "a": 2, "e": "Uzoq narsalar xira va sovuq rangda uzoqlashgandek ko'rinadi."}, {"q": "Sahnadagi barcha issiq rangli detallarni sovuq tun atmosferasiga keltirish uchun eng ustga nima qo'yiladi?", "o": ["Yangi bo'sh qatlam, Multiply rejimida", "Smart Object", "Clipping Mask", "Adjustment Layer (Color Balance yoki Photo Filter)"], "a": 3, "e": "Sozlash qatlami barcha elementlar rang haroratini birlashtiradi."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

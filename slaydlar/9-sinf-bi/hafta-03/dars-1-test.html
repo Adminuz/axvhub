@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Data Cleaning (ma'lumotlarni tozalash) nima?", "o": ["Xatolar, takroriy qatorlar va noto'g'ri formatlarni to'g'rilash jarayoni", "Yangi grafik chizish", "Ma'lumotlarni o'chirib tashlash", "Faqat fayl nomini o'zgartirish"], "a": 0, "e": "Tozalash xom ma'lumotni tahlilga tayyor holga keltiradi."}, {"q": "GIGO qoidasi nimani bildiradi?", "o": ["Katta fayl tez ochiladi", "Xato ma'lumot kirsa, xato natija chiqadi", "Ma'lumot har doim to'g'ri", "Natijani ko'paytirish mumkin"], "a": 1, "e": "Garbage In, Garbage Out: sifatsiz ma'lumotdan sifatsiz qaror."}, {"q": "<code>TRIM<\/code> funksiyasi nima qiladi?", "o": ["Barcha harflarni katta qiladi", "Matnni ustunlarga bo'ladi", "Ortiqcha bo'shliqlarni olib tashlaydi", "Dublikatlarni o'chiradi"], "a": 2, "e": "<code>TRIM<\/code> so'zlar orasida faqat bittadan probel qoldiradi."}, {"q": "<code>PROPER<\/code> funksiyasi «toshkent shahri» matnini qanday o'zgartiradi?", "o": ["«TOSHKENT SHAHRI»", "«toshkent shahri»", "«Toshkent shahri» faqat birinchi so'zni", "«Toshkent Shahri»"], "a": 3, "e": "<code>PROPER<\/code> har bir so'zning birinchi harfini bosh harf qiladi."}, {"q": "Namuna yozib, butun ustunni avtomatik to'ldiradigan vosita va tugma qaysi?", "o": ["Flash Fill, <code>Ctrl + E<\/code>", "Remove Duplicates, <code>Ctrl + T<\/code>", "Pivot, <code>Alt + F5<\/code>", "TRIM, <code>F4<\/code>"], "a": 0, "e": "Flash Fill bitta namunadan qonuniyatni topib ustunni to'ldiradi."}, {"q": "Text-to-Columns da ajratgich (delimiter) nima uchun kerak?", "o": ["Matnni shifrlaydi", "Matn qayerdan bo'linishini ko'rsatadi, masalan vergul yoki defis", "Katak rangini belgilaydi", "Jadvalni o'chiradi"], "a": 1, "e": "Delimiter bo'yicha bitta katakdagi matn bir nechta ustunga bo'linadi."}, {"q": "Power Query dagi Applied Steps nimani saqlaydi?", "o": ["Faqat yakuniy jadvalni", "Parolni", "Bajarilgan tozalash amallarining ketma-ketligini", "Faqat rasmlarni"], "a": 2, "e": "Barcha qadamlar xotirada saqlanadi va qayta ishga tushirilishi mumkin."}, {"q": "Bir xodim «Toshkent», boshqasi «Toshkent » (oxirida probel) yozdi. <code>COUNTIF<\/code> nima qiladi?", "o": ["Bir xil shahar deb sanaydi", "Xatolik beradi va to'xtaydi", "Avtomatik <code>TRIM<\/code> qiladi", "Ularni ikki xil shahar deb hisoblaydi"], "a": 3, "e": "Ko'rinmas probel ikki yozuvni turlicha qiladi va hisobot buziladi."}, {"q": "Har oy yangi savdo hisoboti keladi, tozalash qadamlari bir xil. Eng samarali yo'l qaysi?", "o": ["Power Query da bir marta sozlab, <code>Refresh All<\/code> bosish", "Har oy hammasini qo'lda qayta qilish", "Faqat Merge qilish", "Eski hisobotni ishlatish"], "a": 0, "e": "Power Query barcha qadamlarni o'zi qayta bajaradi."}, {"q": "Bitta katakda «Ali Valiyev, Samarqand» yozilgan. Ismni va shaharni ikki ustunga ajratish uchun qaysi vosita va ajratgich mos?", "o": ["Remove Duplicates, probel", "Text-to-Columns, vergul", "PROPER, nuqta", "TRIM, defis"], "a": 1, "e": "Vergul ajratgich sifatida tanlansa, matn ikkiga bo'linadi."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "<code>F5<\/code> funksional klavishi odatda nima qiladi?", "o": ["Sahifa yoki oynani yangilaydi", "Yordam oynasini ochadi", "Dasturni yopadi", "Ovozni o'chiradi"], "a": 0, "e": "<code>F1<\/code> — yordam, <code>F5<\/code> — yangilash."}, {"q": "Qaysi tugmalar navigatsiya va tahrir guruhiga kiradi?", "o": ["<code>F1<\/code> – <code>F12<\/code>", "Strelkalar, <code>Home<\/code>, <code>End<\/code>, <code>Page Up<\/code>, <code>Delete<\/code>, <code>Backspace<\/code>", "<code>Ctrl<\/code>, <code>Alt<\/code>, <code>Win<\/code>", "Faqat raqamlar <code>0<\/code>–<code>9<\/code>"], "a": 1, "e": "Boshqaruv guruhida esa <code>Ctrl<\/code>, <code>Alt<\/code>, <code>Shift<\/code>, <code>Win<\/code>, <code>Esc<\/code>, <code>Caps Lock<\/code>, <code>Tab<\/code> bor."}, {"q": "O'ng qo'lning tayanch qator barmoqlari qaysi tugmalarda turadi?", "o": ["<code>A<\/code>, <code>S<\/code>, <code>D<\/code>, <code>F<\/code>", "<code>Y<\/code>, <code>U<\/code>, <code>I<\/code>, <code>O<\/code>", "<code>J<\/code>, <code>K<\/code>, <code>L<\/code>, <code>;<\/code>", "<code>N<\/code>, <code>M<\/code>, <code>,<\/code>, <code>.<\/code>"], "a": 2, "e": "Ko'rsatkich barmoq — <code>J<\/code>, jimjiloq — <code>;<\/code>."}, {"q": "Touch typing nima?", "o": ["Faqat ikki barmoq bilan qarab yozish", "Faqat sensorli ekranda yozish", "Faqat bosh harflar bilan yozish", "Klaviaturaga qaramay, barmoqlarning mushak xotirasi bilan yozish usuli"], "a": 3, "e": "Muscle memory orqali 10 barmoqda ko'rmasdan yoziladi."}, {"q": "10–20 WPM qaysi darajaga to'g'ri keladi?", "o": ["Boshlang'ich daraja", "Professional daraja", "Tajribali dasturchi darajasi", "Rekord natija"], "a": 0, "e": "80+ WPM professional tezkor yozuvchilarda bo'ladi."}, {"q": "Orqa suyanchiqqa tegib, yelkalar erkin, bilaklar stolda tekis turishi nimaga tegishli?", "o": ["Antivirus qoidalariga", "Ergonomika (to'g'ri o'tirish) qoidalariga", "Netiket qoidalariga", "Faktcheking qoidalariga"], "a": 1, "e": "Noto'g'ri o'tirish umurtqa qiyshayishi va bilak kasalliklariga olib keladi."}, {"q": "Raqamli kontent yaratish komponentiga qaysi faoliyat kiradi?", "o": ["Faqat boshqalarning postlarini o'qish", "Faqat parolni yodlash", "Matn, rasm, taqdimot va dasturiy loyihalarni mustaqil tayyorlash", "Faqat qidiruv tarixini o'chirish"], "a": 2, "e": "Bu raqamli savodxonlikning 4 komponentidan biri."}, {"q": "Birovning rasmi yoki maqolasidan foydalanganda nima qilish kerak?", "o": ["Muallif nomini yashirish", "O'zimniki deb ko'rsatish", "Hech narsa qilmaslik", "Manzil va muallif ismini ko'rsatish (mualliflik huquqini hurmat qilish)"], "a": 3, "e": "Bu netiket qoidalaridan biri."}, {"q": "«Bir xabarda bitta fikr» qoidasi nimaga o'rgatadi?", "o": ["Salomlashgach, maqsadni aniq yozib, boshqalarning vaqtini tejashga", "Faqat bir so'zdan yozishga", "Xabarni doim bo'sh yuborishga", "Faqat KATTA HARFLAR ishlatishga"], "a": 0, "e": "«Mumkinmi?» deb kutib o'tirmasdan, birdaniga maqsadni yozish tavsiya etiladi."}, {"q": "Faktchekingda «Sana va kontekstga qarang» qoidasi nimani anglatadi?", "o": ["Faqat sana yozilgan xabarga ishonish", "Eski video yoki voqea yangi xabar sifatida tarqatilayotganini tekshirish", "Sanasiz xabarni to'g'ri deb olish", "Xabarning rangiga qarash"], "a": 1, "e": "Ko'pincha 5 yil oldingi voqea yangidek tarqatiladi."}, {"q": "Yangilik faqat bitta noma'lum Telegram kanalida chiqdi. Qanday xulosa to'g'ri?", "o": ["Bu albatta haqiqat", "Darhol hammaga yuborish kerak", "Boshqa nufuzli manbalar bilan solishtirish kerak: bu feyk bo'lishi mumkin", "Tekshirish shart emas"], "a": 2, "e": "Agar faqat bitta kanalda bo'lsa — ehtimol feyk."}, {"q": "Kiberbullingga uchragan o'quvchi qanday yo'l tutishi kerak?", "o": ["Xuddi shunday haqorat bilan javob berishi", "Postni o'chirib tashlab, hech kimga aytmaslik", "Haqoratchining ma'lumotini tarqatish", "Javob bermay, tajovuzkorni bloklab, skrinshot qilib ota-ona yoki o'qituvchiga xabar berishi"], "a": 3, "e": "Dalil sifatida skrinshot saqlanadi."}, {"q": "Qaysi platforma e-maktab (elektron jurnal) uchun misol?", "o": ["Kundalik.com", "Click", "Amazon", "Coursera"], "a": 0, "e": "Elektron jurnal, baholar, dars jadvali va ota-onalar monitoringi."}, {"q": "Click, Payme, Uzum, Anorbank qaysi sohaga (Fintech) misol?", "o": ["Onlayn ta'lim platformalari", "Raqamli banklar va to'lov tizimlari", "Avtomatlashtirilgan logistika", "Elektron darsliklar"], "a": 1, "e": "Ular 24/7 pul o'tkazish, kommunal to'lov va omonat ochish imkonini beradi."}, {"q": "Uzum Market, Amazon qaysi tushunchaga misol?", "o": ["Elektron raqamli imzo (ERI)", "OneID", "Elektron tijorat (E-commerce)", "Netiket"], "a": 2, "e": "Mahsulotni uydan chiqmay xarid qilish va yetkazib berish."}, {"q": "Qaysi biri raqamli transformatsiyaning afzalligi emas?", "o": ["Tezkorlik", "24/7 qulaylik", "Iqtisodiy tejamkorlik", "Elektr yoki internet uzilganda ish to'xtab qolishi"], "a": 3, "e": "Tizim nosozliklari — qiyinchilik/xavf, afzallik emas."}, {"q": "Raqamli transformatsiyadagi kiberxavfsizlik xavfi nimaga bog'liq?", "o": ["Barcha ma'lumotlar serverlarda saqlangani uchun hakerlik hujumi va sizib chiqish xavfi ortishiga", "Qog'oz kamayishiga", "Xizmat tezlashishiga", "Xarajat tejalishiga"], "a": 0, "e": "Shuning uchun xavfsizlik chorasi muhim."}, {"q": "my.gov.uz da ma'lumotnoma olishda ERI va OneID qanday birga ishlaydi?", "o": ["Ikkalasi ham faqat qog'ozga chop etadi", "OneID bilan tizimga kiriladi, ERI hujjat haqiqiyligini tasdiqlaydi", "OneID hujjatni o'chiradi, ERI parolni beradi", "Ular ishlatilmaydi"], "a": 1, "e": "OneID — yagona kirish, ERI — elektron imzo."}, {"q": "«my.gov.uz» deb ko'rsatilgan noma'lum havolali xabar keldi. Faktcheking qoidasiga ko'ra nima qilasiz?", "o": ["Havolani bosib parolimni kiritaman", "Xabarni 10 ta guruhga yuboraman", "Manbani tekshiraman: rasmiy domen <code>.gov.uz<\/code> ekanini va xabar boshqa manbalarda borligini", "Faqat chiroyli dizaynga ishonaman"], "a": 2, "e": "Rasmiy domenni tekshirish va boshqa manbalar bilan solishtirish — oltin qoidalar."}, {"q": "DX dagi «kiberxavfsizlik xavfi» ga qarshi shaxsan qaysi savodxonlik komponenti yordam beradi?", "o": ["Raqamli kontent yaratish", "Aloqa va hamkorlik", "Touch typing", "Kiberxavfsizlik va shaxsiy gigiyena"], "a": 3, "e": "O'z hisoblari, parollari va qurilmalarini himoya qilish ko'nikmasi."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Unity dvijogi qaysi dasturlash tilidan foydalanadi va nimaga mo'ljallangan?", "o": ["C#; 2D/3D mobil, kompyuter va konsol o'yinlari uchun", "GDScript; faqat matnli o'yinlar uchun", "C++ va Blueprints; faqat AAA grafika uchun", "Vizual bloklar; faqat quti o'yinlari uchun"], "a": 0, "e": "Unity universal dvijok bo'lib, C# bilan ishlaydi."}, {"q": "Dasturchi va o'yin dizayneri farqi qaysi javobda to'g'ri?", "o": ["Dizayner kod yozadi, dasturchi hikoya yozadi", "Dasturchi kompyuterga nima qilishni aytadi, dizayner odamlar nima his qilishini o'ylab topadi", "Ikkalasi bir xil ish bajaradi", "Dasturchi faqat musiqa yozadi"], "a": 1, "e": "Dizayner qoidalar yozib, o'yinchi tajribasini loyihalaydi."}, {"q": "GDD (Game Design Document) nima?", "o": ["Tayyor o'yinning o'rnatuvchi fayli", "Faqat qahramon rasmlari to'plami", "O'yinning to'liq «pasporti»: g'oya, qahramonlar, bosqichlar, boshqaruv", "O'yin sotuvi bo'yicha hisobot"], "a": 2, "e": "GDD bo'lmasa, dasturchi va rassomlar bir-birini tushunmay qoladi."}, {"q": "Narratsiya komponenti nimani o'z ichiga oladi?", "o": ["Tugmalar va menyular", "Xarita va to'siqlar joylashuvi", "Ranglar va shriftlar", "Voqealar rivoji, qahramonlar, dialoglar va o'yin olami tarixi (Lore)"], "a": 3, "e": "Narratsiya — o'yin ichidagi hikoya va syujet."}, {"q": "Godot Engine ning asosiy xususiyati qaysi?", "o": ["Bepul, ochiq kodli va tezkor; GDScript tilida ishlaydi", "Pullik va faqat AAA grafikaga mo'ljallangan", "Faqat kod yozmasdan ishlaydi", "Faqat konsollar uchun"], "a": 0, "e": "Godot yengil va 2D o'yinlar uchun qulay."}, {"q": "Super Mario 1-bosqichida birinchi dushman o'yinchi ko'z o'ngida paydo bo'lishi dizayner uchun nimani bildiradi?", "o": ["Dushmanni yashirishni", "Tutorialsiz, intuitiv tarzda ustiga sakrashni o'rgatishni", "O'yin balansini buzishni", "Narratsiyani o'chirishni"], "a": 1, "e": "Level Design o'yinchini ko'rsatmasiz o'rgatishi mumkin."}, {"q": "Dead Space butun interfeysini diyegetik qildi. Bu o'yinchiga qanday ta'sir qiladi?", "o": ["Immersiya pasayadi", "O'yin 2D ga aylanadi", "Interfeys tabiiyroq bo'lgani uchun immersiya (sho'ng'ish) oshadi", "Barcha raqamlar ekran burchagiga ko'chadi"], "a": 2, "e": "Interfeys qanchalik tabiiy bo'lsa, sho'ng'ish shunchalik yuqori."}, {"q": "Pong, Atari 2600 va Tetris orasida kartrijlar davrini boshlab bergan qurilma qaysi?", "o": ["Magnavox Odyssey", "Bertie the Brain", "Nimatron", "Atari 2600"], "a": 3, "e": "Atari 2600 (1977) olinadigan kartrijlarni joriy etdi."}, {"q": "Magnavox Odyssey (1972) nima bilan mashhur?", "o": ["Televizorga ulanadigan birinchi uy video o'yin konsoli", "Birinchi tangali arkada avtomati", "Birinchi mobil telefon o'yini", "4 metrlik lampali mashina"], "a": 0, "e": "Konsol televizorga ulanib, faqat video o'yin uchun xizmat qiladi."}, {"q": "Bertie the Brain (1950) nima uchun yaratilgan?", "o": ["Shaxmat bo'yicha musobaqa uchun", "«Krestik-nolik» o'ynash uchun lampali mashina sifatida", "Tetris o'ynash uchun", "Stol tennisi uchun"], "a": 1, "e": "U 4 metrlik lampali mashina bo'lgan."}, {"q": "Action janri qanday talablar qo'yadi?", "o": ["Faqat uzoq muddatli rejalashtirish", "Faqat jumboq yechish", "Tezkor reflekslar, nishonga olish va chaqqonlik", "Faqat matn o'qish"], "a": 2, "e": "Shooter, Platformer va Fighting Action janriga kiradi."}, {"q": "Skyrim va The Witcher kabi o'yinlar qaysi janrga kiradi va nimasi bilan ajraladi?", "o": ["Puzzle; faqat jumboqlar bor", "Simulation; faqat transport boshqariladi", "Racing; faqat poyga bor", "RPG; qahramon darajasi oshadi, boy syujetga ega"], "a": 3, "e": "RPG xususiyatlarni kuchaytirish va syujetga tayanadi."}, {"q": "Arkada (Arcade) nima?", "o": ["O'yin zallaridagi tezkor refleks va sodda qoidali tangali avtomatlar", "Faqat uyda ishlatiladigan konsol", "Dasturlash tili", "Ta'limiy o'yin turi"], "a": 0, "e": "Pong arkada o'yinining yorqin namunasi."}, {"q": "Console (Konsol) nima?", "o": ["Tangali o'yin avtomati", "Televizor yoki monitorga ulanib, video o'yin o'ynashga mo'ljallangan qurilma", "Rasm tahrirlash dasturi", "Dasturchilar uchun xatolar oynasi"], "a": 1, "e": "Konsolga Magnavox Odyssey va Atari 2600 misol bo'ladi."}, {"q": "Chiroyli «Boshlash» tugmasi bosilgach, o'yin 3 soniya qotib qoldi. Qaysi xulosa to'g'ri?", "o": ["Ikkalasi ham yaxshi UI", "Ikkalasi ham UI ga kiradi", "Tugma — yaxshi UI, qotish — yomon UX", "Ikkalasi ham yaxshi UX"], "a": 2, "e": "UI ko'rinishni, UX esa his qilinadigan qulaylikni bildiradi."}, {"q": "Wireframe nima?", "o": ["Tayyor rangli o'yin menyusi", "3D model", "Ovoz effekti", "Interfeys elementlari joylashuvini ko'rsatuvchi rangsiz xom eskiz"], "a": 3, "e": "Wireframe interfeys loyihalashning birinchi bosqichi."}, {"q": "Qorli oq fonda ham, qorong'u g'orda ham matn aniq o'qilishi uchun nima tavsiya etiladi?", "o": ["Yuqori kontrast va matn atrofida nozik qora hoshiya (stroke)", "Matnni juda kichik qilish", "Matnni fon rangiga yaqin qilish", "Matnni faqat o'rtaga qo'yish"], "a": 0, "e": "Bu yaxshi HUD ning uchinchi oltin qoidasi."}, {"q": "Fitts qonuniga ko'ra ekranning qaysi qismidagi tugmalarni bosish eng oson?", "o": ["Aynan markazdagi", "4 ta burchakdagi", "Faqat yuqori o'rtadagi", "Faqat pastki o'rtadagi"], "a": 1, "e": "Shuning uchun mini-xarita va asosiy tugmalar burchaklarga qo'yiladi."}, {"q": "Doom (1993) dagi qonga belanib boruvchi qahramon yuzi qaysi interfeys turiga misol?", "o": ["Fazoviy interfeys", "Hech qanday interfeys emas", "Meta-interfeys", "Diyegetik interfeys"], "a": 2, "e": "U jarohatni o'yinchiga ekranda his qildiradi."}, {"q": "Super Mario haqidagi qaysi juftlik to'g'ri?", "o": ["Janr — Puzzle; ochkolar — diyegetik UI", "Janr — Simulation; ochkolar — meta UI", "Janr — RTS; ochkolar — fazoviy UI", "Janr — Action (Platformer); ochko va vaqt — nodiyegetik UI"], "a": 3, "e": "Platformer Action janriga kiradi, ochkolar esa ekran ustiga chiziladi."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

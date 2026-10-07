@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "<code>for (i in 1..4)<\/code> siklida tana necha marta bajariladi?", "o": ["3 marta", "4 marta", "5 marta", "1 marta"], "a": 1, "e": "<code>1..4<\/code> ikkala chegarani ham kiritadi: 1, 2, 3, 4."}, {"q": "<code>1 until 5<\/code> oralig'ida qaysi son yo'q?", "o": ["1", "3", "5", "4"], "a": 2, "e": "<code>until<\/code> oxirgi chegarani kiritmaydi."}, {"q": "Kamayish tartibida sanash uchun qaysi kalit so'z ishlatiladi?", "o": ["<code>until<\/code>", "<code>step<\/code>", "<code>reverse<\/code>", "<code>downTo<\/code>"], "a": 3, "e": "<code>10 downTo 1<\/code> - 10, 9, ..., 1."}, {"q": "<code>1..10 step 3<\/code> qaysi sonlarni beradi?", "o": ["1, 3, 6, 9", "1, 4, 7, 10", "3, 6, 9", "1, 2, 3"], "a": 1, "e": "Har safar 3 qo'shiladi."}, {"q": "<code>while<\/code> sikli shartni qachon tekshiradi?", "o": ["Tana bajarilishidan oldin", "Tana bajarilgandan keyin", "Hech qachon", "Faqat oxirida"], "a": 0, "e": "Shart noto'g'ri bo'lsa tana umuman ishlamaydi."}, {"q": "Qaysi sikl kamida bir marta albatta ishlaydi?", "o": ["<code>while<\/code>", "<code>do-while<\/code>", "<code>for<\/code>", "Hech biri"], "a": 1, "e": "<code>do-while<\/code> shartni tanadan keyin tekshiradi."}, {"q": "<code>break<\/code> nima qiladi?", "o": ["Qadamni o'tkazadi", "Dasturni o'chiradi", "Siklni to'xtatadi", "Siklni qayta boshlaydi"], "a": 2, "e": "<code>break<\/code> siklni darhol tugatadi."}, {"q": "Funksiya e'lon qilishning to'g'ri shakli?", "o": ["<code>fun hello() { }<\/code>", "<code>def hello() { }<\/code>", "<code>function hello() { }<\/code>", "<code>hello fun() { }<\/code>"], "a": 0, "e": "Kotlinda <code>fun<\/code> ishlatiladi."}, {"q": "Funksiya e'lon qilinishi uni bajaradimi?", "o": ["Yo'q, uni chaqirish kerak", "Ha, darhol bajariladi", "Faqat <code>main<\/code> da", "Faqat <code>val<\/code> bilan"], "a": 0, "e": "Tana chaqirilganda bajariladi."}, {"q": "<code>fun f(name: String, age: Int)<\/code> da <code>name<\/code> va <code>age<\/code> nima?", "o": ["Argumentlar", "Sinflar", "Konstantalar", "Parametrlar"], "a": 3, "e": "E'londagi o'zgaruvchilar parametr deyiladi."}, {"q": "<code>f(\"Tom\", 36)<\/code> dagi <code>\"Tom\"<\/code> va <code>36<\/code> nima?", "o": ["Parametrlar", "Turlar", "Argumentlar", "Funksiyalar"], "a": 2, "e": "Chaqirishda berilgan qiymatlar argument."}, {"q": "Funksiya parametri qanday turdagi o'zgaruvchi?", "o": ["<code>var<\/code>", "<code>val<\/code> (o'zgartirib bo'lmaydi)", "<code>const<\/code>", "Hech qanday"], "a": 1, "e": "<code>n = n * 2<\/code> xato beradi."}, {"q": "<code>fun f(a: Int, b: Int = 5)<\/code>. <code>f(1)<\/code> da <code>b<\/code>?", "o": ["0", "1", "Xato", "5"], "a": 3, "e": "Berilmagan parametr standart qiymat oladi."}, {"q": "Nomlangan argument qaysi?", "o": ["<code>f(\"Tom\", 28)<\/code>", "<code>f(\"Tom\", age = 28)<\/code>", "<code>f(Tom, 28)<\/code>", "<code>f[age = 28]<\/code>"], "a": 1, "e": "<code>age = 28<\/code> nom bilan berilgan."}, {"q": "Sinf nima?", "o": ["Obyektning nusxasi", "Funksiya", "Obyektning chizmasi", "Oraliq"], "a": 2, "e": "Sinfdan obyektlar yaratiladi."}, {"q": "Obyekt yaratishning to'g'ri shakli?", "o": ["<code>val p = new Person()<\/code>", "<code>p = class Person<\/code>", "<code>Person.new()<\/code>", "<code>val p = Person()<\/code>"], "a": 3, "e": "Kotlinda <code>new<\/code> yo'q."}, {"q": "Obyekt xossasiga qanday murojaat qilinadi?", "o": ["<code>tom-&gt;name<\/code>", "<code>tom::name()<\/code>", "<code>name.tom<\/code>", "<code>tom.name<\/code>"], "a": 3, "e": "Nuqta orqali: <code>obyekt.xossa<\/code>."}, {"q": "Metod nima?", "o": ["Sinf tashqarisidagi o'zgaruvchi", "Turi", "Sikl", "Sinf ichidagi funksiya"], "a": 3, "e": "Metod obyekt amalini bajaradi."}, {"q": "Primary konstruktor qayerda yoziladi?", "o": ["Sinf nomidan keyin qavs ichida", "Sinf tanasi oxirida", "<code>main<\/code> ichida", "Alohida faylda"], "a": 0, "e": "<code>class Person(val name: String)<\/code>."}, {"q": "Sinfda nechta primary konstruktor bo'lishi mumkin?", "o": ["Ikkita", "Bitta", "Cheksiz", "Hech qanday"], "a": 1, "e": "Faqat bitta primary."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Tizim administratori (root) uchun mo'ljallangan buyruqlar (<code>fdisk<\/code>, <code>iptables<\/code>) qaysi katalogda?", "o": ["<code>/sbin<\/code> va <code>/usr/sbin<\/code>", "<code>/bin<\/code> va <code>/usr/bin<\/code>", "<code>/home<\/code>", "<code>/tmp<\/code>"], "a": 0, "e": "<code>/bin<\/code> oddiy foydalanuvchi buyruqlari uchun, <code>/sbin<\/code> esa administrator vositalari uchun."}, {"q": "Ishlayotgan jarayonlar va yadro holati haqidagi ma'lumotlar qaysi virtual kataloglarda?", "o": ["<code>/etc<\/code> va <code>/var<\/code>", "<code>/proc<\/code> va <code>/sys<\/code>", "<code>/dev<\/code> va <code>/tmp<\/code>", "<code>/root<\/code> va <code>/home<\/code>"], "a": 1, "e": "<code>/proc<\/code> va <code>/sys<\/code> diskda emas, yadro holatini fayl ko'rinishida beruvchi virtual fayl tizimlari."}, {"q": "<code>company<\/code> papkasi ichidan barcha <code>.log<\/code> fayllarni topish buyrug'i qaysi?", "o": ["<code>ls company -name *.log<\/code>", "<code>cat company/*.log -find<\/code>", "<code>find company -name \"*.log\"<\/code>", "<code>mkdir -p company/*.log<\/code>"], "a": 2, "e": "<code>find [yo'l] -name \"[namuna]\"<\/code> — rekursiv qidiruv."}, {"q": "<code>rm -rf dir<\/code> nega ehtiyotkorlik talab qiladi?", "o": ["Faqat yashirin fayllarni o'chiradi", "Katalogni korzinaga yuboradi", "Faqat bo'sh katalogni o'chiradi", "Katalogni ichidagilari bilan so'rovsiz va qaytarib bo'lmaydigan qilib o'chiradi"], "a": 3, "e": "<code>-r<\/code> rekursiv, <code>-f<\/code> ogohlantirishsiz majburlash: noto'g'ri yo'lda butun tizim zarar ko'rishi mumkin."}, {"q": "<code>touch<\/code> buyrug'i mavjud fayl bilan ishlatilsa nima bo'ladi?", "o": ["Fayl mazmuni o'zgarmaydi, vaqt tamg'asi yangilanadi", "Fayl tozalanadi", "Fayl o'chiriladi", "Xato chiqadi"], "a": 0, "e": "<code>touch<\/code> yangi bo'sh fayl yaratadi yoki mavjudining timestamp ini yangilaydi."}, {"q": "Fayl <code>chmod 644<\/code> bo'lsa, guruh a'zolari u bilan nima qila oladi?", "o": ["O'qiydi va yozadi", "Faqat o'qiy oladi", "Ishga tushiradi", "Hech narsa qila olmaydi"], "a": 1, "e": "644: ega <code>rw-<\/code>, guruh <code>r--<\/code>, boshqalar <code>r--<\/code>."}, {"q": "Ishlab chiqarish serverida <code>chmod 777<\/code> nega yomon?", "o": ["Fayl ishga tushmay qoladi", "Fayl egasi o'zgarib ketadi", "Har qanday begona foydalanuvchi faylni o'zgartira oladi", "Fayl hajmi oshib ketadi"], "a": 2, "e": "Least Privilege tamoyiliga ko'ra faqat kerakli ruxsat beriladi; 777 hammaga to'liq huquq beradi."}, {"q": "Ruxsat satrining birinchi belgisi <code>l<\/code> bo'lsa, bu qanday obyekt?", "o": ["Log fayl", "Qulflangan fayl", "Katalog", "Ramziy havola (symbolic link)"], "a": 3, "e": "<code>-<\/code> fayl, <code>d<\/code> katalog, <code>l<\/code> ramziy havola."}, {"q": "<code>chmod g-w file.txt<\/code> natijasi qanday?", "o": ["Guruhdan yozish ruxsati olinadi", "Guruhga yozish ruxsati beriladi", "Boshqalardan o'qish olinadi", "Egadan yozish olinadi"], "a": 0, "e": "<code>g<\/code> — group, <code>-w<\/code> — yozishni olib tashlash."}, {"q": "Vimda o'zgarishlarni saqlamay chiqish uchun nima yoziladi (Normal rejimda)?", "o": [":wq", "<code>:q!<\/code>", ":w", ":x"], "a": 1, "e": "<code>:q!<\/code> majburiy chiqadi, <code>:wq<\/code> va <code>:x<\/code> saqlab chiqadi."}, {"q": "Vimning Normal rejimida <code>dd<\/code> nima qiladi?", "o": ["Qatordan nusxa oladi", "Fayldan chiqadi", "Joriy qatorni o'chiradi", "Qator oxiriga matn qo'shadi"], "a": 2, "e": "<code>dd<\/code> — o'chirish, <code>yy<\/code> — nusxa olish, <code>p<\/code> — qo'yish."}, {"q": "Joriy foydalanuvchi nomini ekranga chiqarish uchun qaysi buyruq to'g'ri?", "o": ["<code>echo USER<\/code>", "<code>export $USER<\/code>", "<code>cat $USER<\/code>", "<code>echo $USER<\/code>"], "a": 3, "e": "O'zgaruvchi qiymatini olish uchun oldiga <code>$<\/code> qo'yiladi."}, {"q": "Barcha muhit o'zgaruvchilarini ko'rish uchun qaysi buyruq ishlatiladi?", "o": ["<code>printenv<\/code> yoki <code>env<\/code>", "<code>pwd<\/code>", "<code>ls -e<\/code>", "<code>history<\/code>"], "a": 0, "e": "<code>env<\/code> va <code>printenv<\/code> ro'yxatni chiqaradi; <code>env | grep DB_<\/code> bilan filtrlash mumkin."}, {"q": "<code>date &gt;&gt; deployment.log<\/code> bajarilsa nima bo'ladi?", "o": ["Fayl mazmuni o'chib, sana yoziladi", "Sana fayl oxiriga qo'shiladi", "Sana ekranga chiqmaydi va hech narsa yozilmaydi", "Xatolar faylga yoziladi"], "a": 1, "e": "<code>&gt;&gt;<\/code> mavjud mazmunni saqlab, oxiriga qo'shadi (append)."}, {"q": "Linuxda STDERR oqimining raqami nechchi va uni qanday yo'naltirish mumkin?", "o": ["1; <code>1&gt; error.log<\/code>", "0; <code>0&gt; error.log<\/code>", "2; <code>2&gt; error.log<\/code>", "2; <code>2&lt; error.log<\/code>"], "a": 2, "e": "0 — STDIN, 1 — STDOUT, 2 — STDERR."}, {"q": "<code>ps aux | grep \"nginx\"<\/code> da <code>|<\/code> belgisi nima qiladi?", "o": ["<code>ps<\/code> natijasini faylga yozadi", "Ikkala buyruqni bir vaqtda mustaqil ishlatadi", "<code>grep<\/code> xatolarini yashiradi", "<code>ps<\/code> natijasini <code>grep<\/code> ga kirish sifatida uzatadi"], "a": 3, "e": "Pipe bir buyruqning STDOUT ini keyingisining STDIN iga ulaydi."}, {"q": "<code>deploy.sh<\/code> ni yaratib, <code>./deploy.sh<\/code> bilan ishga tushirmoqchisiz. To'g'ri ketma-ketlik qaysi?", "o": ["<code>touch deploy.sh<\/code>, <code>chmod u+x deploy.sh<\/code>, <code>./deploy.sh<\/code>", "<code>./deploy.sh<\/code>, <code>touch deploy.sh<\/code>, <code>chmod u+x deploy.sh<\/code>", "<code>touch deploy.sh<\/code>, <code>chmod 600 deploy.sh<\/code>, <code>./deploy.sh<\/code>", "<code>mkdir deploy.sh<\/code>, <code>chmod 644 deploy.sh<\/code>, <code>./deploy.sh<\/code>"], "a": 0, "e": "Yangi fayl odatda <code>644<\/code> bo'ladi, ishga tushirish uchun <code>x<\/code> huquqi shart."}, {"q": "<code>ls -l /etc &gt; perms.txt<\/code> nima qiladi?", "o": ["<code>perms.txt<\/code> ruxsatlarini o'zgartiradi", "<code>/etc<\/code> ning batafsil ro'yxatini <code>perms.txt<\/code> ga yozadi", "Ro'yxatni ekranga chiqarib, faylga hech narsa yozmaydi", "<code>/etc<\/code> ni <code>perms.txt<\/code> ga ko'chiradi"], "a": 1, "e": "<code>ls -l<\/code> ruxsatlarni ko'rsatadi, <code>&gt;<\/code> natijani faylga yo'naltiradi."}, {"q": "<code>find / -name \"*.conf\" 2&gt; /dev/null<\/code> da <code>2&gt; /dev/null<\/code> nega qo'yilgan?", "o": ["Natijalar tezroq chiqishi uchun", "Topilgan fayllar yo'qolishi uchun", "«Permission denied» kabi xatolar ekranni to'ldirmasligi uchun", "Qidiruv faqat <code>/dev<\/code> da bo'lishi uchun"], "a": 2, "e": "STDERR oqimi <code>/dev/null<\/code> (qora tuynuk) ga yo'naltiriladi, natijalar esa ekranda qoladi."}, {"q": "<code>/etc/nginx/nginx.conf<\/code> ni server ichida tahrirlash uchun qaysi yo'l to'g'ri?", "o": ["<code>vim /etc/nginx/nginx.conf<\/code>, <code>Ctrl+O<\/code>, <code>Ctrl+X<\/code>", "<code>cat /etc/nginx/nginx.conf &gt; i<\/code>, <code>:wq<\/code>", "<code>touch /etc/nginx/nginx.conf<\/code>, <code>:q!<\/code>", "<code>sudo vim /etc/nginx/nginx.conf<\/code>, <code>i<\/code>, o'zgartirish, <code>Esc<\/code>, <code>:wq<\/code>"], "a": 3, "e": "Sozlamalar <code>/etc<\/code> da, ularni o'zgartirish uchun administrator huquqi va Vim rejimlari ketma-ketligi kerak."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

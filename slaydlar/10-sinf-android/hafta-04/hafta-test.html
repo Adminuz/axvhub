@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Git bilan GitLab/Bitbucket orasidagi munosabat qanday?", "o": ["Git dasturi, GitLab va Bitbucket esa uni joylashtiradigan platformalar", "Ular uchalasi bir xil dastur", "Git faqat Windows uchun", "Bitbucket Git o'rniga ishlatiladi"], "a": 0, "e": "Git lokal vosita, platformalar esa kodni bulutda saqlab, jamoaviy ishni tashkil etadi."}, {"q": "Loyihani klonlagandan keyin jamoada odatda nima qilinadi?", "o": ["To'g'ridan-to'g'ri main ni tahrirlash", "Alohida branch ochib ishlash", "Repo'ni o'chirish", "Barcha rollarni o'zgartirish"], "a": 1, "e": "Asosiy kodga tegmaslik uchun alohida feature branch ochiladi."}, {"q": "Kanban doskasi nima beradi?", "o": ["Kod tezligini", "Android emulyatorini", "Vazifalar holatini (kim nima bilan bandligini) vizual ko'rsatishni", "Faqat chat"], "a": 2, "e": "To Do, In Progress, Done ustunlari ishning bosqichini ko'rsatadi."}, {"q": "Team nimani anglatadi?", "o": ["Branch turini", "Loyiha ustida ishlaydigan a'zolarni", "Pipeline bosqichini", "Merge usulini"], "a": 1, "e": "Team jamoa a'zolari, ularga rollar beriladi."}, {"q": "Pull Request va Merge Request orasida qanday munosabat bor?", "o": ["Ular butunlay boshqa narsalar", "Merge Request faqat Bitbucket'da bor", "Mazmuni bir xil, GitHub PR deydi, GitLab MR deydi", "MR commitni o'chiradi"], "a": 2, "e": "Hujjat: Pull Request GitLab'da Merge Request deb ataladi."}, {"q": "Nima uchun alohida branch yaratiladi?", "o": ["Faylni kichraytirish uchun", "Asosiy loyihani buzmasdan mustaqil ishlash uchun", "Internetni tezlatish uchun", "Commit xeshini o'zgartirish uchun"], "a": 1, "e": "Branch xavfsizlik va mustaqillik beradi."}, {"q": "<code>feature/lessons-screen<\/code> nomi qanday branch?", "o": ["Xato tuzatish", "Zudlik bilan tuzatish", "Tarixni tozalash", "Yangi funksiya (darslar ekrani) uchun branch"], "a": 3, "e": "<code>feature/<\/code> prefiksi yangi funksiya ustida ishlashni bildiradi."}, {"q": "Git Flow'da <code>hotfix<\/code> nima uchun?", "o": ["Yangi funksiyalar uchun", "Zudlik bilan tuzatishlar uchun", "Nashrga tayyor kod uchun", "Rivojlanayotgan kod uchun"], "a": 1, "e": "Hujjat: hotfix zudlik bilan tuzatishlar branchi."}, {"q": "Merge konfliktini hal qilish tartibi qaysi?", "o": ["Belgilarni o'chirmay commit qilish", "Faqat <code>git push<\/code>", "Variantni tanlash, belgilarni o'chirish, <code>git add<\/code> va <code>git commit<\/code>", "Repo'ni qayta yaratish"], "a": 2, "e": "Tanlov, tozalash, keyin add va commit bilan merge yakunlanadi."}, {"q": "PR'dagi Code Review'da nimani tekshirmaymiz?", "o": ["Kod toza yozilganmi", "Xavfsizlik xatolari bormi", "Arxitektura qoidalariga amal qilinganmi", "Dasturchining shaxsiy parolini"], "a": 3, "e": "Review kod sifati, takrorlanish, xavfsizlik, arxitektura va UI natijasini tekshiradi."}, {"q": "Continuous Delivery nima?", "o": ["Ilovani tayyorlash, sinovga chiqarish va nashr jarayonlarini avtomatlashtirish", "Faqat branch nomlash", "Faqat kodni o'chirish", "Telefonni tuzatish"], "a": 0, "e": "Delivery CI davomi: ilova doim tayyor holda turadi."}, {"q": "Zavod analogiyasida har detalni tekshirish nimaga mos?", "o": ["Deployment'ga", "Fork'ga", "Merge'ga", "Continuous Integration'ga"], "a": 3, "e": "Detallarni tekshirish CI, tayyor telefonni bozorga chiqarish Delivery va Deployment."}, {"q": "Android uchun CI xizmatlariga qaysi biri kiradi?", "o": ["Photoshop", "GitHub Actions", "Excel", "Paint"], "a": 1, "e": "Hujjat: GitHub Actions, GitLab CI/CD, Bitbucket Pipelines, Jenkins, CircleCI, Azure DevOps."}, {"q": "<code>actions/setup-java@v3<\/code> qadamida nima qilinadi?", "o": ["Branch o'chiriladi", "Parol almashtiriladi", "JDK (Java) o'rnatiladi", "Rasm yuklanadi"], "a": 2, "e": "Qadam <code>java-version: '17'<\/code> va temurin distributivi bilan JDK ni sozlaydi."}, {"q": "<code>push: tags: 'v*'<\/code> release workflow'ni qachon ishga tushiradi?", "o": ["Har oddiy commitda", "<code>v<\/code> bilan boshlanadigan tag qo'yilganda", "Faqat yakshanba kuni", "Hech qachon"], "a": 1, "e": "Hujjatdagi Release Build workflow tag qo'yilganda AAB yig'ib, Play Store'ga yuboradi."}, {"q": "Quyidagilardan qaysi biri Secrets orqali saqlanishi kerak?", "o": ["Branch nomi", "README sarlavhasi", "Fayl kengaytmasi", "Play Store service account kaliti"], "a": 3, "e": "Kalit va tokenlar ochiq yozilmaydi, <code>${{ secrets.PLAY_STORE_KEY }}<\/code> orqali olinadi."}, {"q": "Jamoa ishining to'g'ri ketma-ketligi qaysi?", "o": ["Branch, o'zgarish, PR, review, CI tekshiruvi, merge", "Merge, branch, review, PR", "CI, keyin kod yozish", "Deploy, keyin branch ochish"], "a": 0, "e": "Feature branch'da ishlanadi, PR ochiladi, review va CI tekshiruvidan so'ng merge qilinadi."}, {"q": "PR ochilganda CI testlari yiqildi. Nima qilish kerak?", "o": ["Baribir merge qilish", "Xatoni tuzatib qayta push qilish: PR yangilanadi va CI qayta ishlaydi", "PR'ni o'chirib tashlash", "Testlarni olib tashlash"], "a": 1, "e": "Push PR'ni yangilaydi, pipeline qaytadan tekshiradi."}, {"q": "Qaysi birikma to'g'ri: branch strategiyasi va CI?", "o": ["CI faqat Git Flow bilan ishlaydi", "CI branch ishlatmaydi", "Har bir feature branch'dagi PR'da CI avtomatik tekshiruv o'tkazadi, merge faqat muvaffaqiyatdan keyin", "CI faqat Deployment uchun"], "a": 2, "e": "CI har PR'da build va test ishga tushirib, sifatni merge'dan oldin nazorat qiladi."}, {"q": "Nega pipeline nomi bir platformada (GitLab) va boshqasida (GitHub) boshqacha atalsa ham, g'oya bir xil?", "o": ["Ular turli tillarda yozilgan", "Hamma platforma bir xil ishlaydi, nomi ahamiyatsiz", "Hammasi Git repozitoriyasi bilan bog'liq holda build, test va deploy ni avtomatlashtiradi", "Faqat bittasi ishlaydi"], "a": 2, "e": "GitHub Actions, GitLab CI/CD va Bitbucket Pipelines Git repozitoriyasi bilan birga avtomatik jarayon bajaradi."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

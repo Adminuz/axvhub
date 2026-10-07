@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Sifatli intervyu uchun odatda nechta ishtirokchi va qancha vaqt tavsiya etiladi?", "o": ["5–10 kishi, taxminan 40 daqiqalik yuzma-yuz intervyu", "5000 kishi, 1 daqiqa", "1 kishi, 5 soat", "100–10 000 kishi, onlayn"], "a": 0, "e": "Katta auditoriya (100–10 000) esa miqdoriy tadqiqotga xos."}, {"q": "Eye tracking (ko'z harakatini kuzatish) qaysi turga kiradi?", "o": ["Munosabat (Attitudinal)", "Xulq-atvor (Behavioral)", "Faqat generativ", "Faqat so'rovnoma"], "a": 1, "e": "U odamlar amalda nimaga qarashini o'lchaydi, nima deyishini emas."}, {"q": "Ochiq (Open) karta tartiblash nima uchun ishlatiladi?", "o": ["Serverning tezligini oshirish uchun", "Rang kontrastini hisoblash uchun", "Menyu va axborot arxitekturasini foydalanuvchi mantiqiga moslash uchun", "Logotipni chizish uchun"], "a": 2, "e": "Foydalanuvchi kartalarni o'zi guruhlaydi va guruhlarga nom beradi."}, {"q": "Field Study (kuzatuv) da nima uchun tabiiy muhit muhim?", "o": ["Chunki laboratoriya ishlatish taqiqlangan", "Chunki bu arzonroq", "Chunki foydalanuvchi ismi kerak emas", "Hawthorne effektini kamaytirib, haqiqiy xatti-harakatni ko'rish uchun"], "a": 3, "e": "Foydalanuvchi o'z muhitida (ofis, do'kon) tabiiy harakat qiladi."}, {"q": "Yaratilgan prototipning qulayligini sinash qaysi tadqiqot turiga kiradi?", "o": ["Baholovchi (Evaluative)", "Generativ", "Faqat sifatli munosabat", "Hech qaysisiga"], "a": 0, "e": "Generativ loyiha boshida g'oyalarni kashf etadi, baholovchi tayyor yechimni sinaydi."}, {"q": "So'rovnoma (Survey) odatda qanday tuziladi?", "o": ["Faqat ochiq esse savollar", "Yopiq savollar (shkala) va 1–2 ta ochiq savol uyg'unlashtiriladi", "Faqat bitta savol", "Faqat yo'naltiruvchi savollar"], "a": 1, "e": "Bu qisqa vaqtda yuzlab foydalanuvchidan fikr yig'ish imkonini beradi."}, {"q": "Personadagi «Iqtibos (Quote)» nima?", "o": ["Mahsulotning narxi", "Dasturchi izohi", "Foydalanuvchining hayotiy qarashini aks ettiruvchi bitta jumla", "Reklama shiori"], "a": 2, "e": "Iqtibos personani insoniylashtiradi va qarashini qisqa ifodalaydi."}, {"q": "«Asabiylashgan: chunki to'lov tasdiqlanmadi» yozuvi empatiya xaritasining qaysi kvadrantiga tegishli?", "o": ["Says", "Does", "Hears", "Feels (His qiladi)"], "a": 3, "e": "Feels — hissiy holat va uning sababi."}, {"q": "Quyidagi fikr qaysi kvadrantga mos: «Balki men buni tushunishga yetarlicha aqlli emasdirman?»", "o": ["Thinks", "Says", "Does", "Gains"], "a": 0, "e": "Bu foydalanuvchi baland ovozda aytmaydigan ichki fikr."}, {"q": "Empathy Map ning persona va journey map dan farqi qaysi?", "o": ["U butun yo'lni vaqt bo'yicha qamrab oladi (Breadth)", "U muayyan vaziyatdagi ichki holatni chuqur (Depth) tushunishga qaratilgan", "U faqat demografiyani yig'adi", "U kodni tekshiradi"], "a": 1, "e": "Journey Map kenglikni, Empathy Map chuqurlikni beradi."}, {"q": "«Hears» hududida nimalar yoziladi?", "o": ["Foydalanuvchining jismoniy harakatlari", "Mahsulot narxi", "Hamkasb, ota-ona yoki boshliqlardan eshitilgan fikrlar", "Ranglar kodi"], "a": 2, "e": "Hears va Sees foydalanuvchining muhitini ko'rsatadi."}, {"q": "User Story qaysi metodologiyada ishlatiladigan talab formati?", "o": ["Faqat Waterfall", "Faqat rasm chizishda", "Faqat bank hisobotida", "Agile"], "a": 3, "e": "Agile da ehtiyoj foydalanuvchi nuqtayi nazaridan qisqa ifodalanadi."}, {"q": "Quyidagilardan qaysi biri yaxshi qabul qilish mezoni?", "o": ["«Karta raqami kiritilganda bank turi avtomatik aniqlanishi kerak»", "«Hammasi chiroyli bo'lsin»", "«Foydalanuvchi mamnun bo'lsin»", "«Tez ishlasin»"], "a": 0, "e": "Mezon aniq va tekshirib ko'riladigan shart bo'lishi kerak."}, {"q": "User Scenario nimani tasvirlaydi?", "o": ["Faqat ma'lumotlar bazasi jadvallarini", "Foydalanuvchi kim, qayerda, qanday holatda va qanday ketma-ketlikda ishni bajargani hikoyasini", "Tizimning ichki texnik qadamlarini", "Faqat rang palitrasini"], "a": 1, "e": "Texnik bosqichlar Use Case ga tegishli."}, {"q": "Quyidagilardan qaysi biri UJM dagi to'g'ri bosqichlar ketma-ketligi misoli?", "o": ["Yetkazib berish &rarr; Qidiruv &rarr; Ehtiyoj &rarr; Xarid", "Xarid &rarr; Saytga kirish &rarr; Ehtiyoj", "Ehtiyoj paydo bo'lishi &rarr; Saytga kirish &rarr; Qidiruv &rarr; Xarid &rarr; Yetkazib berish", "Qidiruv &rarr; Ehtiyoj &rarr; Yetkazib berish &rarr; Xarid"], "a": 2, "e": "Bosqichlar foydalanuvchi yo'lining xronologik tartibini aks ettiradi."}, {"q": "«Onlayn xaridor sifatida, men tovarlarni narx bo'yicha saralashni xohlayman, shunda byudjetimga mos mahsulotni tezroq topaman». Foyda qismi qaysi?", "o": ["«Onlayn xaridor sifatida»", "«tovarlarni narx bo'yicha saralashni»", "Foyda qismi yo'q", "«byudjetimga mos mahsulotni tezroq topaman»"], "a": 3, "e": "«Shunda...» dan keyingi qism aniq qiymatni bildiradi."}, {"q": "Persona yaratish uchun qaysi tadqiqot usullari ma'lumot beradi?", "o": ["Intervyu, so'rovnoma va kuzatuv", "Faqat dizaynerning taxmini", "Faqat logotip tahlili", "Faqat kod tekshiruvi"], "a": 0, "e": "4-dars usullari 5-dars personasining 100% haqiqiy asosini hosil qiladi."}, {"q": "Empatiya xaritasida «Says» va «Does» ni solishtirish qaysi tadqiqot qoidasi bilan bog'liq?", "o": ["Barcha foydalanuvchilar bir xil fikrda", "Inson aytgan gapi bilan amaldagi harakati farq qilishi mumkin", "Hawthorne effekti faqat xaritaga tegishli emas", "Faqat so'zlarga ishonish kerak"], "a": 1, "e": "Munosabat (intervyu) va xulq-atvor (kuzatuv) natijalarini birga ko'rish ishonchli xulosa beradi."}, {"q": "Journey Map da «to'lov tasdiqlanmadi» pain point i aniqlandi. Qaysi mahsulot bu uchun mos User Story hosil qiladi?", "o": ["«Xaridor sifatida, men serverni o'chiraman»", "«Dizayner sifatida men rang tanlayman»", "«Xaridor sifatida, men to'lov holatini darhol ko'rishni xohlayman, shunda ikkilanmayman»", "«Sahifa shiori o'zgarsin»"], "a": 2, "e": "Pain point (5–6-darslar) foydalanuvchi ehtiyojiga, ya'ni aniq User Story ga aylanadi."}, {"q": "Hafta mavzulari ish jarayonida qaysi tartibda qo'llanadi?", "o": ["Journey Map &rarr; Tadqiqot &rarr; Persona", "User Story &rarr; Tadqiqot &rarr; Empatiya xaritasi", "Persona &rarr; User Story &rarr; Tadqiqot", "Tadqiqot &rarr; Persona/Empatiya xaritasi &rarr; User Story va Journey Map"], "a": 3, "e": "Avval foydalanuvchini o'rganamiz, so'ng uni umumlashtiramiz va talab hamda yo'lga aylantiramiz."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

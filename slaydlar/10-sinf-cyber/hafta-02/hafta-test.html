@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Har qanday kiberxavfsizlik chorasi CIA uchligidan nechta komponentni himoyalashga qaratiladi?", "o": ["Kamida bittasini (C, I yoki A)", "Hammasini bir vaqtda, boshqacha bo'lishi mumkin emas", "Faqat ikkitasini", "CIA ga aloqasi yo'q"], "a": 0, "e": "Har qanday xavfsizlik chorasi CIA uchligidan kamida bittasini himoyalashga qaratilgan bo'ladi."}, {"q": "Tridi Bobning shifrlangan xabarini o'qiy olmadi, lekin oxiriga tasodifiy belgilar qo'shib buzdi. Qaysi mezon saqlanib, qaysi biri buzildi?", "o": ["Ikkalasi ham buzildi", "Confidentiality saqlandi, Integrity buzildi", "Ikkalasi ham saqlandi", "Faqat Availability buzildi"], "a": 1, "e": "Xabar o'qilmagani uchun Konfidensiallik saqlandi, lekin matn o'zgartirilgani uchun Yaxlitlik buzildi."}, {"q": "Sog'liqni saqlash sohasida bemor tarixi uchun CIA uchligidan qaysi ikkitasi birga muhim hisoblanadi?", "o": ["Faqat Availability", "Faqat Integrity", "Integrity va Confidentiality", "Hech biri muhim emas"], "a": 2, "e": "Bemor qon guruhi noto'g'ri bo'lsa xavf (Integrity), kasallik siri oshkor bo'lmasligi kerak (Confidentiality)."}, {"q": "MITM hujumida hujumchi Bobga «men routerman» deb, routerga esa «men Bobman» deb aytadi. Bu qanday mexanizm orqali amalga oshiriladi?", "o": ["DNS Spoofing", "SQL Injection", "Ransomware", "ARP Spoofing (ARP keshini zaharlash)"], "a": 3, "e": "Bu klassik ARP Spoofing mexanizmi — hujumchi qalbaki ARP javoblari bilan ikki tomonni ham aldaydi."}, {"q": "MITM hujumi muvaffaqiyatli bo'lganda CIA ning uchala mezoni ham buzilishi mumkinmi?", "o": ["Ha — sniffing (C), tampering (I) va paketlarni bloklash (A) orqali", "Yo'q, faqat Confidentiality buziladi", "Yo'q, MITM CIA ga aloqasi yo'q", "Faqat Availability buziladi"], "a": 0, "e": "MITM orqali hujumchi ma'lumotni o'qishi (C), o'zgartirishi (I) va bloklashi (A) mumkin — barcha uch mezon xavf ostida."}, {"q": "Statik ARP jadvali va DAI (Dynamic ARP Inspection) ning umumiy maqsadi nima?", "o": ["Internet tezligini oshirish", "Soxta ARP javoblarini aniqlab, ARP Spoofing / MITM hujumlarining oldini olish", "Parollarni shifrlash", "Fayllarni zaxiralash"], "a": 1, "e": "Ikkalasi ham ARP keshini soxta ma'lumotlardan himoyalashga va MITM hujumining oldini olishga xizmat qiladi."}, {"q": "Oddiy foydalanuvchi bepul Wi-Fi ni «zo'r, parol yo'q» deb qaraydi, mutaxassis esa qanday qaraydi?", "o": ["Xuddi shunday, farqi yo'q", "«Bu tarmoqdan umuman foydalanib bo'lmaydi» deb o'ylaydi", "«Bu tarmoq shifrlanmagan, MITM xavfi bor, VPN yoqish kerak» deb baholaydi", "Faqat tezlikka e'tibor beradi"], "a": 2, "e": "Xavfsizlik tafakkuriga ega mutaxassis har doim potensial xavf nuqtai nazaridan fikrlaydi (Adversarial/Defensive thinking)."}, {"q": "Brute-force va Dictionary hujumlari o'rtasidagi asosiy farq nimada?", "o": ["Ular bir xil usul, nomi boshqa", "Dictionary hujumi faqat telefon raqamlarini sinaydi", "Brute-force internetsiz ishlay olmaydi", "Brute-force barcha kombinatsiyalarni, Dictionary esa mashhur parollar ro'yxatini sinaydi"], "a": 3, "e": "Brute-force matematik barcha kombinatsiyalarni, Dictionary esa odamlar ko'p ishlatadigan parollar ro'yxatini (rockyou.txt) sinaydi."}, {"q": "Nmap va Hydra vositalari xavfsizlik tekshiruvida qanday rol o'ynaydi?", "o": ["Nmap ochiq portlarni, Hydra esa zaif parollarni aniqlashga yordam beradi", "Fayllarni shifrlaydi", "Ikkalasi ham faqat video oqim uchun ishlatiladi", "Ular faqat Windows da ishlaydi"], "a": 0, "e": "Nmap tarmoq xizmatlarini skanerlaydi, Hydra esa lug'at hujumi orqali parollarni tekshiradi — ikkalasi ham xavfsizlik auditida qo'llaniladi."}, {"q": "Parol menejeri va 2FA (ikki bosqichli autentifikatsiya) birgalikda qanday xavfni kamaytiradi?", "o": ["Internet tezligi pasayishini", "Parol o'g'irlansa ham hisobga ruxsatsiz kirish xavfini", "Elektr energiyasi uzilishini", "Server qulashini"], "a": 1, "e": "Kuchli unikal parol + ikkinchi tasdiqlash omili — hisobni brute-force va parol sizib chiqishidan ancha ishonchli himoyalaydi."}, {"q": "Bank tizimida Integrity buzilsa (balanslar o'zgarsa), bu qaysi CIA holatiga mos mustaqil misol bo'ladi?", "o": ["Confidentiality buzilishi", "Availability yaxshilanishi", "Moliyaviy barbod bo'lish va ishonchning yo'qolishi — Integrity buzilishining oqibati", "Hech qanday oqibati yo'q"], "a": 2, "e": "Balanslarning o'zgarishi — Yaxlitlik buzilishi bo'lib, bank uchun og'ir moliyaviy va obro' zarariga olib keladi."}, {"q": "Hujumchi MITM orqali Bobning login-parolini Wireshark bilan tutib olgandan so'ng, shu parolni boshqa saytlarda ham sinab ko'rmoqchi. Bunga qarshi eng samarali himoya nima?", "o": ["Hech narsa qilish shart emas", "Faqat Wi-Fi nomini o'zgartirish", "Routerni qayta yoqish", "Har bir sayt uchun unikal parol ishlatish (parol menejeri yordamida)"], "a": 3, "e": "Agar har bir saytda boshqa-boshqa parol bo'lsa, bitta sayt parolining o'g'irlanishi boshqa hisoblarga ta'sir qilmaydi."}, {"q": "«Assume Breach» (tizim allaqachon buzilgan deb faraz qilish) tamoyili qaysi zamonaviy arxitekturaga asos bo'ladi?", "o": ["Zero Trust arxitekturasi", "Classic Perimeter Security", "Faqat antivirus asosidagi himoya", "Parolsiz kirish tizimi"], "a": 0, "e": "Assume Breach tamoyili — ichkariga allaqachon buzg'unchi kirgan deb, har bir so'rovni qat'iy tekshiradigan Zero Trust modeliga olib keladi."}, {"q": "Agar tashkilot faqat kuchli shifrlashga (Confidentiality) e'tibor bersa-yu, zaif parollar va ochiq RDP portlarini (xavfsizlik tafakkuri yetishmasligi) e'tiborsiz qoldirsa, nima yuz berishi mumkin?", "o": ["Tizim 100% xavfsiz bo'lib qoladi", "Hujumchi zaif parol orqali to'g'ridan-to'g'ri kirib, shifrlashni chetlab o'tishi mumkin", "Shifrlash zaif parollarni avtomatik mustahkamlaydi", "Bu holatda CIA uchligi ahamiyatsiz bo'lib qoladi"], "a": 1, "e": "Shifrlash qanchalik kuchli bo'lmasin, agar hujumchi to'g'ridan-to'g'ri tizimga (zaif parol orqali) kirsa, himoya besamar bo'lib qoladi — bu xavfsizlik tafakkurining ahamiyatini ko'rsatadi."}, {"q": "2-haftada o'rganilgan CIA, MITM va xavfsizlik tafakkuri mavzularini birlashtiruvchi umumiy g'oya nima?", "o": ["Faqat qonunlarni bilish yetarli", "Faqat parol kuchli bo'lsa yetarli", "Nimani himoyalash (CIA), qanday hujumlar bo'lishi mumkinligi (MITM) va qanday fikrlash kerakligini (mindset) birga bilish", "Internetdan butunlay voz kechish"], "a": 2, "e": "CIA nimani himoyalashni, MITM qanday hujum bo'lishini, xavfsizlik tafakkuri esa qanday fikrlashni o'rgatadi — uchalasi birgalikda mustahkam himoya yaratadi."}, {"q": "Agar bank serverida Account Lockout siyosati bo'lmasa, Tridi Hydra orqali brute-force qilsa, bu CIA ning qaysi mezoniga tahdid soladi?", "o": ["Faqat Availability ga", "Hech qaysisiga", "Faqat Integrity ga", "Confidentiality ga (parol topilsa, hisobga ruxsatsiz kirish mumkin bo'ladi)"], "a": 3, "e": "Agar parol topilsa, hujumchi hisobga kirib maxfiy ma'lumotlarni ko'rishi mumkin — bu Konfidensiallikka tahdid."}, {"q": "Xesh funksiyasi (SHA-256) va Nmap vositasi ikkalasi ham qaysi umumiy maqsadga xizmat qilishi mumkin?", "o": ["Ikkalasi ham tizim holatini tekshirish va zaiflik/o'zgarishni aniqlash uchun ishlatiladi", "Ikkalasi ham fayllarni shifrlaydi", "Ikkalasi ham parolni yaratadi", "Ular bir-biriga mutlaqo aloqasiz, umuman solishtirib bo'lmaydi"], "a": 0, "e": "Xesh fayl o'zgarishini (Integrity) tekshirsa, Nmap tarmoqdagi zaif/ochiq nuqtalarni aniqlaydi — ikkalasi ham xavfsizlik holatini nazorat qilish vositasi."}, {"q": "Favqulodda xizmat (Availability ustuvor) va bank (Integrity ustuvor) misollarida CIA ustuvorligi nima uchun turlicha?", "o": ["Chunki CIA faqat banklarga tegishli", "Chunki har bir sohaning asosiy xavfi va oqibati boshqacha (hayot vs moliyaviy aniqlik)", "Chunki ustuvorlik tasodifiy tanlanadi", "Ular aslida bir xil ustuvorlikka ega"], "a": 1, "e": "Favqulodda xizmatda kechikish hayotga xavf, bankda esa noto'g'ri summalar moliyaviy halokatga olib keladi — shu sabab ustuvorlik farq qiladi."}, {"q": "Agar kompaniya xodimlari kuchli parol va 2FA ishlatsa-yu, ammo ochiq Wi-Fi da HTTPS siz saytlarga kirsa, qanday xavf saqlanib qoladi?", "o": ["Hech qanday xavf qolmaydi", "Faqat internet tezligi pasayadi", "MITM orqali sessiya yoki login ma'lumotlari baribir tutib olinishi mumkin", "2FA bu holatda kerak emas"], "a": 2, "e": "Kuchli parol va 2FA MITM dan to'liq himoya qilmaydi, agar trafik shifrlanmagan (HTTP) bo'lsa, sessiya ma'lumotlari baribir xavf ostida."}, {"q": "2-haftada o'rganilgan darslarning umumiy ketma-ketligi qanday edi?", "o": ["Avval STRIDE, keyin CIA, keyin tarmoq asoslari", "Faqat fishing va malware mavzulari takrorlandi", "Avval OSI modeli, keyin CIA", "CIA triadasi (4-dars), CIA buzilishi va MITM (5-dars), xavfsizlik tafakkuri va parollar (6-dars)"], "a": 3, "e": "2-hafta: 4-dars CIA asoslari, 5-dars CIA buzilish ssenariylari va MITM, 6-dars xavfsizlik tafakkuri va parollar bilan yakunlandi."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

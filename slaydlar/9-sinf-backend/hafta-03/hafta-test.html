@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "<code>for i in range(3): print(\"Salom\")<\/code> kodida <code>Salom<\/code> necha marta chiqadi?", "o": ["3 marta", "4 marta", "2 marta", "Cheksiz"], "a": 0, "e": "<code>range(3)<\/code> — <code>0, 1, 2<\/code>, ya'ni 3 ta aylanish."}, {"q": "<code>range(2, 8)<\/code> qanday sonlarni beradi?", "o": ["<code>2, 3, 4, 5, 6, 7, 8<\/code>", "<code>2, 3, 4, 5, 6, 7<\/code>", "<code>3, 4, 5, 6, 7<\/code>", "<code>2, 4, 6<\/code>"], "a": 1, "e": "Stop (8) kirmaydi."}, {"q": "<code>range(0, 21, 2)<\/code> nechta son hosil qiladi?", "o": ["10 ta", "21 ta", "11 ta (0 dan 20 gacha juftlar)", "20 ta"], "a": 2, "e": "0, 2, ..., 20 — jami 11 ta son."}, {"q": "Yig'indi dasturida <code>s = 0<\/code> yozuvi nima uchun kerak?", "o": ["Sikl sonini cheklash uchun", "Xatolarni yashirish uchun", "<code>range<\/code> ni yaratish uchun", "Yig'indini yig'ib boruvchi boshlang'ich qiymat (akkumulyator)"], "a": 3, "e": "<code>s += i<\/code> ishlashi uchun <code>s<\/code> ga oldindan qiymat berilgan bo'lishi kerak."}, {"q": "1 dan 50 gacha butun sonlar yig'indisi nechaga teng?", "o": ["<code>1275<\/code>", "<code>1250<\/code>", "<code>2550<\/code>", "<code>1225<\/code>"], "a": 0, "e": "Yig'indi 50 * 51 / 2 = 1275."}, {"q": "Kod: <code>i = 10<\/code>; <code>while i &lt; 5: print(i)<\/code>. Natija?", "o": ["<code>10<\/code> bir marta chiqadi", "Hech narsa chiqmaydi, shart boshidanoq yolg'on", "Cheksiz <code>10<\/code>", "Xato beradi"], "a": 1, "e": "<code>while<\/code> avval shartni tekshiradi, yolg'on bo'lsa tanasi umuman bajarilmaydi."}, {"q": "Sonlar ketma-ket kiritiladi: 4, 6, 0. 0 kiritilguncha yig'indi nechaga teng?", "o": ["<code>0<\/code>", "<code>6<\/code>", "<code>10<\/code>", "<code>4<\/code>"], "a": 2, "e": "0 kiritilganda sikl to'xtaydi, yig'indi 4 + 6 = 10."}, {"q": "Kod: <code>for i in range(1, 6):<\/code> ichida <code>if i == 3: break<\/code>; <code>print(i)<\/code>. Natija?", "o": ["<code>1 2 3<\/code>", "<code>1 2 4 5<\/code>", "<code>3<\/code>", "<code>1<\/code> va <code>2<\/code>"], "a": 3, "e": "<code>i<\/code> 3 bo'lganda <code>break<\/code> sikldan chiqadi."}, {"q": "Kod: <code>for i in range(1, 6):<\/code> ichida <code>if i == 3: continue<\/code>; <code>print(i)<\/code>. Natija?", "o": ["<code>1 2 4 5<\/code>", "<code>1 2<\/code>", "<code>1 2 3 4 5<\/code>", "<code>3<\/code>"], "a": 0, "e": "<code>continue<\/code> faqat 3 ning aylanishini tashlab o'tadi."}, {"q": "<code>sekund = 10<\/code>; <code>while sekund &gt; 0: print(sekund)<\/code>; <code>sekund -= 1<\/code> yozilmasa nima bo'ladi?", "o": ["10 dan 1 gacha sanaydi", "Cheksiz sikl: <code>10<\/code> to'xtovsiz chiqadi", "Bir marta chiqadi", "Xato: <code>sekund<\/code> topilmadi"], "a": 1, "e": "Hisoblagich yangilanmasa shart o'zgarmaydi."}, {"q": "Qaysi holatda <code>match / case<\/code> <code>if-elif<\/code> dan qulayroq?", "o": ["Faqat bitta shart bo'lganda", "Sikl kerak bo'lganda", "Variantlar ko'p bo'lganda (7 ta kun, 12 oy, menyu)", "Sonlarni qo'shishda"], "a": 2, "e": "Aniq qiymatlarni solishtirishda kod qisqa va o'qishga qulay."}, {"q": "<code>oy = 1<\/code>; <code>case 12 | 1 | 2:<\/code> Qish; <code>case 3 | 4 | 5:<\/code> Bahor; <code>case _:<\/code> boshqa. Natija?", "o": ["<code>Bahor<\/code>", "<code>boshqa<\/code>", "Hech narsa", "<code>Qish<\/code>"], "a": 3, "e": "1 birinchi <code>case<\/code> dagi variantlardan biri."}, {"q": "<code>kun = 3<\/code> bo'lsa va <code>case 3:<\/code> da <code>Chorshanba<\/code> yozilgan bo'lsa, natija?", "o": ["<code>Chorshanba<\/code>", "<code>Seshanba<\/code>", "<code>Payshanba<\/code>", "<code>Xato!<\/code>"], "a": 0, "e": "3-kun Chorshanba."}, {"q": "<code>tanlov = 3<\/code>; <code>case 1:<\/code> Dastur boshlandi; <code>case 2:<\/code> Sozlamalar ochildi; <code>case 3:<\/code> Dastur yopildi. Natija?", "o": ["<code>Sozlamalar ochildi<\/code>", "<code>Dastur yopildi<\/code>", "<code>Dastur boshlandi<\/code>", "<code>Noto'g'ri tanlov<\/code>"], "a": 1, "e": "3 uchinchi <code>case<\/code> ga mos."}, {"q": "<code>oy = 9<\/code> bo'lsa va oy nomlari 1 dan 12 gacha <code>case<\/code> bilan berilgan bo'lsa, qaysi nom chiqadi?", "o": ["<code>Avgust<\/code>", "<code>Oktyabr<\/code>", "<code>Sentyabr<\/code>", "<code>Noyabr<\/code>"], "a": 2, "e": "9-oy — Sentyabr."}, {"q": "<code>kun = 8<\/code> bo'lsa va <code>case _:<\/code> da <code>Xato! 1–7 oralig'ida kiriting<\/code> bo'lsa, natija?", "o": ["<code>Yakshanba<\/code>", "Hech narsa", "<code>Dushanba<\/code>", "<code>Xato! 1–7 oralig'ida kiriting<\/code>"], "a": 3, "e": "8 hech bir <code>case<\/code> ga mos emas."}, {"q": "Kod: <code>for i in range(1, 11):<\/code> ichida <code>if i % 5 == 0: print(i)<\/code>. Nima chiqadi?", "o": ["<code>5<\/code> va <code>10<\/code>", "<code>5<\/code> faqat", "<code>1<\/code> dan <code>10<\/code> gacha hammasi", "<code>0<\/code> va <code>5<\/code>"], "a": 0, "e": "<code>for<\/code>, <code>range<\/code> va <code>if<\/code> bilan 5 ga karrali sonlar tanlanadi."}, {"q": "Kod: <code>i = 1<\/code>; <code>while i &lt;= 10:<\/code> ichida <code>if i % 4 == 0: break<\/code>; <code>i += 1<\/code>. Sikldan keyin <code>print(i)<\/code>. Natija?", "o": ["<code>10<\/code>", "<code>4<\/code>", "<code>11<\/code>", "<code>3<\/code>"], "a": 1, "e": "<code>i<\/code> 4 bo'lganda <code>break<\/code> ishlaydi va <code>i<\/code> oshirilmaydi."}, {"q": "Kod: <code>for i in range(1, 4):<\/code> ichida <code>match i:<\/code>, <code>case 1 | 2:<\/code> Past, <code>case _:<\/code> Yuqori. Natija?", "o": ["<code>Yuqori<\/code>, <code>Yuqori<\/code>, <code>Past<\/code>", "<code>Past<\/code>, <code>Yuqori<\/code>, <code>Yuqori<\/code>", "<code>Past<\/code>, <code>Past<\/code>, <code>Yuqori<\/code>", "Faqat <code>Past<\/code>"], "a": 2, "e": "1 va 2 birinchi <code>case<\/code> ga mos, 3 esa <code>case _<\/code> ga."}, {"q": "Kod: <code>for i in range(1, 6):<\/code> ichida <code>if i % 2 == 0: print(\"juft\")<\/code> aks holda <code>print(\"toq\")<\/code>. <code>juft<\/code> necha marta chiqadi?", "o": ["3 marta", "5 marta", "1 marta", "2 marta (2 va 4 da)"], "a": 3, "e": "1 dan 5 gacha faqat 2 va 4 juft."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "FastAPI ga qaysi turdagi server kerak?", "o": ["Faqat WSGI server (Gunicorn)", "ASGI server (masalan, Uvicorn)", "FTP server", "Faqat Nginx"], "a": 1, "e": "FastAPI asinxron (async/await) ishlagani uchun ASGI server kerak."}, {"q": "Virtual muhit (venv) nima uchun kerak?", "o": ["Python tezroq ishlashi uchun", "Internetsiz ishlash uchun", "Kodni shifrlash uchun", "Loyihalar kutubxona versiyalari to'qnashmasligi uchun"], "a": 3, "e": "Har loyiha uchun alohida izolyatsiyalangan kutubxonalar to'plami."}, {"q": "TT (texnik topshiriq) ning MVP qismi nimani bildiradi?", "o": ["Asosiy funksiyalarning eng kichik ishlaydigan to'plamini", "Loyihaning to'liq yakuniy variantini", "Faqat dizaynni", "Faqat baza parolini"], "a": 0, "e": "MVP: avval eng zarur funksiyalar, qolgani keyingi iteratsiyalarda."}, {"q": "Guest roli E-Library da nimani qila oladi?", "o": ["Kitob qo'shadi", "Hamma kitobni o'chiradi", "Faqat is_published=True kitoblarni ko'radi", "Fayl yuklaydi"], "a": 2, "e": "Guest autentifikatsiyasiz: faqat chop etilgan kitoblarni ko'rish."}, {"q": "Qatlamli arxitekturada biznes mantiq (ruxsat, validatsiya) qaysi papkada?", "o": ["routes/", "schemas/", "models/", "services/"], "a": 3, "e": "routes: HTTP qatlami; schemas: Pydantic; services: biznes mantiq; models: ORM."}, {"q": "<code>users (1) - (N) books<\/code> bog'lanishida Foreign Key qayerda?", "o": ["books jadvalidagi owner_id da", "users jadvalidagi book_id da", "Ikkala jadvalda ham id sifatida", "Alohida .env faylda"], "a": 0, "e": "Ko'p tomondagi jadval (books) bir tomonga (users) ishora qiladi."}, {"q": "Many-to-Many (M:N) bog'lanish qanday amalga oshiriladi?", "o": ["Ikkita Primary Key bilan", "Faqat bitta Foreign Key bilan", "Uchinchi (bog'lovchi) jadval orqali", "Bog'lanish yaratib bo'lmaydi"], "a": 2, "e": "Talabalar va fanlar misolida: ular orasida bog'lovchi jadval turadi."}, {"q": "<code>pydantic-settings<\/code> da <code>.env<\/code> dagi o'zgaruvchi unutilsa nima bo'ladi?", "o": ["Qiymat avtomatik tasodifiy bo'ladi", "Dastur ishga tushmaydi va xato beradi", "Dastur jim ishlayveradi", "Qiymat bo'sh satr bo'ladi"], "a": 1, "e": "Bu usulning afzalligi: konfiguratsiya xatosi darrov ko'rinadi."}, {"q": "<code>engine<\/code> va <code>AsyncSessionLocal<\/code> farqi nima?", "o": ["engine — bazaga aloqa kanali, session — har so'rov uchun vaqtinchalik muloqot", "Ular bir xil narsa", "engine — jadval, session — ustun", "engine faqat Alembic uchun"], "a": 0, "e": "get_db() har so'rovga yangi sessiya beradi."}, {"q": "Alembic ning vazifasi nima?", "o": ["Parollarni xeshlash", "Swagger hujjatini yaratish", "Ma'lumotlar bazasi migratsiyalarini boshqarish", "Docker image yig'ish"], "a": 2, "e": "Ustun qo'shilsa ham eski ma'lumotlar o'chmaydi."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

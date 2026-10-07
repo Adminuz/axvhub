@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Parquet faylining boshidagi 4 baytlik sehrli belgi qanday?", "o": ["<code>PAR1<\/code>", "<code>AVRO<\/code>", "<code>JSON<\/code>", "<code>CSV1<\/code>"], "a": 0, "e": "File Header faylning Parquet ekanini bildiruvchi <code>PAR1<\/code> belgisini saqlaydi."}, {"q": "Row Group nima?", "o": ["Bitta ustun nomi", "Katta datasetning mantiqiy satr guruhi (odatda 128-512 MB)", "Faylning oxirgi qismi", "Siqish algoritmi"], "a": 1, "e": "Har bir Row Group ichida har ustun uchun alohida Column Chunk bo'ladi."}, {"q": "Siqish va shifrlash Parquet'da qaysi darajada bajariladi?", "o": ["File Header darajasida", "Faqat Footer darajasida", "Page darajasida", "Row darajasida, qator bo'yicha"], "a": 2, "e": "Column Chunk sahifalarga (Data Page, Dictionary Page) bo'linadi, siqish shu yerda."}, {"q": "Parquet'da standart siqish turi qaysi?", "o": ["Gzip", "Siqishsiz", "ZIP", "Snappy"], "a": 3, "e": "Snappy tez ishlagani uchun default hisoblanadi."}, {"q": "Parquet bir xil turdagi qiymatlarni yonma-yon saqlaydi. Bu nimani beradi?", "o": ["Yuqori siqilishni (fayl hajmi 70-85% gacha kamayishi)", "Faylni inson o'qishini", "Qator qo'shishni tezlatishni", "Sxemasiz ishlashni"], "a": 0, "e": "Bir xil tur ma'lumotlar siqish algoritmlariga qulay."}, {"q": "Qaysi holatda satrli (row-based) saqlash ortiqcha disk I/O sarflaydi?", "o": ["Yangi qator qo'shilganda", "50 ustunli jadvaldan faqat bitta ustun o'rtachasi kerak bo'lganda", "Bitta yozuv to'liq o'qilganda", "Jadval kichik bo'lganda"], "a": 1, "e": "Faqat bitta ustun kerak bo'lsa ham barcha ustunlar diskdan o'qiladi."}, {"q": "Avro qaysi dasturlash tillari o'rtasida ma'lumotni bir xil qat'iyat bilan almashishga yordam beradi?", "o": ["Faqat Python", "Faqat Java", "Java, Python, C++, Go va boshqalar", "Faqat SQL"], "a": 2, "e": "Avro ning maqsadi - tillar o'rtasida ma'lumot almashish."}, {"q": "Forward Compatibility nimani bildiradi?", "o": ["Yangi sxema eski ma'lumotni o'qiy oladi", "Sxema o'zgarmas", "Ma'lumot siqilmaydi", "Eski sxema bilan yangi kod yozgan ma'lumotni o'qish mumkin"], "a": 3, "e": "Oldinga moslik - yangi maydonlar e'tiborga olinmaydi."}, {"q": "Avro jadvaldagi qaysi jihat bo'yicha eng yaxshi natija ko'rsatadi?", "o": ["Yozish tezligi (append-only) va Schema Evolution", "Tahlil tezligi (OLAP)", "Inson o'qiy olishi", "Ustunli siqish"], "a": 0, "e": "Avro yozishda o'ta tez va schema evolution'da juda mukammal; OLAP da Parquet kuchli."}, {"q": "Quyidagi formatlardan qaysi birining sxemasi ixtiyoriy yoki noaniq?", "o": ["Avro", "JSON", "Parquet", "Ichki sxemali har qanday format"], "a": 1, "e": "JSON da sxema ixtiyoriy/noaniq, Avro va Parquet da qat'iy."}, {"q": "Do'kon mahsulotlari Avro sxemasida <code>izoh<\/code> ixtiyoriy matn maydoni sifatida qanday e'lon qilinadi?", "o": ["<code>{'name': 'izoh', 'type': 'int'}<\/code>", "<code>{'name': 'izoh'}<\/code>, turisiz", "<code>{'name': 'izoh', 'type': ['null', 'string'], 'default': None}<\/code>", "<code>{'type': 'izoh'}<\/code>, nomisiz"], "a": 2, "e": "Union tur <code>['null','string']<\/code> va default maydonni ixtiyoriy qiladi."}, {"q": "Quyidagi hajm tartibi (kattadan kichikka) odatda qaysi?", "o": ["Parquet, Avro, CSV, JSON", "CSV, JSON, Parquet, Avro", "Avro, Parquet, JSON, CSV", "JSON, CSV, Avro, Parquet"], "a": 3, "e": "JSON kalit nomlarini takrorlaydi, Parquet ustunli siqish tufayli eng kichik."}, {"q": "Qaysi cheklovlar orqali RDBMS ustunga noto'g'ri qiymat kiritilishiga yo'l qo'ymaydi?", "o": ["<code>CHECK<\/code>, <code>NOT NULL<\/code>, <code>UNIQUE<\/code>", "<code>SELECT<\/code>, <code>JOIN<\/code>, <code>LIMIT<\/code>", "Faqat <code>COMMIT<\/code>", "Faqat <code>PRAGMA<\/code>"], "a": 0, "e": "RDBMS data integrity ni cheklovlar orqali ta'minlaydi, CSV da esa matn yozib qo'yish mumkin."}, {"q": "ACID dagi \"D\" (Durability) nima?", "o": ["Tranzaksiyalar bir-biridan ajralgan", "COMMIT dan keyin server o'chsa ham ma'lumot diskda qoladi", "Faqat qoidalarga mos o'zgarish qabul qilinadi", "Tranzaksiya bo'linmaydi"], "a": 1, "e": "Muvaffaqiyatli yakunlangan operatsiya saqlanib qoladi."}, {"q": "Bitta o'quvchi ko'p to'garakka qatnashadi, to'garakda ko'p o'quvchi. Bu qaysi munosabat?", "o": ["1:1", "1:N", "M:N", "N:1, faqat bitta tomonlama"], "a": 2, "e": "Ikki tomonlama ko'pga-ko'p bog'lanish M:N."}, {"q": "B-Tree indekslarning vazifasi nima?", "o": ["Parolni shifrlash", "Faylni siqish", "Jadvalni nusxalash", "Milliardlab qator ichidan yozuvni millisekundlarda topish"], "a": 3, "e": "Indekslar tufayli katta hajmda tezkor qidiruv mumkin."}, {"q": "<code>INNER JOIN<\/code> so'rovida <code>orders.customer_id = customers.customer_id<\/code> sharti nimani bajaradi?", "o": ["Buyurtmalarni ularga tegishli mijozlar bilan bog'laydi", "Mijozlarni o'chiradi", "Jadval yaratadi", "Narxni hisoblaydi"], "a": 0, "e": "JOIN FK va PK bo'yicha jadvallarni bog'lab, birlashtirilgan natija qaytaradi."}, {"q": "Bank tizimida Kafka orqali tranzaksiyalar (Avro) oqib keladi, keyin ular nima uchun RDBMS'ga yoziladi?", "o": ["Avro ni JSON ga aylantirish uchun", "Ishonchli saqlash (ACID), yaxlitlik va parallel foydalanish uchun", "Ustunli siqish uchun", "Fayl hajmini oshirish uchun"], "a": 1, "e": "Avro uzatish uchun, RDBMS tranzaksion ishonchlilik uchun; ikkalasi pipeline ning turli bosqichlari."}, {"q": "Raw eksport, streaming va analitik ombor uchun mos formatlar qatori qaysi?", "o": ["Parquet, CSV, Avro", "Avro, Parquet, CSV", "CSV, Avro, Parquet", "JSON, JSON, JSON"], "a": 2, "e": "CSV - raw/eksport, Avro - Kafka/streaming, Parquet - Data Lake Silver/Gold va DWH."}, {"q": "CSV da yetim yozuvlar (orphan records) paydo bo'lishi mumkin. Nima uchun Parquet yoki Avro bunga qarshi chora emas?", "o": ["Parquet FK ni avtomatik tekshiradi", "Avro orphan yozuvlarni o'chiradi", "CSV FK ni qo'llab-quvvatlaydi", "Faqat RDBMS ning FK cheklovi mavjud bo'lmagan ID ni rad etadi; fayl formatlari bog'lanishni tekshirmaydi"], "a": 3, "e": "Referential Integrity - ma'lumotlar bazasi xususiyati; fayl formatlari faqat saqlash usulini belgilaydi."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

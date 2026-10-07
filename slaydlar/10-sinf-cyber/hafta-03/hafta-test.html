@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Raqamli gigiyenaning qaysi qoidasi brauzer kengaytmalari (uBlock Origin, ClearURLs) bilan bevosita bog'liq?", "o": ["Faqat HTTPS dan foydalanish, treker va reklamalarni bloklash", "Har bir xizmatga alohida parol ishlatish", "2FA ni yoqish", "Shaxsiy ma'lumotlarni minimal oshkor etish"], "a": 0, "e": "Birinchi oltin qoida — xavfsiz tarmoq va brauzer, bu aynan trekerlarni bloklovchi kengaytmalarga tegishli."}, {"q": "Apparat kalit (FIDO2 / YubiKey) nima sababdan SMS-2FA dan ko'ra ishonchliroq?", "o": ["Chunki u internetsiz ishlaydi", "Chunki u SIM-Swap yoki tarmoq orqali masofadan o'g'irlab bo'lmaydigan fizik qurilma", "Chunki u arzonroq", "Chunki uni istalgan kishi ishlatishi mumkin"], "a": 1, "e": "Apparat kalit fizik qurilma bo'lgani uchun uni masofadan (SIM-swap, SS7 orqali) o'g'irlab bo'lmaydi."}, {"q": "STRIDE modelidagi «Information Disclosure» tahdidiga qarshi eng mos himoya chorasi qaysi?", "o": ["Rate limiting", "RBAC", "Ma'lumotlarni shifrlash va kirish nazorati", "Audit logging"], "a": 2, "e": "Maxfiy ma'lumotlar sizib chiqishiga qarshi shifrlash va qat'iy kirish nazorati asosiy himoya hisoblanadi."}, {"q": "CTF musobaqasida Base64 orqali kodlangan matnni ochish qaysi toifaga tegishli?", "o": ["Web Exploitation", "Reverse Engineering", "OSINT", "Cryptography"], "a": 3, "e": "Shifrlar va kodlashni ochish — Cryptography yo'nalishiga tegishli CTF topshirig'i."}, {"q": "Mijoz-Server arxitekturasida brauzeringiz veb-saytga so'rov yuborganda, bu qaysi tomon hisoblanadi?", "o": ["Mijoz (Client)", "Server", "Router", "Switch"], "a": 0, "e": "Xizmat yoki ma'lumot so'rovchi tomon — bu Mijoz (Client), masalan brauzer ishlatuvchi foydalanuvchi qurilmasi."}, {"q": "TCP/IP modelida HTTP, DNS kabi protokollar qaysi sathga tegishli?", "o": ["Internet (Tarmoq) sathi", "Tadbiqiy (Application) sathi", "Transport sathi", "Tarmoqqa kirish sathi"], "a": 1, "e": "HTTP, HTTPS, DNS, SSH, FTP kabi protokollar TCP/IP modelining Tadbiqiy (Application) sathida joylashgan."}, {"q": "Agar foydalanuvchi ochiq Wi-Fi da shifrlanmagan (HTTP) saytga kirsa va bir vaqtda raqamli gigiyena qoidalariga rioya qilmasa, bu qaysi darsda o'rganilgan hujumga ochiq bo'lib qoladi?", "o": ["Faqat Base64 kodlash hujumiga", "Faqat tarmoq topologiyasi muammosiga", "MITM / sniffing hujumiga (2-haftada o'rganilgan)", "Hech qanday hujumga ochiq emas"], "a": 2, "e": "Shifrlanmagan HTTP trafigi ochiq Wi-Fi da MITM/sniffing orqali osongina tutib olinishi mumkin — bu raqamli gigiyenaning HTTPS qoidasi bilan bog'liq."}, {"q": "Onlayn ta'lim platformasida test natijalari bazada o'zgartirib qo'yilsa, bu STRIDE ning qaysi toifasiga va qanday himoyaga mos keladi?", "o": ["Spoofing; 2FA kerak", "Denial of Service; rate limit kerak", "Repudiation; parolni o'zgartirish kerak", "Tampering; tranzaksiya xeshlari (ma'lumot yaxlitligini tekshirish) kerak"], "a": 3, "e": "Ma'lumotning ruxsatsiz o'zgartirilishi — Tampering, unga qarshi xesh orqali yaxlitlikni nazorat qilish qo'llaniladi."}, {"q": "Maktab tarmog'ida Yulduz (Star) topologiyasi ishlatilsa va markaziy Switch DDoS hujumiga uchrasa, natija nima bo'ladi?", "o": ["Butun tarmoqdagi barcha kompyuterlar aloqasiz qolishi mumkin", "Faqat bitta kompyuter ishlamay qoladi", "Tarmoq tezligi oshadi", "Hech qanday ta'sir bo'lmaydi"], "a": 0, "e": "Star topologiyasida markaziy Switch yagona zaif nuqta bo'lgani uchun unga qaratilgan hujum butun tarmoqqa ta'sir qiladi."}, {"q": "CTF musobaqalarida Red Team tajribasi qaysi ko'nikma bilan bevosita bog'liq?", "o": ["Faqat tarmoq kabellarini ulash", "Adversarial thinking — hujumchi kabi fikrlab zaifliklarni topish", "Faqat video darslarni ko'rish", "Faqat parol o'zgartirish"], "a": 1, "e": "Red Team real hujumchi kabi fikrlab (adversarial thinking) tizim zaifliklarini topadi — bu CTF da ham asosiy ko'nikma."}, {"q": "Telegramda 2FA yoqilgan, lekin foydalanuvchi ochiq Wi-Fi da HTTP orqali boshqa saytga kirsa, bu holatda qaysi xavf saqlanadi?", "o": ["Hech qanday xavf qolmaydi", "Telegram hisobi avtomatik o'chadi", "Boshqa (himoyalanmagan) saytdagi login ma'lumotlari MITM orqali tutib olinishi mumkin", "2FA bu holatda keraksiz bo'lib qoladi"], "a": 2, "e": "2FA faqat shu xizmatni himoyalaydi; boshqa shifrlanmagan saytlardagi ma'lumotlar baribir MITM xavfida qoladi."}, {"q": "OSI modelining Tadbiqiy (Application) sathida eng ko'p uchraydigan hujum turi (masalan, SQL Injection, XSS) nima uchun aynan shu sathga tegishli?", "o": ["Chunki bu sathda faqat kabel ishlatiladi", "Chunki bu sathda MAC manzil ishlatiladi", "Chunki bu sath faqat fizik qurilmalarga tegishli", "Chunki bu sathda foydalanuvchi va dastur bevosita o'zaro ishlaydi (veb-sayt, forma kiritish)"], "a": 3, "e": "Tadbiqiy sath foydalanuvchi va dastur o'rtasidagi bevosita muloqot joyi bo'lgani uchun SQL Injection va XSS kabi hujumlar shu yerda yuz beradi."}, {"q": "Agar kompaniya DAI (Dynamic ARP Inspection) qo'llamasa va Kanal sathida ARP Spoofing hujumi amalga oshsa, bu qaysi yuqoriroq sathdagi protokollarga ham ta'sir qiladi?", "o": ["Ha, chunki trafik hujumchi orqali o'tib, Tadbiqiy sathdagi HTTP so'rovlari ham o'qilishi/o'zgartirilishi mumkin", "Hech qanday ta'siri yo'q, faqat Kanal sathida qoladi", "Faqat Fizik sathga ta'sir qiladi", "Faqat printer ishlashiga ta'sir qiladi"], "a": 0, "e": "ARP Spoofing orqali trafik hujumchidan o'tgach, yuqori sathlardagi (HTTP, login ma'lumotlari) trafik ham xavf ostida qoladi — bu MITM mexanizmi."}, {"q": "Maktab elektron jurnali uchun STRIDE tahlili va tarmoq xavfsizligi (3-dars) bilimlarini birlashtirsak, jurnal serverining DoS hujumidan himoyasi uchun qaysi tarmoq darajasidagi chora foydali?", "o": ["Faqat parolni uzaytirish", "Rate limiting va yuklamani taqsimlash (load balancing)", "Faqat Base64 kodlash", "Tarmoq topologiyasini Bus ga o'zgartirish"], "a": 1, "e": "DoS ga qarshi tarmoq darajasida so'rovlar chastotasini cheklash va yukni taqsimlash samarali himoya beradi."}, {"q": "3-haftada o'rganilgan darslarning umumiy ketma-ketligi qanday edi?", "o": ["Avval tarmoq asoslari, keyin raqamli gigiyena, keyin STRIDE", "Faqat CIA va MITM takrorlandi", "Raqamli gigiyena va 2FA (7-dars), STRIDE/Red-Blue Team/CTF (8-dars), tarmoq asoslari (9-dars)", "Avval malware, keyin fishing mavzulari"], "a": 2, "e": "3-hafta: 7-dars raqamli gigiyena/2FA, 8-dars STRIDE va CTF, 9-dars tarmoq asoslari bilan yakunlandi."}, {"q": "Agar tashkilot «Assume Breach» tamoyiliga amal qilsa va STRIDE tahlilini birgalikda qo'llasa, bu qanday yondashuvni anglatadi?", "o": ["Faqat tashqi hujumlardan qo'rqish, ichki tarmoqqa ishonish", "Internetga umuman ulanmaslik", "Faqat parolni yodlash", "Ichki tarmoq ham xavf ostida deb faraz qilib, har bir tahdid toifasi bo'yicha oldindan himoya rejalashtirish"], "a": 3, "e": "Assume Breach va STRIDE birgalikda — ichki tarmoq xavfsiz emas deb hisoblab, har bir tahdid toifasiga oldindan tayyor bo'lish strategiyasini beradi."}, {"q": "TCP 3-Way Handshake va DAI (Dynamic ARP Inspection) ning umumiy maqsadi nimada o'xshaydi?", "o": ["Ikkalasi ham tarmoqda ishonchli aloqa o'rnatish/tekshirish jarayonini ta'minlaydi", "Ikkalasi ham fayllarni shifrlaydi", "Ikkalasi ham faqat video oqim uchun", "Ular bir-biriga mutlaqo aloqasiz"], "a": 0, "e": "TCP handshake ishonchli ulanish o'rnatadi, DAI esa ARP javoblarining haqiqiyligini tekshiradi — ikkalasi ham tarmoqda ishonchni ta'minlashga xizmat qiladi."}, {"q": "Agar maktab Wi-Fi tarmog'ida 2FA, DoH va to'g'ri sozlangan tarmoq topologiyasi (Star + DAI) birgalikda qo'llansa, bu qaysi darslardagi bilimlarni birlashtirgan bo'ladi?", "o": ["Faqat 9-dars", "7-dars (raqamli gigiyena/2FA/DoH) va 9-dars (tarmoq topologiyasi/DAI) bilimlarini", "Faqat 8-dars", "Bu darslar bir-biriga aloqasi yo'q"], "a": 1, "e": "Bu yondashuv 7-darsdagi foydalanuvchi xavfsizligi choralarini va 9-darsdagi tarmoq arxitekturasi himoyasini birgalikda qo'llaydi."}, {"q": "CTF musobaqasida ishtirokchi STRIDE bilimidan qanday foydalanishi mumkin?", "o": ["STRIDE CTF ga umuman aloqasi yo'q", "Faqat Base64 ni dekodlash uchun", "Berilgan tizimda qanday tahdid toifalari (Spoofing, Tampering va h.k.) borligini aniqlab, zaiflikni tezroq topish uchun", "Faqat parolni yodlash uchun"], "a": 2, "e": "STRIDE tizimli tahdid toifalarini beradi, bu CTF ishtirokchisiga qaysi turdagi zaiflikni izlash kerakligini tezroq aniqlashga yordam beradi."}, {"q": "3-hafta materiallarining umumiy maqsadi nimada edi?", "o": ["Faqat tarmoq kabellarini ulashni o'rgatish", "Faqat CTF musobaqasida qatnashishni o'rgatish", "Faqat parollarni yodlashni o'rgatish", "Foydalanuvchi darajasidagi xavfsizlik odatlarini, tahdidlarni tizimli tahlil qilishni va tarmoqning texnik asoslarini birlashtirish"], "a": 3, "e": "3-hafta raqamli gigiyena (foydalanuvchi darajasi), STRIDE/Red-Blue Team (tizimli tahlil) va tarmoq asoslari (texnik poydevor) ni birlashtirdi."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

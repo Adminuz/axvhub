@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Raqamli gigiyena (Digital Hygiene) nima?", "o": ["Shaxsiy ma'lumot va qurilmalarni himoya qilish uchun har kuni bajariladigan xavfsiz odatlar majmui", "Faqat kompyuterni jismoniy tozalash", "Faqat antivirus o'rnatish", "Internetdan butunlay voz kechish"], "a": 0, "e": "Raqamli gigiyena — shaxsiy ma'lumotlar, mablag' va obro'ni asrash uchun muntazam bajariladigan sodda xavfsiz odatlar."}, {"q": "uBlock Origin kengaytmasi nima sababdan oddiy AdBlock dasturlaridan ko'ra ko'proq tavsiya etiladi?", "o": ["Chunki u pullik xizmat", "Chunki u ochiq kodli, kam resurs sarflaydi va zararli trekerlarni yuklanishdan oldin bloklaydi", "Chunki u faqat video saytlarda ishlaydi", "Chunki u parolni saqlab beradi"], "a": 1, "e": "uBlock Origin ochiq kodli, yengil va reklama bilan birga zararli skript/trekerlarni ham to'xtatadi."}, {"q": "ClearURLs kengaytmasi havoladagi qanday elementlarni olib tashlaydi?", "o": ["Havoladagi barcha harflarni", "Faqat rasm fayllarini", "Treking parametrlarini (masalan, <code>utm_source<\/code>, <code>fbclid<\/code>)", "Domenning o'zini"], "a": 2, "e": "ClearURLs havoladagi kuzatuvchi parametrlarni tozalab, faqat kerakli manzil qismini qoldiradi."}, {"q": "DNS-over-HTTPS (DoH) nima vazifa bajaradi?", "o": ["Internetga ulanish tezligini oshiradi", "Faqat video fayllarni yuklaydi", "Wi-Fi parolini eslab qoladi", "DNS so'rovlarini shifrlab, internet provayder yoki hujumchi qaysi saytga kirayotganingizni ko'rmasligini ta'minlaydi"], "a": 3, "e": "DoH DNS so'rovlarini 443-port orqali shifrlab uzatadi, bu provayder yoki MITM hujumchisidan qidiruv tarixini yashiradi."}, {"q": "Nima sababdan faqat SMS-kod orqali ishlaydigan 2FA eng ishonchsiz hisoblanadi?", "o": ["Chunki SIM-Swap firibgarligi yoki SS7 zaifligi orqali SMS kod o'g'irlanishi mumkin", "Chunki SMS juda tez yetib boradi", "Chunki SMS internet talab qilmaydi", "Chunki SMS faqat kechqurun ishlaydi"], "a": 0, "e": "Mobil aloqa zaifliklari va SIM-Swap orqali buzg'unchilar SMS kodni o'g'irlashi mumkin, shuning uchun TOTP yoki apparat kalitlar tavsiya etiladi."}, {"q": "Telegramda telefon raqamini «Mening kontaktlarim» qilib qo'yish nima uchun muhim?", "o": ["Bu Telegram ilovasini tezlashtiradi", "Bu begonalarning raqamni OSIN orqali topib, boshqa hisoblarga hujum qilishining oldini oladi", "Bu xabar yuborish tezligini oshiradi", "Bu guruhlarga qo'shilish tezligini oshiradi"], "a": 1, "e": "Telefon raqamini yashirish firibgarlarning raqamni aniqlab, boshqa xizmatlarga hujum qilishiga to'sqinlik qiladi."}, {"q": "Telegramning «Faol seanslar» (Active Sessions) bo'limi nimaga xizmat qiladi?", "o": ["Faqat ilova dizaynini o'zgartiradi", "Xabarlarni avtomatik tarjima qiladi", "Hisobga qaysi qurilma va IP manzildan kirilganini ko'rsatib, begona kirishlarni aniqlashga yordam beradi", "Guruhlarga a'zolarni qo'shadi"], "a": 2, "e": "Faol seanslar ro'yxati orqali foydalanuvchi begona qurilma yoki IP manzildan kirilganini aniqlab, seansni yakunlashi mumkin."}, {"q": "Telegramda faqat SMS-kod bilan emas, «Bulutli parol» (Cloud Password) o'rnatish nima uchun tavsiya etiladi?", "o": ["Chunki u ilovani tezlashtiradi", "Chunki u Telegramni reklamasiz qiladi", "Bulutli parolning foydasi yo'q", "Chunki SIM-swap orqali SMS kod o'g'irlansa ham, qo'shimcha parol hisobni himoyalaydi"], "a": 3, "e": "Bulutli parol — ikkinchi qo'shimcha himoya qatlami bo'lib, SIM-swap orqali SMS kodi o'g'irlansa ham hisobni himoyalaydi."}, {"q": "Foydalanuvchi Telegram faol seanslarida notanish shahardagi «Chrome on Linux» qurilmasini ko'rdi. Birinchi navbatda nima qilishi kerak?", "o": ["Darhol boshqa barcha seanslarni tugatish va bulutli parolni yangilash", "Hech narsa qilmasligi kerak, bu normal holat", "Faqat ilovani qayta o'rnatish", "Telefon raqamini o'zgartirish"], "a": 0, "e": "Bu hisobga ruxsatsiz kirilganini bildiradi, shuning uchun seanslarni tugatib, parolni zudlik bilan yangilash kerak."}, {"q": "Raqamli gigiyenaning 4 oltin qoidasidan qaysi biri «har bir xizmat uchun» talabiga mos keladi?", "o": ["Faqat HTTPS dan foydalanish", "Har bir xizmat uchun alohida unikal kuchli parol ishlatish", "Shaxsiy ma'lumotlarni ijtimoiy tarmoqda ochiq qoldirish", "Faqat bitta umumiy parol ishlatish"], "a": 1, "e": "Raqamli gigiyenaning ikkinchi oltin qoidasi — har bir saytga alohida 16+ belgili unikal parol tanlash."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

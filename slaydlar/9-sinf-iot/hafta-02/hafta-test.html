@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Tinkercad da loyiha nomini o'zgartirish qaerda bajariladi?", "o": ["Yuqori chap burchakdagi nom maydonida", "Simulyatsiya tugmasida", "Komponentlar ichida", "Faqat Dashboardda"], "a": 0, "e": "Generatsiya qilingan nom o'zgartiriladi."}, {"q": "PIR Sensor ni qaysi rejimda topamiz?", "o": ["Faqat Basic", "All (barcha komponentlar)", "3D Designs", "Faqat Notes"], "a": 1, "e": "Basic faqat asosiy komponentlarni ko'rsatadi."}, {"q": "Tinkercad da xato amalni qaytarish uchun nima bosiladi?", "o": ["Del", "R", "Ctrl+Z", "N"], "a": 2, "e": "Ctrl+Z — undo."}, {"q": "Virtual laboratoriya nima?", "o": ["Haqiqiy kimyo xonasi", "Pullik do'kon", "Faqat o'yin", "Fizik jarayonlar va elektron komponentlarni kompyuterda modellashtiruvchi muhit"], "a": 3, "e": "Komponent kuyishi xavfisiz sinash imkonini beradi."}, {"q": "Komponent ustida N klavishi ni bossak nima chiqadi?", "o": ["Matnli eslatma (Notes)", "Komponent o'chadi", "Simulyatsiya boshlanadi", "Rezistor qiymati o'zgaradi"], "a": 0, "e": "N — izoh qo'yish klavishi."}, {"q": "1 kΩ necha Om?", "o": ["10 Ω", "1000 Ω", "100 Ω", "1 000 000 Ω"], "a": 1, "e": "Kilo = 1000."}, {"q": "Breadboard markaziy teshiklari qanday tutashgan?", "o": ["Gorizontal butun qator", "Hech qanday", "Vertikal (5 talik ustun)", "Tasodifiy"], "a": 2, "e": "Shuning uchun komponent oyoqlari alohida ustunlarga qo'yiladi."}, {"q": "LED ning qisqa oyog'i qaysi?", "o": ["Anod (+)", "Rezistor", "Signal pini", "Katod (-), GND tomonga"], "a": 3, "e": "Uzun oyoq anod, qisqa katod."}, {"q": "Slide Switch / Push Button vazifasi qaysi?", "o": ["Zanjirni ulash yoki uzish", "Tokni o'lchash", "Yorug'lik chiqarish", "Kuchlanishni oshirish"], "a": 0, "e": "Mexanik kalitlar."}, {"q": "Voltmetr rejimidagi multimetr qaerga ulanadi?", "o": ["Ketma-ket uzilgan joyga", "LED ning anod va katodiga parallel", "Faqat batareya ichiga", "Rezistor o'rniga"], "a": 1, "e": "Qizil prob anodga, qora prob katodga."}, {"q": "Om qonuni bo'yicha R = (U_manba − U_led) / I_led. U=5V, U_led=2V, I=15mA bo'lsa R nechaga yaqin?", "o": ["20 Ω", "2000 Ω", "200 Ω", "15 Ω"], "a": 2, "e": "3 / 0.015 = 200 Ω."}, {"q": "Moviy LED (~3.2 V) uchun R = (5 − 3.2) / 0.015 taxminan qancha?", "o": ["200 Ω", "1 kΩ", "12 Ω", "120 Ω"], "a": 3, "e": "1.8 / 0.015 = 120 Ω."}, {"q": "<code>delay(500)<\/code> ikkala marta qo'yilsa miltillash qanday o'zgaradi?", "o": ["Yarim soniya yonib, yarim soniya o'chadi, ya'ni tezroq", "Sekinlashadi", "Yonib turadi", "O'chib qoladi"], "a": 0, "e": "500 ms = 0.5 s."}, {"q": "220 Ω rezistorning rang chiziqlari ketma-ketligi qanday?", "o": ["Qora, Qora, Oltin", "Qizil, Qizil, Jigarrang, Oltin", "Yashil, Ko'k, Sariq", "Oq, Oq, Qizil"], "a": 1, "e": "220 = 22 × 10."}, {"q": "LED nurlanishining fizik sababi nima?", "o": ["Simning qizishi", "Magnit maydon", "p-n o'tishda elektron va kovaklar rekombinatsiyasi paytida foton chiqishi", "Gaz yonishi"], "a": 2, "e": "Yarimo'tkazgich kristall yorug'lik chiqaradi."}, {"q": "<code>int LED = 9;<\/code> va <code>pinMode(LED, OUTPUT);<\/code> birgalikda nima qiladi?", "o": ["9 ta LED yoqadi", "LED ni o'chiradi", "Pinni kirish qiladi", "9-pinni LED nomli o'zgaruvchi qilib, chiqish rejimiga sozlaydi"], "a": 3, "e": "O'zgaruvchi pinni nomlaydi."}, {"q": "Tinkercad da Arduino + LED sxemasi to'g'ri ulanishi qaysi?", "o": ["D9, rezistor, LED anodi; LED katodi, GND", "D9 to'g'ridan LED katodiga", "5V, LED, D9", "GND, rezistor, D9 piniga anod"], "a": 0, "e": "Signal pini rezistor orqali anodga, katod GND ga."}, {"q": "Tinkercad da C++ kodini kiritish uchun nima qilinadi?", "o": ["Share tugmasini bosish", "Code bo'limini ochib, rejimni Text ga o'tkazish", "Notes ni ochish", "Komponentni burish"], "a": 1, "e": "Kodni Text rejimida yozamiz."}, {"q": "Zanjir yig'ishda 4-dars va 5-dars bilimlari birgalikda nimani talab qiladi?", "o": ["Faqat kod yozish", "Faqat akkaunt ochish", "Komponentni Workplane ga qo'yish va shinalarga simlar bilan ulash", "Hech qanday ulanish"], "a": 2, "e": "Interfeys ko'nikmalari + komponent bilimi."}, {"q": "5V manba, 2V LED va 220 Ω rezistor bilan tok taxminan qancha bo'ladi?", "o": ["~136 mA", "~1.36 mA", "~1.36 A", "~13.6 mA"], "a": 3, "e": "I = 3 V / 220 Ω ≈ 0.0136 A."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

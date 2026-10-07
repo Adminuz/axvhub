@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Tizim bloki va monitor bitta umumiy korpusda birlashtirilgan kompyuter qanday ataladi?", "o": ["Monoblok (All-in-One)", "Noutbuk", "Server", "Statsionar kompyuter (Desktop)"], "a": 0, "e": "Monoblokda tizim bloki va monitor bitta korpusda; noutbukda esa ekran, klaviatura va batareya ham jamlangan."}, {"q": "Superkompyuterlar nima uchun ishlatiladi?", "o": ["Faqat uy fotosuratlarini saqlash uchun", "Ob-havo bashorati, kosmik tadqiqot va AI modellarini o'rgatish kabi murakkab hisoblar uchun", "Faqat ofis hujjatlarini chop etish uchun", "Faqat o'yin konsollari o'rniga"], "a": 1, "e": "Ular sekundiga kvadrillionlab murakkab matematik hisob bajaradi."}, {"q": "Ona plata (Motherboard) ning vazifasi nima?", "o": ["Tasvirni monitorga chiqarish", "Ma'lumotlarni doimiy saqlash", "Barcha qismlarni elektr va axborot magistrallari orqali o'zaro bog'lash", "Elektr tokini 12V ga aylantirish"], "a": 2, "e": "Ona plata CPU, RAM, videokarta va disklarni bir-biriga ulaydigan bosh elektron plata."}, {"q": "Videokarta (GPU) qaysi vazifani bajaradi?", "o": ["Dasturlarni vaqtincha saqlaydi", "220V tokni o'zgartiradi", "Internetga ulanishni ta'minlaydi", "Grafika, video va 3D tasvirlarni qayta ishlab monitorga chiqaradi"], "a": 3, "e": "GPU — Graphics Processing Unit: tasvirlarni qayta ishlaydi."}, {"q": "Quvvat ta'minoti bloki (PSU) nima qiladi?", "o": ["220V o'zgaruvchan tokni 12V, 5V, 3.3V doimiy kuchlanishlarga aylantiradi", "Ma'lumotlarni RAM ga yozadi", "Protsessorni sovitadi", "Operatsion tizimni yuklaydi"], "a": 0, "e": "Kompyuter qismlari uchun mos kuchlanishni PSU beradi."}, {"q": "Kompyuter parametrlarini ko'rsatadigan <code>System Summary<\/code> oynasini qanday ochamiz?", "o": ["<code>Win + R<\/code> → <code>notepad<\/code> → Enter", "<code>Win + R<\/code> → <code>msinfo32<\/code> → Enter", "<code>Ctrl + Shift + N<\/code>", "<code>Win + D<\/code>"], "a": 1, "e": "<code>msinfo32<\/code> da OS nomi, tizim turi, protsessor va RAM hajmi ko'rinadi."}, {"q": "Windows dunyoda PC uchun eng mashhur OT. Uning bozordagi ulushi taxminan qancha?", "o": ["Taxminan 5%", "Taxminan 10%", "Taxminan 70%", "Taxminan 99%"], "a": 2, "e": "Windows (10, 11) — eng ommabop shaxsiy kompyuter OT."}, {"q": "Vazifalar paneli (Taskbar) da nimalar turadi?", "o": ["Faqat fayllar daraxti", "Faqat soat va sana", "Faqat Savatcha", "Start tugmasi, qidiruv paneli, mahkamlangan va ochiq dasturlar belgilari"], "a": 3, "e": "Taskbar odatda ekranning pastki qismida joylashgan."}, {"q": "Start menyusining vazifasi qaysi?", "o": ["O'rnatilgan dasturlar, sozlamalar va o'chirish/qayta yuklash (Power) tugmalarini jamlaydi", "Fayllarni arxivlaydi", "Faqat internetga ulanadi", "Faqat soatni ko'rsatadi"], "a": 0, "e": "Start — bosh menyu."}, {"q": "Oyna burchagidagi <code>□<\/code> (Maximize/Restore) tugmasi nima qiladi?", "o": ["Dasturni butunlay yopadi", "Oynani butun ekranga yoyadi yoki oldingi o'lchamiga qaytaradi", "Oynani vazifalar paneliga yashiradi", "Dasturni o'chiradi (Uninstall)"], "a": 1, "e": "<code>-<\/code> Minimize, <code>□<\/code> Maximize/Restore, <code>X<\/code> Close."}, {"q": "Barcha ochiq oynalarni bir zumda yashirib, ish stolini ko'rsatish tugmasi qaysi?", "o": ["<code>Win + E<\/code>", "<code>Alt + F4<\/code>", "<code>Win + D<\/code>", "<code>Win + I<\/code>"], "a": 2, "e": "<code>Win + E<\/code> esa File Explorer ni ochadi, <code>Alt + F4<\/code> oynani yopadi."}, {"q": "Dasturni to'g'ri o'chirish yo'li qaysi?", "o": ["Yorliqni Savatchaga tashlash", "Dastur oynasini <code>Minimize<\/code> qilish", "Ish stolini yangilash", "<code>Win + I<\/code> → Apps → Installed apps → Uninstall"], "a": 3, "e": "Faqat Uninstall dastur fayllarini ham o'chiradi."}, {"q": "1 TB nechta GB ga teng?", "o": ["1024 GB", "1000 MB", "100 GB", "8 GB"], "a": 0, "e": "Har bir keyingi birlik 1024 marta kattaroq: KB → MB → GB → TB."}, {"q": "Birliklarni kichigidan kattasiga to'g'ri tartiblang.", "o": ["TB, GB, MB, KB, Bayt, Bit", "Bit, Bayt, KB, MB, GB, TB", "Bayt, Bit, MB, KB, TB, GB", "Bit, KB, Bayt, GB, MB, TB"], "a": 1, "e": "Bit eng kichik, keyin bayt (8 bit), so'ng 1024 koeffitsienti bilan KB, MB, GB, TB."}, {"q": "Oxirgi bajarilgan amalni bekor qilish (Undo) uchun qaysi tugmalar ishlatiladi?", "o": ["<code>Ctrl + A<\/code>", "<code>Ctrl + V<\/code>", "<code>Ctrl + Z<\/code>", "<code>Ctrl + X<\/code>"], "a": 2, "e": "<code>Ctrl + Z<\/code> xato amalni qaytaradi."}, {"q": "Papkadagi barcha fayllarni bir zumda tanlash uchun qaysi tugmalar bosiladi?", "o": ["<code>Ctrl + S<\/code>", "<code>Ctrl + C<\/code>", "<code>F2<\/code>", "<code>Ctrl + A<\/code>"], "a": 3, "e": "<code>Ctrl + A<\/code> — Select All."}, {"q": "Shaffof fonli tasvir uchun qaysi kengaytma mos?", "o": ["<code>.png<\/code>", "<code>.mp4<\/code>", "<code>.exe<\/code>", "<code>.zip<\/code>"], "a": 0, "e": "<code>.png<\/code> shaffof fonni qo'llaydi; <code>.jpg<\/code> esa fotosuratlar uchun."}, {"q": "Task Manager da «Memory: 8.0 GB DDR4» ko'rdingiz. Bu qaysi xotira va u necha MB?", "o": ["ROM; 8000 MB", "RAM; 8 × 1024 = 8192 MB", "SSD; 8192 KB", "RAM; 8000 MB"], "a": 1, "e": "Memory — tezkor xotira (RAM). 1 GB = 1024 MB, demak 8 GB = 8192 MB."}, {"q": "1 daqiqalik MP3 musiqa taxminan qancha joy egallaydi va u qayerda doimiy saqlanadi?", "o": ["Taxminan 1 TB; RAM da", "Taxminan 1 bit; ROM da", "Taxminan 1 MB; SSD yoki HDD da", "Taxminan 1 KB; monitor xotirasida"], "a": 2, "e": "1 MB ≈ 1 daqiqalik MP3. Fayllar tashqi (doimiy) xotira — SSD yoki HDD da saqlanadi."}, {"q": "Fayl kengaytmalarini File Explorer da ko'rinadigan qilish yo'li qaysi?", "o": ["<code>Win + I<\/code> → Apps → Uninstall", "<code>Win + R<\/code> → <code>msinfo32<\/code>", "<code>Ctrl + Shift + Esc<\/code> → Performance", "<code>Win + E<\/code> → View → Show → File name extensions"], "a": 3, "e": "Kengaytma fayl turini bildiradi, shuning uchun uni ko'rsatish foydali (masalan, <code>.exe<\/code> ni <code>.txt<\/code> dan ajratish)."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

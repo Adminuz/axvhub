@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Tarmoqlanuvchi algoritm nima?", "o": ["Shart tekshirilib, natijaga qarab ikki tarmoqdan biri bajariladigan algoritm", "Bir amalni ko'p marta takrorlaydigan algoritm", "Hamma qatorni teskari tartibda bajaradigan dastur", "Faqat sonlarni qo'shadigan dastur"], "a": 0, "e": "Shart <code>True<\/code> bo'lsa birinchi, <code>False<\/code> bo'lsa ikkinchi tarmoq ishlaydi."}, {"q": "<code>if<\/code> va <code>else<\/code> qatorlarining oxiriga nima qo'yiladi?", "o": ["Nuqtali vergul <code>;<\/code>", "Ikki nuqta <code>:<\/code>", "Qavs <code>)<\/code>", "Hech narsa"], "a": 1, "e": "Ikki nuqta qo'yilishi shart."}, {"q": "Pythonda <code>if<\/code> ichidagi kod qanday yoziladi?", "o": ["Jingalak qavs <code>{ }<\/code> ichida", "Surilmasdan, chap chetdan", "4 ta bo'sh joy yoki Tab bilan surilib", "Katta harflar bilan"], "a": 2, "e": "Python <code>{ }<\/code> o'rniga chekinishdan (indentation) foydalanadi."}, {"q": "Kod natijasi? <code>ball = 65<\/code>; <code>if ball &gt;= 60:<\/code> keyin <code>print(\"O'tdi\")<\/code>, <code>else:<\/code> keyin <code>print(\"O'tmadi\")<\/code>", "o": ["<code>O'tmadi<\/code>", "Ikkalasi ham", "Hech narsa", "<code>O'tdi<\/code>"], "a": 3, "e": "65 &gt;= 60 rost, shuning uchun <code>if<\/code> bloki ishlaydi."}, {"q": "Kod natijasi? <code>son = 14<\/code>; <code>if son % 2 == 0:<\/code> bo'lsa <code>print(\"Juft son\")<\/code>, aks holda <code>print(\"Toq son\")<\/code>", "o": ["<code>Juft son<\/code>", "<code>Toq son<\/code>", "<code>14<\/code>", "<code>0<\/code>"], "a": 0, "e": "14 % 2 = 0, shart rost."}, {"q": "<code>if<\/code> ichidagi kod chekinishsiz yozilsa Python qanday xato beradi?", "o": ["<code>NameError<\/code>", "<code>IndentationError: expected an indented block<\/code>", "<code>ZeroDivisionError<\/code>", "Xato bermaydi"], "a": 1, "e": "Blok ichi surilishi shart, aks holda <code>IndentationError<\/code> chiqadi."}, {"q": "Agar <code>if<\/code> sharti <code>False<\/code> bo'lsa, qaysi blok bajariladi?", "o": ["<code>if<\/code> bloki", "Ikkalasi", "<code>else<\/code> bloki", "Hech qaysi"], "a": 2, "e": "<code>else<\/code> shart yolg'on bo'lgandagi tarmoqdir."}, {"q": "Kod natijasi? <code>summa = 150000<\/code>; <code>if summa &gt; 100000:<\/code> ichida <code>yakuniy = summa * 0.9<\/code> va <code>print(yakuniy)<\/code>", "o": ["<code>150000<\/code>", "<code>15000.0<\/code>", "<code>135000<\/code>", "<code>135000.0<\/code>"], "a": 3, "e": "10% chegirma: 150000 * 0.9 = 135000.0 (<code>float<\/code>)."}, {"q": "Qaysi qatorda xato bor? <code>if a &gt; 0<\/code> keyin chekinish bilan <code>print(\"Musbat\")<\/code>", "o": ["<code>if<\/code> qatori oxirida <code>:<\/code> yo'q", "<code>print<\/code> funksiyasi mavjud emas", "<code>a<\/code> harf bo'lishi mumkin emas", "Hammasi to'g'ri"], "a": 0, "e": "<code>if a &gt; 0:<\/code> deb yozish kerak."}, {"q": "<code>haqiqiy_parol = \"admin2026\"<\/code>, <code>kiritilgan_parol = \"Admin2026\"<\/code>. <code>if kiritilgan_parol == haqiqiy_parol:<\/code> bajarilsa nima chiqadi (aks holda <code>Xato parol!<\/code>)?", "o": ["<code>Muvaffaqiyatli kirdingiz!<\/code>", "<code>Xato parol!<\/code>, chunki katta-kichik harflar farqlanadi", "Xato: <code>==<\/code> matnga ishlamaydi", "Hech narsa chiqmaydi"], "a": 1, "e": "<code>A<\/code> va <code>a<\/code> har xil belgilar, shuning uchun matnlar teng emas."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

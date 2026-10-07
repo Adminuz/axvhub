@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "GMS tarkibiga qaysi dasturlar kiradi?", "o": ["Play Store, Maps, Gmail, YouTube, Play Services", "Linux yadrosi va ART", "Faqat kalkulyator va soat", "Faqat Huawei AppGallery"], "a": 0, "e": "Linux yadrosi va ART esa AOSP tarkibida."}, {"q": "AOSP tarkibiga nima kiradi?", "o": ["Google Play Store va Gmail", "Linux yadrosi, tizim kutubxonalari, ART va asosiy baza ilovalar", "Faqat Google Maps", "Firebase konsoli"], "a": 1, "e": "Baza ilovalarga oddiy kalkulyator, xabarlar va brauzer kiradi."}, {"q": "Google Play Services foydalanuvchi uchun qanday ko'rinadi?", "o": ["Asosiy ekrandagi katta o'yin", "Faqat sozlamalardagi tugma", "Interfeysi yo'q, orqa fonda ishlaydigan tizimli platforma", "Faqat reklama ilovasi"], "a": 2, "e": "Uning vazifasi ilovalarga xizmat ko'rsatish, ekranda chizish emas."}, {"q": "Nima uchun barcha ilovalar uchun bitta umumiy FCM kanali ishlatiladi?", "o": ["Ilovalar bir-biriga ulanishi uchun", "Internet narxi arzonlashishi uchun", "Reklama ko'proq chiqishi uchun", "Har bir ilova o'z serveriga alohida ulanganda batareya tez tugaydi"], "a": 3, "e": "Bitta shifrlangan kanal batareyani tejaydi va xabarlarni tegishli ilovaga tarqatadi."}, {"q": "Huawei GMS o'rniga qaysi do'konni ishga tushirdi?", "o": ["AppGallery", "Play Market", "App Store", "Galaxy Store"], "a": 0, "e": "HMS ekotizimining do'koni - AppGallery."}, {"q": "Fused Location bino ichida nima uchun ishlaydi?", "o": ["Bino ichida GPS signali kuchayadi", "Wi-Fi va uyali minoralar ma'lumotidan ham foydalanadi", "U sun'iy yo'ldoshga bevosita ulanadi", "Telefon avtomatik tashqariga chiqadi"], "a": 1, "e": "GPS sun'iy yo'ldoshlari bino ichida, metroda ko'rinmaydi."}, {"q": "SHA-1 keystore xeshi Firebase'ga kiritilganda nima kafolatlanadi?", "o": ["Ilova hajmi kichrayadi", "Ilova tezroq ochiladi", "Faqat shu kalit bilan imzolangan ilova so'rovlari qabul qilinadi", "Ilova reklamasiz bo'ladi"], "a": 2, "e": "Bu begona kishi sizning nomingizdan API so'rov yubora olmasligini ta'minlaydi."}, {"q": "<code>google-services.json<\/code> ichida qaysi ma'lumot bo'ladi?", "o": ["Foydalanuvchi parollari", "Ilovaning barcha rasmlari", "Telefon egasining ismi", "<code>project_id<\/code>, API kalit, <code>firebase_url<\/code>, <code>package_name<\/code>"], "a": 3, "e": "package_name sizning applicationId'ingizga mos keladi."}, {"q": "<code>local.properties<\/code> nima uchun GitHub'ga tushmaydi?", "o": ["U avtomatik <code>.gitignore<\/code> ro'yxatida bo'ladi", "U juda katta hajmli", "Faqat Windows'da mavjud", "Uni Git o'qiy olmaydi"], "a": 0, "e": "Shuning uchun kalitni u yerda saqlash xavfsiz."}, {"q": "Google Play qaysi yildan yangi ilovalar uchun AAB'ni majburiy qildi?", "o": ["2008-yildan", "2021-yil avgustdan", "2015-yildan", "2025-yildan"], "a": 1, "e": "APK dan farqli AAB Dynamic Delivery'ni qo'llab-quvvatlaydi."}, {"q": "APK ichida qaysi protsessor arxitekturasi resurslari bo'ladi?", "o": ["Faqat bittasi", "Faqat x86", "arm64-v8a, armeabi-v7a, x86_64 (barchasi)", "Hech qaysisi"], "a": 2, "e": "Shu sababli an'anaviy APK hajmi katta."}, {"q": "Qurilmalarni boshqarish, o'rnatish va log kuzatish uchun SDK'ning qaysi qismi javob beradi?", "o": ["SDK Platforms", "SDK Build-Tools", "Layout Editor", "SDK Platform-Tools (ADB)"], "a": 3, "e": "adb devices, adb install, adb logcat Platform-Tools tarkibida."}, {"q": "<code>adb install app.apk<\/code> nima qiladi?", "o": ["APK'ni ulangan telefon yoki emulyatorga o'rnatadi", "APK'ni kompyuterdan o'chiradi", "APK'ni Play Store'ga yuklaydi", "Telefonni qayta yoqadi"], "a": 0, "e": "adb install kompyuterdan qurilmaga ilovani o'rnatadi."}, {"q": "<code>adb shell<\/code> nima imkon beradi?", "o": ["Faqat ekranni aylantirish", "Telefonning Linux buyruqlar qatoriga kirish", "Kamerani yoqish", "Batareyani almashtirish"], "a": 1, "e": "Android Linux asosida bo'lgani uchun shell mavjud."}, {"q": "SDK Manager orqali nimalarni boshqarish mumkin?", "o": ["Faqat ilova ikonkalarini", "Telefon operatorini", "Android platformalari va SDK vositalarini o'rnatish/yangilash", "Google hisobini"], "a": 2, "e": "SDK Platforms va SDK Tools yorliqlari mavjud."}, {"q": "<code>r8<\/code> ning qo'shimcha vazifasi qaysi?", "o": ["Rasm tahrirlash", "Internet ulash", "Tarjima qilish", "Shrinking va Obfuscation - keraksiz kodni tozalash va kodni chalkashtirish"], "a": 3, "e": "Bu ilovani kichraytiradi va himoyalaydi."}, {"q": "Google Maps API kalitini xavfsiz ulash va GMS yo'q qurilmani hisobga olish bo'yicha qaysi juftlik to'g'ri?", "o": ["Kalit <code>local.properties<\/code> da; <code>GoogleApiAvailability<\/code> bilan GMS tekshiriladi", "Kalit <code>MainActivity.kt<\/code> da; tekshiruv kerak emas", "Kalit GitHub README'da; tekshiruv kerak emas", "Kalit <code>strings.xml<\/code> da ochiq; HMS ishlatiladi"], "a": 0, "e": "4-5-darslarni bog'laydi: kalit xavfsizligi va qurilmada GMS mavjudligi."}, {"q": "Firebase'ga ulanishda SHA-1 ni qayerdan olamiz?", "o": ["Telefon sozlamalaridan", "Android Studio terminalida <code>./gradlew signingReport<\/code> bilan", "Google Play'dan", "Emulyator oynasidan"], "a": 1, "e": "5-dars buyrug'i Android Studio (6-dars) terminalida ishga tushiriladi."}, {"q": "Test uchun APK'ni telefonga o'rnatish va Play'ga yuklash formati qaysi juftlikda to'g'ri?", "o": ["Play uchun APK; <code>adb<\/code> kerak emas", "Faqat AAB; <code>adb install<\/code> ishlatilmaydi", "<code>adb install app.apk<\/code>; Play uchun AAB", "Faqat <code>.dex<\/code> yuklanadi"], "a": 2, "e": "adb o'rnatish uchun, AAB esa Google Play talabi."}, {"q": "<code>signingReport<\/code> SHA-1 ni qaysi fayldan o'qiydi va bu fayl qaysi vosita bilan ishlaydi?", "o": ["<code>strings.xml<\/code> dan, aapt2 orqali", "<code>AndroidManifest.xml<\/code> dan, ADB orqali", "<code>local.properties<\/code> dan, FCM orqali", "<code>.android/debug.keystore<\/code> dan, Gradle orqali"], "a": 3, "e": "Gradle kompyuterdagi debug keystore ochiq sertifikatining xeshini chiqaradi (5-dars), Gradle esa Android Studio muhitining dvigateli (6-dars)."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

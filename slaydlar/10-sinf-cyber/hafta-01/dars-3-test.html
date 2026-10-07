@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Ijtimoiy muhandislik (Social Engineering) nima?", "o": ["Inson psixologiyasidan foydalanib, maxfiy ma'lumotni oshkor qildirish usullari majmui", "Dasturiy ta'minotni yangilash jarayoni", "Tarmoq kabellarini jismoniy himoyalash", "Serverni DoS hujumidan himoyalash usuli"], "a": 0, "e": "Ijtimoiy muhandislik — his-tuyg'ulardan (qo'rquv, shoshilinchlik, ochko'zlik) foydalanib odamlarni maxfiy ma'lumot berishga undaydi."}, {"q": "Fishing (Phishing) hujumining asosiy maqsadi nima?", "o": ["Kompyuterni tezlashtirish", "Soxta xat yoki sayt orqali login, parol va bank ma'lumotlarini o'g'irlash", "Dasturiy ta'minotni ro'yxatdan o'tkazish", "Fayllarni zaxiralash"], "a": 1, "e": "Fishing — buzg'unchilar soxta xat, SMS yoki saytlar orqali foydalanuvchining maxfiy ma'lumotlarini o'g'irlashi."}, {"q": "Muayyan bir shaxs yoki tashkilotga qaratilgan, oldindan o'rganilgan ma'lumotlar asosida tayyorlangan fishing turi qanday ataladi?", "o": ["Mass Phishing", "Whaling", "Spear Phishing", "Domain Spoofing"], "a": 2, "e": "Spear Phishing — muayyan shaxs yoki tashkilotga maxsus tayyorlangan, juda ishonarli maqsadli fishing turi."}, {"q": "SPF (Sender Policy Framework) nimani tekshiradi?", "o": ["Xatning imlo xatolarini", "Faylning hajmini", "Foydalanuvchining parol uzunligini", "Xat yuborilgan IP manzil domenga haqiqatan ham tegishlimi-yo'qmi"], "a": 3, "e": "SPF — muayyan domen nomidan qaysi IP manzillar xat yuborishga vakolatli ekanligini ko'rsatuvchi DNS yozuvi."}, {"q": "DKIM qaysi vazifani bajaradi?", "o": ["Xat yo'lda o'zgartirilmaganini kriptografik imzo orqali tasdiqlaydi", "IP manzilni domenga bog'laydi", "Spam xatlarni o'chirib tashlaydi", "Xat jo'natuvchining IP geolokatsiyasini ko'rsatadi"], "a": 0, "e": "DKIM — xat jo'natuvchi domenga tegishli ekanligini va yo'lda o'zgartirilmaganligini kriptografik imzo bilan tasdiqlaydi."}, {"q": "DMARC siyosatida `p=reject` qiymati nimani bildiradi?", "o": ["Xat spam jildiga tashlanadi", "Soxta xat server tomonidan darhol rad etiladi", "Xat haqida faqat hisobot yuboriladi, xat qabul qilinaveradi", "Xat ikki marta jo'natiladi"], "a": 1, "e": "`p=reject` — DMARC ning eng yuqori himoya darajasi bo'lib, soxta xat foydalanuvchiga umuman yetib bormaydi."}, {"q": "Buxgalterga «direktor» nomidan kelgan xatda yangi hamkorga shoshilinch pul o'tkazish so'raladi. Bu qanday hujum turi?", "o": ["Mass Phishing", "SPF spoofing", "BEC (Business Email Compromise)", "Rootkit hujumi"], "a": 2, "e": "BEC — buzg'unchi o'zini kompaniya direktori yoki hamkor qilib ko'rsatib, shoshilinch pul o'tkazmasini talab qiladi."}, {"q": "Elektron xat sarlavhasidagi `Received: from ...` qatori nimani ko'rsatadi?", "o": ["Xatning mavzusini", "Qabul qiluvchining pochta manzilini", "Xat necha marta ochilganini", "Xat aslida qaysi server va IP manzildan jo'natilganini"], "a": 3, "e": "`Received:` sarlavhasi xatning texnik yo'nalishini, u qaysi serverlar va IP orqali o'tganini ko'rsatadi."}, {"q": "Foydalanuvchiga `http://payme.uz.security-check-login.com/pay` havolasi keldi. Bu havolaning haqiqiy asosiy domeni qaysi va nega xavfli?", "o": ["<code>security-check-login.com<\/code> — haqiqiy domen, <code>payme.uz<\/code> esa chalg'ituvchi subdomen", "<code>payme.uz<\/code> — bu ishonchli rasmiy domen", "Ikkalasi ham bir xil ahamiyatga ega", "Bu havolada domen umuman yo'q"], "a": 0, "e": "Domen oxirgi nuqtadan oldingi qism bilan aniqlanadi — bu yerda <code>security-check-login.com<\/code>, qolgani esa aldash uchun qo'yilgan subdomen."}, {"q": "Shubhali `.zip` ilovani nima sababdan brauzerda yoki kompyuterda to'g'ridan-to'g'ri ochmasdan, VirusTotal orqali tekshirish tavsiya etiladi?", "o": ["VirusTotal faylni tezroq yuklab beradi", "VirusTotal faylni xavfsiz, izolyatsiya qilingan muhitda 70+ antivirus bilan tekshiradi, kompyuterga xavf yetkazmaydi", "VirusTotal faylni avtomatik o'chirib yuboradi", "Bunday tekshiruv ahamiyatsiz, farqi yo'q"], "a": 1, "e": "Fayl shaxsiy kompyuterda ochilsa zarar yetkazishi mumkin, VirusTotal esa sandbox muhitida xavfsiz tekshiradi."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

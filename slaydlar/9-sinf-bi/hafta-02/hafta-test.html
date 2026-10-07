@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Tanlangan sarlavhadagi filtr menyusini sichqonchasiz ochish uchun qaysi tugmalar ishlatiladi?", "o": ["<code>Alt + Down Arrow<\/code>", "<code>Ctrl + T<\/code>", "<code>F4<\/code>", "<code>Ctrl + E<\/code>"], "a": 0, "e": "<code>Alt + Down Arrow<\/code> filtr ro'yxatini ochadi, <code>Space<\/code> esa katakchani belgilaydi."}, {"q": "Belgilangan sondan katta kataklarni rang bilan ajratish qaysi qoida guruhiga kiradi?", "o": ["Data Bars", "Highlight Cells Rules", "Color Scales", "Total Row"], "a": 1, "e": "Highlight Cells Rules katta, kichik yoki oraliqdagi kataklarni ajratadi."}, {"q": "Ismlar baholardan ajralib qolmasligi uchun saralashdan oldin nima qilish to'g'ri?", "o": ["Faqat bitta ustunni belgilash", "Jadvalni birlashtirish", "Jadval ichidagi bitta katakni bosish yoki butun jadvalni tanlash", "Hamma formulalarni o'chirish"], "a": 2, "e": "Shunda Excel butun qatorni birgalikda siljitadi."}, {"q": "<code>Top 10<\/code> va <code>Greater than<\/code> qaysi filtr guruhiga kiradi?", "o": ["Matn filtrlari", "Sana filtrlari", "Rang filtrlari", "Sonli filtrlar"], "a": 3, "e": "Bular sonli ustunlar uchun maxsus mezonlar."}, {"q": "Quyidagilardan qaysi biri shartli formatlash qoidasi EMAS?", "o": ["Total Row", "Data Bars", "Color Scales", "Top/Bottom Rules"], "a": 0, "e": "Total Row rasmiy Excel Table dagi jami qatoridir."}, {"q": "Filtr olib tashlansa, yashirilgan qatorlar nima bo'ladi?", "o": ["Butunlay yo'qoladi", "Qaytib ko'rinadi", "Oxiriga ko'chadi", "Matnga aylanadi"], "a": 1, "e": "Filtr ma'lumotni o'chirmaydi, faqat yashiradi."}, {"q": "Professional jadval asosan kim uchun optimallashtiriladi?", "o": ["Faqat chop etish uchun", "Faqat rasm uchun", "Algoritmlar va tahliliy dasturlar (Power BI, SQL) uchun", "Faqat qog'ozdagi hisobot uchun"], "a": 2, "e": "Oddiy jadval inson ko'ziga mo'ljallangan, professional jadval esa mashina tahliliga."}, {"q": "Tidy Data da har bir o'zgaruvchi qanday joylashadi?", "o": ["Bitta katakda bir nechta", "Hamma o'zgaruvchi bitta qatorda", "Alohida varaqlarda", "Bitta ustunda"], "a": 3, "e": "Har bir o'zgaruvchi — bitta ustun."}, {"q": "Sarlavhalar qayerga va qanday yoziladi?", "o": ["1-qatorga, qisqa va aniq", "Jadval o'rtasiga", "Har bir sahifada turlicha", "Birlashtirilgan kataklarga"], "a": 0, "e": "Header Row jadvalning birinchi qatorida bo'lishi shart."}, {"q": "Rasmiy jadvalda pastga aylantirganda sarlavhalar ko'rinishi qanday?", "o": ["Sarlavha yo'qoladi", "Ustun harflari (A, B, C) o'rniga sarlavha nomlari chiqib turadi", "Sarlavha qizarib ketadi", "Faqat bosib chiqarishda ko'rinadi"], "a": 1, "e": "Bu Excel Table ning qulayliklaridan biri."}, {"q": "Jadval oxirgi katagida <code>Tab<\/code> bosilsa nima bo'ladi?", "o": ["Jadval o'chadi", "Filtr yoqiladi", "Excel yangi toza qator ochadi", "Jadval saralanadi"], "a": 2, "e": "Rasmiy jadvalda <code>Tab<\/code> yangi qator qo'shadi."}, {"q": "Har bir oy alohida ustunda yozilgan jadval qanday format?", "o": ["Long (uzun) format", "Merged format", "Total format", "Wide (keng) format"], "a": 3, "e": "Wide format ko'rishga qulay, tahlil uchun Long format yaxshiroq."}, {"q": "Nisbiy murojaat <code>A1<\/code> formula nusxalanganda nima qiladi?", "o": ["Manzil birgalikda siljiydi", "Hech qachon o'zgarmaydi", "Matnga aylanadi", "<code>#REF!<\/code> beradi"], "a": 0, "e": "Nisbiy manzil yonga yoki pastga tortilganda siljiydi."}, {"q": "A2:A20 da ismlar bor. <code>=COUNT(A2:A20)<\/code> qanday natija beradi?", "o": ["19", "0", "20", "<code>#DIV/0!<\/code>"], "a": 1, "e": "<code>COUNT<\/code> faqat sonli kataklarni taniydi, ismlar esa matn."}, {"q": "Shartga mos kataklarni sanash uchun qaysi funksiya ishlatiladi?", "o": ["<code>SUMIF<\/code>", "<code>IF<\/code>", "<code>COUNTIF<\/code>", "<code>MIN<\/code>"], "a": 2, "e": "<code>COUNTIF<\/code> shartga mos qatorlar sonini hisoblaydi."}, {"q": "VLOOKUP ning asosiy cheklovi nima?", "o": ["Juda tez ishlaydi", "Matn bilan ishlamaydi", "Faqat bitta jadvalda ishlaydi", "Faqat o'ngga qaraydi va ustun raqamini talab qiladi"], "a": 3, "e": "Shu sababli zamonaviy XLOOKUP afzal."}, {"q": "<code>#REF!<\/code> xatosi qachon paydo bo'ladi?", "o": ["Formula havola qilgan katak o'chirilganda", "Nolga bo'linganda", "Qiymat topilmaganda", "Son o'rniga matn kiritilganda"], "a": 0, "e": "Formula yo'q katakka havola qilib qolsa <code>#REF!<\/code> chiqadi."}, {"q": "Viloyat nomi birlashtirilgan jadvalda viloyat bo'yicha <code>SUMIF<\/code> ishlatilsa nima bo'ladi?", "o": ["Natija to'g'ri chiqadi", "Faqat birinchi qator viloyat nomiga ega, qolganlar bo'sh sanalib, yig'indi kam chiqadi", "Excel avtomatik to'ldiradi", "Formula <code>=<\/code> ni olib tashlaydi"], "a": 1, "e": "Merge qilingan kataklarda qolgan qatorlar bo'sh (NULL) bo'ladi."}, {"q": "Saralash, filtr va formulalar to'g'ri ishlashi uchun jadval qanday tuzilgan bo'lishi kerak?", "o": ["Chiroyli ko'p qavatli sarlavha va Merge", "Har bir toifa bir marta yozilib, ostiga bo'sh joy qoldirilgan", "Bir qatorli sarlavha, birlashtirilgan kataklarsiz, har qator bitta kuzatuv", "Hamma ma'lumot bitta katakda"], "a": 2, "e": "Bu Tidy Data tamoyillari."}, {"q": "100 000 dan katta narxlarni rang bilan ajratib, ularning sonini hisoblash uchun qaysi vositalar mos?", "o": ["<code>XLOOKUP<\/code> va Merge", "Faqat <code>Ctrl + T<\/code>", "Faqat Data Bars va <code>#REF!<\/code>", "Shartli formatlash va <code>COUNTIF<\/code>"], "a": 3, "e": "Rang berish shartli formatlash, sanash esa <code>COUNTIF<\/code> vazifasi."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

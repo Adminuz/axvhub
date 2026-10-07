@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Open Handset Alliance qaysi yili tashkil etilib, Android rasman e'lon qilindi?", "o": ["2007-yilda", "2003-yilda", "2005-yilda", "2008-yilda"], "a": 0, "e": "2007-yilda Google, HTC, Sony, Samsung va boshqalar Open Handset Alliance ni tuzdi; 2008 esa HTC Dream chiqqan yil."}, {"q": "HTC Dream qanday xususiyatlarga ega edi?", "o": ["Faqat tugmali klaviatura, sensorli ekransiz", "Sensorli ekran, QWERTY klaviatura, Wi-Fi, GPS", "Barmoq izi skaneri va 5G", "Buklanuvchi ekran"], "a": 1, "e": "Bu qurilma Android Market do'koni bilan birga sotuvga chiqdi."}, {"q": "Dinamik ranglar (fon rasmiga moslashuvchi interfeys) qaysi versiyada paydo bo'ldi?", "o": ["Android 5.0 Lollipop", "Android 9 Pie", "Android 12 (Material You)", "Android 15"], "a": 2, "e": "Material You (Material 3) 2021-yilda Android 12 bilan keldi."}, {"q": "KitKat (4.4) ning asosiy yangiligi nima edi?", "o": ["Dark Theme", "Private Space", "Project Treble", "512 MB RAM li arzon telefonlarda ham silliq ishlash"], "a": 3, "e": "KitKat arzon qurilmalar uchun optimallashtirilgan edi."}, {"q": "Samsung va Xiaomi AOSP asosida nima yaratadi?", "o": ["O'z shaxsiy interfeys qobiqlarini (One UI, MIUI/HyperOS)", "Yangi Linux yadrosini", "Yangi dasturlash tilini", "Yangi Google Play do'konini"], "a": 0, "e": "AOSP ochiq bo'lgani uchun ishlab chiqaruvchilar uning ustida o'z qobiqlarini yaratadi."}, {"q": "Android versiyalarini raqam bilan atash nima uchun qulay?", "o": ["Telefon tezroq ishlaydi", "Turli madaniyatdagi foydalanuvchilar chalkashmaydi", "Ilova hajmi kamayadi", "Linux yadrosi almashadi"], "a": 1, "e": "Shirinlik nomlari hamma uchun tushunarli emasdi."}, {"q": "Low Memory Killer qaysi arxitektura qatlamida ishlaydi va nima qiladi?", "o": ["Applications; yangi ilovalarni o'rnatadi", "HAL; kamerani o'chiradi", "Linux Kernel; RAM tugaganda keraksiz ilovalarni yopadi", "Java API Framework; rasmlarni siqadi"], "a": 2, "e": "Xotira boshqaruvi Linux Kernel vazifasiga kiradi."}, {"q": "SQLite kutubxonasi arxitekturaning qaysi qatlamiga kiradi?", "o": ["Linux Kernel", "Applications", "HAL", "Native C/C++ kutubxonalar"], "a": 3, "e": "SQLite, WebKit, Media Framework Native kutubxonalar qatlamida joylashgan."}, {"q": "Tugmalar, matnlar va ro'yxatlarni chizuvchi komponentlar to'plami qaysi?", "o": ["View System", "Activity Manager", "Surface Manager", "libc"], "a": 0, "e": "View System Java API Framework tarkibida; tugma va matn chizish uning vazifasi."}, {"q": "Ilovalar o'rtasida ma'lumot almashish (masalan, kontaktlardan raqam olish) qaysi komponent orqali bajariladi?", "o": ["Notification Manager", "Content Provider", "Resource Manager", "Low Memory Killer"], "a": 1, "e": "Content Provider ma'lumotlarni boshqa ilovalarga xavfsiz taqdim etadi."}, {"q": "Dalvik'dan farqli ART ning afzalligi nima?", "o": ["Ilova faqat bir marta ishlaydi", "Kod har safar qayta o'giriladi", "Ilova tezroq ochiladi va batareya tejaladi", "Faqat o'yinlar uchun ishlaydi"], "a": 2, "e": "AOT kompilyatsiya tufayli ART'da ilova darhol va silliq ishga tushadi."}, {"q": "Freeform Windows imkoniyati qanday qurilmalarda foydali?", "o": ["Aqlli soatlarda", "Faqat televizorlarda", "Faqat POS-terminallarda", "Planshet va buklanuvchi qurilmalarda, oynalarni erkin ko'chirish uchun"], "a": 3, "e": "Freeform oynalar kompyuterdagidek erkin o'lchamlanadi."}, {"q": "Wear OS ilovalarida qaysi omil eng muhim hisoblanadi?", "o": ["Batareyani maksimal tejash va minimalistik interfeys", "Katta ekran va og'ir grafika", "Uzoq matnli sahifalar", "Pult orqali boshqaruv"], "a": 0, "e": "Soat ekrani kichik va batareyasi sig'imi cheklangan."}, {"q": "Android TV da «10-foot UI» nimani anglatadi?", "o": ["Ekran 10 fut diagonalli", "Foydalanuvchi ekrandan taxminan 2.5-3 metr masofada bo'ladi", "10 ta tugma bo'ladi", "Ilova 10 soniyada ochiladi"], "a": 1, "e": "Shuning uchun matn va elementlar katta bo'lishi kerak."}, {"q": "Smart POS-terminal qaysi sohaga misol bo'ladi?", "o": ["Aqlli soat", "Avtomobil bort tizimi", "Savdo va xizmat ko'rsatishdagi IoT/ixtisoslashgan Android qurilma", "Faqat o'yin planshetlari"], "a": 2, "e": "Android asosida ishlaydigan aqlli kassa va POS-terminallar savdoda keng qo'llanadi."}, {"q": "Lollipop (5.0) da qaysi ikki yangilik birgalikda kiritildi?", "o": ["Dark Theme va 5G", "Split-screen va Face Unlock", "Private Space va Gemini Nano", "Material Design va ART"], "a": 3, "e": "1-darsdagi Material Design va 2-darsdagi ART bir versiyada keldi."}, {"q": "Telefon, soat, TV va avtomobil uchun Android ning umumiy asosi nima?", "o": ["Linux yadrosi va ochiq AOSP", "Windows yadrosi", "Faqat iOS kodi", "Har biri uchun butunlay alohida tizim"], "a": 0, "e": "Google bir asos ustida har bir qurilma sinfi uchun maxsus versiyalar chiqargan."}, {"q": "Smart POS-terminalda ishlayotgan Android ilovasi xavfsizligi qanday ta'minlanadi?", "o": ["Ilovalar bir-birining ma'lumotini erkin o'qiydi", "Har bir ilova alohida UID va jarayonda (Sandbox) ishlaydi", "Faqat antivirus ishlatiladi", "Android POS'da sandbox yo'q"], "a": 1, "e": "Sandbox 2-darsdagi mexanizm bo'lib, barcha qurilma turlarida Linux asosida ishlaydi."}, {"q": "Aqlli soat va Gemini Nano misolida on-device AI ning afzalligi nima?", "o": ["Telefon batareyasini ko'proq sarflaydi", "Faqat Wi-Fi bilan ishlaydi", "Internetga so'rov yubormasdan, qurilmaning o'zida ishlaydi", "Faqat Google serverida ishlaydi"], "a": 2, "e": "NPU chipi AI hisob-kitoblarini mahalliy bajaradi."}, {"q": "Picture-in-Picture (PiP) rejimi nima?", "o": ["Ekranni ikkiga bo'lish", "Ilovani o'chirib qo'yish", "Rasmni PDF ga aylantirish", "Video qo'ng'iroq yoki xarita mini-oyna ko'rinishida ekran burchagida turishi"], "a": 3, "e": "PiP da mini-oyna boshqa ilova ustida suzib yuradi; Split-Screen esa ekranni teng bo'ladi."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

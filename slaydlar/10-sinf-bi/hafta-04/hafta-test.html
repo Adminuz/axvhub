@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "<code>MAX(oquvchilar_soni)<\/code> nimani qaytaradi?", "o": ["Qiymatlar sonini", "O'rtacha qiymatni", "Birinchi satrni", "Eng katta qiymatni"], "a": 3, "e": "<code>MAX<\/code> eng katta, <code>MIN<\/code> eng kichik qiymatni beradi."}, {"q": "Ustundagi qiymatlar 10, 20, NULL. <code>AVG(ustun)<\/code> nechaga teng?", "o": ["10", "15", "30/3 = 10", "NULL"], "a": 1, "e": "AVG NULL ni hisobga olmaydi: (10 + 20) / 2 = 15."}, {"q": "<code>GROUP BY hudud_id, yil<\/code> da guruh nima?", "o": ["hudud_id va yil juftligi (kombinatsiyasi)", "Faqat hudud_id", "Faqat yil", "Har bir satr alohida"], "a": 0, "e": "Ikki ustun bo'yicha guruhlashda har noyob juftlik bitta guruh bo'ladi."}, {"q": "Nega <code>WHERE SUM(x) &gt; 5<\/code> xato?", "o": ["SUM faqat SELECT da yoziladi", "WHERE sonlarni taqqoslamaydi", "WHERE guruhlardan oldin bajariladi, agregat hali hisoblanmagan", "5 dan kichik sonlar mumkin emas"], "a": 2, "e": "Agregat shartlar guruhlardan keyin ishlaydigan <code>HAVING<\/code> da yoziladi."}, {"q": "<code>GROUP BY hudud_id, yil HAVING COUNT(*) &gt; 1<\/code> qaysi maqsadda ishlatiladi?", "o": ["Jami yig'indini hisoblash", "Dublikat yozuvlarni topish", "Jadvalni saralash", "Ustun qo'shish"], "a": 1, "e": "Bir kalit juftligi 1 martadan ko'p uchrasa, bu dublikat."}, {"q": "SQLite da <code>5 / 2<\/code> nechaga teng va uni qanday tuzatamiz?", "o": ["2.5; hech narsa kerak emas", "3; ROUND bilan", "Xato beradi; CAST kerak emas", "2; <code>5 * 1.0 / 2<\/code> yozib kasr natija olamiz"], "a": 3, "e": "SQLite butun sonlarni bo'lganda kasrni kesadi. <code>* 1.0<\/code> yoki <code>CAST AS REAL<\/code> kasr beradi."}, {"q": "<code>LEFT JOIN<\/code> natijasida o'ng tomondagi <code>NULL<\/code> nimani bildiradi?", "o": ["Qiymat nolga teng", "So'rovda xato bor", "O'ng jadvalda mos satr topilmadi", "Satr o'chirilgan"], "a": 2, "e": "NULL mosi yo'q joyni to'ldiradi: chapdagi satr o'ng jadvalda juftga ega emas."}, {"q": "<code>RIGHT JOIN<\/code> qaysi jadvalning barcha satrlarini saqlaydi?", "o": ["JOIN dan keyin yozilgan (o'ng) jadvalning", "FROM dagi (chap) jadvalning", "Ikkala jadvalning", "Hech qaysisining"], "a": 0, "e": "<code>RIGHT JOIN<\/code> — <code>LEFT JOIN<\/code> ning ko'zgusi."}, {"q": "<code>FROM hududlar h<\/code> dagi <code>h<\/code> nima?", "o": ["Jadval taxalluslari: keyin <code>h.nomi<\/code> deb yozish mumkin", "Yangi jadval", "Ustun nomi", "Bo'lish belgisi"], "a": 0, "e": "Taxallus (alias) so'rovni qisqartiradi va noaniq ustun xatosidan saqlaydi."}, {"q": "<code>maktablar<\/code>, <code>hududlar<\/code>, <code>yillik_kpi<\/code> ni bitta so'rovda bog'lash uchun nechta <code>ON<\/code> kerak?", "o": ["1 ta", "3 ta", "2 ta", "Hech qaysi"], "a": 2, "e": "N ta jadvalni bog'lash uchun N-1 ta JOIN ... ON kerak."}, {"q": "ON yozilmasa, 4 qatorli va 5 qatorli jadvallar JOIN natijasida necha qator beradi?", "o": ["9", "5", "4", "20"], "a": 3, "e": "Cartesian product: har satr har satr bilan juftlanadi, 4 x 5 = 20."}, {"q": "<code>COALESCE(SUM(m.sigim), 0)<\/code> nima qiladi?", "o": ["Yig'indini nolga ko'paytiradi", "NULL bo'lsa 0 qaytaradi", "NULL larni o'chiradi", "Faqat 0 ni sanaydi"], "a": 1, "e": "COALESCE birinchi NULL bo'lmagan qiymatni qaytaradi."}, {"q": "<code>WHERE id IN (SELECT id FROM t2)<\/code> da ichki so'rov nima qaytaradi?", "o": ["Bitta matn", "Hech narsa", "Qiymatlar ro'yxatini", "Jadval nomini"], "a": 2, "e": "<code>IN<\/code> ro'yxat bilan ishlaydi: ichki so'rov ustun bo'yicha ko'p qiymat qaytarishi mumkin."}, {"q": "CTE qancha vaqt mavjud bo'ladi?", "o": ["Butun sessiya davomida", "Faqat shu so'rov ichida", "Bazani yopguncha", "Abadiy saqlanadi"], "a": 1, "e": "CTE vaqtinchalik: so'rov tugagach yo'qoladi."}, {"q": "<code>CASE WHEN<\/code> da hech bir shart mos kelmasa va <code>ELSE<\/code> yo'q bo'lsa nima chiqadi?", "o": ["0", "Bo'sh matn", "Xato", "NULL"], "a": 3, "e": "ELSE bo'lmasa, mos kelmagan holat NULL beradi."}, {"q": "Pivot natijasida jadval qanday o'zgaradi?", "o": ["Satrlardagi qiymatlar ustunlarga aylanadi", "Ustunlar o'chiriladi", "Satrlar ikki baravar ko'payadi", "Jadval saralanadi"], "a": 0, "e": "Masalan, yil qiymatlari y2022, y2023, y2024 ustunlariga ajratiladi."}, {"q": "YoY nimani bildiradi?", "o": ["Yillik jami", "Yilma-yil (Year-over-Year) o'zgarish", "Yillarni saralash", "Yil ustuni nomi"], "a": 1, "e": "YoY joriy yilni oldingi yil bilan solishtiradi."}, {"q": "Har hududning 3 yillik jami o'quvchilarini hudud NOMI bilan chiqarish uchun qaysi birikma kerak?", "o": ["Faqat WHERE", "Faqat LIMIT", "CASE WHEN va OFFSET", "JOIN va GROUP BY"], "a": 3, "e": "Nom hududlar da, son yillik_kpi da: jadvallar JOIN qilinadi, so'ng hudud bo'yicha GROUP BY SUM."}, {"q": "Agregat natijasi (masalan, o'rtacha) ustida oddiy <code>WHERE<\/code> ishlatmoqchimiz. Qaysi yo'l mumkin?", "o": ["Agregatni CTE yoki FROM dagi subquery ga olib, tashqarida WHERE yozish", "WHERE ichida AVG yozish", "ORDER BY ga ko'chirish", "JOIN ni olib tashlash"], "a": 0, "e": "Agregat avval ichki so'rov/CTE da hisoblanadi, tashqarida u oddiy ustun bo'ladi (yoki HAVING ishlatiladi)."}, {"q": "JOIN qaysi bosqichda bajariladi?", "o": ["HAVING dan keyin", "ORDER BY dan keyin", "FROM bosqichida, WHERE va GROUP BY dan oldin", "LIMIT bilan birga"], "a": 2, "e": "Jadvallar avval birlashtiriladi (FROM), so'ng WHERE, GROUP BY, HAVING ishlaydi."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

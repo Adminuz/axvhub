@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Yashil rang UI da odatda nimani bildiradi?", "o": ["Muvaffaqiyat, o'sish, sog'liq va tasdiq", "Xavf va xatolik", "Hashamat", "Ishonchsizlik"], "a": 0, "e": "Shu sababli tasdiqlash belgilarida faol qo'llanadi."}, {"q": "60-30-10 qoidasida kartochkalar foni va navigatsiya panellari qaysi ulushga kiradi?", "o": ["60% dominant fon", "30% ikkilamchi (strukturaviy) rang", "10% urg'u rangi", "Hech qaysisiga"], "a": 1, "e": "60% asosiy neytral fon, 10% esa muhim harakat tugmalari."}, {"q": "Triadik ranglar qanday ranglar?", "o": ["Doirada qo'shni 3 rang", "Qarama-qarshi 2 rang", "Rang doirasida teng tomonli uchburchak hosil qiluvchi 3 rang", "Faqat kulrang ranglar"], "a": 2, "e": "Ular balansli va dinamik muhit yaratadi."}, {"q": "H1 sarlavha uchun tavsiya etilgan o'lcham qaysi?", "o": ["12–13px", "15–16px", "80–100px", "32–40px"], "a": 3, "e": "Body text 15–16px, Caption 12–13px."}, {"q": "Serif shriftlar asosan qayerda qulay?", "o": ["Bosma kitoblar va klassik maqolalarda", "Past o'lchamli mobil ekranlarda", "Tugmalarda", "Ikonkalarda"], "a": 0, "e": "Ekran uchun sans-serif afzal."}, {"q": "Tugmalar va kichik sarlavhalar uchun qaysi shrift qalinligi mos?", "o": ["Faqat Thin", "Medium", "Faqat Italic", "Faqat Black"], "a": 1, "e": "Bold sarlavha va urg'u uchun, Regular asosiy matn uchun."}, {"q": "Desktopda ekranning chap va o'ng qirrasidagi bo'shliq (Margin) odatda qancha?", "o": ["0px", "16–20px", "80–120px", "300px"], "a": 2, "e": "Mobilda esa 16–20px."}, {"q": "Planshet uchun standart Column Grid necha ustundan iborat?", "o": ["12 ustun", "4 ustun", "16 ustun", "8 ustun"], "a": 3, "e": "Desktop 12, planshet 8, mobil 4."}, {"q": "Pixel Grid qayerda kerak bo'ladi?", "o": ["Ikonka va piktogramma chizishda aniqlik uchun", "Uzun matn yozishda", "Reklama joylashtirishda", "Server sozlashda"], "a": 0, "e": "Ekran maksimal kattalashtirilganda har bir piksel ko'rinadi."}, {"q": "Hierarchical Grid qanday panjara?", "o": ["Faqat teng 12 ustunli panjara", "Qat'iy ustunlarga bo'ysunmay, kontent ehtiyojidan kelib chiqib joylashadigan moslashuvchan panjara", "Faqat bir ustunli matn bloki", "Faqat gorizontal chiziqlar"], "a": 1, "e": "U zamonaviy, moslashuvchan maketlarda qo'llanadi."}, {"q": "8pt Spacing tizimi dizaynerga nima beradi?", "o": ["Matnni xiralashtiradi", "Faqat rangni o'zgartiradi", "Qaror qabul qilishni tezlashtiradi va Retina ekranlarda piksel aniqligini ta'minlaydi", "Ustunlarni yo'qotadi"], "a": 2, "e": "«13px yoki 17px?» kabi ikkilanishlar yo'qoladi."}, {"q": "Secondary tugmaga qaysi amal mos?", "o": ["«To'lov qilish»", "«Ro'yxatdan o'tish»", "Faqat «Yuborish»", "«Bekor qilish» yoki «Qoralama saqlash»"], "a": 3, "e": "U Primary tugmadan kamroq muhim, odatda konturli yoki och fonli bo'ladi."}, {"q": "To'liq yumaloq (Pill, 999px radius) tugma qanday ta'sir qiladi?", "o": ["E'tiborni kuchli tortadi, CTA uchun mos", "Eng jiddiy korporativ uslub beradi", "Tugmani ko'rinmas qiladi", "Faqat Disabled holatda ishlatiladi"], "a": 0, "e": "0–4px radius jiddiy va moliyaviy uslubga mos."}, {"q": "Mobilda bir qo'l bilan boshqarish uchun qaysi navigatsiya bloki qulay?", "o": ["Yuqori chapdagi uzun menyu", "Bottom Navigation Bar (pastki menyu, 3–5 ta tugma)", "Faqat breadcrumbs", "12 ustunli grid"], "a": 1, "e": "Eng muhim 3–5 ta bo'limni ekranning pastki qismiga jamlaydi."}, {"q": "UI Kit nima?", "o": ["Faqat rang palitrasi", "Dasturlash tili kutubxonasi", "Loyihada ishlatiladigan tugmalar, ikonalar, forma maydonlari va navigatsiya elementlarining standartlashtirilgan to'plami", "Foydalanuvchilar ro'yxati"], "a": 2, "e": "Figmada komponentlar va variantlar orqali boshqariladi."}, {"q": "Disabled tugma qanday ko'rinadi va qachon ishlatiladi?", "o": ["Yorqin qizil; doim", "Soyali doira; mobilda", "Ko'rinmaydi; hech qachon", "30–40% xira kulrang; masalan, forma to'ldirilmaguncha"], "a": 3, "e": "Kursor «not-allowed» belgisiga aylanishi mumkin."}, {"q": "Rang (7-dars) va tugma dizayni (9-dars) uchun umumiy WCAG talabi qaysi?", "o": ["Matn va fon orasidagi kontrast kamida 4.5:1", "Kontrast 1:1 bo'lishi", "Kontrast 2:1 yetarli", "Kontrast talabi yo'q"], "a": 0, "e": "Tugma matni ham, oddiy matn ham o'qilishi uchun kamida 4.5:1 kerak."}, {"q": "Mobil tugma balandligi 48px. Nega bu mos tanlov?", "o": ["Faqat 13 ga karrali bo'lgani uchun", "8 ga karrali (8pt tizim) va 44px touch target dan kam emas", "44px dan kichik bo'lgani uchun", "Gutter ga teng bo'lgani uchun"], "a": 1, "e": "Bu 8-dars 8pt qoidasini va 9-dars ergonomika talabini birga qondiradi."}, {"q": "O'chirish (Delete) tugmasi va to'lovni tasdiqlash (Pay) tugmasi uchun mos ranglar qaysi?", "o": ["Delete — yashil; Pay — qizil", "Ikkalasi ham sariq", "Delete — qizil; Pay — yashil yoki ko'k", "Rang ahamiyatsiz"], "a": 2, "e": "Rang psixologiyasi (7-dars) tugma ma'nosini kuchaytiradi (9-dars)."}, {"q": "Mobil ilova maketi uchun qaysi birikma to'g'ri?", "o": ["12 ustun, 120px margin, matnsiz mayda ikonalar", "1 ustun, gutter ustida elementlar", "24 ustun va 20px tugmalar", "4 ustun, 16–20px margin, pastki menyu va kamida 44&times;44px tugmalar"], "a": 3, "e": "Bu 8-dars grid qoidalari va 9-dars navigatsiya hamda ergonomika talablarini birlashtiradi."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

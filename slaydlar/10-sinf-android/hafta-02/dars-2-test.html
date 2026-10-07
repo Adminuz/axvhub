@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "R8 ning ProGuard dan asosiy farqi nima?", "o": ["R8 D8 DEX kompilyatoriga o'rnatilgan, shu sabab tezroq ishlaydi", "R8 faqat rasmlar bilan ishlaydi", "R8 faqat Java uchun", "R8 Git'ning qismi"], "a": 0, "e": "ProGuard alohida tashqi vosita edi va build vaqtini cho'zardi."}, {"q": "Code Shrinking (Tree Shaking) qanday ishlaydi?", "o": ["Rasmlarni siqadi", "Kirish nuqtasidan boshlab tahlil qilib, chaqirilmagan klass va metodlarni olib tashlaydi", "Nomlarni chalkashtiradi", "Kutubxonalarni yangilaydi"], "a": 1, "e": "Hech qayerda ishlatilmagan «qurigan shoxlar» butunlay o'chiriladi."}, {"q": "Resource Shrinking nimani qiladi?", "o": ["Kodni chalkashtiradi", "Ilova ikonkasini o'zgartiradi", "Kodda ishlatilmagan rasm, audio va XML resurslarni paketdan olib tashlaydi", "Gradle versiyasini tanlaydi"], "a": 2, "e": "<code>shrinkResources true<\/code> <code>res/<\/code> papkasini tekshiradi."}, {"q": "Quyidagilardan qaysi biri Optimization bosqichiga kiradi?", "o": ["Klass nomini <code>a<\/code> ga almashtirish", "Ishlatilmagan rasmlarni o'chirish", "Kutubxonani yuklash", "Hech qachon bajarilmaydigan <code>if (false)<\/code> shartlarni o'chirish va kichik funksiyalarni inline qilish"], "a": 3, "e": "Nomlarni qisqartirish bu Obfuscation, rasm o'chirish bu Resource Shrinking."}, {"q": "<code>UserDataManager<\/code> klassining <code>class a<\/code> bo'lib qolishi qaysi bosqich natijasi?", "o": ["Obfuscation", "Shrinking", "Optimization", "Manifest Merging"], "a": 0, "e": "Obfuscation ma'noli nomlarni qisqa harflarga almashtiradi."}, {"q": "<code>shrinkResources true<\/code> nega <code>minifyEnabled true<\/code> talab qiladi?", "o": ["Ular bir xil parametr", "Resurs qaysi kodda ishlatilishini bilish uchun avval kod qisqartirilishi kerak", "Faqat Debug uchun", "Gradle shunday xohlagan"], "a": 1, "e": "Aks holda ishlatilmagan resurslarni aniqlab bo'lmaydi."}, {"q": "Debug rejimida <code>minifyEnabled true<\/code> yoqish nega yomon?", "o": ["Ilova ochilmaydi", "Google Play rad etadi", "Yig'ish sekinlashadi va Logcat tahlili qiyinlashadi", "Rasmlar yo'qoladi"], "a": 2, "e": "Minifikatsiya faqat <code>release<\/code> rejimida yoqilishi kerak."}, {"q": "<code>getDefaultProguardFile('proguard-android-optimize.txt')<\/code> nima uchun qo'shiladi?", "o": ["Ilova nomini belgilash uchun", "Keshni tozalash uchun", "Kutubxona ulash uchun", "Google tavsiya etgan standart optimallashtirish qoidalarini olish uchun"], "a": 3, "e": "U ko'rsatilmasa, yuzlab standart qoidalar chetda qoladi."}, {"q": "R8 yig'ish vaqtiga qanday ta'sir qiladi?", "o": ["D8 bilan birlashgani uchun vaqtni 2-3 barobar tejaydi", "Vaqtni ikki barobar oshiradi", "Ta'sir qilmaydi", "Faqat Debug'ni tezlashtiradi"], "a": 0, "e": "R8 Kotlin/Java kodini bir vaqtda ham qisqartiradi, ham DEX ga aylantiradi."}, {"q": "APK 70 MB, hamda JADX bilan kodni osongina o'qish mumkin. Eng mos chora qaysi?", "o": ["Debug'da <code>applicationIdSuffix<\/code> qo'shish", "Release da <code>minifyEnabled true<\/code> va <code>shrinkResources true<\/code> yoqish", "<code>versionCode<\/code> ni oshirish", "<code>compileSdk<\/code> ni kamaytirish"], "a": 1, "e": "R8 hajmni kamaytiradi (shrinking), nomlarni chalkashtiradi (obfuscation)."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

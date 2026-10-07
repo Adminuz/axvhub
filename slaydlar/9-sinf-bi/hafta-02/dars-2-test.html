@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Tidy Data tamoyiliga ko'ra har bir qator nimani ifodalaydi?", "o": ["Bitta kuzatuvni", "Bitta o'zgaruvchini", "Butun hisobotni", "Bitta varaqni"], "a": 0, "e": "Har bir o'zgaruvchi bitta ustun, har bir kuzatuv bitta qator, har bir katak bitta qiymat bo'lishi kerak."}, {"q": "Nima uchun professional tahlilda Merged Cells (birlashtirilgan kataklar) man etiladi?", "o": ["Faqat chiroyli ko'rinmaydi", "Saralash, filtr va formulalarni buzadi", "Fayl hajmini oshiradi", "Excel ularni umuman ochmaydi"], "a": 1, "e": "Birlashtirilgan kataklarda faqat yuqori chap katak to'la, qolganlari bo'sh sanaladi."}, {"q": "Excel Table (rasmiy jadval) qaysi tugmalar bilan yaratiladi?", "o": ["<code>Ctrl + E<\/code>", "<code>Ctrl + Shift + L<\/code>", "<code>Ctrl + T<\/code>", "<code>Alt + F5<\/code>"], "a": 2, "e": "<code>Ctrl + T<\/code> oddiy diapazonni dinamik rasmiy jadvalga aylantiradi."}, {"q": "<code>=[@Narx]*[@Miqdor]<\/code> formulasida qanday havola turi ishlatilgan?", "o": ["Absolut havola", "Aralash havola", "Tashqi fayl havolasi", "Strukturali havola (Structured Reference)"], "a": 3, "e": "Strukturali havola katak manzili o'rniga ustun nomidan foydalanadi."}, {"q": "Total Row (Jami qatori) nima beradi?", "o": ["Jadval ostiga SUM, AVERAGE, COUNT kabi umumlashtiruvchi funksiyani qo'yadi", "Jadvalni o'chiradi", "Hamma qatorlarni birlashtiradi", "Sarlavhani yashiradi"], "a": 0, "e": "Total Row belgisini qo'yish kifoya, <code>=SUM(...)<\/code> ni qo'lda yozish shart emas."}, {"q": "Tahlil uchun eng mos «Long» format qanday ko'rinishda?", "o": ["Har bir oy alohida ustun", "Bitta ustunda <code>Oy<\/code>, boshqasida <code>Summa<\/code>", "Barcha oylar bitta katakda", "Oylar birlashtirilgan kataklarda"], "a": 1, "e": "Long format PivotTable va bazalar uchun mos Tidy shakl."}, {"q": "Quyidagi sarlavhalardan qaysi biri qoidaga mos (qisqa, maxsus belgisiz)?", "o": ["<code>Sotuv summasi (so'm)!!!<\/code>", "<code>JAMI / MAHSULOT, narxi<\/code>", "<code>sotuv_summasi<\/code>", "Ikki qatorga bo'lingan sarlavha"], "a": 2, "e": "Sarlavha 1-qatorda, qisqa, aniq va maxsus belgilarsiz (snake_case) bo'lishi kerak."}, {"q": "Excel Table ostiga yangi qator yozilsa nima bo'ladi?", "o": ["Hech narsa o'zgarmaydi", "Jadval o'chib ketadi", "Qo'lda formatlash shart", "Jadval avtomatik kengayadi, formulalar o'zi to'ldiriladi"], "a": 3, "e": "Rasmiy jadvalning afzalligi: dinamik avtomatik kengayish."}, {"q": "Viloyat nomi 5 qatorga birlashtirilgan (Merge) jadvalga filtr qo'llansa nima bo'ladi?", "o": ["Faqat 1-qator chiqadi, qolgan 4 tasi yashirilib ketadi", "Barcha 5 qator chiqadi", "Excel viloyatni avtomatik to'ldiradi", "Filtr o'chadi"], "a": 0, "e": "Qolgan 4 katak texnik jihatdan bo'sh bo'lgani uchun filtr ularni topmaydi."}, {"q": "Jadvalda ustunlar <code>Yanvar<\/code>, <code>Fevral<\/code>, <code>Mart<\/code> deb berilgan (Wide). PivotTable uchun nima qilish to'g'ri?", "o": ["Ustunlarni birlashtirish (Merge)", "Long formatga o'tkazib, <code>Oy<\/code> va <code>Summa<\/code> ustunlarini hosil qilish", "Oy nomlarini o'chirish", "Hech narsa qilmaslik, hammasi bir xil"], "a": 1, "e": "Pivot va bazalar uchun har o'zgaruvchi (oy) bitta ustunda bo'lishi kerak."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

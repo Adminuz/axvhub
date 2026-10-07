@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Inciting Incident nima?", "o": ["Tinch hayotni buzib, sarguzashtni boshlab beruvchi ilk turtki hodisa", "O'yinning eng so'nggi sahnasi", "Bosh dushmanning mag'lubiyati", "O'yin menyusidagi sozlama"], "a": 0, "e": "Masalan, sehrli kitobning o'g'irlanishi yoki ajdaho hujumi."}, {"q": "Branch-and-Bottleneck usulining mohiyati nima?", "o": ["Hamma yo'llar abadiy alohida qoladi", "Yo'llar bo'linadi, muhim burilish nuqtalarida yana yagona syujetga ulanadi", "Faqat bitta yo'l qoladi", "Syujet butunlay olib tashlanadi"], "a": 1, "e": "Bu tarmoqlanuvchi ssenariyning mehnatini kamaytiradi."}, {"q": "Syujet (Plot) nimadan iborat?", "o": ["Faqat qahramonlar ro'yxati", "Faqat dialoglar", "Boshlanish, rivojlanish, cho'qqi (kulminatsiya) va yakun", "Faqat o'yin qoidalari"], "a": 2, "e": "Syujet hikoyaning ketma-ket tuzilishini bildiradi."}, {"q": "Nega qahramonga ichki kamchilik (flaw) beriladi?", "o": ["O'yin osonlashadi", "Dushman kuchsizlanadi", "Ssenariy qisqaradi", "Obraz tirik va qiziqarli chiqadi, rivojlanishga turtki bo'ladi"], "a": 3, "e": "Nuqsonsiz qahramon zerikarli; qo'rquv yoki mag'rurlik unga xarakter beradi."}, {"q": "Kempbellning «Qahramon yo'li» da ustoz bilan uchrashuvda nima yuz beradi?", "o": ["Dono murabbiy qahramonga sehrli qurol yoki bilim beradi", "Qahramon bosh dushmanni yengadi", "Qahramon uyiga qaytadi", "Qahramon o'yinni tark etadi"], "a": 0, "e": "Bu 12 bosqichli universal formulaning qadamlaridan biri."}, {"q": "Photoshop interfeysida tanlangan uskunaning joriy sozlamalarini qayerdan topish mumkin?", "o": ["Chapdagi Tools Panel dan", "Tepadagi Options Bar dan", "O'ngdagi Layers panelidan", "Faqat File menyusidan"], "a": 1, "e": "Options Bar tanlangan uskunaning joriy sozlamalarini ko'rsatadi."}, {"q": "Tools Panel odatda qayerda joylashadi va nimalarni o'z ichiga oladi?", "o": ["O'ngda; faqat qatlamlarni", "Tepada; faqat sozlamalarni", "Chapda; Move, Brush, Eraser, Pen kabi asboblarni", "Pastda; faqat filtrlarni"], "a": 2, "e": "Markazda esa Canvas (xolst) joylashadi."}, {"q": "Tilemap nima?", "o": ["Bitta personaj tasviri", "Rang palitrasi", "Parallaks qatlami", "Tayllardan tuzilgan butun o'yin bosqichi yoki darajasi xaritasi"], "a": 3, "e": "Tayl — kichik blok, Tilemap — ulardan yig'ilgan xarita."}, {"q": "Kompyuter o'yini foni uchun yangi fayl ochishda qaysi sozlamalar tavsiya etiladi?", "o": ["1920x1080 px, 72 DPI, RGB Color", "500x500 px, 600 DPI, CMYK", "100x100 px, 300 DPI, CMYK", "A4 o'lcham, CMYK"], "a": 0, "e": "O'yin ekran uchun mo'ljallanganligi sababli RGB ishlatiladi."}, {"q": "Osmon qatlami eng tepaga ko'tarilsa ekranda nima yuz beradi?", "o": ["Osmon eng orqaga o'tadi", "Osmon qolgan qatlamlarni to'sib qo'yadi", "Hamma qatlam shaffof bo'ladi", "Hech narsa o'zgarmaydi"], "a": 1, "e": "Ustki qatlamlar pastki qatlamlar ustiga chiziladi."}, {"q": "Kvadratni mukammal teng tomonli qilib tanlash uchun qaysi tugma bosib turiladi?", "o": ["Alt", "Ctrl", "Shift", "Tab"], "a": 2, "e": "Shift tanlovni proporsional saqlaydi."}, {"q": "Tanlov chizig'i («Marching Ants») ni bekor qilish tugmalari qaysilar?", "o": ["Ctrl + J", "Ctrl + Shift + I", "Ctrl + E", "Ctrl + D"], "a": 3, "e": "Ctrl + D — Deselect."}, {"q": "Pen Tool nima uchun Brush dan afzal, masalan, qalqonning silliq qirralari uchun?", "o": ["Bezye egri chiziqlari bilan silliq vektor kontur beradi", "Rangni tezroq to'ldiradi", "Faqat to'g'ri chiziq chizadi", "Shaffoflikni o'zgartiradi"], "a": 0, "e": "Tayanch nuqtalar va tutqichlar yordamida silliq kontur hosil bo'ladi."}, {"q": "Gradient Tool qaysi tugma bilan faollashadi va nima qiladi?", "o": ["B; mo'yqalam bilan chizadi", "G; ranglarning mayin o'tishini hosil qiladi", "P; vektor kontur chizadi", "M; to'rtburchak tanlaydi"], "a": 1, "e": "Gradient Linear yoki Radial bo'lishi mumkin."}, {"q": "Overlay rejimi nima uchun ishlatiladi?", "o": ["Faqat qoraytirish uchun", "Faqat yoritish uchun", "Kontrast va rang to'yinganligini oshirish uchun", "Qatlamni o'chirish uchun"], "a": 2, "e": "Multiply qoraytiradi, Screen yoritadi, Overlay kontrastni oshiradi."}, {"q": "Magic Wand ning Tolerance qiymati 10 dan 50 ga oshirilsa nima bo'ladi?", "o": ["Kamroq rang tanlanadi", "Tanlov butunlay o'chadi", "Faqat qora rang tanlanadi", "Ko'proq o'xshash rang tuslari tanlanadi"], "a": 3, "e": "Tolerance oshgani sari qamrov kengayadi."}, {"q": "Qahramon sprayti fondan ajratilib, shaffof fonli fayl sifatida saqlanishi kerak. Qaysi ketma-ketlik to'g'ri?", "o": ["Fonni tanlash, Invert, Ctrl+J, PNG sifatida eksport", "Fonni tanlash, JPEG saqlash", "Eraser bilan o'chirish, JPEG saqlash", "Ctrl+E, so'ng JPEG saqlash"], "a": 0, "e": "PNG shaffoflikni saqlaydi, JPEG esa yo'q."}, {"q": "Sprite yer ustida turibdi, uning soyasi tekstura ustida tabiiy ko'rinishi kerak. Soya qatlami uchun nima mos?", "o": ["Eraser bilan o'chirilgan qatlam", "Alohida qatlam va Multiply rejimi", "Screen rejimi", "Qatlamni JPEG ga aylantirish"], "a": 1, "e": "Multiply tekstura ustiga qorong'ulik qo'shadi, uni yopib qo'ymaydi."}, {"q": "Silliq, har qanday o'lchamda sifati saqlanadigan o'yin logotipi uchun qaysi juftlik to'g'ri?", "o": ["Rastr JPEG", "Kichik PNG", "Pen Tool bilan chizilgan vektor (SVG/AI)", "Qora-oq PSD"], "a": 2, "e": "Vektor grafika kattalashtirilganda ham 100% sifatli."}, {"q": "32x32 pikselli tayllardan o'yin darajasini terishning foydasi qaysi?", "o": ["Rasmlar rangsiz bo'ladi", "Fayl hajmi oshadi", "Parallaks yo'qoladi", "Xotira tejaladi va darajani tez tahrirlash mumkin"], "a": 3, "e": "Takrorlanuvchi bloklar bitta ulkan rasmdan yengilroq."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

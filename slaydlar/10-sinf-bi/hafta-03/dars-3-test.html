@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "SQL qanday til hisoblanadi?", "o": ["Deklarativ: qanday natija kerakligini aytamiz", "Faqat buyruqlar ketma-ketligini qadamma-qadam yozuvchi til", "Faqat vizual til", "Faqat kompilyatsiya qilinadigan til"], "a": 0, "e": "SQL da \"qanday qidirish\" emas, \"aynan qanday natija kerak\" aytiladi."}, {"q": "SQL so'rovining mantiqiy bajarilish tartibi qaysi?", "o": ["SELECT, FROM, WHERE, LIMIT", "FROM, WHERE, SELECT, ORDER BY, LIMIT", "WHERE, FROM, ORDER BY, SELECT", "LIMIT, SELECT, FROM, WHERE"], "a": 1, "e": "Avval jadval topiladi, satrlar filtrlanadi, ustunlar olinadi, saralanadi va kesiladi."}, {"q": "<code>BETWEEN 10 AND 20<\/code> chegaralarni qanday hisoblaydi?", "o": ["Ikkalasi ham kirmaydi", "Faqat 10 kiradi", "10 va 20 ham kiradi", "Faqat 20 kiradi"], "a": 2, "e": "<code>BETWEEN<\/code> <code>&gt;= 10 AND &lt;= 20<\/code> ga teng."}, {"q": "<code>LIKE 'Toshkent%'<\/code> qanday qiymatlarni topadi?", "o": ["\"Toshkent\" bilan tugaydiganlarni", "Aniq 8 belgili matnlarni", "Faqat \"Toshkent\" so'zini", "\"Toshkent\" bilan boshlanuvchi matnlarni"], "a": 3, "e": "<code>%<\/code> ixtiyoriy sondagi belgilarni bildiradi."}, {"q": "<code>_<\/code> belgisi <code>LIKE<\/code> da nimani bildiradi?", "o": ["Aniq bitta belgini", "Ixtiyoriy sondagi belgilarni", "Bo'sh joyni", "Raqamni emas"], "a": 0, "e": "Masalan, <code>sinf_nomi LIKE '1_-A'<\/code> aynan bitta belgi bilan mos keladi."}, {"q": "Bo'sh qiymatlarni topish uchun qaysi yozuv to'g'ri?", "o": ["<code>WHERE markaz = NULL<\/code>", "<code>WHERE markaz IS NULL<\/code>", "<code>WHERE markaz == ''<\/code>", "<code>WHERE markaz = 0<\/code>"], "a": 1, "e": "<code>= NULL<\/code> ishlamaydi, <code>IS NULL<\/code> ishlatiladi."}, {"q": "<code>ORDER BY yil DESC, oquvchilar_soni DESC<\/code> nimani beradi?", "o": ["Avval o'quvchilar soni, keyin yil o'sish bo'yicha", "Faqat yil bo'yicha o'sish", "Avval yil kamayish bo'yicha, keyin o'quvchilar soni kamayish bo'yicha", "Tasodifiy tartib"], "a": 2, "e": "Ko'p ustunli saralash chapdan o'ngga qo'llanadi."}, {"q": "<code>LIMIT 5 OFFSET 10<\/code> nimani qaytaradi?", "o": ["Faqat 10-5 ta satrni", "Birinchi 10 ta satrdan 5 tasini", "Oxirgi 15 ta satrni", "Dastlabki 10 ta satrni tashlab, 11-qatordan boshlab 5 tasini"], "a": 3, "e": "OFFSET K dastlabki K ta yozuvni o'tkazib yuboradi."}, {"q": "Sahifada 10 tadan yozuv. 3-sahifa uchun qaysi to'g'ri?", "o": ["<code>LIMIT 10 OFFSET 20<\/code>", "<code>LIMIT 10 OFFSET 30<\/code>", "<code>LIMIT 20 OFFSET 10<\/code>", "<code>LIMIT 3 OFFSET 10<\/code>"], "a": 0, "e": "1-sahifa OFFSET 0, 2-sahifa OFFSET 10, 3-sahifa OFFSET 20."}, {"q": "2024-yildagi eng ko'p o'quvchili TOP-5 hududni olish uchun qaysi tartib to'g'ri?", "o": ["<code>LIMIT 5 ORDER BY k.oquvchilar_soni DESC WHERE k.yil = 2024<\/code>", "<code>WHERE k.yil = 2024 ORDER BY k.oquvchilar_soni DESC LIMIT 5<\/code>", "<code>ORDER BY k.oquvchilar_soni ASC LIMIT 5<\/code>", "<code>WHERE k.oquvchilar_soni DESC LIMIT 2024<\/code>"], "a": 1, "e": "Avval filtr, keyin kamayish bo'yicha saralash, oxirida LIMIT."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

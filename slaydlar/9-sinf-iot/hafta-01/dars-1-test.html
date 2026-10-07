@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Buyumlar Interneti (IoT) ta'rifiga qaysi javob to'g'ri keladi?", "o": ["Internetga ulangan, sensorlar orqali atrofni sezuvchi va inson aralashuvisiz ma'lumot almashuvchi aqlli qurilmalar tizimi", "Faqat smartfon va kompyuterlarni o'zaro ulovchi tarmoq", "Odamlar o'rtasida xabar almashish uchun ijtimoiy tarmoq", "Faqat simli aloqa orqali ishlovchi sanoat kabellari tizimi"], "a": 0, "e": "IoT da qurilmalar sensorlar bilan sezadi, o'zaro ma'lumot almashadi va avtomatik qaror qabul qiladi."}, {"q": "«Internet of Things» atamasi birinchi marta qaysi texnologiya taqdimotida qo'llangan?", "o": ["Bluetooth", "RFID (radiochastotali identifikatsiya)", "GPS navigatsiya", "Optik tolali aloqa"], "a": 1, "e": "Atamani 1999 yilda Kevin Eshton RFID texnologiyalari taqdimotida ishlatgan."}, {"q": "M2M qisqartmasi nimani bildiradi?", "o": ["Man to Machine, ya'ni odam bilan mashina", "Memory to Memory, ya'ni xotiralar almashuvi", "Machine to Machine, ya'ni mashina bilan mashina muloqoti", "Mobile to Mobile, ya'ni telefonlar o'rtasidagi qo'ng'iroq"], "a": 2, "e": "IoT ning asosiy muloqot turi mashinalar o'rtasidagi M2M aloqadir."}, {"q": "IoT qurilmasining 3 ta asosiy bo'g'ini qaysi qatorda to'g'ri berilgan?", "o": ["Yozish, O'chirish, Saqlash", "Kirish, Chiqish, Nusxalash", "Sezish, Hisoblash, Chop etish", "Sezish, Ulanish, Bajarish"], "a": 3, "e": "Sezish (sensor), Ulanish (tarmoq/bulut) va Bajarish (aktuator) — IoT ning uch bo'g'ini."}, {"q": "Quyidagilardan qaysi biri aktuator vazifasini bajaradi?", "o": ["Chiroqni yoqib-o'chiruvchi rele", "Harorat o'lchovchi datchik", "Gaz sezuvchi sensor", "Harakatni aniqlovchi PIR datchigi"], "a": 0, "e": "Aktuator buyruqni jismoniy harakatga aylantiradi, sensor esa faqat o'lchaydi."}, {"q": "Predictive Maintenance (oldindan ta'mirlash) nimani anglatadi?", "o": ["Qurilma buzilgandan keyin uni tezda almashtirish", "Sensorlar yordamida avariyadan bir necha kun oldin nosozlikni aniqlash", "Qurilmani har kuni majburan o'chirib qo'yish", "Ta'mirchilarni masofadan o'qitish"], "a": 1, "e": "Sanoat IoT (IIoT) da tebranish va qizishni kuzatib, nosozlik oldindan aniqlanadi."}, {"q": "IoMT qisqartmasi qaysi sohaga tegishli?", "o": ["Qishloq xo'jaligi", "Aqlli uy", "Tibbiyot (Medical Things)", "Transport va logistika"], "a": 2, "e": "IoMT — tibbiyot IoT si: smart soat, masofaviy EKG, glyukoza datchiklari."}, {"q": "An'anaviy internetda ma'lumot manbai odamlar bo'lsa, IoT da asosiy manba nima?", "o": ["Klaviaturada yozilgan matnlar", "Foydalanuvchi yuklagan videolar", "Ijtimoiy tarmoq izohlari", "Sensorlar o'lchagan fizik kattaliklar (harorat, bosim, gaz)"], "a": 3, "e": "IoT qurilmalari fizik kattaliklarni o'lchab, ma'lumotni o'zlari hosil qiladi."}, {"q": "Uyda gaz sizib chiqdi. To'g'ri ishlaydigan aqlli tizim nima qiladi?", "o": ["Gazni avtomatik to'xtatadi va egasining telefoniga xabar yuboradi", "Faqat o'z xotirasiga yozib qo'yadi", "Egasi uyga qaytishini kutadi", "Xonadagi chiroqlarni o'chiradi, xolos"], "a": 0, "e": "IoT inson aralashuvisiz avtomatik harakat qiladi va egasini ogohlantiradi."}, {"q": "Aqlli sug'orish tizimida tuproq namligi past bo'lsa nima sodir bo'ladi?", "o": ["Fermer qo'lda jo'mrakni ochishi shart", "Nasos o'zi ishga tushadi, yomg'ir yog'sa o'chadi", "Sensor o'zi suv purkaydi", "Tizim faqat hisobot yuboradi, nasosga tegmaydi"], "a": 1, "e": "Sensor namlikni o'lchaydi, aktuator (nasos) esa qoidaga ko'ra avtomatik ishlaydi; suv sarfi 50% gacha tejaladi."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

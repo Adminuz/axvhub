@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Qaysi mutaxassis tayyor ma'lumotlardan dashboard va trend grafiklar chizadi?", "o": ["Data Analyst / BI Developer", "Data Engineer", "Faqat Data Scientist", "Tizim administratori"], "a": 0, "e": "Analyst toza ma'lumotni olib, vizual hisobotlar tayyorlaydi."}, {"q": "Quyidagilardan qaysi biri Knowledge (bilim) ga misol?", "o": ["<code>38.5, 41.2, 36.6<\/code>", "Oxirgi 3 kunda yuqori haroratli o'quvchilar 15% ga oshgani, bu gripp tarqalayotganini bildiradi", "Barcha o'quvchilarning o'rtacha harorati 36.6", "Binoni dezinfeksiya qilish haqida buyruq"], "a": 1, "e": "Bilim - axborotdagi qonuniyatni topib, sababni tushunish."}, {"q": "Data Pipeline ta'rifi qaysi qatorda to'g'ri berilgan?", "o": ["Faqat ma'lumotlar bazasi nomi", "Bitta Excel jadvali", "Ma'lumotni manbadan iste'molchiga yetkazuvchi avtomatlashtirilgan jarayonlar ketma-ketligi", "Grafik chizish dasturi"], "a": 2, "e": "Pipeline - Source dan Destination gacha avtomat oqim."}, {"q": "YouTube'da xom loglar va qayta ishlangan statistika odatda qayerda saqlanadi?", "o": ["Hammasi bitta CSV faylda", "Faqat foydalanuvchi telefonida", "Faqat dashboardning o'zida", "Xom loglar Data Lake'da, statistikalar analitik omborda (BigQuery/DWH)"], "a": 3, "e": "Storage bosqichida xom va qayta ishlangan ma'lumot alohida joylarda saqlanadi."}, {"q": "Netflix keysida «15-daqiqada tashlab ketdi, demak janr yoqmadi» degan xulosani kim chiqaradi?", "o": ["Data Scientist", "Data Engineer, pipeline yozish orqali", "Foydalanuvchining o'zi", "Apache Kafka o'zi"], "a": 0, "e": "Data Scientist tozalangan ma'lumotdan xulosa chiqaradi, Engineer esa ma'lumotni yetkazadi."}, {"q": "Uzum Market keysida yetkazib berish narxi qimmatligi sababli xarid to'xtatilgani aniqlandi. Bu DIKW da nima?", "o": ["Data", "Knowledge", "Information", "Wisdom"], "a": 1, "e": "Sabab-oqibat qonuniyati topilgan - bu bilim; qaror (bepul yetkazish) esa Wisdom."}, {"q": "Serving qatlamiga qaysi amal tegishli?", "o": ["Hududlardan CSV yuklash", "Xom fayllarni raw'da saqlash", "Direktor uchun Power BI'da grafik ko'rsatish", "ETL vaqtini log qilish"], "a": 2, "e": "Serving - tayyor ma'lumotni foydalanuvchilarga taqdim etish."}, {"q": "Pipeline boshlanishi va tugashi vaqtini log faylga yozish qaysi qatlamga tegishli?", "o": ["Source layer", "Ingestion layer", "Storage layer", "Governance &amp; Observability"], "a": 3, "e": "Monitoring, logging va nazorat 6-qatlamning vazifasi."}, {"q": "Hayot siklining qaysi bosqichi eski ma'lumotni arzon omborga ko'chirish yoki xavfsiz o'chirishni boshqaradi?", "o": ["Archive / Retention", "Monitor / Log", "Validate / Clean", "Collect / Ingest"], "a": 0, "e": "Archive/Retention uzoq muddatli saqlash yoki o'chirish siyosatini belgilaydi."}, {"q": "Tug'ilgan yil <code>2085<\/code> deb kiritilgan. Bu qaysi mezonga zid?", "o": ["Consistency", "Accuracy", "Timeliness", "Completeness"], "a": 1, "e": "Kelajakdagi sana haqiqatga mos emas."}, {"q": "50 ta o'qituvchining fan ustuni bo'sh qolgan. Bu qaysi mezon muammosi?", "o": ["Accuracy", "Consistency", "Completeness", "Timeliness"], "a": 2, "e": "Muhim ustunda bo'sh (null) qiymatlar to'liqlikni buzadi."}, {"q": "Nega xom ma'lumotni tozalab, asl nusxasini o'chirib yuborish xato?", "o": ["Raw zone diskda joy tejaydi", "Pandas xom fayllarsiz ishlamaydi", "Dashboard faqat xom fayldan o'qiydi", "Tozalashda xato chiqsa, ma'lumotni qayta tiklab bo'lmaydi"], "a": 3, "e": "Raw zone - asl haqiqat manbai, qayta ishlash uchun ishonchli nusxa."}, {"q": "Qaysi papka Python skriptlari (<code>extract.py<\/code>, <code>clean.py<\/code>) uchun ajratilgan?", "o": ["<code>src/<\/code>", "<code>data/raw/<\/code>", "<code>logs/<\/code>", "<code>data/gold/<\/code>"], "a": 0, "e": "Medallion loyiha strukturasida kod <code>src/<\/code> da, xatolar jurnali <code>logs/<\/code> da turadi."}, {"q": "CSV ning kamchiliklaridan qaysi biri matn ichida vergul kelganda yuzaga keladi?", "o": ["Schema evolution", "Ajratgich (delimiter) xatosi", "Projection pushdown", "Cheklovlar buzilishi"], "a": 1, "e": "<code>\"Qodirov, Ali\"<\/code> kabi matndagi vergul ustunlarni siljitishi mumkin."}, {"q": "Qaysi format Power BI va SQL uchun to'g'ridan-to'g'ri mos (tekislash shart emas)?", "o": ["Nested JSON", "Barcha JSON turlari", "CSV", "Hech qaysi format"], "a": 2, "e": "CSV satr-ustunli jadval, shuning uchun BI ga mos; nested JSON esa normalize talab qiladi."}, {"q": "<code>df.shape<\/code> natijasi nimani bildiradi?", "o": ["Ustunlar turlari", "Bo'sh kataklar soni", "Fayl hajmi baytlarda", "(qatorlar soni, ustunlar soni)"], "a": 3, "e": "Birlamchi profiling: <code>shape<\/code> jadval o'lchamini beradi."}, {"q": "<code>data/bronze<\/code> papkasi nima uchun ishlatiladi?", "o": ["Minimal tekshirilgan va qabul qilingan nusxalar uchun", "Yakuniy KPI jadvallari uchun", "Python skriptlari uchun", "Xatolar jurnali uchun"], "a": 0, "e": "Bronze - raw dan keyingi, minimal tekshirilgan zona."}, {"q": "Medallion zonalarining to'g'ri tartibi (xomdan tayyorgacha) qaysi?", "o": ["gold, silver, bronze, raw", "raw, bronze, silver, gold", "raw, gold, silver, bronze", "bronze, raw, gold, silver"], "a": 1, "e": "Ma'lumot tozalanish darajasi oshgani sayin raw dan gold ga o'tadi, bu pipeline ning Transform/Store mantiqiga mos."}, {"q": "CSV da ma'lumot turlari saqlanmagani uchun satr ko'rinishida kelgan sonlar bilan qaysi bosqichda nima qilinadi?", "o": ["Serve bosqichida dashboardni qayta chizish bilan", "Raw faylni o'chirish bilan", "Transform/Clean bosqichida turi <code>int()<\/code> yoki <code>to_numeric<\/code> bilan to'g'rilanadi", "Serverni qayta ishga tushirish bilan"], "a": 2, "e": "CSV schema saqlamaydi, shuning uchun turlar tozalash (Transform) bosqichida to'g'rilanadi."}, {"q": "Kunlik CSV yuklanishidan dashboardgacha bo'lgan yo'lni 1-3 darslar bo'yicha qaysi qator to'g'ri ifodalaydi?", "o": ["Dashboard, raw, Source, silver", "Gold, Source, raw, validate", "Serve, Collect, Store, Archive", "Source/Ingest, raw saqlash, validate/clean (silver), serve (gold, dashboard)"], "a": 3, "e": "Hayot sikli va Medallion zonalari birga: yig'ish, xom saqlash, tozalash, taqdim etish."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

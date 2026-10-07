@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Videoni boshqarish tugmalarini (play, pauza, ovoz) ko'rsatish uchun qaysi atribut kerak?", "o": ["<code>controls<\/code>", "<code>poster<\/code>", "<code>loop<\/code>", "<code>muted<\/code>"], "a": 0, "e": "<code>controls<\/code>siz video oddiy rasmdek qotib turadi."}, {"q": "<code>poster<\/code> atributi nimani beradi?", "o": ["Video tovushini", "Video qo'yilmasdan oldin ko'rinadigan muqova rasmi", "Video uzunligini", "Video manzilini"], "a": 1, "e": "<code>poster<\/code> — muqova rasm."}, {"q": "Video tugagach qayta boshdan aylanishi uchun qaysi atribut?", "o": ["<code>autoplay<\/code>", "<code>controls<\/code>", "<code>loop<\/code>", "<code>poster<\/code>"], "a": 2, "e": "<code>loop<\/code> videoni tugagach yana boshlaydi."}, {"q": "Zamonaviy brauzerlar ovozli videoning avtomatik ijrosini bloklaydi. <code>autoplay<\/code> bilan odatda nima birga yoziladi?", "o": ["<code>poster<\/code>", "<code>reversed<\/code>", "<code>open<\/code>", "<code>muted<\/code>"], "a": 3, "e": "<code>autoplay muted<\/code> ovozsiz avtomatik boshlanadi."}, {"q": "Bosganda ochilib-yopiladigan blokni JavaScriptsiz yaratish uchun qaysi teglar?", "o": ["<code>&lt;details&gt;<\/code> va <code>&lt;summary&gt;<\/code>", "<code>&lt;dialog&gt;<\/code> va <code>&lt;title&gt;<\/code>", "<code>&lt;progress&gt;<\/code> va <code>&lt;meter&gt;<\/code>", "<code>&lt;figure&gt;<\/code> va <code>&lt;figcaption&gt;<\/code>"], "a": 0, "e": "<code>summary<\/code> — ko'rinib turadigan sarlavha, qolgani bosilganda ochiladi."}, {"q": "Sahifa ochilishi bilan <code>&lt;details&gt;<\/code> ochiq turishi uchun nima yoziladi?", "o": ["<code>&lt;details show&gt;<\/code>", "<code>&lt;details open&gt;<\/code>", "<code>&lt;details visible&gt;<\/code>", "<code>&lt;details loop&gt;<\/code>"], "a": 1, "e": "<code>open<\/code> — mantiqiy atribut."}, {"q": "Vazifaning 70% bajarilganini ko'rsatadigan indikator uchun qaysi teg?", "o": ["<code>&lt;meter hidden&gt;<\/code>", "<code>&lt;audio value=\"70\"&gt;<\/code>", "<code>&lt;progress value=\"70\" max=\"100\"&gt;<\/code>", "<code>&lt;time value=\"70\"&gt;<\/code>"], "a": 2, "e": "<code>progress<\/code> jarayon qancha bajarilganini ko'rsatadi."}, {"q": "Disk bandligi yoki batareya quvvati kabi o'lchov ko'rsatkichi uchun qaysi teg mos?", "o": ["<code>&lt;progress&gt;<\/code>", "<code>&lt;mark&gt;<\/code>", "<code>&lt;time&gt;<\/code>", "<code>&lt;meter&gt;<\/code>"], "a": 3, "e": "<code>meter<\/code> ma'lum diapazondagi o'lchovni ifodalaydi (<code>min<\/code>, <code>max<\/code>, <code>low<\/code>, <code>high<\/code>, <code>optimum<\/code>)."}, {"q": "<code>&lt;time datetime=\"2026-10-04T14:00\"&gt;4-oktyabr, soat 14:00&lt;/time&gt;<\/code> da <code>datetime<\/code> nima uchun?", "o": ["Sanani qidiruv robotlari va taqvimlar tushunadigan xalqaro formatda berish", "Sanani yashirish", "Soatni to'xtatish", "Matnni qalin qilish"], "a": 0, "e": "Odam uchun oddiy matn, robotlar uchun esa xalqaro format."}, {"q": "Audio brauzerda qo'llab-quvvatlanmasa nima bo'ladi?", "o": ["Sahifa o'chadi", "<code>&lt;audio&gt;<\/code> ichidagi zaxira matn ko'rinadi", "Brauzer yangi audio yaratadi", "<code>&lt;source&gt;<\/code> o'zi tuzatadi"], "a": 1, "e": "Ichiga yozilgan «Brauzeringiz audioni qo'llab-quvvatlamaydi» kabi matn ko'rsatiladi."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Tranzitiv bog'liqliklar bilan ishlashning asosiy qulayligi nima?", "o": ["Har bir yordamchi modulni alohida qidirib ulash shart emas", "Hech qachon ziddiyat chiqmaydi", "APK hajmi doim kichik bo'ladi", "Internet kerak emas"], "a": 0, "e": "Ammo loyiha kattalashganda turli versiyalar ziddiyatga olib keladi."}, {"q": "Daraxtni <code>releaseRuntimeClasspath<\/code> bo'yicha ko'rish buyrug'ida nima ko'rsatiladi?", "o": ["Faqat test kutubxonalar", "Release ilova ishlaganda ulanadigan kutubxonalar zanjiri", "Git tarixi", "Manifest"], "a": 1, "e": "<code>--configuration releaseRuntimeClasspath<\/code> parametri tahlil qilinadigan konfiguratsiyani tanlaydi."}, {"q": "<code>failOnVersionConflict()<\/code> nima qiladi?", "o": ["Eng yuqori versiyani tanlaydi", "Konfliktni yashiradi", "Ziddiyat bo'lsa, loyihani yig'ishni to'xtatadi", "Kutubxonani o'chiradi"], "a": 2, "e": "Ziddiyatni e'tibordan chetda qoldirmaslik uchun ishlatiladi."}, {"q": "BOM bilan Firebase modullarini ulaganda <code>firebase-auth<\/code> qatorida nima yozilmaydi?", "o": ["Group ID", "Artifact ID", "<code>implementation<\/code> so'zi", "Versiya raqami"], "a": 3, "e": "Versiyani BOM o'zi mos holda tanlaydi."}, {"q": "Retrofit → OkHttp → Okio zanjirida Okio qanday kutubxona hisoblanadi?", "o": ["Tranzitiv bog'liqlik", "To'g'ridan-to'g'ri ulangan", "Test kutubxonasi", "Plagin"], "a": 0, "e": "Dasturchi uni yozmagan, u zanjir orqali kelgan."}, {"q": "Qaysi yozuv noto'g'ri amaliyot?", "o": ["<code>force<\/code> bilan bitta versiyani belgilash", "Bir kutubxonaning <code>okhttp:3.12.0<\/code> va <code>okhttp:4.12.0<\/code> versiyalarini qo'lda birga kiritish", "BOM ishlatish", "<code>exclude<\/code> dan keyin sinab ko'rish"], "a": 1, "e": "Bu tushunmovchilik va ziddiyatga olib keladi."}, {"q": "R8 Tree Shaking tahlilini qaysi nuqtadan boshlaydi?", "o": ["<code>settings.gradle<\/code> dan", "Eng katta fayldan", "Ilovaning kirish nuqtasidan, odatda <code>MainActivity<\/code>", "Resurs papkasidan"], "a": 2, "e": "U yerdan chaqirilmagan hamma narsa ortiqcha hisoblanadi."}, {"q": "JADX yoki APKTool nima uchun xavfli?", "o": ["Ular ilovani sekinlashtiradi", "Gradle ni buzadi", "Kutubxonalarni o'chiradi", "Himoyalanmagan APK dan Kotlin/Java kodini dekompilyatsiya qilish mumkin"], "a": 3, "e": "Obfuscation shu xavfni kamaytiradi."}, {"q": "Release uchun to'g'ri <code>buildTypes<\/code> sozlamasi qaysi?", "o": ["<code>minifyEnabled true<\/code>, <code>shrinkResources true<\/code> va <code>proguardFiles ...<\/code>", "Faqat <code>debuggable true<\/code>", "<code>minifyEnabled false<\/code>, <code>shrinkResources true<\/code>", "Faqat <code>applicationIdSuffix<\/code>"], "a": 0, "e": "<code>shrinkResources<\/code> ishlashi uchun <code>minifyEnabled<\/code> ham yoqiladi."}, {"q": "Ishlatilmagan rasm resurs shrinking'da nima bo'ladi?", "o": ["Kattalashtiriladi", "APK dan olib tashlanadi yoki 1 baytli bo'sh fayl bilan almashtiriladi", "Debug'ga ko'chiriladi", "Nomi <code>a<\/code> ga o'zgaradi"], "a": 1, "e": "Bu paket hajmini kamaytiradi."}, {"q": "Inline qilish nimani anglatadi?", "o": ["Funksiyani o'chirish", "Funksiya nomini o'zgartirish", "Funksiya chaqiruvini uning tanasi bilan almashtirish", "Funksiyani Java'ga o'tkazish"], "a": 2, "e": "Bu Optimization bosqichidagi usullardan biri."}, {"q": "<code>@SerializedName<\/code> bilan belgilangan maydonlarni obfuskatsiyadan qaysi qoida asraydi?", "o": ["<code>-dontwarn<\/code>", "<code>-keepattributes<\/code>", "<code>-assume<\/code>", "<code>-keepclassmembers<\/code>"], "a": 3, "e": "U klass nomini chalkashtirishga ruxsat beradi, lekin maydonlarni saqlaydi."}, {"q": "Retrace vositasi nimani qiladi?", "o": ["<code>mapping.txt<\/code> yordamida chalkash stacktrace'ni asl nomlarga qaytaradi", "Kodni chalkashtiradi", "APK imzolaydi", "Kutubxona yuklaydi"], "a": 0, "e": "Firebase Crashlytics va Google Play Console ham shu faylni qabul qiladi."}, {"q": "Stacktrace'da <code>c.a.b.d.a()<\/code> ko'rinsa, bu nimani bildiradi?", "o": ["Kutubxona versiyasi", "R8 chalkashtirgan klass va metod nomi, aniqlash uchun <code>mapping.txt<\/code> kerak", "Fayl yo'li", "Server manzili"], "a": 1, "e": "Mapping lug'ati <code>AuthService -&gt; c.a.b.d<\/code> kabi moslikni saqlaydi."}, {"q": "<code>tools:shrinkMode=\"strict\"<\/code> qayerda yoziladi?", "o": ["<code>settings.gradle<\/code> da", "<code>gradle.properties<\/code> da", "<code>res/raw/keep.xml<\/code> ichida", "<code>AndroidManifest.xml<\/code> da <code>&lt;activity&gt;<\/code> ichida"], "a": 2, "e": "Bu fayl resurslarni shrinking'dan saqlash qoidalarini beradi."}, {"q": "Qaysi holatda <code>@Keep<\/code> ni afzal ko'rasiz?", "o": ["Faqat tashqi kutubxonani saqlash kerak bo'lganda", "Hech qachon", "Faqat rasmlar uchun", "Bir nechta data class'lar va ularning nomi/paketi tez-tez o'zgarganda"], "a": 3, "e": "Qoida klass bilan birga yuradi, to'liq paket yo'lini yozish shart emas."}, {"q": "<code>exclude<\/code> yoki <code>force<\/code> bilan versiya tuzatildi, so'ng Release'da R8 yoqildi. Nega Release'ni alohida sinash kerak?", "o": ["R8 reflection ishlatuvchi kutubxonalarda faqat Release'da xato berishi mumkin", "Debug umuman ishlamaydi", "R8 versiyani o'zgartiradi", "Gradle Sync buziladi"], "a": 0, "e": "Dependency ziddiyati (4-dars) va R8 qoidalari (5-6 darslar) Release'da birga namoyon bo'ladi."}, {"q": "Retrofit va Gson ulangan loyihada Release crash berdi. Birinchi navbatda nima tekshiriladi?", "o": ["<code>minSdk<\/code> ni", "Model klasslarga <code>@Keep<\/code> yoki <code>-keep<\/code> qoidasi borligini", "Emulyator xotirasini", "Git tarmog'ini"], "a": 1, "e": "Gson refleksiya ishlatadi, R8 esa maydon nomlarini o'zgartirishi mumkin."}, {"q": "Qaysi birikma Release uchun to'g'ri ish tartibini beradi?", "o": ["<code>mapping.txt<\/code> o'chirish, R8 yoqish", "Faqat <code>force<\/code>", "Versiyalar ziddiyatini hal qilish, R8 yoqish, <code>mapping.txt<\/code> ni saqlash", "R8 ni Debug'da yoqish"], "a": 2, "e": "Barqaror dependency, siqilgan kod va crash'larni deobfuskatsiya qilish uchun mapping kerak."}, {"q": "<code>minifyEnabled true<\/code> yoqilgan Release da bog'liqliklar daraxtini nima uchun ko'rish foydali?", "o": ["Daraxt kodni chalkashtiradi", "Daraxt <code>mapping.txt<\/code> yaratadi", "Foydasi yo'q", "Qaysi kutubxonalar va versiyalar R8 tahliliga kirishini bilish uchun"], "a": 3, "e": "<code>releaseRuntimeClasspath<\/code> Release ilovaga kiradigan kutubxonalarni ko'rsatadi."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

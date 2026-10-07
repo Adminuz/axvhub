@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Sinxronlashda telefondagi rasm o'chirildi. Bulutda nima bo'ladi?", "o": ["U ham o'chadi", "Saqlanib qoladi", "Ikki nusxa bo'ladi", "Rasm kattalashadi"], "a": 0, "e": "Qutqaruv — Savat."}, {"q": "Dropbox'ning bepul hajmi?", "o": ["2 GB", "5 GB", "15 GB", "50 GB"], "a": 0, "e": "Drive 15, OneDrive 5."}, {"q": "Eng kam ruxsat qoidasi nima?", "o": ["Hammaga Muharrir berish", "Hech kimga ulashmaslik", "Faqat kerakli odamga, kerakli darajada ruxsat berish", "Faqat ochiq havola"], "a": 2, "e": "Ko'ruvchi yetarli bo'lsa — Muharrir emas."}, {"q": "Google Drive'da o'chirilgan fayl Savatda qancha turadi?", "o": ["1 kun", "1 yil", "30 kun", "Abadiy"], "a": 2, "e": "Keyin butunlay o'chadi."}, {"q": "Git va GitHub o'xshatishi?", "o": ["Kitob va qalam", "Fotoapparat va onlayn foto-albom", "Telefon va zaryadlovchi", "Stol va stul"], "a": 1, "e": "Git suratga oladi, GitHub saqlaydi va ko'rsatadi."}, {"q": "GitHub 2018-yildan qaysi kompaniyaga tegishli?", "o": ["Microsoft", "Google", "Apple", "Amazon"], "a": 0, "e": "Git esa ochiq dastur."}, {"q": "Public repository'ni kim ko'radi?", "o": ["Hamma", "Faqat egasi", "Faqat taklif qilinganlar", "Hech kim"], "a": 0, "e": "Private — faqat egasi va taklif qilinganlar."}, {"q": "GitHub'da yangi repository qayerdan yaratiladi?", "o": ["Settings → Delete", "Profile → Logout", "+ → New repository", "Commits → Revert"], "a": 2, "e": "Add a README file belgisini qo'yish mumkin."}, {"q": "Commit ID nima?", "o": ["Har commitning noyob kodi", "Foydalanuvchi paroli", "Fayl nomi", "Repo nomi"], "a": 0, "e": "Qisqa ko'rinishi — 7 belgi."}, {"q": "GitHub akkaunti uchun eng kichik yosh?", "o": ["8 yosh", "13 yosh", "18 yosh", "21 yosh"], "a": 1, "e": "Ota-ona ruxsati bilan."}, {"q": "Ochiq README'ga nimani yozmaslik kerak?", "o": ["Telefon raqami va uy manzilini", "Loyiha nomini", "Sevimli fanni", "Loyiha maqsadini"], "a": 0, "e": "Shaxsiy ma'lumot himoyasi."}, {"q": "Windows'da Git bilan birga o'rnatiladigan terminal?", "o": ["PowerPoint", "Git Bash", "Paint", "Notepad"], "a": 1, "e": "git-scm.com dan."}, {"q": "Qaysi terminal buyrug'i papka yaratadi?", "o": ["mkdir", "cd", "ls", "pwd"], "a": 0, "e": "cd — kirish, ls — ro'yxat, pwd — joy."}, {"q": "Barcha o'zgarishlarni staging'ga qo'shish?", "o": ["git add .", "git add all", "git commit .", "git push ."], "a": 0, "e": "Nuqta — joriy papkadagi hammasi."}, {"q": "«Changes to be committed» xabaridan keyin nima qilinadi?", "o": ["git init", "git add", "git commit -m \"xabar\"", "Hech narsa"], "a": 2, "e": "Fayllar staging'da tayyor."}, {"q": ".git papkasi o'chirilsa nima bo'ladi?", "o": ["Hech narsa", "Fayllar GitHub'ga yuklanadi", "Git yangilanadi", "Butun commit tarixi yo'qoladi"], "a": 3, "e": "Uni o'chirmang!"}, {"q": "-m siz git commit yozilsa?", "o": ["Commit o'chadi", "Kompyuter o'chadi", "Matn muharriri (Vim) ochiladi", "GitHub ochiladi"], "a": 2, "e": "Chiqish: Esc, :wq, Enter."}, {"q": "working tree clean nimani bildiradi?", "o": ["Papka bo'sh", "Barcha o'zgarishlar commit qilingan", "Git o'rnatilmagan", "Xato bor"], "a": 1, "e": "Saqlanmagan o'zgarish yo'q."}, {"q": "git log nima ko'rsatadi?", "o": ["Fayl ichidagi matnni", "Commitlar tarixini", "Internet holatini", "Parollarni"], "a": 1, "e": "--oneline — qisqa ko'rinish."}, {"q": "Versiya tarixi (Docs) va Git o'rtasidagi o'xshashlik?", "o": ["Ikkalasi ham rasm chizadi", "Ikkalasi ham faqat Excel uchun", "O'xshashlik yo'q", "Ikkalasi ham kim, qachon, nimani o'zgartirganini saqlaydi"], "a": 3, "e": "Git — dasturchilar uchun versiya tarixi."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

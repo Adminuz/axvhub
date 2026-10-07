@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Qurilmalar internetda bir-birini qanday topadi?", "o": ["IP manzil orqali", "Faqat rasm orqali", "CSS orqali", "<code>&lt;title&gt;<\/code> orqali"], "a": 0, "e": "Har bir qurilmaning raqamli IP manzili bor, xuddi uyning ko'cha va uy raqami kabi."}, {"q": "Taqqoslash: internet — yo'llar tarmog'i bo'lsa, ma'lumot nimaga o'xshaydi?", "o": ["Uylarga", "Yo'llarda yuradigan mashinalarga", "Yo'l belgilariga", "Haydovchi guvohnomasiga"], "a": 1, "e": "Qurilmalar — uylar, ma'lumot — yo'llarda yuradigan mashinalar."}, {"q": "Klient (mijoz) deb nimaga aytiladi?", "o": ["Sayt fayllarini saqlovchi kompyuter", "Domen sotuvchisi", "So'rov yuboruvchi qurilma, aniqrog'i brauzer", "Faqat telefon raqami"], "a": 2, "e": "Klient so'rov yuboradi, server esa javob beradi."}, {"q": "Domen ro'yxatdan o'tkazilmasa nima bo'ladi?", "o": ["U avtomatik bepul sizniki bo'ladi", "Hosting kerak bo'lmaydi", "DNS ishlamaydi, lekin domen sizniki", "U sizniki bo'lmaydi"], "a": 3, "e": "Domen pulga olinadi, yillik to'lanadi va ro'yxatdan o'tgandan keyingina sizniki bo'ladi."}, {"q": "Parol yoki karta raqami kiritiladigan joyda nima bo'lishi shart?", "o": ["HTTPS", "HTTP", "Faqat <code>www<\/code>", "Faqat <code>.com<\/code> domeni"], "a": 0, "e": "HTTPS ma'lumotni shifrlaydi, shu sababli maxfiy ma'lumot faqat shunday sahifalarda kiritiladi."}, {"q": "Restoran misolida zal, menyu va ofitsiant nimaga mos keladi?", "o": ["Back-end", "Front-end", "DNS", "Hosting"], "a": 1, "e": "Zal — ko'rinadigan qism (front-end), oshxona va ombor — back-end."}, {"q": "HTML, CSS va JavaScript ni inson tanasiga solishtirsak, HTML nima?", "o": ["Kiyim", "Harakat", "Suyaklar (tuzilma)", "Soch"], "a": 2, "e": "HTML — tuzilma, CSS — ko'rinish, JavaScript — harakat."}, {"q": "<code>&lt;!DOCTYPE html&gt;<\/code> nimani bildiradi?", "o": ["Yangi teg turi", "Sahifa sarlavhasi", "Dastur izohi", "Brauzerga: bu zamonaviy HTML5 hujjat"], "a": 3, "e": "U teg emas, e'lon; hujjatning eng boshiga yoziladi."}, {"q": "Brauzer yorlig'ida (tab) qaysi teg ichidagi matn chiqadi?", "o": ["<code>&lt;title&gt;<\/code>", "<code>&lt;h1&gt;<\/code>", "<code>&lt;body&gt;<\/code>", "<code>&lt;meta&gt;<\/code>"], "a": 0, "e": "<code>&lt;title&gt;<\/code> <code>&lt;head&gt;<\/code> ichida turadi va yorliqda ko'rinadi."}, {"q": "Telefonda sahifa to'g'ri masshtabda ko'rinishi uchun qaysi teg kerak?", "o": ["<code>&lt;meta charset=\"UTF-8\"&gt;<\/code>", "<code>&lt;meta name=\"viewport\" ...&gt;<\/code>", "<code>&lt;meta name=\"author\" ...&gt;<\/code>", "<code>&lt;link&gt;<\/code>"], "a": 1, "e": "<code>viewport<\/code> meta tegi qurilma kengligiga moslashni ta'minlaydi."}, {"q": "Qaysi ketma-ketlik sarlavhalar tartibiga mos?", "o": ["<code>h1<\/code> → <code>h4<\/code> → <code>h2<\/code>", "<code>h3<\/code> → <code>h1<\/code> → <code>h6<\/code>", "<code>h1<\/code> → <code>h2<\/code> → <code>h3<\/code>", "Faqat <code>h6<\/code> lar"], "a": 2, "e": "Tartibni buzmaslik kerak; sarlavha mazmun darajasini bildiradi."}, {"q": "<code>&lt;abbr title=\"Domain Name System\"&gt;DNS&lt;/abbr&gt;<\/code> da <code>title<\/code> nima qiladi?", "o": ["Sahifa sarlavhasini o'zgartiradi", "Havola yaratadi", "Matnni qalin qiladi", "Qisqartma ustiga kelinganda izoh chiqaradi"], "a": 3, "e": "<code>abbr<\/code> qisqartmani belgilaydi, <code>title<\/code> esa to'liq izohni beradi."}, {"q": "O'z saytingizdagi sahifaga havola uchun qaysi yo'l mos (nisbiy yo'l)?", "o": ["<code>&lt;a href=\"aloqa.html\"&gt;<\/code>", "<code>&lt;a href=\"mailto:aloqa\"&gt;<\/code>", "<code>&lt;a href=\"tel:aloqa\"&gt;<\/code>", "<code>&lt;a title=\"aloqa.html\"&gt;<\/code>"], "a": 0, "e": "Boshqa sayt uchun to'liq manzil, o'z saytingiz uchun nisbiy yo'l yoziladi."}, {"q": "<code>download<\/code> atributi havolada nima qiladi?", "o": ["Havolani yashiradi", "Havola fayl yuklab olishga undaydi", "Yangi tab ochadi", "Rangini o'zgartiradi"], "a": 1, "e": "<code>download<\/code> bosilganda fayl ochilmay, yuklab olinadi."}, {"q": "Nega <code>&lt;u&gt;<\/code> ni kamdan-kam ishlatish tavsiya etiladi?", "o": ["U xato beradi", "U faqat sarlavhalarda ishlaydi", "Havola bilan adashtiriladi (u ham tagiga chizilgan)", "U yopilmaydi"], "a": 2, "e": "<code>&lt;u&gt;<\/code> ma'no bermaydi va foydalanuvchi uni havola deb o'ylashi mumkin."}, {"q": "Ma'nosiz konteyner sifatida, keyinchalik CSS bilan bezash uchun qaysi teg ishlatiladi?", "o": ["<code>&lt;mark&gt;<\/code>", "<code>&lt;cite&gt;<\/code>", "<code>&lt;q&gt;<\/code>", "<code>&lt;span&gt;<\/code>"], "a": 3, "e": "<code>&lt;span&gt;<\/code> ma'no bermaydi, faqat qator ichidagi qismni ajratadi."}, {"q": "Foydalanuvchi sahifadagi tugmani bosganda parol tekshiriladi. Bu jarayon qaysi qismlar ishtirokida bo'ladi?", "o": ["Front-end (tugma, forma) va back-end (tekshirish)", "Faqat DNS", "Faqat <code>&lt;head&gt;<\/code>", "Faqat hosting kompaniyasi"], "a": 0, "e": "Tugma brauzerda ko'rinadi (front-end), tekshirish serverda (back-end) bajariladi."}, {"q": "Server brauzerga HTML fayl yubordi. Brauzer undagi <code>&lt;h1&gt;<\/code> va <code>&lt;p&gt;<\/code> ni qanday tushunadi?", "o": ["DNS orqali", "HTML teglari orqali: bu sarlavha, bu abzats", "IP manzil orqali", "Domen nomi orqali"], "a": 1, "e": "Brauzer HTML faylni o'qib, teglarga qarab sahifani chizadi."}, {"q": "Do'stingiz <code>mysite.uz<\/code> saytiga havola berdi. Havolani bosganingizda eng avval nima ishga tushadi?", "o": ["Brauzer <code>&lt;h1&gt;<\/code> ni qidiradi", "Server rasm chizadi", "Brauzer DNS dan <code>mysite.uz<\/code> ning IP sini so'raydi", "<code>&lt;meta&gt;<\/code> o'chiriladi"], "a": 2, "e": "Havola ham oddiy manzil kabi: avval DNS orqali IP topiladi."}, {"q": "Sayt yasayotgan o'quvchi <code>salom.html<\/code> faylini saqlab brauzerda ochdi. Bu fayl qaysi qismga kiradi?", "o": ["Back-end ma'lumotlar bazasi", "DNS yozuvi", "Hosting shartnomasi", "Front-end, brauzerda ko'rinadigan HTML hujjat"], "a": 3, "e": "HTML fayl brauzer ko'rsatadigan tuzilmani beradi, ya'ni front-end."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

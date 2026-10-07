@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "<code>git checkout -b feature-x<\/code> buyrug'i nimaga teng?", "o": ["<code>git switch -c feature-x<\/code>", "<code>git branch -d feature-x<\/code>", "<code>git switch main<\/code>", "<code>git merge feature-x<\/code>"], "a": 0, "e": "Ikkalasi ham branch yaratib, darhol unga o'tadi."}, {"q": "Merge konfliktini hal qilishning to'g'ri algoritmi qaysi?", "o": ["Faqat <code>git push<\/code> qilish", "Faylni tahrirlab belgilarni o'chirish, <code>git add<\/code>, <code>git commit<\/code>", "Belgilarni qoldirib <code>git commit<\/code> qilish", "Branchni <code>-D<\/code> bilan o'chirish"], "a": 1, "e": "Kerakli kod qoldiriladi, <code>&lt;&lt;&lt;<\/code>, <code>===<\/code>, <code>&gt;&gt;&gt;<\/code> belgilari olib tashlanadi."}, {"q": "Bog'langan masofaviy manzillarni ko'rish uchun qaysi buyruq?", "o": ["<code>git config --list<\/code>", "<code>git log --oneline<\/code>", "<code>git remote -v<\/code>", "<code>git status -r<\/code>"], "a": 2, "e": "Natijada <code>origin<\/code> uchun fetch va push manzillari chiqadi."}, {"q": "<code>git clone &lt;url&gt;<\/code> nima qiladi?", "o": ["Faqat oxirgi commitni o'chiradi", "Yangi branch yaratadi", "Konfliktni hal qiladi", "Masofaviy repozitoriyaning to'liq nusxasini kompyuterga ko'chiradi"], "a": 3, "e": "Clone tarixi bilan birga butun repozitoriyani yuklab oladi."}, {"q": "Branch yaratish nega bir necha millisekund vaqt oladi?", "o": ["Fayllar nusxalanmaydi, faqat yangi havola hosil bo'ladi", "Git faqat bo'sh branch yaratadi", "Branch GitHub da yaratiladi", "Barcha fayllar siqiladi"], "a": 0, "e": "Branch — taxminan 40 baytlik ko'rsatkich."}, {"q": "Nega yangi funksiyani bevosita <code>main<\/code> branchda yozish xavfli hisoblanadi?", "o": ["<code>main<\/code> da commit qilib bo'lmaydi", "<code>main<\/code> doimo barqaror va ishchi holatda bo'lishi shart", "Git <code>main<\/code> ni avtomatik o'chiradi", "<code>main<\/code> faqat GitHub da mavjud"], "a": 1, "e": "Tajribalar <code>feature branch<\/code> da qilinib, tekshirilgach <code>main<\/code> ga qo'shiladi."}, {"q": "Quyidagilardan qaysi biri OSI ning 5-qatlamiga (Session) tegishli vazifa?", "o": ["Marshrutlash va IP manzillash", "Signallarni kabel orqali uzatish", "Aloqa seansini ochish, ushlab turish va yopish", "Portlar va oqimni boshqarish"], "a": 2, "e": "5-qatlam ikki tizim orasidagi seans bilan ishlaydi."}, {"q": "Elektr, optik yoki radio signallar va kabellar OSI ning qaysi qatlamida?", "o": ["2-qatlam, Data Link", "3-qatlam, Network", "4-qatlam, Transport", "1-qatlam, Physical"], "a": 3, "e": "Physical qatlam bitlarni (0 va 1) jismoniy muhitda uzatadi."}, {"q": "IP (IPv4, IPv6) va ICMP protokollari TCP/IP ning qaysi qatlamiga kiradi?", "o": ["Internet qatlami (OSI ning 3-qatlami)", "Transport qatlami", "Application qatlami", "Network Access qatlami"], "a": 0, "e": "TCP va UDP Transport qatlamiga kiradi."}, {"q": "Qabul qiluvchi kompyuter har qatlamda sarlavhani yechib oladi. Bu jarayon nima deyiladi?", "o": ["Enkapsulyatsiya", "Dekapsulyatsiya", "Fragmentatsiya", "Kompilyatsiya"], "a": 1, "e": "Jo'natishda enkapsulyatsiya, qabul qilishda dekapsulyatsiya."}, {"q": "<code>172.16.0.0 – 172.31.255.255<\/code> diapazoni qaysi muhitda keng ishlatiladi?", "o": ["Faqat uy Wi-Fi tarmoqlarida", "Global Internetda ommaviy manzil sifatida", "Docker konteynerlarining standart tarmog'ida", "IPv6 ga o'tishda"], "a": 2, "e": "B sinf xususiy diapazoni o'rta kompaniyalarda va Docker da uchraydi."}, {"q": "Qism tarmoqda nega 2 ta manzil xostlarga berilmaydi?", "o": ["Biri DNS, ikkinchisi Gateway uchun", "Ular IPv6 uchun ajratilgan", "Ular har doim buzilgan bo'ladi", "Biri Network ID, ikkinchisi Broadcast uchun band"], "a": 3, "e": "Shuning uchun xostlar soni N = 2^H − 2."}, {"q": "<code>ping -c 4 8.8.8.8<\/code> dagi <code>-c 4<\/code> nima?", "o": ["Faqat 4 ta paket yuborish", "4 soniya kutish", "4 ta router orqali o'tish", "4 ta port tekshirish"], "a": 0, "e": "Aks holda <code>ping<\/code> Linuxda to'xtovsiz davom etadi."}, {"q": "<code>curl -v https://api.site.uz<\/code> qo'shimcha nimani ko'rsatadi?", "o": ["Faqat status kodini", "SSL qo'l siqishi (handshake) va to'liq muloqotni", "Server diskidagi fayllarni", "Marshrutdagi routerlarni"], "a": 1, "e": "<code>-v<\/code> (verbose) batafsil chiqish beradi, <code>-I<\/code> esa faqat sarlavhalarni."}, {"q": "Traceroute ostida har bir oraliq qadam (hop) nima?", "o": ["Server porti", "Ochiq xizmat", "Paket o'tgan router", "MAC manzil"], "a": 2, "e": "Uzilish qaysi routerda ekanini aynan hoplar ko'rsatadi."}, {"q": "Serverga ulanib bo'lmayapti. Xizmat shu serverda kerakli portni tinglayaptimi, buni qanday tekshirasiz?", "o": ["Serverda <code>git log<\/code>", "Serverda <code>chmod 755<\/code>", "Serverda <code>alias<\/code>", "Serverda <code>ss -tulpn<\/code>"], "a": 3, "e": "<code>ss -tulpn<\/code> TCP/UDP bo'yicha tinglanayotgan portlar va jarayonlarni ko'rsatadi."}, {"q": "<code>ss -tulpn<\/code> ustunidagi <code>tcp<\/code> yoki <code>udp<\/code> (Netid) OSI ning qaysi qatlamiga mos?", "o": ["Transport (4-qatlam)", "Network (3-qatlam)", "Application (7-qatlam)", "Data Link (2-qatlam)"], "a": 0, "e": "TCP va UDP — transport protokollari, portlar ham shu qatlamda."}, {"q": "<code>curl -I<\/code> javobida <code>HTTP/2 200<\/code> ko'rinadi. HTTP OSI ning qaysi qatlamiga tegishli?", "o": ["Transport (4-qatlam)", "Application (7-qatlam)", "Network (3-qatlam)", "Physical (1-qatlam)"], "a": 1, "e": "HTTP, HTTPS, SSH, DNS, FTP — amaliy qatlam protokollari."}, {"q": "Kompyuter <code>192.168.1.50/24<\/code>, router <code>192.168.1.1<\/code>. Nega ular bir tarmoqda hisoblanadi?", "o": ["Ikkalasi ham ommaviy IP", "Router har doim kompyuter bilan bir xil IP ga ega bo'ladi", "Ikkalasi ham <code>192.168.1.0/24<\/code> tarmog'iga (xost qismi farq qiladi) tegishli", "Chunki <code>ping<\/code> ishlaydi"], "a": 2, "e": "<code>/24<\/code> da birinchi uch oktet tarmoq qismi, oxirgisi xost qismi."}, {"q": "Git <code>origin<\/code> ga <code>https://<\/code> manzil orqali <code>push<\/code> qilinadi. Bu manzildagi protokol qaysi qatlamda?", "o": ["Data Link (2-qatlam)", "Physical (1-qatlam)", "Network (3-qatlam)", "Application (7-qatlam)"], "a": 3, "e": "HTTPS amaliy qatlam protokoli; uning ostida TCP, IP va freymlar ishlaydi."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

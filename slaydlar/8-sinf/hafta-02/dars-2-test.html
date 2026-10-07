@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Jadvalning bitta gorizontal qatori qaysi teg bilan yoziladi?", "o": ["<code>&lt;tr&gt;<\/code>", "<code>&lt;td&gt;<\/code>", "<code>&lt;th&gt;<\/code>", "<code>&lt;tab&gt;<\/code>"], "a": 0, "e": "<code>tr<\/code> — table row; <code>td<\/code> esa qator ichidagi katakcha."}, {"q": "<code>&lt;th&gt;<\/code> va <code>&lt;td&gt;<\/code> farqi nima?", "o": ["<code>&lt;th&gt;<\/code> — qator, <code>&lt;td&gt;<\/code> — ustun", "<code>&lt;th&gt;<\/code> — sarlavha katakchasi, <code>&lt;td&gt;<\/code> — oddiy ma'lumot katakchasi", "<code>&lt;th&gt;<\/code> — jadval nomi", "Farqi yo'q"], "a": 1, "e": "<code>&lt;th&gt;<\/code> odatda qalin va o'rtaga tekislangan bo'ladi."}, {"q": "Jadval nomi (sarlavhasi) qaysi teg bilan beriladi?", "o": ["<code>&lt;title&gt;<\/code>", "<code>&lt;h1&gt;<\/code> ichida <code>table<\/code>", "<code>&lt;caption&gt;<\/code>", "<code>&lt;legend&gt;<\/code>"], "a": 2, "e": "<code>&lt;caption&gt;<\/code> <code>&lt;table&gt;<\/code> ning eng birinchi bolasi bo'lishi kerak."}, {"q": "Jadvalning jami hisob (xulosa) qatori qaysi bo'limga yoziladi?", "o": ["<code>&lt;thead&gt;<\/code>", "<code>&lt;tbody&gt;<\/code>", "<code>&lt;caption&gt;<\/code>", "<code>&lt;tfoot&gt;<\/code>"], "a": 3, "e": "<code>thead<\/code> — sarlavhalar, <code>tbody<\/code> — asosiy ma'lumot, <code>tfoot<\/code> — yakuniy qator."}, {"q": "<code>colspan=\"2\"<\/code> nima qiladi?", "o": ["Katakchani 2 ta ustunga gorizontal cho'zadi", "Katakchani 2 ta qatorga vertikal cho'zadi", "Jadvalga 2 ta ramka beradi", "2 ta jadval yaratadi"], "a": 0, "e": "<code>colspan<\/code> — ustunlarni birlashtirish, <code>rowspan<\/code> — qatorlarni birlashtirish."}, {"q": "<code>rowspan=\"2\"<\/code> qaysi yo'nalishda birlashtiradi?", "o": ["Gorizontal, 2 ta ustunni", "Vertikal, 2 ta qatorni", "Diagonal", "Hech qaysi"], "a": 1, "e": "<code>rowspan<\/code> katakchani pastga qarab bir nechta qatorga cho'zadi."}, {"q": "Jadvalda 3 ustun bor. Qatorda bitta <code>&lt;td colspan=\"2\"&gt;<\/code> bor. Shu qatorga yana nechta <code>&lt;td&gt;<\/code> yoziladi?", "o": ["2 ta", "3 ta", "1 ta", "0 ta"], "a": 2, "e": "3 ustun = 2 (colspan) + 1, shuning uchun yana bitta <code>&lt;td&gt;<\/code> yoziladi."}, {"q": "<code>&lt;tr&gt;&lt;td rowspan=\"2\"&gt;Dushanba&lt;/td&gt;&lt;td&gt;Matematika&lt;/td&gt;&lt;/tr&gt;<\/code> qatoridan keyingi qatorda nechta <code>&lt;td&gt;<\/code> yoziladi (jadval 2 ustunli)?", "o": ["2 ta", "0 ta", "3 ta", "1 ta"], "a": 3, "e": "Birinchi katakchani yuqoridagi <code>rowspan<\/code> egallagan, shuning uchun faqat bitta <code>&lt;td&gt;<\/code> yoziladi."}, {"q": "Xarid chekida «Jami to'lov» yozuvi 2 ta ustunni egallashi kerak. Qaysi variant to'g'ri?", "o": ["<code>&lt;th colspan=\"2\"&gt;Jami to'lov:&lt;/th&gt;<\/code>", "<code>&lt;th rowspan=\"2\"&gt;Jami to'lov:&lt;/th&gt;<\/code>", "<code>&lt;th span=\"2\"&gt;Jami to'lov:&lt;/th&gt;<\/code>", "<code>&lt;tr colspan=\"2\"&gt;Jami to'lov:&lt;/tr&gt;<\/code>"], "a": 0, "e": "Ustunlarni birlashtirish uchun katakchaga <code>colspan<\/code> beriladi."}, {"q": "<code>border=\"1\"<\/code> atributi dars davomida nima uchun ishlatildi?", "o": ["Jadvalni o'chirish uchun", "Katakchalarga vaqtincha ramka berish uchun; keyin CSS bezaydi", "Jadvalni 1 ta ustunli qilish uchun", "Sarlavhani qalin qilish uchun"], "a": 1, "e": "Ramkalarni keyingi haftalarda to'liq CSS bilan bezaymiz."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

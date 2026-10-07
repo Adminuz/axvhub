@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Qaysi qurilmada to'liq operatsion tizim bor?", "o": ["Arduino UNO", "ESP8266", "Raspberry Pi 4", "Raspberry Pi Pico"], "a": 2, "e": "Raspberry Pi OS (Linux)."}, {"q": "Arduino UNO chastotasi?", "o": ["80 MHz", "240 MHz", "1.5 GHz", "16 MHz"], "a": 3, "e": "Kvars generator belgilaydi."}, {"q": "ATmega328P qaysi arxitekturada?", "o": ["64-bitli ARM", "32-bitli x86", "Ikki yadroli Xtensa", "8-bitli AVR"], "a": 3, "e": "Arduino UNO chipi."}, {"q": "Raspberry Pi'dagi qaysi pinlarga sensor ulanadi?", "o": ["GPIO", "HDMI", "microSD", "Ethernet"], "a": 0, "e": "GPIO — umumiy kirish-chiqish."}, {"q": "ESP32 ning ESP8266 dan ustunligi?", "o": ["Arzonroq va soddaroq", "Kam pin", "Wi-Fi yo'q", "Bluetooth, 2 yadro, ko'p GPIO"], "a": 3, "e": "Murakkab tizimlar uchun."}, {"q": "Internet yo'q dalada telefon qurilmani boshqarishi uchun ESP qaysi rejimda?", "o": ["Station", "Access Point", "Deep Sleep", "Client"], "a": 1, "e": "Modul o'zi tarmoq yaratadi."}, {"q": "ESP32 ichida qaysi sensor o'rnatilgan?", "o": ["Kamera", "Mikrofon", "Hall sensori", "GPS"], "a": 2, "e": "Yana touch pinlar va harorat sensori."}, {"q": "Deep Sleep nima uchun kerak?", "o": ["Tezlikni oshirish uchun", "Kam quvvat sarflab batareyada uzoq ishlash uchun", "Wi-Fi'ni kuchaytirish uchun", "Dasturni o'chirish uchun"], "a": 1, "e": "Batareyali sensorlar oylab ishlaydi."}, {"q": "ESP modullari odatda qaysi Wi-Fi diapazonida ishlaydi?", "o": ["2.4 GHz", "5 GHz", "60 GHz", "900 MHz"], "a": 0, "e": "5 GHz tarmoqqa ulanmaydi."}, {"q": "Arduino IDE'ga ESP32 qo'shishda birinchi qadam?", "o": ["Preferences'da Additional boards manager URLs ga URL kiritish", "Port tanlash", "Serial Monitor ochish", "Kodni yuklash"], "a": 0, "e": "Keyin Boards Manager'da o'rnatiladi."}, {"q": "WebSocket qanday aloqa?", "o": ["Real vaqtda ikki tomonlama", "Faqat bir tomonlama", "Faqat Bluetooth", "Faqat fayl yuklash"], "a": 0, "e": "HTTP — so'rov/javob."}, {"q": "MCU va MPU: qaysi biri GHz da ishlaydi va kuler talab qiladi?", "o": ["Mikrokontroller", "Mikroprotsessor", "Ikkalasi ham", "Hech biri"], "a": 1, "e": "MCU — MHz, kam energiya."}, {"q": "Mikroto'lqinli pechdagi MCU haqida to'g'ri gap?", "o": ["Internetga kirib musiqa qo'yadi", "Windows'da ishlaydi", "Bitta vazifani tinimsiz takrorlaydi", "Bir vaqtda yuzlab dastur ochadi"], "a": 2, "e": "OS yo'q, bitta dastur."}, {"q": "Arduino UNO'da USB–Serial konvertor chipi?", "o": ["ATmega328P", "ATmega16U2", "ESP8266", "RP2040"], "a": 1, "e": "Kompyuter bilan aloqani ta'minlaydi."}, {"q": "I/O portlar qo'llanmada nimaga o'xshatilgan?", "o": ["Darslikka", "Doskaga", "«Qo'l-oyoq» va «ko'z-quloq»ga", "Dirijyorga"], "a": 2, "e": "Tashqi dunyo bilan aloqa."}, {"q": "LED qaysi rejimdagi pinga ulanadi?", "o": ["Output", "Input", "Station", "Analog kirish"], "a": 0, "e": "Pin tok berib LED'ni yoqadi."}, {"q": "Tok o'chib-yonganda Arduino'dagi dastur nima bo'ladi?", "o": ["Butunlay o'chadi", "Flash'da saqlangani uchun qayta ishga tushadi", "RAM'dan qayta yuklanadi", "Kompyuterdan avtomatik so'raladi"], "a": 1, "e": "RAM'dagi o'zgaruvchilar esa yo'qoladi."}, {"q": "Pinlari kam ESP-01 qaysi chipga asoslangan?", "o": ["ESP8266", "ESP32", "ATmega328P", "STM32"], "a": 0, "e": "Versiyalar: ESP-01, ESP-12E, NodeMCU."}, {"q": "`pinMode(LED, OUTPUT)` qayerda yoziladi?", "o": ["setup() ichida — bir marta", "loop() ning oxirida", "#include qatorida", "Serial Monitor'da"], "a": 0, "e": "Pin rejimi boshida belgilanadi."}, {"q": "Qaysi juftlik to'g'ri?", "o": ["MCU — GHz, MPU — MHz", "MCU — qimmat, MPU — arzon", "MCU — tashqi RAM shart", "MCU — maxsus vazifa, MPU — umumiy vazifa"], "a": 3, "e": "1-jadval bo'yicha."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

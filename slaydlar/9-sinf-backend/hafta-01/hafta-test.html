@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "Python qaysi veb backend freymvorklari bilan bog'liq deb tilga olinadi?", "o": ["FastAPI va Django", "Photoshop va Excel", "Word va Paint", "Chrome va Firefox"], "a": 0, "e": "Python veb backendda FastAPI va Django kabi vositalar bilan ishlatiladi."}, {"q": "<code>python -V<\/code> buyrug'i nima qiladi?", "o": ["Python ni o'chiradi", "Python versiyasini chiqaradi, <code>python --version<\/code> bilan bir xil", "Virtual muhit yaratadi", "Faylni ishga tushiradi"], "a": 1, "e": "<code>-V<\/code> — <code>--version<\/code> ning qisqa shakli."}, {"q": "<code>print('Salom')<\/code> va <code>print(\"Salom\")<\/code> haqida qaysi gap to'g'ri?", "o": ["Faqat qo'shtirnoq to'g'ri", "Faqat birtirnoq to'g'ri", "Ikkalasi ham to'g'ri, natija bir xil", "Birinchisi xato beradi"], "a": 2, "e": "Matn qo'shtirnoq yoki birtirnoq ichida yozilishi mumkin."}, {"q": "macOS/Linux terminalida REPL dan chiqish uchun qaysi tugmalar ishlatiladi?", "o": ["<code>Ctrl + Z<\/code>", "<code>Win + R<\/code>", "<code>Ctrl + P<\/code>", "<code>Ctrl + D<\/code>"], "a": 3, "e": "Windows da <code>Ctrl + Z<\/code>, macOS/Linux da <code>Ctrl + D<\/code>; <code>exit()<\/code> hammasida ishlaydi."}, {"q": "<code>main.py<\/code> faylini terminaldan qanday ishga tushiramiz?", "o": ["<code>python main.py<\/code>", "<code>run main.py<\/code>", "<code>main.py --python<\/code>", "<code>&gt;&gt;&gt; main.py<\/code>"], "a": 0, "e": "Fayl nomi <code>python<\/code> buyrug'idan keyin yoziladi."}, {"q": "<code>type(\"Ali\")<\/code> nima qaytaradi?", "o": ["<code>&lt;class 'int'&gt;<\/code>", "<code>&lt;class 'str'&gt;<\/code>", "<code>&lt;class 'float'&gt;<\/code>", "<code>&lt;class 'name'&gt;<\/code>"], "a": 1, "e": "Qo'shtirnoq ichidagi qiymat <code>str<\/code> (matn) toifasidir."}, {"q": "<code>17 / 5<\/code> natijasi qanday?", "o": ["<code>3<\/code>", "<code>2<\/code>", "<code>3.4<\/code> (float)", "<code>3.0<\/code>"], "a": 2, "e": "Oddiy bo'lishda kasr qism saqlanadi, natija <code>float<\/code>."}, {"q": "<code>19 % 5<\/code> natijasi nima?", "o": ["<code>3<\/code>", "<code>3.8<\/code>", "<code>0<\/code>", "<code>4<\/code>"], "a": 3, "e": "<code>19 = 5 * 3 + 4<\/code>, qoldiq 4."}, {"q": "<code>(2 + 3) * 2 ** 2<\/code> natijasi nima?", "o": ["<code>20<\/code>", "<code>14<\/code>", "<code>100<\/code>", "<code>10<\/code>"], "a": 0, "e": "Avval qavs (5), keyin <code>**<\/code> (4), so'ng <code>*<\/code>: 5 * 4 = 20."}, {"q": "To'g'ri to'rtburchak tomonlari <code>a = 12<\/code>, <code>b = 7<\/code>. Perimetr formulasi <code>2 * (a + b)<\/code> natijasi?", "o": ["<code>84<\/code>", "<code>38<\/code>", "<code>19<\/code>", "<code>26<\/code>"], "a": 1, "e": "2 * (12 + 7) = 38; 84 esa yuzi (<code>a * b<\/code>)."}, {"q": "<code>2_sinf<\/code> nomini o'zgaruvchi uchun ishlatish mumkinmi?", "o": ["Ha, hamma nom mumkin", "Ha, agar kichik harf bo'lsa", "Yo'q, nom raqam bilan boshlanmaydi", "Yo'q, tagchiziq borligi uchun"], "a": 2, "e": "Nom harf yoki <code>_<\/code> bilan boshlanishi shart."}, {"q": "Qaysi so'zni o'zgaruvchi nomi qilib bo'lmaydi?", "o": ["<code>klass<\/code>", "<code>sinf<\/code>", "<code>class_name<\/code>", "<code>class<\/code>"], "a": 3, "e": "<code>class<\/code>, <code>if<\/code>, <code>for<\/code> kabi kalit so'zlar nom sifatida ishlatilmaydi."}, {"q": "O'zgaruvchi nomi uchun <code>foydalanuvchi yoshi<\/code> xato. To'g'ri yozilishi qaysi?", "o": ["<code>foydalanuvchi_yoshi<\/code>", "<code>foydalanuvchi-yoshi<\/code>", "<code>foydalanuvchi yoshi()<\/code>", "<code>foydalanuvchi$yoshi<\/code>"], "a": 0, "e": "Probel o'rniga tagchiziq ishlatiladi (snake_case)."}, {"q": "Kod natijasi? <code>a = 3<\/code>; <code>b = 4<\/code>; <code>print(f\"Yig'indi: {a + b}\")<\/code>", "o": ["<code>Yig'indi: 34<\/code>", "<code>Yig'indi: 7<\/code>", "<code>Yig'indi: {a + b}<\/code>", "<code>Yig'indi: a + b<\/code>"], "a": 1, "e": "f-string ichidagi ifoda hisoblanib qo'yiladi."}, {"q": "<code>sut_narxi = 12500.5<\/code>, <code>sut_soni = 2<\/code>. <code>sut_narxi * sut_soni<\/code> natijasi?", "o": ["<code>25001<\/code>", "<code>12502.5<\/code>", "<code>25001.0<\/code>", "<code>25000<\/code>"], "a": 2, "e": "Kasr son bilan ko'paytma <code>float<\/code> bo'ladi."}, {"q": "<code>ism = \"Ali\"<\/code>; <code>yosh = 15<\/code>; <code>print(\"Ism:\", ism, \"| Yosh:\", yosh)<\/code> natijasi?", "o": ["<code>Ism:Ali|Yosh:15<\/code>", "<code>Ism: ism | Yosh: yosh<\/code>", "Xato beradi", "<code>Ism: Ali | Yosh: 15<\/code>"], "a": 3, "e": "<code>print<\/code> argumentlarni probel bilan ajratib chiqaradi; o'zgaruvchilar qiymati bilan almashadi."}, {"q": "<code>jami_sekund = 195<\/code> bo'lsa, <code>jami_sekund // 60<\/code> nechaga teng va u nimani bildiradi?", "o": ["<code>3<\/code> — to'liq daqiqalar soni", "<code>15<\/code> — qolgan sekundlar", "<code>3.25<\/code> — daqiqalar", "<code>60<\/code> — sekundlar"], "a": 0, "e": "<code>//<\/code> to'liq daqiqani beradi, <code>% 60<\/code> esa qolgan 15 sekundni."}, {"q": "REPL da <code>&gt;&gt;&gt; 10 / 2<\/code> yozilsa nima chiqadi?", "o": ["<code>5<\/code>", "<code>5.0<\/code>", "<code>2<\/code>", "<code>0<\/code>"], "a": 1, "e": "<code>/<\/code> har doim <code>float<\/code> qaytaradi; REPL ifoda natijasini darhol ko'rsatadi."}, {"q": "<code>main.py<\/code> ichida <code>x = 10 / 5<\/code> va <code>print(type(x))<\/code> yozildi. Natija?", "o": ["<code>&lt;class 'int'&gt;<\/code>", "<code>&lt;class 'str'&gt;<\/code>", "<code>&lt;class 'float'&gt;<\/code>", "<code>2<\/code>"], "a": 2, "e": "Oddiy bo'lish natijasi <code>float<\/code>, <code>type()<\/code> toifani chiqaradi."}, {"q": "Qaysi tartib to'g'ri: dastur yozib ishga tushirishning bosqichlari?", "o": ["<code>main.py<\/code> yozish, o'rnatish, tekshirish, ishga tushirish", "<code>python main.py<\/code>, o'rnatish, yozish, tekshirish", "Tekshirish, ishga tushirish, o'rnatish, yozish", "PATH bilan o'rnatish, <code>python --version<\/code> tekshirish, <code>main.py<\/code> yozish, <code>python main.py<\/code>"], "a": 3, "e": "Avval muhit tayyorlanadi (1-dars), keyin kod yoziladi va ishga tushiriladi."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

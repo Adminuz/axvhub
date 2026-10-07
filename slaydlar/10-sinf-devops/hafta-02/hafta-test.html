@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "<code>ps aux<\/code> ning <code>STAT<\/code> ustunida <code>S<\/code> nimani bildiradi?", "o": ["Jarayon hodisa yoki kiritish-chiqarishni kutmoqda (uyquda)", "Jarayon to'xtatilgan", "Jarayon zombie", "Jarayon CPU ni to'liq egallagan"], "a": 0, "e": "<code>S<\/code> — Interruptible Sleep, eng ko'p uchraydigan holat."}, {"q": "<code>D<\/code> holatidagi jarayonning xususiyati nima?", "o": ["Fon rejimida ishlaydi", "Disk I/O ni kutadi va signallarga javob bermaydi", "Ota jarayonini kutadi", "Eng yuqori ustuvorlikda"], "a": 1, "e": "D — Uninterruptible Sleep."}, {"q": "SIGHUP (1) signali odatda nima uchun ishlatiladi?", "o": ["Jarayonni darhol o'ldirish", "Jarayonni to'xtatib turish", "Sozlamalarni qayta yuklash (reload)", "Ustuvorlikni oshirish"], "a": 2, "e": "SIGHUP xizmatni to'xtatmay konfiguratsiyani qayta o'qitadi."}, {"q": "<code>renice -n 5 -p 1234<\/code> nima qiladi?", "o": ["1234-jarayonni 5 marta qayta ishga tushiradi", "Jarayonni 5 soniyaga to'xtatadi", "1234 portini yopadi", "Ishlayotgan 1234-jarayonning nice qiymatini 5 ga o'zgartiradi"], "a": 3, "e": "<code>nice<\/code> yangi jarayonni, <code>renice<\/code> esa ishlayotganini sozlaydi."}, {"q": "<code>sudo systemctl disable nginx<\/code> nima qiladi?", "o": ["Server qayta yuklanganda avtomatik yoqilishni bekor qiladi", "Nginx ni darhol to'xtatadi", "Nginx ni o'chirib tashlaydi", "Nginx holatini ko'rsatadi"], "a": 0, "e": "<code>disable<\/code> autostart ni o'chiradi, lekin hozir ishlayotgan xizmatni to'xtatmaydi."}, {"q": "<code>sudo fdisk -l<\/code> qanday ma'lumot beradi?", "o": ["Papkalar hajmini", "Disklar hajmi va bo'limlar jadvali haqida texnik ma'lumot", "Paketlar ro'yxatini", "Ishlayotgan jarayonlarni"], "a": 1, "e": "<code>fdisk -l<\/code> GPT/MBR va sektorlar haqida to'liq ma'lumot chiqaradi."}, {"q": "ext4 va xfs nima?", "o": ["Paket menejerlari", "Disk qurilma fayllari", "Linuxda keng tarqalgan fayl tizimlari", "Paket formatlari"], "a": 2, "e": "Fayl tizimi ma'lumotlarni disk bloklarida saqlash va indekslash qoidasi."}, {"q": "Ulangan diskni qanday uziladi?", "o": ["<code>sudo unmount /dev/sda<\/code>", "<code>sudo rm /mnt/backup<\/code>", "<code>sudo fdisk /mnt/backup<\/code>", "<code>sudo umount /mnt/backup<\/code>"], "a": 3, "e": "<code>mount<\/code> ulaydi, <code>umount<\/code> uzadi."}, {"q": "Alpine Linux (Docker konteynerlarida mashhur) qaysi paket formati va vositadan foydalanadi?", "o": ["<code>.apk<\/code> va APK", ".deb va APT", ".rpm va DNF", ".exe va YUM"], "a": 0, "e": "Alpine paketlari <code>.apk<\/code> formatida."}, {"q": "<code>/dev/sda1<\/code> nomi nimani anglatadi?", "o": ["Ikkinchi diskning birinchi fayli", "Birinchi SATA/SCSI diskdagi 1-bo'lim", "NVMe diskning bo'limi", "Tarmoq kartasi"], "a": 1, "e": "<code>sda<\/code> — birinchi disk, raqam esa bo'lim tartibi."}, {"q": "Git ning taqsimlangan (Distributed) tabiati qanday afzallik beradi?", "o": ["Commit qilish uchun markaziy server shart", "Faqat bitta dasturchi ishlay oladi", "Internet bo'lmaganda ham lokal commit qilish mumkin", "Tarix saqlanmaydi"], "a": 2, "e": "Har bir dasturchida to'liq tarix bor; SVN da markaziy server o'chsa ishlab bo'lmaydi."}, {"q": "Git ning «Working Directory» hududi nima?", "o": ["<code>.git<\/code> ichidagi ma'lumotlar bazasi", "Commitga tayyorlangan o'zgarishlar", "GitHub dagi nusxa", "Diskda ko'rib tahrirlayotgan oddiy fayllaringiz"], "a": 3, "e": "Working Directory — Staging Area va Repository dan farqli, tahrirlanadigan joy."}, {"q": "<code>git add .<\/code> nima qiladi?", "o": ["O'zgargan barcha fayllarni birvarakayiga Staging Area ga qo'shadi", "Yangi repozitoriya ochadi", "Barcha fayllarni o'chiradi", "Commit yaratadi"], "a": 0, "e": "<code>git add [fayl]<\/code> esa faqat bitta faylni qo'shadi."}, {"q": "<code>git commit -m \"feat: sahifa qo'shildi\"<\/code> dagi <code>-m<\/code> nima?", "o": ["Branch nomini beradi", "Commit izohini (message) beradi", "Faylni ko'chiradi (move)", "Merge rejimini yoqadi"], "a": 1, "e": "Izoh commit tarixini tushunarli qiladi."}, {"q": "<code>git commit<\/code> Git tarixiga nimani yozadi?", "o": ["Ishchi katalogdagi barcha fayllarni GitHub ga yuboradi", "Faqat o'chirilgan fayllarni", "Staging Area dagi o'zgarishlarning bir zumlik fotosuratini (snapshot)", "Branchlar ro'yxatini"], "a": 2, "e": "Commit tayyorlangan o'zgarishlarni noyob hash bilan muhrlaydi."}, {"q": "<code>node_modules/<\/code> ni <code>.gitignore<\/code> ga qo'shishdan maqsad nima?", "o": ["Fayllarni shifrlash", "Kutubxonalarni o'chirish", "Commitlar soni kamayishi", "Katta kutubxonalar Git tarixiga tushmasligi"], "a": 3, "e": "Maxfiy fayllar, yirik kutubxonalar va loglar kuzatuvdan chetlashtiriladi."}, {"q": "Server sekin ishlayapti. <code>top<\/code> dan muammoli jarayonning PID si topildi. To'g'ri harakat tartibi qaysi?", "o": ["Avval <code>kill PID<\/code> (SIGTERM), javob bermasa <code>kill -9 PID<\/code>", "Darhol serverni o'chirish", "Avval <code>kill -9<\/code>, keyin <code>kill<\/code>", "<code>systemctl enable PID<\/code>"], "a": 0, "e": "Avval jarayonga tartibli yopilish imkoni beriladi, majburiy usul oxirgi chora."}, {"q": "Nginx ni o'rnatib, reboot dan keyin ham ishlashini ta'minlash uchun qaysi ketma-ketlik to'g'ri?", "o": ["<code>sudo systemctl enable nginx<\/code>, <code>sudo apt install nginx<\/code>", "<code>sudo apt install nginx<\/code>, <code>sudo systemctl enable nginx<\/code>, <code>sudo systemctl status nginx<\/code>", "<code>sudo apt remove nginx<\/code>, <code>sudo systemctl start nginx<\/code>", "<code>sudo apt update<\/code>, <code>sudo systemctl disable nginx<\/code>"], "a": 1, "e": "Avval paket o'rnatiladi (APT), so'ng <code>systemctl enable<\/code> autostart beradi, <code>status<\/code> bilan tekshiriladi."}, {"q": "<code>/var/log<\/code> papkasi disk joyini to'ldirib yubordi. Uning hajmini aniqlash buyrug'i?", "o": ["<code>df -h /var/log<\/code>", "<code>lsblk /var/log<\/code>", "<code>du -sh /var/log<\/code>", "<code>cd -<\/code>"], "a": 2, "e": "<code>/var<\/code> loglar joyi (1-hafta), hajm esa <code>du -sh<\/code> bilan o'lchanadi."}, {"q": "<code>.env<\/code> faylini ham Git dan, ham begona foydalanuvchilardan himoyalash uchun nima qilinadi?", "o": ["Faqat <code>chmod 777 .env<\/code> qo'yish", "Faylni <code>/tmp<\/code> ga ko'chirish", "<code>git add .env<\/code> qilish", "<code>.gitignore<\/code> ga yozish va <code>chmod 600 .env<\/code> qo'yish"], "a": 3, "e": "Git tarixiga kirmasligi uchun <code>.gitignore<\/code>, tizimda esa faqat egasi ko'rishi uchun <code>600<\/code>."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

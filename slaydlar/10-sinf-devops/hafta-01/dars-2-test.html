@@ -35,8 +35,9 @@ code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1
 .foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
 .foot div{max-width:720px;margin:0 auto}
 .btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
-.btn:disabled{opacity:.4;cursor:default}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
 .rev{margin-top:16px;display:grid;gap:10px;text-align:left}
 .rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
 .rev small{color:var(--mut)}
@@ -57,9 +58,42 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 <script type="application/json" id="qdata">[{"q": "<code>ls -l<\/code> natijasida birinchi belgi <code>d<\/code> bo'lsa, bu nimani bildiradi?", "o": ["Obyekt katalog ekanini", "Oddiy fayl ekanini", "Ramziy havola ekanini", "Fayl o'chirilganini"], "a": 0, "e": "<code>-<\/code> oddiy fayl, <code>d<\/code> katalog, <code>l<\/code> ramziy havola."}, {"q": "Katalog uchun <code>r<\/code> (read) ruxsati nimani beradi?", "o": ["Katalogga <code>cd<\/code> bilan kirishni", "Katalog ichidagi fayllar ro'yxatini ko'rishni (<code>ls<\/code>)", "Ichida yangi fayl yaratishni", "Katalogni ishga tushirishni"], "a": 1, "e": "Katalogda <code>r<\/code> — ro'yxat ko'rish, <code>w<\/code> — yaratish/o'chirish, <code>x<\/code> — ichiga kirish."}, {"q": "SSH maxfiy kalit <code>id_rsa<\/code> uchun odatda qaysi ruxsat qo'yiladi?", "o": ["<code>644<\/code>", "<code>755<\/code>", "<code>600<\/code>", "<code>777<\/code>"], "a": 2, "e": "<code>600<\/code> — faqat egasi o'qiydi va yozadi, boshqa hech kim ko'ra olmaydi."}, {"q": "<code>rwxr-xr--<\/code> ruxsati oktal ko'rinishda qanday yoziladi?", "o": ["<code>755<\/code>", "<code>644<\/code>", "<code>745<\/code>", "<code>754<\/code>"], "a": 3, "e": "rwx = 7, r-x = 5, r-- = 4, ya'ni 754."}, {"q": "Faqat egasiga bajarish huquqini qo'shadigan buyruq qaysi?", "o": ["<code>chmod u+x run.sh<\/code>", "<code>chmod g+x run.sh<\/code>", "<code>chmod o-x run.sh<\/code>", "<code>chmod 000 run.sh<\/code>"], "a": 0, "e": "<code>u<\/code> — user (ega), <code>+x<\/code> — bajarish huquqini qo'shish."}, {"q": "Vim ochilganda qaysi rejim boshlang'ich hisoblanadi?", "o": ["Insert mode", "Normal mode", "Command-line mode", "Visual mode"], "a": 1, "e": "Vim Normal rejimda ochiladi: bu yerda matn yozilmaydi, buyruqlar beriladi."}, {"q": "Nano muharririda faylni saqlash uchun qaysi tugmalar bosiladi?", "o": ["<code>Ctrl + X<\/code>", "<code>:wq<\/code>", "<code>Ctrl + O<\/code>", "<code>Ctrl + S<\/code>"], "a": 2, "e": "<code>Ctrl+O<\/code> saqlaydi, <code>Ctrl+X<\/code> esa muharrirdan chiqadi."}, {"q": "<code>sudo chown www-data:www-data /var/www/html -R<\/code> nima qiladi?", "o": ["Ruxsatlarni <code>755<\/code> qiladi", "Katalogni <code>www-data<\/code> nomi bilan nusxalaydi", "Faqat guruhni o'zgartiradi, egani emas", "Katalog va ichidagilarning egasi hamda guruhini <code>www-data<\/code> ga o'zgartiradi"], "a": 3, "e": "<code>chown ega:guruh<\/code> ikkalasini o'zgartiradi, <code>-R<\/code> esa ichki elementlarga ham tatbiq etadi."}, {"q": "Vimda matn yozmoqchisiz, lekin harflar o'rniga buyruqlar bajarilyapti. Nima xato?", "o": ["Insert rejimga o'tilmagan; avval <code>i<\/code> bosish kerak", "Fayl yozishdan himoyalangan, <code>chmod 777<\/code> kerak", "Nano o'rniga Vim ochilgan", "<code>Ctrl+O<\/code> bosilmagan"], "a": 0, "e": "Normal rejimda tugmalar buyruq bo'ladi. <code>i<\/code> yoki <code>a<\/code> bilan Insert rejimga o'tiladi, chiqish <code>Esc<\/code>."}, {"q": "Katalogda faqat <code>r--<\/code> ruxsati bor. Foydalanuvchi uchun qaysi gap to'g'ri?", "o": ["Ichiga erkin kira oladi", "Ro'yxatni ko'ra oladi, lekin ichiga <code>cd<\/code> bilan kira olmaydi", "Ichida fayl yarata oladi", "Hech narsa qila olmaydi, ro'yxatni ham ko'rolmaydi"], "a": 1, "e": "Katalogga kirish (<code>cd<\/code>) uchun <code>x<\/code> ruxsati kerak; <code>r<\/code> faqat ro'yxatni ko'rsatadi."}]</script>
 <script>
 (function(){
-var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-function esc(t){return t}
+var storageKey='quiz_cd_'+location.pathname;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+}
+
 function show(){
   var q=Q[i];done=false;
   $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
@@ -71,6 +105,7 @@ function show(){
   card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
   window.scrollTo(0,0);
 }
+
 function pick(k){
   if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
   bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
@@ -79,21 +114,63 @@ function pick(k){
   $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
   ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+
 function finish(){
   var p=Math.round(score/Q.length*100);
   $('#fill').style.width='100%';$('#cnt').textContent='Natija';
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
   var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
   if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
-  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  card.innerHTML=h;
+  
+  // 3 daqiqalik cooldown taymer (180s)
+  var expiresAt=Date.now()+180000;
+  localStorage.setItem(storageKey,expiresAt.toString());
+  runCooldown();
   window.scrollTo(0,0);
 }
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var stored=localStorage.getItem(storageKey);
+    var exp=stored?parseInt(stored,10):0;
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+    }else{
+      if(timerId)clearInterval(timerId);
+      localStorage.removeItem(storageKey);
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        initQuizData();
+        next.onclick=adv;
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
 function adv(){if(i<Q.length-1){i++;show()}else finish()}
 next.onclick=adv;
+
 document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
   var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
   else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
 });
+
+initQuizData();
 show();
 })();
 </script>

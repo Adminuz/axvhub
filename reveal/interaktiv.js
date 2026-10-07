@@ -24,6 +24,14 @@
 
   function initQuiz() {
     qa(document, '.quiz').forEach(function (q) {
+      var optsParent = q.querySelector('.opts');
+      if (optsParent) {
+        var optList = qa(optsParent, '.opt');
+        for (var i = optList.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          optsParent.appendChild(optList[j]);
+        }
+      }
       var opts = qa(q, '.opt');
       opts.forEach(function (o) {
         o.addEventListener('click', function () {
