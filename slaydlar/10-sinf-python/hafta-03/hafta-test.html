@@ -1,331 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>3-hafta testi</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>3-hafta testi</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>3-hafta testi</h1>
-  <p class="muted">20 ta savol &middot; taxminan 18 daqiqa</p>
-  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">3-hafta</span>
-  
-</section>
-
-<section>
-  <h2>Savol 1/20</h2>
-  <div class="quiz">
-    <p class="q">Throttling qaysi hujumlardan himoya qiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>DoS/DDoS va parollarni topish (brute-force)</button>
-      <button class="opt" type="button">SQL in'ektsiyadan faqat</button>
-      <button class="opt" type="button">Faylni yuklab olishdan</button>
-      <button class="opt" type="button">Migratsiya xatolaridan</button>
-    </div>
-    <div class="explain">Botlar yuborayotgan so'rovlar soni cheklanadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 2/20</h2>
-  <div class="quiz">
-    <p class="q"><code>DEFAULT_THROTTLE_RATES</code> da <code>user: "300/min"</code> nimani bildiradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Anonim foydalanuvchi 300 ta</button>
-      <button class="opt" type="button" data-ok>Tizimga kirgan foydalanuvchi daqiqasiga 300 tagacha so'rov yubora oladi</button>
-      <button class="opt" type="button">Sahifa o'lchami 300</button>
-      <button class="opt" type="button">Token muddati 300 daqiqa</button>
-    </div>
-    <div class="explain">Anonim uchun <code>anon: 60/min</code>.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 3/20</h2>
-  <div class="quiz">
-    <p class="q">DRF throttling so'rovlar sonini qayerda hisoblab boradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Foydalanuvchi brauzer cookie'sida</button>
-      <button class="opt" type="button">Faqat ma'lumotlar bazasi jadvalida Post</button>
-      <button class="opt" type="button" data-ok>Kesh tizimida (LocMemCache yoki Redis)</button>
-      <button class="opt" type="button">Fayl tizimida media papkasida</button>
-    </div>
-    <div class="explain">Developmentda <code>LocMemCache</code>, productionda <code>Redis</code>.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 4/20</h2>
-  <div class="quiz">
-    <p class="q"><code>LoginAnonThrottle</code> da <code>scope = "login_anon"</code> nima uchun kerak?</p>
-    <div class="opts">
-      <button class="opt" type="button">Sahifa o'lchamini belgilash uchun</button>
-      <button class="opt" type="button">Faylni yuklash uchun</button>
-      <button class="opt" type="button">Token yaratish uchun</button>
-      <button class="opt" type="button" data-ok><code>DEFAULT_THROTTLE_RATES</code> dagi shu nomdagi limitni (10/min) ulash uchun</button>
-    </div>
-    <div class="explain">Scope nomi va rates kaliti mos bo'lishi shart.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 5/20</h2>
-  <div class="quiz">
-    <p class="q">Oxirgi sahifada pagination javobidagi <code>next</code> maydoni qanday bo'ladi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok><code>null</code></button>
-      <button class="opt" type="button">Birinchi sahifa havolasi</button>
-      <button class="opt" type="button">Bo'sh massiv</button>
-      <button class="opt" type="button"><code>count</code> qiymati</button>
-    </div>
-    <div class="explain">Birinchi sahifada esa <code>previous</code> null bo'ladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 6/20</h2>
-  <div class="quiz">
-    <p class="q"><code>MobilePostPagination</code> (<code>page_size=20</code>, <code>max_page_size=50</code>) da <code>?page_size=80</code> yuborilsa?</p>
-    <div class="opts">
-      <button class="opt" type="button">80 ta yozuv qaytadi</button>
-      <button class="opt" type="button" data-ok>50 ta yozuv qaytadi</button>
-      <button class="opt" type="button">20 ta yozuv qaytadi</button>
-      <button class="opt" type="button">429 xatosi</button>
-    </div>
-    <div class="explain"><code>max_page_size</code> yuqori chegarani belgilaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 7/20</h2>
-  <div class="quiz">
-    <p class="q">Media fayllar bazada qanday saqlanadi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Fayl ichi bazada matn sifatida</button>
-      <button class="opt" type="button"><code>STATIC_ROOT</code> ichida</button>
-      <button class="opt" type="button" data-ok>Bazada faqat fayl yo'li, fayl o'zi <code>media/</code> papkasida</button>
-      <button class="opt" type="button">Git omborida</button>
-    </div>
-    <div class="explain">Shuning uchun <code>media/</code> ni <code>.gitignore</code> ga qo'shamiz.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 8/20</h2>
-  <div class="quiz">
-    <p class="q">Nega faylni <code>FileResponse</code> orqali berish to'g'ridan-to'g'ri URL dan ancha qulay?</p>
-    <div class="opts">
-      <button class="opt" type="button">Fayl hajmi kichrayadi</button>
-      <button class="opt" type="button">Fayl shifrlanadi avtomatik</button>
-      <button class="opt" type="button">URL ishlatish mumkin emas</button>
-      <button class="opt" type="button" data-ok>Masalan, faylni faqat pullik obunachilarga berish yoki majburiy yuklab olish mumkin</button>
-    </div>
-    <div class="explain"><code>FileResponse</code> oqimli (streaming) ishlaydi va <code>as_attachment</code> ni boshqaradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 9/20</h2>
-  <div class="quiz">
-    <p class="q"><code>@action(detail=True, methods=["post"], url_path="upload-cover")</code> qaysi manzilni yaratadi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok><code>POST /api/v1/posts/{slug}/upload-cover/</code></button>
-      <button class="opt" type="button"><code>GET /api/v1/upload-cover/</code></button>
-      <button class="opt" type="button"><code>POST /api/v1/posts/upload-cover/</code> (slug'siz)</button>
-      <button class="opt" type="button"><code>DELETE /api/v1/posts/{slug}/</code></button>
-    </div>
-    <div class="explain"><code>detail=True</code> bitta obyekt (slug) ustida ishlashni bildiradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 10/20</h2>
-  <div class="quiz">
-    <p class="q">Muqova yuklashda ruxsat etilgan MIME turlari qaysilar?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>application/pdf</code>, <code>text/html</code></button>
-      <button class="opt" type="button" data-ok><code>image/jpeg</code>, <code>image/png</code>, <code>image/webp</code></button>
-      <button class="opt" type="button"><code>video/mp4</code>, <code>audio/mp3</code></button>
-      <button class="opt" type="button"><code>image/gif</code> va <code>image/bmp</code></button>
-    </div>
-    <div class="explain">Serializer <code>validate_cover_image</code> da <code>content_type</code> tekshiriladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 11/20</h2>
-  <div class="quiz">
-    <p class="q">Deployda <code>collectstatic</code> yig'gan statik fayllarni kim uzatadi?</p>
-    <div class="opts">
-      <button class="opt" type="button">APITestCase</button>
-      <button class="opt" type="button">Swagger</button>
-      <button class="opt" type="button" data-ok>Nginx</button>
-      <button class="opt" type="button">LoginAnonThrottle</button>
-    </div>
-    <div class="explain">Statik fayllar bitta papkaga yig'ilib, Nginx orqali beriladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 12/20</h2>
-  <div class="quiz">
-    <p class="q"><code>setUp</code> metodi testlarda nima uchun yoziladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Testni o'chirish uchun</button>
-      <button class="opt" type="button">Serverni ishga tushirish uchun</button>
-      <button class="opt" type="button">Hujjat yaratish uchun</button>
-      <button class="opt" type="button" data-ok>Har testdan oldin dastlabki ma'lumotlarni (user, kategoriya, post) tayyorlash uchun</button>
-    </div>
-    <div class="explain"><code>PostAPITestCase.setUp</code> da user, category va post yaratiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 13/20</h2>
-  <div class="quiz">
-    <p class="q"><code>self.assertEqual(response.status_code, status.HTTP_200_OK)</code> nimani qiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Javob statusini kutilgan qiymat bilan solishtiradi</button>
-      <button class="opt" type="button">Bazani tozalaydi</button>
-      <button class="opt" type="button">Tokenni yangilaydi</button>
-      <button class="opt" type="button">Hujjat yaratadi</button>
-    </div>
-    <div class="explain">Mos kelmasa test yiqiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 14/20</h2>
-  <div class="quiz">
-    <p class="q">Test uchun dastlabki ma'lumotlarni tayyorlash yondashuvi qanday ataladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Throttle</button>
-      <button class="opt" type="button" data-ok>Factory/Seed</button>
-      <button class="opt" type="button">Cursor</button>
-      <button class="opt" type="button">Parser</button>
-    </div>
-    <div class="explain">Loyihada <code>apps/common/tests/factories.py</code> ko'rsatilgan.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 15/20</h2>
-  <div class="quiz">
-    <p class="q">OpenAPI sxemasi qaysi manzilda taqdim etiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>/api/docs/</code> faqat</button>
-      <button class="opt" type="button"><code>/media/schema/</code></button>
-      <button class="opt" type="button" data-ok><code>/api/schema/</code> (SpectacularAPIView)</button>
-      <button class="opt" type="button"><code>/admin/schema/</code></button>
-    </div>
-    <div class="explain">Swagger va ReDoc <code>url_name="schema"</code> orqali shu sxemadan foydalanadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 16/20</h2>
-  <div class="quiz">
-    <p class="q">GitHub Actions (CI/CD) testlardan nima uchun foydalanadi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Kodni avtomatik chiroyli qilish uchun</button>
-      <button class="opt" type="button">Bazani o'chirish uchun</button>
-      <button class="opt" type="button">Rasmlarni siqish uchun</button>
-      <button class="opt" type="button" data-ok>Bitta test yiqilsa ham xato kodni serverga joylashtirmaslik uchun</button>
-    </div>
-    <div class="explain">Testlar deploydan oldin kafolat vazifasini bajaradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 17/20</h2>
-  <div class="quiz">
-    <p class="q">Testda <code>response.data["results"]</code> ishlashi qaysi hafta mavzusi bilan bog'liq?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Pagination: ro'yxat <code>count/next/previous/results</code> shaklida qaytadi</button>
-      <button class="opt" type="button">Statik fayllar</button>
-      <button class="opt" type="button">Faqat Swagger</button>
-      <button class="opt" type="button">Faqat JWT</button>
-    </div>
-    <div class="explain">7-dars pagination sozlamalari 9-dars testida ko'rinadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 18/20</h2>
-  <div class="quiz">
-    <p class="q">Bot <code>upload-cover</code> endpointiga daqiqasiga yuzlab so'rov yubordi. Qaysi mexanizm 429 qaytaradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">MultiPartParser</button>
-      <button class="opt" type="button" data-ok>Throttling (<code>AnonRateThrottle</code>/<code>UserRateThrottle</code>)</button>
-      <button class="opt" type="button">FileResponse</button>
-      <button class="opt" type="button">Swagger UI</button>
-    </div>
-    <div class="explain">Throttling so'rovlar sonini cheklaydi, parser esa faqat kontent formatini o'qiydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 19/20</h2>
-  <div class="quiz">
-    <p class="q">Frontend dasturchi barcha endpointlar va ularning parametrlarini qayerdan interaktiv ko'ra oladi?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>MEDIA_ROOT</code> papkasidan</button>
-      <button class="opt" type="button"><code>collectstatic</code> natijasidan</button>
-      <button class="opt" type="button" data-ok>Swagger UI (<code>/api/docs/</code>) yoki ReDoc (<code>/api/redoc/</code>)</button>
-      <button class="opt" type="button"><code>LoginAnonThrottle</code> dan</button>
-    </div>
-    <div class="explain"><code>drf-spectacular</code> hujjatni avtomatik hosil qiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 20/20</h2>
-  <div class="quiz">
-    <p class="q">Hajmi 6 MB rasm yuklandi, <code>validate_cover_image</code> rad etdi. Buni testda qanday tekshirish mantiqan to'g'ri?</p>
-    <div class="opts">
-      <button class="opt" type="button">Swagger'ni o'chirib qo'yish</button>
-      <button class="opt" type="button"><code>collectstatic</code> ni ishga tushirish</button>
-      <button class="opt" type="button">429 kutish</button>
-      <button class="opt" type="button" data-ok>Upload endpointiga rasm yuborib, 400 xatosi qaytishini <code>assertEqual</code> bilan tekshirish</button>
-    </div>
-    <div class="explain">ValidationError DRF da 400 Bad Request ko'rinishida qaytadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Natijangiz</h2>
-  <div class="cards three">
-    <div class="card"><h3>20 dan 18+</h3><p>A'lo. Hafta mavzulari yaxshi o'zlashtirilgan.</p></div>
-    <div class="card"><h3>20 dan 12-17</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
-    <div class="card accent"><h3>11 va undan kam</h3><p>Uchala dars konspektini takrorlang, so'ng testni qayta yeching.</p></div>
-  </div>
-  <p class="small mt">Takrorlang: pagination va throttling, static/media va upload, FileResponse, APITestCase, Swagger/ReDoc.</p>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>3-hafta testi</h1></header>
+<div class="badges"><span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">3-hafta</span><span class="badge">20 ta savol &amp;middot; taxminan 18 daqiqa</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Throttling qaysi hujumlardan himoya qiladi?", "o": ["DoS/DDoS va parollarni topish (brute-force)", "SQL in'ektsiyadan faqat", "Faylni yuklab olishdan", "Migratsiya xatolaridan"], "a": 0, "e": "Botlar yuborayotgan so'rovlar soni cheklanadi."}, {"q": "<code>DEFAULT_THROTTLE_RATES<\/code> da <code>user: \"300/min\"<\/code> nimani bildiradi?", "o": ["Anonim foydalanuvchi 300 ta", "Tizimga kirgan foydalanuvchi daqiqasiga 300 tagacha so'rov yubora oladi", "Sahifa o'lchami 300", "Token muddati 300 daqiqa"], "a": 1, "e": "Anonim uchun <code>anon: 60/min<\/code>."}, {"q": "DRF throttling so'rovlar sonini qayerda hisoblab boradi?", "o": ["Foydalanuvchi brauzer cookie'sida", "Faqat ma'lumotlar bazasi jadvalida Post", "Kesh tizimida (LocMemCache yoki Redis)", "Fayl tizimida media papkasida"], "a": 2, "e": "Developmentda <code>LocMemCache<\/code>, productionda <code>Redis<\/code>."}, {"q": "<code>LoginAnonThrottle<\/code> da <code>scope = \"login_anon\"<\/code> nima uchun kerak?", "o": ["Sahifa o'lchamini belgilash uchun", "Faylni yuklash uchun", "Token yaratish uchun", "<code>DEFAULT_THROTTLE_RATES<\/code> dagi shu nomdagi limitni (10/min) ulash uchun"], "a": 3, "e": "Scope nomi va rates kaliti mos bo'lishi shart."}, {"q": "Oxirgi sahifada pagination javobidagi <code>next<\/code> maydoni qanday bo'ladi?", "o": ["<code>null<\/code>", "Birinchi sahifa havolasi", "Bo'sh massiv", "<code>count<\/code> qiymati"], "a": 0, "e": "Birinchi sahifada esa <code>previous<\/code> null bo'ladi."}, {"q": "<code>MobilePostPagination<\/code> (<code>page_size=20<\/code>, <code>max_page_size=50<\/code>) da <code>?page_size=80<\/code> yuborilsa?", "o": ["80 ta yozuv qaytadi", "50 ta yozuv qaytadi", "20 ta yozuv qaytadi", "429 xatosi"], "a": 1, "e": "<code>max_page_size<\/code> yuqori chegarani belgilaydi."}, {"q": "Media fayllar bazada qanday saqlanadi?", "o": ["Fayl ichi bazada matn sifatida", "<code>STATIC_ROOT<\/code> ichida", "Bazada faqat fayl yo'li, fayl o'zi <code>media/<\/code> papkasida", "Git omborida"], "a": 2, "e": "Shuning uchun <code>media/<\/code> ni <code>.gitignore<\/code> ga qo'shamiz."}, {"q": "Nega faylni <code>FileResponse<\/code> orqali berish to'g'ridan-to'g'ri URL dan ancha qulay?", "o": ["Fayl hajmi kichrayadi", "Fayl shifrlanadi avtomatik", "URL ishlatish mumkin emas", "Masalan, faylni faqat pullik obunachilarga berish yoki majburiy yuklab olish mumkin"], "a": 3, "e": "<code>FileResponse<\/code> oqimli (streaming) ishlaydi va <code>as_attachment<\/code> ni boshqaradi."}, {"q": "<code>@action(detail=True, methods=[\"post\"], url_path=\"upload-cover\")<\/code> qaysi manzilni yaratadi?", "o": ["<code>POST /api/v1/posts/{slug}/upload-cover/<\/code>", "<code>GET /api/v1/upload-cover/<\/code>", "<code>POST /api/v1/posts/upload-cover/<\/code> (slug'siz)", "<code>DELETE /api/v1/posts/{slug}/<\/code>"], "a": 0, "e": "<code>detail=True<\/code> bitta obyekt (slug) ustida ishlashni bildiradi."}, {"q": "Muqova yuklashda ruxsat etilgan MIME turlari qaysilar?", "o": ["<code>application/pdf<\/code>, <code>text/html<\/code>", "<code>image/jpeg<\/code>, <code>image/png<\/code>, <code>image/webp<\/code>", "<code>video/mp4<\/code>, <code>audio/mp3<\/code>", "<code>image/gif<\/code> va <code>image/bmp<\/code>"], "a": 1, "e": "Serializer <code>validate_cover_image<\/code> da <code>content_type<\/code> tekshiriladi."}, {"q": "Deployda <code>collectstatic<\/code> yig'gan statik fayllarni kim uzatadi?", "o": ["APITestCase", "Swagger", "Nginx", "LoginAnonThrottle"], "a": 2, "e": "Statik fayllar bitta papkaga yig'ilib, Nginx orqali beriladi."}, {"q": "<code>setUp<\/code> metodi testlarda nima uchun yoziladi?", "o": ["Testni o'chirish uchun", "Serverni ishga tushirish uchun", "Hujjat yaratish uchun", "Har testdan oldin dastlabki ma'lumotlarni (user, kategoriya, post) tayyorlash uchun"], "a": 3, "e": "<code>PostAPITestCase.setUp<\/code> da user, category va post yaratiladi."}, {"q": "<code>self.assertEqual(response.status_code, status.HTTP_200_OK)<\/code> nimani qiladi?", "o": ["Javob statusini kutilgan qiymat bilan solishtiradi", "Bazani tozalaydi", "Tokenni yangilaydi", "Hujjat yaratadi"], "a": 0, "e": "Mos kelmasa test yiqiladi."}, {"q": "Test uchun dastlabki ma'lumotlarni tayyorlash yondashuvi qanday ataladi?", "o": ["Throttle", "Factory/Seed", "Cursor", "Parser"], "a": 1, "e": "Loyihada <code>apps/common/tests/factories.py<\/code> ko'rsatilgan."}, {"q": "OpenAPI sxemasi qaysi manzilda taqdim etiladi?", "o": ["<code>/api/docs/<\/code> faqat", "<code>/media/schema/<\/code>", "<code>/api/schema/<\/code> (SpectacularAPIView)", "<code>/admin/schema/<\/code>"], "a": 2, "e": "Swagger va ReDoc <code>url_name=\"schema\"<\/code> orqali shu sxemadan foydalanadi."}, {"q": "GitHub Actions (CI/CD) testlardan nima uchun foydalanadi?", "o": ["Kodni avtomatik chiroyli qilish uchun", "Bazani o'chirish uchun", "Rasmlarni siqish uchun", "Bitta test yiqilsa ham xato kodni serverga joylashtirmaslik uchun"], "a": 3, "e": "Testlar deploydan oldin kafolat vazifasini bajaradi."}, {"q": "Testda <code>response.data[\"results\"]<\/code> ishlashi qaysi hafta mavzusi bilan bog'liq?", "o": ["Pagination: ro'yxat <code>count/next/previous/results<\/code> shaklida qaytadi", "Statik fayllar", "Faqat Swagger", "Faqat JWT"], "a": 0, "e": "7-dars pagination sozlamalari 9-dars testida ko'rinadi."}, {"q": "Bot <code>upload-cover<\/code> endpointiga daqiqasiga yuzlab so'rov yubordi. Qaysi mexanizm 429 qaytaradi?", "o": ["MultiPartParser", "Throttling (<code>AnonRateThrottle<\/code>/<code>UserRateThrottle<\/code>)", "FileResponse", "Swagger UI"], "a": 1, "e": "Throttling so'rovlar sonini cheklaydi, parser esa faqat kontent formatini o'qiydi."}, {"q": "Frontend dasturchi barcha endpointlar va ularning parametrlarini qayerdan interaktiv ko'ra oladi?", "o": ["<code>MEDIA_ROOT<\/code> papkasidan", "<code>collectstatic<\/code> natijasidan", "Swagger UI (<code>/api/docs/<\/code>) yoki ReDoc (<code>/api/redoc/<\/code>)", "<code>LoginAnonThrottle<\/code> dan"], "a": 2, "e": "<code>drf-spectacular<\/code> hujjatni avtomatik hosil qiladi."}, {"q": "Hajmi 6 MB rasm yuklandi, <code>validate_cover_image<\/code> rad etdi. Buni testda qanday tekshirish mantiqan to'g'ri?", "o": ["Swagger'ni o'chirib qo'yish", "<code>collectstatic<\/code> ni ishga tushirish", "429 kutish", "Upload endpointiga rasm yuborib, 400 xatosi qaytishini <code>assertEqual<\/code> bilan tekshirish"], "a": 3, "e": "ValidationError DRF da 400 Bad Request ko'rinishida qaytadi."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

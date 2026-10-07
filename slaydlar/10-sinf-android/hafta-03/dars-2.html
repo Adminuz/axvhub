@@ -1,573 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>Git bilan Ishlash Amaliyoti</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Git bilan Ishlash Amaliyoti</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<!-- 8-dars: Git bilan ishlash amaliyoti (Tarmoqlar va Konfliktlar) -->
-
-<!-- 1. SARLAVHA -->
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>Git bilan Ishlash Amaliyoti</h1>
-  <p class="muted">Tarmoqlar (Branching), birlashtirish (Merge) va to'qnashuvlarni (Conflict) hal qilish</p>
-  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">3-hafta · 8-dars</span>
-  
-</section>
-
-<!-- 2. BUGUN NIMANI O'RGANAMIZ? -->
-<section>
-  <h2>Bugun nimani o'rganamiz?</h2>
-  <div class="cards three">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="git-branch" data-anim="pulse"></i></div>
-      <h3>Branching falsafasi</h3>
-      <p>Asosiy kodni buzmasdan parallel rivojlanish uchun shoxchalar yaratish</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="triangle-alert" data-anim="float"></i></div>
-      <h3>Merge Conflicts</h3>
-      <p>To'qnashuvlar nima sababdan chiqishi va ularni xatosiz tuzatish algoritmi</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="file-archive" data-anim="draw"></i></div>
-      <h3>git stash va revert</h3>
-      <p>Chala o'zgarishlarni vaqtinchalik yashirish va xato commitlarni qaytarish</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 3. MUAMMO: MAINNI BUZIB QO'YISH -->
-<section>
-  <h2>Muammo: Asosiy kodni buzib qo'yish qo'rquvi</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="circle-alert" data-anim="bounce"></i></div>
-      <h3>Xavfli yondashuv</h3>
-      <p>Do'konda to'lov moduli ishlab turibdi. Dasturchi to'g'ridan-to'g'ri <code>main</code> da yangi funksiya yozyapti.</p>
-      <p>Lekin kod hali chala, ilova kompilyatsiya bo'lmayapti. Boshqa dasturchilarning ham ishi to'xtadi!</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="git-branch"></i></div>
-      <h3>Branching mo'jizasi</h3>
-      <p>Asosiy <code>main</code> tarmog'idan nusxa olib, alohida «parallel olam» ochiladi.</p>
-      <p>Funksiya 100% tayyor bo'lguncha <code>main</code> tinch va barqaror turadi.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 4. SVG 1: BRANCHING KONSEPSIYASI -->
-<section>
-  <h2>Branching qanday ishlaydi? (Parallel Olam)</h2>
-  <div class="illus">
-    <svg viewBox="0 0 920 340" width="100%" height="280">
-      <!-- Main chizig'i -->
-      <line x1="60" y1="100" x2="860" y2="100" class="la" stroke-width="3" />
-      <text x="60" y="70" class="t-accent" font-size="14" font-weight="700">main tarmog'i</text>
-      
-      <!-- Main commitlari -->
-      <circle cx="120" cy="100" r="16" class="fg" />
-      <circle cx="260" cy="100" r="16" class="fg" />
-      <circle cx="760" cy="100" r="18" class="fg" />
-      <text x="760" y="140" text-anchor="middle" class="t-head" font-size="11">Merge commit</text>
-
-      <!-- Feature branch egri chizig'i -->
-      <path d="M 260 100 C 320 220, 360 220, 420 220 L 620 220 C 680 220, 720 100, 760 100" fill="none" class="la" stroke-width="2.5" stroke-dasharray="4" />
-      <text x="520" y="260" text-anchor="middle" class="t-head" font-size="14" font-weight="700">feature-login tarmog'i</text>
-
-      <!-- Feature branch commitlari -->
-      <circle cx="440" cy="220" r="16" class="fa" />
-      <circle cx="440" cy="220" r="16" class="la" fill="none" stroke-width="2" />
-      <text x="440" y="190" text-anchor="middle" class="t-muted" font-size="10">Login UI</text>
-
-      <circle cx="580" cy="220" r="16" class="fa" />
-      <circle cx="580" cy="220" r="16" class="la" fill="none" stroke-width="2" />
-      <text x="580" y="190" text-anchor="middle" class="t-muted" font-size="10">Auth API</text>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- 5. BO'LIM 1 -->
-<section class="sec">
-  <div class="num">01</div>
-  <h1>Tarmoq Ochish va O'tish</h1>
-  <p>git switch -c, git checkout va git diff</p>
-</section>
-
-<!-- 6. YANGI BRANCH BUYRUQLARI -->
-<section>
-  <h2>Yangi branch ochish: git switch -c</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="terminal"></i></div>
-      <h3>Branch yaratish va o'tish</h3>
-      <pre><code># Yangi branch ochib unga o'tish:
-git switch -c feature-cart
-
-# Mavjud branchlar ro'yxatini ko'rish:
-git branch</code></pre>
-      <p class="t-accent">Yashil rang va yulduzcha (*) joriy faol branchni bildiradi.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="git-branch"></i></div>
-      <h3>Asosiy tarmoqqa qaytish</h3>
-      <pre><code># Main tarmog'iga o'tish:
-git switch main</code></pre>
-      <p class="t-muted">Eski Git versiyalarida <code>git checkout -b</code> va <code>git checkout main</code> ishlatilgan.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 7. O'ZGARISHLARNI TAQQOSLASH: GIT DIFF -->
-<section>
-  <h2>O'zgarishlarni ko'rish: git diff</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="layers"></i></div>
-      <h3>Satrma-satr tahlil</h3>
-      <p>Faylda qaysi satrlar yangi yozildi yoki o'chirildi?</p>
-      <pre><code>git diff</code></pre>
-      <p>Terminalda:</p>
-      <p class="t-accent"><b>+ yashil rang:</b> Yangi qo'shilgan satrlar</p>
-      <p class="t-muted"><b>- qizil rang:</b> O'chirilgan yoki o'zgargan satrlar</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="check-check"></i></div>
-      <h3>Branchlarni taqqoslash</h3>
-      <p>Ikki branch o'rtasidagi farqni solishtirish:</p>
-      <pre><code>git diff main feature-cart</code></pre>
-      <p class="t-muted">Commit qilishdan avval o'z kodingizni tekshirish uchun ajoyib odat.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 8. BIRLASHTIRISH: GIT MERGE -->
-<section>
-  <h2>Tarmoqlarni birlashtirish: git merge</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="git-branch"></i></div>
-      <h3>Birlashtirish qoidalari</h3>
-      <p>1. Avval qabul qiluvchi tarmoqqa o'tiladi: <code>git switch main</code></p>
-      <p>2. Qo'shilayotgan branch nomi aytiladi: <code>git merge feature-cart</code></p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="boxes"></i></div>
-      <h3>Fast-forward Merge</h3>
-      <p>Agar <code>main</code> tarmog'ida siz ajralib chiqqaningizdan beri hech qanday yangi commit qilinmagan bo'lsa, Git shunchaki ko'rsatkichni oldinga suradi.</p>
-      <p class="t-accent">Hech qanday to'qnashuvsiz bir zumda birlashadi!</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 9. BO'LIM 2 -->
-<section class="sec">
-  <div class="num">02</div>
-  <h1>Merge Conflicts (To'qnashuvlar)</h1>
-  <p>Bir xil satr tahrirlanganda yuzaga keladigan ziddiyatlarni hal qilish</p>
-</section>
-
-<!-- 10. TO'QNASHUV SABABI -->
-<section>
-  <h2>To'qnashuv (Conflict) qachon chiqadi?</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="triangle-alert"></i></div>
-      <h3>Sabab</h3>
-      <p>Ikkita turli tarmoqda ayni bir faylning <b>bir xil satri</b> ikki xil o'zgartirilsa, Git qaysi biri haqiqat ekanini bilmay qoladi.</p>
-      <pre><code>CONFLICT (content): Merge conflict in MainActivity.kt
-Automatic merge failed; fix conflicts...</code></pre>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="shield-check"></i></div>
-      <h3>Qo'rqinchli emas!</h3>
-      <p>Git hech qachon sizning kodingizni o'zboshimchalik bilan o'chirib tashlamaydi.</p>
-      <p>U jarayonni to'xtatadi va qaror qabul qilishni dasturchining o'ziga topshiradi.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 11. SVG 2: MERGE CONFLICT ANATOMIYASI -->
-<section>
-  <h2>Konfliktli fayl ko'rinishi (Anatomiya)</h2>
-  <div class="illus">
-    <svg viewBox="0 0 920 340" width="100%" height="280">
-      <g transform="translate(60, 30)">
-        <rect x="0" y="0" width="800" height="250" rx="14" class="fb" />
-        <rect x="0" y="0" width="800" height="250" rx="14" class="la" fill="none" stroke-width="1.5" />
-        
-        <!-- HEAD qismi -->
-        <rect x="25" y="25" width="750" height="50" rx="6" class="fa" />
-        <text x="40" y="45" class="t-accent" font-size="12" font-weight="700">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD  (Joriy tarmoq: main)</text>
-        <text x="40" y="65" class="t-head" font-size="13">val serverUrl = "https://api.xorazmiy.uz/v1"</text>
-        
-        <!-- Ajratuvchi -->
-        <line x1="25" y1="95" x2="775" y2="95" class="la" stroke-width="2" stroke-dasharray="6" />
-        <text x="400" y="115" text-anchor="middle" class="t-muted" font-size="12">======= (Ajratuvchi chegara)</text>
-        
-        <!-- Feature qismi -->
-        <rect x="25" y="135" width="750" height="50" rx="6" class="fa" />
-        <text x="40" y="155" class="t-head" font-size="13">val serverUrl = "https://test.xorazmiy.uz/api"</text>
-        <text x="40" y="175" class="t-accent" font-size="12" font-weight="700">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature-api (Qo'shilayotgan tarmoq)</text>
-
-        <text x="400" y="225" text-anchor="middle" class="t-accent" font-size="13" font-weight="700">Dasturchi: kerakli qatorni tanlab, belgilar (&lt;&lt;&lt;, ===, &gt;&gt;&gt;) ni o'chiradi!</text>
-      </g>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- 12. STEPPER: KONFLIKTNI HAL QILISH -->
-<section>
-  <h2>To'qnashuvni hal qilishning 4 qadami</h2>
-  <div class="stepper">
-    <div class="step fragment">
-      <div class="num">1</div>
-      <h3>Faylni ochish</h3>
-      <p>Android Studio yoki muharrirda konflikt bo'lgan faylni oching.</p>
-    </div>
-    <div class="step fragment">
-      <div class="num">2</div>
-      <h3>Kodni tahrirlash</h3>
-      <p>To'g'ri kodni qoldiring va <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> qatorlarini o'chiring.</p>
-    </div>
-    <div class="step fragment">
-      <div class="num">3</div>
-      <h3>git add</h3>
-      <p>Hal qilingan faylni sahnaga qo'shing: <code>git add MainActivity.kt</code></p>
-    </div>
-    <div class="step fragment">
-      <div class="num">4</div>
-      <h3>git commit</h3>
-      <p>Birlashtirishni yakunlang: <code>git commit -m "merge: to'qnashuv hal qilindi"</code></p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 13. ANDROID STUDIO MERGE TOOL -->
-<section>
-  <h2>Android Studio'da vizual hal qilish</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="laptop"></i></div>
-      <h3>3-Way Merge Tool</h3>
-      <p>Android Studio konflikt chiqqanda "Merge..." oynasini taklif qiladi.</p>
-      <p>Ekranda 3 ta panel ochiladi: chapda <b>Your Version</b>, o'ngda <b>Their Version</b>, o'rtada esa <b>Result</b>.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="code-xml"></i></div>
-      <h3>Tugmalar orqali hal qilish</h3>
-      <p>Kerakli o'zgarishni <code>&gt;&gt;</code> yoki <code>&lt;&lt;</code> strelkalari orqali markazga ko'chirasiz.</p>
-      <p>"Apply" tugmasini bosganingizda Git avtomatik faylni tayyorlaydi.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 14. BO'LIM 3 -->
-<section class="sec">
-  <div class="num">03</div>
-  <h1>Kodni Saqlash va Bekor Qilish</h1>
-  <p>git stash, git revert va xavfsiz tarix</p>
-</section>
-
-<!-- 15. GIT STASH: CHALA KODNI YASHIRISH -->
-<section>
-  <h2>Shoshilinch vazifa: git stash</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="file-archive" data-anim="float"></i></div>
-      <h3>Vaziyat</h3>
-      <p>Siz yangi funksiya yozyapsiz (kod chala, commit qilib bo'lmaydi).</p>
-      <p>To'satdan mijoz qo'ng'iroq qildi: "Main da jiddiy xato bor, darhol tuzating!".</p>
-      <p>Branch almashtirish uchun ishchi maydon toza bo'lishi kerak.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="refresh-cw"></i></div>
-      <h3>git stash yechimi</h3>
-      <pre><code># Chala o'zgarishlarni cho'ntakka yashirish:
-git stash
-
-# Main ga o'tib xatoni tuzatish:
-git switch main
-
-# Qaytib kelgach kodni qaytarish:
-git stash pop</code></pre>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 16. XATONI BEKOR QILISH: REVERT VS RESET -->
-<section>
-  <h2>Xatolarni bekor qilish: revert vs reset</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="rotate-ccw"></i></div>
-      <h3>git revert (Xavfsiz standart)</h3>
-      <p>Eski commitni o'chirib tashlamaydi, aksincha unga qarama-qarshi yangi commit yaratadi.</p>
-      <pre><code>git revert a1b2c3d</code></pre>
-      <p class="t-accent">Loyiha tarixi buzilmaydi, jamoada ishlash uchun eng to'g'ri yo'l.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="shield-alert"></i></div>
-      <h3>git reset (Ehtiyot bo'ling!)</h3>
-      <p>Tarixni orqaga suradi va oxirgi commitlarni o'chiradi.</p>
-      <pre><code>git reset --hard HEAD~1</code></pre>
-      <p class="t-muted">Agar bu kod internetga yuklangan bo'lsa, hech qachon --hard qilmang!</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 17. BRANCHNl O'CHIRISH -->
-<section>
-  <h2>Eski branchni tozalash: git branch -d</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="folder-code"></i></div>
-      <h3>Xavfsiz o'chirish (-d)</h3>
-      <p>Agar branch asosiy tarmoqqa to'liq merge qilib bo'lingan bo'lsa:</p>
-      <pre><code>git branch -d feature-cart</code></pre>
-      <p class="t-accent">Git branchni xatosiz o'chiradi.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="circle-alert"></i></div>
-      <h3>Majburiy o'chirish (-D)</h3>
-      <p>Agar tajriba omadsiz bo'lsa va merge qilinmagan branchni butunlay yo'qotmoqchi bo'lsangiz:</p>
-      <pre><code>git branch -D feature-failed</code></pre>
-      <p class="t-muted">Katta harfdagi -D majburiy o'chirishni bildiradi.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 18. SVG 3: TO'LIQ BRANCH VA MERGE SIKLI -->
-<section>
-  <h2>To'liq Professional Ish Sikli</h2>
-  <div class="illus">
-    <svg viewBox="0 0 920 320" width="100%" height="270">
-      <g transform="translate(30, 80)">
-        <rect x="0" y="0" width="170" height="140" rx="12" class="fb" />
-        <rect x="0" y="0" width="170" height="140" rx="12" class="la" fill="none" stroke-width="1.5" />
-        <text x="85" y="45" text-anchor="middle" class="t-head" font-size="13" font-weight="700">1. Branch ochish</text>
-        <text x="85" y="75" text-anchor="middle" class="t-muted" font-size="11">git switch -c</text>
-        <text x="85" y="95" text-anchor="middle" class="t-accent" font-size="11">feature-nomi</text>
-      </g>
-
-      <line x1="210" y1="150" x2="250" y2="150" class="la" stroke-width="2" />
-
-      <g transform="translate(260, 80)">
-        <rect x="0" y="0" width="170" height="140" rx="12" class="fb" />
-        <rect x="0" y="0" width="170" height="140" rx="12" class="la" fill="none" stroke-width="1.5" />
-        <text x="85" y="45" text-anchor="middle" class="t-head" font-size="13" font-weight="700">2. Kod &amp; Commit</text>
-        <text x="85" y="75" text-anchor="middle" class="t-muted" font-size="11">git diff tekshirish</text>
-        <text x="85" y="95" text-anchor="middle" class="t-muted" font-size="11">git commit -m</text>
-      </g>
-
-      <line x1="440" y1="150" x2="480" y2="150" class="la" stroke-width="2" />
-
-      <g transform="translate(490, 80)">
-        <rect x="0" y="0" width="170" height="140" rx="12" class="fb" />
-        <rect x="0" y="0" width="170" height="140" rx="12" class="la" fill="none" stroke-width="1.5" />
-        <text x="85" y="45" text-anchor="middle" class="t-head" font-size="13" font-weight="700">3. Merge &amp; Test</text>
-        <text x="85" y="75" text-anchor="middle" class="t-muted" font-size="11">git switch main</text>
-        <text x="85" y="95" text-anchor="middle" class="t-muted" font-size="11">git merge feature</text>
-      </g>
-
-      <line x1="670" y1="150" x2="710" y2="150" class="la" stroke-width="2" />
-
-      <g transform="translate(720, 80)">
-        <rect x="0" y="0" width="160" height="140" rx="12" class="fg" />
-        <text x="80" y="55" text-anchor="middle" class="fn" font-size="13" font-weight="700">4. Tozalash</text>
-        <text x="80" y="85" text-anchor="middle" class="fn" font-size="11">git branch -d</text>
-        <text x="80" y="105" text-anchor="middle" class="fn" font-size="11">Loyiha barqaror</text>
-      </g>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- 19. INTERAKTIV FLIP KARTALAR -->
-<section>
-  <h2>Git amaliy sirlari (Kartalarni bosing)</h2>
-  <div class="cards three mt">
-    <div class="flip" style="min-height:210px">
-      <div class="flip-in">
-        <div class="face front">
-          <div class="icon"><i data-ic="git-branch"></i></div>
-          <h3>Branch xarajati</h3>
-          <span class="flip-hint">bosing</span>
-        </div>
-        <div class="face back">
-          <p><b>Yengil vazn:</b> Gitda branch ochish kompyuter xotirasini deyarli egallamaydi (bor-yo'g'i 41 baytlik ko'rsatkich!).</p>
-        </div>
-      </div>
-    </div>
-    <div class="flip" style="min-height:210px">
-      <div class="flip-in">
-        <div class="face front">
-          <div class="icon"><i data-ic="triangle-alert"></i></div>
-          <h3>Konflikt foydasi</h3>
-          <span class="flip-hint">bosing</span>
-        </div>
-        <div class="face back">
-          <p><b>Himoya:</b> To'qnashuv sizning kodingiz boshqa birovning kodi bilan alishib ketmasligini kafolatlaydi.</p>
-        </div>
-      </div>
-    </div>
-    <div class="flip" style="min-height:210px">
-      <div class="flip-in">
-        <div class="face front">
-          <div class="icon"><i data-ic="file-archive"></i></div>
-          <h3>Stash afzalligi</h3>
-          <span class="flip-hint">bosing</span>
-        </div>
-        <div class="face back">
-          <p><b>Tezkorlik:</b> Ishingizni commit qilishga majbur bo'lmasdan shoshilinch xatolarni tuzatish imkonini beradi.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 20. ASOSIY BUYRUQLAR SPRAVOCHNIGI -->
-<section>
-  <h2>Bugungi dars buyruqlari spravochnigi</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="terminal"></i></div>
-      <h3>Tarmoqlar bilan ishlash</h3>
-      <p><code>git switch -c &lt;nom&gt;</code> — yangi branch ochish</p>
-      <p><code>git switch &lt;nom&gt;</code> — branchga o'tish</p>
-      <p><code>git merge &lt;nom&gt;</code> — birlashtirish</p>
-      <p><code>git branch -d &lt;nom&gt;</code> — branchni o'chirish</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="refresh-cw"></i></div>
-      <h3>Tahlil va Saqlash</h3>
-      <p><code>git diff</code> — o'zgarishlarni solishtirish</p>
-      <p><code>git stash</code> — chala kodni saqlash</p>
-      <p><code>git stash pop</code> — kodni qaytarish</p>
-      <p><code>git revert &lt;hash&gt;</code> — commitni bekor qilish</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 21. QUIZ -->
-<section>
-  <h2>Tezkor bilim sinovi</h2>
-  <div class="quiz">
-    <div class="q">Merge Conflict chiqqanda Git fayl ichidagi qaysi belgilar orasiga joriy branch kodini joylaydi?</div>
-    <div class="opts">
-      <div class="opt">&lt;div&gt; va &lt;/div&gt; orasiga</div>
-      <div class="opt" data-ok>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD va ======= orasiga</div>
-      <div class="opt">Faqat faylning eng oxiriga</div>
-      <div class="opt">JSON formatida alohida faylga</div>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 22. LABORATORIYA AMALIYOTI -->
-<section>
-  <h2>Sinfdagi laboratoriya amaliyoti</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="git-branch"></i></div>
-      <h3>1. Branch va Merge</h3>
-      <p><code>feature-cart</code> branch oching, <code>Cart.kt</code> faylini yaratib commit qiling va <code>main</code> ga merge qiling.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="triangle-alert"></i></div>
-      <h3>2. Konfliktni yechish</h3>
-      <p>Ikkita branchda bir satrni o'zgartirib sun'iy to'qnashuv hosil qiling va uni qo'lda bartaraf eting.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 23. XULOSA -->
-<section>
-  <h2>Darsning 4 oltin qoidasi</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="shield-check"></i></div>
-      <h3>1. Main — muqaddas</h3>
-      <p>Hech qachon chala va sinovdan o'tmagan kodni to'g'ridan-to'g'ri <code>main</code> da yozmang.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="git-branch"></i></div>
-      <h3>2. Yangi ish — yangi branch</h3>
-      <p>Har bir yangi funksiya yoki xato uchun alohida branch oching.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="triangle-alert"></i></div>
-      <h3>3. Konfliktdan qo'rqmang</h3>
-      <p>Belgilarni diqqat bilan o'qib, to'g'ri variantni qoldiring.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="file-archive"></i></div>
-      <h3>4. git stash ni esda tuting</h3>
-      <p>Shoshilinch ishlarda chala kodni yo'qotmaslik uchun stash eng yaxshi do'stingizdir.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 24. UYGA VAZIFA VA KEYINGI DARS -->
-<section>
-  <h2>Uyga vazifa va anons</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="git-branch"></i></div>
-      <h3>1. Branch &amp; Merge</h3>
-      <p>Loyihangizda <code>feature-profile</code> branchini ochib, muvaffaqiyatli merge qiling.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="triangle-alert"></i></div>
-      <h3>2. Konfliktni bartaraf etish</h3>
-      <p>Sun'iy to'qnashuv hosil qilib, uni qo'lda tuzating va merge commitini amalga oshiring.</p>
-    </div>
-  </div>
-  <p class="muted mt">Keyingi dars: GitHub platformasida loyihalar yaratish, remote repozitoriy va jamoaviy ishlash!</p>
-  
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Git bilan Ishlash Amaliyoti</h1></header>
+<div class="badges"><span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">3-hafta · 8-dars</span><span class="badge">Tarmoqlar (Branching), birlashtirish (Merge) va to'qnashuvlarni (Conflict) hal qilish</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

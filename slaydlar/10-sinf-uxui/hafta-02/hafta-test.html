@@ -1,331 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>2-hafta testi</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>2-hafta testi</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>2-hafta testi</h1>
-  <p class="muted">20 ta savol &middot; taxminan 18 daqiqa</p>
-  <span class="badge">10-sinf</span><span class="badge">Advanced UX/UI va Front-end</span><span class="badge">2-hafta</span>
-  
-</section>
-
-<section>
-  <h2>Savol 1/20</h2>
-  <div class="quiz">
-    <p class="q">Sifatli intervyu uchun odatda nechta ishtirokchi va qancha vaqt tavsiya etiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>5–10 kishi, taxminan 40 daqiqalik yuzma-yuz intervyu</button>
-      <button class="opt" type="button">5000 kishi, 1 daqiqa</button>
-      <button class="opt" type="button">1 kishi, 5 soat</button>
-      <button class="opt" type="button">100–10 000 kishi, onlayn</button>
-    </div>
-    <div class="explain">Katta auditoriya (100–10 000) esa miqdoriy tadqiqotga xos.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 2/20</h2>
-  <div class="quiz">
-    <p class="q">Eye tracking (ko'z harakatini kuzatish) qaysi turga kiradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Munosabat (Attitudinal)</button>
-      <button class="opt" type="button" data-ok>Xulq-atvor (Behavioral)</button>
-      <button class="opt" type="button">Faqat generativ</button>
-      <button class="opt" type="button">Faqat so'rovnoma</button>
-    </div>
-    <div class="explain">U odamlar amalda nimaga qarashini o'lchaydi, nima deyishini emas.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 3/20</h2>
-  <div class="quiz">
-    <p class="q">Ochiq (Open) karta tartiblash nima uchun ishlatiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Serverning tezligini oshirish uchun</button>
-      <button class="opt" type="button">Rang kontrastini hisoblash uchun</button>
-      <button class="opt" type="button" data-ok>Menyu va axborot arxitekturasini foydalanuvchi mantiqiga moslash uchun</button>
-      <button class="opt" type="button">Logotipni chizish uchun</button>
-    </div>
-    <div class="explain">Foydalanuvchi kartalarni o'zi guruhlaydi va guruhlarga nom beradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 4/20</h2>
-  <div class="quiz">
-    <p class="q">Field Study (kuzatuv) da nima uchun tabiiy muhit muhim?</p>
-    <div class="opts">
-      <button class="opt" type="button">Chunki laboratoriya ishlatish taqiqlangan</button>
-      <button class="opt" type="button">Chunki bu arzonroq</button>
-      <button class="opt" type="button">Chunki foydalanuvchi ismi kerak emas</button>
-      <button class="opt" type="button" data-ok>Hawthorne effektini kamaytirib, haqiqiy xatti-harakatni ko'rish uchun</button>
-    </div>
-    <div class="explain">Foydalanuvchi o'z muhitida (ofis, do'kon) tabiiy harakat qiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 5/20</h2>
-  <div class="quiz">
-    <p class="q">Yaratilgan prototipning qulayligini sinash qaysi tadqiqot turiga kiradi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Baholovchi (Evaluative)</button>
-      <button class="opt" type="button">Generativ</button>
-      <button class="opt" type="button">Faqat sifatli munosabat</button>
-      <button class="opt" type="button">Hech qaysisiga</button>
-    </div>
-    <div class="explain">Generativ loyiha boshida g'oyalarni kashf etadi, baholovchi tayyor yechimni sinaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 6/20</h2>
-  <div class="quiz">
-    <p class="q">So'rovnoma (Survey) odatda qanday tuziladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Faqat ochiq esse savollar</button>
-      <button class="opt" type="button" data-ok>Yopiq savollar (shkala) va 1–2 ta ochiq savol uyg'unlashtiriladi</button>
-      <button class="opt" type="button">Faqat bitta savol</button>
-      <button class="opt" type="button">Faqat yo'naltiruvchi savollar</button>
-    </div>
-    <div class="explain">Bu qisqa vaqtda yuzlab foydalanuvchidan fikr yig'ish imkonini beradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 7/20</h2>
-  <div class="quiz">
-    <p class="q">Personadagi «Iqtibos (Quote)» nima?</p>
-    <div class="opts">
-      <button class="opt" type="button">Mahsulotning narxi</button>
-      <button class="opt" type="button">Dasturchi izohi</button>
-      <button class="opt" type="button" data-ok>Foydalanuvchining hayotiy qarashini aks ettiruvchi bitta jumla</button>
-      <button class="opt" type="button">Reklama shiori</button>
-    </div>
-    <div class="explain">Iqtibos personani insoniylashtiradi va qarashini qisqa ifodalaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 8/20</h2>
-  <div class="quiz">
-    <p class="q">«Asabiylashgan: chunki to'lov tasdiqlanmadi» yozuvi empatiya xaritasining qaysi kvadrantiga tegishli?</p>
-    <div class="opts">
-      <button class="opt" type="button">Says</button>
-      <button class="opt" type="button">Does</button>
-      <button class="opt" type="button">Hears</button>
-      <button class="opt" type="button" data-ok>Feels (His qiladi)</button>
-    </div>
-    <div class="explain">Feels — hissiy holat va uning sababi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 9/20</h2>
-  <div class="quiz">
-    <p class="q">Quyidagi fikr qaysi kvadrantga mos: «Balki men buni tushunishga yetarlicha aqlli emasdirman?»</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Thinks</button>
-      <button class="opt" type="button">Says</button>
-      <button class="opt" type="button">Does</button>
-      <button class="opt" type="button">Gains</button>
-    </div>
-    <div class="explain">Bu foydalanuvchi baland ovozda aytmaydigan ichki fikr.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 10/20</h2>
-  <div class="quiz">
-    <p class="q">Empathy Map ning persona va journey map dan farqi qaysi?</p>
-    <div class="opts">
-      <button class="opt" type="button">U butun yo'lni vaqt bo'yicha qamrab oladi (Breadth)</button>
-      <button class="opt" type="button" data-ok>U muayyan vaziyatdagi ichki holatni chuqur (Depth) tushunishga qaratilgan</button>
-      <button class="opt" type="button">U faqat demografiyani yig'adi</button>
-      <button class="opt" type="button">U kodni tekshiradi</button>
-    </div>
-    <div class="explain">Journey Map kenglikni, Empathy Map chuqurlikni beradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 11/20</h2>
-  <div class="quiz">
-    <p class="q">«Hears» hududida nimalar yoziladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Foydalanuvchining jismoniy harakatlari</button>
-      <button class="opt" type="button">Mahsulot narxi</button>
-      <button class="opt" type="button" data-ok>Hamkasb, ota-ona yoki boshliqlardan eshitilgan fikrlar</button>
-      <button class="opt" type="button">Ranglar kodi</button>
-    </div>
-    <div class="explain">Hears va Sees foydalanuvchining muhitini ko'rsatadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 12/20</h2>
-  <div class="quiz">
-    <p class="q">User Story qaysi metodologiyada ishlatiladigan talab formati?</p>
-    <div class="opts">
-      <button class="opt" type="button">Faqat Waterfall</button>
-      <button class="opt" type="button">Faqat rasm chizishda</button>
-      <button class="opt" type="button">Faqat bank hisobotida</button>
-      <button class="opt" type="button" data-ok>Agile</button>
-    </div>
-    <div class="explain">Agile da ehtiyoj foydalanuvchi nuqtayi nazaridan qisqa ifodalanadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 13/20</h2>
-  <div class="quiz">
-    <p class="q">Quyidagilardan qaysi biri yaxshi qabul qilish mezoni?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>«Karta raqami kiritilganda bank turi avtomatik aniqlanishi kerak»</button>
-      <button class="opt" type="button">«Hammasi chiroyli bo'lsin»</button>
-      <button class="opt" type="button">«Foydalanuvchi mamnun bo'lsin»</button>
-      <button class="opt" type="button">«Tez ishlasin»</button>
-    </div>
-    <div class="explain">Mezon aniq va tekshirib ko'riladigan shart bo'lishi kerak.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 14/20</h2>
-  <div class="quiz">
-    <p class="q">User Scenario nimani tasvirlaydi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Faqat ma'lumotlar bazasi jadvallarini</button>
-      <button class="opt" type="button" data-ok>Foydalanuvchi kim, qayerda, qanday holatda va qanday ketma-ketlikda ishni bajargani hikoyasini</button>
-      <button class="opt" type="button">Tizimning ichki texnik qadamlarini</button>
-      <button class="opt" type="button">Faqat rang palitrasini</button>
-    </div>
-    <div class="explain">Texnik bosqichlar Use Case ga tegishli.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 15/20</h2>
-  <div class="quiz">
-    <p class="q">Quyidagilardan qaysi biri UJM dagi to'g'ri bosqichlar ketma-ketligi misoli?</p>
-    <div class="opts">
-      <button class="opt" type="button">Yetkazib berish &rarr; Qidiruv &rarr; Ehtiyoj &rarr; Xarid</button>
-      <button class="opt" type="button">Xarid &rarr; Saytga kirish &rarr; Ehtiyoj</button>
-      <button class="opt" type="button" data-ok>Ehtiyoj paydo bo'lishi &rarr; Saytga kirish &rarr; Qidiruv &rarr; Xarid &rarr; Yetkazib berish</button>
-      <button class="opt" type="button">Qidiruv &rarr; Ehtiyoj &rarr; Yetkazib berish &rarr; Xarid</button>
-    </div>
-    <div class="explain">Bosqichlar foydalanuvchi yo'lining xronologik tartibini aks ettiradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 16/20</h2>
-  <div class="quiz">
-    <p class="q">«Onlayn xaridor sifatida, men tovarlarni narx bo'yicha saralashni xohlayman, shunda byudjetimga mos mahsulotni tezroq topaman». Foyda qismi qaysi?</p>
-    <div class="opts">
-      <button class="opt" type="button">«Onlayn xaridor sifatida»</button>
-      <button class="opt" type="button">«tovarlarni narx bo'yicha saralashni»</button>
-      <button class="opt" type="button">Foyda qismi yo'q</button>
-      <button class="opt" type="button" data-ok>«byudjetimga mos mahsulotni tezroq topaman»</button>
-    </div>
-    <div class="explain">«Shunda...» dan keyingi qism aniq qiymatni bildiradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 17/20</h2>
-  <div class="quiz">
-    <p class="q">Persona yaratish uchun qaysi tadqiqot usullari ma'lumot beradi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Intervyu, so'rovnoma va kuzatuv</button>
-      <button class="opt" type="button">Faqat dizaynerning taxmini</button>
-      <button class="opt" type="button">Faqat logotip tahlili</button>
-      <button class="opt" type="button">Faqat kod tekshiruvi</button>
-    </div>
-    <div class="explain">4-dars usullari 5-dars personasining 100% haqiqiy asosini hosil qiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 18/20</h2>
-  <div class="quiz">
-    <p class="q">Empatiya xaritasida «Says» va «Does» ni solishtirish qaysi tadqiqot qoidasi bilan bog'liq?</p>
-    <div class="opts">
-      <button class="opt" type="button">Barcha foydalanuvchilar bir xil fikrda</button>
-      <button class="opt" type="button" data-ok>Inson aytgan gapi bilan amaldagi harakati farq qilishi mumkin</button>
-      <button class="opt" type="button">Hawthorne effekti faqat xaritaga tegishli emas</button>
-      <button class="opt" type="button">Faqat so'zlarga ishonish kerak</button>
-    </div>
-    <div class="explain">Munosabat (intervyu) va xulq-atvor (kuzatuv) natijalarini birga ko'rish ishonchli xulosa beradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 19/20</h2>
-  <div class="quiz">
-    <p class="q">Journey Map da «to'lov tasdiqlanmadi» pain point i aniqlandi. Qaysi mahsulot bu uchun mos User Story hosil qiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">«Xaridor sifatida, men serverni o'chiraman»</button>
-      <button class="opt" type="button">«Dizayner sifatida men rang tanlayman»</button>
-      <button class="opt" type="button" data-ok>«Xaridor sifatida, men to'lov holatini darhol ko'rishni xohlayman, shunda ikkilanmayman»</button>
-      <button class="opt" type="button">«Sahifa shiori o'zgarsin»</button>
-    </div>
-    <div class="explain">Pain point (5–6-darslar) foydalanuvchi ehtiyojiga, ya'ni aniq User Story ga aylanadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 20/20</h2>
-  <div class="quiz">
-    <p class="q">Hafta mavzulari ish jarayonida qaysi tartibda qo'llanadi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Journey Map &rarr; Tadqiqot &rarr; Persona</button>
-      <button class="opt" type="button">User Story &rarr; Tadqiqot &rarr; Empatiya xaritasi</button>
-      <button class="opt" type="button">Persona &rarr; User Story &rarr; Tadqiqot</button>
-      <button class="opt" type="button" data-ok>Tadqiqot &rarr; Persona/Empatiya xaritasi &rarr; User Story va Journey Map</button>
-    </div>
-    <div class="explain">Avval foydalanuvchini o'rganamiz, so'ng uni umumlashtiramiz va talab hamda yo'lga aylantiramiz.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Natijangiz</h2>
-  <div class="cards three">
-    <div class="card"><h3>20 dan 18+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
-    <div class="card"><h3>20 dan 12-17</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
-    <div class="card accent"><h3>10 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
-  </div>
-  <p class="small mt">Takrorlang: UX tadqiqot usullari, persona va empatiya xaritasi, User Story va Journey Map.</p>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>2-hafta testi</h1></header>
+<div class="badges"><span class="badge">10-sinf</span><span class="badge">Advanced UX/UI va Front-end</span><span class="badge">2-hafta</span><span class="badge">20 ta savol &amp;middot; taxminan 18 daqiqa</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Sifatli intervyu uchun odatda nechta ishtirokchi va qancha vaqt tavsiya etiladi?", "o": ["5–10 kishi, taxminan 40 daqiqalik yuzma-yuz intervyu", "5000 kishi, 1 daqiqa", "1 kishi, 5 soat", "100–10 000 kishi, onlayn"], "a": 0, "e": "Katta auditoriya (100–10 000) esa miqdoriy tadqiqotga xos."}, {"q": "Eye tracking (ko'z harakatini kuzatish) qaysi turga kiradi?", "o": ["Munosabat (Attitudinal)", "Xulq-atvor (Behavioral)", "Faqat generativ", "Faqat so'rovnoma"], "a": 1, "e": "U odamlar amalda nimaga qarashini o'lchaydi, nima deyishini emas."}, {"q": "Ochiq (Open) karta tartiblash nima uchun ishlatiladi?", "o": ["Serverning tezligini oshirish uchun", "Rang kontrastini hisoblash uchun", "Menyu va axborot arxitekturasini foydalanuvchi mantiqiga moslash uchun", "Logotipni chizish uchun"], "a": 2, "e": "Foydalanuvchi kartalarni o'zi guruhlaydi va guruhlarga nom beradi."}, {"q": "Field Study (kuzatuv) da nima uchun tabiiy muhit muhim?", "o": ["Chunki laboratoriya ishlatish taqiqlangan", "Chunki bu arzonroq", "Chunki foydalanuvchi ismi kerak emas", "Hawthorne effektini kamaytirib, haqiqiy xatti-harakatni ko'rish uchun"], "a": 3, "e": "Foydalanuvchi o'z muhitida (ofis, do'kon) tabiiy harakat qiladi."}, {"q": "Yaratilgan prototipning qulayligini sinash qaysi tadqiqot turiga kiradi?", "o": ["Baholovchi (Evaluative)", "Generativ", "Faqat sifatli munosabat", "Hech qaysisiga"], "a": 0, "e": "Generativ loyiha boshida g'oyalarni kashf etadi, baholovchi tayyor yechimni sinaydi."}, {"q": "So'rovnoma (Survey) odatda qanday tuziladi?", "o": ["Faqat ochiq esse savollar", "Yopiq savollar (shkala) va 1–2 ta ochiq savol uyg'unlashtiriladi", "Faqat bitta savol", "Faqat yo'naltiruvchi savollar"], "a": 1, "e": "Bu qisqa vaqtda yuzlab foydalanuvchidan fikr yig'ish imkonini beradi."}, {"q": "Personadagi «Iqtibos (Quote)» nima?", "o": ["Mahsulotning narxi", "Dasturchi izohi", "Foydalanuvchining hayotiy qarashini aks ettiruvchi bitta jumla", "Reklama shiori"], "a": 2, "e": "Iqtibos personani insoniylashtiradi va qarashini qisqa ifodalaydi."}, {"q": "«Asabiylashgan: chunki to'lov tasdiqlanmadi» yozuvi empatiya xaritasining qaysi kvadrantiga tegishli?", "o": ["Says", "Does", "Hears", "Feels (His qiladi)"], "a": 3, "e": "Feels — hissiy holat va uning sababi."}, {"q": "Quyidagi fikr qaysi kvadrantga mos: «Balki men buni tushunishga yetarlicha aqlli emasdirman?»", "o": ["Thinks", "Says", "Does", "Gains"], "a": 0, "e": "Bu foydalanuvchi baland ovozda aytmaydigan ichki fikr."}, {"q": "Empathy Map ning persona va journey map dan farqi qaysi?", "o": ["U butun yo'lni vaqt bo'yicha qamrab oladi (Breadth)", "U muayyan vaziyatdagi ichki holatni chuqur (Depth) tushunishga qaratilgan", "U faqat demografiyani yig'adi", "U kodni tekshiradi"], "a": 1, "e": "Journey Map kenglikni, Empathy Map chuqurlikni beradi."}, {"q": "«Hears» hududida nimalar yoziladi?", "o": ["Foydalanuvchining jismoniy harakatlari", "Mahsulot narxi", "Hamkasb, ota-ona yoki boshliqlardan eshitilgan fikrlar", "Ranglar kodi"], "a": 2, "e": "Hears va Sees foydalanuvchining muhitini ko'rsatadi."}, {"q": "User Story qaysi metodologiyada ishlatiladigan talab formati?", "o": ["Faqat Waterfall", "Faqat rasm chizishda", "Faqat bank hisobotida", "Agile"], "a": 3, "e": "Agile da ehtiyoj foydalanuvchi nuqtayi nazaridan qisqa ifodalanadi."}, {"q": "Quyidagilardan qaysi biri yaxshi qabul qilish mezoni?", "o": ["«Karta raqami kiritilganda bank turi avtomatik aniqlanishi kerak»", "«Hammasi chiroyli bo'lsin»", "«Foydalanuvchi mamnun bo'lsin»", "«Tez ishlasin»"], "a": 0, "e": "Mezon aniq va tekshirib ko'riladigan shart bo'lishi kerak."}, {"q": "User Scenario nimani tasvirlaydi?", "o": ["Faqat ma'lumotlar bazasi jadvallarini", "Foydalanuvchi kim, qayerda, qanday holatda va qanday ketma-ketlikda ishni bajargani hikoyasini", "Tizimning ichki texnik qadamlarini", "Faqat rang palitrasini"], "a": 1, "e": "Texnik bosqichlar Use Case ga tegishli."}, {"q": "Quyidagilardan qaysi biri UJM dagi to'g'ri bosqichlar ketma-ketligi misoli?", "o": ["Yetkazib berish &rarr; Qidiruv &rarr; Ehtiyoj &rarr; Xarid", "Xarid &rarr; Saytga kirish &rarr; Ehtiyoj", "Ehtiyoj paydo bo'lishi &rarr; Saytga kirish &rarr; Qidiruv &rarr; Xarid &rarr; Yetkazib berish", "Qidiruv &rarr; Ehtiyoj &rarr; Yetkazib berish &rarr; Xarid"], "a": 2, "e": "Bosqichlar foydalanuvchi yo'lining xronologik tartibini aks ettiradi."}, {"q": "«Onlayn xaridor sifatida, men tovarlarni narx bo'yicha saralashni xohlayman, shunda byudjetimga mos mahsulotni tezroq topaman». Foyda qismi qaysi?", "o": ["«Onlayn xaridor sifatida»", "«tovarlarni narx bo'yicha saralashni»", "Foyda qismi yo'q", "«byudjetimga mos mahsulotni tezroq topaman»"], "a": 3, "e": "«Shunda...» dan keyingi qism aniq qiymatni bildiradi."}, {"q": "Persona yaratish uchun qaysi tadqiqot usullari ma'lumot beradi?", "o": ["Intervyu, so'rovnoma va kuzatuv", "Faqat dizaynerning taxmini", "Faqat logotip tahlili", "Faqat kod tekshiruvi"], "a": 0, "e": "4-dars usullari 5-dars personasining 100% haqiqiy asosini hosil qiladi."}, {"q": "Empatiya xaritasida «Says» va «Does» ni solishtirish qaysi tadqiqot qoidasi bilan bog'liq?", "o": ["Barcha foydalanuvchilar bir xil fikrda", "Inson aytgan gapi bilan amaldagi harakati farq qilishi mumkin", "Hawthorne effekti faqat xaritaga tegishli emas", "Faqat so'zlarga ishonish kerak"], "a": 1, "e": "Munosabat (intervyu) va xulq-atvor (kuzatuv) natijalarini birga ko'rish ishonchli xulosa beradi."}, {"q": "Journey Map da «to'lov tasdiqlanmadi» pain point i aniqlandi. Qaysi mahsulot bu uchun mos User Story hosil qiladi?", "o": ["«Xaridor sifatida, men serverni o'chiraman»", "«Dizayner sifatida men rang tanlayman»", "«Xaridor sifatida, men to'lov holatini darhol ko'rishni xohlayman, shunda ikkilanmayman»", "«Sahifa shiori o'zgarsin»"], "a": 2, "e": "Pain point (5–6-darslar) foydalanuvchi ehtiyojiga, ya'ni aniq User Story ga aylanadi."}, {"q": "Hafta mavzulari ish jarayonida qaysi tartibda qo'llanadi?", "o": ["Journey Map &rarr; Tadqiqot &rarr; Persona", "User Story &rarr; Tadqiqot &rarr; Empatiya xaritasi", "Persona &rarr; User Story &rarr; Tadqiqot", "Tadqiqot &rarr; Persona/Empatiya xaritasi &rarr; User Story va Journey Map"], "a": 3, "e": "Avval foydalanuvchini o'rganamiz, so'ng uni umumlashtiramiz va talab hamda yo'lga aylantiramiz."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

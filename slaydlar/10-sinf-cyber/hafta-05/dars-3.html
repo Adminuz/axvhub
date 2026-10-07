@@ -1,305 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>Firewall turlari va prinsiplari</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Firewall turlari va prinsiplari</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>Firewall turlari va prinsiplari</h1>
-  <p class="muted">firewall, trusted va untrusted tarmoq, turlari, ACL, ALLOW, DENY, NAT, default-deny, UTM va NGFW</p>
-  <span class="badge">10-sinf Kiberxavfsizlik</span><span class="badge">5-hafta · 15-dars</span>
-  
-</section>
-
-<section>
-  <h2>Bugun nimalarni o'rganamiz?</h2>
-  <div class="cards three">
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="brick-wall" data-anim="pulse"></i></div><h3>Firewall nima</h3><p>Xavfsizlik devori</p></div>
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="layers" data-anim="float"></i></div><h3>Firewall turlari</h3><p>OSI sathlari bo'yicha</p></div>
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="list-checks" data-anim="blink"></i></div><h3>ACL qoidalari</h3><p>ALLOW, DENY, NAT</p></div>
-  </div>
-</section>
-
-<section>
-  <h2>Takrorlash</h2>
-  <div class="quiz">
-    <p class="q">Segmentatsiyaning asosiy maqsadi nima?</p>
-    <div class="opts">
-    <button class="opt" type="button" data-ok>Xavfsizlikni oshirish va hujumni cheklash</button>
-    <button class="opt" type="button">Internetni o'chirish</button>
-    <button class="opt" type="button">Parolni almashtirish</button>
-    <button class="opt" type="button">Fayllarni arxivlash</button>
-    </div>
-    <div class="explain">Segmentlar bir-biridan ajratiladi, hujum tarqalishi cheklanadi.</div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="num">01</div>
-  <h1>Firewall nima</h1>
-  <p>Xavfsizlik devori</p>
-</section>
-
-<section>
-  <h2>Firewall joylashuvi</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 300">
-    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="145" text-anchor="middle" font-size="22">Internet</text><text class="t-head" x="125" y="171" text-anchor="middle" font-size="22">(ishonchsiz)</text></g>
-    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="158" text-anchor="middle" font-size="22">Firewall</text></g>
-    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="145" text-anchor="middle" font-size="22">Ichki tarmoq</text><text class="t-head" x="625" y="171" text-anchor="middle" font-size="22">(ishonchli)</text></g>
-    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="158" text-anchor="middle" font-size="22">Qurilmalar</text></g>
-      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Barcha trafik firewall orqali o'tadi</text>
-    </svg>
-  </div>
-</section>
-
-<section>
-  <h2>Qaror mantig'i</h2>
-  <pre><code class="language-bash" data-trim data-line-numbers="1|2|3|4">
-paket keldi
-  qoidalar bilan solishtirish
-    mos qoida bor  -&gt;  ALLOW yoki DENY
-    mos qoida yo'q -&gt;  standart qoida (default)
-  </code></pre>
-  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Firewall tashqi hujumlardan, ruxsatsiz kirishdan va DoS hujumlaridan himoya qiladi, lekin foydalanuvchi e'tiborsizligini (95% hujum inson omiliga bog'liq) almashtirmaydi.</div>
-</section>
-
-<section>
-  <h2>Mini-test</h2>
-  <div class="quiz">
-    <p class="q">Firewall qaysi tarmoqlar orasida to'siq yaratadi?</p>
-    <div class="opts">
-    <button class="opt" type="button" data-ok>Ishonchli va ishonchsiz</button>
-    <button class="opt" type="button">Faqat Wi-Fi va kabel</button>
-    <button class="opt" type="button">Faqat ikki kompyuter</button>
-    <button class="opt" type="button">Faqat DNS va DHCP</button>
-    </div>
-    <div class="explain">Trusted va untrusted tarmoqlar orasida.</div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="num">02</div>
-  <h1>Firewall turlari</h1>
-  <p>OSI sathlari bo'yicha</p>
-</section>
-
-<section>
-  <h2>Past sathdan yuqoriga</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 300">
-    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="145" text-anchor="middle" font-size="22">Kanal:</text><text class="t-head" x="125" y="171" text-anchor="middle" font-size="22">kommutator</text></g>
-    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">Tarmoq:</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">paket filtri</text></g>
-    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="145" text-anchor="middle" font-size="22">Seans: holat</text><text class="t-head" x="625" y="171" text-anchor="middle" font-size="22">inspektori</text></g>
-    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">Tatbiqiy:</text><text class="t-head" x="875" y="171" text-anchor="middle" font-size="22">proksi</text></g>
-      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Yuqori sath: aqlliroq, lekin sekinroq</text>
-    </svg>
-  </div>
-</section>
-
-<section>
-  <h2>Turlar xulosasi</h2>
-  <pre><code class="language-bash" data-trim data-line-numbers="1|2|3|4">
-Kanal sathi    boshqariluvchi kommutator (MAC, port)
-Tarmoq sathi   paket filtri (IP, port, protokol)
-Seans sathi    holat inspektori, SOCKS5 vositachisi
-Tatbiqiy sath  HTTP/HTTPS, FTP proksi
-  </code></pre>
-  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Vositachida trafik qo'shimcha qurilmada qayta ishlanadi, shuning uchun unumdorlikni hisobga olish kerak; holat inspektori vositachisiz ishlaydi, tezlikni pasaytirmaydi.</div>
-</section>
-
-<section>
-  <h2>Mini-test</h2>
-  <div class="quiz">
-    <p class="q">IP, port va protokol bo'yicha filtrlaydigan firewall turi qaysi?</p>
-    <div class="opts">
-    <button class="opt" type="button" data-ok>Paket filtri</button>
-    <button class="opt" type="button">Tatbiqiy proksi</button>
-    <button class="opt" type="button">Boshqariluvchi kommutator</button>
-    <button class="opt" type="button">Antivirus</button>
-    </div>
-    <div class="explain">Tarmoq sathining paket filtri IP, port va protokol bo'yicha ishlaydi.</div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="num">03</div>
-  <h1>ACL qoidalari</h1>
-  <p>ALLOW, DENY, NAT</p>
-</section>
-
-<section>
-  <h2>Default-deny tamoyili</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 300">
-    <g class="fragment"><rect class="fa" x="25" y="110" width="200" height="80" rx="14"/><text class="t-head" x="125" y="145" text-anchor="middle" font-size="22">Hammasini</text><text class="t-head" x="125" y="171" text-anchor="middle" font-size="22">taqiqla</text></g>
-    <g class="fragment"><line class="la flowing" x1="475" y1="150" x2="275" y2="150"/><rect class="fb" x="275" y="110" width="200" height="80" rx="14"/><text class="t-head" x="375" y="145" text-anchor="middle" font-size="22">Kerakli</text><text class="t-head" x="375" y="171" text-anchor="middle" font-size="22">portni aniqla</text></g>
-    <g class="fragment"><line class="lb flowing" x1="725" y1="150" x2="525" y2="150"/><rect class="fc" x="525" y="110" width="200" height="80" rx="14"/><text class="t-head" x="625" y="145" text-anchor="middle" font-size="22">Faqat shunga</text><text class="t-head" x="625" y="171" text-anchor="middle" font-size="22">ruxsat ber</text></g>
-    <g class="fragment"><line class="lc flowing" x1="975" y1="150" x2="775" y2="150"/><rect class="fg pulse" x="775" y="110" width="200" height="80" rx="14"/><text class="t-head" x="875" y="145" text-anchor="middle" font-size="22">Qoidani</text><text class="t-head" x="875" y="171" text-anchor="middle" font-size="22">tekshir</text></g>
-      <text class="t-muted" x="500" y="260" text-anchor="middle" font-size="22">Ruxsat ro'yxati kichik bo'lsin</text>
-    </svg>
-  </div>
-</section>
-
-<section>
-  <h2>ACL misollari</h2>
-  <pre><code class="language-bash" data-trim data-line-numbers="1-2|3|4|5|7-8">
-ALLOW IN ANY -&gt; WebServer:80
-ALLOW IN ANY -&gt; WebServer:443
-DENY  IN ANY -&gt; InternalNet:22
-DENY  IN ANY -&gt; ANY (ICMP Echo Request)
-NAT   OUT InternalNet -&gt; Internet
-
-DENY ALL
-ALLOW kerakli_portlar
-  </code></pre>
-  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i>Windows da: <code>netsh advfirewall set allprofiles state on</code> yoqadi, <code>off</code> o'chiradi. Qoida: <code>firewall.cpl</code> &gt; Qo'shimcha parametrlar &gt; Kiruvchi qoidalar &gt; Yangi qoida.</div>
-</section>
-
-<section>
-  <h2>Mini-test</h2>
-  <div class="quiz">
-    <p class="q">Default-deny qoidasi nimani anglatadi?</p>
-    <div class="opts">
-    <button class="opt" type="button" data-ok>Avval hammasi taqiqlanadi, keyin kerakli xizmatlarga ruxsat beriladi</button>
-    <button class="opt" type="button">Hammasiga ruxsat beriladi</button>
-    <button class="opt" type="button">Faqat ping taqiqlanadi</button>
-    <button class="opt" type="button">Firewall o'chiriladi</button>
-    </div>
-    <div class="explain">Default-deny: DENY ALL, so'ng kerakli ALLOW qoidalari.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Paket filtri va holat inspektori</h2>
-  <div class="vs">
-    <div class="side fragment"><h3>Paket filtri</h3>Tarmoq sathi; IP, port, protokol bo'yicha; har paketni alohida ko'radi; IP almashtirishga zaif</div>
-    <div class="mid">VS</div>
-    <div class="side b fragment"><h3>Holat inspektori</h3>Seans sathi; ulanish holatini kuzatadi; aqlliroq filtrlaydi; vositachisiz tez ishlaydi</div>
-  </div>
-  <div class="card accent fragment mt"><p>Zamonaviy firewall lar ikkala yondashuvni birlashtiradi.</p></div>
-</section>
-
-<section>
-  <h2>Atamalar. Bosing</h2>
-  <div class="cards two">
-    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>ACL</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Kirish boshqaruvi ro'yxati: qoidalar to'plami</p></div></div></div>
-    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>ALLOW</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Trafikka ruxsat berish qoidasi</p></div></div></div>
-    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>DENY</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Trafikni taqiqlash qoidasi</p></div></div></div>
-    <div class="flip" style="min-height:150px"><div class="flip-in"><div class="face front"><h3>NGFW</h3><span class="flip-hint">bosing</span></div><div class="face back"><p>Keyingi avlod firewall: portlar, IPS va ilova filtri birga</p></div></div></div>
-  </div>
-</section>
-
-<section>
-  <h2>Qoida yaratish bosqichlari</h2>
-  <div class="stepper">
-    <div class="stp on"><div class="card"><div class="icon"><i data-ic="play" data-anim="pulse"></i></div><h3>1. Holatni ko'ring</h3><p>Firewall yoqilganini tekshiring.</p></div></div>
-    <div class="stp"><div class="card"><div class="icon"><i data-ic="funnel"></i></div><h3>2. Mezonni tanlang</h3><p>Port, protokol va yo'nalishni belgilang.</p></div></div>
-    <div class="stp"><div class="card"><div class="icon"><i data-ic="shield-check"></i></div><h3>3. Harakat va profil</h3><p>ALLOW yoki DENY va tarmoq profilini tanlang.</p></div></div>
-  </div>
-</section>
-
-<section>
-  <section>
-    <h2>Firewall turlari</h2>
-    <table>
-      <thead><tr><th>Tur</th><th>Sath</th><th>Nima bo'yicha</th></tr></thead>
-      <tbody>
-        <tr class="fragment"><td>Boshqariluvchi kommutator</td><td>Kanal</td><td>MAC, port</td></tr>
-        <tr class="fragment"><td>Paket filtri</td><td>Tarmoq</td><td>IP, port, protokol</td></tr>
-        <tr class="fragment"><td>Holat inspektori</td><td>Seans</td><td>Ulanish holati</td></tr>
-        <tr class="fragment"><td>Seans vositachisi</td><td>Seans</td><td>TCP/UDP seans (SOCKS5)</td></tr>
-        <tr class="fragment"><td>Tatbiqiy vositachi</td><td>Tatbiqiy</td><td>HTTP, FTP kontenti</td></tr>
-      </tbody>
-    </table>
-    <p class="small">Pastga bosing: Windows Firewall</p>
-  </section>
-  <section>
-    <h2>Windows Firewall da 80-port qoidasi</h2>
-    <ol class="steps-n">
-      <li class="fragment">Win+R, <code>firewall.cpl</code>, Qo'shimcha parametrlar.</li>
-      <li class="fragment">Kiruvchi qoidalar &gt; Yangi qoida &gt; Port, TCP, 80.</li>
-      <li class="fragment">Harakat (ruxsat yoki taqiq) va profilni tanlab, nom bering.</li>
-    </ol>
-  </section>
-</section>
-
-<section data-auto-animate>
-  <h2 data-id="t">Firewall holati</h2>
-  <pre data-id="c"><code class="language-bash" data-trim>
-# Windows (CMD, administrator)
-  </code></pre>
-</section>
-<section data-auto-animate>
-  <h2 data-id="t">Firewall holati</h2>
-  <pre data-id="c"><code class="language-bash" data-trim data-line-numbers="2-3">
-# Windows (CMD, administrator)
-netsh advfirewall show allprofiles state
-netsh advfirewall set allprofiles state on
-  </code></pre>
-</section>
-
-<section>
-  <h2>Firewall raqamlarda</h2>
-  <div class="stats">
-    <div class="stat"><div class="v"><span class="count" data-to="5" data-suf="">0</span></div><div class="l"> sath-tur: kommutatordan proksigacha</div></div>
-    <div class="stat"><div class="v"><span class="count" data-to="4" data-suf="">0</span></div><div class="l"> mezon: IP, domen, port, protokol</div></div>
-    <div class="stat"><div class="v"><span class="count" data-to="95" data-suf="%">0</span></div><div class="l"> hujum: inson omiliga bog'liq</div></div>
-  </div>
-  <p class="small fragment">Texnik himoya inson e'tiborini almashtirmaydi.</p>
-</section>
-
-<section>
-  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
-  <div class="task"><span class="level easy">Oson</span>Vazifa: Firewall nima qiladi va qayerda joylashadi? 1 jumlada yozing.</div>
-  <div class="task"><span class="level mid">O'rta</span>Qoida o'qish: <code>DENY IN ANY -&gt; InternalNet:22</code> qoidasi nimani bildiradi?</div>
-  <div class="task"><span class="level mid">O'rta</span>Qoida yozish: Web-serverga HTTP va HTTPS ni ruxsat, ichki tarmoqqa tashqi Telnet ni taqiq qiluvchi qoidalarni yozing.</div>
-  <div class="task"><span class="level hard">Qiyin</span>Default-deny: Nega default-deny xavfsizroq? Sababini yozing.</div>
-</section>
-
-<section>
-  <h2>Dars xulosasi</h2>
-  <div class="cards three">
-    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Firewall</h3><p>Trusted va untrusted tarmoqlar orasidagi filtr.</p></div>
-    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Turlari</h3><p>Kommutator, paket filtri, holat inspektori, proksi.</p></div>
-    <div class="card fragment"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>ACL</h3><p>ALLOW, DENY, NAT; default-deny eng xavfsiz.</p></div>
-  </div>
-  <p class="small fragment mt">Uyga vazifa: Windows Firewall qoidalari va ACL tahlili.</p>
-</section>
-
-<section class="hero">
-  <div class="icon"><i data-ic="shield-ban" data-anim="pulse"></i></div>
-  <h1>Keyingi dars: Firewall sozlash</h1>
-  <p class="muted">Windows Defender Firewall va iptables qoidalari</p>
-  <span class="badge">6-hafta · 16-dars</span>
-</section>
-
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Firewall turlari va prinsiplari</h1></header>
+<div class="badges"><span class="badge">10-sinf Kiberxavfsizlik</span><span class="badge">5-hafta · 15-dars</span><span class="badge">firewall, trusted va untrusted tarmoq, turlari, ACL, ALLOW, DENY, NAT, default-deny, UTM va NGFW</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Segmentatsiyaning asosiy maqsadi nima?", "o": ["Xavfsizlikni oshirish va hujumni cheklash", "Internetni o'chirish", "Parolni almashtirish", "Fayllarni arxivlash"], "a": 0, "e": "Segmentlar bir-biridan ajratiladi, hujum tarqalishi cheklanadi."}, {"q": "Firewall qaysi tarmoqlar orasida to'siq yaratadi?", "o": ["Ishonchli va ishonchsiz", "Faqat Wi-Fi va kabel", "Faqat ikki kompyuter", "Faqat DNS va DHCP"], "a": 0, "e": "Trusted va untrusted tarmoqlar orasida."}, {"q": "IP, port va protokol bo'yicha filtrlaydigan firewall turi qaysi?", "o": ["Paket filtri", "Tatbiqiy proksi", "Boshqariluvchi kommutator", "Antivirus"], "a": 0, "e": "Tarmoq sathining paket filtri IP, port va protokol bo'yicha ishlaydi."}, {"q": "Default-deny qoidasi nimani anglatadi?", "o": ["Avval hammasi taqiqlanadi, keyin kerakli xizmatlarga ruxsat beriladi", "Hammasiga ruxsat beriladi", "Faqat ping taqiqlanadi", "Firewall o'chiriladi"], "a": 0, "e": "Default-deny: DENY ALL, so'ng kerakli ALLOW qoidalari."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

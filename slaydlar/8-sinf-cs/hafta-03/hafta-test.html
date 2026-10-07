@@ -1,331 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>3-hafta testi</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>3-hafta testi</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>3-hafta testi</h1>
-  <p class="muted">20 ta savol &middot; taxminan 18 daqiqa</p>
-  <span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">3-hafta</span>
-  
-</section>
-
-<section>
-  <h2>Savol 1/20</h2>
-  <div class="quiz">
-    <p class="q"><code>F5</code> funksional klavishi odatda nima qiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Sahifa yoki oynani yangilaydi</button>
-      <button class="opt" type="button">Yordam oynasini ochadi</button>
-      <button class="opt" type="button">Dasturni yopadi</button>
-      <button class="opt" type="button">Ovozni o'chiradi</button>
-    </div>
-    <div class="explain"><code>F1</code> — yordam, <code>F5</code> — yangilash.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 2/20</h2>
-  <div class="quiz">
-    <p class="q">Qaysi tugmalar navigatsiya va tahrir guruhiga kiradi?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>F1</code> – <code>F12</code></button>
-      <button class="opt" type="button" data-ok>Strelkalar, <code>Home</code>, <code>End</code>, <code>Page Up</code>, <code>Delete</code>, <code>Backspace</code></button>
-      <button class="opt" type="button"><code>Ctrl</code>, <code>Alt</code>, <code>Win</code></button>
-      <button class="opt" type="button">Faqat raqamlar <code>0</code>–<code>9</code></button>
-    </div>
-    <div class="explain">Boshqaruv guruhida esa <code>Ctrl</code>, <code>Alt</code>, <code>Shift</code>, <code>Win</code>, <code>Esc</code>, <code>Caps Lock</code>, <code>Tab</code> bor.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 3/20</h2>
-  <div class="quiz">
-    <p class="q">O'ng qo'lning tayanch qator barmoqlari qaysi tugmalarda turadi?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>A</code>, <code>S</code>, <code>D</code>, <code>F</code></button>
-      <button class="opt" type="button"><code>Y</code>, <code>U</code>, <code>I</code>, <code>O</code></button>
-      <button class="opt" type="button" data-ok><code>J</code>, <code>K</code>, <code>L</code>, <code>;</code></button>
-      <button class="opt" type="button"><code>N</code>, <code>M</code>, <code>,</code>, <code>.</code></button>
-    </div>
-    <div class="explain">Ko'rsatkich barmoq — <code>J</code>, jimjiloq — <code>;</code>.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 4/20</h2>
-  <div class="quiz">
-    <p class="q">Touch typing nima?</p>
-    <div class="opts">
-      <button class="opt" type="button">Faqat ikki barmoq bilan qarab yozish</button>
-      <button class="opt" type="button">Faqat sensorli ekranda yozish</button>
-      <button class="opt" type="button">Faqat bosh harflar bilan yozish</button>
-      <button class="opt" type="button" data-ok>Klaviaturaga qaramay, barmoqlarning mushak xotirasi bilan yozish usuli</button>
-    </div>
-    <div class="explain">Muscle memory orqali 10 barmoqda ko'rmasdan yoziladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 5/20</h2>
-  <div class="quiz">
-    <p class="q">10–20 WPM qaysi darajaga to'g'ri keladi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Boshlang'ich daraja</button>
-      <button class="opt" type="button">Professional daraja</button>
-      <button class="opt" type="button">Tajribali dasturchi darajasi</button>
-      <button class="opt" type="button">Rekord natija</button>
-    </div>
-    <div class="explain">80+ WPM professional tezkor yozuvchilarda bo'ladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 6/20</h2>
-  <div class="quiz">
-    <p class="q">Orqa suyanchiqqa tegib, yelkalar erkin, bilaklar stolda tekis turishi nimaga tegishli?</p>
-    <div class="opts">
-      <button class="opt" type="button">Antivirus qoidalariga</button>
-      <button class="opt" type="button" data-ok>Ergonomika (to'g'ri o'tirish) qoidalariga</button>
-      <button class="opt" type="button">Netiket qoidalariga</button>
-      <button class="opt" type="button">Faktcheking qoidalariga</button>
-    </div>
-    <div class="explain">Noto'g'ri o'tirish umurtqa qiyshayishi va bilak kasalliklariga olib keladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 7/20</h2>
-  <div class="quiz">
-    <p class="q">Raqamli kontent yaratish komponentiga qaysi faoliyat kiradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Faqat boshqalarning postlarini o'qish</button>
-      <button class="opt" type="button">Faqat parolni yodlash</button>
-      <button class="opt" type="button" data-ok>Matn, rasm, taqdimot va dasturiy loyihalarni mustaqil tayyorlash</button>
-      <button class="opt" type="button">Faqat qidiruv tarixini o'chirish</button>
-    </div>
-    <div class="explain">Bu raqamli savodxonlikning 4 komponentidan biri.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 8/20</h2>
-  <div class="quiz">
-    <p class="q">Birovning rasmi yoki maqolasidan foydalanganda nima qilish kerak?</p>
-    <div class="opts">
-      <button class="opt" type="button">Muallif nomini yashirish</button>
-      <button class="opt" type="button">O'zimniki deb ko'rsatish</button>
-      <button class="opt" type="button">Hech narsa qilmaslik</button>
-      <button class="opt" type="button" data-ok>Manzil va muallif ismini ko'rsatish (mualliflik huquqini hurmat qilish)</button>
-    </div>
-    <div class="explain">Bu netiket qoidalaridan biri.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 9/20</h2>
-  <div class="quiz">
-    <p class="q">«Bir xabarda bitta fikr» qoidasi nimaga o'rgatadi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Salomlashgach, maqsadni aniq yozib, boshqalarning vaqtini tejashga</button>
-      <button class="opt" type="button">Faqat bir so'zdan yozishga</button>
-      <button class="opt" type="button">Xabarni doim bo'sh yuborishga</button>
-      <button class="opt" type="button">Faqat KATTA HARFLAR ishlatishga</button>
-    </div>
-    <div class="explain">«Mumkinmi?» deb kutib o'tirmasdan, birdaniga maqsadni yozish tavsiya etiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 10/20</h2>
-  <div class="quiz">
-    <p class="q">Faktchekingda «Sana va kontekstga qarang» qoidasi nimani anglatadi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Faqat sana yozilgan xabarga ishonish</button>
-      <button class="opt" type="button" data-ok>Eski video yoki voqea yangi xabar sifatida tarqatilayotganini tekshirish</button>
-      <button class="opt" type="button">Sanasiz xabarni to'g'ri deb olish</button>
-      <button class="opt" type="button">Xabarning rangiga qarash</button>
-    </div>
-    <div class="explain">Ko'pincha 5 yil oldingi voqea yangidek tarqatiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 11/20</h2>
-  <div class="quiz">
-    <p class="q">Yangilik faqat bitta noma'lum Telegram kanalida chiqdi. Qanday xulosa to'g'ri?</p>
-    <div class="opts">
-      <button class="opt" type="button">Bu albatta haqiqat</button>
-      <button class="opt" type="button">Darhol hammaga yuborish kerak</button>
-      <button class="opt" type="button" data-ok>Boshqa nufuzli manbalar bilan solishtirish kerak: bu feyk bo'lishi mumkin</button>
-      <button class="opt" type="button">Tekshirish shart emas</button>
-    </div>
-    <div class="explain">Agar faqat bitta kanalda bo'lsa — ehtimol feyk.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 12/20</h2>
-  <div class="quiz">
-    <p class="q">Kiberbullingga uchragan o'quvchi qanday yo'l tutishi kerak?</p>
-    <div class="opts">
-      <button class="opt" type="button">Xuddi shunday haqorat bilan javob berishi</button>
-      <button class="opt" type="button">Postni o'chirib tashlab, hech kimga aytmaslik</button>
-      <button class="opt" type="button">Haqoratchining ma'lumotini tarqatish</button>
-      <button class="opt" type="button" data-ok>Javob bermay, tajovuzkorni bloklab, skrinshot qilib ota-ona yoki o'qituvchiga xabar berishi</button>
-    </div>
-    <div class="explain">Dalil sifatida skrinshot saqlanadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 13/20</h2>
-  <div class="quiz">
-    <p class="q">Qaysi platforma e-maktab (elektron jurnal) uchun misol?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Kundalik.com</button>
-      <button class="opt" type="button">Click</button>
-      <button class="opt" type="button">Amazon</button>
-      <button class="opt" type="button">Coursera</button>
-    </div>
-    <div class="explain">Elektron jurnal, baholar, dars jadvali va ota-onalar monitoringi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 14/20</h2>
-  <div class="quiz">
-    <p class="q">Click, Payme, Uzum, Anorbank qaysi sohaga (Fintech) misol?</p>
-    <div class="opts">
-      <button class="opt" type="button">Onlayn ta'lim platformalari</button>
-      <button class="opt" type="button" data-ok>Raqamli banklar va to'lov tizimlari</button>
-      <button class="opt" type="button">Avtomatlashtirilgan logistika</button>
-      <button class="opt" type="button">Elektron darsliklar</button>
-    </div>
-    <div class="explain">Ular 24/7 pul o'tkazish, kommunal to'lov va omonat ochish imkonini beradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 15/20</h2>
-  <div class="quiz">
-    <p class="q">Uzum Market, Amazon qaysi tushunchaga misol?</p>
-    <div class="opts">
-      <button class="opt" type="button">Elektron raqamli imzo (ERI)</button>
-      <button class="opt" type="button">OneID</button>
-      <button class="opt" type="button" data-ok>Elektron tijorat (E-commerce)</button>
-      <button class="opt" type="button">Netiket</button>
-    </div>
-    <div class="explain">Mahsulotni uydan chiqmay xarid qilish va yetkazib berish.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 16/20</h2>
-  <div class="quiz">
-    <p class="q">Qaysi biri raqamli transformatsiyaning afzalligi emas?</p>
-    <div class="opts">
-      <button class="opt" type="button">Tezkorlik</button>
-      <button class="opt" type="button">24/7 qulaylik</button>
-      <button class="opt" type="button">Iqtisodiy tejamkorlik</button>
-      <button class="opt" type="button" data-ok>Elektr yoki internet uzilganda ish to'xtab qolishi</button>
-    </div>
-    <div class="explain">Tizim nosozliklari — qiyinchilik/xavf, afzallik emas.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 17/20</h2>
-  <div class="quiz">
-    <p class="q">Raqamli transformatsiyadagi kiberxavfsizlik xavfi nimaga bog'liq?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Barcha ma'lumotlar serverlarda saqlangani uchun hakerlik hujumi va sizib chiqish xavfi ortishiga</button>
-      <button class="opt" type="button">Qog'oz kamayishiga</button>
-      <button class="opt" type="button">Xizmat tezlashishiga</button>
-      <button class="opt" type="button">Xarajat tejalishiga</button>
-    </div>
-    <div class="explain">Shuning uchun xavfsizlik chorasi muhim.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 18/20</h2>
-  <div class="quiz">
-    <p class="q">my.gov.uz da ma'lumotnoma olishda ERI va OneID qanday birga ishlaydi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Ikkalasi ham faqat qog'ozga chop etadi</button>
-      <button class="opt" type="button" data-ok>OneID bilan tizimga kiriladi, ERI hujjat haqiqiyligini tasdiqlaydi</button>
-      <button class="opt" type="button">OneID hujjatni o'chiradi, ERI parolni beradi</button>
-      <button class="opt" type="button">Ular ishlatilmaydi</button>
-    </div>
-    <div class="explain">OneID — yagona kirish, ERI — elektron imzo.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 19/20</h2>
-  <div class="quiz">
-    <p class="q">«my.gov.uz» deb ko'rsatilgan noma'lum havolali xabar keldi. Faktcheking qoidasiga ko'ra nima qilasiz?</p>
-    <div class="opts">
-      <button class="opt" type="button">Havolani bosib parolimni kiritaman</button>
-      <button class="opt" type="button">Xabarni 10 ta guruhga yuboraman</button>
-      <button class="opt" type="button" data-ok>Manbani tekshiraman: rasmiy domen <code>.gov.uz</code> ekanini va xabar boshqa manbalarda borligini</button>
-      <button class="opt" type="button">Faqat chiroyli dizaynga ishonaman</button>
-    </div>
-    <div class="explain">Rasmiy domenni tekshirish va boshqa manbalar bilan solishtirish — oltin qoidalar.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 20/20</h2>
-  <div class="quiz">
-    <p class="q">DX dagi «kiberxavfsizlik xavfi» ga qarshi shaxsan qaysi savodxonlik komponenti yordam beradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Raqamli kontent yaratish</button>
-      <button class="opt" type="button">Aloqa va hamkorlik</button>
-      <button class="opt" type="button">Touch typing</button>
-      <button class="opt" type="button" data-ok>Kiberxavfsizlik va shaxsiy gigiyena</button>
-    </div>
-    <div class="explain">O'z hisoblari, parollari va qurilmalarini himoya qilish ko'nikmasi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Natijangiz</h2>
-  <div class="cards three">
-    <div class="card"><h3>20 dan 18+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
-    <div class="card"><h3>20 dan 12-17</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
-    <div class="card accent"><h3>11 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
-  </div>
-  <p class="small mt">Takrorlang: touch typing va ergonomika, raqamli madaniyat va faktcheking, raqamli transformatsiya.</p>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>3-hafta testi</h1></header>
+<div class="badges"><span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">3-hafta</span><span class="badge">20 ta savol &amp;middot; taxminan 18 daqiqa</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "<code>F5<\/code> funksional klavishi odatda nima qiladi?", "o": ["Sahifa yoki oynani yangilaydi", "Yordam oynasini ochadi", "Dasturni yopadi", "Ovozni o'chiradi"], "a": 0, "e": "<code>F1<\/code> — yordam, <code>F5<\/code> — yangilash."}, {"q": "Qaysi tugmalar navigatsiya va tahrir guruhiga kiradi?", "o": ["<code>F1<\/code> – <code>F12<\/code>", "Strelkalar, <code>Home<\/code>, <code>End<\/code>, <code>Page Up<\/code>, <code>Delete<\/code>, <code>Backspace<\/code>", "<code>Ctrl<\/code>, <code>Alt<\/code>, <code>Win<\/code>", "Faqat raqamlar <code>0<\/code>–<code>9<\/code>"], "a": 1, "e": "Boshqaruv guruhida esa <code>Ctrl<\/code>, <code>Alt<\/code>, <code>Shift<\/code>, <code>Win<\/code>, <code>Esc<\/code>, <code>Caps Lock<\/code>, <code>Tab<\/code> bor."}, {"q": "O'ng qo'lning tayanch qator barmoqlari qaysi tugmalarda turadi?", "o": ["<code>A<\/code>, <code>S<\/code>, <code>D<\/code>, <code>F<\/code>", "<code>Y<\/code>, <code>U<\/code>, <code>I<\/code>, <code>O<\/code>", "<code>J<\/code>, <code>K<\/code>, <code>L<\/code>, <code>;<\/code>", "<code>N<\/code>, <code>M<\/code>, <code>,<\/code>, <code>.<\/code>"], "a": 2, "e": "Ko'rsatkich barmoq — <code>J<\/code>, jimjiloq — <code>;<\/code>."}, {"q": "Touch typing nima?", "o": ["Faqat ikki barmoq bilan qarab yozish", "Faqat sensorli ekranda yozish", "Faqat bosh harflar bilan yozish", "Klaviaturaga qaramay, barmoqlarning mushak xotirasi bilan yozish usuli"], "a": 3, "e": "Muscle memory orqali 10 barmoqda ko'rmasdan yoziladi."}, {"q": "10–20 WPM qaysi darajaga to'g'ri keladi?", "o": ["Boshlang'ich daraja", "Professional daraja", "Tajribali dasturchi darajasi", "Rekord natija"], "a": 0, "e": "80+ WPM professional tezkor yozuvchilarda bo'ladi."}, {"q": "Orqa suyanchiqqa tegib, yelkalar erkin, bilaklar stolda tekis turishi nimaga tegishli?", "o": ["Antivirus qoidalariga", "Ergonomika (to'g'ri o'tirish) qoidalariga", "Netiket qoidalariga", "Faktcheking qoidalariga"], "a": 1, "e": "Noto'g'ri o'tirish umurtqa qiyshayishi va bilak kasalliklariga olib keladi."}, {"q": "Raqamli kontent yaratish komponentiga qaysi faoliyat kiradi?", "o": ["Faqat boshqalarning postlarini o'qish", "Faqat parolni yodlash", "Matn, rasm, taqdimot va dasturiy loyihalarni mustaqil tayyorlash", "Faqat qidiruv tarixini o'chirish"], "a": 2, "e": "Bu raqamli savodxonlikning 4 komponentidan biri."}, {"q": "Birovning rasmi yoki maqolasidan foydalanganda nima qilish kerak?", "o": ["Muallif nomini yashirish", "O'zimniki deb ko'rsatish", "Hech narsa qilmaslik", "Manzil va muallif ismini ko'rsatish (mualliflik huquqini hurmat qilish)"], "a": 3, "e": "Bu netiket qoidalaridan biri."}, {"q": "«Bir xabarda bitta fikr» qoidasi nimaga o'rgatadi?", "o": ["Salomlashgach, maqsadni aniq yozib, boshqalarning vaqtini tejashga", "Faqat bir so'zdan yozishga", "Xabarni doim bo'sh yuborishga", "Faqat KATTA HARFLAR ishlatishga"], "a": 0, "e": "«Mumkinmi?» deb kutib o'tirmasdan, birdaniga maqsadni yozish tavsiya etiladi."}, {"q": "Faktchekingda «Sana va kontekstga qarang» qoidasi nimani anglatadi?", "o": ["Faqat sana yozilgan xabarga ishonish", "Eski video yoki voqea yangi xabar sifatida tarqatilayotganini tekshirish", "Sanasiz xabarni to'g'ri deb olish", "Xabarning rangiga qarash"], "a": 1, "e": "Ko'pincha 5 yil oldingi voqea yangidek tarqatiladi."}, {"q": "Yangilik faqat bitta noma'lum Telegram kanalida chiqdi. Qanday xulosa to'g'ri?", "o": ["Bu albatta haqiqat", "Darhol hammaga yuborish kerak", "Boshqa nufuzli manbalar bilan solishtirish kerak: bu feyk bo'lishi mumkin", "Tekshirish shart emas"], "a": 2, "e": "Agar faqat bitta kanalda bo'lsa — ehtimol feyk."}, {"q": "Kiberbullingga uchragan o'quvchi qanday yo'l tutishi kerak?", "o": ["Xuddi shunday haqorat bilan javob berishi", "Postni o'chirib tashlab, hech kimga aytmaslik", "Haqoratchining ma'lumotini tarqatish", "Javob bermay, tajovuzkorni bloklab, skrinshot qilib ota-ona yoki o'qituvchiga xabar berishi"], "a": 3, "e": "Dalil sifatida skrinshot saqlanadi."}, {"q": "Qaysi platforma e-maktab (elektron jurnal) uchun misol?", "o": ["Kundalik.com", "Click", "Amazon", "Coursera"], "a": 0, "e": "Elektron jurnal, baholar, dars jadvali va ota-onalar monitoringi."}, {"q": "Click, Payme, Uzum, Anorbank qaysi sohaga (Fintech) misol?", "o": ["Onlayn ta'lim platformalari", "Raqamli banklar va to'lov tizimlari", "Avtomatlashtirilgan logistika", "Elektron darsliklar"], "a": 1, "e": "Ular 24/7 pul o'tkazish, kommunal to'lov va omonat ochish imkonini beradi."}, {"q": "Uzum Market, Amazon qaysi tushunchaga misol?", "o": ["Elektron raqamli imzo (ERI)", "OneID", "Elektron tijorat (E-commerce)", "Netiket"], "a": 2, "e": "Mahsulotni uydan chiqmay xarid qilish va yetkazib berish."}, {"q": "Qaysi biri raqamli transformatsiyaning afzalligi emas?", "o": ["Tezkorlik", "24/7 qulaylik", "Iqtisodiy tejamkorlik", "Elektr yoki internet uzilganda ish to'xtab qolishi"], "a": 3, "e": "Tizim nosozliklari — qiyinchilik/xavf, afzallik emas."}, {"q": "Raqamli transformatsiyadagi kiberxavfsizlik xavfi nimaga bog'liq?", "o": ["Barcha ma'lumotlar serverlarda saqlangani uchun hakerlik hujumi va sizib chiqish xavfi ortishiga", "Qog'oz kamayishiga", "Xizmat tezlashishiga", "Xarajat tejalishiga"], "a": 0, "e": "Shuning uchun xavfsizlik chorasi muhim."}, {"q": "my.gov.uz da ma'lumotnoma olishda ERI va OneID qanday birga ishlaydi?", "o": ["Ikkalasi ham faqat qog'ozga chop etadi", "OneID bilan tizimga kiriladi, ERI hujjat haqiqiyligini tasdiqlaydi", "OneID hujjatni o'chiradi, ERI parolni beradi", "Ular ishlatilmaydi"], "a": 1, "e": "OneID — yagona kirish, ERI — elektron imzo."}, {"q": "«my.gov.uz» deb ko'rsatilgan noma'lum havolali xabar keldi. Faktcheking qoidasiga ko'ra nima qilasiz?", "o": ["Havolani bosib parolimni kiritaman", "Xabarni 10 ta guruhga yuboraman", "Manbani tekshiraman: rasmiy domen <code>.gov.uz<\/code> ekanini va xabar boshqa manbalarda borligini", "Faqat chiroyli dizaynga ishonaman"], "a": 2, "e": "Rasmiy domenni tekshirish va boshqa manbalar bilan solishtirish — oltin qoidalar."}, {"q": "DX dagi «kiberxavfsizlik xavfi» ga qarshi shaxsan qaysi savodxonlik komponenti yordam beradi?", "o": ["Raqamli kontent yaratish", "Aloqa va hamkorlik", "Touch typing", "Kiberxavfsizlik va shaxsiy gigiyena"], "a": 3, "e": "O'z hisoblari, parollari va qurilmalarini himoya qilish ko'nikmasi."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

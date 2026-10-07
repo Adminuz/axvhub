@@ -1,191 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>10-dars testi</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>10-dars testi</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>10-dars testi</h1>
-  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
-  <span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">4-hafta</span>
-  
-</section>
-
-<section>
-  <h2>Savol 1/10</h2>
-  <div class="quiz">
-    <p class="q">Observer qaysi turdagi andoza?</p>
-    <div class="opts">
-      <button class="opt" type="button">Yaratuvchi (Creational)</button>
-      <button class="opt" type="button">Tuzilmaviy (Structural)</button>
-      <button class="opt" type="button" data-ok>Xulq-atvor (Behavioral)</button>
-      <button class="opt" type="button">Arxitektura qatlami</button>
-    </div>
-    <div class="explain">Hodisalarni kuzatuvchilarga tarqatadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 2/10</h2>
-  <div class="quiz">
-    <p class="q">Observer'da Subject nima qiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Har kuzatuvchining ichki mantiqini biladi</button>
-      <button class="opt" type="button">Faqat ma'lumotlar bazasiga yozadi</button>
-      <button class="opt" type="button">Kuzatuvchilarni o'zi yaratadi</button>
-      <button class="opt" type="button" data-ok>Kuzatuvchilar ro'yxatini saqlaydi va hodisani e'lon qiladi</button>
-    </div>
-    <div class="explain">Subject kuzatuvchilar kimligini bilmaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 3/10</h2>
-  <div class="quiz">
-    <p class="q">Observer qanday bog'liqlik beradi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Bo'sh bog'liqlik (loose coupling)</button>
-      <button class="opt" type="button">Qattiq bog'liqlik</button>
-      <button class="opt" type="button">Aylanma bog'liqlik</button>
-      <button class="opt" type="button">Bog'liqlik umuman yo'qoladi</button>
-    </div>
-    <div class="explain">Yangi kuzatuvchi Subject kodini o'zgartirmaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 4/10</h2>
-  <div class="quiz">
-    <p class="q"><code>OrderService</code> ichida email, analytics, loyalty to'g'ridan chaqirilsa, qaysi tamoyil buziladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">DRY</button>
-      <button class="opt" type="button">KISS</button>
-      <button class="opt" type="button">YAGNI</button>
-      <button class="opt" type="button" data-ok>OCP (ochiq/yopiq)</button>
-    </div>
-    <div class="explain">Har yangi ish uchun OrderService o'zgaradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 5/10</h2>
-  <div class="quiz">
-    <p class="q">Hayotiy o'xshatish sifatida Observer'ga eng mos?</p>
-    <div class="opts">
-      <button class="opt" type="button">Kalkulyator</button>
-      <button class="opt" type="button">Lift tugmasi</button>
-      <button class="opt" type="button">Kitob mundarijasi</button>
-      <button class="opt" type="button" data-ok>Telegram kanali va obunachilar</button>
-    </div>
-    <div class="explain">Kanal obunachilarni tanimaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 6/10</h2>
-  <div class="quiz">
-    <p class="q"><code>EventBus</code> ning asosiy metodlari?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>get</code>, <code>post</code>, <code>put</code></button>
-      <button class="opt" type="button" data-ok><code>on</code>, <code>off</code>, <code>emit</code></button>
-      <button class="opt" type="button"><code>open</code>, <code>read</code>, <code>close</code></button>
-      <button class="opt" type="button"><code>start</code>, <code>stop</code>, <code>pause</code></button>
-    </div>
-    <div class="explain">Obuna, bekor qilish, e'lon.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 7/10</h2>
-  <div class="quiz">
-    <p class="q"><code>unsubscribe</code> unutilsa?</p>
-    <div class="opts">
-      <button class="opt" type="button">Dastur tezlashadi</button>
-      <button class="opt" type="button">Kuzatuvchi avtomatik o'chadi</button>
-      <button class="opt" type="button">SyntaxError</button>
-      <button class="opt" type="button" data-ok>Xotira oqimi: Subject havolani ushlab turadi</button>
-    </div>
-    <div class="explain">Yechim: unsubscribe yoki weak reference.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 8/10</h2>
-  <div class="quiz">
-    <p class="q">Bitta kuzatuvchi xato bersa, to'g'ri yondashuv?</p>
-    <div class="opts">
-      <button class="opt" type="button">Hamma kuzatuvchini to'xtatish</button>
-      <button class="opt" type="button" data-ok>Har chaqiruv <code>try/except</code> da, xato logga yoki DLQ ga</button>
-      <button class="opt" type="button">Xatoni jimgina yutish</button>
-      <button class="opt" type="button">Subject'ni qayta yaratish</button>
-    </div>
-    <div class="explain">Kuzatuvchilar mustaqil; xato yutilmaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 9/10</h2>
-  <div class="quiz">
-    <p class="q">Bir hodisa ikki marta yetib kelsa ham ish bir marta bajarilishi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Backpressure</button>
-      <button class="opt" type="button">Polimorfizm</button>
-      <button class="opt" type="button" data-ok>Idempotentlik (event-id bo'yicha deduplikatsiya)</button>
-      <button class="opt" type="button">Inkapsulyatsiya</button>
-    </div>
-    <div class="explain">Outbox naqshi ham yordam beradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 10/10</h2>
-  <div class="quiz">
-    <p class="q">Observer qachon ortiqcha?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Bitta qabul qiluvchi va bitta aniq harakat bo'lsa</button>
-      <button class="opt" type="button">Javob beruvchilar soni o'zgarib tursa</button>
-      <button class="opt" type="button">UI komponentlarida</button>
-      <button class="opt" type="button">Bitta hodisaga ko'p mustaqil javob bo'lsa</button>
-    </div>
-    <div class="explain">Oddiy funksiya chaqirish yetarli (over-engineering).</div>
-  </div>
-</section>
-
-<section>
-  <h2>Natijangiz</h2>
-  <div class="cards three">
-    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
-    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
-    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
-  </div>
-  <p class="small mt">Takrorlang: Subject va Observer rollari, loose coupling, EventBus, xavflar (xotira oqimi, idempotentlik, xatoni yutmaslik).</p>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>10-dars testi</h1></header>
+<div class="badges"><span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">4-hafta</span><span class="badge">10 ta savol &amp;middot; taxminan 8 daqiqa</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Observer qaysi turdagi andoza?", "o": ["Yaratuvchi (Creational)", "Tuzilmaviy (Structural)", "Xulq-atvor (Behavioral)", "Arxitektura qatlami"], "a": 2, "e": "Hodisalarni kuzatuvchilarga tarqatadi."}, {"q": "Observer'da Subject nima qiladi?", "o": ["Har kuzatuvchining ichki mantiqini biladi", "Faqat ma'lumotlar bazasiga yozadi", "Kuzatuvchilarni o'zi yaratadi", "Kuzatuvchilar ro'yxatini saqlaydi va hodisani e'lon qiladi"], "a": 3, "e": "Subject kuzatuvchilar kimligini bilmaydi."}, {"q": "Observer qanday bog'liqlik beradi?", "o": ["Bo'sh bog'liqlik (loose coupling)", "Qattiq bog'liqlik", "Aylanma bog'liqlik", "Bog'liqlik umuman yo'qoladi"], "a": 0, "e": "Yangi kuzatuvchi Subject kodini o'zgartirmaydi."}, {"q": "<code>OrderService<\/code> ichida email, analytics, loyalty to'g'ridan chaqirilsa, qaysi tamoyil buziladi?", "o": ["DRY", "KISS", "YAGNI", "OCP (ochiq/yopiq)"], "a": 3, "e": "Har yangi ish uchun OrderService o'zgaradi."}, {"q": "Hayotiy o'xshatish sifatida Observer'ga eng mos?", "o": ["Kalkulyator", "Lift tugmasi", "Kitob mundarijasi", "Telegram kanali va obunachilar"], "a": 3, "e": "Kanal obunachilarni tanimaydi."}, {"q": "<code>EventBus<\/code> ning asosiy metodlari?", "o": ["<code>get<\/code>, <code>post<\/code>, <code>put<\/code>", "<code>on<\/code>, <code>off<\/code>, <code>emit<\/code>", "<code>open<\/code>, <code>read<\/code>, <code>close<\/code>", "<code>start<\/code>, <code>stop<\/code>, <code>pause<\/code>"], "a": 1, "e": "Obuna, bekor qilish, e'lon."}, {"q": "<code>unsubscribe<\/code> unutilsa?", "o": ["Dastur tezlashadi", "Kuzatuvchi avtomatik o'chadi", "SyntaxError", "Xotira oqimi: Subject havolani ushlab turadi"], "a": 3, "e": "Yechim: unsubscribe yoki weak reference."}, {"q": "Bitta kuzatuvchi xato bersa, to'g'ri yondashuv?", "o": ["Hamma kuzatuvchini to'xtatish", "Har chaqiruv <code>try/except<\/code> da, xato logga yoki DLQ ga", "Xatoni jimgina yutish", "Subject'ni qayta yaratish"], "a": 1, "e": "Kuzatuvchilar mustaqil; xato yutilmaydi."}, {"q": "Bir hodisa ikki marta yetib kelsa ham ish bir marta bajarilishi?", "o": ["Backpressure", "Polimorfizm", "Idempotentlik (event-id bo'yicha deduplikatsiya)", "Inkapsulyatsiya"], "a": 2, "e": "Outbox naqshi ham yordam beradi."}, {"q": "Observer qachon ortiqcha?", "o": ["Bitta qabul qiluvchi va bitta aniq harakat bo'lsa", "Javob beruvchilar soni o'zgarib tursa", "UI komponentlarida", "Bitta hodisaga ko'p mustaqil javob bo'lsa"], "a": 0, "e": "Oddiy funksiya chaqirish yetarli (over-engineering)."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

@@ -1,331 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>1-hafta testi</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>1-hafta testi</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>1-hafta testi</h1>
-  <p class="muted">20 ta savol &middot; taxminan 18 daqiqa</p>
-  <span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">1-hafta</span>
-  
-</section>
-
-<section>
-  <h2>Savol 1/20</h2>
-  <div class="quiz">
-    <p class="q">Qaysi qatlam «tizimning miyasi» bo'lib, buyurtma yoki to'lov kabi biznes qoidalarini bajaradi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Ilova (backend, API)</button>
-      <button class="opt" type="button">Klient</button>
-      <button class="opt" type="button">Platforma</button>
-      <button class="opt" type="button">Infratuzilma</button>
-    </div>
-    <div class="explain">Ilova qatlami biznes mantiq va API ni o'z ichiga oladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 2/20</h2>
-  <div class="quiz">
-    <p class="q">Qatlamlashning asosiy foydasi nima?</p>
-    <div class="opts">
-      <button class="opt" type="button">Kod hajmi har doim kamayadi</button>
-      <button class="opt" type="button" data-ok>Muammo izolyatsiya qilinadi, qatlamni almashtirish va kengaytirish osonlashadi</button>
-      <button class="opt" type="button">Server kerak bo'lmaydi</button>
-      <button class="opt" type="button">Testlar kerak bo'lmaydi</button>
-    </div>
-    <div class="explain">Har qatlamning o'z mas'uliyat chegarasi bor va u faqat qo'shni qatlam bilan gaplashadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 3/20</h2>
-  <div class="quiz">
-    <p class="q">Docker, Kubernetes va AWS ekotizimning qaysi qatlamiga kiradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Klient</button>
-      <button class="opt" type="button">Ilova</button>
-      <button class="opt" type="button" data-ok>Infratuzilma</button>
-      <button class="opt" type="button">Platforma</button>
-    </div>
-    <div class="explain">Serverlar, bulut, konteynerlar va OS poydevor, ya'ni infratuzilma qatlami.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 4/20</h2>
-  <div class="quiz">
-    <p class="q">Test bosqichining artefakti qaysi?</p>
-    <div class="opts">
-      <button class="opt" type="button">ERD diagramma</button>
-      <button class="opt" type="button">Release note</button>
-      <button class="opt" type="button">Runbook</button>
-      <button class="opt" type="button" data-ok>Test ssenariylari va bug-raportlar</button>
-    </div>
-    <div class="explain">Test bosqichi ssenariylar, protokollar va bug-raportlar bilan tugaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 5/20</h2>
-  <div class="quiz">
-    <p class="q">«Deploy» va «release» farqi nima?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Deploy — artefaktni muhitga joylash (texnik), release — foydalanuvchiga qaysi versiya ko'rinishi qarori</button>
-      <button class="opt" type="button">Ular bir xil narsa</button>
-      <button class="opt" type="button">Deploy faqat test uchun</button>
-      <button class="opt" type="button">Release faqat serverda bajariladi</button>
-    </div>
-    <div class="explain">Masalan feature flag bilan kod deploy qilinadi, lekin foydalanuvchiga keyinroq release qilinadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 6/20</h2>
-  <div class="quiz">
-    <p class="q">User story qaysi shaklda yoziladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">SELECT ... FROM ...</button>
-      <button class="opt" type="button" data-ok>Foydalanuvchi sifatida men ... xohlayman, shunda ...</button>
-      <button class="opt" type="button">def ...(): ...</button>
-      <button class="opt" type="button">git commit -m ...</button>
-    </div>
-    <div class="explain">User story + acceptance criteria Agile'da talabni ifodalash usuli.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 7/20</h2>
-  <div class="quiz">
-    <p class="q"><code>.git/</code> papkasi o'chirib yuborilsa nima bo'ladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Fayllar ham o'chadi</button>
-      <button class="opt" type="button">GitHub'dagi repo o'chadi</button>
-      <button class="opt" type="button" data-ok>Loyiha tarixi yo'qoladi, fayllar esa qoladi</button>
-      <button class="opt" type="button">Hech narsa o'zgarmaydi</button>
-    </div>
-    <div class="explain">Tarix, shox va staging ma'lumotlari <code>.git/</code> ichida saqlanadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 8/20</h2>
-  <div class="quiz">
-    <p class="q">Nega staging zonasi kerak?</p>
-    <div class="opts">
-      <button class="opt" type="button">Commit tezroq bo'lishi uchun</button>
-      <button class="opt" type="button">Internetga ulanish uchun</button>
-      <button class="opt" type="button">Fayllarni shifrlash uchun</button>
-      <button class="opt" type="button" data-ok>Bir ishdagi o'zgarishlarni mantiqan alohida commitlarga ajratish uchun</button>
-    </div>
-    <div class="explain">Turli narsalarni o'zgartirsangiz ham, faqat tegishlilarini <code>git add</code> qilib alohida commit qilasiz.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 9/20</h2>
-  <div class="quiz">
-    <p class="q">Branch yaratib unga o'tadigan buyruq qaysi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok><code>git switch -c feature/skills</code></button>
-      <button class="opt" type="button"><code>git branch -d feature/skills</code></button>
-      <button class="opt" type="button"><code>git merge feature/skills</code></button>
-      <button class="opt" type="button"><code>git log feature/skills</code></button>
-    </div>
-    <div class="explain"><code>-c</code> (create) yangi shox yaratadi va darhol unga o'tadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 10/20</h2>
-  <div class="quiz">
-    <p class="q">Bir qatorli, shoxlar grafigini ko'rsatadigan buyruq qaysi?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>git show --graph</code></button>
-      <button class="opt" type="button" data-ok><code>git log --oneline --graph</code></button>
-      <button class="opt" type="button"><code>git diff --oneline</code></button>
-      <button class="opt" type="button"><code>git status --graph</code></button>
-    </div>
-    <div class="explain"><code>--oneline</code> qisqa ko'rinish, <code>--graph</code> shoxlarni chiziqlar bilan ko'rsatadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 11/20</h2>
-  <div class="quiz">
-    <p class="q">Repo ichida faqat shu repo uchun <code>user.email</code> ni o'zgartirish qaysi buyruq bilan bajariladi?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>git config --global user.email "x@example.com"</code></button>
-      <button class="opt" type="button"><code>git init user.email</code></button>
-      <button class="opt" type="button" data-ok><code>git config user.email "x@example.com"</code> (<code>--global</code>siz)</button>
-      <button class="opt" type="button"><code>git remote user.email</code></button>
-    </div>
-    <div class="explain"><code>--global</code> siz yozilgan qiymat <code>.git/config</code> ga, ya'ni faqat shu repoga tushadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 12/20</h2>
-  <div class="quiz">
-    <p class="q">GitHub oddiy parol bilan <code>push</code> ni qabul qiladimi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Ha, har doim</button>
-      <button class="opt" type="button">Faqat 2FA o'chiq bo'lsa</button>
-      <button class="opt" type="button">Faqat yangi akkauntlarda</button>
-      <button class="opt" type="button" data-ok>Yo'q, token (PAT), SSH kalit yoki <code>gh auth login</code> kerak</button>
-    </div>
-    <div class="explain">Autentifikatsiya uchta yo'l bilan: HTTPS + PAT, SSH kalit yoki GitHub CLI.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 13/20</h2>
-  <div class="quiz">
-    <p class="q">Nega GitHub akkauntida 2FA majburiy yoqiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Parol sizib chiqsa ham akkaunt himoyalangan bo'lishi uchun</button>
-      <button class="opt" type="button">Sayt tezroq ishlashi uchun</button>
-      <button class="opt" type="button">Repolar pullik bo'lmasligi uchun</button>
-      <button class="opt" type="button">Commitlar tezlashishi uchun</button>
-    </div>
-    <div class="explain">Ikki bosqichli tasdiqlash qo'shimcha himoya qatlami beradi. Tiklash kodlarini xavfsiz saqlang.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 14/20</h2>
-  <div class="quiz">
-    <p class="q"><code>git push -u origin main</code> dagi <code>-u</code> nimani beradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Force push</button>
-      <button class="opt" type="button" data-ok>Upstream: keyin shunchaki <code>git push</code> va <code>git pull</code> yetadi</button>
-      <button class="opt" type="button">Barcha shoxlarni o'chirish</button>
-      <button class="opt" type="button">Faqat o'qish rejimi</button>
-    </div>
-    <div class="explain"><code>-u</code> lokal shoxni masofaviy shoxga bog'laydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 15/20</h2>
-  <div class="quiz">
-    <p class="q">Yaxshi README qaysi savolga javob berishi kerak?</p>
-    <div class="opts">
-      <button class="opt" type="button">Muallif necha yoshda?</button>
-      <button class="opt" type="button">Kod nechta qatordan iborat?</button>
-      <button class="opt" type="button" data-ok>Notanish odam loyihani 2 daqiqada ishga tushira oladimi?</button>
-      <button class="opt" type="button">Qaysi muharrir ishlatilgan?</button>
-    </div>
-    <div class="explain">README — reponing old eshigi: nom, tavsif, imkoniyatlar, ishga tushirish, muallif.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 16/20</h2>
-  <div class="quiz">
-    <p class="q"><code>git clone &lt;manzil&gt;</code> nimani qiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Faqat oxirgi faylni yuklaydi</button>
-      <button class="opt" type="button">Reponi o'chiradi</button>
-      <button class="opt" type="button">Faqat README yuklaydi</button>
-      <button class="opt" type="button" data-ok>Reponing to'liq nusxasini tarixi bilan oladi va <code>origin</code> ni sozlaydi</button>
-    </div>
-    <div class="explain">Clone tarix bilan yangi lokal nusxa yaratadi va <code>origin</code> avtomatik qo'shiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 17/20</h2>
-  <div class="quiz">
-    <p class="q">SDLC ning «kod» bosqichida Git qanday rol o'ynaydi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Kodni xavfsiz saqlaydi, o'zgarishlarni kuzatadi va jamoada to'qnashuvdan saqlaydi</button>
-      <button class="opt" type="button">Talablarni yozadi</button>
-      <button class="opt" type="button">Serverni sozlaydi</button>
-      <button class="opt" type="button">Monitoring qiladi</button>
-    </div>
-    <div class="explain">Kod bosqichining artefaktlari (kod bazasi, konfiguratsiya, testlar) Git repozitoriyda boshqariladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 18/20</h2>
-  <div class="quiz">
-    <p class="q">Portfolio-loyihangiz uchun to'g'ri ketma-ketlik qaysi?</p>
-    <div class="opts">
-      <button class="opt" type="button">GitHub'ga push, keyin g'oya o'ylash</button>
-      <button class="opt" type="button" data-ok>Mini-SRS yozish, lokal repo ochish, GitHub'ga push qilish, issue ochish</button>
-      <button class="opt" type="button">Issue yopish, so'ng talab yozish</button>
-      <button class="opt" type="button">Faqat kod yozib, hujjatsiz topshirish</button>
-    </div>
-    <div class="explain">Hafta davomida SDLC hujjatidan Git va GitHub'gacha bosqichma-bosqich yuriladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 19/20</h2>
-  <div class="quiz">
-    <p class="q">Monitoringdan «bu sahifa sekin» degan fikr keldi. SDLC nuqtai nazaridan qanday davom etiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Hech narsa qilinmaydi</button>
-      <button class="opt" type="button">Repo o'chiriladi</button>
-      <button class="opt" type="button" data-ok>Bu yangi talab/issue bo'ladi va sikl qayta boshlanadi</button>
-      <button class="opt" type="button">Faqat <code>.gitignore</code> o'zgaradi</button>
-    </div>
-    <div class="explain">Monitoring natijasi issue va talabga aylanadi, so'ng dizayn, kod, test, deploy qayta bajariladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 20/20</h2>
-  <div class="quiz">
-    <p class="q">Yangi issue ochildi. To'g'ri oqim qaysi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Commit, issue o'chirish, branch</button>
-      <button class="opt" type="button">Branch o'chirish, issue ochish</button>
-      <button class="opt" type="button">Push, clone, issue</button>
-      <button class="opt" type="button" data-ok>Issue, branch, commit(lar), <code>Closes #N</code> bilan yopilish</button>
-    </div>
-    <div class="explain">Talab yoki xato issue bo'ladi, kod commitlarda yoziladi, <code>Closes #N</code> issue'ni yopadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Natijangiz</h2>
-  <div class="cards three">
-    <div class="card"><h3>20 dan 18+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
-    <div class="card"><h3>20 dan 12-17</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
-    <div class="card accent"><h3>11 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
-  </div>
-  <p class="small mt">Takrorlang: SDLC bosqichlari, Git zonalari va buyruqlari, GitHub (remote, push, pull, fetch), .gitignore, Issues va sirlar xavfsizligi.</p>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>1-hafta testi</h1></header>
+<div class="badges"><span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">1-hafta</span><span class="badge">20 ta savol &amp;middot; taxminan 18 daqiqa</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Qaysi qatlam «tizimning miyasi» bo'lib, buyurtma yoki to'lov kabi biznes qoidalarini bajaradi?", "o": ["Ilova (backend, API)", "Klient", "Platforma", "Infratuzilma"], "a": 0, "e": "Ilova qatlami biznes mantiq va API ni o'z ichiga oladi."}, {"q": "Qatlamlashning asosiy foydasi nima?", "o": ["Kod hajmi har doim kamayadi", "Muammo izolyatsiya qilinadi, qatlamni almashtirish va kengaytirish osonlashadi", "Server kerak bo'lmaydi", "Testlar kerak bo'lmaydi"], "a": 1, "e": "Har qatlamning o'z mas'uliyat chegarasi bor va u faqat qo'shni qatlam bilan gaplashadi."}, {"q": "Docker, Kubernetes va AWS ekotizimning qaysi qatlamiga kiradi?", "o": ["Klient", "Ilova", "Infratuzilma", "Platforma"], "a": 2, "e": "Serverlar, bulut, konteynerlar va OS poydevor, ya'ni infratuzilma qatlami."}, {"q": "Test bosqichining artefakti qaysi?", "o": ["ERD diagramma", "Release note", "Runbook", "Test ssenariylari va bug-raportlar"], "a": 3, "e": "Test bosqichi ssenariylar, protokollar va bug-raportlar bilan tugaydi."}, {"q": "«Deploy» va «release» farqi nima?", "o": ["Deploy — artefaktni muhitga joylash (texnik), release — foydalanuvchiga qaysi versiya ko'rinishi qarori", "Ular bir xil narsa", "Deploy faqat test uchun", "Release faqat serverda bajariladi"], "a": 0, "e": "Masalan feature flag bilan kod deploy qilinadi, lekin foydalanuvchiga keyinroq release qilinadi."}, {"q": "User story qaysi shaklda yoziladi?", "o": ["SELECT ... FROM ...", "Foydalanuvchi sifatida men ... xohlayman, shunda ...", "def ...(): ...", "git commit -m ..."], "a": 1, "e": "User story + acceptance criteria Agile'da talabni ifodalash usuli."}, {"q": "<code>.git/<\/code> papkasi o'chirib yuborilsa nima bo'ladi?", "o": ["Fayllar ham o'chadi", "GitHub'dagi repo o'chadi", "Loyiha tarixi yo'qoladi, fayllar esa qoladi", "Hech narsa o'zgarmaydi"], "a": 2, "e": "Tarix, shox va staging ma'lumotlari <code>.git/<\/code> ichida saqlanadi."}, {"q": "Nega staging zonasi kerak?", "o": ["Commit tezroq bo'lishi uchun", "Internetga ulanish uchun", "Fayllarni shifrlash uchun", "Bir ishdagi o'zgarishlarni mantiqan alohida commitlarga ajratish uchun"], "a": 3, "e": "Turli narsalarni o'zgartirsangiz ham, faqat tegishlilarini <code>git add<\/code> qilib alohida commit qilasiz."}, {"q": "Branch yaratib unga o'tadigan buyruq qaysi?", "o": ["<code>git switch -c feature/skills<\/code>", "<code>git branch -d feature/skills<\/code>", "<code>git merge feature/skills<\/code>", "<code>git log feature/skills<\/code>"], "a": 0, "e": "<code>-c<\/code> (create) yangi shox yaratadi va darhol unga o'tadi."}, {"q": "Bir qatorli, shoxlar grafigini ko'rsatadigan buyruq qaysi?", "o": ["<code>git show --graph<\/code>", "<code>git log --oneline --graph<\/code>", "<code>git diff --oneline<\/code>", "<code>git status --graph<\/code>"], "a": 1, "e": "<code>--oneline<\/code> qisqa ko'rinish, <code>--graph<\/code> shoxlarni chiziqlar bilan ko'rsatadi."}, {"q": "Repo ichida faqat shu repo uchun <code>user.email<\/code> ni o'zgartirish qaysi buyruq bilan bajariladi?", "o": ["<code>git config --global user.email \"x@example.com\"<\/code>", "<code>git init user.email<\/code>", "<code>git config user.email \"x@example.com\"<\/code> (<code>--global<\/code>siz)", "<code>git remote user.email<\/code>"], "a": 2, "e": "<code>--global<\/code> siz yozilgan qiymat <code>.git/config<\/code> ga, ya'ni faqat shu repoga tushadi."}, {"q": "GitHub oddiy parol bilan <code>push<\/code> ni qabul qiladimi?", "o": ["Ha, har doim", "Faqat 2FA o'chiq bo'lsa", "Faqat yangi akkauntlarda", "Yo'q, token (PAT), SSH kalit yoki <code>gh auth login<\/code> kerak"], "a": 3, "e": "Autentifikatsiya uchta yo'l bilan: HTTPS + PAT, SSH kalit yoki GitHub CLI."}, {"q": "Nega GitHub akkauntida 2FA majburiy yoqiladi?", "o": ["Parol sizib chiqsa ham akkaunt himoyalangan bo'lishi uchun", "Sayt tezroq ishlashi uchun", "Repolar pullik bo'lmasligi uchun", "Commitlar tezlashishi uchun"], "a": 0, "e": "Ikki bosqichli tasdiqlash qo'shimcha himoya qatlami beradi. Tiklash kodlarini xavfsiz saqlang."}, {"q": "<code>git push -u origin main<\/code> dagi <code>-u<\/code> nimani beradi?", "o": ["Force push", "Upstream: keyin shunchaki <code>git push<\/code> va <code>git pull<\/code> yetadi", "Barcha shoxlarni o'chirish", "Faqat o'qish rejimi"], "a": 1, "e": "<code>-u<\/code> lokal shoxni masofaviy shoxga bog'laydi."}, {"q": "Yaxshi README qaysi savolga javob berishi kerak?", "o": ["Muallif necha yoshda?", "Kod nechta qatordan iborat?", "Notanish odam loyihani 2 daqiqada ishga tushira oladimi?", "Qaysi muharrir ishlatilgan?"], "a": 2, "e": "README — reponing old eshigi: nom, tavsif, imkoniyatlar, ishga tushirish, muallif."}, {"q": "<code>git clone &lt;manzil&gt;<\/code> nimani qiladi?", "o": ["Faqat oxirgi faylni yuklaydi", "Reponi o'chiradi", "Faqat README yuklaydi", "Reponing to'liq nusxasini tarixi bilan oladi va <code>origin<\/code> ni sozlaydi"], "a": 3, "e": "Clone tarix bilan yangi lokal nusxa yaratadi va <code>origin<\/code> avtomatik qo'shiladi."}, {"q": "SDLC ning «kod» bosqichida Git qanday rol o'ynaydi?", "o": ["Kodni xavfsiz saqlaydi, o'zgarishlarni kuzatadi va jamoada to'qnashuvdan saqlaydi", "Talablarni yozadi", "Serverni sozlaydi", "Monitoring qiladi"], "a": 0, "e": "Kod bosqichining artefaktlari (kod bazasi, konfiguratsiya, testlar) Git repozitoriyda boshqariladi."}, {"q": "Portfolio-loyihangiz uchun to'g'ri ketma-ketlik qaysi?", "o": ["GitHub'ga push, keyin g'oya o'ylash", "Mini-SRS yozish, lokal repo ochish, GitHub'ga push qilish, issue ochish", "Issue yopish, so'ng talab yozish", "Faqat kod yozib, hujjatsiz topshirish"], "a": 1, "e": "Hafta davomida SDLC hujjatidan Git va GitHub'gacha bosqichma-bosqich yuriladi."}, {"q": "Monitoringdan «bu sahifa sekin» degan fikr keldi. SDLC nuqtai nazaridan qanday davom etiladi?", "o": ["Hech narsa qilinmaydi", "Repo o'chiriladi", "Bu yangi talab/issue bo'ladi va sikl qayta boshlanadi", "Faqat <code>.gitignore<\/code> o'zgaradi"], "a": 2, "e": "Monitoring natijasi issue va talabga aylanadi, so'ng dizayn, kod, test, deploy qayta bajariladi."}, {"q": "Yangi issue ochildi. To'g'ri oqim qaysi?", "o": ["Commit, issue o'chirish, branch", "Branch o'chirish, issue ochish", "Push, clone, issue", "Issue, branch, commit(lar), <code>Closes #N<\/code> bilan yopilish"], "a": 3, "e": "Talab yoki xato issue bo'ladi, kod commitlarda yoziladi, <code>Closes #N<\/code> issue'ni yopadi."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

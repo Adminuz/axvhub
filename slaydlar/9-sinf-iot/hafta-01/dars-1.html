@@ -1,481 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>IoT Tushunchasi va Qo‘llanish Sohalari</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>IoT Tushunchasi va Qo‘llanish Sohalari</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>IoT Tushunchasi va Qo‘llanish Sohalari</h1>
-  <p class="muted">Buyumlar Interneti asoslari, Kevin Eshton tarixi va zamonaviy aqlli tizimlar</p>
-  <span class="badge">9-sinf</span><span class="badge">IoT</span><span class="badge">1-hafta · 1-dars</span>
-</section>
-
-<section class="sec">
-  <div class="num">01</div>
-  <h1>IoT Tushunchasi va Tarixi</h1>
-  <p>Qurilmalarning inson aralashuvisiz o'zaro bog'lanish inqilobi</p>
-</section>
-
-<section>
-  <h2>Buyumlar Interneti (IoT) Nima?</h2>
-  <div class="cards two">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="cpu" data-anim="pulse"></i></div>
-      <h3>Aqlli Jismoniy Qurilmalar</h3>
-      <p>Sensorlar, dasturiy ta'minot va tarmoq modullari bilan jihozlangan buyumlar tarmog'i.</p>
-      <p class="t-muted">Muzlatgich, choynak, svetofor yoki zavod stanogi internetga ulanadi.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="wifi"></i></div>
-      <h3>Avtonom Muloqot (M2M)</h3>
-      <p>Qurilmalar inson buyrug'ini kutmasdan bir-biriga ma'lumot uzatadi va qaror qabul qiladi.</p>
-      <p class="t-muted">Machine-to-Machine — mashinadan mashinaga to'g'ridan-to'g'ri aloqa.</p>
-    </div>
-  </div>
-  
-</section>
-
-<section>
-  <h2>Kevin Eshton va IoT Tarixi</h2>
-  <div class="cards two">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="sparkles" data-anim="float"></i></div>
-      <h3>1999 Yil: Atamaning Tug'ilishi</h3>
-      <p>Britaniyalik olim Kevin Eshton ilk bor "Internet of Things" iborasini qo'lladi.</p>
-      <p class="t-muted">Procter &amp; Gamble kompaniyasida mahsulotlarni radiochastotali (RFID) kuzatish g'oyasi.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="globe"></i></div>
-      <h3>Global Ekotizimga Aylanish</h3>
-      <p>Bugungi kunda dunyoda 15 milliarddan ortiq IoT qurilmasi uzluksiz ishlamoqda.</p>
-      <p class="t-muted">2030 yilga borib ularning soni 30 milliarddan oshishi kutilmoqda.</p>
-    </div>
-  </div>
-  
-</section>
-
-<section>
-  <h2>An'anaviy Internet vs IoT Tarmog'i</h2>
-  <div class="cards two">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="laptop"></i></div>
-      <h3>An'anaviy Internet (H2H)</h3>
-      <p>Insonlar tomonidan kiritilgan ma'lumotlar (saytlar, ijtimoiy tarmoqlar, xabarlar).</p>
-      <p class="t-muted">Inson yozmasa yoki buyruq bermasa, internet harakatsiz turadi.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="network"></i></div>
-      <h3>Internet of Things (M2M)</h3>
-      <p>Sensorlar avtomatik o'lchaydigan fizik parametrlar (harorat, gaz, bosim).</p>
-      <p class="t-muted">Qurilmalar inson aralashuvisiz 24/7 rejimida mustaqil muloqot qiladi.</p>
-    </div>
-  </div>
-  
-</section>
-
-<section>
-  <h2>Internet Turlari Taqqosiy Modeli</h2>
-  <div class="illus">
-    <svg viewBox="0 0 800 240">
-      <rect x="30" y="30" width="350" height="180" rx="8" class="fn ln"></rect>
-      <text x="205" y="65" text-anchor="middle" class="t-accent">An'anaviy Internet (Odamlar)</text>
-      <circle cx="130" cy="115" r="22" class="fa la"></circle>
-      <line x1="160" y1="115" x2="250" y2="115" stroke="var(--c-accent)" stroke-width="3"></line>
-      <circle cx="280" cy="115" r="22" class="fa la"></circle>
-      <text x="205" y="165" text-anchor="middle" class="t-muted">Inson — Kompyuter — Inson</text>
-      <text x="205" y="190" text-anchor="middle" class="t-head">Matn, video va veb-sahifalar</text>
-
-      <rect x="420" y="30" width="350" height="180" rx="8" class="fn ln"></rect>
-      <text x="595" y="65" text-anchor="middle" class="t-accent">Internet of Things (Qurilmalar)</text>
-      <rect x="480" y="95" width="40" height="40" rx="4" class="fb lb"></rect>
-      <line x1="530" y1="115" x2="630" y2="115" stroke="var(--c-accent)" stroke-width="3" stroke-dasharray="4"></line>
-      <rect x="640" y="95" width="40" height="40" rx="4" class="fc lc"></rect>
-      <text x="595" y="165" text-anchor="middle" class="t-muted">Mashina — Tarmoq — Mashina (M2M)</text>
-      <text x="595" y="190" text-anchor="middle" class="t-head">Telemetriya, sensorlar va avtomatika</text>
-    </svg>
-  </div>
-  
-</section>
-
-<section class="sec">
-  <div class="num">02</div>
-  <h1>IoT ning Uch Asosiy Bo'g'ini</h1>
-  <p>Sezish, ulanish va harakat qilish sikli</p>
-</section>
-
-<section>
-  <h2>1. Sezish (Sensing) — Tizim Ko'zi</h2>
-  <div class="cards two">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="eye"></i></div>
-      <h3>Fizik Olamni O'lchash</h3>
-      <p>Sensorlar atrof-muhitdagi o'zgarishlarni sezib, ularni elektr signaliga aylantiradi.</p>
-      <p class="t-muted">Harorat, namlik, bosim, yorug'lik, gaz va tovush datchiklari.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="activity"></i></div>
-      <h3>Analog va Raqamli Signallar</h3>
-      <p>Mikrokontroller analog signallarni qabul qilib, raqamli 0 va 1 kodlariga o'tkazadi.</p>
-      <p class="t-muted">Masalan: 25.4°C harorat raqamli axborotga aylanadi.</p>
-    </div>
-  </div>
-  
-</section>
-
-<section>
-  <h2>2. Ulanish (Connectivity) — Aloqa Yo'llari</h2>
-  <div class="cards three">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="wifi"></i></div>
-      <h3>Qisqa Masofa</h3>
-      <p>Wi-Fi, Bluetooth BLE, ZigBee.</p>
-      <p class="t-muted">Uy va ofis ichida tezkor ma'lumot almashish uchun.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="radio"></i></div>
-      <h3>Uzoq Masofa (Kam quvvat)</h3>
-      <p>LoRaWAN, NB-IoT.</p>
-      <p class="t-muted">Dalalar va qishloq xo'jaligida 15 km gacha ma'lumot uzatish.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="signal"></i></div>
-      <h3>Mobil Aloqa</h3>
-      <p>4G / 5G tarmoqlari.</p>
-      <p class="t-muted">Harakatdagi avtomobillar va dronlar monitoringi.</p>
-    </div>
-  </div>
-  
-</section>
-
-<section>
-  <h2>3. Bajarish (Actuation) — Tizim Qo'llari</h2>
-  <div class="cards two">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="zap" data-anim="pulse"></i></div>
-      <h3>Buyruqni Harakatga Aylantirish</h3>
-      <p>Aktuatorlar elektr signalini olib, uni jismoniy harakatga aylantiruvchi mexanizmlar.</p>
-      <p class="t-muted">Dvigatellar, servo motorlar, relelar, klapanlar, ovozli buzzerlar.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="shield-check"></i></div>
-      <h3>Avtomatik Himoya va Nazorat</h3>
-      <p>Gaz sizib chiqsa — klapan gaz quvurini avtomatik yopadi.</p>
-      <p class="t-muted">Xona qizib ketsa — rele ventilyatorni ishga tushiradi.</p>
-    </div>
-  </div>
-  
-</section>
-
-<section>
-  <h2>IoT Sikli: Sensor, Miya va Aktuator</h2>
-  <div class="illus">
-    <svg viewBox="0 0 800 230">
-      <rect x="30" y="50" width="200" height="130" rx="8" class="fn ln"></rect>
-      <text x="130" y="85" text-anchor="middle" class="t-accent">SENSOR (Sezadi)</text>
-      <text x="130" y="115" text-anchor="middle" class="t-muted">Harorat, Yorug'lik,</text>
-      <text x="130" y="140" text-anchor="middle" class="t-head">Harakat, Gaz</text>
-
-      <line x1="240" y1="115" x2="290" y2="115" stroke="var(--c-accent)" stroke-width="3"></line>
-
-      <rect x="300" y="50" width="200" height="130" rx="8" class="fa la"></rect>
-      <text x="400" y="85" text-anchor="middle" class="t-head">MIKROKONTROLLER</text>
-      <text x="400" y="115" text-anchor="middle" class="t-head">Qayta ishlaydi,</text>
-      <text x="400" y="140" text-anchor="middle" class="t-head">qaror qabul qiladi</text>
-
-      <line x1="510" y1="115" x2="560" y2="115" stroke="var(--c-accent)" stroke-width="3"></line>
-
-      <rect x="570" y="50" width="200" height="130" rx="8" class="fb lb"></rect>
-      <text x="670" y="85" text-anchor="middle" class="t-head">AKTUATOR (Harakat)</text>
-      <text x="670" y="115" text-anchor="middle" class="t-head">Rele, Motor, Klapan,</text>
-      <text x="670" y="140" text-anchor="middle" class="t-head">Buzzer, Chiroq</text>
-    </svg>
-  </div>
-  
-</section>
-
-<section class="sec">
-  <div class="num">03</div>
-  <h1>Hayotimizdagi IoT Sohalari</h1>
-  <p>Aqlli uylar, sanoat gigantlari, tibbiyot va aqlli shaharlar</p>
-</section>
-
-<section>
-  <h2>Aqlli Uy (Smart Home)</h2>
-  <div class="cards two">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="house-wifi"></i></div>
-      <h3>Qulaylik va Avtomatika</h3>
-      <p>Ovozli yordamchilar (Alice, Siri), avtomatik pardalar va yoritish.</p>
-      <p class="t-muted">Eshikdan kirishingiz bilan xona harorati va musiqa sozlanadi.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="shield-check"></i></div>
-      <h3>Xavfsizlik va Resurs Tejamkorligi</h3>
-      <p>Suv yoki gaz toshib ketishini aniqlovchi datchiklar zudlik bilan tarmoqni o'chiradi.</p>
-      <p class="t-muted">Elektr energiyasi va gaz sarfi 30% dan ortiq tejaladi.</p>
-    </div>
-  </div>
-  
-</section>
-
-<section>
-  <h2>Sanoat IoT (IIoT) va Predictive Maintenance</h2>
-  <div class="cards two">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="factory"></i></div>
-      <h3>Sanoat 4.0 Standarti</h3>
-      <p>Fabrika va zavodlardagi konveyerlar va robotlarni markaziy nazorat qilish.</p>
-      <p class="t-muted">Har bir detalning tayyorlanish jarayoni millisekundlarda qayd etiladi.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="activity"></i></div>
-      <h3>Oldindan Ta'mirlash (Predictive)</h3>
-      <p>Stanok podshipnigidagi mayda tebranish o'zgarishi orqali nosozlik oldindan aniqlanadi.</p>
-      <p class="t-muted">Zavodning to'xtab qolishi va millionlab dollar zarar ko'rishining oldi olinadi.</p>
-    </div>
-  </div>
-  
-</section>
-
-<section>
-  <h2>Tibbiyot IoT (IoMT — Medical Things)</h2>
-  <div class="cards two">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="heart"></i></div>
-      <h3>Masofaviy Monitoring</h3>
-      <p>Smart soatlar va taqiladigan datchiklar qon bosimi va yurak ritmini o'lchaydi.</p>
-      <p class="t-muted">Bemor uyida bo'lsa ham, shifokor kompyuterida uning holati aks etadi.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="circle-alert"></i></div>
-      <h3>Shoshilinch Yordam Chaqiruvi</h3>
-      <p>Yurak urishi to'satdan yomonlashsa, tizim avtomatik tez yordamga geolokatsiya yuboradi.</p>
-      <p class="t-muted">Minglab insonlar hayotini asrab qoluvchi texnologiya.</p>
-    </div>
-  </div>
-  
-</section>
-
-<section>
-  <h2>Aqlli Qishloq Xo'jaligi (Smart Agriculture)</h2>
-  <div class="cards two">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="sprout"></i></div>
-      <h3>Tuproq va Iqlim Datchiklari</h3>
-      <p>Tuproq namligi, quyosh nuri va havoning kislotaliligini uzluksiz tahlil qilish.</p>
-      <p class="t-muted">O'simlikka suv qachon kerakligini o'simlikning o'zi "aytadi".</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="droplet"></i></div>
-      <h3>Avtomatik Tomchilatib Sug'orish</h3>
-      <p>Suv nasoslari faqat ehtiyoj bo'lgandagina yoqiladi, yomg'ir yog'sa to'xtaydi.</p>
-      <p class="t-muted">Suv va o'g'it 50% gacha tejaladi, hosildorlik esa 2 barobar ortadi.</p>
-    </div>
-  </div>
-  
-</section>
-
-<section>
-  <h2>Aqlli Shahar va Transport (Smart City)</h2>
-  <div class="cards two">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="navigation"></i></div>
-      <h3>Adaptiv Svetoforlar</h3>
-      <p>Chorrahadagi kameralar va datchiklar qaysi yo'lda mashina ko'pligini ko'radi.</p>
-      <p class="t-muted">Tirbandlikni kamaytirish uchun yashil chiroq vaqtini avtomatik uzaytiradi.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="truck"></i></div>
-      <h3>Aqlli Shahar Kommunikatsiyalari</h3>
-      <p>Chiqindi qutisi to'lganda maxsus mashinaga signal yuboriladi.</p>
-      <p class="t-muted">Ko'cha chiroqlari faqat odam yoki avtomobil o'tayotganda yorishadi.</p>
-    </div>
-  </div>
-  
-</section>
-
-<section>
-  <h2>IoT Ekotizimi va Sohalar Xaritasi</h2>
-  <div class="illus">
-    <svg viewBox="0 0 800 240">
-      <circle cx="400" cy="120" r="45" class="fa la"></circle>
-      <text x="400" y="125" text-anchor="middle" class="t-head">BULUT (Cloud)</text>
-
-      <rect x="50" y="20" width="160" height="55" rx="6" class="fn ln"></rect>
-      <text x="130" y="52" text-anchor="middle" class="t-head">Aqlli Uy (Home)</text>
-      <line x1="210" y1="50" x2="360" y2="100" stroke="var(--c-accent)" stroke-width="2"></line>
-
-      <rect x="590" y="20" width="160" height="55" rx="6" class="fb lb"></rect>
-      <text x="670" y="52" text-anchor="middle" class="t-head">Sanoat (IIoT)</text>
-      <line x1="590" y1="50" x2="440" y2="100" stroke="var(--c-accent)" stroke-width="2"></line>
-
-      <rect x="50" y="165" width="160" height="55" rx="6" class="fc lc"></rect>
-      <text x="130" y="197" text-anchor="middle" class="t-head">Tibbiyot (IoMT)</text>
-      <line x1="210" y1="190" x2="360" y2="140" stroke="var(--c-accent)" stroke-width="2"></line>
-
-      <rect x="590" y="165" width="160" height="55" rx="6" class="fb lb"></rect>
-      <text x="670" y="197" text-anchor="middle" class="t-head">Qishloq Xo'jaligi</text>
-      <line x1="590" y1="190" x2="440" y2="140" stroke="var(--c-accent)" stroke-width="2"></line>
-    </svg>
-  </div>
-  
-</section>
-
-<section class="sec">
-  <div class="num">04</div>
-  <h1>Tahlil va Xavfsizlik</h1>
-  <p>Dashboardlar orqali monitoring qilish va kiberxavfsizlik choralari</p>
-</section>
-
-<section>
-  <h2>Ma'lumotlarni Vizualizatsiya Qilish</h2>
-  <div class="cards two">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="sliders-horizontal"></i></div>
-      <h3>Grafik va Dashboardlar</h3>
-      <p>Oddiy raqamlar o'rniga dinamik grafiklar, jadval va xaritalar.</p>
-      <p class="t-muted">Bir haftalik harorat o'zgarishini ko'rish va anomal sakrashlarni aniqlash oson.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="bell"></i></div>
-      <h3>Real Vaqt Bildirishnomalari</h3>
-      <p>Kritik vaziyatlarda egasining telefoniga zudlik bilan SMS yoki push-xabar yuborish.</p>
-      <p class="t-muted">Qaror qabul qilish vaqtini bir necha soniyaga qisqartiradi.</p>
-    </div>
-  </div>
-  
-</section>
-
-<section>
-  <h2>Aqlli Uy Xavfsizlik Tizimi Oqimi</h2>
-  <div class="illus">
-    <svg viewBox="0 0 800 230">
-      <rect x="40" y="40" width="180" height="140" rx="8" class="fc lc"></rect>
-      <text x="130" y="80" text-anchor="middle" class="t-head">Gaz Sensori (MQ-2)</text>
-      <text x="130" y="110" text-anchor="middle" class="t-muted">Gaz qochishini</text>
-      <text x="130" y="135" text-anchor="middle" class="t-head">sezdi!</text>
-
-      <line x1="230" y1="110" x2="290" y2="110" stroke="var(--c-accent)" stroke-width="3"></line>
-
-      <rect x="300" y="40" width="200" height="140" rx="8" class="fa la"></rect>
-      <text x="400" y="75" text-anchor="middle" class="t-head">Arduino / ESP32</text>
-      <text x="400" y="105" text-anchor="middle" class="t-muted">Signal beradi:</text>
-      <text x="400" y="130" text-anchor="middle" class="t-head">1. Klapan yopilsin</text>
-      <text x="400" y="155" text-anchor="middle" class="t-head">2. Smartfonga SMS</text>
-
-      <line x1="510" y1="110" x2="570" y2="110" stroke="var(--c-accent)" stroke-width="3"></line>
-
-      <rect x="580" y="40" width="180" height="140" rx="8" class="fn ln"></rect>
-      <text x="670" y="80" text-anchor="middle" class="t-accent">AKTUATORLAR</text>
-      <text x="670" y="110" text-anchor="middle" class="t-head">Solenoid Klapan: Yopiq</text>
-      <text x="670" y="135" text-anchor="middle" class="t-muted">Buzzer: Jarangladi</text>
-      <text x="670" y="160" text-anchor="middle" class="t-head">Xavf bartaraf etildi</text>
-    </svg>
-  </div>
-  
-</section>
-
-<section>
-  <h2>Interaktiv Savol: IoT va Oddiy Pult</h2>
-  <div class="flip">
-    <div class="flip-in">
-      <div class="face front">
-        <div class="icon"><i data-ic="cpu"></i></div>
-        <h3>Televizor pulti yoki simsiz o'yinchoq mashina IoT hisoblanadimi?</h3>
-        <p class="t-muted">Kartanikiga bosing yoki aylantiring</p>
-      </div>
-      <div class="face back">
-        <div class="icon"><i data-ic="circle-check"></i></div>
-        <h3>Yo'q, bu oddiy masofadan boshqarish!</h3>
-        <p>Haqiqiy IoT bo'lishi uchun qurilma internet/bulutga ulangan bo'lishi, atrof-muhitni sensorlar orqali o'zi mustaqil sezishi va inson buyrug'isiz avtomatik qaror qabul qilishi shart.</p>
-      </div>
-    </div>
-  </div>
-  
-</section>
-
-<section>
-  <h2>Oddiy Buyumni IoT ga Aylantirish</h2>
-  <div class="stepper">
-    <div class="step fragment fade-up">
-      <div class="num">1</div>
-      <h3>Sensor Qo'shish</h3>
-      <p>Oddiy xona chirog'iga harakat (PIR) va yorug'lik (LDR) sensorlari o'rnatiladi.</p>
-    </div>
-    <div class="step fragment fade-up">
-      <div class="num">2</div>
-      <h3>Mikrokontroller Ulanishi</h3>
-      <p>Arduino yoki ESP32 sensor signallarini qabul qilib, qaror qabul qilish dasturini yuritadi.</p>
-    </div>
-    <div class="step fragment fade-up">
-      <div class="num">3</div>
-      <h3>Aktuator va Bulut</h3>
-      <p>Rele chiroqni yoqadi, Wi-Fi orqali energiya sarfi foydalanuvchi smartfoniga uzatiladi.</p>
-    </div>
-  </div>
-  
-</section>
-
-<section>
-  <h2>Tezkor Savol: Kevin Eshton</h2>
-  <div class="quiz">
-    <div class="q">"Internet of Things" (IoT) atamasi ilk bor qachon va kim tomonidan taklif qilingan?</div>
-    <div class="opts">
-      <div class="opt">A) 1985 yilda Stiv Jobs tomonidan</div>
-      <div class="opt" data-ok>B) 1999 yilda Kevin Eshton tomonidan</div>
-      <div class="opt">C) 2010 yilda Ilon Mask tomonidan</div>
-      <div class="opt">D) 2004 yilda Mark Sukerberg tomonidan</div>
-    </div>
-  </div>
-  
-</section>
-
-<section>
-  <h2>Dars Xulosasi va Amaliy Vazifa</h2>
-  <div class="cards two">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="circle-check"></i></div>
-      <h3>Bugun O'rganganlarimiz</h3>
-      <p>IoT ning mohiyati va an'anaviy internetdan farqi.</p>
-      <p>Sensor, mikrokontroller va aktuator bog'liqligi.</p>
-      <p class="t-muted">Smart Home, IIoT, IoMT va Smart Agriculture sohalari.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="cpu"></i></div>
-      <h3>Amaliy Vazifa</h3>
-      <p>O'zingiz yashaydigan xona uchun sodda IoT tizimi g'oyasini yozish.</p>
-      <p>Tizimdagi sensor, mikrokontroller va aktuator vazifalarini belgilash.</p>
-      <p class="t-muted">Daftarga sxematik chizmasini tushirish.</p>
-    </div>
-  </div>
-  
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>IoT Tushunchasi va Qo‘llanish Sohalari</h1></header>
+<div class="badges"><span class="badge">9-sinf</span><span class="badge">IoT</span><span class="badge">1-hafta · 1-dars</span><span class="badge">Buyumlar Interneti asoslari, Kevin Eshton tarixi va zamonaviy aqlli tizimlar</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

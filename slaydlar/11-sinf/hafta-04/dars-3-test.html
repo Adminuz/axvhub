@@ -1,191 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>12-dars testi</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>12-dars testi</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>12-dars testi</h1>
-  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
-  <span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">4-hafta</span>
-  
-</section>
-
-<section>
-  <h2>Savol 1/10</h2>
-  <div class="quiz">
-    <p class="q">JSON'da qaysi tuzilma kalit-qiymat juftliklari?</p>
-    <div class="opts">
-      <button class="opt" type="button">Array <code>[]</code></button>
-      <button class="opt" type="button" data-ok>Obyekt <code>{}</code></button>
-      <button class="opt" type="button">String</button>
-      <button class="opt" type="button">Number</button>
-    </div>
-    <div class="explain">Masalan <code>{"id":1}</code>.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 2/10</h2>
-  <div class="quiz">
-    <p class="q">Python <code>None</code> JSON'da?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>None</code></button>
-      <button class="opt" type="button"><code>""</code></button>
-      <button class="opt" type="button" data-ok><code>null</code></button>
-      <button class="opt" type="button"><code>0</code></button>
-    </div>
-    <div class="explain"><code>True/False</code> - <code>true/false</code>.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 3/10</h2>
-  <div class="quiz">
-    <p class="q"><code>json.dumps()</code> nima qiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">JSON matnini Python obyektiga</button>
-      <button class="opt" type="button">Faylni o'chiradi</button>
-      <button class="opt" type="button">JSON ni tekshiradi</button>
-      <button class="opt" type="button" data-ok>Python obyektini JSON matniga aylantiradi</button>
-    </div>
-    <div class="explain">Serializatsiya; teskarisi - <code>json.loads()</code>.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 4/10</h2>
-  <div class="quiz">
-    <p class="q">JSON qoidasi bo'yicha xato?</p>
-    <div class="opts">
-      <button class="opt" type="button">Kalitlar qo'sh tirnoqda</button>
-      <button class="opt" type="button"><code>null</code> kichik harfda</button>
-      <button class="opt" type="button" data-ok>Oxirgi elementdan keyin vergul</button>
-      <button class="opt" type="button">Ichma-ich obyekt</button>
-    </div>
-    <div class="explain">Oxirgi vergul va izohlar mumkin emas.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 5/10</h2>
-  <div class="quiz">
-    <p class="q">Pul summasini qanday saqlash tavsiya etiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>float</code></button>
-      <button class="opt" type="button">Faqat matn: "125 ming"</button>
-      <button class="opt" type="button"><code>null</code></button>
-      <button class="opt" type="button" data-ok>Tiyinda butun son yoki decimal satr</button>
-    </div>
-    <div class="explain">float yaxlitlash xatosi beradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 6/10</h2>
-  <div class="quiz">
-    <p class="q">Qaysi o'zgarish odatda orqaga mos?</p>
-    <div class="opts">
-      <button class="opt" type="button">Maydonni olib tashlash</button>
-      <button class="opt" type="button" data-ok>Yangi maydon qo'shish</button>
-      <button class="opt" type="button">Maydon ma'nosini o'zgartirish</button>
-      <button class="opt" type="button">Maydon turini o'zgartirish</button>
-    </div>
-    <div class="explain">Qolganlari breaking change.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 7/10</h2>
-  <div class="quiz">
-    <p class="q">Yagona xato konverti qaysi maydonlardan iborat?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>status</code>, <code>trace</code></button>
-      <button class="opt" type="button"><code>error</code>, <code>stack</code></button>
-      <button class="opt" type="button" data-ok><code>code</code>, <code>message</code>, <code>details</code></button>
-      <button class="opt" type="button"><code>ok</code>, <code>data</code></button>
-    </div>
-    <div class="explain">code - mashina uchun, message - odam uchun.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 8/10</h2>
-  <div class="quiz">
-    <p class="q"><code>sort=-created_at</code> nimani bildiradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Yaratilgan vaqtni o'chirish</button>
-      <button class="opt" type="button">O'sish tartibida</button>
-      <button class="opt" type="button">Filtr</button>
-      <button class="opt" type="button" data-ok>Yaratilgan vaqt bo'yicha teskari (yangisi birinchi)</button>
-    </div>
-    <div class="explain">Minus - teskari tartib.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 9/10</h2>
-  <div class="quiz">
-    <p class="q">Token to'g'ri, lekin foydalanuvchi admin emas. Admin endpoint javobi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>403</button>
-      <button class="opt" type="button">401</button>
-      <button class="opt" type="button">404</button>
-      <button class="opt" type="button">200</button>
-    </div>
-    <div class="explain">Kimligi ma'lum, ruxsat yo'q.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 10/10</h2>
-  <div class="quiz">
-    <p class="q">Tezlik cheklovidan oshgan so'rov javobi?</p>
-    <div class="opts">
-      <button class="opt" type="button">500</button>
-      <button class="opt" type="button">403</button>
-      <button class="opt" type="button" data-ok>429 Too Many Requests</button>
-      <button class="opt" type="button">304</button>
-    </div>
-    <div class="explain"><code>RateLimit-*</code> sarlavhalari bilan.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Natijangiz</h2>
-  <div class="cards three">
-    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
-    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
-    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
-  </div>
-  <p class="small mt">Takrorlang: JSON turlari, serializatsiya, kontrakt va versiyalash, error envelope, paginatsiya, 401/403, 429.</p>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>12-dars testi</h1></header>
+<div class="badges"><span class="badge">11-sinf</span><span class="badge">Professional IT development</span><span class="badge">4-hafta</span><span class="badge">10 ta savol &amp;middot; taxminan 8 daqiqa</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "JSON'da qaysi tuzilma kalit-qiymat juftliklari?", "o": ["Array <code>[]<\/code>", "Obyekt <code>{}<\/code>", "String", "Number"], "a": 1, "e": "Masalan <code>{\"id\":1}<\/code>."}, {"q": "Python <code>None<\/code> JSON'da?", "o": ["<code>None<\/code>", "<code>\"\"<\/code>", "<code>null<\/code>", "<code>0<\/code>"], "a": 2, "e": "<code>True/False<\/code> - <code>true/false<\/code>."}, {"q": "<code>json.dumps()<\/code> nima qiladi?", "o": ["JSON matnini Python obyektiga", "Faylni o'chiradi", "JSON ni tekshiradi", "Python obyektini JSON matniga aylantiradi"], "a": 3, "e": "Serializatsiya; teskarisi - <code>json.loads()<\/code>."}, {"q": "JSON qoidasi bo'yicha xato?", "o": ["Kalitlar qo'sh tirnoqda", "<code>null<\/code> kichik harfda", "Oxirgi elementdan keyin vergul", "Ichma-ich obyekt"], "a": 2, "e": "Oxirgi vergul va izohlar mumkin emas."}, {"q": "Pul summasini qanday saqlash tavsiya etiladi?", "o": ["<code>float<\/code>", "Faqat matn: \"125 ming\"", "<code>null<\/code>", "Tiyinda butun son yoki decimal satr"], "a": 3, "e": "float yaxlitlash xatosi beradi."}, {"q": "Qaysi o'zgarish odatda orqaga mos?", "o": ["Maydonni olib tashlash", "Yangi maydon qo'shish", "Maydon ma'nosini o'zgartirish", "Maydon turini o'zgartirish"], "a": 1, "e": "Qolganlari breaking change."}, {"q": "Yagona xato konverti qaysi maydonlardan iborat?", "o": ["<code>status<\/code>, <code>trace<\/code>", "<code>error<\/code>, <code>stack<\/code>", "<code>code<\/code>, <code>message<\/code>, <code>details<\/code>", "<code>ok<\/code>, <code>data<\/code>"], "a": 2, "e": "code - mashina uchun, message - odam uchun."}, {"q": "<code>sort=-created_at<\/code> nimani bildiradi?", "o": ["Yaratilgan vaqtni o'chirish", "O'sish tartibida", "Filtr", "Yaratilgan vaqt bo'yicha teskari (yangisi birinchi)"], "a": 3, "e": "Minus - teskari tartib."}, {"q": "Token to'g'ri, lekin foydalanuvchi admin emas. Admin endpoint javobi?", "o": ["403", "401", "404", "200"], "a": 0, "e": "Kimligi ma'lum, ruxsat yo'q."}, {"q": "Tezlik cheklovidan oshgan so'rov javobi?", "o": ["500", "403", "429 Too Many Requests", "304"], "a": 2, "e": "<code>RateLimit-*<\/code> sarlavhalari bilan."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

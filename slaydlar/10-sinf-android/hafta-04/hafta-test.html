@@ -1,331 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>4-hafta testi</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>4-hafta testi</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>4-hafta testi</h1>
-  <p class="muted">20 ta savol &middot; taxminan 18 daqiqa</p>
-  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">4-hafta</span>
-  
-</section>
-
-<section>
-  <h2>Savol 1/20</h2>
-  <div class="quiz">
-    <p class="q">Git bilan GitLab/Bitbucket orasidagi munosabat qanday?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Git dasturi, GitLab va Bitbucket esa uni joylashtiradigan platformalar</button>
-      <button class="opt" type="button">Ular uchalasi bir xil dastur</button>
-      <button class="opt" type="button">Git faqat Windows uchun</button>
-      <button class="opt" type="button">Bitbucket Git o'rniga ishlatiladi</button>
-    </div>
-    <div class="explain">Git lokal vosita, platformalar esa kodni bulutda saqlab, jamoaviy ishni tashkil etadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 2/20</h2>
-  <div class="quiz">
-    <p class="q">Loyihani klonlagandan keyin jamoada odatda nima qilinadi?</p>
-    <div class="opts">
-      <button class="opt" type="button">To'g'ridan-to'g'ri main ni tahrirlash</button>
-      <button class="opt" type="button" data-ok>Alohida branch ochib ishlash</button>
-      <button class="opt" type="button">Repo'ni o'chirish</button>
-      <button class="opt" type="button">Barcha rollarni o'zgartirish</button>
-    </div>
-    <div class="explain">Asosiy kodga tegmaslik uchun alohida feature branch ochiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 3/20</h2>
-  <div class="quiz">
-    <p class="q">Kanban doskasi nima beradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Kod tezligini</button>
-      <button class="opt" type="button">Android emulyatorini</button>
-      <button class="opt" type="button" data-ok>Vazifalar holatini (kim nima bilan bandligini) vizual ko'rsatishni</button>
-      <button class="opt" type="button">Faqat chat</button>
-    </div>
-    <div class="explain">To Do, In Progress, Done ustunlari ishning bosqichini ko'rsatadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 4/20</h2>
-  <div class="quiz">
-    <p class="q">Team nimani anglatadi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Branch turini</button>
-      <button class="opt" type="button" data-ok>Loyiha ustida ishlaydigan a'zolarni</button>
-      <button class="opt" type="button">Pipeline bosqichini</button>
-      <button class="opt" type="button">Merge usulini</button>
-    </div>
-    <div class="explain">Team jamoa a'zolari, ularga rollar beriladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 5/20</h2>
-  <div class="quiz">
-    <p class="q">Pull Request va Merge Request orasida qanday munosabat bor?</p>
-    <div class="opts">
-      <button class="opt" type="button">Ular butunlay boshqa narsalar</button>
-      <button class="opt" type="button">Merge Request faqat Bitbucket'da bor</button>
-      <button class="opt" type="button" data-ok>Mazmuni bir xil, GitHub PR deydi, GitLab MR deydi</button>
-      <button class="opt" type="button">MR commitni o'chiradi</button>
-    </div>
-    <div class="explain">Hujjat: Pull Request GitLab'da Merge Request deb ataladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 6/20</h2>
-  <div class="quiz">
-    <p class="q">Nima uchun alohida branch yaratiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Faylni kichraytirish uchun</button>
-      <button class="opt" type="button" data-ok>Asosiy loyihani buzmasdan mustaqil ishlash uchun</button>
-      <button class="opt" type="button">Internetni tezlatish uchun</button>
-      <button class="opt" type="button">Commit xeshini o'zgartirish uchun</button>
-    </div>
-    <div class="explain">Branch xavfsizlik va mustaqillik beradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 7/20</h2>
-  <div class="quiz">
-    <p class="q"><code>feature/lessons-screen</code> nomi qanday branch?</p>
-    <div class="opts">
-      <button class="opt" type="button">Xato tuzatish</button>
-      <button class="opt" type="button">Zudlik bilan tuzatish</button>
-      <button class="opt" type="button">Tarixni tozalash</button>
-      <button class="opt" type="button" data-ok>Yangi funksiya (darslar ekrani) uchun branch</button>
-    </div>
-    <div class="explain"><code>feature/</code> prefiksi yangi funksiya ustida ishlashni bildiradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 8/20</h2>
-  <div class="quiz">
-    <p class="q">Git Flow'da <code>hotfix</code> nima uchun?</p>
-    <div class="opts">
-      <button class="opt" type="button">Yangi funksiyalar uchun</button>
-      <button class="opt" type="button" data-ok>Zudlik bilan tuzatishlar uchun</button>
-      <button class="opt" type="button">Nashrga tayyor kod uchun</button>
-      <button class="opt" type="button">Rivojlanayotgan kod uchun</button>
-    </div>
-    <div class="explain">Hujjat: hotfix zudlik bilan tuzatishlar branchi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 9/20</h2>
-  <div class="quiz">
-    <p class="q">Merge konfliktini hal qilish tartibi qaysi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Belgilarni o'chirmay commit qilish</button>
-      <button class="opt" type="button">Faqat <code>git push</code></button>
-      <button class="opt" type="button" data-ok>Variantni tanlash, belgilarni o'chirish, <code>git add</code> va <code>git commit</code></button>
-      <button class="opt" type="button">Repo'ni qayta yaratish</button>
-    </div>
-    <div class="explain">Tanlov, tozalash, keyin add va commit bilan merge yakunlanadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 10/20</h2>
-  <div class="quiz">
-    <p class="q">PR'dagi Code Review'da nimani tekshirmaymiz?</p>
-    <div class="opts">
-      <button class="opt" type="button">Kod toza yozilganmi</button>
-      <button class="opt" type="button">Xavfsizlik xatolari bormi</button>
-      <button class="opt" type="button">Arxitektura qoidalariga amal qilinganmi</button>
-      <button class="opt" type="button" data-ok>Dasturchining shaxsiy parolini</button>
-    </div>
-    <div class="explain">Review kod sifati, takrorlanish, xavfsizlik, arxitektura va UI natijasini tekshiradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 11/20</h2>
-  <div class="quiz">
-    <p class="q">Continuous Delivery nima?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Ilovani tayyorlash, sinovga chiqarish va nashr jarayonlarini avtomatlashtirish</button>
-      <button class="opt" type="button">Faqat branch nomlash</button>
-      <button class="opt" type="button">Faqat kodni o'chirish</button>
-      <button class="opt" type="button">Telefonni tuzatish</button>
-    </div>
-    <div class="explain">Delivery CI davomi: ilova doim tayyor holda turadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 12/20</h2>
-  <div class="quiz">
-    <p class="q">Zavod analogiyasida har detalni tekshirish nimaga mos?</p>
-    <div class="opts">
-      <button class="opt" type="button">Deployment'ga</button>
-      <button class="opt" type="button">Fork'ga</button>
-      <button class="opt" type="button">Merge'ga</button>
-      <button class="opt" type="button" data-ok>Continuous Integration'ga</button>
-    </div>
-    <div class="explain">Detallarni tekshirish CI, tayyor telefonni bozorga chiqarish Delivery va Deployment.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 13/20</h2>
-  <div class="quiz">
-    <p class="q">Android uchun CI xizmatlariga qaysi biri kiradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Photoshop</button>
-      <button class="opt" type="button" data-ok>GitHub Actions</button>
-      <button class="opt" type="button">Excel</button>
-      <button class="opt" type="button">Paint</button>
-    </div>
-    <div class="explain">Hujjat: GitHub Actions, GitLab CI/CD, Bitbucket Pipelines, Jenkins, CircleCI, Azure DevOps.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 14/20</h2>
-  <div class="quiz">
-    <p class="q"><code>actions/setup-java@v3</code> qadamida nima qilinadi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Branch o'chiriladi</button>
-      <button class="opt" type="button">Parol almashtiriladi</button>
-      <button class="opt" type="button" data-ok>JDK (Java) o'rnatiladi</button>
-      <button class="opt" type="button">Rasm yuklanadi</button>
-    </div>
-    <div class="explain">Qadam <code>java-version: '17'</code> va temurin distributivi bilan JDK ni sozlaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 15/20</h2>
-  <div class="quiz">
-    <p class="q"><code>push: tags: 'v*'</code> release workflow'ni qachon ishga tushiradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Har oddiy commitda</button>
-      <button class="opt" type="button" data-ok><code>v</code> bilan boshlanadigan tag qo'yilganda</button>
-      <button class="opt" type="button">Faqat yakshanba kuni</button>
-      <button class="opt" type="button">Hech qachon</button>
-    </div>
-    <div class="explain">Hujjatdagi Release Build workflow tag qo'yilganda AAB yig'ib, Play Store'ga yuboradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 16/20</h2>
-  <div class="quiz">
-    <p class="q">Quyidagilardan qaysi biri Secrets orqali saqlanishi kerak?</p>
-    <div class="opts">
-      <button class="opt" type="button">Branch nomi</button>
-      <button class="opt" type="button">README sarlavhasi</button>
-      <button class="opt" type="button">Fayl kengaytmasi</button>
-      <button class="opt" type="button" data-ok>Play Store service account kaliti</button>
-    </div>
-    <div class="explain">Kalit va tokenlar ochiq yozilmaydi, <code>${{ secrets.PLAY_STORE_KEY }}</code> orqali olinadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 17/20</h2>
-  <div class="quiz">
-    <p class="q">Jamoa ishining to'g'ri ketma-ketligi qaysi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Branch, o'zgarish, PR, review, CI tekshiruvi, merge</button>
-      <button class="opt" type="button">Merge, branch, review, PR</button>
-      <button class="opt" type="button">CI, keyin kod yozish</button>
-      <button class="opt" type="button">Deploy, keyin branch ochish</button>
-    </div>
-    <div class="explain">Feature branch'da ishlanadi, PR ochiladi, review va CI tekshiruvidan so'ng merge qilinadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 18/20</h2>
-  <div class="quiz">
-    <p class="q">PR ochilganda CI testlari yiqildi. Nima qilish kerak?</p>
-    <div class="opts">
-      <button class="opt" type="button">Baribir merge qilish</button>
-      <button class="opt" type="button" data-ok>Xatoni tuzatib qayta push qilish: PR yangilanadi va CI qayta ishlaydi</button>
-      <button class="opt" type="button">PR'ni o'chirib tashlash</button>
-      <button class="opt" type="button">Testlarni olib tashlash</button>
-    </div>
-    <div class="explain">Push PR'ni yangilaydi, pipeline qaytadan tekshiradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 19/20</h2>
-  <div class="quiz">
-    <p class="q">Qaysi birikma to'g'ri: branch strategiyasi va CI?</p>
-    <div class="opts">
-      <button class="opt" type="button">CI faqat Git Flow bilan ishlaydi</button>
-      <button class="opt" type="button">CI branch ishlatmaydi</button>
-      <button class="opt" type="button" data-ok>Har bir feature branch'dagi PR'da CI avtomatik tekshiruv o'tkazadi, merge faqat muvaffaqiyatdan keyin</button>
-      <button class="opt" type="button">CI faqat Deployment uchun</button>
-    </div>
-    <div class="explain">CI har PR'da build va test ishga tushirib, sifatni merge'dan oldin nazorat qiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 20/20</h2>
-  <div class="quiz">
-    <p class="q">Nega pipeline nomi bir platformada (GitLab) va boshqasida (GitHub) boshqacha atalsa ham, g'oya bir xil?</p>
-    <div class="opts">
-      <button class="opt" type="button">Ular turli tillarda yozilgan</button>
-      <button class="opt" type="button">Hamma platforma bir xil ishlaydi, nomi ahamiyatsiz</button>
-      <button class="opt" type="button" data-ok>Hammasi Git repozitoriyasi bilan bog'liq holda build, test va deploy ni avtomatlashtiradi</button>
-      <button class="opt" type="button">Faqat bittasi ishlaydi</button>
-    </div>
-    <div class="explain">GitHub Actions, GitLab CI/CD va Bitbucket Pipelines Git repozitoriyasi bilan birga avtomatik jarayon bajaradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Natijangiz</h2>
-  <div class="cards three">
-    <div class="card"><h3>20 dan 18+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
-    <div class="card"><h3>20 dan 12-17</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
-    <div class="card accent"><h3>11 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
-  </div>
-  <p class="small mt">Takrorlang: platformalar va rollar (10-dars), branch, merge, konflikt, PR (11-dars), CI/CD va GitHub Actions (12-dars).</p>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>4-hafta testi</h1></header>
+<div class="badges"><span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">4-hafta</span><span class="badge">20 ta savol &amp;middot; taxminan 18 daqiqa</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Git bilan GitLab/Bitbucket orasidagi munosabat qanday?", "o": ["Git dasturi, GitLab va Bitbucket esa uni joylashtiradigan platformalar", "Ular uchalasi bir xil dastur", "Git faqat Windows uchun", "Bitbucket Git o'rniga ishlatiladi"], "a": 0, "e": "Git lokal vosita, platformalar esa kodni bulutda saqlab, jamoaviy ishni tashkil etadi."}, {"q": "Loyihani klonlagandan keyin jamoada odatda nima qilinadi?", "o": ["To'g'ridan-to'g'ri main ni tahrirlash", "Alohida branch ochib ishlash", "Repo'ni o'chirish", "Barcha rollarni o'zgartirish"], "a": 1, "e": "Asosiy kodga tegmaslik uchun alohida feature branch ochiladi."}, {"q": "Kanban doskasi nima beradi?", "o": ["Kod tezligini", "Android emulyatorini", "Vazifalar holatini (kim nima bilan bandligini) vizual ko'rsatishni", "Faqat chat"], "a": 2, "e": "To Do, In Progress, Done ustunlari ishning bosqichini ko'rsatadi."}, {"q": "Team nimani anglatadi?", "o": ["Branch turini", "Loyiha ustida ishlaydigan a'zolarni", "Pipeline bosqichini", "Merge usulini"], "a": 1, "e": "Team jamoa a'zolari, ularga rollar beriladi."}, {"q": "Pull Request va Merge Request orasida qanday munosabat bor?", "o": ["Ular butunlay boshqa narsalar", "Merge Request faqat Bitbucket'da bor", "Mazmuni bir xil, GitHub PR deydi, GitLab MR deydi", "MR commitni o'chiradi"], "a": 2, "e": "Hujjat: Pull Request GitLab'da Merge Request deb ataladi."}, {"q": "Nima uchun alohida branch yaratiladi?", "o": ["Faylni kichraytirish uchun", "Asosiy loyihani buzmasdan mustaqil ishlash uchun", "Internetni tezlatish uchun", "Commit xeshini o'zgartirish uchun"], "a": 1, "e": "Branch xavfsizlik va mustaqillik beradi."}, {"q": "<code>feature/lessons-screen<\/code> nomi qanday branch?", "o": ["Xato tuzatish", "Zudlik bilan tuzatish", "Tarixni tozalash", "Yangi funksiya (darslar ekrani) uchun branch"], "a": 3, "e": "<code>feature/<\/code> prefiksi yangi funksiya ustida ishlashni bildiradi."}, {"q": "Git Flow'da <code>hotfix<\/code> nima uchun?", "o": ["Yangi funksiyalar uchun", "Zudlik bilan tuzatishlar uchun", "Nashrga tayyor kod uchun", "Rivojlanayotgan kod uchun"], "a": 1, "e": "Hujjat: hotfix zudlik bilan tuzatishlar branchi."}, {"q": "Merge konfliktini hal qilish tartibi qaysi?", "o": ["Belgilarni o'chirmay commit qilish", "Faqat <code>git push<\/code>", "Variantni tanlash, belgilarni o'chirish, <code>git add<\/code> va <code>git commit<\/code>", "Repo'ni qayta yaratish"], "a": 2, "e": "Tanlov, tozalash, keyin add va commit bilan merge yakunlanadi."}, {"q": "PR'dagi Code Review'da nimani tekshirmaymiz?", "o": ["Kod toza yozilganmi", "Xavfsizlik xatolari bormi", "Arxitektura qoidalariga amal qilinganmi", "Dasturchining shaxsiy parolini"], "a": 3, "e": "Review kod sifati, takrorlanish, xavfsizlik, arxitektura va UI natijasini tekshiradi."}, {"q": "Continuous Delivery nima?", "o": ["Ilovani tayyorlash, sinovga chiqarish va nashr jarayonlarini avtomatlashtirish", "Faqat branch nomlash", "Faqat kodni o'chirish", "Telefonni tuzatish"], "a": 0, "e": "Delivery CI davomi: ilova doim tayyor holda turadi."}, {"q": "Zavod analogiyasida har detalni tekshirish nimaga mos?", "o": ["Deployment'ga", "Fork'ga", "Merge'ga", "Continuous Integration'ga"], "a": 3, "e": "Detallarni tekshirish CI, tayyor telefonni bozorga chiqarish Delivery va Deployment."}, {"q": "Android uchun CI xizmatlariga qaysi biri kiradi?", "o": ["Photoshop", "GitHub Actions", "Excel", "Paint"], "a": 1, "e": "Hujjat: GitHub Actions, GitLab CI/CD, Bitbucket Pipelines, Jenkins, CircleCI, Azure DevOps."}, {"q": "<code>actions/setup-java@v3<\/code> qadamida nima qilinadi?", "o": ["Branch o'chiriladi", "Parol almashtiriladi", "JDK (Java) o'rnatiladi", "Rasm yuklanadi"], "a": 2, "e": "Qadam <code>java-version: '17'<\/code> va temurin distributivi bilan JDK ni sozlaydi."}, {"q": "<code>push: tags: 'v*'<\/code> release workflow'ni qachon ishga tushiradi?", "o": ["Har oddiy commitda", "<code>v<\/code> bilan boshlanadigan tag qo'yilganda", "Faqat yakshanba kuni", "Hech qachon"], "a": 1, "e": "Hujjatdagi Release Build workflow tag qo'yilganda AAB yig'ib, Play Store'ga yuboradi."}, {"q": "Quyidagilardan qaysi biri Secrets orqali saqlanishi kerak?", "o": ["Branch nomi", "README sarlavhasi", "Fayl kengaytmasi", "Play Store service account kaliti"], "a": 3, "e": "Kalit va tokenlar ochiq yozilmaydi, <code>${{ secrets.PLAY_STORE_KEY }}<\/code> orqali olinadi."}, {"q": "Jamoa ishining to'g'ri ketma-ketligi qaysi?", "o": ["Branch, o'zgarish, PR, review, CI tekshiruvi, merge", "Merge, branch, review, PR", "CI, keyin kod yozish", "Deploy, keyin branch ochish"], "a": 0, "e": "Feature branch'da ishlanadi, PR ochiladi, review va CI tekshiruvidan so'ng merge qilinadi."}, {"q": "PR ochilganda CI testlari yiqildi. Nima qilish kerak?", "o": ["Baribir merge qilish", "Xatoni tuzatib qayta push qilish: PR yangilanadi va CI qayta ishlaydi", "PR'ni o'chirib tashlash", "Testlarni olib tashlash"], "a": 1, "e": "Push PR'ni yangilaydi, pipeline qaytadan tekshiradi."}, {"q": "Qaysi birikma to'g'ri: branch strategiyasi va CI?", "o": ["CI faqat Git Flow bilan ishlaydi", "CI branch ishlatmaydi", "Har bir feature branch'dagi PR'da CI avtomatik tekshiruv o'tkazadi, merge faqat muvaffaqiyatdan keyin", "CI faqat Deployment uchun"], "a": 2, "e": "CI har PR'da build va test ishga tushirib, sifatni merge'dan oldin nazorat qiladi."}, {"q": "Nega pipeline nomi bir platformada (GitLab) va boshqasida (GitHub) boshqacha atalsa ham, g'oya bir xil?", "o": ["Ular turli tillarda yozilgan", "Hamma platforma bir xil ishlaydi, nomi ahamiyatsiz", "Hammasi Git repozitoriyasi bilan bog'liq holda build, test va deploy ni avtomatlashtiradi", "Faqat bittasi ishlaydi"], "a": 2, "e": "GitHub Actions, GitLab CI/CD va Bitbucket Pipelines Git repozitoriyasi bilan birga avtomatik jarayon bajaradi."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

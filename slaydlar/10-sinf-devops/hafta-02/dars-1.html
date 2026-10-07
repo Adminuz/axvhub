@@ -1,334 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>Jarayonlar va xizmatlarni boshqarish</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Jarayonlar va xizmatlarni boshqarish</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<!-- 4-dars. Xizmatlar va jarayonlarni boshqarish (ps, top, kill, systemd) -->
-
-<!-- 1. SARLAVHA -->
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>Jarayonlar va xizmatlarni boshqarish</h1>
-  <p class="muted">ps, top, kill signallari hamda systemd/systemctl xizmatlar ekotizimi</p>
-  <span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">2-hafta · 4-dars</span>
-</section>
-
-<!-- 2. MAQSADLAR KARTALARI -->
-<section>
-  <h2>Bugungi dars maqsadlari</h2>
-  <div class="cards three">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="cpu" data-anim="float"></i></div>
-      <h3>Jarayonlar anatomiyasi</h3>
-      <p>PID, Foreground va Background rejimlari hamda holatlar.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="shield-alert" data-anim="pulse"></i></div>
-      <h3>Signallar va to'xtatish</h3>
-      <p>SIGTERM (15), SIGKILL (9) va ustuvorlik (nice/renice).</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="server" data-anim="spin"></i></div>
-      <h3>Systemd va Xizmatlar</h3>
-      <p>Doimiy ishlovchi xizmatlarni (systemctl) sozlash va boshqarish.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 3. STATISTIKA: JARAYONLAR RAQAMLARDA -->
-<section>
-  <h2>Tizim yuklamasi raqamlarda</h2>
-  <div class="stats">
-    <div class="stat fragment"><div class="v">1</div><div class="l">PID 1: systemd ota jarayoni</div></div>
-    <div class="stat fragment"><div class="v"><span class="count" data-to="64" data-suf=" ta">0</span></div><div class="l">Unix signallari turlari</div></div>
-    <div class="stat fragment"><div class="v">-20 .. 19</div><div class="l">nice ustuvorlik shkalasi</div></div>
-  </div>
-  <div class="callout tip mt fragment"><i data-ic="lightbulb"></i>Har qanday veb-sayt orqasida fonda ishlovchi xizmatlar (daemons) turadi.</div>
-</section>
-
-<!-- 4. BO'LIM 01: JARAYONLAR VA HOLATLAR -->
-<section class="sec">
-  <div class="num">01</div>
-  <h1>Jarayonlar va holatlar</h1>
-  <p>Dastur qanday qilib tirik jarayonga (process) aylanadi?</p>
-</section>
-
-<!-- 5. SVG ILLYUSTRATSIYA 1: JARAYON HAYOTIY TSIKLI -->
-<section>
-  <h2>Jarayon hayotiy tsikli</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 320">
-      <g data-tip="Yaratilish: fork/exec orqali xotiraga yuklanadi"><rect class="fa" x="30" y="100" width="160" height="90" rx="14"/><text class="t-head" x="110" y="145" text-anchor="middle" font-size="20">New (Yangi)</text><text class="t-muted" x="110" y="170" text-anchor="middle" font-size="14">Dastur chaqirildi</text></g>
-      <line class="la flowing" x1="190" y1="145" x2="260" y2="145"/><polygon class="ar-a" points="265,145 252,137 252,153"/>
-
-      <g data-tip="Running (R): CPU da bajarilmoqda"><rect class="fg" x="270" y="100" width="180" height="90" rx="14"/><text class="t-head" x="360" y="145" text-anchor="middle" font-size="20">Running (R)</text><text class="t-muted" x="360" y="170" text-anchor="middle" font-size="14">Faol CPU resursi</text></g>
-      
-      <line class="lb flowing" x1="450" y1="130" x2="540" y2="70"/><polygon class="ar-b" points="545,67 532,65 539,78"/>
-      <line class="lc flowing" x1="540" y1="90" x2="450" y2="150"/><polygon class="ar-c" points="445,153 458,155 451,142"/>
-
-      <g data-tip="Sleeping (S): hodisa yoki I/O kutmoqda"><rect class="fc" x="550" y="40" width="180" height="90" rx="14"/><text class="t-head" x="640" y="85" text-anchor="middle" font-size="20">Sleeping (S)</text><text class="t-muted" x="640" y="110" text-anchor="middle" font-size="14">Kutish holati</text></g>
-
-      <line class="la flowing" x1="450" y1="160" x2="760" y2="210"/><polygon class="ar-a" points="765,212 752,206 756,220"/>
-
-      <g data-tip="Zombie (Z): tugatilgan, lekin hisoboti olinmagan"><rect class="fb" x="770" y="170" width="180" height="90" rx="14"/><text class="t-head" x="860" y="215" text-anchor="middle" font-size="20">Zombie (Z)</text><text class="t-muted" x="860" y="240" text-anchor="middle" font-size="14">Tugallangan</text></g>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- 6. AYLANADIGAN KARTALAR: STAT TURLARI -->
-<section>
-  <h2>Eng muhim jarayon holatlari</h2>
-  <div class="cards three">
-    <div class="flip" style="min-height:210px"><div class="flip-in">
-      <div class="face front"><div class="icon"><i data-ic="play"></i></div><h3>Running (R)</h3><span class="flip-hint">bosing</span></div>
-      <div class="face back"><p>Jarayon hozir CPU yadrosida faol hisob-kitob bajarmoqda.</p></div>
-    </div></div>
-    <div class="flip" style="min-height:210px"><div class="flip-in">
-      <div class="face front"><div class="icon"><i data-ic="clock"></i></div><h3>Sleeping (S)</h3><span class="flip-hint">bosing</span></div>
-      <div class="face back"><p>Jarayon ma'lumot kiritilishini yoki tarmoq javobini kutmoqda (CPU bo'sh).</p></div>
-    </div></div>
-    <div class="flip" style="min-height:210px"><div class="flip-in">
-      <div class="face front"><div class="icon"><i data-ic="triangle-alert"></i></div><h3>Zombie (Z)</h3><span class="flip-hint">bosing</span></div>
-      <div class="face back"><p>Vazifasini yakunlagan, ammo ota jarayon hisobotini kutayotgan yozuv.</p></div>
-    </div></div>
-  </div>
-</section>
-
-<!-- 7. BO'LIM 02: FOREGROUND VA BACKGROUND -->
-<section class="sec">
-  <div class="num">02</div>
-  <h1>Oldingi va Fon rejimlari</h1>
-  <p>Terminalni bloklamay, vazifalarni fonda bajarish</p>
-</section>
-
-<!-- 8. SVG ILLYUSTRATSIYA 2: BG VA FG ALOQASI -->
-<section>
-  <h2>Foreground va Background aloqasi</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 320">
-      <rect class="fa" x="60" y="60" width="380" height="180" rx="16"/>
-      <text class="t-head" x="250" y="110" text-anchor="middle" font-size="24">Foreground (Oldingi)</text>
-      <text class="t-muted" x="250" y="140" text-anchor="middle" font-size="16">Terminal klaviaturani band qiladi</text>
-      <rect class="fn" x="100" y="165" width="300" height="45" rx="8"/>
-      <text class="t-accent" x="250" y="195" text-anchor="middle" font-size="18">Ctrl + Z (To'xtatish)</text>
-
-      <line class="la flowing" x1="440" y1="120" x2="550" y2="120"/><polygon class="ar-a" points="555,120 542,112 542,128"/>
-      <text class="t-accent" x="495" y="105" text-anchor="middle" font-size="16">bg</text>
-
-      <line class="lc flowing" x1="550" y1="180" x2="440" y2="180"/><polygon class="ar-c" points="435,180 448,188 448,172"/>
-      <text class="t-muted" x="495" y="210" text-anchor="middle" font-size="16">fg %1</text>
-
-      <rect class="fb" x="560" y="60" width="380" height="180" rx="16"/>
-      <text class="t-head" x="750" y="110" text-anchor="middle" font-size="24">Background (Fon)</text>
-      <text class="t-muted" x="750" y="140" text-anchor="middle" font-size="16">Terminal boshqa ishlar uchun ochiq</text>
-      <rect class="fn" x="600" y="165" width="300" height="45" rx="8"/>
-      <text class="t-accent" x="750" y="195" text-anchor="middle" font-size="18">python3 app.py &amp;</text>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- 9. STEPPER: FONGA O'TKAZISH BOSQICHLARI -->
-<section>
-  <h2>Jarayonni fonga o'tkazish algoritmi</h2>
-  <div class="stepper">
-    <div class="stp on">
-      <div class="card">
-        <div class="icon"><i data-ic="terminal" data-anim="float"></i></div>
-        <h3>1. Jarayonni to'xtatish</h3>
-        <p>Terminalda <code>Ctrl + Z</code> bosing — jarayon «Stopped» bo'ladi.</p>
-      </div>
-    </div>
-    <div class="stp">
-      <div class="card">
-        <div class="icon"><i data-ic="play" data-anim="pulse"></i></div>
-        <h3>2. Fonda davom ettirish</h3>
-        <p><code>bg</code> buyrug'ini bering — jarayon fonda qayta yuguradi.</p>
-      </div>
-    </div>
-    <div class="stp">
-      <div class="card">
-        <div class="icon"><i data-ic="arrow-right-left" data-anim="wiggle"></i></div>
-        <h3>3. Terminalga qaytarish</h3>
-        <p><code>fg %1</code> orqali uni istalgan payt yana oldingi rejimga oling.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 10. BO'LIM 03: SIGNALLAR VA TO'XTATISH -->
-<section class="sec">
-  <div class="num">03</div>
-  <h1>Signallar va to'xtatish</h1>
-  <p>SIGTERM (15) va SIGKILL (9) farqi</p>
-</section>
-
-<!-- 11. TAQQOSLASH (SWAP): SIGTERM vs SIGKILL -->
-<section>
-  <h2>SIGTERM vs SIGKILL</h2>
-  <div class="swap">
-    <div class="swap-tabs"><button type="button">SIGTERM (15)</button><button type="button">SIGKILL (9)</button></div>
-    <div class="swap-p">
-      <div class="card">
-        <h3>SIGTERM (Standart kill)</h3>
-        <p>Jarayonga o'zini toza yopish taklif qilinadi.</p>
-        <p>Fayllarni saqlaydi, xotirani tozalaydi, soketlarni yopadi.</p>
-        <p>Buyruq: <code>kill [PID]</code></p>
-      </div>
-    </div>
-    <div class="swap-p">
-      <div class="card accent">
-        <h3>SIGKILL (Majburiy kill -9)</h3>
-        <p>Linux yadrosi jarayonni so'rovsiz bir zumda xotiradan o'chiradi.</p>
-        <p>Qotib qolgan dasturlar uchun oxirgi chora.</p>
-        <p>Buyruq: <code>kill -9 [PID]</code></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 12. SVG ILLYUSTRATSIYA 3: SIGNALLAR SHKALASI -->
-<section>
-  <h2>Asosiy Unix signallari</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 300">
-      <rect class="fa" x="40" y="80" width="200" height="140" rx="14"/>
-      <text class="t-head" x="140" y="130" text-anchor="middle" font-size="22">SIGINT (2)</text>
-      <text class="t-accent" x="140" y="165" text-anchor="middle" font-size="18">Ctrl + C</text>
-      <text class="t-muted" x="140" y="195" text-anchor="middle" font-size="14">To'xtatish</text>
-
-      <rect class="fb" x="280" y="80" width="200" height="140" rx="14"/>
-      <text class="t-head" x="380" y="130" text-anchor="middle" font-size="22">SIGHUP (1)</text>
-      <text class="t-accent" x="380" y="165" text-anchor="middle" font-size="18">Reload</text>
-      <text class="t-muted" x="380" y="195" text-anchor="middle" font-size="14">Konfiguratsiya yangilash</text>
-
-      <rect class="fc" x="520" y="80" width="200" height="140" rx="14"/>
-      <text class="t-head" x="620" y="130" text-anchor="middle" font-size="22">SIGTERM (15)</text>
-      <text class="t-accent" x="620" y="165" text-anchor="middle" font-size="18">kill [PID]</text>
-      <text class="t-muted" x="620" y="195" text-anchor="middle" font-size="14">Xavfsiz yopilish</text>
-
-      <rect class="fg" x="760" y="80" width="200" height="140" rx="14"/>
-      <text class="t-head" x="860" y="130" text-anchor="middle" font-size="22">SIGKILL (9)</text>
-      <text class="t-accent" x="860" y="165" text-anchor="middle" font-size="18">kill -9 [PID]</text>
-      <text class="t-muted" x="860" y="195" text-anchor="middle" font-size="14">Majburiy to'xtatish</text>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- 13. BO'LIM 04: SYSTEMD VA XIZMATLAR -->
-<section class="sec">
-  <div class="num">04</div>
-  <h1>Systemd va systemctl</h1>
-  <p>Serverdagi doimiy xizmatlarni (daemons) boshqarish</p>
-</section>
-
-<!-- 14. SVG ILLYUSTRATSIYA 4: SYSTEMD ARXITEKTURASI -->
-<section>
-  <h2>Systemd xizmatlar daraxti</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 300">
-      <rect class="fa" x="380" y="20" width="240" height="70" rx="14"/>
-      <text class="t-head" x="500" y="60" text-anchor="middle" font-size="24">PID 1: systemd</text>
-
-      <line class="la" x1="500" y1="90" x2="160" y2="170"/>
-      <line class="la" x1="500" y1="90" x2="500" y2="170"/>
-      <line class="la" x1="500" y1="90" x2="840" y2="170"/>
-
-      <g class="fragment"><rect class="fb" x="60" y="170" width="200" height="90" rx="12"/><text class="t-head" x="160" y="215" text-anchor="middle" font-size="20">nginx.service</text><text class="t-muted" x="160" y="240" text-anchor="middle" font-size="14">Veb-server</text></g>
-
-      <g class="fragment"><rect class="fc" x="400" y="170" width="200" height="90" rx="12"/><text class="t-head" x="500" y="215" text-anchor="middle" font-size="20">docker.service</text><text class="t-muted" x="500" y="240" text-anchor="middle" font-size="14">Konteynerlar</text></g>
-
-      <g class="fragment"><rect class="fg" x="740" y="170" width="200" height="90" rx="12"/><text class="t-head" x="840" y="215" text-anchor="middle" font-size="20">sshd.service</text><text class="t-muted" x="840" y="240" text-anchor="middle" font-size="14">Masofaviy kirish</text></g>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- 15. KOD: SYSTEMCTL BUYRUQLARI -->
-<section>
-  <h2>systemctl boshqaruv sintaksisi</h2>
-  <pre><code class="language-bash" data-trim data-noescape data-line-numbers="1-6|1-2|4|6">
-# Xizmatni yoqish va to'xtatish
-sudo systemctl start nginx
-sudo systemctl stop nginx
-
-# Xizmat holatini tekshirish
-systemctl status nginx
-
-# Server yoqilganda avtomat ishga tushishi (Autostart)
-sudo systemctl enable nginx
-  </code></pre>
-  <div class="callout tip"><i data-ic="circle-check"></i><code>status</code> buyrug'i xizmat qulaganda oxirgi xatolik loglarini ham ko'rsatadi.</div>
-</section>
-
-<!-- 16. MINI TEST (QUIZ) -->
-<section>
-  <h2>Tezkor bilim sinovi</h2>
-  <div class="quiz">
-    <p class="q">Qaysi buyruq server qayta yuklanganda (reboot) xizmatning avtomatik ishga tushishini ta'minlaydi?</p>
-    <div class="opts">
-      <button class="opt" type="button">systemctl start</button>
-      <button class="opt" type="button" data-ok>systemctl enable</button>
-      <button class="opt" type="button">systemctl restart</button>
-      <button class="opt" type="button">systemctl reload</button>
-    </div>
-    <div class="explain">To'g'ri: 'enable' xizmatni autostart ga qo'shadi, 'start' esa uni faqat joriy sessiyada yoqadi.</div>
-  </div>
-</section>
-
-<!-- 17. AMALIY TOPSHIRIQ -->
-<section>
-  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
-  <div class="task"><span class="level easy">Oson</span><code>top</code> orqali umumiy CPU va RAM yuklamasini tahlil qiling.</div>
-  <div class="task"><span class="level mid">O'rta</span><code>sleep 300 &amp;</code> ishga tushiring, PID sini topib <code>kill</code> bilan yoping.</div>
-  <div class="task"><span class="level hard">Qiyin</span><code>systemctl status cron</code> qilib xizmat holatini o'rganing.</div>
-</section>
-
-<!-- 18. XULOSA -->
-<section>
-  <h2>Bugungi dars xulosasi</h2>
-  <div class="cards two">
-    <div class="card">
-      <div class="icon"><i data-ic="circle-check"></i></div>
-      <h3>O'rganilgan mavzular</h3>
-      <p>Jarayonlar va PID, Foreground/Background boshqaruvi, signallar (SIGTERM/SIGKILL) hamda systemd/systemctl amallari.</p>
-    </div>
-    <div class="card">
-      <div class="icon"><i data-ic="book-open"></i></div>
-      <h3>Uyga vazifa</h3>
-      <p>Jarayonlarni fonda boshqarish va tizim xizmatlari holatini tahlil qilish.</p>
-    </div>
-  </div>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Jarayonlar va xizmatlarni boshqarish</h1></header>
+<div class="badges"><span class="badge">10-sinf</span><span class="badge">DevOps</span><span class="badge">2-hafta · 4-dars</span><span class="badge">ps, top, kill signallari hamda systemd/systemctl xizmatlar ekotizimi</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Qaysi buyruq server qayta yuklanganda (reboot) xizmatning avtomatik ishga tushishini ta'minlaydi?", "o": ["systemctl start", "systemctl enable", "systemctl restart", "systemctl reload"], "a": 1, "e": "To'g'ri: 'enable' xizmatni autostart ga qo'shadi, 'start' esa uni faqat joriy sessiyada yoqadi."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

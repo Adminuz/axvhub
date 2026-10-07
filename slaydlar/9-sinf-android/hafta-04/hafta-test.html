@@ -1,331 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>4-hafta testi</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>4-hafta testi</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>4-hafta testi</h1>
-  <p class="muted">20 ta savol &middot; taxminan 15 daqiqa</p>
-  <span class="badge">9-sinf</span><span class="badge">Android dasturlash</span><span class="badge">4-hafta</span>
-  
-</section>
-
-<section>
-  <h2>Savol 1/20</h2>
-  <div class="quiz">
-    <p class="q">Zaif kompyuterda Android Studio bilan ishlashning qulay yo'li?</p>
-    <div class="opts">
-      <button class="opt" type="button">Ikkita emulyator ochish</button>
-      <button class="opt" type="button">Kompyuterni o'chirib yoqish</button>
-      <button class="opt" type="button" data-ok>Real telefonni USB orqali ulash</button>
-      <button class="opt" type="button">Logcat'ni o'chirish</button>
-    </div>
-    <div class="explain">Resurs tejaladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 2/20</h2>
-  <div class="quiz">
-    <p class="q">RSA barmoq izi oynasida nima tanlanadi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Always allow (Har doim ruxsat)</button>
-      <button class="opt" type="button">Cancel</button>
-      <button class="opt" type="button">Ignore</button>
-      <button class="opt" type="button">Hech narsa</button>
-    </div>
-    <div class="explain">Kompyuter ishonchli deb belgilanadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 3/20</h2>
-  <div class="quiz">
-    <p class="q"><code>adb devices</code> da <code>unauthorized</code> chiqdi. Sabab?</p>
-    <div class="opts">
-      <button class="opt" type="button">Telefon quvvati kam</button>
-      <button class="opt" type="button">Kotlin o'rnatilmagan</button>
-      <button class="opt" type="button">Logcat yopiq</button>
-      <button class="opt" type="button" data-ok>Telefonda USB Debugging ruxsati tasdiqlanmagan</button>
-    </div>
-    <div class="explain">Telefon ekranidagi oynani tasdiqlang.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 4/20</h2>
-  <div class="quiz">
-    <p class="q">ADB Client nima?</p>
-    <div class="opts">
-      <button class="opt" type="button">Telefondagi xizmat</button>
-      <button class="opt" type="button" data-ok>Dasturchi terminalda yozadigan buyruqlar</button>
-      <button class="opt" type="button">Kompyuter foni</button>
-      <button class="opt" type="button">Ilova fayli</button>
-    </div>
-    <div class="explain">Masalan <code>adb install app.apk</code>.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 5/20</h2>
-  <div class="quiz">
-    <p class="q"><code>Log.d("MY_APP", "...")</code> dagi <code>"MY_APP"</code>?</p>
-    <div class="opts">
-      <button class="opt" type="button">Xabar matni</button>
-      <button class="opt" type="button" data-ok>Teg (tag): xabarni filtrlash uchun</button>
-      <button class="opt" type="button">Daraja</button>
-      <button class="opt" type="button">Fayl nomi</button>
-    </div>
-    <div class="explain">Logcat'da <code>tag:MY_APP</code> bilan qidiriladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 6/20</h2>
-  <div class="quiz">
-    <p class="q">Log darajalari quyidan yuqoriga?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>V, D, I, W, E</button>
-      <button class="opt" type="button">E, W, I, D, V</button>
-      <button class="opt" type="button">D, V, I, E, W</button>
-      <button class="opt" type="button">I, D, V, W, E</button>
-    </div>
-    <div class="explain">Verbose - eng quyi, Error - eng yuqori.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 7/20</h2>
-  <div class="quiz">
-    <p class="q">Kotlin'da dasturlar qulashining asosiy sababini oldini oluvchi xususiyat?</p>
-    <div class="opts">
-      <button class="opt" type="button">Qisqa sintaksis</button>
-      <button class="opt" type="button" data-ok>Null-safety</button>
-      <button class="opt" type="button">Java bilan moslik</button>
-      <button class="opt" type="button">Type inference</button>
-    </div>
-    <div class="explain"><code>NullPointerException</code> oldini oladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 8/20</h2>
-  <div class="quiz">
-    <p class="q">Android'da taxminan necha foiz holatda <code>val</code> tavsiya etiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">10%</button>
-      <button class="opt" type="button">50%</button>
-      <button class="opt" type="button" data-ok>90%</button>
-      <button class="opt" type="button">0%</button>
-    </div>
-    <div class="explain">Dastur xavfsizroq bo'ladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 9/20</h2>
-  <div class="quiz">
-    <p class="q">Kotlin turlari haqida to'g'ri gap?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>int</code> kichik harf bilan</button>
-      <button class="opt" type="button">Faqat 2 ta tur bor</button>
-      <button class="opt" type="button">Turlar yo'q</button>
-      <button class="opt" type="button" data-ok>Hamma tur katta harf bilan boshlanadi: <code>Int</code>, <code>String</code></button>
-    </div>
-    <div class="explain">Kotlin'da hamma tur obyekt.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 10/20</h2>
-  <div class="quiz">
-    <p class="q"><code>4.5f</code> qaysi tur?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>Double</code></button>
-      <button class="opt" type="button"><code>Int</code></button>
-      <button class="opt" type="button"><code>String</code></button>
-      <button class="opt" type="button" data-ok><code>Float</code></button>
-    </div>
-    <div class="explain"><code>f</code> - Float belgisi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 11/20</h2>
-  <div class="quiz">
-    <p class="q"><code>val shahar = "Toshkent"</code>. Keyin <code>shahar = 5</code>?</p>
-    <div class="opts">
-      <button class="opt" type="button">Ishlaydi</button>
-      <button class="opt" type="button"><code>"Toshkent5"</code></button>
-      <button class="opt" type="button"><code>5</code></button>
-      <button class="opt" type="button" data-ok>Xato: val va tur o'zgarmaydi</button>
-    </div>
-    <div class="explain">Ikki sabab: val va String turi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 12/20</h2>
-  <div class="quiz">
-    <p class="q"><code>println("Ism: $ism")</code> da <code>$ism</code>?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>O'zgaruvchi qiymati qo'yiladi</button>
-      <button class="opt" type="button">Dollar belgisi chiqadi</button>
-      <button class="opt" type="button">Xato</button>
-      <button class="opt" type="button">Matn <code>ism</code> chiqadi</button>
-    </div>
-    <div class="explain">String shabloni.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 13/20</h2>
-  <div class="quiz">
-    <p class="q"><code>"abc".toInt()</code>?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>0</code></button>
-      <button class="opt" type="button"><code>abc</code></button>
-      <button class="opt" type="button"><code>null</code></button>
-      <button class="opt" type="button" data-ok><code>NumberFormatException</code></button>
-    </div>
-    <div class="explain">Matnni songa aylantirib bo'lmaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 14/20</h2>
-  <div class="quiz">
-    <p class="q"><code>val tur = if (son % 2 == 0) "Juft" else "Toq"</code>, <code>son = 7</code>?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok><code>"Toq"</code></button>
-      <button class="opt" type="button"><code>"Juft"</code></button>
-      <button class="opt" type="button"><code>1</code></button>
-      <button class="opt" type="button">Xato</button>
-    </div>
-    <div class="explain">7 % 2 = 1.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 15/20</h2>
-  <div class="quiz">
-    <p class="q"><code>if-else if</code> zanjirida qaysi tarmoq bajariladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Oxirgi to'g'ri shart</button>
-      <button class="opt" type="button">Hamma to'g'ri shartlar</button>
-      <button class="opt" type="button">Har doim else</button>
-      <button class="opt" type="button" data-ok>Birinchi to'g'ri shart</button>
-    </div>
-    <div class="explain">Yuqoridan pastga tekshiriladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 16/20</h2>
-  <div class="quiz">
-    <p class="q"><code>when (fasl)</code> da <code>fasl = 9</code>, tarmoqlar 1–4 va <code>else</code>?</p>
-    <div class="opts">
-      <button class="opt" type="button">Xato</button>
-      <button class="opt" type="button">Hech narsa bajarilmaydi</button>
-      <button class="opt" type="button">1-tarmoq</button>
-      <button class="opt" type="button" data-ok><code>else</code> bajariladi</button>
-    </div>
-    <div class="explain">Mos qiymat yo'q - else.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 17/20</h2>
-  <div class="quiz">
-    <p class="q">Yosh toifasi: <code>in 13..18 -&gt; "O'smir"</code>. <code>yosh = 18</code>?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok><code>"O'smir"</code></button>
-      <button class="opt" type="button"><code>"Katta"</code></button>
-      <button class="opt" type="button"><code>else</code></button>
-      <button class="opt" type="button">Xato</button>
-    </div>
-    <div class="explain"><code>..</code> oxirgi qiymatni ham o'z ichiga oladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 18/20</h2>
-  <div class="quiz">
-    <p class="q"><code>var ball = 70; ball = ball + 15; println("$ball")</code>?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>70</code></button>
-      <button class="opt" type="button" data-ok><code>85</code></button>
-      <button class="opt" type="button"><code>7015</code></button>
-      <button class="opt" type="button">Xato</button>
-    </div>
-    <div class="explain"><code>var</code> o'zgaradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 19/20</h2>
-  <div class="quiz">
-    <p class="q">Svetofor modulida tezlikni tekshirish qayerda?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>when</code> dan oldin</button>
-      <button class="opt" type="button"><code>else</code> da</button>
-      <button class="opt" type="button" data-ok><code>"Yashil"</code> tarmog'i ichidagi <code>if</code> da</button>
-      <button class="opt" type="button">Logcat'da</button>
-    </div>
-    <div class="explain"><code>when</code> ichida <code>if</code> ishlatish mumkin.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 20/20</h2>
-  <div class="quiz">
-    <p class="q">Ilova <code>5 / 0</code> dan yopildi. Xatoni qayerda ko'rasiz?</p>
-    <div class="opts">
-      <button class="opt" type="button">Gradle faylida</button>
-      <button class="opt" type="button">Telefon sozlamalarida</button>
-      <button class="opt" type="button"><code>adb devices</code> natijasida</button>
-      <button class="opt" type="button" data-ok>Logcat'dagi qizil (E) xabarda</button>
-    </div>
-    <div class="explain"><code>ArithmeticException</code>, fayl va qator ko'rsatiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Natijangiz</h2>
-  <div class="cards three">
-    <div class="card"><h3>20 dan 18+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
-    <div class="card"><h3>20 dan 12-17</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
-    <div class="card accent"><h3>11 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
-  </div>
-  <p class="small mt">Takrorlang: ADB va Logcat, val/var va turlar, shablonlar, if va when.</p>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>4-hafta testi</h1></header>
+<div class="badges"><span class="badge">9-sinf</span><span class="badge">Android dasturlash</span><span class="badge">4-hafta</span><span class="badge">20 ta savol &amp;middot; taxminan 15 daqiqa</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Zaif kompyuterda Android Studio bilan ishlashning qulay yo'li?", "o": ["Ikkita emulyator ochish", "Kompyuterni o'chirib yoqish", "Real telefonni USB orqali ulash", "Logcat'ni o'chirish"], "a": 2, "e": "Resurs tejaladi."}, {"q": "RSA barmoq izi oynasida nima tanlanadi?", "o": ["Always allow (Har doim ruxsat)", "Cancel", "Ignore", "Hech narsa"], "a": 0, "e": "Kompyuter ishonchli deb belgilanadi."}, {"q": "<code>adb devices<\/code> da <code>unauthorized<\/code> chiqdi. Sabab?", "o": ["Telefon quvvati kam", "Kotlin o'rnatilmagan", "Logcat yopiq", "Telefonda USB Debugging ruxsati tasdiqlanmagan"], "a": 3, "e": "Telefon ekranidagi oynani tasdiqlang."}, {"q": "ADB Client nima?", "o": ["Telefondagi xizmat", "Dasturchi terminalda yozadigan buyruqlar", "Kompyuter foni", "Ilova fayli"], "a": 1, "e": "Masalan <code>adb install app.apk<\/code>."}, {"q": "<code>Log.d(\"MY_APP\", \"...\")<\/code> dagi <code>\"MY_APP\"<\/code>?", "o": ["Xabar matni", "Teg (tag): xabarni filtrlash uchun", "Daraja", "Fayl nomi"], "a": 1, "e": "Logcat'da <code>tag:MY_APP<\/code> bilan qidiriladi."}, {"q": "Log darajalari quyidan yuqoriga?", "o": ["V, D, I, W, E", "E, W, I, D, V", "D, V, I, E, W", "I, D, V, W, E"], "a": 0, "e": "Verbose - eng quyi, Error - eng yuqori."}, {"q": "Kotlin'da dasturlar qulashining asosiy sababini oldini oluvchi xususiyat?", "o": ["Qisqa sintaksis", "Null-safety", "Java bilan moslik", "Type inference"], "a": 1, "e": "<code>NullPointerException<\/code> oldini oladi."}, {"q": "Android'da taxminan necha foiz holatda <code>val<\/code> tavsiya etiladi?", "o": ["10%", "50%", "90%", "0%"], "a": 2, "e": "Dastur xavfsizroq bo'ladi."}, {"q": "Kotlin turlari haqida to'g'ri gap?", "o": ["<code>int<\/code> kichik harf bilan", "Faqat 2 ta tur bor", "Turlar yo'q", "Hamma tur katta harf bilan boshlanadi: <code>Int<\/code>, <code>String<\/code>"], "a": 3, "e": "Kotlin'da hamma tur obyekt."}, {"q": "<code>4.5f<\/code> qaysi tur?", "o": ["<code>Double<\/code>", "<code>Int<\/code>", "<code>String<\/code>", "<code>Float<\/code>"], "a": 3, "e": "<code>f<\/code> - Float belgisi."}, {"q": "<code>val shahar = \"Toshkent\"<\/code>. Keyin <code>shahar = 5<\/code>?", "o": ["Ishlaydi", "<code>\"Toshkent5\"<\/code>", "<code>5<\/code>", "Xato: val va tur o'zgarmaydi"], "a": 3, "e": "Ikki sabab: val va String turi."}, {"q": "<code>println(\"Ism: $ism\")<\/code> da <code>$ism<\/code>?", "o": ["O'zgaruvchi qiymati qo'yiladi", "Dollar belgisi chiqadi", "Xato", "Matn <code>ism<\/code> chiqadi"], "a": 0, "e": "String shabloni."}, {"q": "<code>\"abc\".toInt()<\/code>?", "o": ["<code>0<\/code>", "<code>abc<\/code>", "<code>null<\/code>", "<code>NumberFormatException<\/code>"], "a": 3, "e": "Matnni songa aylantirib bo'lmaydi."}, {"q": "<code>val tur = if (son % 2 == 0) \"Juft\" else \"Toq\"<\/code>, <code>son = 7<\/code>?", "o": ["<code>\"Toq\"<\/code>", "<code>\"Juft\"<\/code>", "<code>1<\/code>", "Xato"], "a": 0, "e": "7 % 2 = 1."}, {"q": "<code>if-else if<\/code> zanjirida qaysi tarmoq bajariladi?", "o": ["Oxirgi to'g'ri shart", "Hamma to'g'ri shartlar", "Har doim else", "Birinchi to'g'ri shart"], "a": 3, "e": "Yuqoridan pastga tekshiriladi."}, {"q": "<code>when (fasl)<\/code> da <code>fasl = 9<\/code>, tarmoqlar 1–4 va <code>else<\/code>?", "o": ["Xato", "Hech narsa bajarilmaydi", "1-tarmoq", "<code>else<\/code> bajariladi"], "a": 3, "e": "Mos qiymat yo'q - else."}, {"q": "Yosh toifasi: <code>in 13..18 -&gt; \"O'smir\"<\/code>. <code>yosh = 18<\/code>?", "o": ["<code>\"O'smir\"<\/code>", "<code>\"Katta\"<\/code>", "<code>else<\/code>", "Xato"], "a": 0, "e": "<code>..<\/code> oxirgi qiymatni ham o'z ichiga oladi."}, {"q": "<code>var ball = 70; ball = ball + 15; println(\"$ball\")<\/code>?", "o": ["<code>70<\/code>", "<code>85<\/code>", "<code>7015<\/code>", "Xato"], "a": 1, "e": "<code>var<\/code> o'zgaradi."}, {"q": "Svetofor modulida tezlikni tekshirish qayerda?", "o": ["<code>when<\/code> dan oldin", "<code>else<\/code> da", "<code>\"Yashil\"<\/code> tarmog'i ichidagi <code>if<\/code> da", "Logcat'da"], "a": 2, "e": "<code>when<\/code> ichida <code>if<\/code> ishlatish mumkin."}, {"q": "Ilova <code>5 / 0<\/code> dan yopildi. Xatoni qayerda ko'rasiz?", "o": ["Gradle faylida", "Telefon sozlamalarida", "<code>adb devices<\/code> natijasida", "Logcat'dagi qizil (E) xabarda"], "a": 3, "e": "<code>ArithmeticException<\/code>, fayl va qator ko'rsatiladi."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

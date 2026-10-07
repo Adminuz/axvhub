@@ -1,191 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>2-dars testi</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>2-dars testi</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>2-dars testi</h1>
-  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
-  <span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">2-hafta</span>
-  
-</section>
-
-<section>
-  <h2>Savol 1/10</h2>
-  <div class="quiz">
-    <p class="q">Internet va WWW (World Wide Web) farqi nimada?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Internet — jismoniy global tarmoq (kabel, server), WWW — undagi veb-sahifalar tizimi</button>
-      <button class="opt" type="button">Ular bir xil narsa</button>
-      <button class="opt" type="button">Internet — brauzer, WWW — antivirus</button>
-      <button class="opt" type="button">Internet — faqat Wi-Fi, WWW — faqat kabel</button>
-    </div>
-    <div class="explain">Internet — yo'llar tarmog'i bo'lsa, WWW — shu yo'llardagi yuklar (sahifalar, saytlar).</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 2/10</h2>
-  <div class="quiz">
-    <p class="q">Client-Server modelida mijoz (Client) kim?</p>
-    <div class="opts">
-      <button class="opt" type="button">Ma'lumotni saqlovchi kuchli kompyuter</button>
-      <button class="opt" type="button" data-ok>Ma'lumot so'rovchi qurilma yoki brauzer</button>
-      <button class="opt" type="button">Optik tola kabeli</button>
-      <button class="opt" type="button">Marshrutizator</button>
-    </div>
-    <div class="explain">Mijoz so'raydi, server saqlaydi va so'rovga binoan javob qaytaradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 3/10</h2>
-  <div class="quiz">
-    <p class="q">Brauzer (Web Browser) nima qiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Saytlarni qidirib topadigan server</button>
-      <button class="opt" type="button">Kompyuterni viruslardan tozalaydi</button>
-      <button class="opt" type="button" data-ok>Sayt kodlarini (HTML, CSS, JS) o'qib, grafik ko'rinishga keltiradi</button>
-      <button class="opt" type="button">Elektron xat serverini yaratadi</button>
-    </div>
-    <div class="explain">Chrome, Edge, Firefox, Safari — brauzerlar.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 4/10</h2>
-  <div class="quiz">
-    <p class="q">Tasodifan yopilgan tabni qayta ochish uchun qaysi tugmalar bosiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>Ctrl + T</code></button>
-      <button class="opt" type="button"><code>Ctrl + W</code></button>
-      <button class="opt" type="button"><code>Ctrl + H</code></button>
-      <button class="opt" type="button" data-ok><code>Ctrl + Shift + T</code></button>
-    </div>
-    <div class="explain"><code>Ctrl+T</code> — yangi tab, <code>Ctrl+W</code> — tabni yopish, <code>Ctrl+Shift+T</code> — yopilganini qaytarish.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 5/10</h2>
-  <div class="quiz">
-    <p class="q">Inkognito (maxfiy) rejimda brauzer nimani saqlamaydi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Ko'rish tarixi, qidiruv so'rovlari va cookie fayllarini</button>
-      <button class="opt" type="button">Internet ulanishini</button>
-      <button class="opt" type="button">Sahifalarning ko'rinishini</button>
-      <button class="opt" type="button">Foydalanuvchi qurilmasining IP-manzilini ham hammadan yashiradi</button>
-    </div>
-    <div class="explain">Inkognito faqat qurilmada iz qoldirmaydi, <code>Ctrl + Shift + N</code> bilan ochiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 6/10</h2>
-  <div class="quiz">
-    <p class="q">Kesh (Cache) va Kukilar (Cookies) farqi qaysi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Kesh — parol; kukilar — rasm</button>
-      <button class="opt" type="button" data-ok>Kesh — sayt tez ochilishi uchun fayllar; kukilar — foydalanuvchini eslab qoluvchi kichik matnli fayllar</button>
-      <button class="opt" type="button">Ikkalasi ham antivirus turi</button>
-      <button class="opt" type="button">Kesh — xatcho'p; kukilar — tab</button>
-    </div>
-    <div class="explain">Kukilar identifikator, sozlamalar yoki savatcha ma'lumotlarini eslab qoladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 7/10</h2>
-  <div class="quiz">
-    <p class="q"><code>python darslari site:edu.uz</code> so'rovi nimani qidiradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Faqat PDF fayllarni</button>
-      <button class="opt" type="button">«edu.uz» so'zi bor barcha rasmlarni</button>
-      <button class="opt" type="button" data-ok>Faqat <code>edu.uz</code> domenidagi sahifalardan «python darslari» ni</button>
-      <button class="opt" type="button">«python» so'zi bo'lmagan natijalarni</button>
-    </div>
-    <div class="explain"><code>site:</code> operatori qidiruvni ma'lum sayt yoki domen bilan cheklaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 8/10</h2>
-  <div class="quiz">
-    <p class="q">«Jaguar» mashina qidirilganda hayvon haqidagi natijalarni olib tashlash uchun qaysi so'rov mos?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>jaguar mashina OR hayvon</code></button>
-      <button class="opt" type="button"><code>"jaguar mashina hayvon"</code></button>
-      <button class="opt" type="button"><code>jaguar mashina filetype:hayvon</code></button>
-      <button class="opt" type="button" data-ok><code>jaguar mashina -hayvon</code></button>
-    </div>
-    <div class="explain">Minus (<code>-</code>) belgisi so'zni natijalardan chiqarib tashlaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 9/10</h2>
-  <div class="quiz">
-    <p class="q">Elektron xatda Bcc maydoni nimaga xizmat qiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Nusxa yuboriladi, lekin asosiy qabul qiluvchilar bu manzilni ko'rmaydi</button>
-      <button class="opt" type="button">Xat mavzusini yozish uchun</button>
-      <button class="opt" type="button">Faylni biriktirish uchun</button>
-      <button class="opt" type="button">Barcha oluvchilar ko'radigan ochiq nusxa uchun</button>
-    </div>
-    <div class="explain">Cc — hamma ko'radigan nusxa, Bcc — yashirin nusxa (maxfiylik uchun).</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 10/10</h2>
-  <div class="quiz">
-    <p class="q">Bank nomidan xat keldi: «Parolingizni tasdiqlash uchun havolani bosing». Nima qilasiz?</p>
-    <div class="opts">
-      <button class="opt" type="button">Havolani bosib parolni kiritaman</button>
-      <button class="opt" type="button" data-ok>Havolaga kirmayman: bu fishing (Phishing) bo'lishi mumkin</button>
-      <button class="opt" type="button">Xatni barcha do'stlarga yuboraman</button>
-      <button class="opt" type="button">Xatga javoban kartamni yozaman</button>
-    </div>
-    <div class="explain">Fishing — soxta xat bilan login va parolni o'g'irlashga urinish.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Natijangiz</h2>
-  <div class="cards three">
-    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
-    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
-    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
-  </div>
-  <p class="small mt">Takrorlang: Internet va WWW, brauzer, qidiruv operatorlari, email maydonlari, fishing.</p>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>2-dars testi</h1></header>
+<div class="badges"><span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">2-hafta</span><span class="badge">10 ta savol &amp;middot; taxminan 8 daqiqa</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Internet va WWW (World Wide Web) farqi nimada?", "o": ["Internet — jismoniy global tarmoq (kabel, server), WWW — undagi veb-sahifalar tizimi", "Ular bir xil narsa", "Internet — brauzer, WWW — antivirus", "Internet — faqat Wi-Fi, WWW — faqat kabel"], "a": 0, "e": "Internet — yo'llar tarmog'i bo'lsa, WWW — shu yo'llardagi yuklar (sahifalar, saytlar)."}, {"q": "Client-Server modelida mijoz (Client) kim?", "o": ["Ma'lumotni saqlovchi kuchli kompyuter", "Ma'lumot so'rovchi qurilma yoki brauzer", "Optik tola kabeli", "Marshrutizator"], "a": 1, "e": "Mijoz so'raydi, server saqlaydi va so'rovga binoan javob qaytaradi."}, {"q": "Brauzer (Web Browser) nima qiladi?", "o": ["Saytlarni qidirib topadigan server", "Kompyuterni viruslardan tozalaydi", "Sayt kodlarini (HTML, CSS, JS) o'qib, grafik ko'rinishga keltiradi", "Elektron xat serverini yaratadi"], "a": 2, "e": "Chrome, Edge, Firefox, Safari — brauzerlar."}, {"q": "Tasodifan yopilgan tabni qayta ochish uchun qaysi tugmalar bosiladi?", "o": ["<code>Ctrl + T<\/code>", "<code>Ctrl + W<\/code>", "<code>Ctrl + H<\/code>", "<code>Ctrl + Shift + T<\/code>"], "a": 3, "e": "<code>Ctrl+T<\/code> — yangi tab, <code>Ctrl+W<\/code> — tabni yopish, <code>Ctrl+Shift+T<\/code> — yopilganini qaytarish."}, {"q": "Inkognito (maxfiy) rejimda brauzer nimani saqlamaydi?", "o": ["Ko'rish tarixi, qidiruv so'rovlari va cookie fayllarini", "Internet ulanishini", "Sahifalarning ko'rinishini", "Foydalanuvchi qurilmasining IP-manzilini ham hammadan yashiradi"], "a": 0, "e": "Inkognito faqat qurilmada iz qoldirmaydi, <code>Ctrl + Shift + N<\/code> bilan ochiladi."}, {"q": "Kesh (Cache) va Kukilar (Cookies) farqi qaysi?", "o": ["Kesh — parol; kukilar — rasm", "Kesh — sayt tez ochilishi uchun fayllar; kukilar — foydalanuvchini eslab qoluvchi kichik matnli fayllar", "Ikkalasi ham antivirus turi", "Kesh — xatcho'p; kukilar — tab"], "a": 1, "e": "Kukilar identifikator, sozlamalar yoki savatcha ma'lumotlarini eslab qoladi."}, {"q": "<code>python darslari site:edu.uz<\/code> so'rovi nimani qidiradi?", "o": ["Faqat PDF fayllarni", "«edu.uz» so'zi bor barcha rasmlarni", "Faqat <code>edu.uz<\/code> domenidagi sahifalardan «python darslari» ni", "«python» so'zi bo'lmagan natijalarni"], "a": 2, "e": "<code>site:<\/code> operatori qidiruvni ma'lum sayt yoki domen bilan cheklaydi."}, {"q": "«Jaguar» mashina qidirilganda hayvon haqidagi natijalarni olib tashlash uchun qaysi so'rov mos?", "o": ["<code>jaguar mashina OR hayvon<\/code>", "<code>\"jaguar mashina hayvon\"<\/code>", "<code>jaguar mashina filetype:hayvon<\/code>", "<code>jaguar mashina -hayvon<\/code>"], "a": 3, "e": "Minus (<code>-<\/code>) belgisi so'zni natijalardan chiqarib tashlaydi."}, {"q": "Elektron xatda Bcc maydoni nimaga xizmat qiladi?", "o": ["Nusxa yuboriladi, lekin asosiy qabul qiluvchilar bu manzilni ko'rmaydi", "Xat mavzusini yozish uchun", "Faylni biriktirish uchun", "Barcha oluvchilar ko'radigan ochiq nusxa uchun"], "a": 0, "e": "Cc — hamma ko'radigan nusxa, Bcc — yashirin nusxa (maxfiylik uchun)."}, {"q": "Bank nomidan xat keldi: «Parolingizni tasdiqlash uchun havolani bosing». Nima qilasiz?", "o": ["Havolani bosib parolni kiritaman", "Havolaga kirmayman: bu fishing (Phishing) bo'lishi mumkin", "Xatni barcha do'stlarga yuboraman", "Xatga javoban kartamni yozaman"], "a": 1, "e": "Fishing — soxta xat bilan login va parolni o'g'irlashga urinish."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

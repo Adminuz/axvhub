@@ -1,499 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>Rang va shrift: sahifaga jon kiritamiz</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Rang va shrift: sahifaga jon kiritamiz</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<!-- 1. Hero -->
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>Rang va shrift: sahifaga jon kiritamiz</h1>
-  <p class="muted">color, background-color, gradient, font va meros olish</p>
-  <span class="badge">8-sinf</span><span class="badge">Web Full-stack</span><span class="badge">4-hafta · 11-dars</span>
-  
-</section>
-
-<!-- 2. Reja -->
-<section>
-  <h2>Bugungi reja</h2>
-  <div class="cards three">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="palette" data-anim="float"></i></div>
-      <h3>01. Rang</h3>
-      <p>Nom, hex, rgb, rgba, hsl va gradient.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="type" data-anim="pulse"></i></div>
-      <h3>02. Shrift</h3>
-      <p>font-family, size, weight, line-height va boshqalar.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="git-branch" data-anim="bounce"></i></div>
-      <h3>03. Meros</h3>
-      <p>Ota-elementdan bolaga nima o'tadi?</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 3. Bo'lim 01 -->
-<section class="sec">
-  <div class="num">01</div>
-  <h1>Rang bilan ishlash</h1>
-  <p>Matn rangi, fon rangi va ranglarni yozish usullari</p>
-  
-</section>
-
-<!-- 4. SVG 1: color vs background-color -->
-<section>
-  <h2>Ikki asosiy xususiyat</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 340">
-      <g class="fragment">
-        <rect x="60" y="50" width="380" height="180" rx="20" class="fa la" stroke-width="3"/>
-        <text x="250" y="150" text-anchor="middle" class="t-head" font-size="44" font-weight="bold">Salom!</text>
-        <text x="250" y="270" text-anchor="middle" class="t-accent" font-size="28">background-color</text>
-        <text x="250" y="305" text-anchor="middle" class="t-muted" font-size="24">fon rangi</text>
-      </g>
-      <g class="fragment">
-        <rect x="560" y="50" width="380" height="180" rx="20" class="fn ln" stroke-width="3"/>
-        <text x="750" y="150" text-anchor="middle" class="t-accent" font-size="44" font-weight="bold">Salom!</text>
-        <text x="750" y="270" text-anchor="middle" class="t-accent" font-size="28">color</text>
-        <text x="750" y="305" text-anchor="middle" class="t-muted" font-size="24">matn rangi</text>
-      </g>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- 5. Kod -->
-<section>
-  <h2>Birinchi rangli qoida</h2>
-  <pre><code class="language-css" data-trim data-noescape data-line-numbers="1|2|3|4">
-h1 {
-  color: white;
-  background-color: darkblue;
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Rang va shrift: sahifaga jon kiritamiz</h1></header>
+<div class="badges"><span class="badge">8-sinf</span><span class="badge">Web Full-stack</span><span class="badge">4-hafta · 11-dars</span><span class="badge">color, background-color, gradient, font va meros olish</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Matn rangini o'zgartiruvchi xususiyat qaysi?", "o": ["<code>text-color<\/code>", "<code>font-color<\/code>", "<code>color<\/code>", "<code>background-color<\/code>"], "a": 2, "e": "Matn rangi faqat <code>color<\/code> bilan beriladi; <code>background-color<\/code> fon uchun."}, {"q": "Havoladagi tagchiziqni olib tashlash uchun qaysi qoida to'g'ri?", "o": ["<code>a { text-decoration: none; }<\/code>", "<code>a { underline: none; }<\/code>", "<code>a { font-style: none; }<\/code>", "<code>a { text-align: none; }<\/code>"], "a": 0, "e": "Tagchiziq <code>text-decoration<\/code> bilan boshqariladi: <code>none<\/code> uni olib tashlaydi."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
 }
-  </code></pre>
-  <div class="callout warn"><i data-ic="triangle-alert"></i>Matn va fon bir xil rangda bo'lsa, matn ko'rinmaydi!</div>
-  
-</section>
-
-<!-- 6. Usullar jadvali -->
-<section>
-  <h2>Rangni yozishning 5 usuli</h2>
-  <table>
-    <thead><tr><th>Usul</th><th>Misol</th><th>Izoh</th></tr></thead>
-    <tbody>
-      <tr class="fragment"><td>Nom</td><td><code>tomato</code></td><td>Tayyor nomlar</td></tr>
-      <tr class="fragment"><td>Hex</td><td><code>&#35;0a84ff</code></td><td># + 6 belgi</td></tr>
-      <tr class="fragment"><td>rgb</td><td><code>rgb&#40;255, 0, 0)</code></td><td>0 dan 255 gacha</td></tr>
-      <tr class="fragment"><td>rgba</td><td><code>rgba&#40;0,0,0,0.5)</code></td><td>+ shaffoflik</td></tr>
-      <tr class="fragment"><td>hsl</td><td><code>hsl(210,80%,50%)</code></td><td>burchak, %, %</td></tr>
-    </tbody>
-  </table>
-  
-</section>
-
-<!-- 7. SVG 2: Hex anatomiyasi -->
-<section>
-  <h2>Hex rang anatomiyasi</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 340">
-      <text x="140" y="140" text-anchor="middle" class="t-accent" font-size="80" font-weight="bold">#</text>
-      <g data-tip="Qizil kanal: 00 dan ff gacha (0 dan 255 gacha).">
-        <rect x="230" y="60" width="200" height="110" rx="16" class="fb lb" stroke-width="3"/>
-        <text x="330" y="135" text-anchor="middle" class="t-head" font-size="56" font-weight="bold">ff</text>
-        <text x="330" y="215" text-anchor="middle" class="t-muted" font-size="26">qizil</text>
-      </g>
-      <g data-tip="Yashil kanal: 00 dan ff gacha.">
-        <rect x="460" y="60" width="200" height="110" rx="16" class="fg lg" stroke-width="3"/>
-        <text x="560" y="135" text-anchor="middle" class="t-head" font-size="56" font-weight="bold">80</text>
-        <text x="560" y="215" text-anchor="middle" class="t-muted" font-size="26">yashil</text>
-      </g>
-      <g data-tip="Ko'k kanal: 00 dan ff gacha.">
-        <rect x="690" y="60" width="200" height="110" rx="16" class="fa la" stroke-width="3"/>
-        <text x="790" y="135" text-anchor="middle" class="t-head" font-size="56" font-weight="bold">00</text>
-        <text x="790" y="215" text-anchor="middle" class="t-muted" font-size="26">ko'k</text>
-      </g>
-      <text x="500" y="295" text-anchor="middle" class="t-accent" font-size="24">Qismlarni bosing: izoh chiqadi. 00 = o'chiq, ff = to'liq yoqilgan</text>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- 8. Kod: ranglar -->
-<section>
-  <h2>Rang kodda</h2>
-  <pre><code class="language-css" data-trim data-noescape data-line-numbers="1|2|3|4|5">
-p {
-  color: tomato;
-  color: &#35;0a84ff;
-  color: rgb&#40;10, 132, 255);
-  color: hsl(210, 100%, 52%);
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
-  </code></pre>
-  <div class="callout"><i data-ic="lightbulb"></i>Bu to'rt qator bir xil rangni turlicha yozadi. Oxirgi yozilgani amal qiladi.</div>
-  
-</section>
-
-<!-- 9. Mini-test 1 -->
-<section>
-  <h2>Mini-test</h2>
-  <div class="quiz">
-    <p class="q">Matn rangini o'zgartiruvchi xususiyat qaysi?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>text-color</code></button>
-      <button class="opt" type="button"><code>font-color</code></button>
-      <button class="opt" type="button" data-ok><code>color</code></button>
-      <button class="opt" type="button"><code>background-color</code></button>
-    </div>
-    <div class="explain">Matn rangi faqat <code>color</code> bilan beriladi; <code>background-color</code> fon uchun.</div>
-  </div>
-  
-</section>
-
-<!-- 10. Auto-animate: rgba -->
-<section data-auto-animate>
-  <h2>Shaffoflik: rgba</h2>
-  <div class="browser" data-id="sh" style="width:520px"><div class="bar"><i></i><i></i><i></i><span>shaffof.uz</span></div><div class="page" style="background:lightskyblue"><h3 style="background:rgba&#40;0,0,0,1);color:white;padding:8px">alpha = 1</h3></div></div>
-  
-</section>
-<section data-auto-animate>
-  <h2>Shaffoflik: rgba</h2>
-  <div class="browser" data-id="sh" style="width:1000px"><div class="bar"><i></i><i></i><i></i><span>shaffof.uz</span></div><div class="page" style="background:lightskyblue"><h3 style="background:rgba&#40;0,0,0,0.4);color:white;padding:8px">alpha = 0.4</h3></div></div>
-  <p class="small mt"><code>rgba&#40;0, 0, 0, 0.4)</code>: oxirgi son 0 (ko'rinmas) dan 1 (to'liq to'q) gacha.</p>
-  
-</section>
-
-<!-- 11. Vertikal: hsl -->
-<section>
-  <section>
-    <h2>hsl: rang burchagi</h2>
-    <pre><code class="language-css" data-trim data-noescape data-line-numbers="1|2|3">
-.rang {
-  color: hsl(210, 80%, 50%);
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
 }
-    </code></pre>
-    <ul>
-      <li class="fragment"><b>210</b>: rang burchagi (0 qizil, 120 yashil, 240 ko'k)</li>
-      <li class="fragment"><b>80%</b>: to'yinganlik</li>
-      <li class="fragment"><b>50%</b>: yorqinlik (0% qora, 100% oq)</li>
-    </ul>
-    <p class="small muted">Burchak aylanasini ko'rish uchun pastga bosing</p>
-    
-  </section>
-  <section>
-    <h2>Rang g'ildiragi</h2>
-    <div class="swatches">
-      <div class="sw" style="background:crimson">0 · qizil</div>
-      <div class="sw" style="background:orange">40 · sariq-to'q</div>
-      <div class="sw" style="background:seagreen">120 · yashil</div>
-      <div class="sw" style="background:steelblue">200 · havorang</div>
-      <div class="sw" style="background:royalblue">240 · ko'k</div>
-      <div class="sw" style="background:purple">290 · binafsha</div>
-    </div>
-    
-  </section>
-</section>
-
-<!-- 12. Gradient -->
-<section>
-  <h2>Gradient: silliq o'tish</h2>
-  <div class="cols">
-    <pre><code class="language-css" data-trim data-noescape data-line-numbers="1-3|2">
-.banner {
-  background: linear-gradient(to right, royalblue, orange);
-}
-    </code></pre>
-    <div class="browser"><div class="bar"><i></i><i></i><i></i><span>gradient.uz</span></div><div class="page" style="background:linear-gradient(to right, royalblue, orange);min-height:120px"><h3 style="color:white">AXV banner</h3></div></div>
-  </div>
-  <div class="callout tip fragment"><i data-ic="circle-check"></i>Yo'nalishni o'zgartirish mumkin: <code>to bottom</code>, <code>to right</code>.</div>
-  
-</section>
-
-<!-- 13. Bo'lim 02 -->
-<section class="sec">
-  <div class="num">02</div>
-  <h1>Shrift va matn</h1>
-  <p>Qanday yozilishi o'qishga ta'sir qiladi</p>
-  
-</section>
-
-<!-- 14. SVG 3: font-family fallback -->
-<section>
-  <h2>font-family: zaxira ro'yxat</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 340">
-      <g class="fragment">
-        <rect x="30" y="80" width="260" height="130" rx="18" class="fa la" stroke-width="3"/>
-        <text x="160" y="140" text-anchor="middle" class="t-head" font-size="30" font-weight="bold">Arial</text>
-        <text x="160" y="180" text-anchor="middle" class="t-muted" font-size="22">1-tanlov</text>
-      </g>
-      <g class="fragment">
-        <line class="lb flowing" x1="295" y1="145" x2="355" y2="145" stroke-width="4"/>
-        <polygon class="ar-b" points="370,145 352,134 352,156"/>
-        <rect x="375" y="80" width="260" height="130" rx="18" class="fb lb" stroke-width="3"/>
-        <text x="505" y="140" text-anchor="middle" class="t-head" font-size="30" font-weight="bold">Helvetica</text>
-        <text x="505" y="180" text-anchor="middle" class="t-muted" font-size="22">topilmasa</text>
-      </g>
-      <g class="fragment">
-        <line class="lb flowing" x1="640" y1="145" x2="700" y2="145" stroke-width="4"/>
-        <polygon class="ar-b" points="715,145 697,134 697,156"/>
-        <rect x="720" y="80" width="250" height="130" rx="18" class="fg lg pulse" stroke-width="3"/>
-        <text x="845" y="140" text-anchor="middle" class="t-head" font-size="30" font-weight="bold">sans-serif</text>
-        <text x="845" y="180" text-anchor="middle" class="t-muted" font-size="22">umumiy tur</text>
-      </g>
-      <text x="500" y="285" text-anchor="middle" class="t-accent" font-size="24">Brauzer chapdan o'ngga qaraydi: topilganini ishlatadi</text>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- 15. Flip kartalari -->
-<section>
-  <h2>Shrift xususiyatlari</h2>
-  <div class="cards three">
-    <div class="flip" style="min-height:220px"><div class="flip-in">
-      <div class="face front"><div class="icon"><i data-ic="a-large-small" data-anim="float"></i></div><h3>font-size</h3><span class="flip-hint">bosing</span></div>
-      <div class="face back"><p>Shrift o'lchami: <code>18px</code>, <code>1.2em</code></p></div>
-    </div></div>
-    <div class="flip" style="min-height:220px"><div class="flip-in">
-      <div class="face front"><div class="icon"><i data-ic="bold" data-anim="float"></i></div><h3>font-weight</h3><span class="flip-hint">bosing</span></div>
-      <div class="face back"><p>Qalinlik: <code>normal</code>, <code>bold</code>, <code>700</code></p></div>
-    </div></div>
-    <div class="flip" style="min-height:220px"><div class="flip-in">
-      <div class="face front"><div class="icon"><i data-ic="italic" data-anim="float"></i></div><h3>font-style</h3><span class="flip-hint">bosing</span></div>
-      <div class="face back"><p>Qiyshiq yozuv: <code>italic</code></p></div>
-    </div></div>
-  </div>
-  
-</section>
-
-<!-- 16. Kod: body -->
-<section>
-  <h2>Matn uchun to'liq qoida</h2>
-  <pre><code class="language-css" data-trim data-noescape data-line-numbers="1-5|2|3|4|7-10|11-13">
-body {
-  font-family: Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.6;
-}
-h1 {
-  text-align: center;
-  letter-spacing: 2px;
-}
-a {
-  text-decoration: none;
-}
-  </code></pre>
-  
-</section>
-
-<!-- 17. Swap: line-height -->
-<section>
-  <h2>Qator balandligi</h2>
-  <div class="swap">
-    <div class="swap-tabs"><button type="button">line-height: 1</button><button type="button">line-height: 1.6</button></div>
-    <div class="swap-p">
-      <div class="browser"><div class="bar"><i></i><i></i><i></i><span>matn.uz</span></div><div class="page"><p style="line-height:1">CSS yordamida sahifa matnini o'qishga qulay qilish mumkin. Qatorlar bir-biriga juda yaqin turibdi, ko'z charchaydi.</p></div></div>
-    </div>
-    <div class="swap-p">
-      <div class="browser"><div class="bar"><i></i><i></i><i></i><span>matn.uz</span></div><div class="page"><p style="line-height:1.6">CSS yordamida sahifa matnini o'qishga qulay qilish mumkin. Qatorlar orasida bo'sh joy bor, o'qish yengil.</p></div></div>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 18. Matn xususiyatlari jadvali -->
-<section>
-  <h2>Matn xususiyatlari</h2>
-  <table>
-    <thead><tr><th>Xususiyat</th><th>Qiymat</th><th>Natija</th></tr></thead>
-    <tbody>
-      <tr class="fragment"><td><code>text-align</code></td><td><code>center</code></td><td>Markazga tekislash</td></tr>
-      <tr class="fragment"><td><code>text-decoration</code></td><td><code>none</code></td><td>Tagchiziqsiz</td></tr>
-      <tr class="fragment"><td><code>line-height</code></td><td><code>1.6</code></td><td>Qator oralig'i</td></tr>
-      <tr class="fragment"><td><code>letter-spacing</code></td><td><code>2px</code></td><td>Harflar oralig'i</td></tr>
-    </tbody>
-  </table>
-  
-</section>
-
-<!-- 19. Mini-test 2 -->
-<section>
-  <h2>Mini-test</h2>
-  <div class="quiz">
-    <p class="q">Havoladagi tagchiziqni olib tashlash uchun qaysi qoida to'g'ri?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok><code>a { text-decoration: none; }</code></button>
-      <button class="opt" type="button"><code>a { underline: none; }</code></button>
-      <button class="opt" type="button"><code>a { font-style: none; }</code></button>
-      <button class="opt" type="button"><code>a { text-align: none; }</code></button>
-    </div>
-    <div class="explain">Tagchiziq <code>text-decoration</code> bilan boshqariladi: <code>none</code> uni olib tashlaydi.</div>
-  </div>
-  
-</section>
-
-<!-- 20. Bo'lim 03 -->
-<section class="sec">
-  <div class="num">03</div>
-  <h1>Meros olish</h1>
-  <p>Inheritance: ota-elementdan bolaga</p>
-  
-</section>
-
-<!-- 21. SVG 4: Meros daraxti -->
-<section>
-  <h2>Meros daraxti</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 380">
-      <g class="fragment">
-        <rect x="360" y="20" width="280" height="80" rx="16" class="fb lb pulse" stroke-width="3"/>
-        <text x="500" y="58" text-anchor="middle" class="t-head" font-size="28" font-weight="bold">body</text>
-        <text x="500" y="88" text-anchor="middle" class="t-muted" font-size="22">color: #333</text>
-      </g>
-      <g class="fragment">
-        <line class="lb flowing" x1="440" y1="105" x2="250" y2="180" stroke-width="4"/>
-        <line class="lb flowing" x1="560" y1="105" x2="750" y2="180" stroke-width="4"/>
-      </g>
-      <g class="fragment">
-        <rect x="120" y="190" width="260" height="70" rx="14" class="fa la" stroke-width="3"/>
-        <text x="250" y="233" text-anchor="middle" class="t-head" font-size="26">h1 (meros)</text>
-        <rect x="620" y="190" width="260" height="70" rx="14" class="fa la" stroke-width="3"/>
-        <text x="750" y="233" text-anchor="middle" class="t-head" font-size="26">p (meros)</text>
-      </g>
-      <g class="fragment">
-        <line class="lg flowing" x1="750" y1="265" x2="750" y2="305" stroke-width="4"/>
-        <rect x="620" y="310" width="260" height="60" rx="14" class="fg lg" stroke-width="3"/>
-        <text x="750" y="348" text-anchor="middle" class="t-head" font-size="24">span (meros)</text>
-      </g>
-      <text x="250" y="320" text-anchor="middle" class="t-accent" font-size="24">Rang yuqoridan</text>
-      <text x="250" y="352" text-anchor="middle" class="t-accent" font-size="24">pastga oqadi</text>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- 22. VS: meros bo'ladi / bo'lmaydi -->
-<section>
-  <h2>Nima o'tadi, nima o'tmaydi?</h2>
-  <div class="vs">
-    <div class="side fragment">
-      <h3><i data-ic="circle-check"></i> O'tadi</h3>
-      <ul>
-        <li><code>color</code></li>
-        <li><code>font-family</code>, <code>font-size</code></li>
-        <li><code>line-height</code>, <code>text-align</code></li>
-      </ul>
-    </div>
-    <div class="side b fragment">
-      <h3><i data-ic="circle-x"></i> O'tmaydi</h3>
-      <ul>
-        <li><code>background-color</code></li>
-        <li><code>border</code></li>
-        <li><code>margin</code>, <code>padding</code></li>
-      </ul>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 23. Meros kodi -->
-<section>
-  <h2>Meros amalda</h2>
-  <div class="cols">
-    <pre><code class="language-css" data-trim data-noescape data-line-numbers="1-4|6-8">
-body {
-  color: #333;
-  font-family: Arial, sans-serif;
-}
-
-.alohida {
-  color: crimson;
-}
-    </code></pre>
-    <pre><code class="language-html" data-trim data-noescape>
-&lt;body&gt;
-  &lt;h1&gt;Sarlavha&lt;/h1&gt;
-  &lt;p&gt;Oddiy matn&lt;/p&gt;
-  &lt;p class=&quot;alohida&quot;&gt;Qizil&lt;/p&gt;
-&lt;/body&gt;
-    </code></pre>
-  </div>
-  <div class="callout tip fragment"><i data-ic="circle-check"></i>Bolaning o'z qoidasi merosdan kuchli.</div>
-  
-</section>
-
-<!-- 24. Odatiy xatolar -->
-<section>
-  <h2>Odatiy xatolar</h2>
-  <div class="cards three">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="eye-off" data-anim="blink"></i></div>
-      <h3>Ko'rinmas matn</h3>
-      <p>Matn va fon bir xil rangda.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="hash" data-anim="wiggle"></i></div>
-      <h3>Hex xato</h3>
-      <p>3 yoki 6 belgi kerak, <code>#ff00</code> noto'g'ri.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="quote" data-anim="wiggle"></i></div>
-      <h3>Qo'shtirnoq</h3>
-      <p>Bo'sh joyli shrift nomi: <code>"Times New Roman"</code>.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 25. Amaliy topshiriq -->
-<section>
-  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>30 daqiqa</span></h2>
-  <div class="task"><span class="level easy">Oson</span><code>h1</code> ga oq matn va to'q ko'k fon, <code>p</code> ga hex rang bering.</div>
-  <div class="task"><span class="level mid">O'rta</span>«Shaxsiy vizitka»: <code>body</code> da shrift, gradient fon, markazlangan <code>h1</code>, chiziqsiz havolalar.</div>
-  <div class="task"><span class="level hard">Qiyin</span><code>body</code> va <code>p</code> ga turli rang bering, kim yutishini taxmin qilib, keyin tekshiring.</div>
-  
-</section>
-
-<!-- 26. Xulosa -->
-<section>
-  <h2>Bugungi dars xulosasi</h2>
-  <div class="stats">
-    <div class="stat"><div class="v"><span class="count" data-to="5" data-suf=" usul">0</span></div><div class="l">rang yozish: nom, hex, rgb, rgba, hsl</div></div>
-    <div class="stat"><div class="v"><span class="count" data-to="8" data-suf=" ta">0</span></div><div class="l">shrift va matn xususiyati</div></div>
-    <div class="stat"><div class="v"><span class="count" data-to="1" data-suf=" marta">0</span></div><div class="l">body ga yozilsa, hammaga meros</div></div>
-  </div>
-  <div class="callout fragment"><i data-ic="rocket"></i>Keyingi dars (12): Box model: content, padding, border, margin.</div>
-  
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

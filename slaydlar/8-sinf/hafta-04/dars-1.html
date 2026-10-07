@@ -1,536 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>CSS asoslari: ulash va selektorlar</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>CSS asoslari: ulash va selektorlar</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<!-- 1. Hero -->
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>CSS asoslari: ulash va selektorlar</h1>
-  <p class="muted">Sahifaga libos kiydiramiz: CSS nima, qanday ulanadi va elementlar qanday tanlanadi</p>
-  <span class="badge">8-sinf</span><span class="badge">Web Full-stack</span><span class="badge">4-hafta · 10-dars</span>
-  
-</section>
-
-<!-- 2. Reja -->
-<section>
-  <h2>Bugungi reja</h2>
-  <div class="cards four">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="paintbrush" data-anim="float"></i></div>
-      <h3>01. CSS nima?</h3>
-      <p>Vazifasi va yozilish qoidasi.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="link" data-anim="pulse"></i></div>
-      <h3>02. Ulash</h3>
-      <p>inline, internal, external.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="crosshair" data-anim="wiggle"></i></div>
-      <h3>03. Selektorlar</h3>
-      <p>Element, class, id, universal, guruh, descendant.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="crown" data-anim="bounce"></i></div>
-      <h3>04. Ustuvorlik</h3>
-      <p>Ikki qoida to'qnashsa, kim yutadi?</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 3. Bo'lim 01 -->
-<section class="sec">
-  <div class="num">01</div>
-  <h1>CSS nima?</h1>
-  <p>Cascading Style Sheets: sahifaning tashqi ko'rinishi</p>
-  
-</section>
-
-<!-- 4. SVG 1: HTML + CSS -->
-<section>
-  <h2>HTML skelet, CSS libos</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 340">
-      <g class="fragment">
-        <rect x="40" y="60" width="260" height="220" rx="20" class="fn la" stroke-width="3"/>
-        <text x="170" y="120" text-anchor="middle" class="t-head" font-size="30" font-weight="bold">HTML</text>
-        <text x="170" y="170" text-anchor="middle" class="t-muted" font-size="24">Mazmun va</text>
-        <text x="170" y="204" text-anchor="middle" class="t-muted" font-size="24">tuzilma</text>
-        <text x="170" y="250" text-anchor="middle" class="t-accent" font-size="24">«Nima?»</text>
-      </g>
-      <g class="fragment">
-        <text x="335" y="185" text-anchor="middle" class="t-accent" font-size="60" font-weight="bold">+</text>
-        <rect x="370" y="60" width="260" height="220" rx="20" class="fb lb" stroke-width="3"/>
-        <text x="500" y="120" text-anchor="middle" class="t-head" font-size="30" font-weight="bold">CSS</text>
-        <text x="500" y="170" text-anchor="middle" class="t-muted" font-size="24">Rang, shrift,</text>
-        <text x="500" y="204" text-anchor="middle" class="t-muted" font-size="24">joylashuv</text>
-        <text x="500" y="250" text-anchor="middle" class="t-accent" font-size="24">«Qanday?»</text>
-      </g>
-      <g class="fragment">
-        <text x="665" y="185" text-anchor="middle" class="t-accent" font-size="60" font-weight="bold">=</text>
-        <rect x="700" y="60" width="260" height="220" rx="20" class="fg lg pulse" stroke-width="3"/>
-        <text x="830" y="120" text-anchor="middle" class="t-head" font-size="30" font-weight="bold">Sayt</text>
-        <text x="830" y="170" text-anchor="middle" class="t-muted" font-size="24">Chiroyli va</text>
-        <text x="830" y="204" text-anchor="middle" class="t-muted" font-size="24">tushunarli</text>
-        <text x="830" y="250" text-anchor="middle" class="t-accent" font-size="24">tayyor!</text>
-      </g>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- 5. CSS vazifasi: swap oldin/keyin -->
-<section>
-  <h2>CSS bilan va CSS siz</h2>
-  <div class="swap">
-    <div class="swap-tabs"><button type="button">CSS siz</button><button type="button">CSS bilan</button></div>
-    <div class="swap-p">
-      <div class="browser"><div class="bar"><i></i><i></i><i></i><span>sinf.uz</span></div><div class="page"><h3>8-sinf yangiliklari</h3><p>Bugun informatikadan yangi mavzu boshlandi.</p><p>Ertaga dars 14:00 da.</p></div></div>
-    </div>
-    <div class="swap-p">
-      <div class="browser"><div class="bar"><i></i><i></i><i></i><span>sinf.uz</span></div><div class="page" style="background:lightyellow"><h3 style="color:royalblue;text-align:center">8-sinf yangiliklari</h3><p style="font-family:Georgia,serif;font-size:1.2em">Bugun informatikadan yangi mavzu boshlandi.</p><p style="color:crimson;font-weight:bold">Ertaga dars 14:00 da.</p></div></div>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 6. SVG 2: CSS qoidasi anatomiyasi (data-tip) -->
-<section>
-  <h2>CSS qoidasining anatomiyasi</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 340">
-      <g data-tip="Selektor: qaysi elementga stil berilishini tanlaydi.">
-        <rect x="40" y="90" width="150" height="90" rx="14" class="fa la" stroke-width="3"/>
-        <text x="115" y="147" text-anchor="middle" class="t-head" font-size="34" font-weight="bold">h1</text>
-      </g>
-      <g data-tip="Figurali qavs: qoidalar shu yerda boshlanadi va tugaydi.">
-        <text x="215" y="150" text-anchor="middle" class="t-accent" font-size="56">{</text>
-        <text x="935" y="150" text-anchor="middle" class="t-accent" font-size="56">}</text>
-      </g>
-      <g data-tip="Xususiyat (property): nimani o'zgartiramiz, masalan color.">
-        <rect x="250" y="90" width="190" height="90" rx="14" class="fb lb" stroke-width="3"/>
-        <text x="345" y="147" text-anchor="middle" class="t-head" font-size="30" font-weight="bold">color</text>
-      </g>
-      <g data-tip="Ikki nuqta xususiyatni qiymatdan ajratadi.">
-        <text x="468" y="150" text-anchor="middle" class="t-accent" font-size="46">:</text>
-      </g>
-      <g data-tip="Qiymat (value): qanday o'zgartiramiz, masalan blue.">
-        <rect x="500" y="90" width="190" height="90" rx="14" class="fc lc" stroke-width="3"/>
-        <text x="595" y="147" text-anchor="middle" class="t-head" font-size="30" font-weight="bold">blue</text>
-      </g>
-      <g data-tip="Nuqtali vergul har bir e'lonni tugatadi. Uni unutmang!">
-        <text x="715" y="150" text-anchor="middle" class="t-accent" font-size="46">;</text>
-      </g>
-      <text x="115" y="235" text-anchor="middle" class="t-muted" font-size="24">selektor</text>
-      <text x="345" y="235" text-anchor="middle" class="t-muted" font-size="24">xususiyat</text>
-      <text x="595" y="235" text-anchor="middle" class="t-muted" font-size="24">qiymat</text>
-      <text x="500" y="305" text-anchor="middle" class="t-accent" font-size="24">Qismlarni bosing: har birining izohi chiqadi</text>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- 7. Kod: bir nechta e'lon -->
-<section>
-  <h2>Birinchi CSS qoidamiz</h2>
-  <pre><code class="language-css" data-trim data-noescape data-line-numbers="1|2|3|4|1-5">
-h1 {
-  color: blue;
-  text-align: center;
-  background-color: lightyellow;
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>CSS asoslari: ulash va selektorlar</h1></header>
+<div class="badges"><span class="badge">8-sinf</span><span class="badge">Web Full-stack</span><span class="badge">4-hafta · 10-dars</span><span class="badge">Sahifaga libos kiydiramiz: CSS nima, qanday ulanadi va elementlar qanday tanlanadi</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "External CSS faylini HTMLga qaysi teg ulaydi?", "o": ["&lt;style src=\"style.css\"&gt;", "&lt;link rel=\"stylesheet\" href=\"style.css\"&gt;", "&lt;css href=\"style.css\"&gt;", "&lt;script href=\"style.css\"&gt;"], "a": 1, "e": "To'g'ri: <code>&lt;link&gt;<\/code> teg <code>&lt;head&gt;<\/code> ichida, <code>rel=\"stylesheet\"<\/code> va <code>href<\/code> bilan yoziladi."}, {"q": "Abzats matni qaysi rangda ko'rinadi?", "o": ["Qizil (red)", "Yashil (green)", "Ko'k (blue)"], "a": 2, "e": "Id (100) &gt; class (10) &gt; element (1). Eng kuchlisi yutadi, qoida tartibining ahamiyati yo'q."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
 }
-  </code></pre>
-  <div class="callout"><i data-ic="lightbulb"></i>Bitta qoidaga xohlagancha e'lon yozish mumkin. Har biri <code>;</code> bilan tugaydi.</div>
-  
-</section>
-
-<!-- 8. Bo'lim 02 -->
-<section class="sec">
-  <div class="num">02</div>
-  <h1>HTMLga CSS ulash</h1>
-  <p>Uch usul: style atributi, &lt;style&gt; tegi, &lt;link&gt; tegi</p>
-  
-</section>
-
-<!-- 9. Uch usul: flip -->
-<section>
-  <h2>CSS ning uch turi</h2>
-  <div class="cards three">
-    <div class="flip" style="min-height:230px"><div class="flip-in">
-      <div class="face front"><div class="icon"><i data-ic="pen-line" data-anim="float"></i></div><h3>Inline</h3><span class="flip-hint">bosing</span></div>
-      <div class="face back"><p>Bitta teg ichida, <code>style</code> atributi bilan. Faqat shu elementga ta'sir qiladi.</p></div>
-    </div></div>
-    <div class="flip" style="min-height:230px"><div class="flip-in">
-      <div class="face front"><div class="icon"><i data-ic="file-code" data-anim="float"></i></div><h3>Internal</h3><span class="flip-hint">bosing</span></div>
-      <div class="face back"><p><code>&lt;head&gt;</code> ichidagi <code>&lt;style&gt;</code> tegida. Butun shu sahifaga ta'sir qiladi.</p></div>
-    </div></div>
-    <div class="flip" style="min-height:230px"><div class="flip-in">
-      <div class="face front"><div class="icon"><i data-ic="files" data-anim="float"></i></div><h3>External</h3><span class="flip-hint">bosing</span></div>
-      <div class="face back"><p>Alohida <code>.css</code> fayl, <code>&lt;link&gt;</code> bilan ulanadi. Ko'p sahifaga bitta fayl.</p></div>
-    </div></div>
-  </div>
-  
-</section>
-
-<!-- 10. Stepper: kodi bilan -->
-<section>
-  <h2>Uch usul kodda</h2>
-  <div class="stepper">
-    <div class="stp on">
-      <h3>1. Inline: style atributi</h3>
-      <pre><code class="language-html" data-trim data-noescape>
-&lt;h1 style="color: red;"&gt;Salom&lt;/h1&gt;
-      </code></pre>
-      <p class="small">Tez sinash uchun qulay, lekin takrorlanadi va kodni chalkashtiradi.</p>
-    </div>
-    <div class="stp">
-      <h3>2. Internal: style tegi</h3>
-      <pre><code class="language-html" data-trim data-noescape>
-&lt;head&gt;
-  &lt;style&gt;
-    h1 { color: red; }
-  &lt;/style&gt;
-&lt;/head&gt;
-      </code></pre>
-      <p class="small">Bitta sahifa uchun yetarli.</p>
-    </div>
-    <div class="stp">
-      <h3>3. External: link tegi</h3>
-      <pre><code class="language-html" data-trim data-noescape>
-&lt;head&gt;
-  &lt;link rel="stylesheet" href="style.css"&gt;
-&lt;/head&gt;
-      </code></pre>
-      <p class="small">style.css ichida faqat CSS yoziladi: <code>h1 { color: red; }</code></p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 11. SVG 3: external bitta fayl ko'p sahifa -->
-<section>
-  <h2>External CSS: bitta fayl, ko'p sahifa</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 380">
-      <g class="fragment">
-        <rect x="40" y="30" width="250" height="90" rx="16" class="fa la" stroke-width="3"/>
-        <text x="165" y="85" text-anchor="middle" class="t-head" font-size="28">index.html</text>
-      </g>
-      <g class="fragment">
-        <rect x="40" y="145" width="250" height="90" rx="16" class="fa la" stroke-width="3"/>
-        <text x="165" y="200" text-anchor="middle" class="t-head" font-size="28">haqida.html</text>
-      </g>
-      <g class="fragment">
-        <rect x="40" y="260" width="250" height="90" rx="16" class="fa la" stroke-width="3"/>
-        <text x="165" y="315" text-anchor="middle" class="t-head" font-size="28">aloqa.html</text>
-      </g>
-      <g class="fragment">
-        <line class="lb flowing" x1="295" y1="75" x2="660" y2="170" stroke-width="4"/>
-        <line class="lb flowing" x1="295" y1="190" x2="660" y2="190" stroke-width="4"/>
-        <line class="lb flowing" x1="295" y1="305" x2="660" y2="210" stroke-width="4"/>
-        <polygon class="ar-b" points="680,190 660,178 660,202"/>
-        <text x="480" y="150" text-anchor="middle" class="t-accent" font-size="24">link</text>
-      </g>
-      <g class="fragment">
-        <rect x="690" y="110" width="270" height="160" rx="20" class="fb lb pulse" stroke-width="3"/>
-        <text x="825" y="175" text-anchor="middle" class="t-head" font-size="34" font-weight="bold">style.css</text>
-        <text x="825" y="225" text-anchor="middle" class="t-muted" font-size="24">yagona dizayn</text>
-      </g>
-    </svg>
-  </div>
-  <div class="callout tip fragment"><i data-ic="circle-check"></i>Rangni bitta joyda o'zgartirsangiz, butun sayt o'zgaradi.</div>
-  
-</section>
-
-<!-- 12. Quiz 1 -->
-<section>
-  <h2>Mini-test</h2>
-  <div class="quiz">
-    <p class="q">External CSS faylini HTMLga qaysi teg ulaydi?</p>
-    <div class="opts">
-      <button class="opt" type="button">&lt;style src="style.css"&gt;</button>
-      <button class="opt" type="button" data-ok>&lt;link rel="stylesheet" href="style.css"&gt;</button>
-      <button class="opt" type="button">&lt;css href="style.css"&gt;</button>
-      <button class="opt" type="button">&lt;script href="style.css"&gt;</button>
-    </div>
-    <div class="explain">To'g'ri: <code>&lt;link&gt;</code> teg <code>&lt;head&gt;</code> ichida, <code>rel="stylesheet"</code> va <code>href</code> bilan yoziladi.</div>
-  </div>
-  
-</section>
-
-<!-- 13. Bo'lim 03 -->
-<section class="sec">
-  <div class="num">03</div>
-  <h1>Selektorlar</h1>
-  <p>Aynan kerakli elementni tanlash san'ati</p>
-  
-</section>
-
-<!-- 14. Selektorlar jadvali -->
-<section>
-  <h2>Oltita selektor</h2>
-  <table>
-    <thead><tr><th>Turi</th><th>Yozilishi</th><th>Nimani tanlaydi</th></tr></thead>
-    <tbody>
-      <tr class="fragment"><td>Element</td><td><code>p</code></td><td>Barcha &lt;p&gt; teglari</td></tr>
-      <tr class="fragment"><td>Class</td><td><code>.karta</code></td><td>class=&quot;karta&quot; elementlar</td></tr>
-      <tr class="fragment"><td>Id</td><td><code>#logo</code></td><td>id="logo" yagona element</td></tr>
-      <tr class="fragment"><td>Universal</td><td><code>*</code></td><td>Sahifadagi hamma element</td></tr>
-      <tr class="fragment"><td>Guruh</td><td><code>h1, h2</code></td><td>Vergul bilan sanalganlar</td></tr>
-      <tr class="fragment"><td>Descendant</td><td><code>nav a</code></td><td>nav ichidagi barcha a</td></tr>
-    </tbody>
-  </table>
-  
-</section>
-
-<!-- 15. Element, class, id: kod -->
-<section>
-  <h2>Element, class va id</h2>
-  <div class="cols">
-    <pre><code class="language-css" data-trim data-noescape data-line-numbers="1-3|5-7|9-11">
-p {
-  color: gray;
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
-
-.karta {
-  background-color: lightyellow;
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
 }
-
-#logo {
-  font-size: 32px;
-}
-    </code></pre>
-    <pre><code class="language-html" data-trim data-noescape>
-&lt;p&gt;Oddiy matn&lt;/p&gt;
-&lt;div class=&quot;karta&quot;&gt;...&lt;/div&gt;
-&lt;div class=&quot;karta&quot;&gt;...&lt;/div&gt;
-&lt;h1 id="logo"&gt;AXV&lt;/h1&gt;
-    </code></pre>
-  </div>
-  
-</section>
-
-<!-- 16. Class vs Id -->
-<section>
-  <h2>Class yoki id?</h2>
-  <div class="vs">
-    <div class="side fragment">
-      <h3><i data-ic="layers"></i> Class</h3>
-      <ul>
-        <li>Nuqta bilan: <code>.karta</code></li>
-        <li>Ko'p elementda takrorlanadi</li>
-        <li>Bitta elementda bir nechta: <code>class=&quot;karta katta&quot;</code></li>
-      </ul>
-      <p class="mt"><b>Ko'pincha shu ishlatiladi</b></p>
-    </div>
-    <div class="side b fragment">
-      <h3><i data-ic="hash"></i> Id</h3>
-      <ul>
-        <li>Panjara bilan: <code>#logo</code></li>
-        <li>Sahifada faqat bir marta</li>
-        <li>Yagona, noyob element uchun</li>
-      </ul>
-      <p class="mt"><b>Bir id ikki marta yozilmaydi</b></p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 17. Auto-animate: sahifa o'zgarishi -->
-<section data-auto-animate>
-  <h2>Selektor ta'siri</h2>
-  <div class="browser" data-id="box" style="width:520px"><div class="bar"><i></i><i></i><i></i><span>sinf.uz</span></div><div class="page"><h3>Yangiliklar</h3><p>Birinchi xabar</p><p>Ikkinchi xabar</p></div></div>
-  
-</section>
-<section data-auto-animate>
-  <h2>Selektor ta'siri</h2>
-  <div class="browser" data-id="box" style="width:1000px"><div class="bar"><i></i><i></i><i></i><span>sinf.uz</span></div><div class="page"><h3 style="color:royalblue">Yangiliklar</h3><p style="color:crimson">Birinchi xabar</p><p style="color:crimson">Ikkinchi xabar</p></div></div>
-  <p class="small mt">Bitta qoida <code>p { color: crimson; }</code> ikkala abzatsni bir vaqtda bo'yadi.</p>
-  
-</section>
-
-<!-- 18. Guruh va descendant: vertikal -->
-<section>
-  <section>
-    <h2>Guruh va descendant selektor</h2>
-    <pre><code class="language-css" data-trim data-noescape data-line-numbers="1-3|5-7|9-11">
-h1, h2, h3 {
-  color: navy;
-}
-
-nav a {
-  text-decoration: none;
-}
-
-* {
-  margin: 0;
-}
-    </code></pre>
-    <p class="small muted">Chuqurroq bilish uchun pastga bosing</p>
-    
-  </section>
-  <section>
-    <h2>Descendant: «ichidagi»</h2>
-    <div class="illus">
-      <svg viewBox="0 0 1000 340">
-        <rect x="40" y="30" width="480" height="280" rx="20" class="fa la" stroke-width="3"/>
-        <text x="280" y="75" text-anchor="middle" class="t-head" font-size="26" font-weight="bold">&lt;nav&gt;</text>
-        <g class="fragment">
-          <rect x="80" y="110" width="170" height="70" rx="12" class="fg lg pulse" stroke-width="3"/>
-          <text x="165" y="154" text-anchor="middle" class="t-head" font-size="26">&lt;a&gt;</text>
-          <rect x="290" y="110" width="170" height="70" rx="12" class="fg lg pulse" stroke-width="3"/>
-          <text x="375" y="154" text-anchor="middle" class="t-head" font-size="26">&lt;a&gt;</text>
-        </g>
-        <rect x="570" y="110" width="170" height="70" rx="12" class="fn ln" stroke-width="3"/>
-        <text x="655" y="154" text-anchor="middle" class="t-muted" font-size="26">&lt;a&gt;</text>
-        <text x="655" y="215" text-anchor="middle" class="t-muted" font-size="22">nav tashqarisida</text>
-        <g class="fragment">
-          <text x="280" y="260" text-anchor="middle" class="t-accent" font-size="24">nav a tanlaydi:</text>
-          <text x="280" y="292" text-anchor="middle" class="t-accent" font-size="24">yashil qutilarni</text>
-        </g>
-      </svg>
-    </div>
-    
-  </section>
-</section>
-
-<!-- 19. Bo'lim 04 -->
-<section class="sec">
-  <div class="num">04</div>
-  <h1>Ustuvorlik</h1>
-  <p>Ikki qoida bir elementga to'qnashsa, qaysi biri yutadi?</p>
-  
-</section>
-
-<!-- 20. SVG 4: specificity zinapoyasi -->
-<section>
-  <h2>Specificity: kim kuchliroq?</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 380">
-      <g class="fragment">
-        <rect x="60" y="290" width="200" height="70" rx="10" class="fn ln" stroke-width="3"/>
-        <text x="160" y="333" text-anchor="middle" class="t-head" font-size="26">element</text>
-        <text x="160" y="278" text-anchor="middle" class="t-accent" font-size="28" font-weight="bold">1</text>
-      </g>
-      <g class="fragment">
-        <rect x="290" y="210" width="200" height="150" rx="10" class="fc lc" stroke-width="3"/>
-        <text x="390" y="293" text-anchor="middle" class="t-head" font-size="26">.class</text>
-        <text x="390" y="198" text-anchor="middle" class="t-accent" font-size="28" font-weight="bold">10</text>
-      </g>
-      <g class="fragment">
-        <rect x="520" y="130" width="200" height="230" rx="10" class="fb lb" stroke-width="3"/>
-        <text x="620" y="253" text-anchor="middle" class="t-head" font-size="26">#id</text>
-        <text x="620" y="118" text-anchor="middle" class="t-accent" font-size="28" font-weight="bold">100</text>
-      </g>
-      <g class="fragment">
-        <rect x="750" y="50" width="200" height="310" rx="10" class="fa la pulse" stroke-width="3"/>
-        <text x="850" y="213" text-anchor="middle" class="t-head" font-size="26">inline</text>
-        <text x="850" y="38" text-anchor="middle" class="t-accent" font-size="28" font-weight="bold">1000</text>
-      </g>
-    </svg>
-  </div>
-  <p class="small">Ballar hisoblash uchun oddiy o'xshatish. Teng bo'lsa, <b>oxirgi yozilgani</b> yutadi.</p>
-  
-</section>
-
-<!-- 21. Specificity topishmoq -->
-<section>
-  <h2>Matn qaysi rangda?</h2>
-  <div class="cols">
-    <pre><code class="language-css" data-trim data-noescape data-line-numbers="1|2|3">
-p { color: red; }
-.xabar { color: green; }
-#asosiy { color: blue; }
-    </code></pre>
-    <pre><code class="language-html" data-trim data-noescape>
-&lt;p id="asosiy" class=&quot;xabar&quot;&gt;
-  Salom!
-&lt;/p&gt;
-    </code></pre>
-  </div>
-  <div class="quiz">
-    <p class="q">Abzats matni qaysi rangda ko'rinadi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Qizil (red)</button>
-      <button class="opt" type="button">Yashil (green)</button>
-      <button class="opt" type="button" data-ok>Ko'k (blue)</button>
-    </div>
-    <div class="explain">Id (100) &gt; class (10) &gt; element (1). Eng kuchlisi yutadi, qoida tartibining ahamiyati yo'q.</div>
-  </div>
-  
-</section>
-
-<!-- 22. Odatiy xatolar -->
-<section>
-  <h2>Odatiy xatolar</h2>
-  <div class="cards three">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="triangle-alert" data-anim="blink"></i></div>
-      <h3>Nuqta unutildi</h3>
-      <p><code>karta { ... }</code> degan qoida &lt;karta&gt; tegini qidiradi. To'g'risi: <code>.karta</code></p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="triangle-alert" data-anim="blink"></i></div>
-      <h3>Nuqtali vergul yo'q</h3>
-      <p><code>color: red</code> dan keyingi e'lon ishlamay qolishi mumkin. Har doim <code>;</code></p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="triangle-alert" data-anim="blink"></i></div>
-      <h3>Fayl ulanmagan</h3>
-      <p><code>href</code> yo'li noto'g'ri yoki <code>rel="stylesheet"</code> yo'q: stil chiqmaydi</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 23. Amaliy topshiriq -->
-<section>
-  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>30 daqiqa</span></h2>
-  <div class="task"><span class="level easy">Oson</span><code>index.html</code> va <code>style.css</code> yarating, ulang, <code>h1</code> rangini o'zgartiring.</div>
-  <div class="task"><span class="level mid">O'rta</span>3 ta <code>.karta</code>, <code>#logo</code>, guruh <code>h2, h3</code> va <code>nav a</code> qoidalarini yozing.</div>
-  <div class="task"><span class="level hard">Qiyin</span>Bir elementga 3 ta to'qnashuvchi qoida yozing, natijani oldindan taxmin qiling va tekshiring.</div>
-  
-</section>
-
-<!-- 24. Xulosa -->
-<section>
-  <h2>Bugungi dars xulosasi</h2>
-  <div class="stats">
-    <div class="stat"><div class="v"><span class="count" data-to="3" data-suf=" usul">0</span></div><div class="l">CSS ulash: inline, internal, external</div></div>
-    <div class="stat"><div class="v"><span class="count" data-to="6" data-suf=" ta">0</span></div><div class="l">selektor turi</div></div>
-    <div class="stat"><div class="v"><span class="count" data-to="4" data-suf=" daraja">0</span></div><div class="l">ustuvorlik: element, class, id, inline</div></div>
-  </div>
-  <div class="callout fragment"><i data-ic="rocket"></i>Keyingi dars (11): rang va shrift bilan ishlash, meros olish.</div>
-  
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

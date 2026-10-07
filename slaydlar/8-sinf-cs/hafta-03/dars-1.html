@@ -1,476 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>Klaviaturada tez va to‘g‘ri yozish</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Klaviaturada tez va to‘g‘ri yozish</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<!-- SLIDE 1: Hero -->
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>Klaviaturada tez va to‘g‘ri yozish</h1>
-  <p class="muted">Touch typing usuli, 10 barmoq xaritasi va to'g'ri ergonomika</p>
-  <span class="badge">8-sinf</span><span class="badge">Foundation</span><span class="badge">3-hafta · 7-dars</span>
-  
-</section>
-
-<!-- SLIDE 2: Reja -->
-<section>
-  <h2>Bugungi dars rejasi</h2>
-  <div class="cards three">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="laptop" data-anim="float"></i></div>
-      <h3>01. Ergonomika</h3>
-      <p>Kompyuter qarshisida to'g'ri o'tirish, gavda, ko'z va bilak salomatligi.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="hand" data-anim="pulse"></i></div>
-      <h3>02. Touch typing</h3>
-      <p>10 barmoq xaritasi, Home Row (ASDF - JKL;) va F/J nishonlari.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="zap" data-anim="wiggle"></i></div>
-      <h3>03. WPM va Mashqlar</h3>
-      <p>Yozish tezligi va aniqligi, onlayn trenajyorlar bilan ishlash.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 3: Bo'lim 1 -->
-<section class="sec">
-  <div class="num">01</div>
-  <h1>Klaviatura tuzilishi va Ergonomika</h1>
-  <p>Salomatlikni asrash va kompyuterda charchamasdan ishlash</p>
-  
-</section>
-
-<!-- SLIDE 4: SVG 1 - Ergonomika -->
-<section>
-  <h2>Kompyuter qarshisida to'g'ri o'tirish</h2>
-  <div class="illus">
-    <svg viewBox="0 0 960 300">
-      <!-- Monitor and distance -->
-      <g class="fragment">
-        <rect x="50" y="50" width="180" height="200" rx="12" class="fa la" stroke-width="2"/>
-        <text x="140" y="90" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Monitor masofasi</text>
-        <text x="140" y="130" text-anchor="middle" class="t-accent" font-size="24" font-weight="bold">50–70 sm</text>
-        <text x="140" y="165" text-anchor="middle" class="t-muted" font-size="13">Cho'zilgan qo'l</text>
-        <text x="140" y="190" text-anchor="middle" class="t-muted" font-size="13">masofasida</text>
-      </g>
-
-      <!-- Elbow 90 degrees -->
-      <g class="fragment">
-        <rect x="270" y="50" width="180" height="200" rx="12" class="fc lc" stroke-width="2"/>
-        <text x="360" y="90" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Tirsak burchagi</text>
-        <text x="360" y="130" text-anchor="middle" class="t-accent" font-size="24" font-weight="bold">90°</text>
-        <text x="360" y="165" text-anchor="middle" class="t-muted" font-size="13">Qo'llar erkin,</text>
-        <text x="360" y="190" text-anchor="middle" class="t-muted" font-size="13">bilaklar osilmaydi</text>
-      </g>
-
-      <!-- Back posture -->
-      <g class="fragment">
-        <rect x="490" y="50" width="180" height="200" rx="12" class="fb lb" stroke-width="2"/>
-        <text x="580" y="90" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Gavda holati</text>
-        <text x="580" y="130" text-anchor="middle" class="t-accent" font-size="24" font-weight="bold">To'g'ri</text>
-        <text x="580" y="165" text-anchor="middle" class="t-muted" font-size="13">Orqa suyanchiqqa</text>
-        <text x="580" y="190" text-anchor="middle" class="t-muted" font-size="13">tekis tegib turadi</text>
-      </g>
-
-      <!-- Feet on floor -->
-      <g class="fragment">
-        <rect x="710" y="50" width="180" height="200" rx="12" class="fg lg" stroke-width="2"/>
-        <text x="800" y="90" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Oyoqlar holati</text>
-        <text x="800" y="130" text-anchor="middle" class="t-accent" font-size="24" font-weight="bold">Polga tekis</text>
-        <text x="800" y="165" text-anchor="middle" class="t-muted" font-size="13">Tizzalar 90° burchakda</text>
-        <text x="800" y="190" text-anchor="middle" class="t-muted" font-size="13">mustahkam turadi</text>
-      </g>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- SLIDE 5: VS: 2 barmoq vs 10 barmoq -->
-<section>
-  <h2>2 barmoqda yozish vs 10 barmoq (Touch typing)</h2>
-  <div class="vs">
-    <div class="side fragment">
-      <h3><i data-ic="triangle-alert"></i> 2 barmoq usuli («Tovuq donlash»)</h3>
-      <ul>
-        <li>Ko'z doim monitor va klaviatura orasida charchaydi</li>
-        <li>Tezlik past (odatda 20–30 WPM dan oshmaydi)</li>
-        <li>Xatolar ko'p va bo'yin toliqadi</li>
-      </ul>
-      <div class="callout bad">Eski va samarasiz odat</div>
-    </div>
-    <div class="side b fragment">
-      <h3><i data-ic="circle-check"></i> Touch typing (10 barmoq)</h3>
-      <ul>
-        <li>Ko'z faqat monitorda, klaviaturaga qaralmaydi</li>
-        <li>Mushak xotirasi ishlaydi, tezlik 60–100+ WPM</li>
-        <li>Har kuni 1 soatgacha vaqt tejaladi</li>
-      </ul>
-      <div class="callout tip">Professional dasturchilar standarti</div>
-    </div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 6: Bo'lim 2 -->
-<section class="sec">
-  <div class="num">02</div>
-  <h1>Touch typing va 10 barmoq xaritasi</h1>
-  <p>Mushak xotirasi yordamida ko'rmasdan yozish san'ati</p>
-  
-</section>
-
-<!-- SLIDE 7: SVG 2 - Home row -->
-<section>
-  <h2>Tayanch qator (Home Row) va F/J siri</h2>
-  <div class="illus">
-    <svg viewBox="0 0 960 300">
-      <!-- Left Hand -->
-      <g class="fragment">
-        <rect x="60" y="60" width="380" height="180" rx="14" class="fa la" stroke-width="2"/>
-        <text x="250" y="95" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Chap qo'l (A - S - D - F)</text>
-        
-        <rect x="80" y="120" width="60" height="60" rx="8" class="fn ln"/>
-        <text x="110" y="157" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">A</text>
-        
-        <rect x="150" y="120" width="60" height="60" rx="8" class="fn ln"/>
-        <text x="180" y="157" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">S</text>
-        
-        <rect x="220" y="120" width="60" height="60" rx="8" class="fn ln"/>
-        <text x="250" y="157" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">D</text>
-        
-        <!-- F with bump -->
-        <rect x="290" y="120" width="60" height="60" rx="8" class="fa la" stroke-width="2"/>
-        <text x="320" y="157" text-anchor="middle" class="t-accent" font-size="22" font-weight="bold">F</text>
-        <line x1="305" y1="172" x2="335" y2="172" class="la" stroke-width="3"/>
-        <text x="320" y="215" text-anchor="middle" class="t-accent" font-size="12">Bo'rtiq</text>
-      </g>
-
-      <!-- Right Hand -->
-      <g class="fragment">
-        <rect x="520" y="60" width="380" height="180" rx="14" class="fb lb" stroke-width="2"/>
-        <text x="710" y="95" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">O'ng qo'l (J - K - L - ;)</text>
-        
-        <!-- J with bump -->
-        <rect x="540" y="120" width="60" height="60" rx="8" class="fb lb" stroke-width="2"/>
-        <text x="570" y="157" text-anchor="middle" class="t-accent" font-size="22" font-weight="bold">J</text>
-        <line x1="555" y1="172" x2="585" y2="172" class="lb" stroke-width="3"/>
-        <text x="570" y="215" text-anchor="middle" class="t-accent" font-size="12">Bo'rtiq</text>
-        
-        <rect x="610" y="120" width="60" height="60" rx="8" class="fn ln"/>
-        <text x="640" y="157" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">K</text>
-        
-        <rect x="680" y="120" width="60" height="60" rx="8" class="fn ln"/>
-        <text x="710" y="157" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">L</text>
-        
-        <rect x="750" y="120" width="60" height="60" rx="8" class="fn ln"/>
-        <text x="780" y="157" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">;</text>
-      </g>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- SLIDE 8: Swap: Ko'z bilan yozish vs Mushak xotirasi -->
-<section>
-  <h2>Ko'z orqali yozish vs Mushak xotirasi</h2>
-  <div class="swap">
-    <div class="swap-tabs">
-      <button class="on" type="button">Ko'z bilan qidirish</button>
-      <button type="button">Mushak xotirasi</button>
-    </div>
-    <div class="swap-p on">
-      <div class="cards two">
-        <div class="card">
-          <h3>Miya 2 barobar ko'p yuklanadi</h3>
-          <p>Har bir harf uchun ko'z monitordan klaviaturaga va yana orqaga sakraydi. Diqqat bo'linadi.</p>
-        </div>
-        <div class="card">
-          <h3>Doimiy xatolar</h3>
-          <p>Xato qilinganini foydalanuvchi faqat 3-4 ta so'zdan keyin sezadi va o'chirishga majbur bo'ladi.</p>
-        </div>
-      </div>
-    </div>
-    <div class="swap-p">
-      <div class="cards two">
-        <div class="card">
-          <h3>Fikr bevosita ekranga tushadi</h3>
-          <p>Miya nima haqida o'ylasa, barmoqlar uni bir zumda yozadi. Klaviaturani his qilish refleksga aylanadi.</p>
-        </div>
-        <div class="card">
-          <h3>Darhol tuzatish</h3>
-          <p>Ko'z doim ekranda bo'lgani sababli, har qanday xato o'sha millisoniyadayoq seziladi.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 9: SVG 3 - Barmoqlar zonalari -->
-<section>
-  <h2>Har bir barmoqning o'z zonasi bor</h2>
-  <div class="illus">
-    <svg viewBox="0 0 960 300">
-      <!-- Pinky zone -->
-      <g class="fragment">
-        <rect x="50" y="60" width="180" height="180" rx="12" class="fa la" stroke-width="2"/>
-        <text x="140" y="100" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Jimjiloq</text>
-        <text x="140" y="140" text-anchor="middle" class="t-accent" font-size="16">Q, A, Z, Tab</text>
-        <text x="140" y="170" text-anchor="middle" class="t-muted" font-size="13">Caps, Shift</text>
-      </g>
-
-      <!-- Ring zone -->
-      <g class="fragment">
-        <rect x="260" y="60" width="180" height="180" rx="12" class="fc lc" stroke-width="2"/>
-        <text x="350" y="100" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Nomsiz barmoq</text>
-        <text x="350" y="140" text-anchor="middle" class="t-accent" font-size="16">W, S, X</text>
-        <text x="350" y="170" text-anchor="middle" class="t-muted" font-size="13">O, L, Nuqta</text>
-      </g>
-
-      <!-- Middle zone -->
-      <g class="fragment">
-        <rect x="470" y="60" width="180" height="180" rx="12" class="fb lb" stroke-width="2"/>
-        <text x="560" y="100" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">O'rta barmoq</text>
-        <text x="560" y="140" text-anchor="middle" class="t-accent" font-size="16">E, D, C</text>
-        <text x="560" y="170" text-anchor="middle" class="t-muted" font-size="13">I, K, Vergul</text>
-      </g>
-
-      <!-- Index zone -->
-      <g class="fragment">
-        <rect x="680" y="60" width="230" height="180" rx="12" class="fg lg" stroke-width="2"/>
-        <text x="795" y="100" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Ko'rsatkich (Eng faol)</text>
-        <text x="795" y="140" text-anchor="middle" class="t-accent" font-size="15">R, T, F, G, V, B</text>
-        <text x="795" y="170" text-anchor="middle" class="t-muted" font-size="13">Y, U, H, J, N, M</text>
-      </g>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- SLIDE 10: Bo'lim 3 -->
-<section class="sec">
-  <div class="num">03</div>
-  <h1>WPM metrikasi va trenajyorlar</h1>
-  <p>Aniqlik va tezlikni bosqichma-bosqich oshirish</p>
-  
-</section>
-
-<!-- SLIDE 11: SVG 4 - WPM va Aniqlik zanjiri -->
-<section>
-  <h2>Muvaffaqiyat formulasi: Aniqlik -&gt; Tezlik</h2>
-  <div class="illus">
-    <svg viewBox="0 0 960 300">
-      <!-- Step 1 -->
-      <g class="fragment">
-        <rect x="50" y="70" width="240" height="160" rx="14" class="fa la" stroke-width="2"/>
-        <text x="170" y="115" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">1. Avval aniqlik</text>
-        <text x="170" y="150" text-anchor="middle" class="t-accent" font-size="22" font-weight="bold">95% – 98%</text>
-        <text x="170" y="185" text-anchor="middle" class="t-muted" font-size="13">Backspace bosmaslikka</text>
-        <text x="170" y="205" text-anchor="middle" class="t-muted" font-size="13">odatlashing</text>
-      </g>
-
-      <path d="M 290 150 L 360 150" class="la flowing" stroke-width="4" fill="none" marker-end="url(#ar-a)"/>
-
-      <!-- Step 2 -->
-      <g class="fragment">
-        <rect x="360" y="70" width="240" height="160" rx="14" class="fc lc" stroke-width="2"/>
-        <text x="480" y="115" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">2. Taktik ritm</text>
-        <text x="480" y="150" text-anchor="middle" class="t-accent" font-size="22" font-weight="bold">Bir tekis ritm</text>
-        <text x="480" y="185" text-anchor="middle" class="t-muted" font-size="13">Pianinodek bir tekis</text>
-        <text x="480" y="205" text-anchor="middle" class="t-muted" font-size="13">bosib borish</text>
-      </g>
-
-      <path d="M 600 150 L 670 150" class="lc flowing" stroke-width="4" fill="none" marker-end="url(#ar-c)"/>
-
-      <!-- Step 3 -->
-      <g class="fragment">
-        <rect x="670" y="70" width="240" height="160" rx="14" class="fg lg" stroke-width="2"/>
-        <text x="790" y="115" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">3. Tezlik o'sishi</text>
-        <text x="790" y="150" text-anchor="middle" class="t-accent" font-size="22" font-weight="bold">50+ WPM</text>
-        <text x="790" y="185" text-anchor="middle" class="t-muted" font-size="13">Tezlik o'z-o'zidan</text>
-        <text x="790" y="205" text-anchor="middle" class="t-accent" font-size="13">tabiiy oshadi!</text>
-      </g>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- SLIDE 12: Stepper: Mashg'ulot bosqichlari -->
-<section>
-  <h2>Mashg'ulotlarni to'g'ri tashkil qilish</h2>
-  <div class="stepper">
-    <div class="stp on">
-      <h3>1-qadam: Kuniga 15 daqiqa</h3>
-      <p class="muted">Haftada bir marta 2 soat shug'ullangandan ko'ra, har kuni 15 daqiqa mashq qilish 10 barobar samaraliroq.</p>
-    </div>
-    <div class="stp">
-      <h3>2-qadam: Klaviaturaga qaramaslik</h3>
-      <p class="muted">Xato qilsangiz ham, qo'llaringizni qog'oz bilan yopib bo'lsa ham klaviaturaga qaramang.</p>
-    </div>
-    <div class="stp">
-      <h3>3-qadam: Natijalarni qayd etish</h3>
-      <div class="callout tip">Har hafta oxirida 1 daqiqalik WPM testini topshirib, o'sish grafigingizni chizing!</div>
-    </div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 13: Flip card: Ctrl+Backspace va Salomatlik -->
-<section>
-  <h2>Ikki foydali mahorat</h2>
-  <div class="cards two">
-    <div class="flip">
-      <div class="flip-in">
-        <div class="face front">
-          <div class="icon"><i data-ic="zap"></i></div>
-          <h3>Ctrl + Backspace siri</h3>
-          <p class="muted">Bosganda qoidani ko'ring</p>
-        </div>
-        <div class="face back">
-          <h3>Qoida</h3>
-          <p>Harfma-harf o'chirish o'rniga <code>Ctrl + Backspace</code> bosing. Butun bitta so'z 1 millisoniyada o'chadi!</p>
-        </div>
-      </div>
-    </div>
-    <div class="flip">
-      <div class="flip-in">
-        <div class="face front">
-          <div class="icon"><i data-ic="hand"></i></div>
-          <h3>Tunnel sindromi profilaktikasi</h3>
-          <p class="muted">Bosganda qoidani ko'ring</p>
-        </div>
-        <div class="face back">
-          <h3>Qoida</h3>
-          <p>Har 30 daqiqada barmoqlar va bilaklarni silkitib, qon aylanishini yaxshilovchi harakatli tanaffus qiling.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 14: Statistika -->
-<section>
-  <h2>Touch typing raqamlarda</h2>
-  <div class="stats">
-    <div class="stat">
-      <div class="v"><span class="count" data-to="216" data-suf=" WPM">0</span></div>
-      <div class="l">Dunyodagi eng yuqori yozish tezligi rekordi</div>
-    </div>
-    <div class="stat">
-      <div class="v"><span class="count" data-to="1" data-suf=" soat">0</span></div>
-      <div class="l">10 barmoqda yozuvchi odamning har kuni tejaydigan vaqti</div>
-    </div>
-    <div class="stat">
-      <div class="v"><span class="count" data-to="95" data-suf=" %">0</span></div>
-      <div class="l">Tezlikni oshirishdan oldin erishish kerak bo'lgan aniqlik</div>
-    </div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 15: Mashhur trenajyorlar -->
-<section>
-  <h2>Eng yaxshi bepul klaviatura trenajyorlari</h2>
-  <div class="cards three">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="laptop"></i></div>
-      <h3>TypingClub</h3>
-      <p>O'yin shaklidagi, bosqichma-bosqich qiyinlashib boruvchi 600+ darsli eng zo'r platforma.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="zap"></i></div>
-      <h3>Ratatype</h3>
-      <p>Oddiy va qulay interfeys. 1 daqiqalik test o'tkazib, rasmiy tezlik sertifikatini beradi.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="gauge"></i></div>
-      <h3>Keybr</h3>
-      <p>Sun'iy intellekt orqali siz ko'p xato qilayotgan harflarni topib, maxsus matnlar tuzadi.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 16: Quiz -->
-<section>
-  <h2>O'zingizni sinab ko'ring</h2>
-  <div class="quiz">
-    <p class="q">Nima sababdan F va J tugmalarida kichik taktil bo'rtiqlar (chiziqchalar) mavjud?</p>
-    <div class="opts">
-      <button class="opt" type="button">Zavodda xato qilingani uchun</button>
-      <button class="opt" type="button" data-ok>Klaviaturaga qaramasdan barmoqlarni tayanch qatorga qo'yish uchun</button>
-      <button class="opt" type="button">Faqat tezkor o'yinlar o'ynash uchun</button>
-    </div>
-    <div class="explain">
-      To'g'ri! F va J bo'rtiqlari ko'rsatkich barmoqlarni ko'rmasdan turib tayanch pozitsiyaga (ASDF - JKL;) qaytarish uchun nishon hisoblanadi.
-    </div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 17: Amaliy topshiriq -->
-<section class="task">
-  <div class="badge">Amaliy mashg'ulot · 20 daqiqa</div>
-  <h2>Klaviatura trenajyorida mashq qiling</h2>
-  <ol>
-    <li>Ergonomika qoidalariga rioya qilib to'g'ri o'tiring.</li>
-    <li>Ko'zni yumib, <code>F</code> va <code>J</code> bo'rtiqlarini toping.</li>
-    <li><code>typingclub.com</code> yoki <code>ratatype.com</code> da 1–10 darslarni bajaring.</li>
-    <li>1 daqiqalik WPM testidan o'tib, tezlik va aniqlik natijangizni yozib oling.</li>
-  </ol>
-  
-</section>
-
-<!-- SLIDE 18: Xulosa -->
-<section>
-  <h2>Bugungi dars xulosasi</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <h3>Biz o'rgandik:</h3>
-      <ul>
-        <li>Klaviatura guruhlari va ergonomika</li>
-        <li>Touch typing va Home row (ASDF - JKL;)</li>
-        <li>F va J taktil bo'rtiqlari siri</li>
-        <li>WPM va Accuracy metrikalari</li>
-      </ul>
-    </div>
-    <div class="card fragment">
-      <h3>Keyingi darsda:</h3>
-      <p><strong>8-dars:</strong> Raqamli savodxonlik va raqamli madaniyat. Internetda muloqot odobi (Netiket), raqamli iz va feyk ma'lumotlarni aniqlash.</p>
-    </div>
-  </div>
-  
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Klaviaturada tez va to‘g‘ri yozish</h1></header>
+<div class="badges"><span class="badge">8-sinf</span><span class="badge">Foundation</span><span class="badge">3-hafta · 7-dars</span><span class="badge">Touch typing usuli, 10 barmoq xaritasi va to'g'ri ergonomika</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Nima sababdan F va J tugmalarida kichik taktil bo'rtiqlar (chiziqchalar) mavjud?", "o": ["Zavodda xato qilingani uchun", "Klaviaturaga qaramasdan barmoqlarni tayanch qatorga qo'yish uchun", "Faqat tezkor o'yinlar o'ynash uchun"], "a": 1, "e": "To'g'ri! F va J bo'rtiqlari ko'rsatkich barmoqlarni ko'rmasdan turib tayanch pozitsiyaga (ASDF - JKL;) qaytarish uchun nishon hisoblanadi."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

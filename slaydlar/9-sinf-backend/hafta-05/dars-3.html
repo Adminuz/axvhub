@@ -1,343 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>Dictionary: kalit va qiymat</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Dictionary: kalit va qiymat</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-      <!-- 1. SARLAVHA -->
-      <section class="hero">
-        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-        <h1>Dictionary: kalit va qiymat</h1>
-        <p class="muted">Kalit bilan bir zumda topamiz va beshta tuzilmani bitta loyihada birlashtiramiz</p>
-        <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">5-hafta · 15-dars</span>
-        
-      </section>
-
-      <!-- 2. REJA -->
-      <section>
-        <h2>Bugun nimalarni o‘rganamiz?</h2>
-        <div class="cards three">
-          <div class="card fragment fade-up"><div class="icon"><i data-ic="key-round" data-anim="float"></i></div><h3>Dict nima?</h3><p><code>key: value</code> juftliklar va 4 ta xususiyat</p></div>
-          <div class="card fragment fade-up"><div class="icon"><i data-ic="search" data-anim="pulse"></i></div><h3>Murojaat va o‘zgartirish</h3><p><code>d["key"]</code>, <code>get()</code>, yangilash, qo‘shish</p></div>
-          <div class="card fragment fade-up"><div class="icon"><i data-ic="graduation-cap" data-anim="bounce"></i></div><h3>Loyiha</h3><p>«Talabalar ma’lumotlari»: 5 ta tuzilma birga</p></div>
-        </div>
-      </section>
-
-      <!-- 3. HAYOTIY MISOLLAR -->
-      <section>
-        <h2>Kalit-qiymat hamma joyda</h2>
-        <div class="cards three">
-          <div class="card fragment"><div class="icon"><i data-ic="book"></i></div><h3>Lug‘at</h3><p>so‘z -&gt; tarjima<br><code>"book"</code> -&gt; <code>"kitob"</code></p></div>
-          <div class="card fragment"><div class="icon"><i data-ic="contact"></i></div><h3>Kontaktlar</h3><p>ism -&gt; raqam<br><code>"Ona"</code> -&gt; <code>"+99890..."</code></p></div>
-          <div class="card fragment"><div class="icon"><i data-ic="user"></i></div><h3>Profil</h3><p>maydon -&gt; qiymat<br><code>"username"</code> -&gt; <code>"ali_2011"</code></p></div>
-        </div>
-        
-      </section>
-
-      <!-- 4. SEC 01 -->
-      <section class="sec">
-        <div class="num">01</div>
-        <h1>Dictionary nima?</h1>
-        <p>key: value juftliklarda saqlanadigan tuzilma</p>
-      </section>
-
-      <!-- 5. SVG 1: DICT ANATOMIYASI -->
-      <section>
-        <h2>Dict anatomiyasi (1.80-rasm)</h2>
-        <div class="illus">
-          <svg viewBox="0 0 1000 380">
-            <text class="t-head" x="40" y="60" font-size="30">user = {</text>
-            <g class="fragment" data-tip="Kalit (key): unikal nom, odatda string">
-              <rect class="fa" x="90" y="90" width="260" height="70" rx="14"/><text class="t-head" x="220" y="136" text-anchor="middle" font-size="28">"name"</text>
-              <rect class="fa" x="90" y="175" width="260" height="70" rx="14"/><text class="t-head" x="220" y="221" text-anchor="middle" font-size="28">"age"</text>
-              <rect class="fa" x="90" y="260" width="260" height="70" rx="14"/><text class="t-head" x="220" y="306" text-anchor="middle" font-size="28">"city"</text>
-              <text class="t-accent" x="220" y="370" text-anchor="middle" font-size="24">key (kalit)</text>
-            </g>
-            <g class="fragment">
-              <text class="t-head" x="390" y="136" font-size="32">:</text><line class="la flowing" x1="410" y1="125" x2="540" y2="125"/>
-              <text class="t-head" x="390" y="221" font-size="32">:</text><line class="la flowing" x1="410" y1="210" x2="540" y2="210"/>
-              <text class="t-head" x="390" y="306" font-size="32">:</text><line class="la flowing" x1="410" y1="295" x2="540" y2="295"/>
-            </g>
-            <g class="fragment" data-tip="Qiymat (value): istalgan tur - son, matn, list, tuple...">
-              <rect class="fb" x="560" y="90" width="300" height="70" rx="14"/><text class="t-head" x="710" y="136" text-anchor="middle" font-size="28">"Ali"</text>
-              <rect class="fb" x="560" y="175" width="300" height="70" rx="14"/><text class="t-head" x="710" y="221" text-anchor="middle" font-size="28">15</text>
-              <rect class="fb" x="560" y="260" width="300" height="70" rx="14"/><text class="t-head" x="710" y="306" text-anchor="middle" font-size="28">"Toshkent"</text>
-              <text class="t-accent" x="710" y="370" text-anchor="middle" font-size="24">value (qiymat)</text>
-            </g>
-            <text class="t-head" x="900" y="306" font-size="30">}</text>
-          </svg>
-        </div>
-        
-      </section>
-
-      <!-- 6. XUSUSIYATLAR -->
-      <section>
-        <h2>Dict xususiyatlari</h2>
-        <div class="cards four">
-          <div class="card fragment fade-up"><div class="icon"><i data-ic="search"></i></div><h3>Tez topiladi</h3><p>Kalit orqali bir zumda</p></div>
-          <div class="card fragment fade-up"><div class="icon"><i data-ic="settings" data-anim="spin"></i></div><h3>Mutable</h3><p>Yangilash, qo‘shish, o‘chirish</p></div>
-          <div class="card fragment fade-up"><div class="icon"><i data-ic="key"></i></div><h3>Kalit unikal</h3><p>Bir xil kalit ikki marta bo‘lmaydi</p></div>
-          <div class="card fragment fade-up"><div class="icon"><i data-ic="list"></i></div><h3>Tartib saqlanadi</h3><p>Python 3.7+ da kiritilgan tartib</p></div>
-        </div>
-      </section>
-
-      <!-- 7. SEC 02 -->
-      <section class="sec">
-        <div class="num">02</div>
-        <h1>Murojaat va o‘zgartirish</h1>
-        <p>d["key"], get(), yangilash va qo‘shish</p>
-      </section>
-
-      <!-- 8. KALIT ORQALI OLISH -->
-      <section>
-        <h2>Kalit orqali qiymat olish (1.81-rasm)</h2>
-        <pre><code class="language-python" data-trim data-line-numbers="1|2|3">
-user = {"name": "Ali", "age": 15, "city": "Toshkent"}
-print(user["name"])    # Ali
-print(user["phone"])
-        </code></pre>
-        <pre class="terminal fragment"><code class="language-bash">KeyError: 'phone'</code></pre>
-        <div class="callout bad fragment"><i data-ic="triangle-alert" data-anim="wiggle"></i>Kalit bo‘lmasa - xato, dastur to‘xtaydi.</div>
-      </section>
-
-      <!-- 9. SWAP: [] vs get -->
-      <section>
-        <h2>Xatosiz yo‘l: get()</h2>
-        <div class="swap">
-          <div class="swap-tabs"><button type="button">d["key"]</button><button type="button">d.get()</button></div>
-          <div class="swap-p"><div class="card"><h3><code>user["phone"]</code></h3><p>Kalit yo‘q -&gt; <code>KeyError</code>. Dastur shu joyda to‘xtaydi.</p></div></div>
-          <div class="swap-p"><div class="card accent"><h3><code>user.get("phone", "yo'q")</code></h3><p>Kalit yo‘q -&gt; <code>"yo'q"</code> qaytadi. Kod ishini to‘xtatmaydi.</p></div></div>
-        </div>
-        <div class="callout tip mt"><i data-ic="lightbulb"></i>Kalit <b>aniq bor</b> bo‘lsa <code>[ ]</code>, <b>bo‘lmasligi mumkin</b> bo‘lsa <code>get()</code>.</div>
-      </section>
-
-      <!-- 10. YANGILASH / QO'SHISH (auto-animate) -->
-      <section data-auto-animate>
-        <h2>Yangilash va qo‘shish (1.82-rasm)</h2>
-        <pre data-id="upd"><code class="language-python" data-trim>
-user = {"name": "Ali", "age": 15}
-        </code></pre>
-      </section>
-      <section data-auto-animate>
-        <h2>Yangilash va qo‘shish (1.82-rasm)</h2>
-        <pre data-id="upd"><code class="language-python" data-trim data-line-numbers="1|2|3|4">
-user = {"name": "Ali", "age": 15}
-user["age"] = 23           # bor kalit: yangilanadi
-user["phone"] = "+99890"   # yangi kalit: qo'shiladi
-print(user)  # {'name': 'Ali', 'age': 23, 'phone': '+99890'}
-        </code></pre>
-        
-      </section>
-
-      <!-- 11. SVG 2: YANGILASH yoki QO'SHISH qaror sxemasi -->
-      <section>
-        <h2>d[key] = value: Python qanday qaror qiladi?</h2>
-        <div class="illus">
-          <svg viewBox="0 0 1000 360">
-            <rect class="fn" x="360" y="20" width="280" height="70" rx="14"/>
-            <text class="t-head" x="500" y="66" text-anchor="middle" font-size="26">d["age"] = 23</text>
-            <g class="fragment">
-              <line class="ln" x1="500" y1="90" x2="500" y2="130"/>
-              <rect class="fb pulse" x="330" y="130" width="340" height="70" rx="35"/>
-              <text class="t-head" x="500" y="175" text-anchor="middle" font-size="26">"age" kaliti bormi?</text>
-            </g>
-            <g class="fragment">
-              <line class="lg flowing" x1="400" y1="200" x2="230" y2="260"/>
-              <text class="t-accent" x="280" y="225" text-anchor="middle" font-size="22">ha</text>
-              <rect class="fg" x="60" y="260" width="340" height="80" rx="16"/>
-              <text class="t-head" x="230" y="310" text-anchor="middle" font-size="26">qiymat yangilanadi</text>
-            </g>
-            <g class="fragment">
-              <line class="la flowing" x1="600" y1="200" x2="770" y2="260"/>
-              <text class="t-accent" x="720" y="225" text-anchor="middle" font-size="22">yo‘q</text>
-              <rect class="fa" x="600" y="260" width="340" height="80" rx="16"/>
-              <text class="t-head" x="770" y="310" text-anchor="middle" font-size="26">yangi juftlik qo‘shiladi</text>
-            </g>
-          </svg>
-        </div>
-      </section>
-
-      <!-- 12. MINI-TEST 1 -->
-      <section>
-        <h2>Bashorat qiling</h2>
-        <div class="quiz">
-          <p class="q"><code>d = {"a": 1, "b": 2}</code>; <code>d["a"] = 10</code>; <code>d["c"] = 3</code>. <code>len(d)</code> nimaga teng?</p>
-          <div class="opts">
-            <button class="opt" type="button"><code>2</code></button>
-            <button class="opt" type="button"><code>4</code></button>
-            <button class="opt" type="button" data-ok><code>3</code></button>
-            <button class="opt" type="button"><code>KeyError</code></button>
-          </div>
-          <div class="explain">"a" yangilandi (yangi kalit emas), "c" qo‘shildi: <code>{'a': 10, 'b': 2, 'c': 3}</code>.</div>
-        </div>
-      </section>
-
-      <!-- 13. DICT if/else o'rniga (vertikal) -->
-      <section>
-        <section>
-          <h2>if/else zanjiri o‘rniga dict (1.88-rasm)</h2>
-          <pre><code class="language-python" data-trim data-line-numbers="1|2|3">
-texts = {"uzl": "Salom!", "rus": "Привет!", "en": "Hello!"}
-til = "en"
-print(texts[til])   # Hello!
-          </code></pre>
-          <p class="fragment">Yangi til qo‘shish - bitta qator. <span class="muted">Taqqoslash uchun pastga</span></p>
-          
-        </section>
-        <section>
-          <h2>Xuddi shu - if/else bilan</h2>
-          <pre><code class="language-python" data-trim>
-if til == "uzl":
-    print("Salom!")
-elif til == "rus":
-    print("Привет!")
-elif til == "en":
-    print("Hello!")
-          </code></pre>
-          <div class="callout warn"><i data-ic="triangle-alert"></i>Variant ko‘paysa, kod uzun va chalkash bo‘ladi.</div>
-        </section>
-      </section>
-
-      <!-- 14. SEC 03 -->
-      <section class="sec">
-        <div class="num">03</div>
-        <h1>Beshta tuzilma birga</h1>
-        <p>«Talabalar ma’lumotlari» loyihasi</p>
-      </section>
-
-      <!-- 15. SVG 3: 5 TUZILMA XARITASI -->
-      <section>
-        <h2>Qaysi ma’lumot - qaysi tuzilmada?</h2>
-        <div class="illus">
-          <svg viewBox="0 0 1000 400">
-            <g class="fragment" data-tip="string: ism va familiya"><rect class="fa" x="20" y="30" width="180" height="120" rx="16"/><text class="t-head" x="110" y="80" text-anchor="middle" font-size="26">string</text><text class="t-muted" x="110" y="120" text-anchor="middle" font-size="22">ism</text></g>
-            <g class="fragment" data-tip="list: o'zgaradigan fanlar ro'yxati"><rect class="fc" x="215" y="30" width="180" height="120" rx="16"/><text class="t-head" x="305" y="80" text-anchor="middle" font-size="26">list</text><text class="t-muted" x="305" y="120" text-anchor="middle" font-size="22">fanlar</text></g>
-            <g class="fragment" data-tip="tuple: o'zgarmas shaxsiy ma'lumot"><rect class="fb" x="410" y="30" width="180" height="120" rx="16"/><text class="t-head" x="500" y="80" text-anchor="middle" font-size="26">tuple</text><text class="t-muted" x="500" y="120" text-anchor="middle" font-size="22">tug‘ilgan yil</text></g>
-            <g class="fragment" data-tip="set: takrorlanuvchi baholarni tartibga solish"><rect class="fg" x="605" y="30" width="180" height="120" rx="16"/><text class="t-head" x="695" y="80" text-anchor="middle" font-size="26">set</text><text class="t-muted" x="695" y="120" text-anchor="middle" font-size="22">baholar</text></g>
-            <g class="fragment">
-              <line class="la flowing" x1="110" y1="150" x2="500" y2="260"/>
-              <line class="lc flowing" x1="305" y1="150" x2="500" y2="260"/>
-              <line class="lb flowing" x1="500" y1="150" x2="500" y2="260"/>
-              <line class="lg flowing" x1="695" y1="150" x2="500" y2="260"/>
-              <rect class="fn pulse" x="300" y="260" width="400" height="110" rx="20"/>
-              <text class="t-head" x="500" y="308" text-anchor="middle" font-size="30">dict: talaba</text>
-              <text class="t-muted" x="500" y="346" text-anchor="middle" font-size="22">hammasi bitta joyda</text>
-            </g>
-            <g class="fragment"><rect class="fn" x="800" y="30" width="180" height="120" rx="16"/><text class="t-accent" x="890" y="80" text-anchor="middle" font-size="24">get()</text><text class="t-muted" x="890" y="120" text-anchor="middle" font-size="22">telefon?</text></g>
-          </svg>
-        </div>
-        
-      </section>
-
-      <!-- 16. STEPPER: LOYIHA QADAMLARI -->
-      <section>
-        <h2>Loyiha qadam-baqadam</h2>
-        <div class="stepper">
-          <div class="stp on"><div class="card"><h3>1. string va list</h3><pre><code class="language-python">ism = "Ali"; familiya = "Valiyev"
-fanlar = ["Matematika", "Informatika"]
-fanlar.append("Fizika")</code></pre></div></div>
-          <div class="stp"><div class="card"><h3>2. tuple va set</h3><pre><code class="language-python">shaxsiy = (2011, "AB1234567")
-baholar = sorted(set([5, 4, 5, 5, 3]))
-# [3, 4, 5]</code></pre></div></div>
-          <div class="stp"><div class="card"><h3>3. dict ga jamlash</h3><pre><code class="language-python">talaba = {"toliq_ism": ism + " " + familiya,
-          "fanlar": fanlar, "shaxsiy": shaxsiy,
-          "baholar": baholar}
-talaba["sinf"] = "9-sinf"</code></pre></div></div>
-          <div class="stp"><div class="card"><h3>4. Natijani chiqarish</h3><pre><code class="language-python">print("Talaba:", talaba["toliq_ism"])
-print("Yil:", talaba["shaxsiy"][0])
-print("Tel:", talaba.get("telefon", "kiritilmagan"))</code></pre></div></div>
-        </div>
-        
-      </section>
-
-      <!-- 17. SVG 4 / NATIJA (browser emas, terminal) -->
-      <section>
-        <h2>Kutiladigan natija</h2>
-        <pre class="terminal"><code class="language-bash">$ python3 talaba.py
-Talaba: Ali Valiyev
-Fanlar soni: 4
-Tug'ilgan yil: 2011
-Turli baholar: [3, 4, 5]
-Telefon: kiritilmagan
-Sinf: 9-sinf</code></pre>
-        <div class="stats mt">
-          <div class="stat"><div class="v"><span class="count" data-to="5">0</span></div><div class="l">tuzilma bitta dasturda</div></div>
-          <div class="stat"><div class="v"><span class="count" data-to="15">0</span></div><div class="l">dars ortda qoldi</div></div>
-        </div>
-      </section>
-
-      <!-- 18. TAQQOSLASH JADVALI -->
-      <section>
-        <h2>Beshta tuzilma: yakuniy xarita</h2>
-        <table>
-          <thead><tr><th>Tuzilma</th><th>Ko‘rinishi</th><th>O‘zgaradimi?</th><th>Qachon</th></tr></thead>
-          <tbody>
-            <tr class="fragment"><td>string</td><td><code>"Ali"</code></td><td>Yo‘q</td><td>Matn, ism</td></tr>
-            <tr class="fragment"><td>list</td><td><code>[1, 2, 3]</code></td><td>Ha</td><td>Tartibli ro‘yxat</td></tr>
-            <tr class="fragment"><td>tuple</td><td><code>(41.3, 69.2)</code></td><td>Yo‘q</td><td>O‘zgarmas yozuv</td></tr>
-            <tr class="fragment"><td>set</td><td><code>{5, 4}</code></td><td>Ha</td><td>Takrorsiz to‘plam</td></tr>
-            <tr class="fragment"><td>dict</td><td><code>{"ism": "Ali"}</code></td><td>Ha</td><td>Kalit bo‘yicha topish</td></tr>
-          </tbody>
-        </table>
-      </section>
-
-      <!-- 19. MINI-TEST 2 -->
-      <section>
-        <h2>Mini-test</h2>
-        <div class="quiz">
-          <p class="q">O‘quvchining tug‘ilgan yili va guvohnoma raqami (o‘zgarmaydi) uchun eng mos tuzilma?</p>
-          <div class="opts">
-            <button class="opt" type="button">list</button>
-            <button class="opt" type="button" data-ok>tuple</button>
-            <button class="opt" type="button">set</button>
-            <button class="opt" type="button">string</button>
-          </div>
-          <div class="explain">O‘zgarmas shaxsiy ma’lumot - tuple. Rasmiy loyiha talabi ham shunday.</div>
-        </div>
-      </section>
-
-      <!-- 20. AMALIYOT -->
-      <section>
-        <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>25 daqiqa</span></h2>
-        <div class="task"><span class="level easy">Oson</span><code>ism</code>, <code>yosh</code>, <code>shahar</code> bilan dict yarating; <code>telefon</code> ni <code>get()</code> bilan oling.</div>
-        <div class="task"><span class="level mid">O'rta</span>Til kodi bo‘yicha salomlashuv: <code>texts.get(kod, "Til topilmadi")</code>.</div>
-        <div class="task"><span class="level hard">Qiyin</span>«Talabalar ma’lumotlari» loyihasini o‘z ma’lumotlaringiz bilan yozing, yangi kalit qo‘shing.</div>
-      </section>
-
-      <!-- 21. XULOSA -->
-      <section>
-        <h2>Xulosa</h2>
-        <div class="cards two">
-          <div class="card"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Bugun o‘rgandik</h3><p><code>key: value</code>, <code>d["key"]</code> va <code>KeyError</code>, <code>get()</code>, yangilash va qo‘shish. 5 ta tuzilma bitta loyihada.</p></div>
-          <div class="card"><div class="icon"><i data-ic="book-open"></i></div><h3>Uyga vazifa</h3><p><code>lugat.py</code> va loyihani yakunlash: yangi fan va <code>telefon</code> kaliti.</p></div>
-        </div>
-        <p class="fragment mt">Keyingi hafta: <b>DRY prinsipi va funksiyalar</b> - takroriy kodni bitta joyga yig‘amiz.</p>
-      </section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Dictionary: kalit va qiymat</h1></header>
+<div class="badges"><span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">5-hafta · 15-dars</span><span class="badge">Kalit bilan bir zumda topamiz va beshta tuzilmani bitta loyihada birlashtiramiz</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "<code>d = {\"a\": 1, \"b\": 2}<\/code>; <code>d[\"a\"] = 10<\/code>; <code>d[\"c\"] = 3<\/code>. <code>len(d)<\/code> nimaga teng?", "o": ["<code>2<\/code>", "<code>4<\/code>", "<code>3<\/code>", "<code>KeyError<\/code>"], "a": 2, "e": "\"a\" yangilandi (yangi kalit emas), \"c\" qo‘shildi: <code>{'a': 10, 'b': 2, 'c': 3}<\/code>."}, {"q": "O‘quvchining tug‘ilgan yili va guvohnoma raqami (o‘zgarmaydi) uchun eng mos tuzilma?", "o": ["list", "tuple", "set", "string"], "a": 1, "e": "O‘zgarmas shaxsiy ma’lumot - tuple. Rasmiy loyiha talabi ham shunday."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

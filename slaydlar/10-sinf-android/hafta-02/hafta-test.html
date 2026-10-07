@@ -1,331 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>2-hafta testi</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>2-hafta testi</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>2-hafta testi</h1>
-  <p class="muted">20 ta savol &middot; taxminan 18 daqiqa</p>
-  <span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">2-hafta</span>
-  
-</section>
-
-<section>
-  <h2>Savol 1/20</h2>
-  <div class="quiz">
-    <p class="q">Tranzitiv bog'liqliklar bilan ishlashning asosiy qulayligi nima?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Har bir yordamchi modulni alohida qidirib ulash shart emas</button>
-      <button class="opt" type="button">Hech qachon ziddiyat chiqmaydi</button>
-      <button class="opt" type="button">APK hajmi doim kichik bo'ladi</button>
-      <button class="opt" type="button">Internet kerak emas</button>
-    </div>
-    <div class="explain">Ammo loyiha kattalashganda turli versiyalar ziddiyatga olib keladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 2/20</h2>
-  <div class="quiz">
-    <p class="q">Daraxtni <code>releaseRuntimeClasspath</code> bo'yicha ko'rish buyrug'ida nima ko'rsatiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Faqat test kutubxonalar</button>
-      <button class="opt" type="button" data-ok>Release ilova ishlaganda ulanadigan kutubxonalar zanjiri</button>
-      <button class="opt" type="button">Git tarixi</button>
-      <button class="opt" type="button">Manifest</button>
-    </div>
-    <div class="explain"><code>--configuration releaseRuntimeClasspath</code> parametri tahlil qilinadigan konfiguratsiyani tanlaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 3/20</h2>
-  <div class="quiz">
-    <p class="q"><code>failOnVersionConflict()</code> nima qiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Eng yuqori versiyani tanlaydi</button>
-      <button class="opt" type="button">Konfliktni yashiradi</button>
-      <button class="opt" type="button" data-ok>Ziddiyat bo'lsa, loyihani yig'ishni to'xtatadi</button>
-      <button class="opt" type="button">Kutubxonani o'chiradi</button>
-    </div>
-    <div class="explain">Ziddiyatni e'tibordan chetda qoldirmaslik uchun ishlatiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 4/20</h2>
-  <div class="quiz">
-    <p class="q">BOM bilan Firebase modullarini ulaganda <code>firebase-auth</code> qatorida nima yozilmaydi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Group ID</button>
-      <button class="opt" type="button">Artifact ID</button>
-      <button class="opt" type="button"><code>implementation</code> so'zi</button>
-      <button class="opt" type="button" data-ok>Versiya raqami</button>
-    </div>
-    <div class="explain">Versiyani BOM o'zi mos holda tanlaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 5/20</h2>
-  <div class="quiz">
-    <p class="q">Retrofit → OkHttp → Okio zanjirida Okio qanday kutubxona hisoblanadi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Tranzitiv bog'liqlik</button>
-      <button class="opt" type="button">To'g'ridan-to'g'ri ulangan</button>
-      <button class="opt" type="button">Test kutubxonasi</button>
-      <button class="opt" type="button">Plagin</button>
-    </div>
-    <div class="explain">Dasturchi uni yozmagan, u zanjir orqali kelgan.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 6/20</h2>
-  <div class="quiz">
-    <p class="q">Qaysi yozuv noto'g'ri amaliyot?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>force</code> bilan bitta versiyani belgilash</button>
-      <button class="opt" type="button" data-ok>Bir kutubxonaning <code>okhttp:3.12.0</code> va <code>okhttp:4.12.0</code> versiyalarini qo'lda birga kiritish</button>
-      <button class="opt" type="button">BOM ishlatish</button>
-      <button class="opt" type="button"><code>exclude</code> dan keyin sinab ko'rish</button>
-    </div>
-    <div class="explain">Bu tushunmovchilik va ziddiyatga olib keladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 7/20</h2>
-  <div class="quiz">
-    <p class="q">R8 Tree Shaking tahlilini qaysi nuqtadan boshlaydi?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>settings.gradle</code> dan</button>
-      <button class="opt" type="button">Eng katta fayldan</button>
-      <button class="opt" type="button" data-ok>Ilovaning kirish nuqtasidan, odatda <code>MainActivity</code></button>
-      <button class="opt" type="button">Resurs papkasidan</button>
-    </div>
-    <div class="explain">U yerdan chaqirilmagan hamma narsa ortiqcha hisoblanadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 8/20</h2>
-  <div class="quiz">
-    <p class="q">JADX yoki APKTool nima uchun xavfli?</p>
-    <div class="opts">
-      <button class="opt" type="button">Ular ilovani sekinlashtiradi</button>
-      <button class="opt" type="button">Gradle ni buzadi</button>
-      <button class="opt" type="button">Kutubxonalarni o'chiradi</button>
-      <button class="opt" type="button" data-ok>Himoyalanmagan APK dan Kotlin/Java kodini dekompilyatsiya qilish mumkin</button>
-    </div>
-    <div class="explain">Obfuscation shu xavfni kamaytiradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 9/20</h2>
-  <div class="quiz">
-    <p class="q">Release uchun to'g'ri <code>buildTypes</code> sozlamasi qaysi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok><code>minifyEnabled true</code>, <code>shrinkResources true</code> va <code>proguardFiles ...</code></button>
-      <button class="opt" type="button">Faqat <code>debuggable true</code></button>
-      <button class="opt" type="button"><code>minifyEnabled false</code>, <code>shrinkResources true</code></button>
-      <button class="opt" type="button">Faqat <code>applicationIdSuffix</code></button>
-    </div>
-    <div class="explain"><code>shrinkResources</code> ishlashi uchun <code>minifyEnabled</code> ham yoqiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 10/20</h2>
-  <div class="quiz">
-    <p class="q">Ishlatilmagan rasm resurs shrinking'da nima bo'ladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Kattalashtiriladi</button>
-      <button class="opt" type="button" data-ok>APK dan olib tashlanadi yoki 1 baytli bo'sh fayl bilan almashtiriladi</button>
-      <button class="opt" type="button">Debug'ga ko'chiriladi</button>
-      <button class="opt" type="button">Nomi <code>a</code> ga o'zgaradi</button>
-    </div>
-    <div class="explain">Bu paket hajmini kamaytiradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 11/20</h2>
-  <div class="quiz">
-    <p class="q">Inline qilish nimani anglatadi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Funksiyani o'chirish</button>
-      <button class="opt" type="button">Funksiya nomini o'zgartirish</button>
-      <button class="opt" type="button" data-ok>Funksiya chaqiruvini uning tanasi bilan almashtirish</button>
-      <button class="opt" type="button">Funksiyani Java'ga o'tkazish</button>
-    </div>
-    <div class="explain">Bu Optimization bosqichidagi usullardan biri.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 12/20</h2>
-  <div class="quiz">
-    <p class="q"><code>@SerializedName</code> bilan belgilangan maydonlarni obfuskatsiyadan qaysi qoida asraydi?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>-dontwarn</code></button>
-      <button class="opt" type="button"><code>-keepattributes</code></button>
-      <button class="opt" type="button"><code>-assume</code></button>
-      <button class="opt" type="button" data-ok><code>-keepclassmembers</code></button>
-    </div>
-    <div class="explain">U klass nomini chalkashtirishga ruxsat beradi, lekin maydonlarni saqlaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 13/20</h2>
-  <div class="quiz">
-    <p class="q">Retrace vositasi nimani qiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok><code>mapping.txt</code> yordamida chalkash stacktrace'ni asl nomlarga qaytaradi</button>
-      <button class="opt" type="button">Kodni chalkashtiradi</button>
-      <button class="opt" type="button">APK imzolaydi</button>
-      <button class="opt" type="button">Kutubxona yuklaydi</button>
-    </div>
-    <div class="explain">Firebase Crashlytics va Google Play Console ham shu faylni qabul qiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 14/20</h2>
-  <div class="quiz">
-    <p class="q">Stacktrace'da <code>c.a.b.d.a()</code> ko'rinsa, bu nimani bildiradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Kutubxona versiyasi</button>
-      <button class="opt" type="button" data-ok>R8 chalkashtirgan klass va metod nomi, aniqlash uchun <code>mapping.txt</code> kerak</button>
-      <button class="opt" type="button">Fayl yo'li</button>
-      <button class="opt" type="button">Server manzili</button>
-    </div>
-    <div class="explain">Mapping lug'ati <code>AuthService -&gt; c.a.b.d</code> kabi moslikni saqlaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 15/20</h2>
-  <div class="quiz">
-    <p class="q"><code>tools:shrinkMode="strict"</code> qayerda yoziladi?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>settings.gradle</code> da</button>
-      <button class="opt" type="button"><code>gradle.properties</code> da</button>
-      <button class="opt" type="button" data-ok><code>res/raw/keep.xml</code> ichida</button>
-      <button class="opt" type="button"><code>AndroidManifest.xml</code> da <code>&lt;activity&gt;</code> ichida</button>
-    </div>
-    <div class="explain">Bu fayl resurslarni shrinking'dan saqlash qoidalarini beradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 16/20</h2>
-  <div class="quiz">
-    <p class="q">Qaysi holatda <code>@Keep</code> ni afzal ko'rasiz?</p>
-    <div class="opts">
-      <button class="opt" type="button">Faqat tashqi kutubxonani saqlash kerak bo'lganda</button>
-      <button class="opt" type="button">Hech qachon</button>
-      <button class="opt" type="button">Faqat rasmlar uchun</button>
-      <button class="opt" type="button" data-ok>Bir nechta data class'lar va ularning nomi/paketi tez-tez o'zgarganda</button>
-    </div>
-    <div class="explain">Qoida klass bilan birga yuradi, to'liq paket yo'lini yozish shart emas.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 17/20</h2>
-  <div class="quiz">
-    <p class="q"><code>exclude</code> yoki <code>force</code> bilan versiya tuzatildi, so'ng Release'da R8 yoqildi. Nega Release'ni alohida sinash kerak?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>R8 reflection ishlatuvchi kutubxonalarda faqat Release'da xato berishi mumkin</button>
-      <button class="opt" type="button">Debug umuman ishlamaydi</button>
-      <button class="opt" type="button">R8 versiyani o'zgartiradi</button>
-      <button class="opt" type="button">Gradle Sync buziladi</button>
-    </div>
-    <div class="explain">Dependency ziddiyati (4-dars) va R8 qoidalari (5-6 darslar) Release'da birga namoyon bo'ladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 18/20</h2>
-  <div class="quiz">
-    <p class="q">Retrofit va Gson ulangan loyihada Release crash berdi. Birinchi navbatda nima tekshiriladi?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>minSdk</code> ni</button>
-      <button class="opt" type="button" data-ok>Model klasslarga <code>@Keep</code> yoki <code>-keep</code> qoidasi borligini</button>
-      <button class="opt" type="button">Emulyator xotirasini</button>
-      <button class="opt" type="button">Git tarmog'ini</button>
-    </div>
-    <div class="explain">Gson refleksiya ishlatadi, R8 esa maydon nomlarini o'zgartirishi mumkin.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 19/20</h2>
-  <div class="quiz">
-    <p class="q">Qaysi birikma Release uchun to'g'ri ish tartibini beradi?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>mapping.txt</code> o'chirish, R8 yoqish</button>
-      <button class="opt" type="button">Faqat <code>force</code></button>
-      <button class="opt" type="button" data-ok>Versiyalar ziddiyatini hal qilish, R8 yoqish, <code>mapping.txt</code> ni saqlash</button>
-      <button class="opt" type="button">R8 ni Debug'da yoqish</button>
-    </div>
-    <div class="explain">Barqaror dependency, siqilgan kod va crash'larni deobfuskatsiya qilish uchun mapping kerak.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 20/20</h2>
-  <div class="quiz">
-    <p class="q"><code>minifyEnabled true</code> yoqilgan Release da bog'liqliklar daraxtini nima uchun ko'rish foydali?</p>
-    <div class="opts">
-      <button class="opt" type="button">Daraxt kodni chalkashtiradi</button>
-      <button class="opt" type="button">Daraxt <code>mapping.txt</code> yaratadi</button>
-      <button class="opt" type="button">Foydasi yo'q</button>
-      <button class="opt" type="button" data-ok>Qaysi kutubxonalar va versiyalar R8 tahliliga kirishini bilish uchun</button>
-    </div>
-    <div class="explain"><code>releaseRuntimeClasspath</code> Release ilovaga kiradigan kutubxonalarni ko'rsatadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Natijangiz</h2>
-  <div class="cards three">
-    <div class="card"><h3>20 dan 18+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
-    <div class="card"><h3>20 dan 12-17</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
-    <div class="card accent"><h3>11 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
-  </div>
-  <p class="small mt">Takrorlang: Tranzitiv bog'liqliklar va BOM (4-dars), R8 bosqichlari (5-dars), keep qoidalari va mapping.txt (6-dars).</p>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>2-hafta testi</h1></header>
+<div class="badges"><span class="badge">10-sinf</span><span class="badge">Advanced Android</span><span class="badge">2-hafta</span><span class="badge">20 ta savol &amp;middot; taxminan 18 daqiqa</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Tranzitiv bog'liqliklar bilan ishlashning asosiy qulayligi nima?", "o": ["Har bir yordamchi modulni alohida qidirib ulash shart emas", "Hech qachon ziddiyat chiqmaydi", "APK hajmi doim kichik bo'ladi", "Internet kerak emas"], "a": 0, "e": "Ammo loyiha kattalashganda turli versiyalar ziddiyatga olib keladi."}, {"q": "Daraxtni <code>releaseRuntimeClasspath<\/code> bo'yicha ko'rish buyrug'ida nima ko'rsatiladi?", "o": ["Faqat test kutubxonalar", "Release ilova ishlaganda ulanadigan kutubxonalar zanjiri", "Git tarixi", "Manifest"], "a": 1, "e": "<code>--configuration releaseRuntimeClasspath<\/code> parametri tahlil qilinadigan konfiguratsiyani tanlaydi."}, {"q": "<code>failOnVersionConflict()<\/code> nima qiladi?", "o": ["Eng yuqori versiyani tanlaydi", "Konfliktni yashiradi", "Ziddiyat bo'lsa, loyihani yig'ishni to'xtatadi", "Kutubxonani o'chiradi"], "a": 2, "e": "Ziddiyatni e'tibordan chetda qoldirmaslik uchun ishlatiladi."}, {"q": "BOM bilan Firebase modullarini ulaganda <code>firebase-auth<\/code> qatorida nima yozilmaydi?", "o": ["Group ID", "Artifact ID", "<code>implementation<\/code> so'zi", "Versiya raqami"], "a": 3, "e": "Versiyani BOM o'zi mos holda tanlaydi."}, {"q": "Retrofit → OkHttp → Okio zanjirida Okio qanday kutubxona hisoblanadi?", "o": ["Tranzitiv bog'liqlik", "To'g'ridan-to'g'ri ulangan", "Test kutubxonasi", "Plagin"], "a": 0, "e": "Dasturchi uni yozmagan, u zanjir orqali kelgan."}, {"q": "Qaysi yozuv noto'g'ri amaliyot?", "o": ["<code>force<\/code> bilan bitta versiyani belgilash", "Bir kutubxonaning <code>okhttp:3.12.0<\/code> va <code>okhttp:4.12.0<\/code> versiyalarini qo'lda birga kiritish", "BOM ishlatish", "<code>exclude<\/code> dan keyin sinab ko'rish"], "a": 1, "e": "Bu tushunmovchilik va ziddiyatga olib keladi."}, {"q": "R8 Tree Shaking tahlilini qaysi nuqtadan boshlaydi?", "o": ["<code>settings.gradle<\/code> dan", "Eng katta fayldan", "Ilovaning kirish nuqtasidan, odatda <code>MainActivity<\/code>", "Resurs papkasidan"], "a": 2, "e": "U yerdan chaqirilmagan hamma narsa ortiqcha hisoblanadi."}, {"q": "JADX yoki APKTool nima uchun xavfli?", "o": ["Ular ilovani sekinlashtiradi", "Gradle ni buzadi", "Kutubxonalarni o'chiradi", "Himoyalanmagan APK dan Kotlin/Java kodini dekompilyatsiya qilish mumkin"], "a": 3, "e": "Obfuscation shu xavfni kamaytiradi."}, {"q": "Release uchun to'g'ri <code>buildTypes<\/code> sozlamasi qaysi?", "o": ["<code>minifyEnabled true<\/code>, <code>shrinkResources true<\/code> va <code>proguardFiles ...<\/code>", "Faqat <code>debuggable true<\/code>", "<code>minifyEnabled false<\/code>, <code>shrinkResources true<\/code>", "Faqat <code>applicationIdSuffix<\/code>"], "a": 0, "e": "<code>shrinkResources<\/code> ishlashi uchun <code>minifyEnabled<\/code> ham yoqiladi."}, {"q": "Ishlatilmagan rasm resurs shrinking'da nima bo'ladi?", "o": ["Kattalashtiriladi", "APK dan olib tashlanadi yoki 1 baytli bo'sh fayl bilan almashtiriladi", "Debug'ga ko'chiriladi", "Nomi <code>a<\/code> ga o'zgaradi"], "a": 1, "e": "Bu paket hajmini kamaytiradi."}, {"q": "Inline qilish nimani anglatadi?", "o": ["Funksiyani o'chirish", "Funksiya nomini o'zgartirish", "Funksiya chaqiruvini uning tanasi bilan almashtirish", "Funksiyani Java'ga o'tkazish"], "a": 2, "e": "Bu Optimization bosqichidagi usullardan biri."}, {"q": "<code>@SerializedName<\/code> bilan belgilangan maydonlarni obfuskatsiyadan qaysi qoida asraydi?", "o": ["<code>-dontwarn<\/code>", "<code>-keepattributes<\/code>", "<code>-assume<\/code>", "<code>-keepclassmembers<\/code>"], "a": 3, "e": "U klass nomini chalkashtirishga ruxsat beradi, lekin maydonlarni saqlaydi."}, {"q": "Retrace vositasi nimani qiladi?", "o": ["<code>mapping.txt<\/code> yordamida chalkash stacktrace'ni asl nomlarga qaytaradi", "Kodni chalkashtiradi", "APK imzolaydi", "Kutubxona yuklaydi"], "a": 0, "e": "Firebase Crashlytics va Google Play Console ham shu faylni qabul qiladi."}, {"q": "Stacktrace'da <code>c.a.b.d.a()<\/code> ko'rinsa, bu nimani bildiradi?", "o": ["Kutubxona versiyasi", "R8 chalkashtirgan klass va metod nomi, aniqlash uchun <code>mapping.txt<\/code> kerak", "Fayl yo'li", "Server manzili"], "a": 1, "e": "Mapping lug'ati <code>AuthService -&gt; c.a.b.d<\/code> kabi moslikni saqlaydi."}, {"q": "<code>tools:shrinkMode=\"strict\"<\/code> qayerda yoziladi?", "o": ["<code>settings.gradle<\/code> da", "<code>gradle.properties<\/code> da", "<code>res/raw/keep.xml<\/code> ichida", "<code>AndroidManifest.xml<\/code> da <code>&lt;activity&gt;<\/code> ichida"], "a": 2, "e": "Bu fayl resurslarni shrinking'dan saqlash qoidalarini beradi."}, {"q": "Qaysi holatda <code>@Keep<\/code> ni afzal ko'rasiz?", "o": ["Faqat tashqi kutubxonani saqlash kerak bo'lganda", "Hech qachon", "Faqat rasmlar uchun", "Bir nechta data class'lar va ularning nomi/paketi tez-tez o'zgarganda"], "a": 3, "e": "Qoida klass bilan birga yuradi, to'liq paket yo'lini yozish shart emas."}, {"q": "<code>exclude<\/code> yoki <code>force<\/code> bilan versiya tuzatildi, so'ng Release'da R8 yoqildi. Nega Release'ni alohida sinash kerak?", "o": ["R8 reflection ishlatuvchi kutubxonalarda faqat Release'da xato berishi mumkin", "Debug umuman ishlamaydi", "R8 versiyani o'zgartiradi", "Gradle Sync buziladi"], "a": 0, "e": "Dependency ziddiyati (4-dars) va R8 qoidalari (5-6 darslar) Release'da birga namoyon bo'ladi."}, {"q": "Retrofit va Gson ulangan loyihada Release crash berdi. Birinchi navbatda nima tekshiriladi?", "o": ["<code>minSdk<\/code> ni", "Model klasslarga <code>@Keep<\/code> yoki <code>-keep<\/code> qoidasi borligini", "Emulyator xotirasini", "Git tarmog'ini"], "a": 1, "e": "Gson refleksiya ishlatadi, R8 esa maydon nomlarini o'zgartirishi mumkin."}, {"q": "Qaysi birikma Release uchun to'g'ri ish tartibini beradi?", "o": ["<code>mapping.txt<\/code> o'chirish, R8 yoqish", "Faqat <code>force<\/code>", "Versiyalar ziddiyatini hal qilish, R8 yoqish, <code>mapping.txt<\/code> ni saqlash", "R8 ni Debug'da yoqish"], "a": 2, "e": "Barqaror dependency, siqilgan kod va crash'larni deobfuskatsiya qilish uchun mapping kerak."}, {"q": "<code>minifyEnabled true<\/code> yoqilgan Release da bog'liqliklar daraxtini nima uchun ko'rish foydali?", "o": ["Daraxt kodni chalkashtiradi", "Daraxt <code>mapping.txt<\/code> yaratadi", "Foydasi yo'q", "Qaysi kutubxonalar va versiyalar R8 tahliliga kirishini bilish uchun"], "a": 3, "e": "<code>releaseRuntimeClasspath<\/code> Release ilovaga kiradigan kutubxonalarni ko'rsatadi."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

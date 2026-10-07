@@ -1,268 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>Flexbox</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Flexbox</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>Flexbox</h1>
-  <p class="muted">Elementlarni qatorga, ustunga va markazga joylash</p>
-  <span class="badge">8-sinf</span><span class="badge">Web Full-stack</span><span class="badge">5-hafta · 13-dars</span>
-  
-</section>
-
-<section>
-  <h2>Takrorlash</h2>
-  <div class="quiz">
-    <p class="q"><code>box-sizing: border-box</code> nima beradi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok><code>width</code> padding va border ni ham o'z ichiga oladi</button>
-      <button class="opt" type="button">Elementni markazlaydi</button>
-      <button class="opt" type="button">Chegarani yo'qotadi</button>
-      <button class="opt" type="button">Elementlarni yonma-yon qo'yadi</button>
-    </div>
-    <div class="explain">Quti aniq belgilangan o'lchamda qoladi. Yonma-yon qo'yish esa — bugungi mavzu.</div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="num">01</div>
-  <h1>Konteyner va element</h1>
-  <p>Ota-ona buyuradi, bolalar tiziladi</p>
-</section>
-
-<section>
-  <h2>Ota va bolalar</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 320">
-      <g data-tip="Flex konteyner — display: flex yozilgan ota element."><rect class="fn ln" x="80" y="40" width="840" height="220" rx="16" stroke-width="4"/><text class="t-muted" x="100" y="30" font-size="22">.qator { display: flex; }</text></g>
-      <g class="fragment" data-tip="Bevosita bolalar flex elementga aylanadi va asosiy o'q bo'yicha tiziladi."><rect class="fa la" x="120" y="80" width="200" height="140" rx="12" stroke-width="3"/><text class="t-head" x="220" y="160" text-anchor="middle" font-size="28">1</text><rect class="fb lb" x="350" y="80" width="200" height="140" rx="12" stroke-width="3"/><text class="t-head" x="450" y="160" text-anchor="middle" font-size="28">2</text><rect class="fc lc" x="580" y="80" width="200" height="140" rx="12" stroke-width="3"/><text class="t-head" x="680" y="160" text-anchor="middle" font-size="28">3</text></g>
-      <g class="fragment" data-tip="Nevara (bolaning ichidagi element) flex element emas — unga o'z ota-onasida display: flex kerak."><rect class="fg lg" x="600" y="180" width="80" height="30" rx="6" stroke-width="2"/><text class="t-accent" x="860" y="300" text-anchor="middle" font-size="22">nevara — flex emas</text><line class="lg" x1="690" y1="200" x2="820" y2="280" stroke-width="2" marker-end="url(#ar-g)"/></g>
-    </svg>
-  </div>
-</section>
-
-<section data-auto-animate>
-  <h2>Bitta qator CSS</h2>
-  <pre class="terminal" data-id="flex"><code class="language-css" data-trim data-noescape>
-.qator {
-  /* hali hech narsa */
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Flexbox</h1></header>
+<div class="badges"><span class="badge">8-sinf</span><span class="badge">Web Full-stack</span><span class="badge">5-hafta · 13-dars</span><span class="badge">Elementlarni qatorga, ustunga va markazga joylash</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "<code>box-sizing: border-box<\/code> nima beradi?", "o": ["<code>width<\/code> padding va border ni ham o'z ichiga oladi", "Elementni markazlaydi", "Chegarani yo'qotadi", "Elementlarni yonma-yon qo'yadi"], "a": 0, "e": "Quti aniq belgilangan o'lchamda qoladi. Yonma-yon qo'yish esa — bugungi mavzu."}, {"q": "<code>flex-direction: column<\/code> da <code>justify-content: center<\/code> qaysi yo'nalishda markazlaydi?", "o": ["Gorizontal", "Vertikal", "Hech qanday", "Diagonal"], "a": 1, "e": "column da asosiy o'q yuqoridan pastga — justify shu o'q bo'yicha."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
 }
-</code></pre>
-  <div class="cards three" data-id="qutilar" style="display:block"><div class="card">1</div><div class="card">2</div><div class="card">3</div></div>
-</section>
-
-<section data-auto-animate>
-  <h2>Bitta qator CSS</h2>
-  <pre class="terminal" data-id="flex"><code class="language-css" data-trim data-noescape>
-.qator {
-  display: flex;
-  gap: 16px;
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
-</code></pre>
-  <div class="cards three" data-id="qutilar"><div class="card">1</div><div class="card">2</div><div class="card">3</div></div>
-</section>
-
-<section class="sec">
-  <div class="num">02</div>
-  <h1>O'qlar va tekislash</h1>
-  <p>justify — asosiy o'q, align — ko'ndalang o'q</p>
-</section>
-
-<section>
-  <h2>Ikki o'q</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 320">
-      <rect class="fn ln" x="120" y="40" width="760" height="230" rx="14" stroke-width="3"/>
-      <g class="fragment" data-tip="Asosiy o'q (main axis): flex-direction: row da chapdan o'ngga. justify-content shu o'q bo'yicha ishlaydi."><line class="la flowing" x1="150" y1="155" x2="850" y2="155" stroke-width="5" marker-end="url(#ar-a)"/><text class="t-accent" x="500" y="140" text-anchor="middle" font-size="24">asosiy o'q · justify-content</text></g>
-      <g class="fragment" data-tip="Ko'ndalang o'q (cross axis): asosiy o'qqa perpendikulyar. align-items shu o'q bo'yicha."><line class="lb flowing" x1="190" y1="60" x2="190" y2="255" stroke-width="5" marker-end="url(#ar-b)"/><text class="t-head" x="210" y="240" font-size="22">ko'ndalang · align-items</text></g>
-      <g class="fragment"><text class="t-muted" x="500" y="305" text-anchor="middle" font-size="22">column da o'qlar joy almashadi</text></g>
-    </svg>
-  </div>
-</section>
-
-<section>
-  <h2><code>flex-direction</code></h2>
-  <table>
-    <thead><tr><th>Qiymat</th><th>Asosiy o'q</th></tr></thead>
-    <tbody>
-      <tr class="fragment"><td><code>row</code> (standart)</td><td>chapdan o'ngga →</td></tr>
-      <tr class="fragment"><td><code>row-reverse</code></td><td>o'ngdan chapga ←</td></tr>
-      <tr class="fragment"><td><code>column</code></td><td>yuqoridan pastga ↓</td></tr>
-      <tr class="fragment"><td><code>column-reverse</code></td><td>pastdan yuqoriga ↑</td></tr>
-    </tbody>
-  </table>
-</section>
-
-<section>
-  <h2><code>justify-content</code></h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 380">
-      <g data-tip="flex-start — hammasi boshida (standart)."><text class="t-muted" x="20" y="45" font-size="22">flex-start</text><rect class="ln" x="230" y="20" width="740" height="40" rx="6" stroke-width="2" fill="none"/><rect class="fa" x="235" y="25" width="80" height="30" rx="4"/><rect class="fa" x="320" y="25" width="80" height="30" rx="4"/><rect class="fa" x="405" y="25" width="80" height="30" rx="4"/></g>
-      <g class="fragment" data-tip="center — hammasi o'rtada."><text class="t-muted" x="20" y="120" font-size="22">center</text><rect class="ln" x="230" y="95" width="740" height="40" rx="6" stroke-width="2" fill="none"/><rect class="fb" x="475" y="100" width="80" height="30" rx="4"/><rect class="fb" x="560" y="100" width="80" height="30" rx="4"/><rect class="fb" x="645" y="100" width="80" height="30" rx="4"/></g>
-      <g class="fragment" data-tip="flex-end — hammasi oxirida."><text class="t-muted" x="20" y="195" font-size="22">flex-end</text><rect class="ln" x="230" y="170" width="740" height="40" rx="6" stroke-width="2" fill="none"/><rect class="fc" x="715" y="175" width="80" height="30" rx="4"/><rect class="fc" x="800" y="175" width="80" height="30" rx="4"/><rect class="fc" x="885" y="175" width="80" height="30" rx="4"/></g>
-      <g class="fragment" data-tip="space-between — chetlari devorga tegadi, oralar teng."><text class="t-muted" x="20" y="270" font-size="22">space-between</text><rect class="ln" x="230" y="245" width="740" height="40" rx="6" stroke-width="2" fill="none"/><rect class="fg" x="235" y="250" width="80" height="30" rx="4"/><rect class="fg" x="560" y="250" width="80" height="30" rx="4"/><rect class="fg" x="885" y="250" width="80" height="30" rx="4"/></g>
-      <g class="fragment" data-tip="space-around — har bir element atrofida teng joy; chetda ham bo'shliq qoladi."><text class="t-muted" x="20" y="345" font-size="22">space-around</text><rect class="ln" x="230" y="320" width="740" height="40" rx="6" stroke-width="2" fill="none"/><rect class="fa" x="313" y="325" width="80" height="30" rx="4"/><rect class="fa" x="560" y="325" width="80" height="30" rx="4"/><rect class="fa" x="807" y="325" width="80" height="30" rx="4"/></g>
-    </svg>
-  </div>
-</section>
-
-<section>
-  <h2><code>align-items</code> va <code>align-self</code></h2>
-  <div class="cards two">
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="align-vertical-justify-center" data-anim="pulse"></i></div><h3>align-items</h3><p>Hamma elementni ko'ndalang o'qda: <code>stretch</code> (standart), <code>flex-start</code>, <code>center</code>, <code>flex-end</code>, <code>baseline</code>.</p></div>
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="arrow-down-to-line"></i></div><h3>align-self</h3><p>Faqat bitta element: <code>.maxsus { align-self: flex-end; }</code></p></div>
-  </div>
-  <div class="callout warn mt fragment"><i data-ic="triangle-alert"></i>Konteynerda balandlik bo'lmasa, vertikal tekislash ko'rinmaydi.</div>
-</section>
-
-<section>
-  <h2>Markazlashning «oltin uchligi»</h2>
-  <pre class="terminal"><code class="language-css" data-trim data-noescape data-line-numbers="2|3|4|5">
-.markaz {
-  display: flex;
-  justify-content: center;  /* gorizontal */
-  align-items: center;      /* vertikal */
-  height: 300px;
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
 }
-</code></pre>
-</section>
-
-<section>
-  <h2>Mini-test</h2>
-  <div class="quiz">
-    <p class="q"><code>flex-direction: column</code> da <code>justify-content: center</code> qaysi yo'nalishda markazlaydi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Gorizontal</button>
-      <button class="opt" type="button" data-ok>Vertikal</button>
-      <button class="opt" type="button">Hech qanday</button>
-      <button class="opt" type="button">Diagonal</button>
-    </div>
-    <div class="explain">column da asosiy o'q yuqoridan pastga — justify shu o'q bo'yicha.</div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="num">03</div>
-  <h1>Ko'chirish va joyni bo'lish</h1>
-  <p>flex-wrap, gap, flex-grow / shrink / basis</p>
-</section>
-
-<section>
-  <h2><code>flex-wrap</code> va <code>gap</code></h2>
-  <div class="vs">
-    <div class="side fragment"><h3><i data-ic="minimize-2"></i> nowrap</h3>Standart: sig'masa ham bitta qatorda siqiladi.</div>
-    <div class="mid">VS</div>
-    <div class="side b fragment"><h3><i data-ic="grid-3x2" data-anim="float"></i> wrap</h3>Sig'magan element keyingi qatorga ko'chadi. <code>gap: 16px</code> — oralar.</div>
-  </div>
-</section>
-
-<section>
-  <section>
-    <h2>grow, shrink, basis</h2>
-    <table>
-      <thead><tr><th>Xususiyat</th><th>Ma'nosi</th><th>Standart</th></tr></thead>
-      <tbody>
-        <tr class="fragment"><td><code>flex-basis</code></td><td>boshlang'ich o'lcham</td><td><code>auto</code></td></tr>
-        <tr class="fragment"><td><code>flex-grow</code></td><td>bo'sh joydan ulush</td><td><code>0</code></td></tr>
-        <tr class="fragment"><td><code>flex-shrink</code></td><td>joy yetmasa siqilish</td><td><code>1</code></td></tr>
-      </tbody>
-    </table>
-    <p class="small">Pastga bosing: <code>flex: 1</code> va <code>flex: 3</code></p>
-  </section>
-  <section>
-    <h2>Joyni 1:3 bo'lish</h2>
-    <div class="stats">
-      <div class="stat"><div class="v"><span class="count" data-to="25" data-suf="%">0</span></div><div class="l">.sidebar { flex: 1 }</div></div>
-      <div class="stat"><div class="v"><span class="count" data-to="75" data-suf="%">0</span></div><div class="l">.kontent { flex: 3 }</div></div>
-    </div>
-    <p class="mt">1 + 3 = 4 ulush. <code>flex-shrink: 0</code> — logotip siqilmaydi.</p>
-  </section>
-</section>
-
-<section>
-  <h2>Ko'chadigan kartalar</h2>
-  <pre class="terminal"><code class="language-css" data-trim data-noescape data-line-numbers="1|2|3">
-.kartalar { display: flex; flex-wrap: wrap; gap: 16px; }
-.karta    { flex: 1 1 200px; padding: 20px; }
-/* boshlang'ich 200px: kengayadi, siqiladi, ko'chadi */
-</code></pre>
-</section>
-
-<section class="sec">
-  <div class="num">04</div>
-  <h1>Amaliyot</h1>
-  <p>Navigatsiya paneli</p>
-</section>
-
-<section>
-  <h2>Navigatsiya paneli</h2>
-  <pre class="terminal"><code class="language-css" data-trim data-noescape data-line-numbers="1-3|4|5">
-.nav   { display: flex;
-         justify-content: space-between;
-         align-items: center; height: 70px; }
-.menyu { display: flex; gap: 24px; }   /* havolalar — nevaralar! */
-.nav a { color: white; text-decoration: none; }
-</code></pre>
-  <div class="callout tip fragment"><i data-ic="lightbulb"></i>F12 → Elements: flex konteyner yonidagi <b>flex</b> belgisini bosing — o'qlar chizib ko'rsatiladi.</div>
-</section>
-
-<section>
-  <h2>Odatiy xatolar</h2>
-  <div class="cards two">
-    <div class="card fragment"><div class="icon"><i data-ic="circle-x"></i></div><h3>Noto'g'ri joy</h3><p><code>display: flex</code> elementlarga yozilgan — konteynerga yozing.</p></div>
-    <div class="card fragment"><div class="icon"><i data-ic="circle-x"></i></div><h3>Siqilgan kartalar</h3><p><code>flex-wrap</code> unutilgan — telefonda hamma bir qatorda.</p></div>
-  </div>
-</section>
-
-<section>
-  <h2>Amaliy topshiriqlar <span class="timer"><i data-ic="timer"></i>30 daqiqa</span></h2>
-  <div class="task"><span class="level easy">Oson</span>3 quti bir qatorda, markazda, oralari 20px.</div>
-  <div class="task"><span class="level mid">O'rta</span>Navigatsiya paneli: chapda logotip, o'ngda 4 havola.</div>
-  <div class="task"><span class="level hard">Qiyin</span>6 ta ko'chadigan karta + 1:3 sidebar va kontent.</div>
-</section>
-
-<section>
-  <h2>Dars xulosasi</h2>
-  <div class="cards three">
-    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Konteyner</h3><p><code>display: flex</code> ota elementga.</p></div>
-    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>O'qlar</h3><p>justify — asosiy, align — ko'ndalang.</p></div>
-    <div class="card fragment"><div class="icon"><i data-ic="circle-check"></i></div><h3>Moslashuv</h3><p><code>wrap</code>, <code>gap</code>, <code>flex: 1</code>.</p></div>
-  </div>
-</section>
-
-<section class="hero">
-  <div class="icon"><i data-ic="layout-grid" data-anim="pulse"></i></div>
-  <h1>Keyingi dars: CSS Grid</h1>
-  <p class="muted">Satr va ustunlardan iborat to'r — butun sahifa maketi</p>
-  <span class="badge">5-hafta · 14-dars</span>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

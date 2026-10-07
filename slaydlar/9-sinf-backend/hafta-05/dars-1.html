@@ -1,357 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>Tuple: o‘zgarmas ketma-ketlik</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Tuple: o‘zgarmas ketma-ketlik</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-      <!-- 1. SARLAVHA -->
-      <section class="hero">
-        <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-        <h1>Tuple: o‘zgarmas ketma-ketlik</h1>
-        <p class="muted">Koordinata, rang va sozlamalarni «muhrlab» saqlaymiz</p>
-        <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">5-hafta · 13-dars</span>
-        
-      </section>
-
-      <!-- 2. REJA -->
-      <section>
-        <h2>Bugun nimalarni o‘rganamiz?</h2>
-        <div class="cards three">
-          <div class="card fragment fade-up"><div class="icon"><i data-ic="lock" data-anim="float"></i></div><h3>Tuple nima?</h3><p>List bilan farqi va qachon ishlatiladi</p></div>
-          <div class="card fragment fade-up"><div class="icon"><i data-ic="brackets" data-anim="bounce"></i></div><h3>Yaratish va indeks</h3><p>Qavs, vergul, bitta elementli tuple, slicing</p></div>
-          <div class="card fragment fade-up"><div class="icon"><i data-ic="hash" data-anim="pulse"></i></div><h3>Metodlar</h3><p>count(), index() va list orqali o‘zgartirish</p></div>
-        </div>
-        
-      </section>
-
-      <!-- 3. TAKRORLASH -->
-      <section>
-        <h2>Eslaylik: 4-hafta</h2>
-        <div class="vs">
-          <div class="side fragment"><h3>string</h3><code>"Ali"</code> - belgilar ketma-ketligi. O‘zgarmas: <code>s[0] = "J"</code> xato beradi.</div>
-          <div class="mid">VS</div>
-          <div class="side b fragment"><h3>list</h3><code>[1, 2, 3]</code> - o‘zgaruvchan: <code>append()</code>, <code>insert()</code>, <code>pop()</code> ishlaydi.</div>
-        </div>
-        <p class="fragment mt">Bugungi savol: <b>list kabi tartibli, lekin string kabi o‘zgarmas</b> tuzilma bormi?</p>
-        
-      </section>
-
-      <!-- 4. SEC 01 -->
-      <section class="sec">
-        <div class="num">01</div>
-        <h1>Tuple nima?</h1>
-        <p>Tartibli, lekin o‘zgarmas elementlar to‘plami</p>
-      </section>
-
-      <!-- 5. TA'RIF -->
-      <section>
-        <h2>Ta’rif (rasmiy qo‘llanma, 1.67-rasm)</h2>
-        <div class="quote">Tuple - bu tartibli (ordered) elementlar to‘plami. Listga o‘xshaydi, lekin eng katta farqi: tuple o‘zgarmas (immutable).</div>
-        <pre><code class="language-python" data-trim data-line-numbers="1|2|3">
-talaba = ("Ali", "Valiyev", 2011)
-print(talaba)        # ('Ali', 'Valiyev', 2011)
-print(type(talaba))  # &lt;class 'tuple'&gt;
-        </code></pre>
-        
-      </section>
-
-      <!-- 6. SVG 1: LIST vs TUPLE o'xshatish -->
-      <section>
-        <h2>Daftar va muhrlangan hujjat</h2>
-        <div class="illus">
-          <svg viewBox="0 0 1000 380">
-            <g class="fragment" data-tip="List: qalam bilan yozilgan daftar. O'chirib qayta yozish, qo'shish mumkin.">
-              <rect class="fa" x="40" y="40" width="420" height="300" rx="22"/>
-              <text class="t-head" x="250" y="95" text-anchor="middle" font-size="32">list [ ]</text>
-              <rect class="fn" x="90" y="130" width="320" height="50" rx="10"/>
-              <text class="t-head" x="250" y="164" text-anchor="middle" font-size="24">"Python"</text>
-              <rect class="fn" x="90" y="195" width="320" height="50" rx="10"/>
-              <text class="t-accent" x="250" y="229" text-anchor="middle" font-size="24">"Linux" -&gt; "SQL"</text>
-              <text class="t-muted" x="250" y="295" text-anchor="middle" font-size="22">o‘zgartirsa bo‘ladi</text>
-            </g>
-            <g class="fragment" data-tip="Tuple: muhr bosilgan hujjat. Bir marta yozildi - endi o'zgarmaydi.">
-              <rect class="fb" x="540" y="40" width="420" height="300" rx="22"/>
-              <text class="t-head" x="750" y="95" text-anchor="middle" font-size="32">tuple ( )</text>
-              <rect class="fn" x="590" y="130" width="320" height="50" rx="10"/>
-              <text class="t-head" x="750" y="164" text-anchor="middle" font-size="24">41.31</text>
-              <rect class="fn" x="590" y="195" width="320" height="50" rx="10"/>
-              <text class="t-head" x="750" y="229" text-anchor="middle" font-size="24">69.28</text>
-              <circle class="fg pulse" cx="880" cy="290" r="34"/>
-              <text class="t-head" x="880" y="298" text-anchor="middle" font-size="22">muhr</text>
-              <text class="t-muted" x="700" y="298" text-anchor="middle" font-size="22">o‘zgarmaydi</text>
-            </g>
-          </svg>
-        </div>
-        <p class="small">Qismlar ustiga sichqoncha olib boring yoki bosing.</p>
-        
-      </section>
-
-      <!-- 7. QACHON ISHLATILADI (flip) -->
-      <section>
-        <h2>Qachon tuple ishlatiladi?</h2>
-        <div class="cards three">
-          <div class="flip" style="min-height:200px"><div class="flip-in">
-            <div class="face front"><div class="icon"><i data-ic="map-pin" data-anim="bounce"></i></div><h3>O‘zgarmas ma’lumot</h3><span class="flip-hint">bosing</span></div>
-            <div class="face back"><p>Koordinata <code>(41.31, 69.28)</code>, rang <code>(255, 128, 0)</code>, config (sozlamalar).</p></div>
-          </div></div>
-          <div class="flip" style="min-height:200px"><div class="flip-in">
-            <div class="face front"><div class="icon"><i data-ic="split"></i></div><h3>Bir nechta qiymat</h3><span class="flip-hint">bosing</span></div>
-            <div class="face back"><p>Funksiya bir nechta qiymat qaytarganda. Buni 6-haftada funksiyalarda ko‘ramiz.</p></div>
-          </div></div>
-          <div class="flip" style="min-height:200px"><div class="flip-in">
-            <div class="face front"><div class="icon"><i data-ic="id-card"></i></div><h3>«Record»</h3><span class="flip-hint">bosing</span></div>
-            <div class="face back"><p>Kichik struktura: <code>("Ali", "Valiyev", 2011)</code> - bitta odam haqida bog‘liq ma’lumot.</p></div>
-          </div></div>
-        </div>
-        
-      </section>
-
-      <!-- 8. SEC 02 -->
-      <section class="sec">
-        <div class="num">02</div>
-        <h1>Yaratish va indeks</h1>
-        <p>Qavs, vergul va slicing</p>
-      </section>
-
-      <!-- 9. YARATISH (auto-animate 1) -->
-      <section data-auto-animate>
-        <h2>Tuple yaratish (1.68-rasm)</h2>
-        <pre data-id="tcode"><code class="language-python" data-trim>
-fanlar = ("Matematika", "Fizika", "Informatika")
-        </code></pre>
-        <p class="muted">Qavslar <code>( )</code>, elementlar orasida vergul.</p>
-      </section>
-
-      <!-- 10. YARATISH (auto-animate 2) -->
-      <section data-auto-animate>
-        <h2>Tuple yaratish (1.68-rasm)</h2>
-        <pre data-id="tcode"><code class="language-python" data-trim data-line-numbers="1|2|3">
-fanlar = ("Matematika", "Fizika", "Informatika")
-print(fanlar)        # ('Matematika', 'Fizika', 'Informatika')
-print(len(fanlar))   # 3
-        </code></pre>
-        <div class="callout tip"><i data-ic="lightbulb"></i>Yaratish list’ga o‘xshaydi, faqat qavs boshqa: <code>[ ]</code> emas, <code>( )</code>.</div>
-      </section>
-
-      <!-- 11. SVG 2: BITTA ELEMENTLI TUPLE -->
-      <section>
-        <h2>Vergulning sirli kuchi (1.69-rasm)</h2>
-        <div class="illus">
-          <svg viewBox="0 0 1000 340">
-            <g class="fragment">
-              <rect class="fn" x="40" y="60" width="420" height="220" rx="20"/>
-              <text class="t-head" x="250" y="135" text-anchor="middle" font-size="44">a = (5)</text>
-              <line class="lb flowing" x1="250" y1="165" x2="250" y2="205"/>
-              <polygon class="ar-b" points="250,215 240,198 260,198"/>
-              <text class="t-accent" x="250" y="255" text-anchor="middle" font-size="28">&lt;class 'int'&gt;</text>
-            </g>
-            <g class="fragment">
-              <rect class="fg" x="540" y="60" width="420" height="220" rx="20"/>
-              <text class="t-head" x="750" y="135" text-anchor="middle" font-size="44">b = (5,)</text>
-              <circle class="fb pulse" cx="838" cy="122" r="14"/>
-              <line class="lg flowing" x1="750" y1="165" x2="750" y2="205"/>
-              <polygon class="ar-g" points="750,215 740,198 760,198"/>
-              <text class="t-accent" x="750" y="255" text-anchor="middle" font-size="28">&lt;class 'tuple'&gt;</text>
-            </g>
-          </svg>
-        </div>
-        <p class="fragment">Tuple’ni <b>qavs emas, vergul</b> yaratadi. Bitta elementda vergul shart!</p>
-        
-      </section>
-
-      <!-- 12. MINI-TEST 1 -->
-      <section>
-        <h2>Mini-test</h2>
-        <div class="quiz">
-          <p class="q">Qaysi yozuv bitta elementli <b>tuple</b> yaratadi?</p>
-          <div class="opts">
-            <button class="opt" type="button"><code>t = (7)</code></button>
-            <button class="opt" type="button"><code>t = [7]</code></button>
-            <button class="opt" type="button" data-ok><code>t = (7,)</code></button>
-            <button class="opt" type="button"><code>t = {7}</code></button>
-          </div>
-          <div class="explain">Vergul tuple yaratadi. <code>(7)</code> - int, <code>[7]</code> - list, <code>{7}</code> - set.</div>
-        </div>
-      </section>
-
-      <!-- 13. SVG 3: INDEKS VA SLICING -->
-      <section>
-        <section>
-          <h2>Indeks va slicing (1.70-rasm)</h2>
-          <div class="illus">
-            <svg viewBox="0 0 1000 340">
-              <g data-tip="Musbat indeks 0 dan boshlanadi">
-                <text class="t-muted" x="140" y="70" text-anchor="middle" font-size="24">0</text>
-                <text class="t-muted" x="320" y="70" text-anchor="middle" font-size="24">1</text>
-                <text class="t-muted" x="500" y="70" text-anchor="middle" font-size="24">2</text>
-                <text class="t-muted" x="680" y="70" text-anchor="middle" font-size="24">3</text>
-                <text class="t-muted" x="860" y="70" text-anchor="middle" font-size="24">4</text>
-              </g>
-              <rect class="fa" x="60" y="90" width="160" height="90" rx="14"/><text class="t-head" x="140" y="146" text-anchor="middle" font-size="28">"Dush"</text>
-              <rect class="fa" x="240" y="90" width="160" height="90" rx="14"/><text class="t-head" x="320" y="146" text-anchor="middle" font-size="28">"Sesh"</text>
-              <rect class="fa" x="420" y="90" width="160" height="90" rx="14"/><text class="t-head" x="500" y="146" text-anchor="middle" font-size="28">"Chor"</text>
-              <rect class="fa" x="600" y="90" width="160" height="90" rx="14"/><text class="t-head" x="680" y="146" text-anchor="middle" font-size="28">"Pay"</text>
-              <rect class="fa" x="780" y="90" width="160" height="90" rx="14"/><text class="t-head" x="860" y="146" text-anchor="middle" font-size="28">"Juma"</text>
-              <g data-tip="Manfiy indeks oxiridan sanaydi: -1 oxirgi element">
-                <text class="t-muted" x="140" y="215" text-anchor="middle" font-size="24">-5</text>
-                <text class="t-muted" x="320" y="215" text-anchor="middle" font-size="24">-4</text>
-                <text class="t-muted" x="500" y="215" text-anchor="middle" font-size="24">-3</text>
-                <text class="t-muted" x="680" y="215" text-anchor="middle" font-size="24">-2</text>
-                <text class="t-muted" x="860" y="215" text-anchor="middle" font-size="24">-1</text>
-              </g>
-              <g class="fragment"><rect class="fb" x="240" y="240" width="340" height="16" rx="8"/><text class="t-accent" x="410" y="300" text-anchor="middle" font-size="26">kunlar[1:3] -&gt; ('Sesh', 'Chor')</text></g>
-              <g class="fragment"><rect class="fg pulse" x="780" y="240" width="160" height="16" rx="8"/><text class="t-accent" x="860" y="300" text-anchor="middle" font-size="26">kunlar[-1]</text></g>
-            </svg>
-          </div>
-          <p class="small">Chuqurroq misollar uchun pastga</p>
-          
-        </section>
-        <section>
-          <h2>Indeks: kodda</h2>
-          <pre><code class="language-python" data-trim data-line-numbers="1|2-3|4">
-kunlar = ("Dush", "Sesh", "Chor", "Pay", "Juma")
-print(kunlar[0])     # Dush
-print(kunlar[-1])    # Juma
-print(kunlar[1:3])   # ('Sesh', 'Chor')
-          </code></pre>
-          <div class="callout tip"><i data-ic="lightbulb"></i>Slicing natijasi ham tuple bo‘ladi.</div>
-        </section>
-      </section>
-
-      <!-- 14. SEC 03 -->
-      <section class="sec">
-        <div class="num">03</div>
-        <h1>O‘zgarmaslik va metodlar</h1>
-        <p>TypeError, list orqali o‘zgartirish, count() va index()</p>
-      </section>
-
-      <!-- 15. XATO -->
-      <section>
-        <h2>Tuple’ni o‘zgartirib bo‘lmaydi (1.71-rasm)</h2>
-        <pre><code class="language-python" data-trim data-line-numbers="1|2">
-rang = (255, 128, 0)
-rang[0] = 100
-        </code></pre>
-        <pre class="terminal fragment"><code class="language-bash">TypeError: 'tuple' object does not support item assignment</code></pre>
-        <div class="callout bad fragment"><i data-ic="triangle-alert" data-anim="wiggle"></i>Tuple’da <code>append()</code>, <code>remove()</code> ham yo‘q - ular list metodlari.</div>
-        
-      </section>
-
-      <!-- 16. STEPPER: LIST ORQALI O'ZGARTIRISH -->
-      <section>
-        <h2>O‘zgartirish kerak bo‘lsa: 3 qadam</h2>
-        <div class="stepper">
-          <div class="stp on"><div class="card"><div class="icon"><i data-ic="lock-open" data-anim="draw"></i></div><h3>1. Listga aylantiramiz</h3><p><code>r = list(rang)</code> -&gt; <code>[255, 128, 0]</code></p></div></div>
-          <div class="stp"><div class="card"><div class="icon"><i data-ic="settings" data-anim="spin"></i></div><h3>2. O‘zgartiramiz</h3><p><code>r[0] = 100</code> -&gt; <code>[100, 128, 0]</code></p></div></div>
-          <div class="stp"><div class="card"><div class="icon"><i data-ic="lock"></i></div><h3>3. Yana tuple qilamiz</h3><p><code>rang = tuple(r)</code> -&gt; <code>(100, 128, 0)</code></p></div></div>
-        </div>
-        
-      </section>
-
-      <!-- 17. SVG 4: count va index -->
-      <section>
-        <h2>count() va index() (1.72, 1.73-rasm)</h2>
-        <div class="illus">
-          <svg viewBox="0 0 1000 360">
-            <text class="t-head" x="40" y="60" font-size="28">baholar = (5, 4, 5, 3, 5, 4)</text>
-            <g>
-              <rect class="fn" x="40" y="90" width="140" height="80" rx="12"/><text class="t-head" x="110" y="142" text-anchor="middle" font-size="32">5</text>
-              <rect class="fn" x="200" y="90" width="140" height="80" rx="12"/><text class="t-head" x="270" y="142" text-anchor="middle" font-size="32">4</text>
-              <rect class="fn" x="360" y="90" width="140" height="80" rx="12"/><text class="t-head" x="430" y="142" text-anchor="middle" font-size="32">5</text>
-              <rect class="fn" x="520" y="90" width="140" height="80" rx="12"/><text class="t-head" x="590" y="142" text-anchor="middle" font-size="32">3</text>
-              <rect class="fn" x="680" y="90" width="140" height="80" rx="12"/><text class="t-head" x="750" y="142" text-anchor="middle" font-size="32">5</text>
-              <rect class="fn" x="840" y="90" width="140" height="80" rx="12"/><text class="t-head" x="910" y="142" text-anchor="middle" font-size="32">4</text>
-            </g>
-            <g class="fragment">
-              <circle class="fg pulse" cx="110" cy="200" r="12"/><circle class="fg pulse" cx="430" cy="200" r="12"/><circle class="fg pulse" cx="750" cy="200" r="12"/>
-              <text class="t-accent" x="40" y="260" font-size="28">baholar.count(5) -&gt; 3</text>
-              <text class="t-muted" x="40" y="295" font-size="22">element necha marta uchraydi</text>
-            </g>
-            <g class="fragment">
-              <line class="lb flowing" x1="590" y1="180" x2="590" y2="225"/>
-              <polygon class="ar-b" points="590,235 580,218 600,218"/>
-              <text class="t-accent" x="560" y="270" font-size="28">baholar.index(3) -&gt; 3</text>
-              <text class="t-muted" x="560" y="305" font-size="22">birinchi uchragan indeks</text>
-            </g>
-          </svg>
-        </div>
-        
-      </section>
-
-      <!-- 18. MINI-TEST 2 -->
-      <section>
-        <h2>Bashorat qiling</h2>
-        <div class="quiz">
-          <p class="q"><code>t = (10, 20, 30, 20)</code> bo‘lsa, <code>t.index(20)</code> nimaga teng?</p>
-          <div class="opts">
-            <button class="opt" type="button" data-ok><code>1</code></button>
-            <button class="opt" type="button"><code>2</code></button>
-            <button class="opt" type="button"><code>3</code></button>
-            <button class="opt" type="button"><code>20</code></button>
-          </div>
-          <div class="explain"><code>index()</code> birinchi uchragan joyni qaytaradi: 20 avval 1-indeksda turibdi.</div>
-        </div>
-      </section>
-
-      <!-- 19. LIST vs TUPLE (swap + count) -->
-      <section>
-        <h2>List yoki tuple?</h2>
-        <div class="swap">
-          <div class="swap-tabs"><button type="button">list</button><button type="button">tuple</button></div>
-          <div class="swap-p"><div class="card"><h3>list [ ]</h3><p>O‘zgaruvchan. Metodlar ko‘p: <code>append</code>, <code>insert</code>, <code>remove</code>, <code>pop</code>, <code>clear</code>, <code>sort</code>... Fanlar ro‘yxati, xaridlar ro‘yxati.</p></div></div>
-          <div class="swap-p"><div class="card accent"><h3>tuple ( )</h3><p>O‘zgarmas. Metodlar kam, ammo foydali: faqat <code>count</code> va <code>index</code>. Koordinata, rang, sozlama.</p></div></div>
-        </div>
-        <div class="stats mt">
-          <div class="stat"><div class="v"><span class="count" data-to="2">0</span></div><div class="l">tuple metodi</div></div>
-          <div class="stat"><div class="v"><span class="count" data-to="11">0</span></div><div class="l">list metodi</div></div>
-        </div>
-        
-      </section>
-
-      <!-- 20. AMALIYOT -->
-      <section>
-        <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
-        <div class="task"><span class="level easy">Oson</span><code>(ism, familiya, yil)</code> tuple yarating va har elementni alohida qatorda chiqaring.</div>
-        <div class="task"><span class="level mid">O'rta</span><code>rang = (0, 0, 255)</code> ning ikkinchi elementini list orqali <code>200</code> ga o‘zgartiring.</div>
-        <div class="task"><span class="level hard">Qiyin</span><code>(5, 3, 4, 5, 5, 2, 4, 5)</code> da har bir baho (2-5) necha marta uchrashini <code>for</code> va <code>count()</code> bilan chiqaring.</div>
-        
-      </section>
-
-      <!-- 21. XULOSA -->
-      <section>
-        <h2>Xulosa</h2>
-        <div class="cards two">
-          <div class="card"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Bugun o‘rgandik</h3><p>Tuple - tartibli va o‘zgarmas. <code>(5,)</code> da vergul shart. Indeks, slicing, <code>count()</code>, <code>index()</code>. O‘zgartirish: list -&gt; tuple.</p></div>
-          <div class="card"><div class="icon"><i data-ic="book-open"></i></div><h3>Uyga vazifa</h3><p><code>tuple_mashq.py</code>: hafta kunlari, <code>count()</code> va koordinatani list orqali yangilash.</p></div>
-        </div>
-        <p class="fragment mt">Keyingi dars: <b>set</b> - takrorlanmaydigan elementlar to‘plami.</p>
-        
-      </section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Tuple: o‘zgarmas ketma-ketlik</h1></header>
+<div class="badges"><span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">5-hafta · 13-dars</span><span class="badge">Koordinata, rang va sozlamalarni «muhrlab» saqlaymiz</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Qaysi yozuv bitta elementli <b>tuple<\/b> yaratadi?", "o": ["<code>t = (7)<\/code>", "<code>t = [7]<\/code>", "<code>t = (7,)<\/code>", "<code>t = {7}<\/code>"], "a": 2, "e": "Vergul tuple yaratadi. <code>(7)<\/code> - int, <code>[7]<\/code> - list, <code>{7}<\/code> - set."}, {"q": "<code>t = (10, 20, 30, 20)<\/code> bo‘lsa, <code>t.index(20)<\/code> nimaga teng?", "o": ["<code>1<\/code>", "<code>2<\/code>", "<code>3<\/code>", "<code>20<\/code>"], "a": 0, "e": "<code>index()<\/code> birinchi uchragan joyni qaytaradi: 20 avval 1-indeksda turibdi."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

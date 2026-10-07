@@ -1,191 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>Test: 15-dars. Kotlin: sinflar va konstruktorlar</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Test: 15-dars. Kotlin: sinflar va konstruktorlar</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>Test: 15-dars. Kotlin: sinflar va konstruktorlar</h1>
-  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
-  <span class="badge">9-sinf</span><span class="badge">Android dasturlash</span><span class="badge">5-hafta · 15-dars</span>
-  
-</section>
-
-<section>
-  <h2>Savol 1/10</h2>
-  <div class="quiz">
-    <p class="q">Sinf nima?</p>
-    <div class="opts">
-      <button class="opt" type="button">Obyektning nusxasi</button>
-      <button class="opt" type="button">Funksiya</button>
-      <button class="opt" type="button">Oraliq</button>
-      <button class="opt" type="button" data-ok>Obyektning chizmasi</button>
-    </div>
-    <div class="explain">Sinfdan obyektlar yaratiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 2/10</h2>
-  <div class="quiz">
-    <p class="q">Obyekt yaratishning to'g'ri shakli?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok><code>val p = Person()</code></button>
-      <button class="opt" type="button"><code>val p = new Person()</code></button>
-      <button class="opt" type="button"><code>p = class Person</code></button>
-      <button class="opt" type="button"><code>Person.new()</code></button>
-    </div>
-    <div class="explain">Kotlinda <code>new</code> yo'q.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 3/10</h2>
-  <div class="quiz">
-    <p class="q">Obyekt xossasiga qanday murojaat qilinadi?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>tom-&gt;name</code></button>
-      <button class="opt" type="button"><code>tom::name()</code></button>
-      <button class="opt" type="button"><code>name.tom</code></button>
-      <button class="opt" type="button" data-ok><code>tom.name</code></button>
-    </div>
-    <div class="explain">Nuqta orqali: <code>obyekt.xossa</code>.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 4/10</h2>
-  <div class="quiz">
-    <p class="q">Metod nima?</p>
-    <div class="opts">
-      <button class="opt" type="button">Sinf tashqarisidagi o'zgaruvchi</button>
-      <button class="opt" type="button" data-ok>Sinf ichidagi funksiya</button>
-      <button class="opt" type="button">Turi</button>
-      <button class="opt" type="button">Sikl</button>
-    </div>
-    <div class="explain">Metod obyekt amalini bajaradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 5/10</h2>
-  <div class="quiz">
-    <p class="q">Primary konstruktor qayerda yoziladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Sinf tanasi oxirida</button>
-      <button class="opt" type="button"><code>main</code> ichida</button>
-      <button class="opt" type="button" data-ok>Sinf nomidan keyin qavs ichida</button>
-      <button class="opt" type="button">Alohida faylda</button>
-    </div>
-    <div class="explain"><code>class Person(val name: String)</code>.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 6/10</h2>
-  <div class="quiz">
-    <p class="q">Sinfda nechta primary konstruktor bo'lishi mumkin?</p>
-    <div class="opts">
-      <button class="opt" type="button">Ikkita</button>
-      <button class="opt" type="button">Cheksiz</button>
-      <button class="opt" type="button">Hech qanday</button>
-      <button class="opt" type="button" data-ok>Bitta</button>
-    </div>
-    <div class="explain">Faqat bitta primary.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 7/10</h2>
-  <div class="quiz">
-    <p class="q">Secondary konstruktor qaysi kalit so'z bilan e'lon qilinadi?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>init</code></button>
-      <button class="opt" type="button"><code>secondary</code></button>
-      <button class="opt" type="button" data-ok><code>constructor</code></button>
-      <button class="opt" type="button"><code>create</code></button>
-    </div>
-    <div class="explain"><code>constructor(...)</code> sinf ichida.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 8/10</h2>
-  <div class="quiz">
-    <p class="q">Primary bor bo'lsa secondary nima qiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Hech narsa</button>
-      <button class="opt" type="button"><code>super</code> ni o'chiradi</button>
-      <button class="opt" type="button" data-ok><code>this(...)</code> orqali primary ga bog'lanadi</button>
-      <button class="opt" type="button">Obyektni o'chiradi</button>
-    </div>
-    <div class="explain">Delegatsiya majburiy.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 9/10</h2>
-  <div class="quiz">
-    <p class="q"><code>init</code> bloki qachon ishlaydi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Dastur yopilganda</button>
-      <button class="opt" type="button">Metod chaqirilganda</button>
-      <button class="opt" type="button" data-ok>Obyekt yaratilganda</button>
-      <button class="opt" type="button">Hech qachon</button>
-    </div>
-    <div class="explain">Boshlang'ich amallar uchun.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 10/10</h2>
-  <div class="quiz">
-    <p class="q"><code>class P(val x: Int)</code> da <code>val x</code> nimaga aylanadi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Faqat parametrga</button>
-      <button class="opt" type="button">Metodga</button>
-      <button class="opt" type="button">Konstantaga</button>
-      <button class="opt" type="button" data-ok>Xossaga</button>
-    </div>
-    <div class="explain">Konstruktor parametri <code>val</code> bilan xossa bo'ladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Natijangiz</h2>
-  <div class="cards three">
-    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
-    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
-    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
-  </div>
-  <p class="small mt">Takrorlang: 15-dars konspekti va slaydlari</p>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Test: 15-dars. Kotlin: sinflar va konstruktorlar</h1></header>
+<div class="badges"><span class="badge">9-sinf</span><span class="badge">Android dasturlash</span><span class="badge">5-hafta · 15-dars</span><span class="badge">10 ta savol &amp;middot; taxminan 8 daqiqa</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Sinf nima?", "o": ["Obyektning nusxasi", "Funksiya", "Oraliq", "Obyektning chizmasi"], "a": 3, "e": "Sinfdan obyektlar yaratiladi."}, {"q": "Obyekt yaratishning to'g'ri shakli?", "o": ["<code>val p = Person()<\/code>", "<code>val p = new Person()<\/code>", "<code>p = class Person<\/code>", "<code>Person.new()<\/code>"], "a": 0, "e": "Kotlinda <code>new<\/code> yo'q."}, {"q": "Obyekt xossasiga qanday murojaat qilinadi?", "o": ["<code>tom-&gt;name<\/code>", "<code>tom::name()<\/code>", "<code>name.tom<\/code>", "<code>tom.name<\/code>"], "a": 3, "e": "Nuqta orqali: <code>obyekt.xossa<\/code>."}, {"q": "Metod nima?", "o": ["Sinf tashqarisidagi o'zgaruvchi", "Sinf ichidagi funksiya", "Turi", "Sikl"], "a": 1, "e": "Metod obyekt amalini bajaradi."}, {"q": "Primary konstruktor qayerda yoziladi?", "o": ["Sinf tanasi oxirida", "<code>main<\/code> ichida", "Sinf nomidan keyin qavs ichida", "Alohida faylda"], "a": 2, "e": "<code>class Person(val name: String)<\/code>."}, {"q": "Sinfda nechta primary konstruktor bo'lishi mumkin?", "o": ["Ikkita", "Cheksiz", "Hech qanday", "Bitta"], "a": 3, "e": "Faqat bitta primary."}, {"q": "Secondary konstruktor qaysi kalit so'z bilan e'lon qilinadi?", "o": ["<code>init<\/code>", "<code>secondary<\/code>", "<code>constructor<\/code>", "<code>create<\/code>"], "a": 2, "e": "<code>constructor(...)<\/code> sinf ichida."}, {"q": "Primary bor bo'lsa secondary nima qiladi?", "o": ["Hech narsa", "<code>super<\/code> ni o'chiradi", "<code>this(...)<\/code> orqali primary ga bog'lanadi", "Obyektni o'chiradi"], "a": 2, "e": "Delegatsiya majburiy."}, {"q": "<code>init<\/code> bloki qachon ishlaydi?", "o": ["Dastur yopilganda", "Metod chaqirilganda", "Obyekt yaratilganda", "Hech qachon"], "a": 2, "e": "Boshlang'ich amallar uchun."}, {"q": "<code>class P(val x: Int)<\/code> da <code>val x<\/code> nimaga aylanadi?", "o": ["Faqat parametrga", "Metodga", "Konstantaga", "Xossaga"], "a": 3, "e": "Konstruktor parametri <code>val<\/code> bilan xossa bo'ladi."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

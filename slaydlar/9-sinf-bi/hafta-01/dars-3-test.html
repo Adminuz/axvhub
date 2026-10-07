@@ -1,191 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>3-dars testi</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>3-dars testi</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>3-dars testi</h1>
-  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
-  <span class="badge">9-sinf</span><span class="badge">Business Intelligence</span><span class="badge">1-hafta</span>
-  
-</section>
-
-<section>
-  <h2>Savol 1/10</h2>
-  <div class="quiz">
-    <p class="q">Real vaqt rejimida kundalik operatsiyalarni nazorat qilish uchun qaysi BI turi mos?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Operatsional BI</button>
-      <button class="opt" type="button">Strategik BI</button>
-      <button class="opt" type="button">Faqat Self-Service BI</button>
-      <button class="opt" type="button">BI hech qachon real vaqtda ishlamaydi</button>
-    </div>
-    <div class="explain">Operatsional BI kundalik jarayonlarni tezkor kuzatish uchun xizmat qiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 2/10</h2>
-  <div class="quiz">
-    <p class="q">Uzoq muddatli rejalashtirish va strategiya uchun qaysi BI turi ishlatiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Operatsional BI</button>
-      <button class="opt" type="button" data-ok>Strategik BI</button>
-      <button class="opt" type="button">Embedded BI</button>
-      <button class="opt" type="button">Hech qaysisi</button>
-    </div>
-    <div class="explain">Strategik BI kompaniyaning uzoq muddatli maqsadlarini tahlil qiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 3/10</h2>
-  <div class="quiz">
-    <p class="q">Self-Service BI ning asosiy g'oyasi nima?</p>
-    <div class="opts">
-      <button class="opt" type="button">Hisobotni faqat dasturchi tayyorlaydi</button>
-      <button class="opt" type="button">Hisobot faqat qog'ozda beriladi</button>
-      <button class="opt" type="button" data-ok>Mutaxassis IT yordamisiz mustaqil hisobot yaratadi</button>
-      <button class="opt" type="button">Tizim o'zi hisobot yozadi</button>
-    </div>
-    <div class="explain">Power BI va Tableau kabi vositalar shunday imkon beradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 4/10</h2>
-  <div class="quiz">
-    <p class="q">Ma'lumot quvurlari (ETL) va omborlar infratuzilmasini kim quradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Data Analyst</button>
-      <button class="opt" type="button">Business User</button>
-      <button class="opt" type="button">Hech kim</button>
-      <button class="opt" type="button" data-ok>Data Engineer</button>
-    </div>
-    <div class="explain">Data Engineer infratuzilmani, Data Analyst esa tahlil va xulosalarni ta'minlaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 5/10</h2>
-  <div class="quiz">
-    <p class="q">Excelda 3-ustun va 5-qator kesishmasidagi katak manzili qanday?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>C5</button>
-      <button class="opt" type="button">E3</button>
-      <button class="opt" type="button">B5</button>
-      <button class="opt" type="button">C3</button>
-    </div>
-    <div class="explain">Avval ustun harfi (C = 3-ustun), keyin qator raqami (5) yoziladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 6/10</h2>
-  <div class="quiz">
-    <p class="q">Excel Workbook va Worksheet farqi qanday?</p>
-    <div class="opts">
-      <button class="opt" type="button">Ikkalasi bir xil narsa</button>
-      <button class="opt" type="button" data-ok>Workbook butun fayl, Worksheet uning ichidagi alohida varaq</button>
-      <button class="opt" type="button">Workbook varaq, Worksheet butun fayl</button>
-      <button class="opt" type="button">Workbook faqat diagramma</button>
-    </div>
-    <div class="explain">Bitta .xlsx fayl (Workbook) bir nechta varaqdan (Worksheets) iborat bo'lishi mumkin.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 7/10</h2>
-  <div class="quiz">
-    <p class="q">Shartnoma imzolangan kunni kiritish uchun qaysi ma'lumot turi to'g'ri?</p>
-    <div class="opts">
-      <button class="opt" type="button">Currency</button>
-      <button class="opt" type="button">Percentage</button>
-      <button class="opt" type="button" data-ok>Date</button>
-      <button class="opt" type="button">Text</button>
-    </div>
-    <div class="explain">Sanalar Date turida saqlansa, ular bilan hisob-kitob va saralash to'g'ri ishlaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 8/10</h2>
-  <div class="quiz">
-    <p class="q">Nima uchun xodimlar tahlilni CRM yoki Telegram-bot ichida ko'rishni ma'qul ko'radi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Chunki bu tahlilni sekinlashtiradi</button>
-      <button class="opt" type="button">Chunki ma'lumotlar bazasi bo'lmaydi</button>
-      <button class="opt" type="button">Chunki grafik chizish mumkin emas</button>
-      <button class="opt" type="button" data-ok>Alohida dasturga kirmasdan, ish joyida qulay (Embedded BI)</button>
-    </div>
-    <div class="explain">Embedded BI analitikani boshqa ilova ichiga o'rnatib, qulaylik va unumdorlikni oshiradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 9/10</h2>
-  <div class="quiz">
-    <p class="q">Sotuvchi B2 katagiga «5 000 so'm» yozdi, D2 da <code>=B2*C2</code> natijasi <code>#VALUE!</code>. Sabab nima?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>B2 matn sifatida saqlangan, shuning uchun ko'paytirib bo'lmaydi</button>
-      <button class="opt" type="button">C2 katagi bo'sh</button>
-      <button class="opt" type="button">Formula noto'g'ri belgi bilan boshlangan</button>
-      <button class="opt" type="button">Excel ko'paytirishni bilmaydi</button>
-    </div>
-    <div class="explain">Son bilan «so'm» so'zi aralashsa katak Text bo'ladi; faqat son yozib, formatni Currency qilish kerak.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 10/10</h2>
-  <div class="quiz">
-    <p class="q">Bank misolida jamoa ishining to'g'ri zanjiri qaysi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Rahbariyat qarori, Data Analyst, Data Engineer</button>
-      <button class="opt" type="button" data-ok>Data Engineer, Data Analyst, BI Developer, rahbariyat qarori</button>
-      <button class="opt" type="button">BI Developer, Data Engineer, rahbariyat</button>
-      <button class="opt" type="button">Data Analyst, rahbariyat, Data Engineer</button>
-    </div>
-    <div class="explain">Avval ma'lumot tayyorlanadi, tahlil qilinadi, panel yaratiladi, so'ng rahbar qaror qabul qiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Natijangiz</h2>
-  <div class="cards three">
-    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
-    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
-    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
-  </div>
-  <p class="small mt">Takrorlang: BI turlari, mutaxassislik rollari, Excel katagi va ma'lumot turlari.</p>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>3-dars testi</h1></header>
+<div class="badges"><span class="badge">9-sinf</span><span class="badge">Business Intelligence</span><span class="badge">1-hafta</span><span class="badge">10 ta savol &amp;middot; taxminan 8 daqiqa</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Real vaqt rejimida kundalik operatsiyalarni nazorat qilish uchun qaysi BI turi mos?", "o": ["Operatsional BI", "Strategik BI", "Faqat Self-Service BI", "BI hech qachon real vaqtda ishlamaydi"], "a": 0, "e": "Operatsional BI kundalik jarayonlarni tezkor kuzatish uchun xizmat qiladi."}, {"q": "Uzoq muddatli rejalashtirish va strategiya uchun qaysi BI turi ishlatiladi?", "o": ["Operatsional BI", "Strategik BI", "Embedded BI", "Hech qaysisi"], "a": 1, "e": "Strategik BI kompaniyaning uzoq muddatli maqsadlarini tahlil qiladi."}, {"q": "Self-Service BI ning asosiy g'oyasi nima?", "o": ["Hisobotni faqat dasturchi tayyorlaydi", "Hisobot faqat qog'ozda beriladi", "Mutaxassis IT yordamisiz mustaqil hisobot yaratadi", "Tizim o'zi hisobot yozadi"], "a": 2, "e": "Power BI va Tableau kabi vositalar shunday imkon beradi."}, {"q": "Ma'lumot quvurlari (ETL) va omborlar infratuzilmasini kim quradi?", "o": ["Data Analyst", "Business User", "Hech kim", "Data Engineer"], "a": 3, "e": "Data Engineer infratuzilmani, Data Analyst esa tahlil va xulosalarni ta'minlaydi."}, {"q": "Excelda 3-ustun va 5-qator kesishmasidagi katak manzili qanday?", "o": ["C5", "E3", "B5", "C3"], "a": 0, "e": "Avval ustun harfi (C = 3-ustun), keyin qator raqami (5) yoziladi."}, {"q": "Excel Workbook va Worksheet farqi qanday?", "o": ["Ikkalasi bir xil narsa", "Workbook butun fayl, Worksheet uning ichidagi alohida varaq", "Workbook varaq, Worksheet butun fayl", "Workbook faqat diagramma"], "a": 1, "e": "Bitta .xlsx fayl (Workbook) bir nechta varaqdan (Worksheets) iborat bo'lishi mumkin."}, {"q": "Shartnoma imzolangan kunni kiritish uchun qaysi ma'lumot turi to'g'ri?", "o": ["Currency", "Percentage", "Date", "Text"], "a": 2, "e": "Sanalar Date turida saqlansa, ular bilan hisob-kitob va saralash to'g'ri ishlaydi."}, {"q": "Nima uchun xodimlar tahlilni CRM yoki Telegram-bot ichida ko'rishni ma'qul ko'radi?", "o": ["Chunki bu tahlilni sekinlashtiradi", "Chunki ma'lumotlar bazasi bo'lmaydi", "Chunki grafik chizish mumkin emas", "Alohida dasturga kirmasdan, ish joyida qulay (Embedded BI)"], "a": 3, "e": "Embedded BI analitikani boshqa ilova ichiga o'rnatib, qulaylik va unumdorlikni oshiradi."}, {"q": "Sotuvchi B2 katagiga «5 000 so'm» yozdi, D2 da <code>=B2*C2<\/code> natijasi <code>#VALUE!<\/code>. Sabab nima?", "o": ["B2 matn sifatida saqlangan, shuning uchun ko'paytirib bo'lmaydi", "C2 katagi bo'sh", "Formula noto'g'ri belgi bilan boshlangan", "Excel ko'paytirishni bilmaydi"], "a": 0, "e": "Son bilan «so'm» so'zi aralashsa katak Text bo'ladi; faqat son yozib, formatni Currency qilish kerak."}, {"q": "Bank misolida jamoa ishining to'g'ri zanjiri qaysi?", "o": ["Rahbariyat qarori, Data Analyst, Data Engineer", "Data Engineer, Data Analyst, BI Developer, rahbariyat qarori", "BI Developer, Data Engineer, rahbariyat", "Data Analyst, rahbariyat, Data Engineer"], "a": 1, "e": "Avval ma'lumot tayyorlanadi, tahlil qilinadi, panel yaratiladi, so'ng rahbar qaror qabul qiladi."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

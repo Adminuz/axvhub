@@ -1,331 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>5-hafta testi</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>5-hafta testi</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>5-hafta testi</h1>
-  <p class="muted">20 ta savol &middot; taxminan 15 daqiqa</p>
-  <span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">5-hafta</span>
-  
-</section>
-
-<section>
-  <h2>Savol 1/20</h2>
-  <div class="quiz">
-    <p class="q">Sinxronlashda telefondagi rasm o'chirildi. Bulutda nima bo'ladi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>U ham o'chadi</button>
-      <button class="opt" type="button">Saqlanib qoladi</button>
-      <button class="opt" type="button">Ikki nusxa bo'ladi</button>
-      <button class="opt" type="button">Rasm kattalashadi</button>
-    </div>
-    <div class="explain">Qutqaruv — Savat.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 2/20</h2>
-  <div class="quiz">
-    <p class="q">Dropbox'ning bepul hajmi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>2 GB</button>
-      <button class="opt" type="button">5 GB</button>
-      <button class="opt" type="button">15 GB</button>
-      <button class="opt" type="button">50 GB</button>
-    </div>
-    <div class="explain">Drive 15, OneDrive 5.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 3/20</h2>
-  <div class="quiz">
-    <p class="q">Eng kam ruxsat qoidasi nima?</p>
-    <div class="opts">
-      <button class="opt" type="button">Hammaga Muharrir berish</button>
-      <button class="opt" type="button">Hech kimga ulashmaslik</button>
-      <button class="opt" type="button" data-ok>Faqat kerakli odamga, kerakli darajada ruxsat berish</button>
-      <button class="opt" type="button">Faqat ochiq havola</button>
-    </div>
-    <div class="explain">Ko'ruvchi yetarli bo'lsa — Muharrir emas.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 4/20</h2>
-  <div class="quiz">
-    <p class="q">Google Drive'da o'chirilgan fayl Savatda qancha turadi?</p>
-    <div class="opts">
-      <button class="opt" type="button">1 kun</button>
-      <button class="opt" type="button">1 yil</button>
-      <button class="opt" type="button" data-ok>30 kun</button>
-      <button class="opt" type="button">Abadiy</button>
-    </div>
-    <div class="explain">Keyin butunlay o'chadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 5/20</h2>
-  <div class="quiz">
-    <p class="q">Git va GitHub o'xshatishi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Kitob va qalam</button>
-      <button class="opt" type="button" data-ok>Fotoapparat va onlayn foto-albom</button>
-      <button class="opt" type="button">Telefon va zaryadlovchi</button>
-      <button class="opt" type="button">Stol va stul</button>
-    </div>
-    <div class="explain">Git suratga oladi, GitHub saqlaydi va ko'rsatadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 6/20</h2>
-  <div class="quiz">
-    <p class="q">GitHub 2018-yildan qaysi kompaniyaga tegishli?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Microsoft</button>
-      <button class="opt" type="button">Google</button>
-      <button class="opt" type="button">Apple</button>
-      <button class="opt" type="button">Amazon</button>
-    </div>
-    <div class="explain">Git esa ochiq dastur.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 7/20</h2>
-  <div class="quiz">
-    <p class="q">Public repository'ni kim ko'radi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Hamma</button>
-      <button class="opt" type="button">Faqat egasi</button>
-      <button class="opt" type="button">Faqat taklif qilinganlar</button>
-      <button class="opt" type="button">Hech kim</button>
-    </div>
-    <div class="explain">Private — faqat egasi va taklif qilinganlar.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 8/20</h2>
-  <div class="quiz">
-    <p class="q">GitHub'da yangi repository qayerdan yaratiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Settings → Delete</button>
-      <button class="opt" type="button">Profile → Logout</button>
-      <button class="opt" type="button" data-ok>+ → New repository</button>
-      <button class="opt" type="button">Commits → Revert</button>
-    </div>
-    <div class="explain">Add a README file belgisini qo'yish mumkin.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 9/20</h2>
-  <div class="quiz">
-    <p class="q">Commit ID nima?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Har commitning noyob kodi</button>
-      <button class="opt" type="button">Foydalanuvchi paroli</button>
-      <button class="opt" type="button">Fayl nomi</button>
-      <button class="opt" type="button">Repo nomi</button>
-    </div>
-    <div class="explain">Qisqa ko'rinishi — 7 belgi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 10/20</h2>
-  <div class="quiz">
-    <p class="q">GitHub akkaunti uchun eng kichik yosh?</p>
-    <div class="opts">
-      <button class="opt" type="button">8 yosh</button>
-      <button class="opt" type="button" data-ok>13 yosh</button>
-      <button class="opt" type="button">18 yosh</button>
-      <button class="opt" type="button">21 yosh</button>
-    </div>
-    <div class="explain">Ota-ona ruxsati bilan.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 11/20</h2>
-  <div class="quiz">
-    <p class="q">Ochiq README'ga nimani yozmaslik kerak?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Telefon raqami va uy manzilini</button>
-      <button class="opt" type="button">Loyiha nomini</button>
-      <button class="opt" type="button">Sevimli fanni</button>
-      <button class="opt" type="button">Loyiha maqsadini</button>
-    </div>
-    <div class="explain">Shaxsiy ma'lumot himoyasi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 12/20</h2>
-  <div class="quiz">
-    <p class="q">Windows'da Git bilan birga o'rnatiladigan terminal?</p>
-    <div class="opts">
-      <button class="opt" type="button">PowerPoint</button>
-      <button class="opt" type="button" data-ok>Git Bash</button>
-      <button class="opt" type="button">Paint</button>
-      <button class="opt" type="button">Notepad</button>
-    </div>
-    <div class="explain">git-scm.com dan.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 13/20</h2>
-  <div class="quiz">
-    <p class="q">Qaysi terminal buyrug'i papka yaratadi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>mkdir</button>
-      <button class="opt" type="button">cd</button>
-      <button class="opt" type="button">ls</button>
-      <button class="opt" type="button">pwd</button>
-    </div>
-    <div class="explain">cd — kirish, ls — ro'yxat, pwd — joy.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 14/20</h2>
-  <div class="quiz">
-    <p class="q">Barcha o'zgarishlarni staging'ga qo'shish?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>git add .</button>
-      <button class="opt" type="button">git add all</button>
-      <button class="opt" type="button">git commit .</button>
-      <button class="opt" type="button">git push .</button>
-    </div>
-    <div class="explain">Nuqta — joriy papkadagi hammasi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 15/20</h2>
-  <div class="quiz">
-    <p class="q">«Changes to be committed» xabaridan keyin nima qilinadi?</p>
-    <div class="opts">
-      <button class="opt" type="button">git init</button>
-      <button class="opt" type="button">git add</button>
-      <button class="opt" type="button" data-ok>git commit -m "xabar"</button>
-      <button class="opt" type="button">Hech narsa</button>
-    </div>
-    <div class="explain">Fayllar staging'da tayyor.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 16/20</h2>
-  <div class="quiz">
-    <p class="q">.git papkasi o'chirilsa nima bo'ladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Hech narsa</button>
-      <button class="opt" type="button">Fayllar GitHub'ga yuklanadi</button>
-      <button class="opt" type="button">Git yangilanadi</button>
-      <button class="opt" type="button" data-ok>Butun commit tarixi yo'qoladi</button>
-    </div>
-    <div class="explain">Uni o'chirmang!</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 17/20</h2>
-  <div class="quiz">
-    <p class="q">-m siz git commit yozilsa?</p>
-    <div class="opts">
-      <button class="opt" type="button">Commit o'chadi</button>
-      <button class="opt" type="button">Kompyuter o'chadi</button>
-      <button class="opt" type="button" data-ok>Matn muharriri (Vim) ochiladi</button>
-      <button class="opt" type="button">GitHub ochiladi</button>
-    </div>
-    <div class="explain">Chiqish: Esc, :wq, Enter.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 18/20</h2>
-  <div class="quiz">
-    <p class="q">working tree clean nimani bildiradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Papka bo'sh</button>
-      <button class="opt" type="button" data-ok>Barcha o'zgarishlar commit qilingan</button>
-      <button class="opt" type="button">Git o'rnatilmagan</button>
-      <button class="opt" type="button">Xato bor</button>
-    </div>
-    <div class="explain">Saqlanmagan o'zgarish yo'q.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 19/20</h2>
-  <div class="quiz">
-    <p class="q">git log nima ko'rsatadi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Fayl ichidagi matnni</button>
-      <button class="opt" type="button" data-ok>Commitlar tarixini</button>
-      <button class="opt" type="button">Internet holatini</button>
-      <button class="opt" type="button">Parollarni</button>
-    </div>
-    <div class="explain">--oneline — qisqa ko'rinish.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 20/20</h2>
-  <div class="quiz">
-    <p class="q">Versiya tarixi (Docs) va Git o'rtasidagi o'xshashlik?</p>
-    <div class="opts">
-      <button class="opt" type="button">Ikkalasi ham rasm chizadi</button>
-      <button class="opt" type="button">Ikkalasi ham faqat Excel uchun</button>
-      <button class="opt" type="button">O'xshashlik yo'q</button>
-      <button class="opt" type="button" data-ok>Ikkalasi ham kim, qachon, nimani o'zgartirganini saqlaydi</button>
-    </div>
-    <div class="explain">Git — dasturchilar uchun versiya tarixi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Natijangiz</h2>
-  <div class="cards three">
-    <div class="card"><h3>20 dan 18+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
-    <div class="card"><h3>20 dan 12-17</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
-    <div class="card accent"><h3>11 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
-  </div>
-  <p class="small mt">Takrorlang: bulutli xizmatlar, Git va GitHub tushunchalari, kompyuterda Git.</p>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>5-hafta testi</h1></header>
+<div class="badges"><span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">5-hafta</span><span class="badge">20 ta savol &amp;middot; taxminan 15 daqiqa</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Sinxronlashda telefondagi rasm o'chirildi. Bulutda nima bo'ladi?", "o": ["U ham o'chadi", "Saqlanib qoladi", "Ikki nusxa bo'ladi", "Rasm kattalashadi"], "a": 0, "e": "Qutqaruv — Savat."}, {"q": "Dropbox'ning bepul hajmi?", "o": ["2 GB", "5 GB", "15 GB", "50 GB"], "a": 0, "e": "Drive 15, OneDrive 5."}, {"q": "Eng kam ruxsat qoidasi nima?", "o": ["Hammaga Muharrir berish", "Hech kimga ulashmaslik", "Faqat kerakli odamga, kerakli darajada ruxsat berish", "Faqat ochiq havola"], "a": 2, "e": "Ko'ruvchi yetarli bo'lsa — Muharrir emas."}, {"q": "Google Drive'da o'chirilgan fayl Savatda qancha turadi?", "o": ["1 kun", "1 yil", "30 kun", "Abadiy"], "a": 2, "e": "Keyin butunlay o'chadi."}, {"q": "Git va GitHub o'xshatishi?", "o": ["Kitob va qalam", "Fotoapparat va onlayn foto-albom", "Telefon va zaryadlovchi", "Stol va stul"], "a": 1, "e": "Git suratga oladi, GitHub saqlaydi va ko'rsatadi."}, {"q": "GitHub 2018-yildan qaysi kompaniyaga tegishli?", "o": ["Microsoft", "Google", "Apple", "Amazon"], "a": 0, "e": "Git esa ochiq dastur."}, {"q": "Public repository'ni kim ko'radi?", "o": ["Hamma", "Faqat egasi", "Faqat taklif qilinganlar", "Hech kim"], "a": 0, "e": "Private — faqat egasi va taklif qilinganlar."}, {"q": "GitHub'da yangi repository qayerdan yaratiladi?", "o": ["Settings → Delete", "Profile → Logout", "+ → New repository", "Commits → Revert"], "a": 2, "e": "Add a README file belgisini qo'yish mumkin."}, {"q": "Commit ID nima?", "o": ["Har commitning noyob kodi", "Foydalanuvchi paroli", "Fayl nomi", "Repo nomi"], "a": 0, "e": "Qisqa ko'rinishi — 7 belgi."}, {"q": "GitHub akkaunti uchun eng kichik yosh?", "o": ["8 yosh", "13 yosh", "18 yosh", "21 yosh"], "a": 1, "e": "Ota-ona ruxsati bilan."}, {"q": "Ochiq README'ga nimani yozmaslik kerak?", "o": ["Telefon raqami va uy manzilini", "Loyiha nomini", "Sevimli fanni", "Loyiha maqsadini"], "a": 0, "e": "Shaxsiy ma'lumot himoyasi."}, {"q": "Windows'da Git bilan birga o'rnatiladigan terminal?", "o": ["PowerPoint", "Git Bash", "Paint", "Notepad"], "a": 1, "e": "git-scm.com dan."}, {"q": "Qaysi terminal buyrug'i papka yaratadi?", "o": ["mkdir", "cd", "ls", "pwd"], "a": 0, "e": "cd — kirish, ls — ro'yxat, pwd — joy."}, {"q": "Barcha o'zgarishlarni staging'ga qo'shish?", "o": ["git add .", "git add all", "git commit .", "git push ."], "a": 0, "e": "Nuqta — joriy papkadagi hammasi."}, {"q": "«Changes to be committed» xabaridan keyin nima qilinadi?", "o": ["git init", "git add", "git commit -m \"xabar\"", "Hech narsa"], "a": 2, "e": "Fayllar staging'da tayyor."}, {"q": ".git papkasi o'chirilsa nima bo'ladi?", "o": ["Hech narsa", "Fayllar GitHub'ga yuklanadi", "Git yangilanadi", "Butun commit tarixi yo'qoladi"], "a": 3, "e": "Uni o'chirmang!"}, {"q": "-m siz git commit yozilsa?", "o": ["Commit o'chadi", "Kompyuter o'chadi", "Matn muharriri (Vim) ochiladi", "GitHub ochiladi"], "a": 2, "e": "Chiqish: Esc, :wq, Enter."}, {"q": "working tree clean nimani bildiradi?", "o": ["Papka bo'sh", "Barcha o'zgarishlar commit qilingan", "Git o'rnatilmagan", "Xato bor"], "a": 1, "e": "Saqlanmagan o'zgarish yo'q."}, {"q": "git log nima ko'rsatadi?", "o": ["Fayl ichidagi matnni", "Commitlar tarixini", "Internet holatini", "Parollarni"], "a": 1, "e": "--oneline — qisqa ko'rinish."}, {"q": "Versiya tarixi (Docs) va Git o'rtasidagi o'xshashlik?", "o": ["Ikkalasi ham rasm chizadi", "Ikkalasi ham faqat Excel uchun", "O'xshashlik yo'q", "Ikkalasi ham kim, qachon, nimani o'zgartirganini saqlaydi"], "a": 3, "e": "Git — dasturchilar uchun versiya tarixi."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

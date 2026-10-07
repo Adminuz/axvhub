@@ -1,331 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>1-hafta testi</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>1-hafta testi</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>1-hafta testi</h1>
-  <p class="muted">20 ta savol &middot; taxminan 18 daqiqa</p>
-  <span class="badge">10-sinf</span><span class="badge">Advanced UX/UI va Front-end</span><span class="badge">1-hafta</span>
-  
-</section>
-
-<section>
-  <h2>Savol 1/20</h2>
-  <div class="quiz">
-    <p class="q">ROI (Return on Investment) UX kontekstida nimani ifodalaydi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>UX tadqiqotlariga sarflangan mablag'ning biznesga qaytaradigan foydasini</button>
-      <button class="opt" type="button">Saytning kunlik tashrif buyuruvchilar sonini</button>
-      <button class="opt" type="button">Sahifaning yuklanish vaqtini</button>
-      <button class="opt" type="button">Dizaynerlar soni</button>
-    </div>
-    <div class="explain">Forrester ma'lumotiga ko'ra, UX ga sarflangan 1 dollar o'rtacha 10–100 dollar foyda keltiradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 2/20</h2>
-  <div class="quiz">
-    <p class="q">Retention Rate nimani o'lchaydi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Savatni tark etganlar foizini</button>
-      <button class="opt" type="button" data-ok>Xarid qilgan mijozlarning qayta kelish foizini</button>
-      <button class="opt" type="button">Birinchi marta kirganlar sonini</button>
-      <button class="opt" type="button">Reklamaga sarflangan mablag'ni</button>
-    </div>
-    <div class="explain">Retention foydalanuvchilarni saqlab qolish ko'rsatkichidir.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 3/20</h2>
-  <div class="quiz">
-    <p class="q">Nega UX «strategik raqobat vositasi» deyiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Chunki UX faqat reklama xarajatlarini oshiradi</button>
-      <button class="opt" type="button">Chunki foydalanuvchilar raqobatchilarni bilmaydi</button>
-      <button class="opt" type="button" data-ok>Qulay raqobatchi bir klik narida; noqulay jarayon foydalanuvchini yo'qotadi</button>
-      <button class="opt" type="button">Chunki UX faqat dasturchilarga kerak</button>
-    </div>
-    <div class="explain">Ro'yxatdan o'tish yoki to'lov 1 daqiqaga cho'zilsa, foydalanuvchi raqobatchiga o'tib ketadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 4/20</h2>
-  <div class="quiz">
-    <p class="q">4 bosqichli modelning oxirgi bosqichida nima o'lchanadi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Dasturchilar soni</button>
-      <button class="opt" type="button">Server xarajati</button>
-      <button class="opt" type="button">Logotip o'lchami</button>
-      <button class="opt" type="button" data-ok>Konversiya va foydalanuvchilarning saytdagi o'rtacha vaqti</button>
-    </div>
-    <div class="explain">Yangilangan dizayn natijasi aniq metrikalar bilan baholanadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 5/20</h2>
-  <div class="quiz">
-    <p class="q">Katta qidiruv paneli qaysi biznes natijaga zanjir orqali olib keladi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Mahsulot topish tezlashadi &rarr; savatga qo'shish ko'payadi</button>
-      <button class="opt" type="button">Sayt sekinlashadi &rarr; konversiya oshadi</button>
-      <button class="opt" type="button">Menyu bo'limlari ko'payadi &rarr; xarid kamayadi</button>
-      <button class="opt" type="button">Rasmlar kattalashadi &rarr; yetkazish arzonlashadi</button>
-    </div>
-    <div class="explain">Har bir UX qarori aniq biznes natijasiga bog'lanishi kerak.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 6/20</h2>
-  <div class="quiz">
-    <p class="q">Konversiya 2% dan 4% ga chiqdi, tashrif buyuruvchilar soni o'zgarmadi. Xaridorlar soni qanday o'zgardi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Yarmiga kamaydi</button>
-      <button class="opt" type="button" data-ok>2 baravar oshdi</button>
-      <button class="opt" type="button">2% ga oshdi</button>
-      <button class="opt" type="button">O'zgarmadi</button>
-    </div>
-    <div class="explain">4% ni 2% ga nisbatan olsak, xaridorlar soni 2 baravar ko'p.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 7/20</h2>
-  <div class="quiz">
-    <p class="q">UCD ning «Harakat erkinligi» tamoyili nimani talab qiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Foydalanuvchini faqat bitta yo'lga majburlash</button>
-      <button class="opt" type="button">Barcha tugmalarni yashirish</button>
-      <button class="opt" type="button" data-ok>Adashib bosilgan amalni to'xtatish yoki orqaga qaytarish imkonini berish</button>
-      <button class="opt" type="button">Xatolarni qayd etmaslik</button>
-    </div>
-    <div class="explain">Undo/Bekor qilish tugmalari foydalanuvchiga nazoratni saqlashga yordam beradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 8/20</h2>
-  <div class="quiz">
-    <p class="q">Consistency (moslik va izchillik) nimani bildiradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Har sahifada yangi dizayn qo'llash</button>
-      <button class="opt" type="button">Faqat bitta rang ishlatish</button>
-      <button class="opt" type="button">Matnlarni kamaytirish</button>
-      <button class="opt" type="button" data-ok>Butun mahsulot bo'ylab bir xil uslub, tugma shakllari va navigatsiya qoidalari</button>
-    </div>
-    <div class="explain">Izchillik foydalanuvchini adashtirmaydi va ishonchni oshiradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 9/20</h2>
-  <div class="quiz">
-    <p class="q">Kontrast, shrift o'lchami va tartibli kompozitsiya UCD ning qaysi elementiga tegishli?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Readability (o'qish osonligi)</button>
-      <button class="opt" type="button">Visibility</button>
-      <button class="opt" type="button">Plain Language</button>
-      <button class="opt" type="button">Navigatsiya</button>
-    </div>
-    <div class="explain">Readability matnni qulay o'qishni ta'minlaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 10/20</h2>
-  <div class="quiz">
-    <p class="q">UCD qayta dasturlash (re-work) xarajatlariga qanday ta'sir qiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Xarajatlarni 2 baravar oshiradi</button>
-      <button class="opt" type="button" data-ok>Xatolarni erta aniqlab, xarajatlarni taxminan 50% ga qisqartiradi</button>
-      <button class="opt" type="button">Ta'sir qilmaydi</button>
-      <button class="opt" type="button">Faqat reklama xarajatiga ta'sir qiladi</button>
-    </div>
-    <div class="explain">Muammo ishlab chiqish boshida topilgani uchun keyin qimmat tuzatishlar kerak bo'lmaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 11/20</h2>
-  <div class="quiz">
-    <p class="q">UCD siklining 1-bosqichida qaysi savollarga javob izlanadi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Qaysi dasturlash tili tezroq?</button>
-      <button class="opt" type="button">Logotip qanday rangda bo'lsin?</button>
-      <button class="opt" type="button" data-ok>Mahsulotni kim, qayerda va qanday sharoitda ishlatadi?</button>
-      <button class="opt" type="button">Mahsulot qancha turadi?</button>
-    </div>
-    <div class="explain">Bu foydalanish kontekstini aniqlash bosqichi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 12/20</h2>
-  <div class="quiz">
-    <p class="q">Netflix qaysi tamoyil bilan bog'liq keys sifatida keltiriladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Izchillik</button>
-      <button class="opt" type="button">Minimalizm</button>
-      <button class="opt" type="button">1-Click xarid</button>
-      <button class="opt" type="button" data-ok>Foydalanuvchi markazidagi dizayn: shaxsiy tavsiyalar va posterlar</button>
-    </div>
-    <div class="explain">Har bir profil uchun alohida tavsiyalar tizimi qurilgan.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 13/20</h2>
-  <div class="quiz">
-    <p class="q">Google Material Design qaysi tamoyilni namoyish etadi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Izchillik (Consistency)</button>
-      <button class="opt" type="button">Moslashuvchanlik</button>
-      <button class="opt" type="button">Feedback</button>
-      <button class="opt" type="button">Personalizatsiya</button>
-    </div>
-    <div class="explain">Gmail, Drive, Maps va Android da tugma, shrift va piktogrammalar bir xil standartga bo'ysunadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 14/20</h2>
-  <div class="quiz">
-    <p class="q">Microsoft Office dagi sozlanadigan asboblar paneli va shortcut lar qaysi tamoyilga misol?</p>
-    <div class="opts">
-      <button class="opt" type="button">Soddalik</button>
-      <button class="opt" type="button" data-ok>Moslashuvchanlik (Flexibility)</button>
-      <button class="opt" type="button">Izchillik</button>
-      <button class="opt" type="button">Accessibility</button>
-    </div>
-    <div class="explain">Yangi boshlovchi ham, tajribali foydalanuvchi ham o'ziga qulay usulni tanlay oladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 15/20</h2>
-  <div class="quiz">
-    <p class="q">Oq maydon (White Space) nima uchun kerak?</p>
-    <div class="opts">
-      <button class="opt" type="button">Sahifani og'irlashtiradi</button>
-      <button class="opt" type="button">Faqat bosma materiallar uchun</button>
-      <button class="opt" type="button" data-ok>Ko'zni charchatmaydi va vizual iyerarxiyani ajratishga yordam beradi</button>
-      <button class="opt" type="button">Reklamani ko'paytiradi</button>
-    </div>
-    <div class="explain">Elementlar orasidagi bo'sh joy e'tiborni asosiy narsaga qaratadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 16/20</h2>
-  <div class="quiz">
-    <p class="q">Telefon raqamini «+998 90 123 45 67» ko'rinishida bo'laklab yozish qaysi qonunga tayanadi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Hick qonuni</button>
-      <button class="opt" type="button">WCAG kontrast qoidasi</button>
-      <button class="opt" type="button">Norman qoidasi</button>
-      <button class="opt" type="button" data-ok>Miller qonuni</button>
-    </div>
-    <div class="explain">Uzun qatorni bo'laklarga bo'lish qisqa muddatli xotiraga yengil tushadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 17/20</h2>
-  <div class="quiz">
-    <p class="q">Netflix shaxsiy tavsiyalari UCD ning qaysi g'oyasi bilan eng mos?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Mahsulotni foydalanuvchi ehtiyojiga moslab yaratish</button>
-      <button class="opt" type="button">Dizaynerning shaxsiy didiga tayanish</button>
-      <button class="opt" type="button">Hamma uchun bir xil interfeys</button>
-      <button class="opt" type="button">Faqat vizual bezakni kuchaytirish</button>
-    </div>
-    <div class="explain">UCD (2-dars) global brend keysi (3-dars) sifatida: har bir foydalanuvchi uchun individual tajriba.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 18/20</h2>
-  <div class="quiz">
-    <p class="q">Ro'yxatdan o'tishda 12 ta majburiy maydon bor. Bu qaysi darslarda o'rganilgan muammolarni keltiradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Faqat rang kontrasti muammosini</button>
-      <button class="opt" type="button" data-ok>Savatni/ro'yxatni tashlab ketish, ortiqcha kuch sarfi va Hick qonuni yuklamasi</button>
-      <button class="opt" type="button">Faqat Miller qonunini buzishni, boshqa muammo yo'q</button>
-      <button class="opt" type="button">Hech qanday muammo keltirmaydi</button>
-    </div>
-    <div class="explain">Ortiqcha maydonlar konversiyani pasaytiradi (1-dars), kuch sarfini oshiradi (2-dars) va soddalikni buzadi (3-dars).</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 19/20</h2>
-  <div class="quiz">
-    <p class="q">Dars 2 dagi «Feedback» tamoyili va dars 3 dagi Slack keysi o'rtasidagi bog'liqlik qaysi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Slack Feedback tamoyilini rad etadi</button>
-      <button class="opt" type="button">Feedback faqat xato xabarlariga tegishli, Slack ga emas</button>
-      <button class="opt" type="button" data-ok>Slack yetkazilganlik belgilari bilan Feedback tamoyilini amalda qo'llaydi</button>
-      <button class="opt" type="button">Ular o'zaro bog'liq emas</button>
-    </div>
-    <div class="explain">Tizim har bir harakatga darhol javob qaytarishi UCD ning 6-tamoyili, Slack esa buning aniq misoli.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 20/20</h2>
-  <div class="quiz">
-    <p class="q">Kommunal to'lov formasi yaxshilanishi natijasida konversiya oshishi uchun qaysi birikma eng samarali?</p>
-    <div class="opts">
-      <button class="opt" type="button">Yangi animatsiya va ko'proq maydonlar</button>
-      <button class="opt" type="button">Faqat chiroyli shrift</button>
-      <button class="opt" type="button">Majburiy ro'yxatdan o'tish</button>
-      <button class="opt" type="button" data-ok>Raqamli klaviatura, aniq xato xabari va 4.5:1 dan yuqori kontrast</button>
-    </div>
-    <div class="explain">Error prevention va Feedback (2-dars) hamda Accessibility (3-dars) birga xaridni yakunlash ehtimolini oshiradi (1-dars).</div>
-  </div>
-</section>
-
-<section>
-  <h2>Natijangiz</h2>
-  <div class="cards three">
-    <div class="card"><h3>20 dan 18+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
-    <div class="card"><h3>20 dan 12-17</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
-    <div class="card accent"><h3>10 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
-  </div>
-  <p class="small mt">Takrorlang: UX metrikalari (ROI, konversiya), UCD tamoyillari va sikli, 7 global brend keysi, Hick va Miller qonunlari.</p>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>1-hafta testi</h1></header>
+<div class="badges"><span class="badge">10-sinf</span><span class="badge">Advanced UX/UI va Front-end</span><span class="badge">1-hafta</span><span class="badge">20 ta savol &amp;middot; taxminan 18 daqiqa</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "ROI (Return on Investment) UX kontekstida nimani ifodalaydi?", "o": ["UX tadqiqotlariga sarflangan mablag'ning biznesga qaytaradigan foydasini", "Saytning kunlik tashrif buyuruvchilar sonini", "Sahifaning yuklanish vaqtini", "Dizaynerlar soni"], "a": 0, "e": "Forrester ma'lumotiga ko'ra, UX ga sarflangan 1 dollar o'rtacha 10–100 dollar foyda keltiradi."}, {"q": "Retention Rate nimani o'lchaydi?", "o": ["Savatni tark etganlar foizini", "Xarid qilgan mijozlarning qayta kelish foizini", "Birinchi marta kirganlar sonini", "Reklamaga sarflangan mablag'ni"], "a": 1, "e": "Retention foydalanuvchilarni saqlab qolish ko'rsatkichidir."}, {"q": "Nega UX «strategik raqobat vositasi» deyiladi?", "o": ["Chunki UX faqat reklama xarajatlarini oshiradi", "Chunki foydalanuvchilar raqobatchilarni bilmaydi", "Qulay raqobatchi bir klik narida; noqulay jarayon foydalanuvchini yo'qotadi", "Chunki UX faqat dasturchilarga kerak"], "a": 2, "e": "Ro'yxatdan o'tish yoki to'lov 1 daqiqaga cho'zilsa, foydalanuvchi raqobatchiga o'tib ketadi."}, {"q": "4 bosqichli modelning oxirgi bosqichida nima o'lchanadi?", "o": ["Dasturchilar soni", "Server xarajati", "Logotip o'lchami", "Konversiya va foydalanuvchilarning saytdagi o'rtacha vaqti"], "a": 3, "e": "Yangilangan dizayn natijasi aniq metrikalar bilan baholanadi."}, {"q": "Katta qidiruv paneli qaysi biznes natijaga zanjir orqali olib keladi?", "o": ["Mahsulot topish tezlashadi &rarr; savatga qo'shish ko'payadi", "Sayt sekinlashadi &rarr; konversiya oshadi", "Menyu bo'limlari ko'payadi &rarr; xarid kamayadi", "Rasmlar kattalashadi &rarr; yetkazish arzonlashadi"], "a": 0, "e": "Har bir UX qarori aniq biznes natijasiga bog'lanishi kerak."}, {"q": "Konversiya 2% dan 4% ga chiqdi, tashrif buyuruvchilar soni o'zgarmadi. Xaridorlar soni qanday o'zgardi?", "o": ["Yarmiga kamaydi", "2 baravar oshdi", "2% ga oshdi", "O'zgarmadi"], "a": 1, "e": "4% ni 2% ga nisbatan olsak, xaridorlar soni 2 baravar ko'p."}, {"q": "UCD ning «Harakat erkinligi» tamoyili nimani talab qiladi?", "o": ["Foydalanuvchini faqat bitta yo'lga majburlash", "Barcha tugmalarni yashirish", "Adashib bosilgan amalni to'xtatish yoki orqaga qaytarish imkonini berish", "Xatolarni qayd etmaslik"], "a": 2, "e": "Undo/Bekor qilish tugmalari foydalanuvchiga nazoratni saqlashga yordam beradi."}, {"q": "Consistency (moslik va izchillik) nimani bildiradi?", "o": ["Har sahifada yangi dizayn qo'llash", "Faqat bitta rang ishlatish", "Matnlarni kamaytirish", "Butun mahsulot bo'ylab bir xil uslub, tugma shakllari va navigatsiya qoidalari"], "a": 3, "e": "Izchillik foydalanuvchini adashtirmaydi va ishonchni oshiradi."}, {"q": "Kontrast, shrift o'lchami va tartibli kompozitsiya UCD ning qaysi elementiga tegishli?", "o": ["Readability (o'qish osonligi)", "Visibility", "Plain Language", "Navigatsiya"], "a": 0, "e": "Readability matnni qulay o'qishni ta'minlaydi."}, {"q": "UCD qayta dasturlash (re-work) xarajatlariga qanday ta'sir qiladi?", "o": ["Xarajatlarni 2 baravar oshiradi", "Xatolarni erta aniqlab, xarajatlarni taxminan 50% ga qisqartiradi", "Ta'sir qilmaydi", "Faqat reklama xarajatiga ta'sir qiladi"], "a": 1, "e": "Muammo ishlab chiqish boshida topilgani uchun keyin qimmat tuzatishlar kerak bo'lmaydi."}, {"q": "UCD siklining 1-bosqichida qaysi savollarga javob izlanadi?", "o": ["Qaysi dasturlash tili tezroq?", "Logotip qanday rangda bo'lsin?", "Mahsulotni kim, qayerda va qanday sharoitda ishlatadi?", "Mahsulot qancha turadi?"], "a": 2, "e": "Bu foydalanish kontekstini aniqlash bosqichi."}, {"q": "Netflix qaysi tamoyil bilan bog'liq keys sifatida keltiriladi?", "o": ["Izchillik", "Minimalizm", "1-Click xarid", "Foydalanuvchi markazidagi dizayn: shaxsiy tavsiyalar va posterlar"], "a": 3, "e": "Har bir profil uchun alohida tavsiyalar tizimi qurilgan."}, {"q": "Google Material Design qaysi tamoyilni namoyish etadi?", "o": ["Izchillik (Consistency)", "Moslashuvchanlik", "Feedback", "Personalizatsiya"], "a": 0, "e": "Gmail, Drive, Maps va Android da tugma, shrift va piktogrammalar bir xil standartga bo'ysunadi."}, {"q": "Microsoft Office dagi sozlanadigan asboblar paneli va shortcut lar qaysi tamoyilga misol?", "o": ["Soddalik", "Moslashuvchanlik (Flexibility)", "Izchillik", "Accessibility"], "a": 1, "e": "Yangi boshlovchi ham, tajribali foydalanuvchi ham o'ziga qulay usulni tanlay oladi."}, {"q": "Oq maydon (White Space) nima uchun kerak?", "o": ["Sahifani og'irlashtiradi", "Faqat bosma materiallar uchun", "Ko'zni charchatmaydi va vizual iyerarxiyani ajratishga yordam beradi", "Reklamani ko'paytiradi"], "a": 2, "e": "Elementlar orasidagi bo'sh joy e'tiborni asosiy narsaga qaratadi."}, {"q": "Telefon raqamini «+998 90 123 45 67» ko'rinishida bo'laklab yozish qaysi qonunga tayanadi?", "o": ["Hick qonuni", "WCAG kontrast qoidasi", "Norman qoidasi", "Miller qonuni"], "a": 3, "e": "Uzun qatorni bo'laklarga bo'lish qisqa muddatli xotiraga yengil tushadi."}, {"q": "Netflix shaxsiy tavsiyalari UCD ning qaysi g'oyasi bilan eng mos?", "o": ["Mahsulotni foydalanuvchi ehtiyojiga moslab yaratish", "Dizaynerning shaxsiy didiga tayanish", "Hamma uchun bir xil interfeys", "Faqat vizual bezakni kuchaytirish"], "a": 0, "e": "UCD (2-dars) global brend keysi (3-dars) sifatida: har bir foydalanuvchi uchun individual tajriba."}, {"q": "Ro'yxatdan o'tishda 12 ta majburiy maydon bor. Bu qaysi darslarda o'rganilgan muammolarni keltiradi?", "o": ["Faqat rang kontrasti muammosini", "Savatni/ro'yxatni tashlab ketish, ortiqcha kuch sarfi va Hick qonuni yuklamasi", "Faqat Miller qonunini buzishni, boshqa muammo yo'q", "Hech qanday muammo keltirmaydi"], "a": 1, "e": "Ortiqcha maydonlar konversiyani pasaytiradi (1-dars), kuch sarfini oshiradi (2-dars) va soddalikni buzadi (3-dars)."}, {"q": "Dars 2 dagi «Feedback» tamoyili va dars 3 dagi Slack keysi o'rtasidagi bog'liqlik qaysi?", "o": ["Slack Feedback tamoyilini rad etadi", "Feedback faqat xato xabarlariga tegishli, Slack ga emas", "Slack yetkazilganlik belgilari bilan Feedback tamoyilini amalda qo'llaydi", "Ular o'zaro bog'liq emas"], "a": 2, "e": "Tizim har bir harakatga darhol javob qaytarishi UCD ning 6-tamoyili, Slack esa buning aniq misoli."}, {"q": "Kommunal to'lov formasi yaxshilanishi natijasida konversiya oshishi uchun qaysi birikma eng samarali?", "o": ["Yangi animatsiya va ko'proq maydonlar", "Faqat chiroyli shrift", "Majburiy ro'yxatdan o'tish", "Raqamli klaviatura, aniq xato xabari va 4.5:1 dan yuqori kontrast"], "a": 3, "e": "Error prevention va Feedback (2-dars) hamda Accessibility (3-dars) birga xaridni yakunlash ehtimolini oshiradi (1-dars)."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

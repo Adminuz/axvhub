@@ -1,191 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>3-dars testi</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>3-dars testi</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>3-dars testi</h1>
-  <p class="muted">10 ta savol &middot; taxminan 8 daqiqa</p>
-  <span class="badge">10-sinf</span><span class="badge">BI &amp; ML</span><span class="badge">3-hafta</span>
-  
-</section>
-
-<section>
-  <h2>Savol 1/10</h2>
-  <div class="quiz">
-    <p class="q">SQL qanday til hisoblanadi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Deklarativ: qanday natija kerakligini aytamiz</button>
-      <button class="opt" type="button">Faqat buyruqlar ketma-ketligini qadamma-qadam yozuvchi til</button>
-      <button class="opt" type="button">Faqat vizual til</button>
-      <button class="opt" type="button">Faqat kompilyatsiya qilinadigan til</button>
-    </div>
-    <div class="explain">SQL da "qanday qidirish" emas, "aynan qanday natija kerak" aytiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 2/10</h2>
-  <div class="quiz">
-    <p class="q">SQL so'rovining mantiqiy bajarilish tartibi qaysi?</p>
-    <div class="opts">
-      <button class="opt" type="button">SELECT, FROM, WHERE, LIMIT</button>
-      <button class="opt" type="button" data-ok>FROM, WHERE, SELECT, ORDER BY, LIMIT</button>
-      <button class="opt" type="button">WHERE, FROM, ORDER BY, SELECT</button>
-      <button class="opt" type="button">LIMIT, SELECT, FROM, WHERE</button>
-    </div>
-    <div class="explain">Avval jadval topiladi, satrlar filtrlanadi, ustunlar olinadi, saralanadi va kesiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 3/10</h2>
-  <div class="quiz">
-    <p class="q"><code>BETWEEN 10 AND 20</code> chegaralarni qanday hisoblaydi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Ikkalasi ham kirmaydi</button>
-      <button class="opt" type="button">Faqat 10 kiradi</button>
-      <button class="opt" type="button" data-ok>10 va 20 ham kiradi</button>
-      <button class="opt" type="button">Faqat 20 kiradi</button>
-    </div>
-    <div class="explain"><code>BETWEEN</code> <code>&gt;= 10 AND &lt;= 20</code> ga teng.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 4/10</h2>
-  <div class="quiz">
-    <p class="q"><code>LIKE 'Toshkent%'</code> qanday qiymatlarni topadi?</p>
-    <div class="opts">
-      <button class="opt" type="button">"Toshkent" bilan tugaydiganlarni</button>
-      <button class="opt" type="button">Aniq 8 belgili matnlarni</button>
-      <button class="opt" type="button">Faqat "Toshkent" so'zini</button>
-      <button class="opt" type="button" data-ok>"Toshkent" bilan boshlanuvchi matnlarni</button>
-    </div>
-    <div class="explain"><code>%</code> ixtiyoriy sondagi belgilarni bildiradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 5/10</h2>
-  <div class="quiz">
-    <p class="q"><code>_</code> belgisi <code>LIKE</code> da nimani bildiradi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Aniq bitta belgini</button>
-      <button class="opt" type="button">Ixtiyoriy sondagi belgilarni</button>
-      <button class="opt" type="button">Bo'sh joyni</button>
-      <button class="opt" type="button">Raqamni emas</button>
-    </div>
-    <div class="explain">Masalan, <code>sinf_nomi LIKE '1_-A'</code> aynan bitta belgi bilan mos keladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 6/10</h2>
-  <div class="quiz">
-    <p class="q">Bo'sh qiymatlarni topish uchun qaysi yozuv to'g'ri?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>WHERE markaz = NULL</code></button>
-      <button class="opt" type="button" data-ok><code>WHERE markaz IS NULL</code></button>
-      <button class="opt" type="button"><code>WHERE markaz == ''</code></button>
-      <button class="opt" type="button"><code>WHERE markaz = 0</code></button>
-    </div>
-    <div class="explain"><code>= NULL</code> ishlamaydi, <code>IS NULL</code> ishlatiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 7/10</h2>
-  <div class="quiz">
-    <p class="q"><code>ORDER BY yil DESC, oquvchilar_soni DESC</code> nimani beradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Avval o'quvchilar soni, keyin yil o'sish bo'yicha</button>
-      <button class="opt" type="button">Faqat yil bo'yicha o'sish</button>
-      <button class="opt" type="button" data-ok>Avval yil kamayish bo'yicha, keyin o'quvchilar soni kamayish bo'yicha</button>
-      <button class="opt" type="button">Tasodifiy tartib</button>
-    </div>
-    <div class="explain">Ko'p ustunli saralash chapdan o'ngga qo'llanadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 8/10</h2>
-  <div class="quiz">
-    <p class="q"><code>LIMIT 5 OFFSET 10</code> nimani qaytaradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Faqat 10-5 ta satrni</button>
-      <button class="opt" type="button">Birinchi 10 ta satrdan 5 tasini</button>
-      <button class="opt" type="button">Oxirgi 15 ta satrni</button>
-      <button class="opt" type="button" data-ok>Dastlabki 10 ta satrni tashlab, 11-qatordan boshlab 5 tasini</button>
-    </div>
-    <div class="explain">OFFSET K dastlabki K ta yozuvni o'tkazib yuboradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 9/10</h2>
-  <div class="quiz">
-    <p class="q">Sahifada 10 tadan yozuv. 3-sahifa uchun qaysi to'g'ri?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok><code>LIMIT 10 OFFSET 20</code></button>
-      <button class="opt" type="button"><code>LIMIT 10 OFFSET 30</code></button>
-      <button class="opt" type="button"><code>LIMIT 20 OFFSET 10</code></button>
-      <button class="opt" type="button"><code>LIMIT 3 OFFSET 10</code></button>
-    </div>
-    <div class="explain">1-sahifa OFFSET 0, 2-sahifa OFFSET 10, 3-sahifa OFFSET 20.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 10/10</h2>
-  <div class="quiz">
-    <p class="q">2024-yildagi eng ko'p o'quvchili TOP-5 hududni olish uchun qaysi tartib to'g'ri?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>LIMIT 5 ORDER BY k.oquvchilar_soni DESC WHERE k.yil = 2024</code></button>
-      <button class="opt" type="button" data-ok><code>WHERE k.yil = 2024 ORDER BY k.oquvchilar_soni DESC LIMIT 5</code></button>
-      <button class="opt" type="button"><code>ORDER BY k.oquvchilar_soni ASC LIMIT 5</code></button>
-      <button class="opt" type="button"><code>WHERE k.oquvchilar_soni DESC LIMIT 2024</code></button>
-    </div>
-    <div class="explain">Avval filtr, keyin kamayish bo'yicha saralash, oxirida LIMIT.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Natijangiz</h2>
-  <div class="cards three">
-    <div class="card"><h3>10 dan 9+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
-    <div class="card"><h3>10 dan 6-8</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
-    <div class="card accent"><h3>5 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
-  </div>
-  <p class="small mt">Takrorlang: SELECT/WHERE/ORDER BY/LIMIT, LIKE, BETWEEN, IS NULL, sahifalash.</p>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>3-dars testi</h1></header>
+<div class="badges"><span class="badge">10-sinf</span><span class="badge">BI &amp;amp; ML</span><span class="badge">3-hafta</span><span class="badge">10 ta savol &amp;middot; taxminan 8 daqiqa</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "SQL qanday til hisoblanadi?", "o": ["Deklarativ: qanday natija kerakligini aytamiz", "Faqat buyruqlar ketma-ketligini qadamma-qadam yozuvchi til", "Faqat vizual til", "Faqat kompilyatsiya qilinadigan til"], "a": 0, "e": "SQL da \"qanday qidirish\" emas, \"aynan qanday natija kerak\" aytiladi."}, {"q": "SQL so'rovining mantiqiy bajarilish tartibi qaysi?", "o": ["SELECT, FROM, WHERE, LIMIT", "FROM, WHERE, SELECT, ORDER BY, LIMIT", "WHERE, FROM, ORDER BY, SELECT", "LIMIT, SELECT, FROM, WHERE"], "a": 1, "e": "Avval jadval topiladi, satrlar filtrlanadi, ustunlar olinadi, saralanadi va kesiladi."}, {"q": "<code>BETWEEN 10 AND 20<\/code> chegaralarni qanday hisoblaydi?", "o": ["Ikkalasi ham kirmaydi", "Faqat 10 kiradi", "10 va 20 ham kiradi", "Faqat 20 kiradi"], "a": 2, "e": "<code>BETWEEN<\/code> <code>&gt;= 10 AND &lt;= 20<\/code> ga teng."}, {"q": "<code>LIKE 'Toshkent%'<\/code> qanday qiymatlarni topadi?", "o": ["\"Toshkent\" bilan tugaydiganlarni", "Aniq 8 belgili matnlarni", "Faqat \"Toshkent\" so'zini", "\"Toshkent\" bilan boshlanuvchi matnlarni"], "a": 3, "e": "<code>%<\/code> ixtiyoriy sondagi belgilarni bildiradi."}, {"q": "<code>_<\/code> belgisi <code>LIKE<\/code> da nimani bildiradi?", "o": ["Aniq bitta belgini", "Ixtiyoriy sondagi belgilarni", "Bo'sh joyni", "Raqamni emas"], "a": 0, "e": "Masalan, <code>sinf_nomi LIKE '1_-A'<\/code> aynan bitta belgi bilan mos keladi."}, {"q": "Bo'sh qiymatlarni topish uchun qaysi yozuv to'g'ri?", "o": ["<code>WHERE markaz = NULL<\/code>", "<code>WHERE markaz IS NULL<\/code>", "<code>WHERE markaz == ''<\/code>", "<code>WHERE markaz = 0<\/code>"], "a": 1, "e": "<code>= NULL<\/code> ishlamaydi, <code>IS NULL<\/code> ishlatiladi."}, {"q": "<code>ORDER BY yil DESC, oquvchilar_soni DESC<\/code> nimani beradi?", "o": ["Avval o'quvchilar soni, keyin yil o'sish bo'yicha", "Faqat yil bo'yicha o'sish", "Avval yil kamayish bo'yicha, keyin o'quvchilar soni kamayish bo'yicha", "Tasodifiy tartib"], "a": 2, "e": "Ko'p ustunli saralash chapdan o'ngga qo'llanadi."}, {"q": "<code>LIMIT 5 OFFSET 10<\/code> nimani qaytaradi?", "o": ["Faqat 10-5 ta satrni", "Birinchi 10 ta satrdan 5 tasini", "Oxirgi 15 ta satrni", "Dastlabki 10 ta satrni tashlab, 11-qatordan boshlab 5 tasini"], "a": 3, "e": "OFFSET K dastlabki K ta yozuvni o'tkazib yuboradi."}, {"q": "Sahifada 10 tadan yozuv. 3-sahifa uchun qaysi to'g'ri?", "o": ["<code>LIMIT 10 OFFSET 20<\/code>", "<code>LIMIT 10 OFFSET 30<\/code>", "<code>LIMIT 20 OFFSET 10<\/code>", "<code>LIMIT 3 OFFSET 10<\/code>"], "a": 0, "e": "1-sahifa OFFSET 0, 2-sahifa OFFSET 10, 3-sahifa OFFSET 20."}, {"q": "2024-yildagi eng ko'p o'quvchili TOP-5 hududni olish uchun qaysi tartib to'g'ri?", "o": ["<code>LIMIT 5 ORDER BY k.oquvchilar_soni DESC WHERE k.yil = 2024<\/code>", "<code>WHERE k.yil = 2024 ORDER BY k.oquvchilar_soni DESC LIMIT 5<\/code>", "<code>ORDER BY k.oquvchilar_soni ASC LIMIT 5<\/code>", "<code>WHERE k.oquvchilar_soni DESC LIMIT 2024<\/code>"], "a": 1, "e": "Avval filtr, keyin kamayish bo'yicha saralash, oxirida LIMIT."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

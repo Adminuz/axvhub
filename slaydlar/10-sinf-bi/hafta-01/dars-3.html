@@ -1,690 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>Ma’lumot Formatlari: CSV va JSON</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Ma’lumot Formatlari: CSV va JSON</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<!-- 3-dars: Ma’lumot formatlari: CSV va JSON bilan ishlash -->
-
-<!-- 1. SARLAVHA -->
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>Ma’lumot Formatlari: CSV va JSON</h1>
-  <p class="muted">Satrli va ierarxik formatlar, Medallion arxitekturasi hamda Pandas amaliyoti</p>
-  <span class="badge">10-sinf</span><span class="badge">BI &amp; ML</span><span class="badge">1-hafta · 3-dars</span>
-  
-</section>
-
-<!-- 2. BUGUN NIMANI O'RGANAMIZ? -->
-<section>
-  <h2>Bugun nimani o'rganamiz?</h2>
-  <div class="cards three">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="table" data-anim="pulse"></i></div>
-      <h3>CSV Formati</h3>
-      <p>Satrli saqlash, ajratgichlar (delimiters), afzalliklari va encoding muammolari</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="braces" data-anim="float"></i></div>
-      <h3>JSON Formati</h3>
-      <p>Kalit-qiymat, ichma-ich (nested) obyektlar va Web API larning ma'lumot uzatish standarti</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="folder-tree" data-anim="draw"></i></div>
-      <h3>Medallion Arxitekturasi</h3>
-      <p>Data Engineering loyihasida raw, bronze, silver va gold papkalarining vazifasi</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 3. MA'LUMOT FORMATLARI NIMA UCHUN MUHIM? -->
-<section>
-  <h2>Format tanlash: Nega bu muhim?</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="database"></i></div>
-      <h3>Hajm va Tezlik</h3>
-      <p>Ma'lumotlar formati tizimning qanchalik tez ishlashi, diskda qancha joy egallashi va tarmoqda qanday tezlikda uzatilishini belgilab beradi.</p>
-      <p class="t-muted">Noto'g'ri tanlangan format server xarajatlarini oshiradi va pipeline jarayonini sekinlashtiradi.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="layers"></i></div>
-      <h3>Moslashuvchanlik vs Struktura</h3>
-      <p>Jadval ko'rinishidagi ma'lumotlar uchun CSV qulay bo'lsa, murakkab ichma-ich tuzilmalar uchun JSON zarur bo'ladi.</p>
-      <p class="t-accent">Professional Data Engineer har bir vazifaga mos formatni to'g'ri tanlay bilishi shart.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 4. CSV FORMATI MOHIYATI -->
-<section>
-  <h2>CSV (Comma-Separated Values)</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="file-spreadsheet"></i></div>
-      <h3>Satrli (Tabular) Saqlash</h3>
-      <p>Oddiy matn (plain text) shaklida jadval ma'lumotlarini saqlash standarti:</p>
-      <ul>
-        <li>Har bir yangi satr — bitta qator (record);</li>
-        <li>Ustunlar vergul (<code>,</code>), nuqta-vergul (<code>;</code>) yoki tabulyatsiya (<code>\t</code>) bilan ajratiladi;</li>
-        <li>Birinchi satrda ko'pincha ustun nomlari (header) joylashadi.</li>
-      </ul>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="code"></i></div>
-      <h3>Namuna kodi</h3>
-      <pre><code>maktab_id,nomi,viloyat,oquvchilar
-101,1-IDUM,Toshkent,1250
-102,5-maktab,Samarqand,890
-103,12-maktab,Andijon,1100</code></pre>
-      <p class="t-muted">Inson tomonidan oddiy Bloknotda ham o'qilishi mumkin bo'lgan yengil ko'rinish.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 5. SVG 1: CSV FAYL TUZILISHI -->
-<section>
-  <h2>CSV faylning ichki tuzilishi</h2>
-  <div class="illus">
-    <svg viewBox="0 0 920 300" width="100%" height="260">
-      <!-- Header satri -->
-      <rect x="50" y="30" width="820" height="50" rx="6" class="fb la" stroke-width="1.5" />
-      <text x="130" y="62" text-anchor="middle" class="t-head" font-size="14" font-weight="700">maktab_id</text>
-      <line x1="230" y1="30" x2="230" y2="80" class="la" stroke-dasharray="4" />
-      <text x="360" y="62" text-anchor="middle" class="t-head" font-size="14" font-weight="700">maktab_nomi</text>
-      <line x1="510" y1="30" x2="510" y2="80" class="la" stroke-dasharray="4" />
-      <text x="610" y="62" text-anchor="middle" class="t-head" font-size="14" font-weight="700">viloyat</text>
-      <line x1="720" y1="30" x2="720" y2="80" class="la" stroke-dasharray="4" />
-      <text x="800" y="62" text-anchor="middle" class="t-head" font-size="14" font-weight="700">oquvchilar</text>
-
-      <!-- 1-satr -->
-      <rect x="50" y="95" width="820" height="45" rx="6" class="fa la" stroke-width="1" />
-      <text x="130" y="123" text-anchor="middle" class="t-muted" font-size="13">101</text>
-      <text x="360" y="123" text-anchor="middle" class="t-muted" font-size="13">1-IDUM</text>
-      <text x="610" y="123" text-anchor="middle" class="t-muted" font-size="13">Toshkent</text>
-      <text x="800" y="123" text-anchor="middle" class="t-accent" font-size="13">1250</text>
-
-      <!-- 2-satr -->
-      <rect x="50" y="150" width="820" height="45" rx="6" class="fa la" stroke-width="1" />
-      <text x="130" y="178" text-anchor="middle" class="t-muted" font-size="13">102</text>
-      <text x="360" y="178" text-anchor="middle" class="t-muted" font-size="13">5-maktab</text>
-      <text x="610" y="178" text-anchor="middle" class="t-muted" font-size="13">Samarqand</text>
-      <text x="800" y="178" text-anchor="middle" class="t-accent" font-size="13">890</text>
-
-      <!-- 3-satr -->
-      <rect x="50" y="205" width="820" height="45" rx="6" class="fa la" stroke-width="1" />
-      <text x="130" y="233" text-anchor="middle" class="t-muted" font-size="13">103</text>
-      <text x="360" y="233" text-anchor="middle" class="t-muted" font-size="13">12-maktab</text>
-      <text x="610" y="233" text-anchor="middle" class="t-muted" font-size="13">Andijon</text>
-      <text x="800" y="233" text-anchor="middle" class="t-accent" font-size="13">1100</text>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- 6. CSV NING AFZALLIK VA KAMCHILIKLARI -->
-<section>
-  <h2>CSV: Imkoniyatlar va Cheklovlar</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="circle-check"></i></div>
-      <h3>Afzalliklari</h3>
-      <ul>
-        <li><strong>Universal:</strong> Har qanday platforma (Excel, SQL, Python, R) ochadi;</li>
-        <li><strong>Sodda va o'qiluvchan:</strong> Hech qanday murakkab kutubxona talab qilmaydi;</li>
-        <li><strong>Yengil eksport:</strong> Ma'lumotlar bazasidan tezkor tushirib olish qulay.</li>
-      </ul>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="triangle-alert"></i></div>
-      <h3>Kamchiliklari</h3>
-      <ul>
-        <li><strong>Schema yo'q:</strong> Ustun tipi (int, str, date) saqlanmaydi;</li>
-        <li><strong>Siqilmagan:</strong> Katta hajmdagi ma'lumotlarda gigabaytlab joy egallaydi;</li>
-        <li><strong>Delimiter xatolari:</strong> Matn ichidagi vergullar satrni buzadi;</li>
-        <li><strong>Encoding muammolari:</strong> Turli kodlash tizimlari matnlarni buzadi.</li>
-      </ul>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 7. CSV NING 2 TA ASOSIY MUAMMOSI -->
-<section>
-  <h2>CSV da 2 ta asosiy muammo</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="list-filter"></i></div>
-      <h3>1. Delimiter to'qnashuvi</h3>
-      <p>Agar matn ichida vergul bo'lsa:</p>
-      <pre><code>101,Alisher Navoiy nomidagi, 1-maktab,Toshkent</code></pre>
-      <p class="t-muted">Dastur 3 ta ustun o'rniga 4 ta ustun ko'radi va ma'lumotlar siljib ketadi!</p>
-      <p class="t-accent">Yechim: Matnni qo'shtirnoqqa olish yoki nuqta-vergul (<code>;</code>) ishlatish.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="triangle-alert"></i></div>
-      <h3>2. Encoding (Kodlash) xatosi</h3>
-      <p>Eski Windows va Excel tizimlari <code>cp1251</code> dan foydalanadi.</p>
-      <pre><code>UnicodeDecodeError: 'utf-8' codec can't decode...</code></pre>
-      <p class="t-muted">Natijada o'zbekcha yoki ruscha harflar tushunarsiz belgilarga aylanadi.</p>
-      <p class="t-accent">Yechim: <code>encoding='cp1251'</code> ko'rsatish.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 8. JSON FORMATI MOHIYATI -->
-<section>
-  <h2>JSON (JavaScript Object Notation)</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="braces"></i></div>
-      <h3>Ierarxik (Nested) Tuzilma</h3>
-      <p>Kalit-qiymat (Key-Value) va massivlar asosidagi zamonaviy standart:</p>
-      <ul>
-        <li>Daraxtsimon tuzilma (Tree structure);</li>
-        <li>Obyekt ichida yangi obyekt yoki ro'yxat joylashishi mumkin;</li>
-        <li>Web API'lar va server loglarining asosiy tili.</li>
-      </ul>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="code"></i></div>
-      <h3>JSON namunasi</h3>
-      <pre><code class="language-json">{
-  "maktab_id": 101,
-  "nomi": "1-IDUM",
-  "joylashuv": {
-    "viloyat": "Toshkent",
-    "shahar": "Chilonzor"
-  },
-  "sinflar": ["10-A", "10-B", "11-A"]
-}</code></pre>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 9. SVG 2: JSON IERARXIK DARAXTI -->
-<section>
-  <h2>JSON: Daraxtsimon ierarxiya</h2>
-  <div class="illus">
-    <svg viewBox="0 0 920 300" width="100%" height="260">
-      <!-- Root Node -->
-      <rect x="360" y="20" width="200" height="50" rx="8" class="fc la" stroke-width="1.5" />
-      <text x="460" y="52" text-anchor="middle" class="t-head" font-size="14" font-weight="700">Maktab Obyekti</text>
-
-      <!-- Shoxlar -->
-      <line x1="410" y1="70" x2="220" y2="120" class="la" stroke-width="2" />
-      <line x1="460" y1="70" x2="460" y2="120" class="la" stroke-width="2" />
-      <line x1="510" y1="70" x2="700" y2="120" class="la" stroke-width="2" />
-
-      <!-- 1-shox: Oddiy maydon -->
-      <rect x="130" y="120" width="180" height="60" rx="6" class="fa la" stroke-width="1" />
-      <text x="220" y="145" text-anchor="middle" class="t-muted" font-size="12">maktab_id: 101</text>
-      <text x="220" y="165" text-anchor="middle" class="t-muted" font-size="12">nomi: "1-IDUM"</text>
-
-      <!-- 2-shox: Nested Obyekt -->
-      <rect x="370" y="120" width="180" height="60" rx="6" class="fb la" stroke-width="1.5" />
-      <text x="460" y="145" text-anchor="middle" class="t-head" font-size="12" font-weight="700">joylashuv (Obyekt)</text>
-      <text x="460" y="165" text-anchor="middle" class="t-accent" font-size="11">viloyat: "Toshkent"</text>
-
-      <!-- 3-shox: Massiv (Array) -->
-      <rect x="610" y="120" width="180" height="60" rx="6" class="fa la" stroke-width="1" />
-      <text x="700" y="145" text-anchor="middle" class="t-head" font-size="12" font-weight="700">sinflar (Array)</text>
-      <text x="700" y="165" text-anchor="middle" class="t-muted" font-size="11">["10-A", "10-B"]</text>
-
-      <!-- Joylashuv ostidagi tuman -->
-      <line x1="460" y1="180" x2="460" y2="220" class="la" stroke-width="1.5" />
-      <rect x="370" y="220" width="180" height="45" rx="6" class="fa la" stroke-width="1" />
-      <text x="460" y="248" text-anchor="middle" class="t-muted" font-size="11">tuman: "Chilonzor"</text>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- 10. JSON NING AFZALLIK VA KAMCHILIKLARI -->
-<section>
-  <h2>JSON: Imkoniyatlar va Cheklovlar</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="circle-check"></i></div>
-      <h3>Afzalliklari</h3>
-      <ul>
-        <li><strong>Moslashuvchan:</strong> Har bir qatorda bir xil ustunlar bo'lishi shart emas;</li>
-        <li><strong>Ichma-ich tuzilma:</strong> Obyektlar va massivlarni bir joyda saqlaydi;</li>
-        <li><strong>Internet tili:</strong> Hamma zamonaviy veb-saytlar va mobil ilovalar JSON orqali gaplashadi.</li>
-      </ul>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="triangle-alert"></i></div>
-      <h3>Kamchiliklari</h3>
-      <ul>
-        <li><strong>BI uchun noqulay:</strong> SQL va Power BI bilan ishlash uchun tekislash (flattening) kerak;</li>
-        <li><strong>Hajmning kattaligi:</strong> Kalit nomlari har bir yozuvda takrorlanadi;</li>
-        <li><strong>Katta resurs:</strong> Parsing jarayoni ko'proq protsessor va xotira sarflaydi.</li>
-      </ul>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 11. CSV VA JSON TAQQOSLASH -->
-<section>
-  <h2>CSV vs JSON Taqqoslovi</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="table"></i></div>
-      <h3>CSV Formati</h3>
-      <ul>
-        <li><strong>Tuzilma:</strong> 2D tekis jadval (satr va ustun);</li>
-        <li><strong>Moslik:</strong> Tahliliy hisobotlar va eksportlar;</li>
-        <li><strong>Hajm:</strong> Ixcham (faqat qiymatlar yoziladi);</li>
-        <li><strong>Cheklov:</strong> Ichma-ich obyektlarni saqlab bo'lmaydi.</li>
-      </ul>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="braces"></i></div>
-      <h3>JSON Formati</h3>
-      <ul>
-        <li><strong>Tuzilma:</strong> Daraxtsimon, ierarxik;</li>
-        <li><strong>Moslik:</strong> Web API, mikroxizmatlar, ilovalar;</li>
-        <li><strong>Hajm:</strong> Kattaroq (kalit nomlari takrorlanadi);</li>
-        <li><strong>Cheklov:</strong> Jadvalga aylantirish uchun tekislash shart.</li>
-      </ul>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 12. FLIP CARDS: QACHON QAYSI BIRINI ISHLATAMIZ? -->
-<section>
-  <h2>Qachon qaysi formatni tanlaymiz?</h2>
-  <div class="cards two">
-    <div class="flip" style="min-height:220px">
-      <div class="flip-in">
-        <div class="face front">
-          <div class="icon"><i data-ic="table"></i></div>
-          <h3>Qachon CSV tanlanadi?</h3>
-          <p>Katta jadvalli eksportlar va hisobotlar uchun...</p>
-          <span class="flip-hint">bosing</span>
-        </div>
-        <div class="face back">
-          <p class="t-accent">Oddiy va tezkor almashishda!</p>
-          <p>Ma'lumotlar qat'iy satr va ustunlarga ega bo'lsa, Excel yoki Power BI ga tezkor yuklash kerak bo'lganda CSV eng to'g'ri tanlovdir.</p>
-        </div>
-      </div>
-    </div>
-    <div class="flip" style="min-height:220px">
-      <div class="flip-in">
-        <div class="face front">
-          <div class="icon"><i data-ic="braces"></i></div>
-          <h3>Qachon JSON tanlanadi?</h3>
-          <p>Web servislar va noaniq sxemalar uchun...</p>
-          <span class="flip-hint">bosing</span>
-        </div>
-        <div class="face back">
-          <p class="t-accent">Moslashuvchan API almashinuvida!</p>
-          <p>Har bir foydalanuvchida turlicha ma'lumotlar bor bo'lsa, ichma-ich ro'yxatlar mavjud bo'lganda va veb-saytlar bilan bog'lanishda JSON qo'llaniladi.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 13. MEDALLION PAPKA STRUKTURASI -->
-<section>
-  <h2>Medallion Arxitekturasi: Papkalar tartibi</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="folder-tree"></i></div>
-      <h3>Standart Loyiha Strukturasi</h3>
-      <pre><code>maktab-pipeline/
-├── data/
-│   ├── raw/      # Asl xom fayllar
-│   ├── bronze/   # Minimal tekshirilgan
-│   ├── silver/   # Tozalangan data
-│   └── gold/     # Yakuniy KPI/Martlar
-├── src/          # Python pipeline kodi
-└── logs/         # Xatolar jurnali</code></pre>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="layers"></i></div>
-      <h3>Bosqichlar vazifasi</h3>
-      <ul>
-        <li><strong>raw:</strong> Hech qachon o'zgartirilmaydigan xom fayllar;</li>
-        <li><strong>bronze:</strong> Tizimga qabul qilingan dastlabki nusxa;</li>
-        <li><strong>silver:</strong> Tozalangan, formati to'g'rilangan fayllar;</li>
-        <li><strong>gold:</strong> Direktor va tahlilchilar uchun tayyor jadvallar.</li>
-      </ul>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 14. SVG 3: MEDALLION PIPELINE OQIMI -->
-<section>
-  <h2>Medallion Quvuri: Xom ma'lumotdan Oltin qatlamgacha</h2>
-  <div class="illus">
-    <svg viewBox="0 0 920 300" width="100%" height="260">
-      <!-- Raw -->
-      <rect x="30" y="70" width="180" height="150" rx="10" class="fa la" stroke-width="1.5" />
-      <text x="120" y="110" text-anchor="middle" class="t-muted" font-size="14" font-weight="700">1. RAW</text>
-      <text x="120" y="145" text-anchor="middle" class="t-muted" font-size="11">Xom CSV / JSON</text>
-      <text x="120" y="165" text-anchor="middle" class="t-muted" font-size="11">O'zgartirilmaydi</text>
-      <text x="120" y="185" text-anchor="middle" class="t-muted" font-size="11">Asl haqiqat</text>
-
-      <path d="M 215 145 L 255 145" class="la" stroke-width="2" />
-
-      <!-- Bronze -->
-      <rect x="260" y="70" width="180" height="150" rx="10" class="fa la" stroke-width="1.5" />
-      <text x="350" y="110" text-anchor="middle" class="t-head" font-size="14" font-weight="700">2. BRONZE</text>
-      <text x="350" y="145" text-anchor="middle" class="t-muted" font-size="11">Qabul qilingan</text>
-      <text x="350" y="165" text-anchor="middle" class="t-muted" font-size="11">Minimal profiling</text>
-      <text x="350" y="185" text-anchor="middle" class="t-muted" font-size="11">Fayl arxivi</text>
-
-      <path d="M 445 145 L 485 145" class="la" stroke-width="2" />
-
-      <!-- Silver -->
-      <rect x="490" y="70" width="180" height="150" rx="10" class="fb la" stroke-width="1.5" />
-      <text x="580" y="110" text-anchor="middle" class="t-accent" font-size="14" font-weight="700">3. SILVER</text>
-      <text x="580" y="145" text-anchor="middle" class="t-muted" font-size="11">Tozalangan</text>
-      <text x="580" y="165" text-anchor="middle" class="t-muted" font-size="11">Normalizatsiya</text>
-      <text x="580" y="185" text-anchor="middle" class="t-muted" font-size="11">Null yo'qotilgan</text>
-
-      <path d="M 675 145 L 715 145" class="la" stroke-width="2" />
-
-      <!-- Gold -->
-      <rect x="720" y="70" width="180" height="150" rx="10" class="fc la" stroke-width="1.5" />
-      <text x="810" y="110" text-anchor="middle" class="t-head" font-size="14" font-weight="700">4. GOLD</text>
-      <text x="810" y="145" text-anchor="middle" class="t-muted" font-size="11">Biznes ko'rsatkich</text>
-      <text x="810" y="165" text-anchor="middle" class="t-muted" font-size="11">KPI &amp; Dashboard</text>
-      <text x="810" y="185" text-anchor="middle" class="t-muted" font-size="11">Data Marts</text>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- 15. STEPPER: LOYIHADAGI QADAMLAR -->
-<section>
-  <h2>Pipeline amaliy qadamlari</h2>
-  <div class="stepper">
-    <div class="stp on">
-      <div class="card">
-        <div class="icon"><i data-ic="folder-plus" data-anim="pulse"></i></div>
-        <h3>1. Xom fayllarni joylashtirish</h3>
-        <p>Maktab statistikasi CSV va JSON fayllari <code>data/raw/</code> papkasiga yuklanadi.</p>
-      </div>
-    </div>
-    <div class="stp">
-      <div class="card">
-        <div class="icon"><i data-ic="terminal" data-anim="float"></i></div>
-        <h3>2. O'qish va Tekshirish</h3>
-        <p>Pandas orqali <code>shape</code>, <code>info()</code> va <code>null</code> qiymatlar tekshiriladi.</p>
-      </div>
-    </div>
-    <div class="stp">
-      <div class="card">
-        <div class="icon"><i data-ic="circle-check"></i></div>
-        <h3>3. Tozalash va Saqlash</h3>
-        <p>Xatolar tuzatilib, tozalangan ma'lumot <code>data/silver/</code> papkasiga saqlanadi.</p>
-      </div>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 16. PYTHON VA PANDAS: CSV O'QISH -->
-<section>
-  <h2>Pandas bilan CSV fayllarni o'qish</h2>
-  <pre><code class="language-python">import pandas as pd
-
-# CSV faylni o'qish
-df = pd.read_csv('data/raw/maktablar.csv', sep=',')
-
-# Birlamchi tahlil (Profiling)
-print(f"Jadval shakli: {df.shape}") # (qatorlar, ustunlar)
-print("\nDastlabki 3 ta satr:")
-print(df.head(3))
-
-# Ma'lumot turlari va xotira iste'moli
-print("\nUstunlar va turlar:")
-print(df.info())</code></pre>
-  
-</section>
-
-<!-- 17. ENCODING XATOSINI PYTHONDA YECHISH -->
-<section>
-  <h2>Encoding muammosini hal qilish</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="triangle-alert"></i></div>
-      <h3>Muammo sababi</h3>
-      <p>Windows yoki eski Excel da tayyorlangan fayllarda <code>UnicodeDecodeError</code> chiqishi mumkin.</p>
-      <p class="t-muted">Dastur kirill harflarini UTF-8 da o'qiy olmagani uchun to'xtaydi.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="code"></i></div>
-      <h3>Ishonchli Yechim</h3>
-      <pre><code class="language-python">try:
-    df = pd.read_csv(
-        'data/raw/maktablar.csv', 
-        encoding='utf-8'
-    )
-except UnicodeDecodeError:
-    # Xato bo'lsa cp1251 bilan ochamiz
-    df = pd.read_csv(
-        'data/raw/maktablar.csv', 
-        encoding='cp1251'
-    )
-print("Fayl muvaffaqiyatli ochildi!")</code></pre>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 18. JSON TEKISLASH MUAMMOSI -->
-<section>
-  <h2>JSON bilan asosiy muammo: Ichma-ichlik</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="braces"></i></div>
-      <h3>Ichma-ich JSON obyekti</h3>
-      <pre><code class="language-json">[
-  {
-    "maktab": "1-IDUM",
-    "direktor": {
-      "ism": "Alisher",
-      "familiya": "Qodirov"
-    }
-  }
-]</code></pre>
-      <p class="t-muted">Agar oddiy <code>pd.read_json()</code> qilinsa, direktor ustunida butun lug'at saqlanib qoladi.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="table"></i></div>
-      <h3>Kerakli 2D Jadval</h3>
-      <p>BI va SQL uchun bitta ustunda lug'at emas, alohida ustunlar kerak:</p>
-      <ul>
-        <li><code>maktab</code>: "1-IDUM"</li>
-        <li><code>direktor.ism</code>: "Alisher"</li>
-        <li><code>direktor.familiya</code>: "Qodirov"</li>
-      </ul>
-      <p class="t-accent">Buni qanday bajaramiz? &rarr; <code>json_normalize()</code></p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 19. SVG 4: JSON_NORMALIZE VIZUALIZATSIYASI -->
-<section>
-  <h2>json_normalize() mexanizmi</h2>
-  <div class="illus">
-    <svg viewBox="0 0 920 300" width="100%" height="260">
-      <!-- Chap: Nested JSON -->
-      <rect x="50" y="50" width="260" height="180" rx="10" class="fa la" stroke-width="1.5" />
-      <text x="180" y="85" text-anchor="middle" class="t-head" font-size="14" font-weight="700">Nested JSON</text>
-      <text x="180" y="125" text-anchor="middle" class="t-muted" font-size="12">{"id": 101,</text>
-      <text x="180" y="150" text-anchor="middle" class="t-muted" font-size="12"> "manzil": {</text>
-      <text x="180" y="175" text-anchor="middle" class="t-muted" font-size="12">   "shahar": "Toshkent"}}</text>
-
-      <!-- Quvur markazi -->
-      <path d="M 330 140 L 430 140" class="la" stroke-width="3" />
-      <rect x="430" y="110" width="150" height="60" rx="8" class="fb la" stroke-width="1.5" />
-      <text x="505" y="145" text-anchor="middle" class="t-accent" font-size="13" font-weight="700">json_normalize</text>
-      <path d="M 580 140 L 680 140" class="la" stroke-width="3" />
-
-      <!-- O'ng: 2D Jadval -->
-      <rect x="680" y="50" width="220" height="180" rx="10" class="fc la" stroke-width="1.5" />
-      <text x="790" y="85" text-anchor="middle" class="t-head" font-size="14" font-weight="700">Tekislangan Jadval</text>
-      <rect x="695" y="110" width="190" height="35" rx="4" class="fb la" stroke-width="1" />
-      <text x="740" y="132" text-anchor="middle" class="t-head" font-size="11">id</text>
-      <text x="830" y="132" text-anchor="middle" class="t-head" font-size="11">manzil.shahar</text>
-      <rect x="695" y="155" width="190" height="35" rx="4" class="fa la" stroke-width="1" />
-      <text x="740" y="177" text-anchor="middle" class="t-muted" font-size="11">101</text>
-      <text x="830" y="177" text-anchor="middle" class="t-muted" font-size="11">Toshkent</text>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- 20. PYTHON KODI: JSON_NORMALIZE AMALIYOTI -->
-<section>
-  <h2>Amaliy kod: json_normalize()</h2>
-  <pre><code class="language-python">import json
-import pandas as pd
-
-# 1. JSON ma'lumotni yuklaymiz
-with open('data/raw/maktablar.json', 'r', encoding='utf-8') as f:
-    data = json.load(f)
-
-# 2. Ichma-ich tuzilmani tekis jadvalga aylantiramiz
-df_tekis = pd.json_normalize(data)
-
-print("--- Tekislangan ustunlar ---")
-print(df_tekis.columns.tolist())
-
-# Natijani Silver qatlamiga saqlaymiz
-df_tekis.to_csv('data/silver/maktablar_tekis.csv', index=False)
-print("\nSilver qatlamiga muvaffaqiyatli yozildi.")</code></pre>
-  
-</section>
-
-<!-- 21. SIFAT VA PROFILING BUYRUQLARI -->
-<section>
-  <h2>Pandas Profiling: 3 asosiy buyruq</h2>
-  <div class="cards three">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="table"></i></div>
-      <h3>df.shape</h3>
-      <p>Jadvalning o'lchamini bilish:</p>
-      <pre><code>(1000, 12)</code></pre>
-      <p class="t-muted">1000 ta qator va 12 ta ustun mavjudligini ko'rsatadi.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="search"></i></div>
-      <h3>df.isna().sum()</h3>
-      <p>Bo'sh qiymatlarni hisoblash:</p>
-      <pre><code>viloyat: 0
-oquvchilar: 5</code></pre>
-      <p class="t-muted">Completeness (To'liqlik) buzilgan kataklarni sanaydi.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="copy-check"></i></div>
-      <h3>df.duplicated()</h3>
-      <p>Duplikatlarni topish:</p>
-      <pre><code>df.duplicated().sum()</code></pre>
-      <p class="t-muted">Takroriy qatorlar sonini bir zumda aniqlaydi.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 22. MINI-TEST (QUIZ) -->
-<section>
-  <h2>Mini-test: Formatlar va vositalar</h2>
-  <div class="quiz">
-    <p class="q">Ichma-ich (nested) JSON obyektlarini 2D jadval ustunlariga tekislash uchun qaysi Pandas funksiyasi qo'llaniladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">pd.read_csv()</button>
-      <button class="opt" type="button" data-ok>pd.json_normalize()</button>
-      <button class="opt" type="button">pd.concat()</button>
-      <button class="opt" type="button">df.to_json()</button>
-    </div>
-    <div class="explain">To'g'ri: pd.json_normalize() ierarxik daraxtsimon JSON tuzilmasini satr va ustunli DataFrame ga aylantiradi.</div>
-  </div>
-  
-</section>
-
-<!-- 23. 1-HAFTA XULOSALARI -->
-<section>
-  <h2>1-hafta umumiy xulosalari</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="check-check"></i></div>
-      <h3>O'rganilgan mavzular</h3>
-      <ul>
-        <li><strong>1-dars:</strong> DIKW piramidasi, Data Engineer roli va Pipeline;</li>
-        <li><strong>2-dars:</strong> Data Architecture 6 qatlami, 7 Lifecycle bosqichi va Data Quality;</li>
-        <li><strong>3-dars:</strong> CSV va JSON formatlari, Medallion arxitekturasi va Pandas profiling.</li>
-      </ul>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="folder-search"></i></div>
-      <h3>Kelgusi haftada (2-hafta):</h3>
-      <p><strong>Parquet va Ustunli (Columnar) saqlash</strong></p>
-      <p class="t-muted">Snappy siqish, CSV va Parquet taqqoslovi, Schema saqlanishi hamda Relatsion ma'lumotlar bazalariga (RDBMS / SQLite) kirish.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- 24. SAVOLLAR VA MUHOKAMA -->
-<section>
-  <h2>Savollar va munozara</h2>
-  <div class="cards two">
-    <div class="card">
-      <div class="icon"><i data-ic="users"></i></div>
-      <h3>Savollaringiz bormi?</h3>
-      <p>Fayllarni o'qish, JSON tekislash yoki papka strukturalari bo'yicha savollarni muhokama qilamiz.</p>
-    </div>
-    <div class="card">
-      <div class="icon"><i data-ic="school"></i></div>
-      <h3>E'tiboringiz uchun rahmat!</h3>
-      <p class="t-accent">Muhammad al-Xorazmiy vorislari tizimi</p>
-      <p class="t-muted">10-sinf: BI va Machine Learning kursi</p>
-    </div>
-  </div>
-  
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Ma’lumot Formatlari: CSV va JSON</h1></header>
+<div class="badges"><span class="badge">10-sinf</span><span class="badge">BI &amp;amp; ML</span><span class="badge">1-hafta · 3-dars</span><span class="badge">Satrli va ierarxik formatlar, Medallion arxitekturasi hamda Pandas amaliyoti</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Ichma-ich (nested) JSON obyektlarini 2D jadval ustunlariga tekislash uchun qaysi Pandas funksiyasi qo'llaniladi?", "o": ["pd.read_csv()", "pd.json_normalize()", "pd.concat()", "df.to_json()"], "a": 1, "e": "To'g'ri: pd.json_normalize() ierarxik daraxtsimon JSON tuzilmasini satr va ustunli DataFrame ga aylantiradi."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

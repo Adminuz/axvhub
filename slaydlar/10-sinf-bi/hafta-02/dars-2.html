@@ -1,375 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>Ma’lumot formatlari: Avro va formatlarni chuqur taqqoslash</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Ma’lumot formatlari: Avro va formatlarni chuqur taqqoslash</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>Ma’lumot formatlari: Avro va formatlarni chuqur taqqoslash</h1>
-  <p class="muted">Apache Avro, Schema Evolution va Katta to'rtlik (CSV, JSON, Parquet, Avro) tahlili</p>
-  <span class="badge">10-sinf</span>
-  <span class="badge">BI va Machine Learning</span>
-  <span class="badge">2-hafta · 5-dars</span>
-</section>
-
-<section>
-  <h2>Bugungi dars rejasi</h2>
-  <div class="cards three">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="binary" data-anim="float"></i></div>
-      <h3>Apache Avro nima?</h3>
-      <p>Zich ikkilik (dense binary) qatorli format va nega u JSON'dan 5 barobar ixchamligi.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="git-branch" data-anim="pulse"></i></div>
-      <h3>Schema Evolution</h3>
-      <p>Sxema evolyutsiyasi: yangi ustunlar qo'shilganda tizimning uzluksiz ishlash siri.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="scale" data-anim="spin"></i></div>
-      <h3>Katta to'rtlik jangi</h3>
-      <p>CSV vs JSON vs Parquet vs Avro — qachon qaysi formatni tanlash mezonlari.</p>
-    </div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="num">01</div>
-  <h1>Apache Avro formati</h1>
-  <p>Qatorga asoslangan, o'ta ixcham ikkilik serializatsiya tizimi</p>
-</section>
-
-<section>
-  <h2>Nega JSON oqimli tizimlarda qiynaladi?</h2>
-  <div class="cols">
-    <div>
-      <div class="card bad">
-        <h3><i data-ic="file-code"></i> JSON muammosi</h3>
-        <pre class="terminal"><code class="language-json">{"id": 1, "user_id": 9942, "summa": 50000}
-{"id": 2, "user_id": 9943, "summa": 12000}
-{"id": 3, "user_id": 9944, "summa": 85000}</code></pre>
-        <p class="small muted mt">Har bir qatorda "id", "user_id", "summa" so'zlari million marta takrorlanadi! Tarmoq trafigi behuda to'ladi.</p>
-      </div>
-    </div>
-    <div>
-      <div class="card accent">
-        <h3><i data-ic="binary"></i> Avro yechimi</h3>
-        <div class="callout tip">
-          <p>Sxema faqat bir marta (Header'da yoki Schema Registry'da) saqlanadi. Qatorlarda esa faqat zich ikkilik baytlar uzatiladi!</p>
-        </div>
-        <p class="small muted mt">Natijada tarmoq orqali yuboriladigan hajm 70–80% ga qisqaradi.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2>Avro faylining tuzilishi</h2>
-  <div class="illus">
-    <svg viewBox="0 0 960 320">
-      <!-- File Header -->
-      <rect x="40" y="30" width="880" height="90" rx="8" class="fa" stroke-width="2"/>
-      <text x="60" y="60" class="t-head" font-size="18" font-weight="700">File Header (Fayl bosh qismi)</text>
-      <rect x="60" y="75" width="220" height="32" rx="4" class="fb" stroke-width="1.5"/>
-      <text x="75" y="96" class="t-head" font-size="13">4 bayt: Magic "Obj\x01"</text>
-      <rect x="300" y="75" width="380" height="32" rx="4" class="fc" stroke-width="1.5"/>
-      <text x="315" y="96" class="t-head" font-size="13">File Schema (JSON formatidagi qat'iy sxema)</text>
-      <rect x="700" y="75" width="200" height="32" rx="4" class="fn" stroke-width="1.5"/>
-      <text x="715" y="96" class="t-head" font-size="13">16 bayt: Sync marker</text>
-
-      <!-- Data Blocks -->
-      <rect x="40" y="140" width="880" height="150" rx="8" class="fn" stroke-width="2"/>
-      <text x="60" y="170" class="t-accent" font-size="18" font-weight="700">Data Blocks (Siqilgan binar ma'lumotlar)</text>
-
-      <rect x="60" y="190" width="260" height="75" rx="6" class="fc" stroke-width="1.5"/>
-      <text x="75" y="215" class="t-head" font-size="14" font-weight="700">Data Block 1</text>
-      <text x="75" y="235" class="t-muted" font-size="12">Yozuvlar soni + baytlar hajmi</text>
-      <text x="75" y="252" class="t-accent" font-size="11">[Snappy/Deflate bilan siqilgan]</text>
-
-      <rect x="350" y="190" width="260" height="75" rx="6" class="fc" stroke-width="1.5"/>
-      <text x="365" y="215" class="t-head" font-size="14" font-weight="700">Data Block 2</text>
-      <text x="365" y="235" class="t-muted" font-size="12">Yozuvlar soni + baytlar hajmi</text>
-      <text x="365" y="252" class="t-accent" font-size="11">[Snappy/Deflate bilan siqilgan]</text>
-
-      <rect x="640" y="190" width="260" height="75" rx="6" class="fn" stroke-width="1.5"/>
-      <text x="655" y="225" class="t-muted" font-size="14">Keyingi bloklar...</text>
-      <text x="655" y="248" class="t-muted" font-size="12">Har bir blok oxirida Sync marker</text>
-    </svg>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="num">02</div>
-  <h1>Schema Evolution nima?</h1>
-  <p>Dasturlar yangilanganda ma'lumotlar oqimini to'xtatmaslik san'ati</p>
-</section>
-
-<section>
-  <h2>Moslik turlari (Compatibility Modes)</h2>
-  <div class="cards three">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="arrow-left" data-anim="pulse"></i></div>
-      <h3>Backward</h3>
-      <p>Yangi sxema yordamida <b>eski</b> yozuvlarni o'qish mumkin. Yangi maydonga default qiymat berilsa yetarli.</p>
-    </div>
-    <div class="card accent fragment fade-up">
-      <div class="icon"><i data-ic="arrow-right" data-anim="pulse"></i></div>
-      <h3>Forward</h3>
-      <p>Eski sxema yordamida <b>yangi</b> yozuvlarni o'qish mumkin. Yangi maydonlar e'tiborsiz qoldiriladi.</p>
-    </div>
-    <div class="card accent2 fragment fade-up">
-      <div class="icon"><i data-ic="repeat" data-anim="spin"></i></div>
-      <h3>Full Compatibility</h3>
-      <p>Ham backward, ham forward moslik. Tizimning istalgan versiyasi istalgan ma'lumotni xatosiz o'qiydi.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2>Sxema evolyutsiyasi arxitekturasi</h2>
-  <div class="illus">
-    <svg viewBox="0 0 960 320">
-      <!-- Producer V1 -->
-      <rect x="40" y="50" width="240" height="90" rx="8" class="fa" stroke-width="2"/>
-      <text x="60" y="85" class="t-head" font-size="16" font-weight="700">Producer V1 (Eski)</text>
-      <text x="60" y="110" class="t-muted" font-size="13">Sxema: [id, ism, narx]</text>
-
-      <!-- Producer V2 -->
-      <rect x="40" y="180" width="240" height="90" rx="8" class="fb" stroke-width="2"/>
-      <text x="60" y="215" class="t-head" font-size="16" font-weight="700">Producer V2 (Yangi)</text>
-      <text x="60" y="240" class="t-accent" font-size="13">Sxema: [id, ism, narx, chegirma]</text>
-
-      <!-- Kafka Broker -->
-      <rect x="360" y="80" width="240" height="160" rx="12" class="fc" stroke-width="2"/>
-      <text x="400" y="120" class="t-head" font-size="18" font-weight="700">Apache Kafka</text>
-      <text x="390" y="150" class="t-muted" font-size="14">Ikkala versiyadagi</text>
-      <text x="390" y="175" class="t-muted" font-size="14">xabarlar bir oqimda</text>
-      <text x="390" y="205" class="t-accent" font-size="13">[Binar ixcham paket]</text>
-
-      <!-- Consumer -->
-      <rect x="680" y="115" width="240" height="90" rx="8" class="fg" stroke-width="2"/>
-      <text x="700" y="150" class="t-head" font-size="16" font-weight="700">Consumer (Qabul qiluvchi)</text>
-      <text x="700" y="175" class="t-muted" font-size="13">Schema Registry orqali</text>
-      <text x="700" y="195" class="t-head" font-size="13">xatosiz o'qiydi!</text>
-
-      <!-- Arrows -->
-      <path d="M 280 95 L 360 130" stroke="currentColor" class="la" stroke-width="2" marker-end="url(#ar-a)"/>
-      <path d="M 280 225 L 360 190" stroke="currentColor" class="lb" stroke-width="2" marker-end="url(#ar-b)"/>
-      <path d="M 600 160 L 680 160" stroke="currentColor" class="lc" stroke-width="2" marker-end="url(#ar-c)"/>
-    </svg>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="num">03</div>
-  <h1>Katta to'rtlik: Formatlar taqqoslashi</h1>
-  <p>CSV, JSON, Parquet va Avro — qachon qaysi birini ishlatamiz?</p>
-</section>
-
-<section>
-  <h2>Katta to'rtlik xususiyatlari</h2>
-  <div class="cards four">
-    <div class="card">
-      <h3>CSV</h3>
-      <p class="small"><b>Turi:</b> Satrli matn</p>
-      <p class="small"><b>Sxema:</b> Yo'q</p>
-      <p class="small"><b>Afzalligi:</b> Oddiy, Excel'da ochiladi</p>
-      <p class="small muted">Kichik eksportlar uchun</p>
-    </div>
-    <div class="card">
-      <h3>JSON</h3>
-      <p class="small"><b>Turi:</b> Satrli nested</p>
-      <p class="small"><b>Sxema:</b> Ixtiyoriy</p>
-      <p class="small"><b>Afzalligi:</b> Web va API standarti</p>
-      <p class="small muted">Konfiguratsiya va loglar</p>
-    </div>
-    <div class="card accent">
-      <h3>Parquet</h3>
-      <p class="small"><b>Turi:</b> Ustunli binary</p>
-      <p class="small"><b>Sxema:</b> Qat'iy ichki</p>
-      <p class="small"><b>Afzalligi:</b> Analitika, Pushdown</p>
-      <p class="small muted">DWH, Data Lake (Silver/Gold)</p>
-    </div>
-    <div class="card accent2">
-      <h3>Avro</h3>
-      <p class="small"><b>Turi:</b> Satrli binary</p>
-      <p class="small"><b>Sxema:</b> JSON sxema</p>
-      <p class="small"><b>Afzalligi:</b> Tez yozish, Evolution</p>
-      <p class="small muted">Kafka, Streaming, Ingestion</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2>Qachon Parquet, qachon Avro?</h2>
-  <div class="vs">
-    <div class="side">
-      <h3><i data-ic="columns-3"></i> Parquet (OLAP)</h3>
-      <ul>
-        <li>O'qish operatsiyalari ko'p (Read-heavy)</li>
-        <li>Katta jadvallarda aggregatsiya (`SUM`, `AVG`)</li>
-        <li>Faqat bir nechta ustun kerak bo'ladi</li>
-        <li>BI hisobotlari va Data Warehouse</li>
-      </ul>
-    </div>
-    <div class="side">
-      <h3><i data-ic="rows-3"></i> Avro (OLTP / Streaming)</h3>
-      <ul>
-        <li>Yozish operatsiyalari ko'p (Write-heavy)</li>
-        <li>Barcha ustunlar bitta qatorda to'liq kerak</li>
-        <li>Oqimli real-time voqealar (Events, Kafka)</li>
-        <li>ETL ning boshlang'ich qatlamlari (Bronze)</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="num">04</div>
-  <h1>Amaliyot: Python'da Avro bilan ishlash</h1>
-  <p>Fastavro kutubxonasi yordamida sxema tuzish va saqlash</p>
-</section>
-
-<section>
-  <h2>Avro sxemasi yaratish (JSON schema)</h2>
-  <pre><code class="language-python" data-line-numbers="1-3|5-15|17-18">import fastavro
-
-# 1. Sxemani JSON formatida tavsiflaymiz
-schema = {
-    'doc': 'Maktab oquvchilari baholari',
-    'name': 'OquvchiBaho',
-    'namespace': 'uz.maktab.bi',
-    'type': 'record',
-    'fields': [
-        {'name': 'id', 'type': 'int'},
-        {'name': 'ism', 'type': 'string'},
-        {'name': 'baho', 'type': 'int'},
-        # Ixtiyoriy maydon (Schema Evolution uchun default shart!)
-        {'name': 'izoh', 'type': ['null', 'string'], 'default': None}
-    ]
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Ma’lumot formatlari: Avro va formatlarni chuqur taqqoslash</h1></header>
+<div class="badges"><span class="badge">10-sinf</span><span class="badge">BI va Machine Learning</span><span class="badge">2-hafta · 5-dars</span><span class="badge">Apache Avro, Schema Evolution va Katta to'rtlik (CSV, JSON, Parquet, Avro) tahlili</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Nima uchun Apache Kafka va real-time oqimlarida Parquet o'rniga Avro formati keng qo'llaniladi?", "o": ["Chunki Parquet fayllarida ma'lumot turlari bo'lmaydi", "Chunki Avro qatorga asoslangan va har bir yangi voqeani bir zumda ikkilik shaklda qo'shish (Append) uchun qulay", "Chunki Avro faqat matnli fayllardan iborat"], "a": 1, "e": "To'g'ri! Parquet ustunli bloklarni yig'ib siqishi kerak, Avro esa qatorlarni birma-bir oqimli yozish uchun maxsus yaratilgan."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
 }
-parsed_schema = fastavro.parse_schema(schema)</code></pre>
-</section>
-
-<section>
-  <h2>Avro fayliga yozish va o'qish</h2>
-  <pre><code class="language-python" data-line-numbers="1-6|8-11|13-17"># 2. Saqlash uchun ma'lumotlar
-records = [
-    {'id': 1, 'ism': 'Ali Aliyev', 'baho': 95, 'izoh': "A'lo"},
-    {'id': 2, 'ism': 'Vali Valiyev', 'baho': 82, 'izoh': None}
-]
-
-# 3. Faylga yozamiz (Snappy siqish bilan)
-with open('data/oquvchilar.avro', 'wb') as out:
-    fastavro.writer(out, parsed_schema, records, codec='snappy')
-
-# 4. Faylni o'qiymiz
-with open('data/oquvchilar.avro', 'rb') as f:
-    reader = fastavro.reader(f)
-    print("Sxema:", reader.writer_schema['name'])
-    for r in reader:
-        print(r['ism'], "->", r['baho'])</code></pre>
-</section>
-
-<section>
-  <h2>Interaktiv terminlar: Bosing va ko'ring</h2>
-  <div class="cards two">
-    <div class="flip">
-      <div class="flip-in">
-        <div class="face front">
-          <div class="icon"><i data-ic="refresh-cw"></i></div>
-          <h3>Schema Evolution nima?</h3>
-          <p class="small muted">Bosing va bilib oling</p>
-        </div>
-        <div class="face back">
-          <p>Yangi ustun qo'shilganda yoki eskilari o'chirilganda, eski va yangi dasturlar o'rtasidagi uzluksiz moslikni ta'minlash qobiliyati.</p>
-        </div>
-      </div>
-    </div>
-    <div class="flip">
-      <div class="flip-in">
-        <div class="face front">
-          <div class="icon"><i data-ic="server"></i></div>
-          <h3>Schema Registry nima?</h3>
-          <p class="small muted">Bosing va bilib oling</p>
-        </div>
-        <div class="face back">
-          <p>Kafka ekotizimida barcha Avro sxemalarini markaziy saqlovchi server. Xabarlarda faqat 4 baytlik ID raqam yuboriladi.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2>Bilimingizni sinab ko'ring</h2>
-  <div class="quiz">
-    <p class="q">Nima uchun Apache Kafka va real-time oqimlarida Parquet o'rniga Avro formati keng qo'llaniladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Chunki Parquet fayllarida ma'lumot turlari bo'lmaydi</button>
-      <button class="opt" type="button" data-ok>Chunki Avro qatorga asoslangan va har bir yangi voqeani bir zumda ikkilik shaklda qo'shish (Append) uchun qulay</button>
-      <button class="opt" type="button">Chunki Avro faqat matnli fayllardan iborat</button>
-    </div>
-    <div class="explain">To'g'ri! Parquet ustunli bloklarni yig'ib siqishi kerak, Avro esa qatorlarni birma-bir oqimli yozish uchun maxsus yaratilgan.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Amaliy topshiriq: 3 daraja</h2>
-  <div class="cards three">
-    <div class="card">
-      <h3>1-daraja: Oson</h3>
-      <p>5 ta maydondan iborat Avro sxemasini JSON formatida yozing va sintaksisini tekshiring.</p>
-      <span class="badge">10 daqiqa</span>
-    </div>
-    <div class="card accent">
-      <h3>2-daraja: O'rta</h3>
-      <p>10 000 ta yozuvni JSON va Avro formatida saqlab, hajm farqini konsolga chiqaring.</p>
-      <span class="badge">15 daqiqa</span>
-    </div>
-    <div class="card accent2">
-      <h3>3-daraja: Qiyin</h3>
-      <p>Mavjud Avro faylini yangi ixtiyoriy maydon qo'shilgan yangi sxema bilan o'qib, moslikni isbotlang.</p>
-      <span class="badge">20 daqiqa</span>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2>Dars xulosasi</h2>
-  <ul>
-    <li><b>Apache Avro</b> — qatorga asoslangan (Row-based), zich ikkilik saqlash va serializatsiya standarti.</li>
-    <li><b>Schema Evolution</b> orqali tizimlar yangilanganda ham ma'lumotlar oqimi to'xtamaydi.</li>
-    <li><b>Parquet vs Avro:</b> Parquet — tahliliy so'rovlar (OLAP) qiroli, Avro — oqimli ma'lumotlar va yozish (Streaming/Kafka) yetakchisi.</li>
-    <li><b>Keyingi dars:</b> Ma'lumotlar bazalari: konsept va tuzilma. Relatsion ma’lumotlar bazasi (RDBMS) asoslari!</li>
-  </ul>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

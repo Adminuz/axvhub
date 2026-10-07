@@ -1,331 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>2-hafta testi</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>2-hafta testi</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>2-hafta testi</h1>
-  <p class="muted">20 ta savol &middot; taxminan 18 daqiqa</p>
-  <span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">2-hafta</span>
-  
-</section>
-
-<section>
-  <h2>Savol 1/20</h2>
-  <div class="quiz">
-    <p class="q">Monitor qaysi turdagi qurilma?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Asosiy chiqarish qurilmasi</button>
-      <button class="opt" type="button">Asosiy kiritish qurilmasi</button>
-      <button class="opt" type="button">Tashqi saqlash qurilmasi</button>
-      <button class="opt" type="button">Qo'shimcha kiritish qurilmasi</button>
-    </div>
-    <div class="explain">Monitor matn, rasm va video ko'rsatadi, ya'ni natijani chiqaradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 2/20</h2>
-  <div class="quiz">
-    <p class="q">Rassom qalam bilan chizishi uchun qaysi qurilma mos?</p>
-    <div class="opts">
-      <button class="opt" type="button">Proyektor</button>
-      <button class="opt" type="button" data-ok>Grafik planshet (Stylus bilan)</button>
-      <button class="opt" type="button">Printer</button>
-      <button class="opt" type="button">Akustik tizim</button>
-    </div>
-    <div class="explain">Grafik planshet — qo'shimcha kiritish qurilmasi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 3/20</h2>
-  <div class="quiz">
-    <p class="q">Raqamli tovush signallarini eshitiladigan to'lqinlarga aylantiruvchi qurilma qaysi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Mikrofon</button>
-      <button class="opt" type="button">Skaner</button>
-      <button class="opt" type="button" data-ok>Akustik tizim (kolonka, naushnik)</button>
-      <button class="opt" type="button">Veb-kamera</button>
-    </div>
-    <div class="explain">Mikrofon esa aksincha: ovozni raqamli formatga aylantiradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 4/20</h2>
-  <div class="quiz">
-    <p class="q">Katta hajmdagi ma'lumotlarni zaxira (backup) qilish uchun qaysi qurilma qulay?</p>
-    <div class="opts">
-      <button class="opt" type="button">Veb-kamera</button>
-      <button class="opt" type="button">Proyektor</button>
-      <button class="opt" type="button">Mikrofon</button>
-      <button class="opt" type="button" data-ok>Tashqi qattiq disk (External HDD/SSD)</button>
-    </div>
-    <div class="explain">U ma'lumotlarni nusxalash va zaxiralash uchun ishlatiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 5/20</h2>
-  <div class="quiz">
-    <p class="q">Qurilmalar ro'yxati va drayverlar holatini ko'rish uchun qaysi vosita ochiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Device Manager (<code>Win + X</code> yoki <code>devmgmt.msc</code>)</button>
-      <button class="opt" type="button">Recycle Bin</button>
-      <button class="opt" type="button">Notepad</button>
-      <button class="opt" type="button">Snap layouts</button>
-    </div>
-    <div class="explain">Device Manager ulangan qurilmalar va drayverlar holatini ko'rsatadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 6/20</h2>
-  <div class="quiz">
-    <p class="q">Yangi qurilma ulashdan oldin qaysi xavfsizlik qoidasi to'g'ri?</p>
-    <div class="opts">
-      <button class="opt" type="button">Qurilmani ho'l qo'l bilan ulash</button>
-      <button class="opt" type="button" data-ok>Kompyuter elektr tarmog'idan uzilganini tekshirish va korpusning metall qismiga tegib zaryadsizlanish</button>
-      <button class="opt" type="button">Kompyuter ishlab turganda ichiga qo'l tiqish</button>
-      <button class="opt" type="button">Tarmoqdan uzmasdan qismlarni tozalash</button>
-    </div>
-    <div class="explain">Statik elektr nozik chiplarga zarar yetkazishi mumkin.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 7/20</h2>
-  <div class="quiz">
-    <p class="q">Xat yuborishda Cc maydoni nima uchun ishlatiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Qabul qiluvchini yashirish uchun</button>
-      <button class="opt" type="button">Xat mavzusini yozish uchun</button>
-      <button class="opt" type="button" data-ok>Xabardor bo'lishi kerak ikkinchi darajali qabul qiluvchilar uchun (hamma ko'radi)</button>
-      <button class="opt" type="button">Fayl biriktirish uchun</button>
-    </div>
-    <div class="explain">Cc — Carbon Copy; barcha oluvchilar bu manzilni ko'ra oladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 8/20</h2>
-  <div class="quiz">
-    <p class="q">Elektron xatdagi Subject (Mavzu) maydoni haqida qaysi gap to'g'ri?</p>
-    <div class="opts">
-      <button class="opt" type="button">U ixtiyoriy va doim bo'sh qoldiriladi</button>
-      <button class="opt" type="button">U faqat fayl uchun</button>
-      <button class="opt" type="button">U parolni kiritish joyi</button>
-      <button class="opt" type="button" data-ok>Xatning qisqa mazmuni; uni bo'sh qoldirish odobsizlik hisoblanadi</button>
-    </div>
-    <div class="explain">Mavzu 1 qatorda xat mazmunini bildiradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 9/20</h2>
-  <div class="quiz">
-    <p class="q">Gmail kabi xizmatlarda biriktirilgan fayl uchun odatiy maksimal hajm qancha?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>25 MB</button>
-      <button class="opt" type="button">25 KB</button>
-      <button class="opt" type="button">25 GB</button>
-      <button class="opt" type="button">25 bayt</button>
-    </div>
-    <div class="explain">Qisqich (paperclip) belgisi orqali fayl biriktiriladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 10/20</h2>
-  <div class="quiz">
-    <p class="q">Muhim saytni bir tugma bilan saqlab qo'yish (xatcho'p) uchun qaysi tugmalar bosiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>Ctrl + H</code></button>
-      <button class="opt" type="button" data-ok><code>Ctrl + D</code></button>
-      <button class="opt" type="button"><code>Ctrl + W</code></button>
-      <button class="opt" type="button"><code>Ctrl + Shift + N</code></button>
-    </div>
-    <div class="explain"><code>Ctrl+H</code> esa ko'rish tarixini (History) ochadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 11/20</h2>
-  <div class="quiz">
-    <p class="q"><code>noutbuk Acer OR Asus</code> qidiruvida OR nimani anglatadi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Ikkalasini ham albatta qo'shish</button>
-      <button class="opt" type="button">Acer ni natijadan chiqarish</button>
-      <button class="opt" type="button" data-ok>Natijalarda Acer yoki Asus variantlaridan biri bo'lishi mumkin</button>
-      <button class="opt" type="button">Faqat PDF qidirish</button>
-    </div>
-    <div class="explain"><code>OR</code> bir vaqtda bir nechta variantdan birini qidiradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 12/20</h2>
-  <div class="quiz">
-    <p class="q">Parolsiz ochiq jamoat Wi-Fi tarmog'ida nima tavsiya etilmaydi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Yangiliklar saytini ko'rish</button>
-      <button class="opt" type="button">Ekran yorqinligini sozlash</button>
-      <button class="opt" type="button">Kitob sarlavhasini qidirish</button>
-      <button class="opt" type="button" data-ok>Shaxsiy pochta yoki bank kartasi ma'lumotlariga kirish</button>
-    </div>
-    <div class="explain">Ochiq tarmoqda ma'lumotlar o'g'irlanish xavfi yuqori.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 13/20</h2>
-  <div class="quiz">
-    <p class="q">Adware (reklama dasturi) nima qiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Ekranda doimiy keraksiz reklama bannerlarini chiqaradi</button>
-      <button class="opt" type="button">Fayllarni shifrlaydi</button>
-      <button class="opt" type="button">Parolni o'g'irlab jo'natadi</button>
-      <button class="opt" type="button">Tarmoq orqali o'zi tarqaladi</button>
-    </div>
-    <div class="explain">Adware foydalanuvchini chalg'itadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 14/20</h2>
-  <div class="quiz">
-    <p class="q">Windows 10 va 11 ga integratsiyalangan bepul antivirus qaysi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Wannacry</button>
-      <button class="opt" type="button" data-ok>Windows Security (Microsoft Defender)</button>
-      <button class="opt" type="button">Autorun</button>
-      <button class="opt" type="button">Device Manager</button>
-    </div>
-    <div class="explain">Kaspersky, ESET, Bitdefender, Avast, Norton esa tijoriy majmualar.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 15/20</h2>
-  <div class="quiz">
-    <p class="q">Antivirusning «Real-time Protection» rejimi nima qiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Faqat haftada bir marta tekshiradi</button>
-      <button class="opt" type="button">Faqat parolni o'zgartiradi</button>
-      <button class="opt" type="button" data-ok>Dastur ishga tushganda yoki fayl yuklanganda fonda uni tekshiradi</button>
-      <button class="opt" type="button">Faqat fleshkani formatlaydi</button>
-    </div>
-    <div class="explain">Real vaqt himoyasi doimiy ishlaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 16/20</h2>
-  <div class="quiz">
-    <p class="q">Faqat fleshkaning o'zini antivirus bilan tekshirish usuli qaysi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Fleshkani darhol ochib fayllarni ishga tushirish</button>
-      <button class="opt" type="button">Fleshkani Savatchaga tashlash</button>
-      <button class="opt" type="button">Ekran yorqinligini kamaytirish</button>
-      <button class="opt" type="button" data-ok>This PC da fleshka ustida o'ng tugma → Scan with Microsoft Defender</button>
-    </div>
-    <div class="explain">Fleshkaga kirishdan oldin tekshirish virus yuqishining oldini oladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 17/20</h2>
-  <div class="quiz">
-    <p class="q">Parol madaniyati bo'yicha qaysi qoida to'g'ri?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Har bir xizmat uchun alohida parol ishlatish</button>
-      <button class="opt" type="button">Barcha saytlarga bitta parol qo'yish</button>
-      <button class="opt" type="button">Parolga telefon raqamini yozish</button>
-      <button class="opt" type="button">Parolni hammaga aytish</button>
-    </div>
-    <div class="explain">Bitta saytdagi sizib chiqish boshqa akkauntlarni xavf ostiga qo'ymaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 18/20</h2>
-  <div class="quiz">
-    <p class="q">Elektron xatga biriktirilgan <code>.vbs</code> kengaytmali fayl keldi. Eng to'g'ri harakat qaysi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Darhol ochib ko'raman</button>
-      <button class="opt" type="button" data-ok>Ochmayman: <code>.exe</code>, <code>.bat</code>, <code>.vbs</code>, <code>.scr</code> fayllar virus yuqtirishi mumkin</button>
-      <button class="opt" type="button">Do'stlarimga yuboraman</button>
-      <button class="opt" type="button">Ochaman, keyin antivirusni o'chiraman</button>
-    </div>
-    <div class="explain">Shubhali biriktirmalar zararli kod tashiydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 19/20</h2>
-  <div class="quiz">
-    <p class="q">Bluetooth va Wi-Fi haqida qaysi gap to'g'ri?</p>
-    <div class="opts">
-      <button class="opt" type="button">Ikkalasi ham faqat printer uchun</button>
-      <button class="opt" type="button">Bluetooth — internet kabeli, Wi-Fi — monitor porti</button>
-      <button class="opt" type="button" data-ok>Bluetooth quloqchin, klaviatura, sichqoncha uchun; Wi-Fi internet uchun</button>
-      <button class="opt" type="button">Ular faqat kabelli qurilma</button>
-    </div>
-    <div class="explain">Bular simsiz interfeyslar.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 20/20</h2>
-  <div class="quiz">
-    <p class="q">Fishing xati orqali parolingiz o'g'irlandi. Qaysi himoya akkauntga kirishni baribir qiyinlashtiradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Ekran yorqinligi</button>
-      <button class="opt" type="button">USB Type-C porti</button>
-      <button class="opt" type="button">Inkognito rejim</button>
-      <button class="opt" type="button" data-ok>2FA (ikki bosqichli autentifikatsiya)</button>
-    </div>
-    <div class="explain">2FA ikkinchi omil (kod) talab qiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Natijangiz</h2>
-  <div class="cards three">
-    <div class="card"><h3>20 dan 18+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
-    <div class="card"><h3>20 dan 12-17</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
-    <div class="card accent"><h3>11 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
-  </div>
-  <p class="small mt">Takrorlang: qurilmalar va portlar, internet/email qoidalari, zararli dasturlar va parol xavfsizligi.</p>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>2-hafta testi</h1></header>
+<div class="badges"><span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">2-hafta</span><span class="badge">20 ta savol &amp;middot; taxminan 18 daqiqa</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Monitor qaysi turdagi qurilma?", "o": ["Asosiy chiqarish qurilmasi", "Asosiy kiritish qurilmasi", "Tashqi saqlash qurilmasi", "Qo'shimcha kiritish qurilmasi"], "a": 0, "e": "Monitor matn, rasm va video ko'rsatadi, ya'ni natijani chiqaradi."}, {"q": "Rassom qalam bilan chizishi uchun qaysi qurilma mos?", "o": ["Proyektor", "Grafik planshet (Stylus bilan)", "Printer", "Akustik tizim"], "a": 1, "e": "Grafik planshet — qo'shimcha kiritish qurilmasi."}, {"q": "Raqamli tovush signallarini eshitiladigan to'lqinlarga aylantiruvchi qurilma qaysi?", "o": ["Mikrofon", "Skaner", "Akustik tizim (kolonka, naushnik)", "Veb-kamera"], "a": 2, "e": "Mikrofon esa aksincha: ovozni raqamli formatga aylantiradi."}, {"q": "Katta hajmdagi ma'lumotlarni zaxira (backup) qilish uchun qaysi qurilma qulay?", "o": ["Veb-kamera", "Proyektor", "Mikrofon", "Tashqi qattiq disk (External HDD/SSD)"], "a": 3, "e": "U ma'lumotlarni nusxalash va zaxiralash uchun ishlatiladi."}, {"q": "Qurilmalar ro'yxati va drayverlar holatini ko'rish uchun qaysi vosita ochiladi?", "o": ["Device Manager (<code>Win + X<\/code> yoki <code>devmgmt.msc<\/code>)", "Recycle Bin", "Notepad", "Snap layouts"], "a": 0, "e": "Device Manager ulangan qurilmalar va drayverlar holatini ko'rsatadi."}, {"q": "Yangi qurilma ulashdan oldin qaysi xavfsizlik qoidasi to'g'ri?", "o": ["Qurilmani ho'l qo'l bilan ulash", "Kompyuter elektr tarmog'idan uzilganini tekshirish va korpusning metall qismiga tegib zaryadsizlanish", "Kompyuter ishlab turganda ichiga qo'l tiqish", "Tarmoqdan uzmasdan qismlarni tozalash"], "a": 1, "e": "Statik elektr nozik chiplarga zarar yetkazishi mumkin."}, {"q": "Xat yuborishda Cc maydoni nima uchun ishlatiladi?", "o": ["Qabul qiluvchini yashirish uchun", "Xat mavzusini yozish uchun", "Xabardor bo'lishi kerak ikkinchi darajali qabul qiluvchilar uchun (hamma ko'radi)", "Fayl biriktirish uchun"], "a": 2, "e": "Cc — Carbon Copy; barcha oluvchilar bu manzilni ko'ra oladi."}, {"q": "Elektron xatdagi Subject (Mavzu) maydoni haqida qaysi gap to'g'ri?", "o": ["U ixtiyoriy va doim bo'sh qoldiriladi", "U faqat fayl uchun", "U parolni kiritish joyi", "Xatning qisqa mazmuni; uni bo'sh qoldirish odobsizlik hisoblanadi"], "a": 3, "e": "Mavzu 1 qatorda xat mazmunini bildiradi."}, {"q": "Gmail kabi xizmatlarda biriktirilgan fayl uchun odatiy maksimal hajm qancha?", "o": ["25 MB", "25 KB", "25 GB", "25 bayt"], "a": 0, "e": "Qisqich (paperclip) belgisi orqali fayl biriktiriladi."}, {"q": "Muhim saytni bir tugma bilan saqlab qo'yish (xatcho'p) uchun qaysi tugmalar bosiladi?", "o": ["<code>Ctrl + H<\/code>", "<code>Ctrl + D<\/code>", "<code>Ctrl + W<\/code>", "<code>Ctrl + Shift + N<\/code>"], "a": 1, "e": "<code>Ctrl+H<\/code> esa ko'rish tarixini (History) ochadi."}, {"q": "<code>noutbuk Acer OR Asus<\/code> qidiruvida OR nimani anglatadi?", "o": ["Ikkalasini ham albatta qo'shish", "Acer ni natijadan chiqarish", "Natijalarda Acer yoki Asus variantlaridan biri bo'lishi mumkin", "Faqat PDF qidirish"], "a": 2, "e": "<code>OR<\/code> bir vaqtda bir nechta variantdan birini qidiradi."}, {"q": "Parolsiz ochiq jamoat Wi-Fi tarmog'ida nima tavsiya etilmaydi?", "o": ["Yangiliklar saytini ko'rish", "Ekran yorqinligini sozlash", "Kitob sarlavhasini qidirish", "Shaxsiy pochta yoki bank kartasi ma'lumotlariga kirish"], "a": 3, "e": "Ochiq tarmoqda ma'lumotlar o'g'irlanish xavfi yuqori."}, {"q": "Adware (reklama dasturi) nima qiladi?", "o": ["Ekranda doimiy keraksiz reklama bannerlarini chiqaradi", "Fayllarni shifrlaydi", "Parolni o'g'irlab jo'natadi", "Tarmoq orqali o'zi tarqaladi"], "a": 0, "e": "Adware foydalanuvchini chalg'itadi."}, {"q": "Windows 10 va 11 ga integratsiyalangan bepul antivirus qaysi?", "o": ["Wannacry", "Windows Security (Microsoft Defender)", "Autorun", "Device Manager"], "a": 1, "e": "Kaspersky, ESET, Bitdefender, Avast, Norton esa tijoriy majmualar."}, {"q": "Antivirusning «Real-time Protection» rejimi nima qiladi?", "o": ["Faqat haftada bir marta tekshiradi", "Faqat parolni o'zgartiradi", "Dastur ishga tushganda yoki fayl yuklanganda fonda uni tekshiradi", "Faqat fleshkani formatlaydi"], "a": 2, "e": "Real vaqt himoyasi doimiy ishlaydi."}, {"q": "Faqat fleshkaning o'zini antivirus bilan tekshirish usuli qaysi?", "o": ["Fleshkani darhol ochib fayllarni ishga tushirish", "Fleshkani Savatchaga tashlash", "Ekran yorqinligini kamaytirish", "This PC da fleshka ustida o'ng tugma → Scan with Microsoft Defender"], "a": 3, "e": "Fleshkaga kirishdan oldin tekshirish virus yuqishining oldini oladi."}, {"q": "Parol madaniyati bo'yicha qaysi qoida to'g'ri?", "o": ["Har bir xizmat uchun alohida parol ishlatish", "Barcha saytlarga bitta parol qo'yish", "Parolga telefon raqamini yozish", "Parolni hammaga aytish"], "a": 0, "e": "Bitta saytdagi sizib chiqish boshqa akkauntlarni xavf ostiga qo'ymaydi."}, {"q": "Elektron xatga biriktirilgan <code>.vbs<\/code> kengaytmali fayl keldi. Eng to'g'ri harakat qaysi?", "o": ["Darhol ochib ko'raman", "Ochmayman: <code>.exe<\/code>, <code>.bat<\/code>, <code>.vbs<\/code>, <code>.scr<\/code> fayllar virus yuqtirishi mumkin", "Do'stlarimga yuboraman", "Ochaman, keyin antivirusni o'chiraman"], "a": 1, "e": "Shubhali biriktirmalar zararli kod tashiydi."}, {"q": "Bluetooth va Wi-Fi haqida qaysi gap to'g'ri?", "o": ["Ikkalasi ham faqat printer uchun", "Bluetooth — internet kabeli, Wi-Fi — monitor porti", "Bluetooth quloqchin, klaviatura, sichqoncha uchun; Wi-Fi internet uchun", "Ular faqat kabelli qurilma"], "a": 2, "e": "Bular simsiz interfeyslar."}, {"q": "Fishing xati orqali parolingiz o'g'irlandi. Qaysi himoya akkauntga kirishni baribir qiyinlashtiradi?", "o": ["Ekran yorqinligi", "USB Type-C porti", "Inkognito rejim", "2FA (ikki bosqichli autentifikatsiya)"], "a": 3, "e": "2FA ikkinchi omil (kod) talab qiladi."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

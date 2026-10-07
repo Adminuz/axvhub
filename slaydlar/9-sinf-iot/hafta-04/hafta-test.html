@@ -1,331 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>4-hafta testi</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>4-hafta testi</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>4-hafta testi</h1>
-  <p class="muted">20 ta savol &middot; taxminan 15 daqiqa</p>
-  <span class="badge">9-sinf</span><span class="badge">IoT</span><span class="badge">4-hafta</span>
-  
-</section>
-
-<section>
-  <h2>Savol 1/20</h2>
-  <div class="quiz">
-    <p class="q">INPUT_PULLUP rejimida tugma bosilganda pin nima o'qiydi?</p>
-    <div class="opts">
-      <button class="opt" type="button">HIGH</button>
-      <button class="opt" type="button">Doim 1</button>
-      <button class="opt" type="button" data-ok>LOW</button>
-      <button class="opt" type="button">Tasodifiy qiymat</button>
-    </div>
-    <div class="explain">Bosilmaganda HIGH, bosilganda pin GND ga ulanadi — LOW.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 2/20</h2>
-  <div class="quiz">
-    <p class="q">checkSwitch(byte pin, byte &lastState) da & nima uchun kerak?</p>
-    <div class="opts">
-      <button class="opt" type="button">Ikki sonni qo'shish uchun</button>
-      <button class="opt" type="button" data-ok>Funksiya asl o'zgaruvchini yangilashi uchun (havola)</button>
-      <button class="opt" type="button">Pinni o'chirish uchun</button>
-      <button class="opt" type="button">Mantiqiy VA amali</button>
-    </div>
-    <div class="explain">& bo'lmasa nusxa uzatiladi va holat saqlanmaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 3/20</h2>
-  <div class="quiz">
-    <p class="q">delay(700) ning kamchiligi nima?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>0,7 s davomida Arduino tugmani sezmaydi</button>
-      <button class="opt" type="button">LED yonmaydi</button>
-      <button class="opt" type="button">Kod kompilyatsiya bo'lmaydi</button>
-      <button class="opt" type="button">Xotira to'ladi</button>
-    </div>
-    <div class="explain">delay() loop() ni bloklaydi; millis() esa bloklamaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 4/20</h2>
-  <div class="quiz">
-    <p class="q">millis() qiymati qaysi turda saqlanadi?</p>
-    <div class="opts">
-      <button class="opt" type="button">int</button>
-      <button class="opt" type="button">byte</button>
-      <button class="opt" type="button">bool</button>
-      <button class="opt" type="button" data-ok>unsigned long</button>
-    </div>
-    <div class="explain">int 32 767 dan oshganda manfiy bo'ladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 5/20</h2>
-  <div class="quiz">
-    <p class="q">To'g'ri millis() andozasi qaysi?</p>
-    <div class="opts">
-      <button class="opt" type="button">if (millis() == 700) { ... }</button>
-      <button class="opt" type="button" data-ok>if (millis() - oxirgi >= interval) { oxirgi = millis(); ... }</button>
-      <button class="opt" type="button">delay(millis());</button>
-      <button class="opt" type="button">while (millis()) { }</button>
-    </div>
-    <div class="explain">Ayirma va >= ishlatiladi, so'ng oxirgi vaqt yangilanadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 6/20</h2>
-  <div class="quiz">
-    <p class="q">mode = 3 bo'lsa, mode = (mode + 1) % 4 dan keyin mode = ?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>0</button>
-      <button class="opt" type="button">4</button>
-      <button class="opt" type="button">1</button>
-      <button class="opt" type="button">3</button>
-    </div>
-    <div class="explain">4 % 4 = 0 — rejim yana boshidan.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 7/20</h2>
-  <div class="quiz">
-    <p class="q">Rejim nomini Serial Monitor'ga qachon chiqarish kerak?</p>
-    <div class="opts">
-      <button class="opt" type="button">loop() ning har aylanishida</button>
-      <button class="opt" type="button" data-ok>Faqat rejim o'zgarganda</button>
-      <button class="opt" type="button">Faqat setup() da</button>
-      <button class="opt" type="button">Hech qachon</button>
-    </div>
-    <div class="explain">Aks holda monitor sekundiga minglab qator bilan to'lib ketadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 8/20</h2>
-  <div class="quiz">
-    <p class="q">Elektr zanjiri (sikl) nima?</p>
-    <div class="opts">
-      <button class="opt" type="button">Faqat bitta sim</button>
-      <button class="opt" type="button">Arduino dasturi</button>
-      <button class="opt" type="button" data-ok>Tok manbadan chiqib, iste'molchidan o'tib, manbaga qaytadigan berk yo'l</button>
-      <button class="opt" type="button">Rezistor turi</button>
-    </div>
-    <div class="explain">Manba, o'tkazgich, iste'molchi, kalit va himoya rezistori.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 9/20</h2>
-  <div class="quiz">
-    <p class="q">Breadboardning bir qatoridagi a–e teshiklari...</p>
-    <div class="opts">
-      <button class="opt" type="button">hech biri ulanmagan</button>
-      <button class="opt" type="button">faqat GND ga ulangan</button>
-      <button class="opt" type="button">f–j bilan ulangan</button>
-      <button class="opt" type="button" data-ok>o'zaro ulangan</button>
-    </div>
-    <div class="explain">Har qatorda 5 ta teshik bitta plastinkada; ariqcha ularni f–j dan ajratadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 10/20</h2>
-  <div class="quiz">
-    <p class="q">Breadboardning markaziy ariqchasi nima uchun kerak?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Ikki yarmini ajratadi, DIP korpuslar ustiga qo'yiladi</button>
-      <button class="opt" type="button">Tokni kuchaytiradi</button>
-      <button class="opt" type="button">Sovutish uchun</button>
-      <button class="opt" type="button">Simlarni saqlash uchun</button>
-    </div>
-    <div class="explain">DIP oyoqlari alohida qatorlarga tushadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 11/20</h2>
-  <div class="quiz">
-    <p class="q">DPST qisqartmasi nimani bildiradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Digital Pin Switch Tool</button>
-      <button class="opt" type="button">Double Power Supply Terminal</button>
-      <button class="opt" type="button">Direct Push Switch Type</button>
-      <button class="opt" type="button" data-ok>Double Pole, Single Throw</button>
-    </div>
-    <div class="explain">Ikki zanjir, har biri faqat yoq/o'chir holatida.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 12/20</h2>
-  <div class="quiz">
-    <p class="q">5 V manba, qizil LED (2 V), 10 mA uchun rezistor?</p>
-    <div class="opts">
-      <button class="opt" type="button">30 Om</button>
-      <button class="opt" type="button">3000 Om</button>
-      <button class="opt" type="button">Rezistor kerak emas</button>
-      <button class="opt" type="button" data-ok>300 Om → 330 Om</button>
-    </div>
-    <div class="explain">R = (5 − 2) / 0,010 = 300 Om.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 13/20</h2>
-  <div class="quiz">
-    <p class="q">9 V batareyada 220 Om bilan qizil LED ulansa nima bo'ladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">LED xira yonadi</button>
-      <button class="opt" type="button">Tok nolga teng</button>
-      <button class="opt" type="button">Hech narsa o'zgarmaydi</button>
-      <button class="opt" type="button" data-ok>Tok ≈ 32 mA — LED qizib, ishdan chiqishi mumkin</button>
-    </div>
-    <div class="explain">9 V uchun kamida 470 Om kerak.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 14/20</h2>
-  <div class="quiz">
-    <p class="q">Ikki kalit ketma-ket ulansa, LED qachon yonadi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Faqat ikkalasi ON bo'lganda (VA)</button>
-      <button class="opt" type="button">Istalgan biri ON bo'lganda</button>
-      <button class="opt" type="button">Hech qachon</button>
-      <button class="opt" type="button">Ikkalasi OFF bo'lganda</button>
-    </div>
-    <div class="explain">Ketma-ket ulanish — AND mantiqi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 15/20</h2>
-  <div class="quiz">
-    <p class="q">Parallel ulangan ikki kalit qanday mantiq beradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">VA (AND)</button>
-      <button class="opt" type="button" data-ok>YOKI (OR)</button>
-      <button class="opt" type="button">EMAS (NOT)</button>
-      <button class="opt" type="button">Hech qanday</button>
-    </div>
-    <div class="explain">Kamida bittasi ON bo'lsa tok o'tadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 16/20</h2>
-  <div class="quiz">
-    <p class="q">Multimetr bilan tok qanday o'lchanadi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Manbaga parallel ulanadi</button>
-      <button class="opt" type="button" data-ok>Zanjir uzilib, multimetr ketma-ket ulanadi</button>
-      <button class="opt" type="button">LED oyoqlariga parallel</button>
-      <button class="opt" type="button">Faqat GND ga ulanadi</button>
-    </div>
-    <div class="explain">Tok rejimidagi multimetrni parallel ulash — qisqa tutashuv.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 17/20</h2>
-  <div class="quiz">
-    <p class="q">Rezistor 330 Om dan 1000 Om ga almashtirilsa?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Tok kamayadi, LED xiralashadi</button>
-      <button class="opt" type="button">Tok oshadi, LED yorqinlashadi</button>
-      <button class="opt" type="button">Hech narsa o'zgarmaydi</button>
-      <button class="opt" type="button">LED kuyadi</button>
-    </div>
-    <div class="explain">≈ 9 mA dan ≈ 3 mA ga tushadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 18/20</h2>
-  <div class="quiz">
-    <p class="q">INPUT_PULLUP bilan ulangan DIP switch ON bo'lganda pin nima o'qiydi?</p>
-    <div class="opts">
-      <button class="opt" type="button">HIGH</button>
-      <button class="opt" type="button" data-ok>LOW</button>
-      <button class="opt" type="button">Tasodifiy</button>
-      <button class="opt" type="button">5</button>
-    </div>
-    <div class="explain">Kontakt pinni GND ga ulaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 19/20</h2>
-  <div class="quiz">
-    <p class="q">DIP1 = ON, DIP2 = OFF bo'lsa, kod = bit1 × 2 + bit0 = ?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>2</button>
-      <button class="opt" type="button">1</button>
-      <button class="opt" type="button">3</button>
-      <button class="opt" type="button">0</button>
-    </div>
-    <div class="explain">bit1 = 1, bit0 = 0 → 1 × 2 + 0 = 2.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 20/20</h2>
-  <div class="quiz">
-    <p class="q">Nega DIP switch'ni o'qishda Toggle kerak emas?</p>
-    <div class="opts">
-      <button class="opt" type="button">DIP switch dirillaydi</button>
-      <button class="opt" type="button">Arduino uni o'qiy olmaydi</button>
-      <button class="opt" type="button" data-ok>DIP switch holatini o'zi saqlaydi</button>
-      <button class="opt" type="button">Toggle faqat LED uchun</button>
-    </div>
-    <div class="explain">Richag qo'yilgan holatda qoladi — joriy holat to'g'ridan-to'g'ri o'qiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Natijangiz</h2>
-  <div class="cards three">
-    <div class="card"><h3>20 dan 18+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
-    <div class="card"><h3>20 dan 12-17</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
-    <div class="card accent"><h3>11 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
-  </div>
-  <p class="small mt">Takrorlang: LED holatini boshqarish dasturi, DIP switch va elektron sikl, mantiq va o'lchov.</p>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>4-hafta testi</h1></header>
+<div class="badges"><span class="badge">9-sinf</span><span class="badge">IoT</span><span class="badge">4-hafta</span><span class="badge">20 ta savol &amp;middot; taxminan 15 daqiqa</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "INPUT_PULLUP rejimida tugma bosilganda pin nima o'qiydi?", "o": ["HIGH", "Doim 1", "LOW", "Tasodifiy qiymat"], "a": 2, "e": "Bosilmaganda HIGH, bosilganda pin GND ga ulanadi — LOW."}, {"q": "checkSwitch(byte pin, byte &lastState) da & nima uchun kerak?", "o": ["Ikki sonni qo'shish uchun", "Funksiya asl o'zgaruvchini yangilashi uchun (havola)", "Pinni o'chirish uchun", "Mantiqiy VA amali"], "a": 1, "e": "& bo'lmasa nusxa uzatiladi va holat saqlanmaydi."}, {"q": "delay(700) ning kamchiligi nima?", "o": ["0,7 s davomida Arduino tugmani sezmaydi", "LED yonmaydi", "Kod kompilyatsiya bo'lmaydi", "Xotira to'ladi"], "a": 0, "e": "delay() loop() ni bloklaydi; millis() esa bloklamaydi."}, {"q": "millis() qiymati qaysi turda saqlanadi?", "o": ["int", "byte", "bool", "unsigned long"], "a": 3, "e": "int 32 767 dan oshganda manfiy bo'ladi."}, {"q": "To'g'ri millis() andozasi qaysi?", "o": ["if (millis() == 700) { ... }", "if (millis() - oxirgi >= interval) { oxirgi = millis(); ... }", "delay(millis());", "while (millis()) { }"], "a": 1, "e": "Ayirma va >= ishlatiladi, so'ng oxirgi vaqt yangilanadi."}, {"q": "mode = 3 bo'lsa, mode = (mode + 1) % 4 dan keyin mode = ?", "o": ["0", "4", "1", "3"], "a": 0, "e": "4 % 4 = 0 — rejim yana boshidan."}, {"q": "Rejim nomini Serial Monitor'ga qachon chiqarish kerak?", "o": ["loop() ning har aylanishida", "Faqat rejim o'zgarganda", "Faqat setup() da", "Hech qachon"], "a": 1, "e": "Aks holda monitor sekundiga minglab qator bilan to'lib ketadi."}, {"q": "Elektr zanjiri (sikl) nima?", "o": ["Faqat bitta sim", "Arduino dasturi", "Tok manbadan chiqib, iste'molchidan o'tib, manbaga qaytadigan berk yo'l", "Rezistor turi"], "a": 2, "e": "Manba, o'tkazgich, iste'molchi, kalit va himoya rezistori."}, {"q": "Breadboardning bir qatoridagi a–e teshiklari...", "o": ["hech biri ulanmagan", "faqat GND ga ulangan", "f–j bilan ulangan", "o'zaro ulangan"], "a": 3, "e": "Har qatorda 5 ta teshik bitta plastinkada; ariqcha ularni f–j dan ajratadi."}, {"q": "Breadboardning markaziy ariqchasi nima uchun kerak?", "o": ["Ikki yarmini ajratadi, DIP korpuslar ustiga qo'yiladi", "Tokni kuchaytiradi", "Sovutish uchun", "Simlarni saqlash uchun"], "a": 0, "e": "DIP oyoqlari alohida qatorlarga tushadi."}, {"q": "DPST qisqartmasi nimani bildiradi?", "o": ["Digital Pin Switch Tool", "Double Power Supply Terminal", "Direct Push Switch Type", "Double Pole, Single Throw"], "a": 3, "e": "Ikki zanjir, har biri faqat yoq/o'chir holatida."}, {"q": "5 V manba, qizil LED (2 V), 10 mA uchun rezistor?", "o": ["30 Om", "3000 Om", "Rezistor kerak emas", "300 Om → 330 Om"], "a": 3, "e": "R = (5 − 2) / 0,010 = 300 Om."}, {"q": "9 V batareyada 220 Om bilan qizil LED ulansa nima bo'ladi?", "o": ["LED xira yonadi", "Tok nolga teng", "Hech narsa o'zgarmaydi", "Tok ≈ 32 mA — LED qizib, ishdan chiqishi mumkin"], "a": 3, "e": "9 V uchun kamida 470 Om kerak."}, {"q": "Ikki kalit ketma-ket ulansa, LED qachon yonadi?", "o": ["Faqat ikkalasi ON bo'lganda (VA)", "Istalgan biri ON bo'lganda", "Hech qachon", "Ikkalasi OFF bo'lganda"], "a": 0, "e": "Ketma-ket ulanish — AND mantiqi."}, {"q": "Parallel ulangan ikki kalit qanday mantiq beradi?", "o": ["VA (AND)", "YOKI (OR)", "EMAS (NOT)", "Hech qanday"], "a": 1, "e": "Kamida bittasi ON bo'lsa tok o'tadi."}, {"q": "Multimetr bilan tok qanday o'lchanadi?", "o": ["Manbaga parallel ulanadi", "Zanjir uzilib, multimetr ketma-ket ulanadi", "LED oyoqlariga parallel", "Faqat GND ga ulanadi"], "a": 1, "e": "Tok rejimidagi multimetrni parallel ulash — qisqa tutashuv."}, {"q": "Rezistor 330 Om dan 1000 Om ga almashtirilsa?", "o": ["Tok kamayadi, LED xiralashadi", "Tok oshadi, LED yorqinlashadi", "Hech narsa o'zgarmaydi", "LED kuyadi"], "a": 0, "e": "≈ 9 mA dan ≈ 3 mA ga tushadi."}, {"q": "INPUT_PULLUP bilan ulangan DIP switch ON bo'lganda pin nima o'qiydi?", "o": ["HIGH", "LOW", "Tasodifiy", "5"], "a": 1, "e": "Kontakt pinni GND ga ulaydi."}, {"q": "DIP1 = ON, DIP2 = OFF bo'lsa, kod = bit1 × 2 + bit0 = ?", "o": ["2", "1", "3", "0"], "a": 0, "e": "bit1 = 1, bit0 = 0 → 1 × 2 + 0 = 2."}, {"q": "Nega DIP switch'ni o'qishda Toggle kerak emas?", "o": ["DIP switch dirillaydi", "Arduino uni o'qiy olmaydi", "DIP switch holatini o'zi saqlaydi", "Toggle faqat LED uchun"], "a": 2, "e": "Richag qo'yilgan holatda qoladi — joriy holat to'g'ridan-to'g'ri o'qiladi."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

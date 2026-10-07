@@ -1,331 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>4-hafta testi</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>4-hafta testi</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>4-hafta testi</h1>
-  <p class="muted">20 ta savol &middot; taxminan 15 daqiqa</p>
-  <span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">4-hafta</span>
-  
-</section>
-
-<section>
-  <h2>Savol 1/20</h2>
-  <div class="quiz">
-    <p class="q">Bu hafta o'rganilgan ikki tuzilma?</p>
-    <div class="opts">
-      <button class="opt" type="button">tuple va set</button>
-      <button class="opt" type="button" data-ok>string va list</button>
-      <button class="opt" type="button">dict va set</button>
-      <button class="opt" type="button">list va dict</button>
-    </div>
-    <div class="explain">4-hafta: string va list; 5-hafta: tuple, set, dict.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 2/20</h2>
-  <div class="quiz">
-    <p class="q"><code>{"name": "Ali"}</code> ko'rinishi nimani bildiradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Belgilar ketma-ketligi</button>
-      <button class="opt" type="button">Ketma-ket elementlar</button>
-      <button class="opt" type="button" data-ok>Kalit-qiymat</button>
-      <button class="opt" type="button">Takrorsiz to'plam</button>
-    </div>
-    <div class="explain">Rasmiy qo'llanma: dict - kalit-qiymat.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 3/20</h2>
-  <div class="quiz">
-    <p class="q">String ichida bo'sh joy...</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>ham belgi hisoblanadi</button>
-      <button class="opt" type="button">hisobga kirmaydi</button>
-      <button class="opt" type="button">xato beradi</button>
-      <button class="opt" type="button">faqat oxirida bo'ladi</button>
-    </div>
-    <div class="explain"><code>len("a b")</code> = 3.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 4/20</h2>
-  <div class="quiz">
-    <p class="q"><code>s = 'U dedi: "Salom"'</code> to'g'rimi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Xato: tirnoq ichida tirnoq mumkin emas</button>
-      <button class="opt" type="button">Faqat <code>"""</code> bilan mumkin</button>
-      <button class="opt" type="button">SyntaxError</button>
-      <button class="opt" type="button" data-ok>To'g'ri: tashqi <code>'</code>, ichida <code>"</code></button>
-    </div>
-    <div class="explain">Har xil tirnoqlar bir-birini yopmaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 5/20</h2>
-  <div class="quiz">
-    <p class="q">Immutable degani?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Yaratilgach o'zgartirib bo'lmaydi</button>
-      <button class="opt" type="button">Faqat bir marta chop etiladi</button>
-      <button class="opt" type="button">Bo'sh bo'lolmaydi</button>
-      <button class="opt" type="button">Faqat raqam saqlaydi</button>
-    </div>
-    <div class="explain">String immutable, list esa mutable.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 6/20</h2>
-  <div class="quiz">
-    <p class="q"><code>"Backend"[-3:]</code> natijasi?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>"Bac"</code></button>
-      <button class="opt" type="button"><code>"kend"</code></button>
-      <button class="opt" type="button" data-ok><code>"end"</code></button>
-      <button class="opt" type="button"><code>"d"</code></button>
-    </div>
-    <div class="explain">Oxirgi uchta belgi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 7/20</h2>
-  <div class="quiz">
-    <p class="q"><code>"ADMIN".lower()</code>?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>"Admin"</code></button>
-      <button class="opt" type="button" data-ok><code>"admin"</code></button>
-      <button class="opt" type="button"><code>"ADMIN"</code></button>
-      <button class="opt" type="button"><code>"aDMIN"</code></button>
-    </div>
-    <div class="explain"><code>lower()</code> - hammasi kichik.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 8/20</h2>
-  <div class="quiz">
-    <p class="q"><code>"python dasturlash".capitalize()</code>?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>"Python Dasturlash"</code></button>
-      <button class="opt" type="button"><code>"PYTHON DASTURLASH"</code></button>
-      <button class="opt" type="button"><code>"python Dasturlash"</code></button>
-      <button class="opt" type="button" data-ok><code>"Python dasturlash"</code></button>
-    </div>
-    <div class="explain">Faqat eng birinchi harf katta.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 9/20</h2>
-  <div class="quiz">
-    <p class="q">Palindromni tekshirish uchun eng qulay ifoda?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok><code>soz == soz[::-1]</code></button>
-      <button class="opt" type="button"><code>soz == soz[0]</code></button>
-      <button class="opt" type="button"><code>soz.upper()</code></button>
-      <button class="opt" type="button"><code>soz[1:]</code></button>
-    </div>
-    <div class="explain">Teskari o'qilganda ham bir xil.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 10/20</h2>
-  <div class="quiz">
-    <p class="q"><code>"Python"[6]</code> nima beradi?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>"n"</code></button>
-      <button class="opt" type="button"><code>""</code></button>
-      <button class="opt" type="button" data-ok><code>IndexError</code></button>
-      <button class="opt" type="button"><code>TypeError</code></button>
-    </div>
-    <div class="explain">Oxirgi indeks 5; 6 mavjud emas.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 11/20</h2>
-  <div class="quiz">
-    <p class="q"><code>[1, "Ali", 3.14, True]</code> to'g'ri listmi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Yo'q, turli tip mumkin emas</button>
-      <button class="opt" type="button" data-ok>Ha, list turli tipdagi qiymatlarni saqlaydi</button>
-      <button class="opt" type="button">Yo'q, True mumkin emas</button>
-      <button class="opt" type="button">Faqat tuple'da mumkin</button>
-    </div>
-    <div class="explain">List'da turli tiplar bo'lishi mumkin.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 12/20</h2>
-  <div class="quiz">
-    <p class="q"><code>a = []</code>; <code>a.append("x")</code>; <code>len(a)</code>?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>0</code></button>
-      <button class="opt" type="button"><code>2</code></button>
-      <button class="opt" type="button">Xato</button>
-      <button class="opt" type="button" data-ok><code>1</code></button>
-    </div>
-    <div class="explain">Bo'sh list'ga bitta element qo'shildi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 13/20</h2>
-  <div class="quiz">
-    <p class="q"><code>a = [5, 6, 7]</code>; <code>a[-1] = 0</code>; <code>a</code>?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok><code>[5, 6, 0]</code></button>
-      <button class="opt" type="button"><code>[0, 6, 7]</code></button>
-      <button class="opt" type="button"><code>TypeError</code></button>
-      <button class="opt" type="button"><code>[5, 6, 7, 0]</code></button>
-    </div>
-    <div class="explain">List mutable; -1 oxirgi element.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 14/20</h2>
-  <div class="quiz">
-    <p class="q"><code>a.insert(0, "x")</code> nima qiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Oxiriga qo'shadi</button>
-      <button class="opt" type="button">0 ni o'chiradi</button>
-      <button class="opt" type="button" data-ok>Boshiga <code>"x"</code> ni kiritadi</button>
-      <button class="opt" type="button">Hammasini <code>"x"</code> qiladi</button>
-    </div>
-    <div class="explain"><code>insert(index, value)</code>.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 15/20</h2>
-  <div class="quiz">
-    <p class="q">Qiymatni bilsangiz, lekin indeksini bilmasangiz, qaysi metod?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>pop()</code></button>
-      <button class="opt" type="button" data-ok><code>remove()</code></button>
-      <button class="opt" type="button"><code>clear()</code></button>
-      <button class="opt" type="button"><code>insert()</code></button>
-    </div>
-    <div class="explain"><code>remove(qiymat)</code>.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 16/20</h2>
-  <div class="quiz">
-    <p class="q"><code>a = [1, 2, 3]</code>; <code>a.pop(0)</code>; <code>a</code>?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>[1, 2]</code></button>
-      <button class="opt" type="button"><code>[1, 3]</code></button>
-      <button class="opt" type="button"><code>[]</code></button>
-      <button class="opt" type="button" data-ok><code>[2, 3]</code></button>
-    </div>
-    <div class="explain">0-indeksdagi 1 olindi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 17/20</h2>
-  <div class="quiz">
-    <p class="q"><code>["e", "d", "c"][::-1]</code>?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok><code>['c', 'd', 'e']</code></button>
-      <button class="opt" type="button"><code>['e', 'd', 'c']</code></button>
-      <button class="opt" type="button"><code>'cde'</code></button>
-      <button class="opt" type="button"><code>['e']</code></button>
-    </div>
-    <div class="explain">Teskari list.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 18/20</h2>
-  <div class="quiz">
-    <p class="q">String bilan list'ning umumiy jihati?</p>
-    <div class="opts">
-      <button class="opt" type="button">Ikkalasi ham mutable</button>
-      <button class="opt" type="button">Ikkalasi ham kvadrat qavsda</button>
-      <button class="opt" type="button" data-ok>Ikkalasida indeks va slicing bor</button>
-      <button class="opt" type="button">Ikkalasi ham faqat son saqlaydi</button>
-    </div>
-    <div class="explain">Ikkalasi ketma-ketlik; farqi - mutable/immutable.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 19/20</h2>
-  <div class="quiz">
-    <p class="q">Talabaning ismi va o'zgaradigan fanlari uchun eng mos juftlik?</p>
-    <div class="opts">
-      <button class="opt" type="button">ism - list, fanlar - string</button>
-      <button class="opt" type="button" data-ok>ism - string, fanlar - list</button>
-      <button class="opt" type="button">ikkalasi string</button>
-      <button class="opt" type="button">ikkalasi list</button>
-    </div>
-    <div class="explain">Ism - matn (string), fanlar - o'zgaradigan ro'yxat (list).</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 20/20</h2>
-  <div class="quiz">
-    <p class="q"><code>a = [1, 2]</code>; <code>a.remove(5)</code> nima beradi?</p>
-    <div class="opts">
-      <button class="opt" type="button"><code>[1, 2]</code></button>
-      <button class="opt" type="button"><code>IndexError</code></button>
-      <button class="opt" type="button"><code>[]</code></button>
-      <button class="opt" type="button" data-ok><code>ValueError</code></button>
-    </div>
-    <div class="explain">Bunday qiymat yo'q - <code>ValueError</code>.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Natijangiz</h2>
-  <div class="cards three">
-    <div class="card"><h3>20 dan 18+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
-    <div class="card"><h3>20 dan 12-17</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
-    <div class="card accent"><h3>11 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
-  </div>
-  <p class="small mt">Takrorlang: string va list farqi, indeks va slicing, string metodlari, list metodlari.</p>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>4-hafta testi</h1></header>
+<div class="badges"><span class="badge">9-sinf</span><span class="badge">Advanced Back-end va DevOps</span><span class="badge">4-hafta</span><span class="badge">20 ta savol &amp;middot; taxminan 15 daqiqa</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Bu hafta o'rganilgan ikki tuzilma?", "o": ["tuple va set", "string va list", "dict va set", "list va dict"], "a": 1, "e": "4-hafta: string va list; 5-hafta: tuple, set, dict."}, {"q": "<code>{\"name\": \"Ali\"}<\/code> ko'rinishi nimani bildiradi?", "o": ["Belgilar ketma-ketligi", "Ketma-ket elementlar", "Kalit-qiymat", "Takrorsiz to'plam"], "a": 2, "e": "Rasmiy qo'llanma: dict - kalit-qiymat."}, {"q": "String ichida bo'sh joy...", "o": ["ham belgi hisoblanadi", "hisobga kirmaydi", "xato beradi", "faqat oxirida bo'ladi"], "a": 0, "e": "<code>len(\"a b\")<\/code> = 3."}, {"q": "<code>s = 'U dedi: \"Salom\"'<\/code> to'g'rimi?", "o": ["Xato: tirnoq ichida tirnoq mumkin emas", "Faqat <code>\"\"\"<\/code> bilan mumkin", "SyntaxError", "To'g'ri: tashqi <code>'<\/code>, ichida <code>\"<\/code>"], "a": 3, "e": "Har xil tirnoqlar bir-birini yopmaydi."}, {"q": "Immutable degani?", "o": ["Yaratilgach o'zgartirib bo'lmaydi", "Faqat bir marta chop etiladi", "Bo'sh bo'lolmaydi", "Faqat raqam saqlaydi"], "a": 0, "e": "String immutable, list esa mutable."}, {"q": "<code>\"Backend\"[-3:]<\/code> natijasi?", "o": ["<code>\"Bac\"<\/code>", "<code>\"kend\"<\/code>", "<code>\"end\"<\/code>", "<code>\"d\"<\/code>"], "a": 2, "e": "Oxirgi uchta belgi."}, {"q": "<code>\"ADMIN\".lower()<\/code>?", "o": ["<code>\"Admin\"<\/code>", "<code>\"admin\"<\/code>", "<code>\"ADMIN\"<\/code>", "<code>\"aDMIN\"<\/code>"], "a": 1, "e": "<code>lower()<\/code> - hammasi kichik."}, {"q": "<code>\"python dasturlash\".capitalize()<\/code>?", "o": ["<code>\"Python Dasturlash\"<\/code>", "<code>\"PYTHON DASTURLASH\"<\/code>", "<code>\"python Dasturlash\"<\/code>", "<code>\"Python dasturlash\"<\/code>"], "a": 3, "e": "Faqat eng birinchi harf katta."}, {"q": "Palindromni tekshirish uchun eng qulay ifoda?", "o": ["<code>soz == soz[::-1]<\/code>", "<code>soz == soz[0]<\/code>", "<code>soz.upper()<\/code>", "<code>soz[1:]<\/code>"], "a": 0, "e": "Teskari o'qilganda ham bir xil."}, {"q": "<code>\"Python\"[6]<\/code> nima beradi?", "o": ["<code>\"n\"<\/code>", "<code>\"\"<\/code>", "<code>IndexError<\/code>", "<code>TypeError<\/code>"], "a": 2, "e": "Oxirgi indeks 5; 6 mavjud emas."}, {"q": "<code>[1, \"Ali\", 3.14, True]<\/code> to'g'ri listmi?", "o": ["Yo'q, turli tip mumkin emas", "Ha, list turli tipdagi qiymatlarni saqlaydi", "Yo'q, True mumkin emas", "Faqat tuple'da mumkin"], "a": 1, "e": "List'da turli tiplar bo'lishi mumkin."}, {"q": "<code>a = []<\/code>; <code>a.append(\"x\")<\/code>; <code>len(a)<\/code>?", "o": ["<code>0<\/code>", "<code>2<\/code>", "Xato", "<code>1<\/code>"], "a": 3, "e": "Bo'sh list'ga bitta element qo'shildi."}, {"q": "<code>a = [5, 6, 7]<\/code>; <code>a[-1] = 0<\/code>; <code>a<\/code>?", "o": ["<code>[5, 6, 0]<\/code>", "<code>[0, 6, 7]<\/code>", "<code>TypeError<\/code>", "<code>[5, 6, 7, 0]<\/code>"], "a": 0, "e": "List mutable; -1 oxirgi element."}, {"q": "<code>a.insert(0, \"x\")<\/code> nima qiladi?", "o": ["Oxiriga qo'shadi", "0 ni o'chiradi", "Boshiga <code>\"x\"<\/code> ni kiritadi", "Hammasini <code>\"x\"<\/code> qiladi"], "a": 2, "e": "<code>insert(index, value)<\/code>."}, {"q": "Qiymatni bilsangiz, lekin indeksini bilmasangiz, qaysi metod?", "o": ["<code>pop()<\/code>", "<code>remove()<\/code>", "<code>clear()<\/code>", "<code>insert()<\/code>"], "a": 1, "e": "<code>remove(qiymat)<\/code>."}, {"q": "<code>a = [1, 2, 3]<\/code>; <code>a.pop(0)<\/code>; <code>a<\/code>?", "o": ["<code>[1, 2]<\/code>", "<code>[1, 3]<\/code>", "<code>[]<\/code>", "<code>[2, 3]<\/code>"], "a": 3, "e": "0-indeksdagi 1 olindi."}, {"q": "<code>[\"e\", \"d\", \"c\"][::-1]<\/code>?", "o": ["<code>['c', 'd', 'e']<\/code>", "<code>['e', 'd', 'c']<\/code>", "<code>'cde'<\/code>", "<code>['e']<\/code>"], "a": 0, "e": "Teskari list."}, {"q": "String bilan list'ning umumiy jihati?", "o": ["Ikkalasi ham mutable", "Ikkalasi ham kvadrat qavsda", "Ikkalasida indeks va slicing bor", "Ikkalasi ham faqat son saqlaydi"], "a": 2, "e": "Ikkalasi ketma-ketlik; farqi - mutable/immutable."}, {"q": "Talabaning ismi va o'zgaradigan fanlari uchun eng mos juftlik?", "o": ["ism - list, fanlar - string", "ism - string, fanlar - list", "ikkalasi string", "ikkalasi list"], "a": 1, "e": "Ism - matn (string), fanlar - o'zgaradigan ro'yxat (list)."}, {"q": "<code>a = [1, 2]<\/code>; <code>a.remove(5)<\/code> nima beradi?", "o": ["<code>[1, 2]<\/code>", "<code>IndexError<\/code>", "<code>[]<\/code>", "<code>ValueError<\/code>"], "a": 3, "e": "Bunday qiymat yo'q - <code>ValueError<\/code>."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

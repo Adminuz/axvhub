@@ -1,481 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>Persona va Empatiya Xaritasi</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Persona va Empatiya Xaritasi</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<!-- 5-dars: Persona va empatiya xaritasini yaratish -->
-
-<!-- 1. SARLAVHA -->
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>Persona va Empatiya Xaritasi</h1>
-  <p class="muted">Tadqiqot ma'lumotlarini jonli insoniy obrazga aylantirish</p>
-  <span class="badge">10-sinf</span><span class="badge">Advanced UX/UI</span><span class="badge">2-hafta · 5-dars</span>
-</section>
-
-<!-- 2. BUGUN NIMANI O'RGANAMIZ? -->
-<section>
-  <h2>Bugun nimani o'rganamiz?</h2>
-  <div class="cards three">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="user-check" data-anim="float"></i></div>
-      <h3>User Persona</h3>
-      <p>Maqsadli auditoriyaning umumlashtirilgan, tadqiqotga asoslangan portreti</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="heart" data-anim="pulse"></i></div>
-      <h3>Empatiya xaritasi</h3>
-      <p>Devid Grey modeli: Says, Does, Thinks, Feels, Pains va Gains tahlili</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="map" data-anim="draw"></i></div>
-      <h3>3 vosita uyg'unligi</h3>
-      <p>Persona, Empathy Map va User Journey Map o'rtasidagi farq va bog'liqlik</p>
-    </div>
-  </div>
-</section>
-
-<!-- 3. BO'LIM 1 -->
-<section class="sec">
-  <div class="num">01</div>
-  <h1>User Persona tushunchasi</h1>
-  <p>Foydalanuvchini jamoa uchun jonlantiruvchi kompas</p>
-</section>
-
-<!-- 4. PERSONA MOHIYATI -->
-<section>
-  <h2>User Persona nima?</h2>
-  <div class="quote">
-    «Agar siz hamma uchun dizayn qilsangiz, aslida hech kim uchun qilmaysiz.»
-  </div>
-  <div class="cards two mt">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="users"></i></div>
-      <h3>Tadqiqotga asoslangan arxetip</h3>
-      <p>Persona xayoliy ertak qahramoni emas. U o'nlab intervyular va so'rovnomalardagi o'xshash belgilarni birlashtiruvchi haqiqiy obrazdir.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="compass" data-anim="pulse"></i></div>
-      <h3>Jamoa uchun umumiy til</h3>
-      <p>Dizayner, dasturchi va biznes egasi "Menga bu rang yoqmayapti" deb tortishmaydi, balki "Bu yechim Madinaga qulaymi?" deb qaror qiladi.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 5. ILLYUSTRATSIYA 1: PERSONA ANATOMIYASI -->
-<section>
-  <h2>Illyustratsiya: User Persona Anatomiyasi</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 340">
-      <!-- Surat va Ism -->
-      <rect class="fa" x="40" y="40" width="260" height="260" rx="16"/>
-      <circle cx="170" cy="120" r="50" fill="none" stroke="currentColor" stroke-width="2"/>
-      <circle cx="170" cy="105" r="20" fill="none" stroke="currentColor" stroke-width="2"/>
-      <path d="M 135,150 Q 170,130 205,150" fill="none" stroke="currentColor" stroke-width="2"/>
-      <text class="t-head" x="170" y="200" text-anchor="middle" font-size="20" font-weight="bold">Aziz, 26 yosh</text>
-      <text class="t-muted" x="170" y="225" text-anchor="middle" font-size="14">Moliya tahlilchisi</text>
-      <text class="t-accent" x="170" y="260" text-anchor="middle" font-size="13">"Vaqt — eng qimmat boylik"</text>
-
-      <!-- Maqsadlar -->
-      <g class="fragment">
-        <rect class="fb" x="330" y="40" width="300" height="120" rx="14"/>
-        <text class="t-head" x="480" y="75" text-anchor="middle" font-size="18" font-weight="bold">Maqsadlari (Goals)</text>
-        <text class="t-muted" x="350" y="105" font-size="14">• Daromadlarini avtomatik hisoblash</text>
-        <text class="t-muted" x="350" y="130" font-size="14">• To'lovlarni 1 bosishda bajarish</text>
-      </g>
-
-      <!-- Og'riqlar -->
-      <g class="fragment">
-        <rect class="fc" x="660" y="40" width="300" height="120" rx="14"/>
-        <text class="t-head" x="810" y="75" text-anchor="middle" font-size="18" font-weight="bold">Og'riqlari (Pain Points)</text>
-        <text class="t-muted" x="680" y="105" font-size="14">• Kutilmagan yashirin komissiyalar</text>
-        <text class="t-muted" x="680" y="130" font-size="14">• Murakkab 10 qatorli formalar</text>
-      </g>
-
-      <!-- Texnologik xatti-harakat -->
-      <g class="fragment">
-        <rect class="fg" x="330" y="180" width="630" height="120" rx="14"/>
-        <text class="t-head" x="645" y="215" text-anchor="middle" font-size="18" font-weight="bold">Texnologik odatlari</text>
-        <text class="t-muted" x="360" y="250" font-size="14">• Asosan smartfon (iOS) ishlatadi · Kunda 5+ soat onlayn · Yangiliklarni Telegramdan o'qiydi</text>
-        <text class="t-muted" x="360" y="275" font-size="14">• Sabrsiz: sahifa 3 soniyadan ko'p yuklansa, uni yopib boshqa xizmatga o'tadi</text>
-      </g>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- 6. BO'LIM 2 -->
-<section class="sec">
-  <div class="num">02</div>
-  <h1>Empatiya xaritasi (Empathy Map)</h1>
-  <p>Devid Grey modeli: Insonning ichki va tashqi holati</p>
-</section>
-
-<!-- 7. EMPATIYA XARITASI MOHIYATI -->
-<section>
-  <h2>Empatiya xaritasi falsafasi</h2>
-  <div class="card accent">
-    <h3>Devid Grey (Xplane asoschisi)</h3>
-    <p>Empatiya xaritasi — foydalanuvchining his-tuyg'ulari, niyatlari, aytgan so'zlari va amaldagi harakatlarini bitta ko'rinishda mujassam etuvchi vositadir.</p>
-  </div>
-  <div class="cards two mt">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="heart"></i></div>
-      <h3>Hamdardlik tuyg'usi</h3>
-      <p>Dizayner foydalanuvchining poyafzalini kiyib ko'rishi, uning asabiylashish sabablarini yurakdan his qilishi zarur.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="brain" data-anim="pulse"></i></div>
-      <h3>Ichki va tashqi olam</h3>
-      <p>Odamning aytgan gapi (tashqi) bilan uning ko'nglidan kechayotgan fikri (ichki) o'rtasidagi ziddiyatlarni ochib beradi.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 8. ILLYUSTRATSIYA 2: 4 KVADRANT -->
-<section>
-  <h2>4 Asosiy Kvadrant (Dave Gray)</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 340">
-      <!-- Markaz doira -->
-      <circle class="fg" cx="500" cy="170" r="55"/>
-      <circle cx="500" cy="155" r="18" fill="none" stroke="currentColor" stroke-width="2"/>
-      <path d="M 480,195 Q 500,180 520,195" fill="none" stroke="currentColor" stroke-width="2"/>
-      <text class="t-head" x="500" y="215" text-anchor="middle" font-size="14" font-weight="bold">Foydalanuvchi</text>
-
-      <!-- Kvadrant 1: Says -->
-      <rect class="fa" x="80" y="40" width="370" height="110" rx="14"/>
-      <text class="t-head" x="265" y="80" text-anchor="middle" font-size="20" font-weight="bold">Says (Aytadi)</text>
-      <text class="t-muted" x="265" y="110" text-anchor="middle" font-size="14">Ovozli iqtiboslar: "Bu juda uzoq cho'zildi"</text>
-
-      <!-- Kvadrant 2: Thinks -->
-      <rect class="fb" x="550" y="40" width="370" height="110" rx="14"/>
-      <text class="t-head" x="735" y="80" text-anchor="middle" font-size="20" font-weight="bold">Thinks (O'ylaydi)</text>
-      <text class="t-muted" x="735" y="110" text-anchor="middle" font-size="14">Ichki shubhalar: "Meni aldashmayaptimikan?"</text>
-
-      <!-- Kvadrant 3: Does -->
-      <rect class="fc" x="80" y="185" width="370" height="110" rx="14"/>
-      <text class="t-head" x="265" y="225" text-anchor="middle" font-size="20" font-weight="bold">Does (Qiladi)</text>
-      <text class="t-muted" x="265" y="255" text-anchor="middle" font-size="14">Jismoniy harakatlar: Sahifani qayta yangilaydi</text>
-
-      <!-- Kvadrant 4: Feels -->
-      <rect class="fa" x="550" y="185" width="370" height="110" rx="14"/>
-      <text class="t-head" x="735" y="225" text-anchor="middle" font-size="20" font-weight="bold">Feels (His qiladi)</text>
-      <text class="t-muted" x="735" y="255" text-anchor="middle" font-size="14">Hissiyotlar: Xavotir, asabiylik yoki yengillik</text>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- 9. SAYS VA DOES: TASHQI KO'RINISH -->
-<section>
-  <h2>Says (Aytadi) va Does (Qiladi)</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="message-square"></i></div>
-      <h3>Says: Ovozli so'zlar</h3>
-      <p>Intervyu vaqtida foydalanuvchining og'zidan chiqqan so'zma-so'z iqtiboslar yoziladi.</p>
-      <div class="callout mt"><i>«Men bu tugmani qayerdaligini topa olmayapman.»</i></div>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="activity" data-anim="pulse"></i></div>
-      <h3>Does: Kuzatilgan harakatlar</h3>
-      <p>Foydalanuvchi jismonan nima qilayotgani (skroll qildi, kalkulyator ochdi, ekranni kattalashtirdi).</p>
-      <div class="callout mt"><i>Narxni ko'rish uchun sahifani 4 marta pastga-tepaga aylantirdi.</i></div>
-    </div>
-  </div>
-</section>
-
-<!-- 10. THINKS VA FEELS: ICHKI DUNYO -->
-<section>
-  <h2>Thinks (O'ylaydi) va Feels (His qiladi)</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="brain"></i></div>
-      <h3>Thinks: Aytilmagan fikrlar</h3>
-      <p>Foydalanuvchi xijolat bo'lib yoki uyalib ovoz chiqarib aytmaydigan ichki kechinmalari.</p>
-      <div class="callout mt"><i>«Balki men zamonaviy texnologiyalarni tushunmas darajada orqada qolgandirman?»</i></div>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="heart" data-anim="pulse"></i></div>
-      <h3>Feels: Hissiy reaksiyalar</h3>
-      <p>Har doim his-tuyg'u nomi va uning sababi bilan birga yoziladi.</p>
-      <div class="callout mt"><i>Frustratsiya va asabiylik: to'lov 2 marta xato bergani sababli.</i></div>
-    </div>
-  </div>
-</section>
-
-<!-- 11. BO'LIM 3 -->
-<section class="sec">
-  <div class="num">03</div>
-  <h1>Pains, Gains va vositalar taqqosi</h1>
-  <p>To'siqlarni bartaraf etish va foydalanuvchini xursand qilish</p>
-</section>
-
-<!-- 12. ILLYUSTRATSIYA 3: PAINS VA GAINS -->
-<section>
-  <h2>Pains (Og'riqlar) va Gains (Foydalar)</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 320">
-      <!-- Pains -->
-      <rect class="fa" x="60" y="60" width="410" height="200" rx="16"/>
-      <text class="t-accent" x="265" y="110" text-anchor="middle" font-size="22" font-weight="bold">Pains (Og'riqli nuqtalar)</text>
-      <text class="t-muted" x="100" y="150" font-size="16">• To'siqlar, xatolar va tushunarsiz interfeys</text>
-      <text class="t-muted" x="100" y="180" font-size="16">• Xavotirlar: shaxsiy ma'lumotlar xavfsizligi</text>
-      <text class="t-muted" x="100" y="210" font-size="16">• Vaqt va ortiqcha asab yo'qotish</text>
-
-      <!-- Gains -->
-      <g class="fragment">
-        <rect class="fg" x="530" y="60" width="410" height="200" rx="16"/>
-        <text class="t-head" x="735" y="110" text-anchor="middle" font-size="22" font-weight="bold">Gains (Kutilayotgan foydalar)</text>
-        <text class="t-head" x="570" y="150" font-size="16">• Vazifaning 1 daqiqada hal bo'lishi</text>
-        <text class="t-head" x="570" y="180" font-size="16">• Xotirjamlik va o'ziga bo'lgan ishonch</text>
-        <text class="t-accent" x="570" y="210" font-size="16">• Qulaylikdan zavqlanish (Delight)</text>
-      </g>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- 13. TAQQOSLASH: 3 TA VOSITA -->
-<section>
-  <h2>Persona vs Empathy Map vs Journey Map</h2>
-  <div class="cards three">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="user-check"></i></div>
-      <h3>User Persona</h3>
-      <p><b>Savol:</b> <i>Kim?</i></p>
-      <p>Auditoriyaning umumiy xarakteri va demografik profili.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="heart"></i></div>
-      <h3>Empathy Map</h3>
-      <p><b>Savol:</b> <i>Nima his qiladi?</i></p>
-      <p>Aniq bir lahzadagi chuqur ichki kechinmalar va fikrlar.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="map"></i></div>
-      <h3>Journey Map</h3>
-      <p><b>Savol:</b> <i>Qaysi yo'ldan yuradi?</i></p>
-      <p>Vaqt o'qi bo'yicha mahsulot bilan barcha qadamlar zanjiri.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 14. ILLYUSTRATSIYA 4: TADQIQOTDAN DIZAYNGACHA -->
-<section>
-  <h2>Tadqiqotdan Dizayngacha zanjir</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 300">
-      <rect class="fa" x="40" y="90" width="190" height="120" rx="14"/>
-      <text class="t-head" x="135" y="145" text-anchor="middle" font-size="16" font-weight="bold">1. Tadqiqot</text>
-      <text class="t-muted" x="135" y="175" text-anchor="middle" font-size="13">Intervyu va so'rov</text>
-
-      <line class="la flowing" x1="230" y1="150" x2="280" y2="150"/>
-      <polygon class="ar-a" points="285,150 270,140 270,160"/>
-
-      <rect class="fb" x="285" y="90" width="200" height="120" rx="14"/>
-      <text class="t-head" x="385" y="145" text-anchor="middle" font-size="16" font-weight="bold">2. Empatiya</text>
-      <text class="t-muted" x="385" y="175" text-anchor="middle" font-size="13">Says, Thinks, Feels</text>
-
-      <line class="lb flowing" x1="485" y1="150" x2="535" y2="150"/>
-      <polygon class="ar-b" points="540,150 525,140 525,160"/>
-
-      <rect class="fc" x="540" y="90" width="190" height="120" rx="14"/>
-      <text class="t-head" x="635" y="145" text-anchor="middle" font-size="16" font-weight="bold">3. Persona</text>
-      <text class="t-muted" x="635" y="175" text-anchor="middle" font-size="13">Qahramon portreti</text>
-
-      <line class="lc flowing" x1="730" y1="150" x2="780" y2="150"/>
-      <polygon class="ar-c" points="785,150 770,140 770,160"/>
-
-      <rect class="fg" x="785" y="90" width="180" height="120" rx="14"/>
-      <text class="t-head" x="875" y="145" text-anchor="middle" font-size="16" font-weight="bold">4. Dizayn</text>
-      <text class="t-muted" x="875" y="175" text-anchor="middle" font-size="13">Aniq UX yechim</text>
-    </svg>
-  </div>
-</section>
-
-<!-- 15. STEPPER: EMPATIYA XARITASINI TUZISH QADAMLARI -->
-<section>
-  <h2>Empatiya xaritasini tuzish qadamlari</h2>
-  <div class="stepper">
-    <div class="stp on">
-      <div class="card">
-        <div class="icon"><i data-ic="users" data-anim="float"></i></div>
-        <h3>1. Foydalanuvchini tanlash</h3>
-        <p>Xarita kim haqida ekanini aniqlash: yakka foydalanuvchimi yoki guruhmi?</p>
-      </div>
-    </div>
-    <div class="stp">
-      <div class="card">
-        <div class="icon"><i data-ic="file-text" data-anim="pulse"></i></div>
-        <h3>2. Tadqiqot ma'lumotlarini to'plash</h3>
-        <p>Intervyu audio yozuvlari, matnli qaydlar va so'rov natijalarini stolga qo'yish.</p>
-      </div>
-    </div>
-    <div class="stp">
-      <div class="card">
-        <div class="icon"><i data-ic="layout-grid" data-anim="draw"></i></div>
-        <h3>3. Stikerlarni kvadrantlarga joylash</h3>
-        <p>Har bir fikrni tegishli 4 kvadrantga (Says, Does, Thinks, Feels) stiker qilib yopishtirish.</p>
-      </div>
-    </div>
-    <div class="stp">
-      <div class="card">
-        <div class="icon"><i data-ic="circle-check" data-anim="bounce"></i></div>
-        <h3>4. Bo'shliqlarni tahlil qilish</h3>
-        <p>Qaysi kvadrant bo'sh qoldi? Ziddiyatlar bormi? Shunga qarab dizayn xulosalarini chiqarish.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 16. FLIP KARTALAR: SAYS VS DOES -->
-<section>
-  <h2>Ziddiyatlarni aniqlash (Aytadi vs Qiladi)</h2>
-  <p class="muted">Kartani bosing va ichki sababni ko'ring</p>
-  <div class="cards three mt">
-    <div class="flip" style="min-height:200px">
-      <div class="flip-in">
-        <div class="face front">
-          <div class="icon"><i data-ic="message-square"></i></div>
-          <h3>«Men tez-tez kitob o'qiyman»</h3>
-          <span class="flip-hint">bosing</span>
-        </div>
-        <div class="face back">
-          <p><b>Amalda (Does):</b> Ilovada 2 oyda bor-yo'g'i bitta kitobning 5 sahifasi ochilgan. Sabab: qulay audio format yo'q.</p>
-        </div>
-      </div>
-    </div>
-    <div class="flip" style="min-height:200px">
-      <div class="flip-in">
-        <div class="face front">
-          <div class="icon"><i data-ic="heart"></i></div>
-          <h3>«Dizayn juda chiroyli»</h3>
-          <span class="flip-hint">bosing</span>
-        </div>
-        <div class="face back">
-          <p><b>Amalda (Does):</b> Savatga tovar qo'shib to'lamay chiqib ketdi. Sabab: yetkazib berish narxi juda qimmat tuyulgan.</p>
-        </div>
-      </div>
-    </div>
-    <div class="flip" style="min-height:200px">
-      <div class="flip-in">
-        <div class="face front">
-          <div class="icon"><i data-ic="shield-check"></i></div>
-          <h3>«Parolim juda ishonchli»</h3>
-          <span class="flip-hint">bosing</span>
-        </div>
-        <div class="face back">
-          <p><b>Amalda (Does):</b> <code>123456</code> yoki bitta parolni barcha saytlariga qo'ygan. Chora: SMS orqali bir martalik kod.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 17. AMALIY KEYS: MADINA PERSONASI -->
-<section>
-  <h2>Amaliy keys: 10-sinf o'quvchisi Madina</h2>
-  <div class="cards two">
-    <div class="card">
-      <h3>Profil va Maqsad</h3>
-      <p>16 yosh, Samarqand. Kechki payt smartfonda repetitor darslarini ko'radi. Maqsadi: Universitet imtihonlariga tayyorlanish.</p>
-    </div>
-    <div class="card accent fragment">
-      <h3>Asosiy og'rig'i (Pain point)</h3>
-      <p>Internet sekinlashganda video qotadi, murakkab veb-portalda uyga vazifani qayerga yuklashni tushunmaydi.</p>
-      <div class="callout mt"><b>UX yechimi:</b> Videoni oflayn saqlash va Telegram bot orqali vazifa topshirish.</div>
-    </div>
-  </div>
-</section>
-
-<!-- 18. AMALIY TOPSHIRIQ -->
-<section>
-  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
-  <div class="task"><span class="level easy">Oson</span>Berilgan 4 ta intervyu qaydini Empatiya xaritasining 4 kvadrantiga taqsimlang.</div>
-  <div class="task"><span class="level mid">O'rta</span>Onlayn repetitorlik xizmati uchun to'liq Persona profilini shakllantiring.</div>
-  <div class="task"><span class="level hard">Qiyin</span>Taksi ilovasi uchun Pains va Gains bloklari bilan kengaytirilgan Empatiya xaritasini ishlab chiqing.</div>
-</section>
-
-<!-- 19. MINI TEST -->
-<section>
-  <h2>Bilimingizni sinang</h2>
-  <div class="quiz">
-    <p class="q">Empatiya xaritasi (Empathy Map) dastlab qaysi tadqiqotchi/kompaniya tomonidan ishlab chiqilgan?</p>
-    <div class="opts">
-      <button class="opt" type="button">Donald Norman (Apple)</button>
-      <button class="opt" type="button" data-ok>Devid Grey (Xplane)</button>
-      <button class="opt" type="button">Stiv Jobs (Apple)</button>
-      <button class="opt" type="button">Jakob Nielsen (NNGroup)</button>
-    </div>
-    <div class="explain">To'g'ri: Empatiya xaritasi Xplane konsalting kompaniyasi asoschisi Devid Grey tomonidan ishlab chiqilgan.</div>
-  </div>
-</section>
-
-<!-- 20. KENG TARQALGAN XATOLAR -->
-<section>
-  <h2>Keng tarqalgan xatolar</h2>
-  <div class="cards two">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="circle-alert"></i></div>
-      <h3>Xayoliy persona yaratish</h3>
-      <p>Tadqiqot o'rniga shaxsiy tasavvurga tayanib yozilgan persona butun loyihani noto'g'ri yo'nalishga boshlaydi.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="circle-alert"></i></div>
-      <h3>Haddan tashqari ko'p persona</h3>
-      <p>Bitta ilova uchun 15 ta persona yaratilsa, diqqat tarqaladi. 1-2 ta asosiy (Primary Persona) yetarli bo'ladi.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 21. XULOSA -->
-<section>
-  <h2>Xulosa</h2>
-  <div class="cards two">
-    <div class="card">
-      <div class="icon"><i data-ic="circle-check"></i></div>
-      <h3>Bugun o'rgandik</h3>
-      <ul class="mt">
-        <li>User Persona va uning 5 ta bloki</li>
-        <li>Devid Greyning Empatiya xaritasi (Says, Does, Thinks, Feels)</li>
-        <li>Pains va Gains tahlili</li>
-      </ul>
-    </div>
-    <div class="card accent">
-      <div class="icon"><i data-ic="sparkles"></i></div>
-      <h3>Keyingi dars</h3>
-      <p><b>User Story va User Journey Map:</b> Foydalanuvchining boshidan oxirigacha bo'lgan to'liq sayohat xaritasini chizamiz!</p>
-    </div>
-  </div>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Persona va Empatiya Xaritasi</h1></header>
+<div class="badges"><span class="badge">10-sinf</span><span class="badge">Advanced UX/UI</span><span class="badge">2-hafta · 5-dars</span><span class="badge">Tadqiqot ma'lumotlarini jonli insoniy obrazga aylantirish</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Empatiya xaritasi (Empathy Map) dastlab qaysi tadqiqotchi/kompaniya tomonidan ishlab chiqilgan?", "o": ["Donald Norman (Apple)", "Devid Grey (Xplane)", "Stiv Jobs (Apple)", "Jakob Nielsen (NNGroup)"], "a": 1, "e": "To'g'ri: Empatiya xaritasi Xplane konsalting kompaniyasi asoschisi Devid Grey tomonidan ishlab chiqilgan."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

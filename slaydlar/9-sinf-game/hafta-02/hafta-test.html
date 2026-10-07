@@ -1,331 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>2-hafta testi</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>2-hafta testi</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>2-hafta testi</h1>
-  <p class="muted">20 ta savol &middot; taxminan 18 daqiqa</p>
-  <span class="badge">9-sinf</span><span class="badge">Game Design</span><span class="badge">2-hafta</span>
-  
-</section>
-
-<section>
-  <h2>Savol 1/20</h2>
-  <div class="quiz">
-    <p class="q">Inciting Incident nima?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Tinch hayotni buzib, sarguzashtni boshlab beruvchi ilk turtki hodisa</button>
-      <button class="opt" type="button">O'yinning eng so'nggi sahnasi</button>
-      <button class="opt" type="button">Bosh dushmanning mag'lubiyati</button>
-      <button class="opt" type="button">O'yin menyusidagi sozlama</button>
-    </div>
-    <div class="explain">Masalan, sehrli kitobning o'g'irlanishi yoki ajdaho hujumi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 2/20</h2>
-  <div class="quiz">
-    <p class="q">Branch-and-Bottleneck usulining mohiyati nima?</p>
-    <div class="opts">
-      <button class="opt" type="button">Hamma yo'llar abadiy alohida qoladi</button>
-      <button class="opt" type="button" data-ok>Yo'llar bo'linadi, muhim burilish nuqtalarida yana yagona syujetga ulanadi</button>
-      <button class="opt" type="button">Faqat bitta yo'l qoladi</button>
-      <button class="opt" type="button">Syujet butunlay olib tashlanadi</button>
-    </div>
-    <div class="explain">Bu tarmoqlanuvchi ssenariyning mehnatini kamaytiradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 3/20</h2>
-  <div class="quiz">
-    <p class="q">Syujet (Plot) nimadan iborat?</p>
-    <div class="opts">
-      <button class="opt" type="button">Faqat qahramonlar ro'yxati</button>
-      <button class="opt" type="button">Faqat dialoglar</button>
-      <button class="opt" type="button" data-ok>Boshlanish, rivojlanish, cho'qqi (kulminatsiya) va yakun</button>
-      <button class="opt" type="button">Faqat o'yin qoidalari</button>
-    </div>
-    <div class="explain">Syujet hikoyaning ketma-ket tuzilishini bildiradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 4/20</h2>
-  <div class="quiz">
-    <p class="q">Nega qahramonga ichki kamchilik (flaw) beriladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">O'yin osonlashadi</button>
-      <button class="opt" type="button">Dushman kuchsizlanadi</button>
-      <button class="opt" type="button">Ssenariy qisqaradi</button>
-      <button class="opt" type="button" data-ok>Obraz tirik va qiziqarli chiqadi, rivojlanishga turtki bo'ladi</button>
-    </div>
-    <div class="explain">Nuqsonsiz qahramon zerikarli; qo'rquv yoki mag'rurlik unga xarakter beradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 5/20</h2>
-  <div class="quiz">
-    <p class="q">Kempbellning «Qahramon yo'li» da ustoz bilan uchrashuvda nima yuz beradi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Dono murabbiy qahramonga sehrli qurol yoki bilim beradi</button>
-      <button class="opt" type="button">Qahramon bosh dushmanni yengadi</button>
-      <button class="opt" type="button">Qahramon uyiga qaytadi</button>
-      <button class="opt" type="button">Qahramon o'yinni tark etadi</button>
-    </div>
-    <div class="explain">Bu 12 bosqichli universal formulaning qadamlaridan biri.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 6/20</h2>
-  <div class="quiz">
-    <p class="q">Photoshop interfeysida tanlangan uskunaning joriy sozlamalarini qayerdan topish mumkin?</p>
-    <div class="opts">
-      <button class="opt" type="button">Chapdagi Tools Panel dan</button>
-      <button class="opt" type="button" data-ok>Tepadagi Options Bar dan</button>
-      <button class="opt" type="button">O'ngdagi Layers panelidan</button>
-      <button class="opt" type="button">Faqat File menyusidan</button>
-    </div>
-    <div class="explain">Options Bar tanlangan uskunaning joriy sozlamalarini ko'rsatadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 7/20</h2>
-  <div class="quiz">
-    <p class="q">Tools Panel odatda qayerda joylashadi va nimalarni o'z ichiga oladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">O'ngda; faqat qatlamlarni</button>
-      <button class="opt" type="button">Tepada; faqat sozlamalarni</button>
-      <button class="opt" type="button" data-ok>Chapda; Move, Brush, Eraser, Pen kabi asboblarni</button>
-      <button class="opt" type="button">Pastda; faqat filtrlarni</button>
-    </div>
-    <div class="explain">Markazda esa Canvas (xolst) joylashadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 8/20</h2>
-  <div class="quiz">
-    <p class="q">Tilemap nima?</p>
-    <div class="opts">
-      <button class="opt" type="button">Bitta personaj tasviri</button>
-      <button class="opt" type="button">Rang palitrasi</button>
-      <button class="opt" type="button">Parallaks qatlami</button>
-      <button class="opt" type="button" data-ok>Tayllardan tuzilgan butun o'yin bosqichi yoki darajasi xaritasi</button>
-    </div>
-    <div class="explain">Tayl — kichik blok, Tilemap — ulardan yig'ilgan xarita.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 9/20</h2>
-  <div class="quiz">
-    <p class="q">Kompyuter o'yini foni uchun yangi fayl ochishda qaysi sozlamalar tavsiya etiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>1920x1080 px, 72 DPI, RGB Color</button>
-      <button class="opt" type="button">500x500 px, 600 DPI, CMYK</button>
-      <button class="opt" type="button">100x100 px, 300 DPI, CMYK</button>
-      <button class="opt" type="button">A4 o'lcham, CMYK</button>
-    </div>
-    <div class="explain">O'yin ekran uchun mo'ljallanganligi sababli RGB ishlatiladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 10/20</h2>
-  <div class="quiz">
-    <p class="q">Osmon qatlami eng tepaga ko'tarilsa ekranda nima yuz beradi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Osmon eng orqaga o'tadi</button>
-      <button class="opt" type="button" data-ok>Osmon qolgan qatlamlarni to'sib qo'yadi</button>
-      <button class="opt" type="button">Hamma qatlam shaffof bo'ladi</button>
-      <button class="opt" type="button">Hech narsa o'zgarmaydi</button>
-    </div>
-    <div class="explain">Ustki qatlamlar pastki qatlamlar ustiga chiziladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 11/20</h2>
-  <div class="quiz">
-    <p class="q">Kvadratni mukammal teng tomonli qilib tanlash uchun qaysi tugma bosib turiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Alt</button>
-      <button class="opt" type="button">Ctrl</button>
-      <button class="opt" type="button" data-ok>Shift</button>
-      <button class="opt" type="button">Tab</button>
-    </div>
-    <div class="explain">Shift tanlovni proporsional saqlaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 12/20</h2>
-  <div class="quiz">
-    <p class="q">Tanlov chizig'i («Marching Ants») ni bekor qilish tugmalari qaysilar?</p>
-    <div class="opts">
-      <button class="opt" type="button">Ctrl + J</button>
-      <button class="opt" type="button">Ctrl + Shift + I</button>
-      <button class="opt" type="button">Ctrl + E</button>
-      <button class="opt" type="button" data-ok>Ctrl + D</button>
-    </div>
-    <div class="explain">Ctrl + D — Deselect.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 13/20</h2>
-  <div class="quiz">
-    <p class="q">Pen Tool nima uchun Brush dan afzal, masalan, qalqonning silliq qirralari uchun?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Bezye egri chiziqlari bilan silliq vektor kontur beradi</button>
-      <button class="opt" type="button">Rangni tezroq to'ldiradi</button>
-      <button class="opt" type="button">Faqat to'g'ri chiziq chizadi</button>
-      <button class="opt" type="button">Shaffoflikni o'zgartiradi</button>
-    </div>
-    <div class="explain">Tayanch nuqtalar va tutqichlar yordamida silliq kontur hosil bo'ladi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 14/20</h2>
-  <div class="quiz">
-    <p class="q">Gradient Tool qaysi tugma bilan faollashadi va nima qiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">B; mo'yqalam bilan chizadi</button>
-      <button class="opt" type="button" data-ok>G; ranglarning mayin o'tishini hosil qiladi</button>
-      <button class="opt" type="button">P; vektor kontur chizadi</button>
-      <button class="opt" type="button">M; to'rtburchak tanlaydi</button>
-    </div>
-    <div class="explain">Gradient Linear yoki Radial bo'lishi mumkin.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 15/20</h2>
-  <div class="quiz">
-    <p class="q">Overlay rejimi nima uchun ishlatiladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Faqat qoraytirish uchun</button>
-      <button class="opt" type="button">Faqat yoritish uchun</button>
-      <button class="opt" type="button" data-ok>Kontrast va rang to'yinganligini oshirish uchun</button>
-      <button class="opt" type="button">Qatlamni o'chirish uchun</button>
-    </div>
-    <div class="explain">Multiply qoraytiradi, Screen yoritadi, Overlay kontrastni oshiradi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 16/20</h2>
-  <div class="quiz">
-    <p class="q">Magic Wand ning Tolerance qiymati 10 dan 50 ga oshirilsa nima bo'ladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Kamroq rang tanlanadi</button>
-      <button class="opt" type="button">Tanlov butunlay o'chadi</button>
-      <button class="opt" type="button">Faqat qora rang tanlanadi</button>
-      <button class="opt" type="button" data-ok>Ko'proq o'xshash rang tuslari tanlanadi</button>
-    </div>
-    <div class="explain">Tolerance oshgani sari qamrov kengayadi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 17/20</h2>
-  <div class="quiz">
-    <p class="q">Qahramon sprayti fondan ajratilib, shaffof fonli fayl sifatida saqlanishi kerak. Qaysi ketma-ketlik to'g'ri?</p>
-    <div class="opts">
-      <button class="opt" type="button" data-ok>Fonni tanlash, Invert, Ctrl+J, PNG sifatida eksport</button>
-      <button class="opt" type="button">Fonni tanlash, JPEG saqlash</button>
-      <button class="opt" type="button">Eraser bilan o'chirish, JPEG saqlash</button>
-      <button class="opt" type="button">Ctrl+E, so'ng JPEG saqlash</button>
-    </div>
-    <div class="explain">PNG shaffoflikni saqlaydi, JPEG esa yo'q.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 18/20</h2>
-  <div class="quiz">
-    <p class="q">Sprite yer ustida turibdi, uning soyasi tekstura ustida tabiiy ko'rinishi kerak. Soya qatlami uchun nima mos?</p>
-    <div class="opts">
-      <button class="opt" type="button">Eraser bilan o'chirilgan qatlam</button>
-      <button class="opt" type="button" data-ok>Alohida qatlam va Multiply rejimi</button>
-      <button class="opt" type="button">Screen rejimi</button>
-      <button class="opt" type="button">Qatlamni JPEG ga aylantirish</button>
-    </div>
-    <div class="explain">Multiply tekstura ustiga qorong'ulik qo'shadi, uni yopib qo'ymaydi.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 19/20</h2>
-  <div class="quiz">
-    <p class="q">Silliq, har qanday o'lchamda sifati saqlanadigan o'yin logotipi uchun qaysi juftlik to'g'ri?</p>
-    <div class="opts">
-      <button class="opt" type="button">Rastr JPEG</button>
-      <button class="opt" type="button">Kichik PNG</button>
-      <button class="opt" type="button" data-ok>Pen Tool bilan chizilgan vektor (SVG/AI)</button>
-      <button class="opt" type="button">Qora-oq PSD</button>
-    </div>
-    <div class="explain">Vektor grafika kattalashtirilganda ham 100% sifatli.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Savol 20/20</h2>
-  <div class="quiz">
-    <p class="q">32x32 pikselli tayllardan o'yin darajasini terishning foydasi qaysi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Rasmlar rangsiz bo'ladi</button>
-      <button class="opt" type="button">Fayl hajmi oshadi</button>
-      <button class="opt" type="button">Parallaks yo'qoladi</button>
-      <button class="opt" type="button" data-ok>Xotira tejaladi va darajani tez tahrirlash mumkin</button>
-    </div>
-    <div class="explain">Takrorlanuvchi bloklar bitta ulkan rasmdan yengilroq.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Natijangiz</h2>
-  <div class="cards three">
-    <div class="card"><h3>20 dan 18+</h3><p>A'lo. Mavzu yaxshi o'zlashtirilgan.</p></div>
-    <div class="card"><h3>20 dan 12-17</h3><p>Yaxshi. Xato qilgan savollar izohini qayta o'qing.</p></div>
-    <div class="card accent"><h3>11 va undan kam</h3><p>Konspekt va slaydlarni takrorlang, so'ng testni qayta yeching.</p></div>
-  </div>
-  <p class="small mt">Takrorlang: ssenariy va loyihalash, 2D grafika turlari, Photoshop tanlash vositalari, maskalar va rejimlar.</p>
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>2-hafta testi</h1></header>
+<div class="badges"><span class="badge">9-sinf</span><span class="badge">Game Design</span><span class="badge">2-hafta</span><span class="badge">20 ta savol &amp;middot; taxminan 18 daqiqa</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Inciting Incident nima?", "o": ["Tinch hayotni buzib, sarguzashtni boshlab beruvchi ilk turtki hodisa", "O'yinning eng so'nggi sahnasi", "Bosh dushmanning mag'lubiyati", "O'yin menyusidagi sozlama"], "a": 0, "e": "Masalan, sehrli kitobning o'g'irlanishi yoki ajdaho hujumi."}, {"q": "Branch-and-Bottleneck usulining mohiyati nima?", "o": ["Hamma yo'llar abadiy alohida qoladi", "Yo'llar bo'linadi, muhim burilish nuqtalarida yana yagona syujetga ulanadi", "Faqat bitta yo'l qoladi", "Syujet butunlay olib tashlanadi"], "a": 1, "e": "Bu tarmoqlanuvchi ssenariyning mehnatini kamaytiradi."}, {"q": "Syujet (Plot) nimadan iborat?", "o": ["Faqat qahramonlar ro'yxati", "Faqat dialoglar", "Boshlanish, rivojlanish, cho'qqi (kulminatsiya) va yakun", "Faqat o'yin qoidalari"], "a": 2, "e": "Syujet hikoyaning ketma-ket tuzilishini bildiradi."}, {"q": "Nega qahramonga ichki kamchilik (flaw) beriladi?", "o": ["O'yin osonlashadi", "Dushman kuchsizlanadi", "Ssenariy qisqaradi", "Obraz tirik va qiziqarli chiqadi, rivojlanishga turtki bo'ladi"], "a": 3, "e": "Nuqsonsiz qahramon zerikarli; qo'rquv yoki mag'rurlik unga xarakter beradi."}, {"q": "Kempbellning «Qahramon yo'li» da ustoz bilan uchrashuvda nima yuz beradi?", "o": ["Dono murabbiy qahramonga sehrli qurol yoki bilim beradi", "Qahramon bosh dushmanni yengadi", "Qahramon uyiga qaytadi", "Qahramon o'yinni tark etadi"], "a": 0, "e": "Bu 12 bosqichli universal formulaning qadamlaridan biri."}, {"q": "Photoshop interfeysida tanlangan uskunaning joriy sozlamalarini qayerdan topish mumkin?", "o": ["Chapdagi Tools Panel dan", "Tepadagi Options Bar dan", "O'ngdagi Layers panelidan", "Faqat File menyusidan"], "a": 1, "e": "Options Bar tanlangan uskunaning joriy sozlamalarini ko'rsatadi."}, {"q": "Tools Panel odatda qayerda joylashadi va nimalarni o'z ichiga oladi?", "o": ["O'ngda; faqat qatlamlarni", "Tepada; faqat sozlamalarni", "Chapda; Move, Brush, Eraser, Pen kabi asboblarni", "Pastda; faqat filtrlarni"], "a": 2, "e": "Markazda esa Canvas (xolst) joylashadi."}, {"q": "Tilemap nima?", "o": ["Bitta personaj tasviri", "Rang palitrasi", "Parallaks qatlami", "Tayllardan tuzilgan butun o'yin bosqichi yoki darajasi xaritasi"], "a": 3, "e": "Tayl — kichik blok, Tilemap — ulardan yig'ilgan xarita."}, {"q": "Kompyuter o'yini foni uchun yangi fayl ochishda qaysi sozlamalar tavsiya etiladi?", "o": ["1920x1080 px, 72 DPI, RGB Color", "500x500 px, 600 DPI, CMYK", "100x100 px, 300 DPI, CMYK", "A4 o'lcham, CMYK"], "a": 0, "e": "O'yin ekran uchun mo'ljallanganligi sababli RGB ishlatiladi."}, {"q": "Osmon qatlami eng tepaga ko'tarilsa ekranda nima yuz beradi?", "o": ["Osmon eng orqaga o'tadi", "Osmon qolgan qatlamlarni to'sib qo'yadi", "Hamma qatlam shaffof bo'ladi", "Hech narsa o'zgarmaydi"], "a": 1, "e": "Ustki qatlamlar pastki qatlamlar ustiga chiziladi."}, {"q": "Kvadratni mukammal teng tomonli qilib tanlash uchun qaysi tugma bosib turiladi?", "o": ["Alt", "Ctrl", "Shift", "Tab"], "a": 2, "e": "Shift tanlovni proporsional saqlaydi."}, {"q": "Tanlov chizig'i («Marching Ants») ni bekor qilish tugmalari qaysilar?", "o": ["Ctrl + J", "Ctrl + Shift + I", "Ctrl + E", "Ctrl + D"], "a": 3, "e": "Ctrl + D — Deselect."}, {"q": "Pen Tool nima uchun Brush dan afzal, masalan, qalqonning silliq qirralari uchun?", "o": ["Bezye egri chiziqlari bilan silliq vektor kontur beradi", "Rangni tezroq to'ldiradi", "Faqat to'g'ri chiziq chizadi", "Shaffoflikni o'zgartiradi"], "a": 0, "e": "Tayanch nuqtalar va tutqichlar yordamida silliq kontur hosil bo'ladi."}, {"q": "Gradient Tool qaysi tugma bilan faollashadi va nima qiladi?", "o": ["B; mo'yqalam bilan chizadi", "G; ranglarning mayin o'tishini hosil qiladi", "P; vektor kontur chizadi", "M; to'rtburchak tanlaydi"], "a": 1, "e": "Gradient Linear yoki Radial bo'lishi mumkin."}, {"q": "Overlay rejimi nima uchun ishlatiladi?", "o": ["Faqat qoraytirish uchun", "Faqat yoritish uchun", "Kontrast va rang to'yinganligini oshirish uchun", "Qatlamni o'chirish uchun"], "a": 2, "e": "Multiply qoraytiradi, Screen yoritadi, Overlay kontrastni oshiradi."}, {"q": "Magic Wand ning Tolerance qiymati 10 dan 50 ga oshirilsa nima bo'ladi?", "o": ["Kamroq rang tanlanadi", "Tanlov butunlay o'chadi", "Faqat qora rang tanlanadi", "Ko'proq o'xshash rang tuslari tanlanadi"], "a": 3, "e": "Tolerance oshgani sari qamrov kengayadi."}, {"q": "Qahramon sprayti fondan ajratilib, shaffof fonli fayl sifatida saqlanishi kerak. Qaysi ketma-ketlik to'g'ri?", "o": ["Fonni tanlash, Invert, Ctrl+J, PNG sifatida eksport", "Fonni tanlash, JPEG saqlash", "Eraser bilan o'chirish, JPEG saqlash", "Ctrl+E, so'ng JPEG saqlash"], "a": 0, "e": "PNG shaffoflikni saqlaydi, JPEG esa yo'q."}, {"q": "Sprite yer ustida turibdi, uning soyasi tekstura ustida tabiiy ko'rinishi kerak. Soya qatlami uchun nima mos?", "o": ["Eraser bilan o'chirilgan qatlam", "Alohida qatlam va Multiply rejimi", "Screen rejimi", "Qatlamni JPEG ga aylantirish"], "a": 1, "e": "Multiply tekstura ustiga qorong'ulik qo'shadi, uni yopib qo'ymaydi."}, {"q": "Silliq, har qanday o'lchamda sifati saqlanadigan o'yin logotipi uchun qaysi juftlik to'g'ri?", "o": ["Rastr JPEG", "Kichik PNG", "Pen Tool bilan chizilgan vektor (SVG/AI)", "Qora-oq PSD"], "a": 2, "e": "Vektor grafika kattalashtirilganda ham 100% sifatli."}, {"q": "32x32 pikselli tayllardan o'yin darajasini terishning foydasi qaysi?", "o": ["Rasmlar rangsiz bo'ladi", "Fayl hajmi oshadi", "Parallaks yo'qoladi", "Xotira tejaladi va darajani tez tahrirlash mumkin"], "a": 3, "e": "Takrorlanuvchi bloklar bitta ulkan rasmdan yengilroq."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

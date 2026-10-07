@@ -1,389 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>FastAPI loyiha yaratish</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>FastAPI loyiha yaratish</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>FastAPI loyiha yaratish</h1>
-  <p class="muted">Texnik topshiriq, MB dizayni va dastlabki sozlamalar: E-Library API</p>
-  <span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">4-hafta &middot; 12-dars</span>
-  
-</section>
-
-<section>
-  <h2>Dars rejasi</h2>
-  <div class="cards four">
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="zap" data-anim="float"></i></div><h3>FastAPI va muhit</h3><p>venv, Uvicorn, kutubxonalar.</p></div>
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="clipboard-list" data-anim="pulse"></i></div><h3>Texnik topshiriq</h3><p>E-Library API: maqsad, rollar, MVP.</p></div>
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="database" data-anim="float"></i></div><h3>MB dizayni</h3><p>Jadvallar, PK/FK va bog'lanishlar.</p></div>
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="settings" data-anim="spin"></i></div><h3>Dastlabki sozlamalar</h3><p>Config, DB session, main.py, Alembic.</p></div>
-  </div>
-  
-</section>
-
-<section class="sec">
-  <div class="num">01</div>
-  <h1>FastAPI va ishchi muhit</h1>
-  <p>Poydevor</p>
-</section>
-
-<section>
-  <h2>FastAPI nima?</h2>
-  <div class="cards three">
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="zap" data-anim="pulse"></i></div><h3>Yuqori unumdor</h3><p>Zamonaviy Python backend freymvorki, REST API uchun.</p></div>
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="workflow" data-anim="spin"></i></div><h3>Asinxron</h3><p>async / await asosida ishlaydi.</p></div>
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="book-open" data-anim="float"></i></div><h3>Swagger tayyor</h3><p>/docs sahifasida API hujjati avtomatik chiqadi.</p></div>
-  </div>
-  <div class="callout tip"><i data-ic="lightbulb"></i>Asinxron FastAPI uchun WSGI emas, ASGI server kerak: Uvicorn.</div>
-  
-</section>
-
-<section>
-  <h2>So'rov FastAPI ga qanday keladi?</h2>
-  <p>ASGI konsepsiyasi</p>
-  <div class="illus">
-    <svg viewBox="0 0 1000 250" width="100%">
-      <g class="fragment">
-        <g data-tip="Mobil ilova yoki veb-sayt API ga so'rov yuboradi."><rect class="fa" x="0" y="25" width="287" height="200" rx="18"/><text class="t-head" x="143" y="95" text-anchor="middle" font-size="22" font-weight="bold">Mijoz</text><text class="t-muted" x="143" y="127" text-anchor="middle" font-size="22">brauzer, ilova</text><text class="t-muted" x="143" y="159" text-anchor="middle" font-size="22">HTTP so'rov</text></g>
-      </g>
-      <g class="fragment">
-        <line class="la flowing" x1="293" y1="125" x2="337" y2="125" stroke-width="4"/><polygon class="ar-a" points="347,125 331,115 331,135"/>
-        <g data-tip="Asinxron so'rovlarni qabul qiluvchi tezkor server."><rect class="fb" x="357" y="25" width="287" height="200" rx="18"/><text class="t-head" x="500" y="95" text-anchor="middle" font-size="22" font-weight="bold">Uvicorn</text><text class="t-muted" x="500" y="127" text-anchor="middle" font-size="22">ASGI server</text><text class="t-muted" x="500" y="159" text-anchor="middle" font-size="22">async</text></g>
-      </g>
-      <g class="fragment">
-        <line class="la flowing" x1="650" y1="125" x2="693" y2="125" stroke-width="4"/><polygon class="ar-a" points="703,125 687,115 687,135"/>
-        <g data-tip="Endpoint topiladi va javob qaytariladi."><rect class="fc" x="713" y="25" width="287" height="200" rx="18"/><text class="t-head" x="856" y="95" text-anchor="middle" font-size="22" font-weight="bold">FastAPI</text><text class="t-muted" x="856" y="127" text-anchor="middle" font-size="22">main.py</text><text class="t-muted" x="856" y="159" text-anchor="middle" font-size="22">routes</text></g>
-      </g>
-    </svg>
-  </div>
-  <p class="small">Mijoz - Uvicorn - FastAPI. Bloklarga bosing.</p>
-  
-</section>
-
-<section>
-  <h2>Global yoki venv?</h2>
-  <div class="vs">
-    <div class="side fragment"><h3>Global o'rnatish</h3><p>Hamma loyiha bitta kutubxonalar to'plamidan foydalanadi.</p><p>Versiyalar ziddiyati (dependency conflicts).</p></div>
-    <div class="mid">VS</div>
-    <div class="side b fragment"><h3>Virtual muhit (venv)</h3><p>Har loyihaga alohida izolyatsiyalangan papka.</p><p>Loyiha uchun kerakli kutubxonalargina.</p></div>
-  </div>
-  <div class="callout tip"><i data-ic="lightbulb"></i>A loyihaga Django 3.0, B loyihaga Django 4.0 kerak bo'lishi mumkin: venv bu muammoni hal qiladi.</div>
-  
-</section>
-
-<section>
-  <h2>Muhitni tayyorlash</h2>
-  <pre class="terminal"><code class="language-bash" data-trim>$ mkdir e_library &amp;&amp; cd e_library
-$ python -m venv .venv
-$ source .venv/bin/activate
-$ pip install fastapi "uvicorn[standard]" sqlalchemy asyncpg alembic pydantic-settings
-$ pip install "python-jose[cryptography]" "passlib[bcrypt]" python-multipart</code></pre>
-  <p class="small">Windows da faollashtirish: .venv\Scripts\activate</p>
-  
-</section>
-
-<section class="sec">
-  <div class="num">02</div>
-  <h1>Texnik topshiriq va arxitektura</h1>
-  <p>Avval chizma, keyin kod</p>
-</section>
-
-<section>
-  <h2>Mini TT: E-Library API (MVP)</h2>
-  <div class="cards four">
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="target" data-anim="pulse"></i></div><h3>Maqsad</h3><p>Foydalanuvchilar elektron kitoblarni joylaydi, ko'radi va boshqaradi (CRUD).</p></div>
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="users" data-anim="float"></i></div><h3>Rollar</h3><p>Guest, User, Admin (keyingi iteratsiya).</p></div>
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="list-checks" data-anim="float"></i></div><h3>Funksiyalar</h3><p>Auth, Category CRUD, Book CRUD, fayl yuklash/yuklab olish.</p></div>
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="file-cog" data-anim="spin"></i></div><h3>Talablar</h3><p>Clean Architecture, PEP8, .env, Alembic, Async SQLAlchemy.</p></div>
-  </div>
-  
-</section>
-
-<section>
-  <h2>Rollar</h2>
-  <div class="cards three">
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="eye" data-anim="float"></i></div><h3>Guest</h3><p>Autentifikatsiyasiz: faqat is_published=True kitoblarni ko'radi.</p></div>
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="user-check" data-anim="pulse"></i></div><h3>User</h3><p>Kitob qo'shadi, o'zinikini tahrirlaydi/o'chiradi, fayl yuklaydi.</p></div>
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="shield-check" data-anim="float"></i></div><h3>Admin</h3><p>Hammasini boshqaradi (keyingi iteratsiya, modelda is_admin).</p></div>
-  </div>
-  
-</section>
-
-<section>
-  <h2>Qatlamli arxitektura</h2>
-  <p>Yengil Clean Architecture</p>
-  <div class="illus">
-    <svg viewBox="0 0 1000 250" width="100%">
-      <g class="fragment">
-        <g data-tip="routes: so'rov, javob va status kodlar."><rect class="fa" x="0" y="25" width="210" height="200" rx="18"/><text class="t-head" x="105" y="95" text-anchor="middle" font-size="22" font-weight="bold">routes</text><text class="t-muted" x="105" y="127" text-anchor="middle" font-size="22">HTTP qatlami</text><text class="t-muted" x="105" y="159" text-anchor="middle" font-size="22">request / response</text></g>
-      </g>
-      <g class="fragment">
-        <line class="la flowing" x1="216" y1="125" x2="244" y2="125" stroke-width="4"/><polygon class="ar-a" points="254,125 238,115 238,135"/>
-        <g data-tip="services: qoidalar va biznes mantiq shu yerda."><rect class="fb" x="264" y="25" width="210" height="200" rx="18"/><text class="t-head" x="369" y="95" text-anchor="middle" font-size="22" font-weight="bold">services</text><text class="t-muted" x="369" y="127" text-anchor="middle" font-size="22">biznes mantiq</text><text class="t-muted" x="369" y="159" text-anchor="middle" font-size="22">ruxsat, validatsiya</text></g>
-      </g>
-      <g class="fragment">
-        <line class="la flowing" x1="480" y1="125" x2="507" y2="125" stroke-width="4"/><polygon class="ar-a" points="517,125 501,115 501,135"/>
-        <g data-tip="models: bazadagi jadvallarning Python ko'rinishi."><rect class="fc" x="527" y="25" width="210" height="200" rx="18"/><text class="t-head" x="632" y="95" text-anchor="middle" font-size="22" font-weight="bold">models</text><text class="t-muted" x="632" y="127" text-anchor="middle" font-size="22">SQLAlchemy ORM</text><text class="t-muted" x="632" y="159" text-anchor="middle" font-size="22">jadvallar</text></g>
-      </g>
-      <g class="fragment">
-        <line class="la flowing" x1="743" y1="125" x2="770" y2="125" stroke-width="4"/><polygon class="ar-a" points="780,125 764,115 764,135"/>
-        <g data-tip="Ma'lumotlar bazasi."><rect class="fg" x="790" y="25" width="210" height="200" rx="18"/><text class="t-head" x="895" y="95" text-anchor="middle" font-size="22" font-weight="bold">PostgreSQL</text><text class="t-muted" x="895" y="127" text-anchor="middle" font-size="22">ma'lumotlar</text><text class="t-muted" x="895" y="159" text-anchor="middle" font-size="22">baza</text></g>
-      </g>
-    </svg>
-  </div>
-  <p class="small">router - service - model - baza. schemas (Pydantic) kirish/chiqish shaklini belgilaydi.</p>
-  
-</section>
-
-<section>
-  <h2>Monolit yoki modulli?</h2>
-  <div class="vs">
-    <div class="side fragment"><h3>Monolit main.py</h3><p>Modellar, yo'llar va sozlamalar bitta faylda.</p><p>O'qish va test qilish qiyin.</p></div>
-    <div class="mid">VS</div>
-    <div class="side b fragment"><h3>Paket tuzilmasi</h3><p>Har mantiqiy qism alohida papka va fayl.</p><p>Kengaytirish va test qilish oson.</p></div>
-  </div>
-  <div class="callout warn"><i data-ic="triangle-alert"></i>Enterprise darajadagi loyihalar uchun modulli arxitektura kerak.</div>
-  
-</section>
-
-<section>
-  <h2>Loyiha tuzilmasi (namuna)</h2>
-  <pre><code class="language-text" data-trim data-line-numbers="1-4|5|6-9">e_library/
-  .env
-  alembic/
-  app/
-    main.py
-    core/       config.py, database.py, security.py
-    models/     base.py, user.py, book.py
-    schemas/    user.py, token.py
-    services/   auth_service.py
-    api/        deps.py, routes/</code></pre>
-  <p class="small">O'quv namunasi: kerak bo'lganda kengaytiriladi.</p>
-  
-</section>
-
-<section class="sec">
-  <div class="num">03</div>
-  <h1>MB dizayni</h1>
-  <p>Kodgacha qog'ozda chizamiz</p>
-</section>
-
-<section>
-  <h2>Bog'lanish turlari</h2>
-  <div class="cards three">
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="link" data-anim="float"></i></div><h3>One-to-One (1:1)</h3><p>Foydalanuvchi va pasport ma'lumoti.</p></div>
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="git-fork" data-anim="pulse"></i></div><h3>One-to-Many (1:N)</h3><p>Bitta user ko'p post yozadi. Eng ko'p ishlatiladi.</p></div>
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="network" data-anim="float"></i></div><h3>Many-to-Many (M:N)</h3><p>Talabalar va fanlar. Bog'lovchi jadval orqali.</p></div>
-  </div>
-  <div class="callout tip"><i data-ic="lightbulb"></i>PK qatorni aniqlaydi, FK boshqa jadvalga ishora qiladi.</div>
-  
-</section>
-
-<section>
-  <h2>E-Library ER diagrammasi</h2>
-  <p>Ikkita 1:N bog'lanish</p>
-  <div class="illus">
-    <svg viewBox="0 0 1000 250" width="100%">
-      <g class="fragment">
-        <g data-tip="users: full_name, email, hashed_password, is_active, is_admin."><rect class="fa" x="0" y="25" width="287" height="200" rx="18"/><text class="t-head" x="143" y="95" text-anchor="middle" font-size="22" font-weight="bold">users</text><text class="t-muted" x="143" y="127" text-anchor="middle" font-size="22">id UUID (PK)</text><text class="t-muted" x="143" y="159" text-anchor="middle" font-size="22">email UNIQUE</text></g>
-      </g>
-      <g class="fragment">
-        <line class="la flowing" x1="293" y1="125" x2="337" y2="125" stroke-width="4"/><polygon class="ar-a" points="347,125 331,115 331,135"/>
-        <g data-tip="books: title, author, language, pages, file_path, is_published. Egasi (owner) va kategoriyasi bor."><rect class="fb" x="357" y="25" width="287" height="200" rx="18"/><text class="t-head" x="500" y="95" text-anchor="middle" font-size="22" font-weight="bold">books</text><text class="t-muted" x="500" y="127" text-anchor="middle" font-size="22">owner_id (FK)</text><text class="t-muted" x="500" y="159" text-anchor="middle" font-size="22">category_id (FK)</text></g>
-      </g>
-      <g class="fragment">
-        <line class="la flowing" x1="650" y1="125" x2="693" y2="125" stroke-width="4"/><polygon class="ar-a" points="703,125 687,115 687,135"/>
-        <g data-tip="categories: name, description, created_at."><rect class="fc" x="713" y="25" width="287" height="200" rx="18"/><text class="t-head" x="856" y="95" text-anchor="middle" font-size="22" font-weight="bold">categories</text><text class="t-muted" x="856" y="127" text-anchor="middle" font-size="22">id UUID (PK)</text><text class="t-muted" x="856" y="159" text-anchor="middle" font-size="22">name UNIQUE</text></g>
-      </g>
-    </svg>
-  </div>
-  <p class="small">users (1) - (N) books, categories (1) - (N) books. Bloklarga bosing.</p>
-  
-</section>
-
-<section>
-  <h2>books jadvali: asosiy maydonlar</h2>
-  <table><thead><tr><th>Maydon</th><th>Turi</th><th>Izoh</th></tr></thead><tbody><tr><td><code>title</code></td><td>varchar(200)</td><td>NOT NULL</td></tr><tr><td><code>file_path</code></td><td>text</td><td>yuklangach to'ladi</td></tr><tr><td><code>is_published</code></td><td>bool</td><td>default false</td></tr><tr><td><code>owner_id</code></td><td>UUID FK</td><td>users.id (CASCADE)</td></tr><tr><td><code>category_id</code></td><td>UUID FK</td><td>categories.id (RESTRICT)</td></tr></tbody></table>
-  <p class="small">Indekslar keyinroq: books(title), books(owner_id), books(category_id).</p>
-  
-</section>
-
-<section class="sec">
-  <div class="num">04</div>
-  <h1>Dastlabki sozlamalar</h1>
-  <p>Config, baza va ishga tushirish</p>
-</section>
-
-<section>
-<section>
-  <h2>.env va config.py</h2>
-  <pre><code class="language-python" data-trim data-line-numbers="1|3-4|5-9|10-12"># .env:  DB_HOST=localhost  DB_NAME=e_library ...
-from pydantic_settings import BaseSettings, SettingsConfigDict
-
-class Settings(BaseSettings):
-    app_name: str = "E-Library API"
-    db_host: str
-    db_name: str
-    db_user: str
-    db_password: str
-    model_config = SettingsConfigDict(env_file=".env")
-
-settings = Settings()</code></pre>
-  <p class="small">Pastga bosing: nega .env?</p>
-  
-</section>
-<section>
-  <h2>Nega .env?</h2>
-  <div class="quote">Maxfiy ma'lumot (MB paroli, API kalit) hech qachon kod ichida ochiq yozilmaydi.</div>
-  <div class="callout tip"><i data-ic="circle-check"></i>BaseSettings qiymatni Python obyektiga o'giradi va tekshiradi. Unutilgan o'zgaruvchi bo'lsa xato beradi.</div>
-  <div class="callout bad"><i data-ic="circle-alert"></i><code>.env</code> ni GitHub ga yuklamang; <code>.env.example</code> dan nusxa oling.</div>
-  
-</section>
-</section>
-
-<section>
-  <h2>Engine va session</h2>
-  <p>Asinxron ulanish</p>
-  <div class="illus">
-    <svg viewBox="0 0 1000 250" width="100%">
-      <g class="fragment">
-        <g data-tip="Har so'rov uchun get_db() sessiya ochadi."><rect class="fa" x="0" y="25" width="210" height="200" rx="18"/><text class="t-head" x="105" y="95" text-anchor="middle" font-size="22" font-weight="bold">So'rov</text><text class="t-muted" x="105" y="127" text-anchor="middle" font-size="22">har bir request</text><text class="t-muted" x="105" y="159" text-anchor="middle" font-size="22">get_db()</text></g>
-      </g>
-      <g class="fragment">
-        <line class="la flowing" x1="216" y1="125" x2="244" y2="125" stroke-width="4"/><polygon class="ar-a" points="254,125 238,115 238,135"/>
-        <g data-tip="Session: bazaga vaqtinchalik muloqot."><rect class="fb" x="264" y="25" width="210" height="200" rx="18"/><text class="t-head" x="369" y="95" text-anchor="middle" font-size="22" font-weight="bold">AsyncSession</text><text class="t-muted" x="369" y="127" text-anchor="middle" font-size="22">vaqtinchalik</text><text class="t-muted" x="369" y="159" text-anchor="middle" font-size="22">muloqot</text></g>
-      </g>
-      <g class="fragment">
-        <line class="la flowing" x1="480" y1="125" x2="507" y2="125" stroke-width="4"/><polygon class="ar-a" points="517,125 501,115 501,135"/>
-        <g data-tip="Engine: bazaga aloqa kanali."><rect class="fc" x="527" y="25" width="210" height="200" rx="18"/><text class="t-head" x="632" y="95" text-anchor="middle" font-size="22" font-weight="bold">engine</text><text class="t-muted" x="632" y="127" text-anchor="middle" font-size="22">doimiy kanal</text><text class="t-muted" x="632" y="159" text-anchor="middle" font-size="22">create_async_engine</text></g>
-      </g>
-      <g class="fragment">
-        <line class="la flowing" x1="743" y1="125" x2="770" y2="125" stroke-width="4"/><polygon class="ar-a" points="780,125 764,115 764,135"/>
-        <g data-tip="postgresql+asyncpg:// ulanish."><rect class="fg" x="790" y="25" width="210" height="200" rx="18"/><text class="t-head" x="895" y="95" text-anchor="middle" font-size="22" font-weight="bold">PostgreSQL</text><text class="t-muted" x="895" y="127" text-anchor="middle" font-size="22">e_library</text><text class="t-muted" x="895" y="159" text-anchor="middle" font-size="22">asyncpg</text></g>
-      </g>
-    </svg>
-  </div>
-  <p class="small">Engine = yo'l, session = yo'ldagi mashina. Bloklarga bosing.</p>
-  
-</section>
-
-<section data-auto-animate>
-  <h2>main.py: boshlanishi</h2>
-  <pre data-id="mainpy"><code class="language-python" data-trim>from fastapi import FastAPI
-from app.core.config import settings
-
-def create_app() -&gt; FastAPI:
-    app = FastAPI(title=settings.app_name)
-    return app
-
-app = create_app()</code></pre>
-  
-</section>
-
-<section data-auto-animate>
-  <h2>main.py: /health qo'shildi</h2>
-  <pre data-id="mainpy"><code class="language-python" data-trim>from fastapi import FastAPI
-from app.core.config import settings
-
-def create_app() -&gt; FastAPI:
-    app = FastAPI(title=settings.app_name)
-
-    @app.get("/health", tags=["system"])
-    async def healthcheck() -&gt; dict:
-        return {"status": "ok"}
-
-    return app
-
-app = create_app()</code></pre>
-  
-</section>
-
-<section>
-  <h2>Alembic: migratsiyalar</h2>
-  <div class="stepper">
-    <div class="stp on"><div class="card"><div class="icon"><i data-ic="play" data-anim="float"></i></div><h3>1. init</h3><p><code>alembic init alembic</code>: papka va sozlama fayllari yaratiladi.</p></div></div>
-    <div class="stp"><div class="card"><div class="icon"><i data-ic="file-cog" data-anim="spin"></i></div><h3>2. env.py</h3><p><code>target_metadata = Base.metadata</code>, URL settings dan olinadi.</p></div></div>
-    <div class="stp"><div class="card"><div class="icon"><i data-ic="file-text" data-anim="pulse"></i></div><h3>3. revision</h3><p><code>alembic revision --autogenerate -m "..."</code></p></div></div>
-    <div class="stp"><div class="card"><div class="icon"><i data-ic="upload" data-anim="bounce"></i></div><h3>4. upgrade</h3><p><code>alembic upgrade head</code>: o'zgarishlar bazaga kiritiladi.</p></div></div>
-  </div>
-  <p class="small">Alembic: MB versiyalarini boshqarish. alembic.ini ga URL yozilmaydi.</p>
-  
-</section>
-
-<section>
-  <h2>Ishga tushirish va tekshirish</h2>
-  <pre class="terminal"><code class="language-bash" data-trim>$ uvicorn app.main:app --reload
-INFO: Uvicorn running on http://127.0.0.1:8000</code></pre>
-  <div class="browser mt"><div class="bar"><i></i><i></i><i></i><span>http://127.0.0.1:8000/health</span></div><div class="page"><h3>{"status": "ok"}</h3><p>Swagger: <code>/docs</code></p></div></div>
-  
-</section>
-
-<section>
-  <h2>Mini-test</h2>
-  <div class="quiz">
-    <p class="q">One-to-Many bog'lanishda Foreign Key qaysi jadvalda bo'ladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">«Bir» tomondagi jadvalda</button>
-      <button class="opt" type="button" data-ok>«Ko'p» tomondagi jadvalda</button>
-      <button class="opt" type="button">Ikkala jadvalda ham</button>
-      <button class="opt" type="button">Alohida .env faylda</button>
-    </div>
-    <div class="explain">books.owner_id -> users.id: kitoblar ko'p, egasi bitta; kalit books jadvalida.</div>
-  </div>
-  
-</section>
-
-<section>
-  <h2>Odatiy xatolar</h2>
-  <div class="callout bad"><i data-ic="circle-alert"></i>Venv ni faollashtirmasdan <code>pip install</code> qilish; <code>.env</code> ni yaratmaslik.</div>
-  <div class="callout bad"><i data-ic="circle-alert"></i>Modelni <code>app/models/__init__.py</code> da import qilmaslik: <code>--autogenerate</code> uni ko'rmaydi.</div>
-  <div class="callout tip"><i data-ic="circle-check"></i>To'g'ri: avval TT va ER dizayn, keyin skeleton, so'ng migratsiya.</div>
-  
-</section>
-
-<section>
-  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>20 daqiqa</span></h2>
-  <div class="task"><span class="level easy">Oson</span>Venv yarating, faollashtiring va kutubxonalarni o'rnating.</div>
-  <div class="task"><span class="level mid">O'rta</span>O'z loyihangiz uchun mini TT yozing va 2-3 jadvalli ER dizayn chizing.</div>
-  <div class="task"><span class="level hard">Qiyin</span><code>config.py</code>, <code>database.py</code>, <code>main.py</code> ni yozib, <code>uvicorn</code> bilan <code>/health</code> ni tekshiring.</div>
-  
-</section>
-
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h2>Xulosa</h2>
-  <p class="muted">FastAPI skeleton tayyor: TT, arxitektura, MB dizayni va sozlamalar.</p>
-  <div class="chips"><span class="chip">FastAPI</span><span class="chip">Uvicorn</span><span class="chip">venv</span><span class="chip">TT / MVP</span><span class="chip">ER diagramma</span><span class="chip">PostgreSQL</span><span class="chip">Alembic</span><span class="chip">.env</span></div>
-  <p class="small">Uyga vazifa: <code>uyga-vazifa.md</code>. Keyingi hafta: FastAPI da foydalanuvchilarni boshqarish.</p>
-  
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>FastAPI loyiha yaratish</h1></header>
+<div class="badges"><span class="badge">10-sinf</span><span class="badge">Advanced Python Back-end</span><span class="badge">4-hafta &amp;middot; 12-dars</span><span class="badge">Texnik topshiriq, MB dizayni va dastlabki sozlamalar: E-Library API</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "One-to-Many bog'lanishda Foreign Key qaysi jadvalda bo'ladi?", "o": ["«Bir» tomondagi jadvalda", "«Ko'p» tomondagi jadvalda", "Ikkala jadvalda ham", "Alohida .env faylda"], "a": 1, "e": "books.owner_id -> users.id: kitoblar ko'p, egasi bitta; kalit books jadvalida."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

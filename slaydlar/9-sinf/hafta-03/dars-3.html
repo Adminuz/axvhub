@@ -1,408 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>Wireframe loyihasini yakunlash va Figmaga eksport</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Wireframe loyihasini yakunlash va Figmaga eksport</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<!-- SLIDE 1: Hero -->
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>Wireframe loyihasini yakunlash va Figmaga eksport</h1>
-  <p class="muted">Izohli karkaslar (Annotations), eksport formatlari va UI dizaynga o'tish</p>
-  <span class="badge">9-sinf</span><span class="badge">UX/UI dizayn</span><span class="badge">3-hafta · 9-dars</span>
-  
-</section>
-
-<!-- SLIDE 2: Reja -->
-<section>
-  <h2>Bugungi dars rejasi</h2>
-  <div class="cards three">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="file-text" data-anim="float"></i></div>
-      <h3>01. Izohli simli ramkalar</h3>
-      <p>Annotatsiyalar: dasturchilar va jamoa uchun harakat qoidalarini yozish.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="download" data-anim="pulse"></i></div>
-      <h3>02. Eksport formatlari</h3>
-      <p>PNG, SVG va PDF formatlarini to'g'ri tanlash va ulashish.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="pen-tool" data-anim="wiggle"></i></div>
-      <h3>03. Figmaga ko'prik</h3>
-      <p>Wireframeni Figma ish maydoniga referens qatlam qilib yuklash.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 3: Bo'lim 1 -->
-<section class="sec">
-  <div class="num">01</div>
-  <h1>Izohli simli ramkalar (Annotations)</h1>
-  <p>Dizayn va dasturlash o'rtasidagi tushunmovchiliklarga barham berish</p>
-  
-</section>
-
-<!-- SLIDE 4: SVG 1 - Annotated Wireframe -->
-<section>
-  <h2>Izohli wireframe sxemasi</h2>
-  <div class="illus">
-    <svg viewBox="0 0 960 300">
-      <!-- Screen area -->
-      <rect x="40" y="40" width="460" height="230" rx="10" class="fa la" stroke-width="2"/>
-      <rect x="60" y="60" width="420" height="30" rx="4" class="fb lb" stroke-width="1"/>
-      <text x="80" y="80" class="t-head" font-size="12">Header &bull; Qidiruv</text>
-      <!-- Marker 1 -->
-      <circle cx="460" cy="75" r="12" class="fc"/>
-      <text x="460" y="80" text-anchor="middle" class="t-head" font-size="12" font-weight="bold">1</text>
-
-      <rect x="60" y="105" width="200" height="145" rx="6" class="fn ln" stroke-width="1"/>
-      <text x="160" y="175" text-anchor="middle" class="t-muted" font-size="12">Kitob kartasi</text>
-      <!-- Marker 2 -->
-      <circle cx="240" cy="125" r="12" class="fc"/>
-      <text x="240" y="130" text-anchor="middle" class="t-head" font-size="12" font-weight="bold">2</text>
-
-      <rect x="280" y="105" width="200" height="145" rx="6" class="fn ln" stroke-width="1"/>
-      <text x="380" y="175" text-anchor="middle" class="t-muted" font-size="12">Kategoriya paneli</text>
-      <!-- Marker 3 -->
-      <circle cx="460" cy="125" r="12" class="fc"/>
-      <text x="460" y="130" text-anchor="middle" class="t-head" font-size="12" font-weight="bold">3</text>
-
-      <!-- Annotations list -->
-      <g class="fragment">
-        <rect x="540" y="40" width="380" height="230" rx="10" class="fb lb" stroke-width="2"/>
-        <text x="560" y="70" class="t-head" font-size="15" font-weight="bold">Texnik annotatsiyalar:</text>
-        <text x="560" y="105" class="t-accent" font-size="13">1. Qidiruv:</text>
-        <text x="580" y="125" class="t-muted" font-size="12">Min. 3 ta harfda takliflar chiqadi.</text>
-        <text x="560" y="155" class="t-accent" font-size="13">2. Kitob kartasi:</text>
-        <text x="580" y="175" class="t-muted" font-size="12">Bosilganda Book_details ochiladi.</text>
-        <text x="560" y="205" class="t-accent" font-size="13">3. Filtr:</text>
-        <text x="580" y="225" class="t-muted" font-size="12">Janrlar bazadan dinamik yuklanadi.</text>
-      </g>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- SLIDE 5: Annotatsiyada nimalar yoziladi? -->
-<section>
-  <h2>Annotatsiya mazmuni</h2>
-  <div class="cards three">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="code"></i></div>
-      <h3>Mantiqiy qoidalar</h3>
-      <p>Tugma bosilganda tizim qanday shartlarni tekshirishi kerakligi (`if / else`).</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="database"></i></div>
-      <h3>Ma'lumotlar manbasi</h3>
-      <p>Ushbu blokdagi matn yoki ro'yxat qaysi ma'lumotlar bazasidan olinishi.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="triangle-alert"></i></div>
-      <h3>Cheklovlar</h3>
-      <p>Maydonlarga kiritiladigan maksimal belgilar soni yoki ruxsat etilgan fayl turlari.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 6: .swap - Oddiy vs Izohli wireframe -->
-<section>
-  <h2>Oddiy va Izohli wireframe farqi</h2>
-  <div class="swap">
-    <div class="swap-tabs"><button type="button">Oddiy wireframe</button><button type="button">Izohli wireframe</button></div>
-    <div class="swap-p"><div class="card"><h3>Faqat rasmli karkas</h3><p>Dasturchi har bir tugma nima qilishini taxmin qilishga majbur bo'ladi. Xatolar va qayta qilishlar ko'payadi.</p></div></div>
-    <div class="swap-p"><div class="card accent"><h3>Annotatsiyalangan karkas</h3><p>Har bir blok yonida aniq xatti-harakat, shartlar va qoidalar ko'rsatilgan. Dasturchi hech qanday savolsiz kod yozishga kirishadi.</p></div></div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 7: Bo'lim 2 -->
-<section class="sec">
-  <div class="num">02</div>
-  <h1>Eksport formatlari</h1>
-  <p>PNG, SVG va PDF — qaysi birini qachon ishlatish lozim?</p>
-  
-</section>
-
-<!-- SLIDE 8: SVG 2 - Eksport formatlari -->
-<section>
-  <h2>Formatlar va ularning vazifalari</h2>
-  <div class="illus">
-    <svg viewBox="0 0 960 300">
-      <!-- PNG -->
-      <g class="fragment">
-        <rect x="50" y="50" width="260" height="200" rx="12" class="fa la" stroke-width="2"/>
-        <text x="180" y="95" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">PNG</text>
-        <text x="180" y="130" text-anchor="middle" class="t-muted" font-size="14">Rastrli rasm</text>
-        <text x="180" y="165" text-anchor="middle" class="t-accent" font-size="13">&bull; Tezkor ko'rish</text>
-        <text x="180" y="195" text-anchor="middle" class="t-muted" font-size="12">Taqdimotlar va chatlar</text>
-      </g>
-
-      <!-- SVG -->
-      <g class="fragment">
-        <rect x="350" y="50" width="260" height="200" rx="12" class="fb lb" stroke-width="2"/>
-        <text x="480" y="95" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">SVG</text>
-        <text x="480" y="130" text-anchor="middle" class="t-muted" font-size="14">Vektorli grafika</text>
-        <text x="480" y="165" text-anchor="middle" class="t-accent" font-size="13">&bull; Cheksiz masshtab</text>
-        <text x="480" y="195" text-anchor="middle" class="t-muted" font-size="12">Figma va tahrirlash</text>
-      </g>
-
-      <!-- PDF -->
-      <g class="fragment">
-        <rect x="650" y="50" width="260" height="200" rx="12" class="fc lc" stroke-width="2"/>
-        <text x="780" y="95" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">PDF</text>
-        <text x="780" y="130" text-anchor="middle" class="t-muted" font-size="14">Texnik hujjat</text>
-        <text x="780" y="165" text-anchor="middle" class="t-accent" font-size="13">&bull; Ko'p sahifali loyiha</text>
-        <text x="780" y="195" text-anchor="middle" class="t-muted" font-size="12">Buyurtmachi imzosi</text>
-      </g>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- SLIDE 9: Eksport oldidan tekshirish ro'yxati -->
-<section>
-  <h2>Eksport oldidan tekshirish (Checklist)</h2>
-  <div class="cards three">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="square-check"></i></div>
-      <h3>Hamma sahifalar joyidami?</h3>
-      <p>Bosh sahifa, katalog, tafsilotlar va ro'yxatdan o'tish oynalari to'liqligini tekshiring.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="square-check"></i></div>
-      <h3>Orqaga yo'l bormi?</h3>
-      <p>Har bir ekrandan oldingi holatga qaytish imkoni loyihalanganiga ishonch hosil qiling.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="square-check"></i></div>
-      <h3>Qatlamlar tozalanganmi?</h3>
-      <p>Keraksiz, ko'rinmas yoki tasodifiy chizilgan bloklar o'chirilganini nazorat qiling.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 10: Bo'lim 3 -->
-<section class="sec">
-  <div class="num">03</div>
-  <h1>Figmaga ko'chirish va Referens qatlam</h1>
-  <p>Wireframeni UI dizaynning mustahkam poydevoriga aylantirish</p>
-  
-</section>
-
-<!-- SLIDE 11: .stepper: Figmaga yuklash -->
-<section>
-  <h2>Figmaga o'tkazishning 4 qadami</h2>
-  <div class="stepper">
-    <div class="stp on"><div class="card"><div class="icon"><i data-ic="download"></i></div><h3>1. Eksport</h3><p>Axure yoki Balsamiq'dan PNG/SVG qilib oling.</p></div></div>
-    <div class="stp"><div class="card"><div class="icon"><i data-ic="layout-template"></i></div><h3>2. Frame yaratish</h3><p>Figmada <code>Desktop 1440</code> o'lchamli Frame oching.</p></div></div>
-    <div class="stp"><div class="card"><div class="icon"><i data-ic="lock"></i></div><h3>3. Qulflash</h3><p>Rasmni joylab, Opacity'ni 40% qiling va qulflang.</p></div></div>
-    <div class="stp"><div class="card"><div class="icon"><i data-ic="sparkles"></i></div><h3>4. UI chizish</h3><p>Karkas ustidan rangli tugma va shriftlarni quring.</p></div></div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 12: SVG 3 - Reference Layer arxitekturasi -->
-<section>
-  <h2>Figmada qatlamlar (Layers) ierarxiyasi</h2>
-  <div class="illus">
-    <svg viewBox="0 0 960 300">
-      <!-- Layer 1: Wireframe Reference -->
-      <g class="fragment">
-        <rect x="100" y="160" width="760" height="90" rx="10" class="fn ln" stroke-width="2" stroke-dasharray="4"/>
-        <text x="130" y="195" class="t-muted" font-size="14" font-weight="bold">Qatlam 1: Wireframe Reference (Opacity 40%, LOCKED)</text>
-        <text x="130" y="225" class="t-muted" font-size="12">Skelet karkas, proporsiyalar va elementlar koordinatasi</text>
-      </g>
-
-      <!-- Up arrow -->
-      <path d="M 480 150 L 480 120" class="lc" stroke-width="3" marker-end="url(#arr)" class="fragment"/>
-
-      <!-- Layer 2: Final UI Design -->
-      <g class="fragment">
-        <rect x="100" y="40" width="760" height="90" rx="10" class="fa la" stroke-width="2"/>
-        <text x="130" y="75" class="t-head" font-size="14" font-weight="bold">Qatlam 2: Yakuniy UI Dizayn (Ranglar, Shriftlar, Komponentlar)</text>
-        <text x="130" y="105" class="t-accent" font-size="12">Auto Layout, tugmalar, rasmlar va haqiqiy kontent</text>
-      </g>
-    </svg>
-  </div>
-  
-</section>
-
-<!-- SLIDE 13: Browser Mockup -->
-<section>
-  <h2>E-Kutubxona: Yakuniy karkas komplekti</h2>
-  <div class="browser" data-id="box" style="width:780px">
-    <div class="bar"><i></i><i></i><i></i><span>https://e-kutubxona.uz (Loyiha xaritasi)</span></div>
-    <div class="page" style="padding: 15px;">
-      <div class="cards four">
-        <div class="card" style="padding: 8px;"><span class="badge">01</span><p class="t-head" style="font-size:12px; margin:4px 0;">Home_books</p><p class="t-muted" style="font-size:11px;">Bosh sahifa</p></div>
-        <div class="card" style="padding: 8px;"><span class="badge">02</span><p class="t-head" style="font-size:12px; margin:4px 0;">Catalog</p><p class="t-muted" style="font-size:11px;">Filtr & Qidiruv</p></div>
-        <div class="card" style="padding: 8px;"><span class="badge">03</span><p class="t-head" style="font-size:12px; margin:4px 0;">Book_details</p><p class="t-muted" style="font-size:11px;">Tafsilotlar</p></div>
-        <div class="card" style="padding: 8px;"><span class="badge">04</span><p class="t-head" style="font-size:12px; margin:4px 0;">Register</p><p class="t-muted" style="font-size:11px;">A'zo bo'lish</p></div>
-      </div>
-    </div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 14: Design Hand-off odobi -->
-<section>
-  <h2>Dasturchilarga topshirish (Hand-off) odobi</h2>
-  <div class="cards three">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="folder-check"></i></div>
-      <h3>Tartibli sahifalar</h3>
-      <p>Sahifalar va bloklar to'g'ri nomlangan, keraksiz bo'sh qatlamlar o'chirilgan.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="link"></i></div>
-      <h3>Havolalar va prototip</h3>
-      <p>Chertiladigan prototip havolasi va ko'rish ruxsati (View access) to'g'ri sozlangan.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="message-square"></i></div>
-      <h3>Qayta aloqa</h3>
-      <p>Dasturchilarning savollariga tayyor bo'lish va annotatsiyalarni to'ldirib borish.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 15: Hand-off xatolari -->
-<section>
-  <h2>Topshirishdagi 3 ta katta xato</h2>
-  <div class="cards three">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="circle-alert"></i></div>
-      <h3>Faqat rasm berish</h3>
-      <p>Interfaol prototip yoki havolasiz faqat skrinshot tashlab ketish.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="circle-alert"></i></div>
-      <h3>Izohsiz qoldirish</h3>
-      <p>Tugmalar bosilganda nima bo'lishini og'zaki aytib, yozib qoldirmaslik.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="circle-alert"></i></div>
-      <h3>Versiyalar adashuvi</h3>
-      <p>Qaysi fayl eng oxirgi va tasdiqlangan ekanligini belgilamaslik.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 16: .quiz -->
-<section>
-  <h2>Tezkor viktorina</h2>
-  <div class="quiz">
-    <p class="q">Wireframeni Figmada UI dizayn chizish uchun tagiga qo'yganda nega uni qulflash (Lock) kerak?</p>
-    <div class="opts">
-      <button class="opt" type="button">Hajmini kichraytirish uchun</button>
-      <button class="opt" type="button" data-ok>Ustidan element chizganda tasodifan siljib ketmasligi uchun</button>
-      <button class="opt" type="button">Figma o'chirib yubormasligi uchun</button>
-    </div>
-    <div class="explain">To'g'ri: Qulflangan qatlam ustida bemalol ishlash mumkin, u joyidan qimirlamaydi.</div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 17: Amaliy topshiriq -->
-<section>
-  <h2>Bugungi amaliy vazifa <span class="timer"><i data-ic="timer"></i>25 daqiqa</span></h2>
-  <div class="task"><span class="level easy">Oson</span>«E-kutubxona» karkasidagi 3 ta asosiy blok ustiga raqamli markerlar qo'ying va izoh yozing.</div>
-  <div class="task"><span class="level mid">O'rta</span>Loyiha sahifasini PNG formatida kompyuterga eksport qiling.</div>
-  <div class="task"><span class="level hard">Qiyin</span>Figmaga import qilib, Opacity 40% qilib qulflang va ustidan bitta kitob kartasining rangli UI eskizini chizing.</div>
-  
-</section>
-
-<!-- SLIDE 18: I-bob xulosasi -->
-<section>
-  <h2>I-bob: O'rganganlarimiz</h2>
-  <div class="cards four">
-    <div class="card fragment">
-      <span class="badge">1-hafta</span>
-      <p class="t-head">UX & UI</p>
-      <p class="t-muted">Tadqiqot, persona, intervyu</p>
-    </div>
-    <div class="card fragment">
-      <span class="badge">2-hafta</span>
-      <p class="t-head">Karkas</p>
-      <p class="t-muted">User Flow, Balsamiq, Low-fi</p>
-    </div>
-    <div class="card fragment">
-      <span class="badge">3-hafta</span>
-      <p class="t-head">Prototip</p>
-      <p class="t-muted">Axure, Interactions, Formalar</p>
-    </div>
-    <div class="card fragment">
-      <span class="badge">Natija</span>
-      <p class="t-head">Portfolio</p>
-      <p class="t-muted">Tayyor E-kutubxona wireframi</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 19: Xulosa -->
-<section>
-  <h2>Dars xulosasi</h2>
-  <div class="cards three">
-    <div class="card fragment">
-      <div class="icon"><i data-ic="check"></i></div>
-      <h3>Annotatsiyalar</h3>
-      <p>Dasturchilar uchun aniq texnik spetsifikatsiya yaratish.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="check"></i></div>
-      <h3>Eksport</h3>
-      <p>PNG va SVG formatlari orqali loyihani jamoaga ulashish.</p>
-    </div>
-    <div class="card fragment">
-      <div class="icon"><i data-ic="check"></i></div>
-      <h3>UI ga o'tish</h3>
-      <p>Karkas ustida ranglar va shriftlar bilan ishlashga to'liq tayyormiz.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 20: Keyingi bob anonsi -->
-<section class="hero">
-  <div class="icon"><i data-ic="palette" data-anim="float"></i></div>
-  <h1>Keyingi bob: UI elementlari — Rang, Shrift va Kompozitsiya</h1>
-  <p class="muted">Rang nazariyasi, kontrast, tipografiya va vizual ierarxiya qonunlari</p>
-  <span class="badge">4-hafta · 10-dars</span>
-  
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>Wireframe loyihasini yakunlash va Figmaga eksport</h1></header>
+<div class="badges"><span class="badge">9-sinf</span><span class="badge">UX/UI dizayn</span><span class="badge">3-hafta · 9-dars</span><span class="badge">Izohli karkaslar (Annotations), eksport formatlari va UI dizaynga o'tish</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Wireframeni Figmada UI dizayn chizish uchun tagiga qo'yganda nega uni qulflash (Lock) kerak?", "o": ["Hajmini kichraytirish uchun", "Ustidan element chizganda tasodifan siljib ketmasligi uchun", "Figma o'chirib yubormasligi uchun"], "a": 1, "e": "To'g'ri: Qulflangan qatlam ustida bemalol ishlash mumkin, u joyidan qimirlamaydi."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>

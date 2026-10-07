@@ -1,369 +1,101 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>UI elementlarida rang nazariyasi</title>
-  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
-  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
-  <link rel="stylesheet" href="../../../reveal/dars.css">
-  <link rel="icon" href="../../../reveal/logo.png">
-  <script src="../../../reveal/tema.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>UI elementlarida rang nazariyasi</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:default}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
-    <div class="slides">
-<!-- SLIDE 1: Hero -->
-<section class="hero">
-  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
-  <h1>UI elementlarida rang nazariyasi</h1>
-  <p class="muted">Rang palitrasi, kontrast va ranglarning dizayndagi o'rni</p>
-  <span class="badge">9-sinf</span><span class="badge">UX/UI dizayn</span><span class="badge">4-hafta · 11-dars</span>
-  
-</section>
-
-<!-- SLIDE 2: Reja -->
-<section>
-  <h2>Bugungi dars rejasi</h2>
-  <div class="cards three">
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="palette" data-anim="float"></i></div>
-      <h3>01. Rang palitrasi</h3>
-      <p>Asosiy, ikkinchi darajali, komplementar va analog ranglar.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="layout-grid" data-anim="pulse"></i></div>
-      <h3>02. Palitra turlari</h3>
-      <p>Monoxromatik, analog, qo'shimcha va triadik.</p>
-    </div>
-    <div class="card fragment fade-up">
-      <div class="icon"><i data-ic="contrast" data-anim="spin"></i></div>
-      <h3>03. Kontrast va Figma</h3>
-      <p>WCAG nisbatlari va Fill, Stroke sozlamalari.</p>
-    </div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 3: Bo'lim 1 -->
-<section class="sec">
-  <div class="num">01</div>
-  <h1>Rang palitrasi</h1>
-  <p>Interfeys uchun tanlangan ranglar kombinatsiyasi</p>
-</section>
-
-<!-- SLIDE 4: Ta'rif -->
-<section>
-  <h2>Rang palitrasi nima?</h2>
-  <div class="quote">Rang palitrasi - dizayner tomonidan qulay va estetik interfeys yaratish uchun tanlangan ranglar kombinatsiyasi.</div>
-  <ul>
-    <li class="fragment">Ko'pincha yagona dizayn tizimining bir qismi</li>
-    <li class="fragment">Rang nazariyasiga asoslanadi</li>
-    <li class="fragment">Dizayner uni foydalanuvchiga moslab tuzadi</li>
-  </ul>
-</section>
-
-<!-- SLIDE 5: Swatches: asosiy va ikkinchi darajali -->
-<section>
-  <h2>Asosiy va ikkinchi darajali ranglar</h2>
-  <p class="small">Asosiy ranglar: qizil, ko'k, sariq</p>
-  <div class="swatches">
-    <div class="sw fragment" style="background:var(--bad)">Qizil</div>
-    <div class="sw fragment" style="background:var(--accent)">Ko'k</div>
-    <div class="sw fragment" style="background:var(--warn);color:var(--bg)">Sariq</div>
-  </div>
-  <p class="small mt">Ikkinchi darajali ranglar: yashil, to'q sariq, binafsha</p>
-  <div class="swatches">
-    <div class="sw fragment" style="background:var(--good);color:var(--bg)">Yashil</div>
-    <div class="sw fragment" style="background:var(--accent2)">To'q sariq</div>
-    <div class="sw fragment" style="background:var(--purple)">Binafsha</div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 6: SVG 1 - rang g'ildiragi -->
-<section>
-  <h2>Rang g'ildiragi: qarama-qarshi va yonma-yon</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 400">
-      <circle cx="260" cy="200" r="150" class="fn ln" stroke-width="2"/>
-      <g class="fragment" data-tip="Ko'k va to'q sariq: komplementar (qarama-qarshi) juftlik.">
-        <circle cx="260" cy="80" r="46" class="fa la" stroke-width="2"/>
-        <circle cx="260" cy="320" r="46" class="fb lb" stroke-width="2"/>
-        <line x1="260" y1="128" x2="260" y2="272" class="ln flowing" stroke-width="3"/>
-      </g>
-      <g class="fragment" data-tip="Analog ranglar: g'ildirakda yonma-yon joylashgan, uyg'un.">
-        <circle cx="390" cy="130" r="38" class="fc lc" stroke-width="2"/>
-        <circle cx="390" cy="270" r="38" class="fg lg" stroke-width="2"/>
-      </g>
-      <text x="260" y="210" text-anchor="middle" class="t-head" font-size="26" font-weight="bold">Rang g'ildiragi</text>
-      <g class="fragment">
-        <rect x="560" y="60" width="400" height="120" rx="18" class="fa la" stroke-width="2"/>
-        <text x="760" y="108" text-anchor="middle" class="t-head" font-size="28" font-weight="bold">Komplementar</text>
-        <text x="760" y="148" text-anchor="middle" class="t-muted" font-size="24">qarama-qarshi: ko'k va to'q sariq</text>
-      </g>
-      <g class="fragment">
-        <rect x="560" y="220" width="400" height="120" rx="18" class="fc lc" stroke-width="2"/>
-        <text x="760" y="268" text-anchor="middle" class="t-head" font-size="28" font-weight="bold">Analog</text>
-        <text x="760" y="308" text-anchor="middle" class="t-muted" font-size="24">yonma-yon, uyg'un</text>
-      </g>
-    </svg>
-  </div>
-  <p class="small">Doiralar ustiga bosing.</p>
-</section>
-
-<!-- SLIDE 7: flip -->
-<section>
-  <h2>Terminlar: bosing va aylantiring</h2>
-  <div class="cards four">
-    <div class="flip" style="min-height:190px"><div class="flip-in">
-      <div class="face front"><div class="icon"><i data-ic="palette"></i></div><h3>Palitra</h3><span class="flip-hint">bosing</span></div>
-      <div class="face back"><p>Interfeys uchun tanlangan ranglar kombinatsiyasi.</p></div>
-    </div></div>
-    <div class="flip" style="min-height:190px"><div class="flip-in">
-      <div class="face front"><div class="icon"><i data-ic="contrast"></i></div><h3>Kontrast</h3><span class="flip-hint">bosing</span></div>
-      <div class="face back"><p>Matnning fondan ajralib o'qilishi darajasi.</p></div>
-    </div></div>
-    <div class="flip" style="min-height:190px"><div class="flip-in">
-      <div class="face front"><div class="icon"><i data-ic="swords"></i></div><h3>Komplementar</h3><span class="flip-hint">bosing</span></div>
-      <div class="face back"><p>Rang g'ildiragida qarama-qarshi turgan, bir-birini to'ldiruvchi juftlik.</p></div>
-    </div></div>
-    <div class="flip" style="min-height:190px"><div class="flip-in">
-      <div class="face front"><div class="icon"><i data-ic="users"></i></div><h3>Analog</h3><span class="flip-hint">bosing</span></div>
-      <div class="face back"><p>G'ildirakda yonma-yon joylashgan uyg'un ranglar.</p></div>
-    </div></div>
-  </div>
-</section>
-
-<!-- SLIDE 8: Bo'lim 2 -->
-<section class="sec">
-  <div class="num">02</div>
-  <h1>Rang nega muhim?</h1>
-  <p>Brend, qulaylik, konversiya va tuyg'ular</p>
-</section>
-
-<!-- SLIDE 9: Omillar -->
-<section>
-  <h2>Rangning ahamiyatini belgilovchi omillar</h2>
-  <div class="cards three">
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="badge-check" data-anim="pulse"></i></div><h3>Brendlash</h3><p>Izchil, taniqli ranglar brendni ajratib turadi va eslab qolishga yordam beradi.</p></div>
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="mouse-pointer-click" data-anim="float"></i></div><h3>Qulaylik</h3><p>Menyu, havola va tugmani tez farqlash. Foydalanuvchi nima qilish mumkinligini darhol tushunadi.</p></div>
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="eye" data-anim="blink"></i></div><h3>Kirish imkoniyati</h3><p>Oldingi va fon orasidagi kuchli kontrast ko'rish qobiliyati cheklanganlarga yordam beradi.</p></div>
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="trending-up" data-anim="bounce"></i></div><h3>Konversiya</h3><p>CTA tugma rangi harakatga ta'sir qiladi. Dizaynerlar A/B testdan foydalanadi.</p></div>
-    <div class="card fragment fade-up"><div class="icon"><i data-ic="heart" data-anim="pulse"></i></div><h3>Tuyg'ular</h3><p>Har bir rang ma'lum hissiy holat bilan bog'liq.</p></div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 10: Madaniyat -->
-<section>
-  <h2>Rang ma'nosi hamma joyda bir xil emas</h2>
-  <div class="vs">
-    <div class="side fragment"><h3>Evropa</h3><p>Oq rang to'ylar bilan bog'liq.</p></div>
-    <div class="mid">VS</div>
-    <div class="side b fragment"><h3>Xitoy</h3><p>Oq rang dafn va o'lim bilan assotsiyalanadi.</p></div>
-  </div>
-  <div class="callout warn"><i data-ic="triangle-alert"></i>Rang ma'nolari bo'yicha yagona ilmiy kelishuv yo'q: faqat umumiy tendensiyalarga tayaning.</div>
-</section>
-
-<!-- SLIDE 11: Bo'lim 3 -->
-<section class="sec">
-  <div class="num">03</div>
-  <h1>To'rt xil palitra</h1>
-  <p>Monoxromatik, analog, qo'shimcha, triadik</p>
-</section>
-
-<!-- SLIDE 12: SVG 2 - 4 palitra -->
-<section>
-  <h2>To'rt xil rang palitrasi</h2>
-  <div class="illus">
-    <svg viewBox="0 0 1000 400">
-      <g class="fragment" data-tip="Monoxromatik: bir rangning turli ohang va to'yinganlik darajalari. Minimalistik va uyg'un.">
-        <rect x="20" y="20" width="460" height="170" rx="18" class="fn ln" stroke-width="2"/>
-        <rect x="40" y="40" width="80" height="60" rx="10" class="fa"/>
-        <rect x="130" y="40" width="80" height="60" rx="10" class="fa" opacity="0.7"/>
-        <rect x="220" y="40" width="80" height="60" rx="10" class="fa" opacity="0.45"/>
-        <rect x="310" y="40" width="80" height="60" rx="10" class="fa" opacity="0.25"/>
-        <text x="250" y="150" text-anchor="middle" class="t-head" font-size="28" font-weight="bold">Monoxromatik</text>
-      </g>
-      <g class="fragment" data-tip="Analog: g'ildirakda yonma-yon 3 va undan ortiq rang. Sokin, tabiiy uyg'unlik.">
-        <rect x="520" y="20" width="460" height="170" rx="18" class="fn ln" stroke-width="2"/>
-        <rect x="540" y="40" width="80" height="60" rx="10" class="fa"/>
-        <rect x="630" y="40" width="80" height="60" rx="10" class="fc"/>
-        <rect x="720" y="40" width="80" height="60" rx="10" class="fg"/>
-        <text x="750" y="150" text-anchor="middle" class="t-head" font-size="28" font-weight="bold">Analog</text>
-      </g>
-      <g class="fragment" data-tip="Qo'shimcha (complementary): qarama-qarshi ranglar. Kuchli kontrast va dinamika.">
-        <rect x="20" y="210" width="460" height="170" rx="18" class="fn ln" stroke-width="2"/>
-        <rect x="40" y="230" width="120" height="60" rx="10" class="fa"/>
-        <rect x="170" y="230" width="120" height="60" rx="10" class="fb"/>
-        <text x="250" y="340" text-anchor="middle" class="t-head" font-size="28" font-weight="bold">Qo'shimcha</text>
-      </g>
-      <g class="fragment" data-tip="Triadik: teng masofadagi 3 rang. Bitta dominant, ikkitasi aksent.">
-        <rect x="520" y="210" width="460" height="170" rx="18" class="fn ln" stroke-width="2"/>
-        <rect x="540" y="230" width="80" height="60" rx="10" class="fa"/>
-        <rect x="630" y="230" width="80" height="60" rx="10" class="fb"/>
-        <rect x="720" y="230" width="80" height="60" rx="10" class="fg"/>
-        <text x="750" y="340" text-anchor="middle" class="t-head" font-size="28" font-weight="bold">Triadik</text>
-      </g>
-    </svg>
-  </div>
-  <p class="small">Palitra ustiga bosing.</p>
-</section>
-
-<!-- SLIDE 13: Vertikal: monoxromatik chuqur -->
-<section>
-  <section>
-    <h2>Monoxromatik palitra</h2>
-    <p>Bir xil rang, turli ohanglar, soyalar va to'yinganlik darajalari.</p>
-    <div class="swatches">
-      <div class="sw" style="background:var(--accent)">Asosiy</div>
-      <div class="sw" style="background:var(--btn)">Quyuq</div>
-      <div class="sw" style="background:var(--accent-soft);color:var(--text)">Och</div>
-    </div>
-    <p class="small muted">Chuqurroq bilish uchun pastga ↓</p>
-  </section>
-  <section>
-    <h2>HSB rang tizimi</h2>
-    <p>Monoxromatik palitralar HSB tizimida yaratiladi: asosiy rang (Hue) o'zgarmaydi, to'yinganlik (Saturation) va yorqinlik (Brightness) sozlanadi.</p>
-    <div class="chips"><span class="chip">Hue - o'zgarmaydi</span><span class="chip">Saturation</span><span class="chip t">Brightness</span></div>
-  </section>
-  <section>
-    <h2>Triadik palitra</h2>
-    <p>Bitta asosiy (dominant) rang tanlanadi, qolgan ikkitasi aksent sifatida ishlatiladi.</p>
-  </section>
-</section>
-
-<!-- SLIDE 14: Palitra loyihalash -->
-<section>
-  <h2>Palitrani loyihalash: 5 tavsiya</h2>
-  <ol class="steps-n">
-    <li class="fragment">Tadqiqotdan boshlang: qanday kayfiyat kerak?</li>
-    <li class="fragment">Bitta brend rangiga e'tibor qarating</li>
-    <li class="fragment">Monoxromatik palitrani ko'rib chiqing</li>
-    <li class="fragment">Kirish imkoniyatini tekshiring (kontrast)</li>
-    <li class="fragment">Foydalanuvchilar bilan sinab ko'ring</li>
-  </ol>
-  
-</section>
-
-<!-- SLIDE 15: Bo'lim 4 -->
-<section class="sec">
-  <div class="num">04</div>
-  <h1>Kontrast (WCAG)</h1>
-  <p>Matn fondan qanchalik ajralib turadi?</p>
-</section>
-
-<!-- SLIDE 16: Stats + kontrast -->
-<section>
-  <h2>WCAG kontrast nisbati</h2>
-  <div class="stats">
-    <div class="stat fragment"><div class="v"><span class="count" data-to="4.5" data-suf=":1">0</span></div><div class="l">oddiy matn uchun kamida</div></div>
-    <div class="stat fragment"><div class="v"><span class="count" data-to="3" data-suf=":1">0</span></div><div class="l">katta matn uchun kamida</div></div>
-  </div>
-  <div class="callout tip"><i data-ic="lightbulb"></i>Tekshirish uchun WebAIM kontrast tekshiruvi kabi vositalar bor. Kelajakda 3-versiyada APCA algoritmi kutilmoqda.</div>
-  
-</section>
-
-<!-- SLIDE 17: swap yaxshi/yomon kontrast -->
-<section>
-  <h2>Kontrast: yomon va yaxshi</h2>
-  <div class="swap">
-    <div class="swap-tabs"><button type="button">Past kontrast</button><button type="button">Yuqori kontrast</button></div>
-    <div class="swap-p"><div class="card"><h3>Yomon</h3><p class="muted">Och kulrang matn och fonda: ko'rish qobiliyati cheklanganlar o'qiy olmaydi.</p></div></div>
-    <div class="swap-p"><div class="card accent"><h3>Yaxshi</h3><p>Deyarli qora matn oq fonda: o'qish qulay, kontrast nisbati yetarli.</p></div></div>
-  </div>
-</section>
-
-<!-- SLIDE 18: Bo'lim 5 -->
-<section class="sec">
-  <div class="num">05</div>
-  <h1>Figma amaliyoti</h1>
-  <p>Header va footer rangi, matn rangi, Stroke</p>
-</section>
-
-<!-- SLIDE 19: Stepper -->
-<section>
-  <h2>Figma: rang berish qadamlari</h2>
-  <div class="stepper">
-    <div class="stp on"><div class="card"><div class="icon"><i data-ic="layout-panel-top" data-anim="float"></i></div><h3>1. Header</h3><p>Interfeys yuqorisidagi sarlavha (header) blokini tanlang va unga asosiy rangni bering.</p></div></div>
-    <div class="stp"><div class="card"><div class="icon"><i data-ic="panel-bottom-open" data-anim="pulse"></i></div><h3>2. Footer</h3><p>Pastki qismni ham mos rang bilan bezang: yaxlitlik paydo bo'ladi.</p></div></div>
-    <div class="stp"><div class="card"><div class="icon"><i data-ic="pipette" data-anim="wiggle"></i></div><h3>3. Fill: matn rangi</h3><p>Matnni tanlab, o'ng paneldagi Fill orqali rang bering. Misol: HEX 020202, deyarli qora.</p></div></div>
-    <div class="stp"><div class="card"><div class="icon"><i data-ic="square-dashed" data-anim="draw"></i></div><h3>4. Stroke</h3><p>Rang 7B9EBE, shaffoflik 52%, joylashuv Outside, qalinlik 1 px.</p></div></div>
-  </div>
-  
-</section>
-
-<!-- SLIDE 20: auto-animate A -->
-<section data-auto-animate>
-  <h2>Rangsiz karkas</h2>
-  <div class="browser"><div class="bar"><i></i><i></i><i></i><span>e-kutubxona</span></div><div class="page"><p data-id="hd">Header</p><p>Kitoblar ro'yxati</p><p data-id="ft">Footer</p></div></div>
-  
-</section>
-<!-- SLIDE 21: auto-animate B -->
-<section data-auto-animate>
-  <h2>Rangli interfeys</h2>
-  <div class="browser"><div class="bar"><i></i><i></i><i></i><span>e-kutubxona</span></div><div class="page"><h2 data-id="hd">Header</h2><p>Kitoblar ro'yxati</p><h3 data-id="ft">Footer</h3></div></div>
-  
-</section>
-
-<!-- SLIDE 22: Mini-test -->
-<section>
-  <h2>Mini-test</h2>
-  <div class="quiz">
-    <p class="q">Palitrada ko'k va to'q sariq juftligi qanday ataladi?</p>
-    <div class="opts">
-      <button class="opt" type="button">Analog</button>
-      <button class="opt" type="button">Monoxromatik</button>
-      <button class="opt" type="button">Triadik</button>
-      <button class="opt" type="button" data-ok>Komplementar</button>
-    </div>
-    <div class="explain">Rang g'ildiragida qarama-qarshi turgan ranglar komplementar deyiladi, ular kuchli kontrast beradi.</div>
-  </div>
-</section>
-
-<!-- SLIDE 23: Odatiy xato -->
-<section>
-  <h2>Odatiy xatolar</h2>
-  <div class="callout bad"><i data-ic="triangle-alert"></i>Juda ko'p rang: interfeys murakkablashadi, kognitiv yuk oshadi.</div>
-  <div class="callout warn"><i data-ic="triangle-alert"></i>Kontrastni tekshirmaslik: chiroyli, lekin o'qib bo'lmaydigan matn.</div>
-  <div class="callout tip"><i data-ic="circle-check"></i>Bitta asosiy brend rangi + ikkilamchi + fon: sodda va izchil.</div>
-</section>
-
-<!-- SLIDE 24: Topshiriq -->
-<section>
-  <h2>Amaliy topshiriq <span class="timer"><i data-ic="timer"></i>30 daqiqa</span></h2>
-  <div class="task"><span class="level easy">Oson</span>Figmada asosiy, ikkilamchi va fon ranglaridan iborat 3 kvadrat yasang.</div>
-  <div class="task"><span class="level mid">O'rta</span>«E-kutubxona» header va footer'iga asosiy rang bering, matn rangini Fill orqali belgilang.</div>
-  <div class="task"><span class="level hard">Qiyin</span>Palitra turini tanlang (monoxromatik yoki triadik), kontrastni tekshirib, sababini yozing.</div>
-  
-</section>
-
-<!-- SLIDE 25: Xulosa -->
-<section>
-  <h2>Xulosa</h2>
-  <div class="cards two">
-    <div class="card"><div class="icon"><i data-ic="circle-check" data-anim="draw"></i></div><h3>Bugun o'rgandik</h3><p>Palitra, 4 palitra turi, kontrast (WCAG 4,5:1 va 3:1), Figma Fill va Stroke.</p></div>
-    <div class="card"><div class="icon"><i data-ic="book-open"></i></div><h3>Uyga vazifa</h3><p>Brend palitrasini tahlil qilish va Figmada rang berish.</p></div>
-  </div>
-  
-</section>
-
-    </div>
-  </div>
-
-  <script src="../../../reveal/ikonlar.js"></script>
-  <script src="../../../reveal/dist/reveal.js"></script>
-  <script src="../../../reveal/interaktiv.js"></script>
-  <script src="../../../reveal/dist/plugin/highlight.js"></script>
-  <script src="../../../reveal/dist/plugin/notes.js"></script>
-  <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
-  </script>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>UI elementlarida rang nazariyasi</h1></header>
+<div class="badges"><span class="badge">9-sinf</span><span class="badge">UX/UI dizayn</span><span class="badge">4-hafta · 11-dars</span><span class="badge">Rang palitrasi, kontrast va ranglarning dizayndagi o'rni</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Palitrada ko'k va to'q sariq juftligi qanday ataladi?", "o": ["Analog", "Monoxromatik", "Triadik", "Komplementar"], "a": 3, "e": "Rang g'ildiragida qarama-qarshi turgan ranglar komplementar deyiladi, ular kuchli kontrast beradi."}]</script>
+<script>
+(function(){
+var Q=JSON.parse(document.getElementById('qdata').textContent),i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+function esc(t){return t}
+function show(){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
+  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
+  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
+  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function finish(){
+  var p=Math.round(score/Q.length*100);
+  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  card.innerHTML=h;next.textContent='Qayta urinish';next.disabled=false;next.onclick=function(){i=0;score=0;wrong=[];next.onclick=adv;show()};
+  window.scrollTo(0,0);
+}
+function adv(){if(i<Q.length-1){i++;show()}else finish()}
+next.onclick=adv;
+document.addEventListener('keydown',function(e){
+  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+});
+show();
+})();
+</script>
 </body>
 </html>
