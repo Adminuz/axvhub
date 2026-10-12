@@ -61,7 +61,9 @@ header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-sele
 var RAW=JSON.parse(document.getElementById('qdata').textContent);
 var Q=[],i=0,score=0,wrong=[],done=false;
 var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
-var storageKey='quiz_cd_'+location.pathname;
+var pagePath=location.pathname||location.href.split('#')[0].split('?')[0];
+var storageKey='quiz_cd_'+pagePath;
+var sessionKey='quiz_act_'+pagePath;
 var timerId=null;
 
 function shuffle(arr){
@@ -92,50 +94,124 @@ function initQuizData(){
     };
   });
   i=0;score=0;wrong=[];done=false;
+  saveActiveSession(null);
 }
 
-function show(){
+function saveActiveSession(pickedKey){
+  try{
+    var data={
+      Q:Q,i:i,score:score,wrong:wrong,done:done,
+      picked:(typeof pickedKey==='number'?pickedKey:null)
+    };
+    localStorage.setItem(sessionKey,JSON.stringify(data));
+  }catch(e){}
+}
+
+function clearActiveSession(){
+  try{localStorage.removeItem(sessionKey);}catch(e){}
+}
+
+function show(restorePicked){
   var q=Q[i];done=false;
-  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;$('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;
   $('#fill').style.width=(i/Q.length*100)+'%';
   var h='<p class="q">'+q.q+'</p><div class="opts">';
   q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
-  h+='</div><div class="explain" id="ex"></div>';card.innerHTML=h;
-  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';next.disabled=true;
-  card.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+b.dataset.k)})});
-  window.scrollTo(0,0);
+  h+='</div><div class="explain" id="ex"></div>';
+  card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';
+  next.disabled=true;
+  next.onclick=adv;
+  card.querySelectorAll('.opt').forEach(function(b){
+    b.addEventListener('click',function(){pick(+b.dataset.k)});
+  });
+
+  if(typeof restorePicked==='number'){
+    applyPick(restorePicked,true);
+  }else{
+    saveActiveSession(null);
+    window.scrollTo(0,0);
+  }
 }
 
 function pick(k){
-  if(done)return;done=true;var q=Q[i],bs=card.querySelectorAll('.opt');
-  bs.forEach(function(b,j){b.disabled=true;if(j==q.a)b.classList.add('ok');else if(j==k)b.classList.add('no')});
-  if(k==q.a)score++;else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
-  var ex=$('#ex');ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');ex.classList.add('show');
-  $('#sc').textContent='To\u2018g\u2018ri: '+score;next.disabled=false;
-  ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+  if(done)return;
+  applyPick(k,false);
+  saveActiveSession(k);
+}
+
+function applyPick(k,isRestoring){
+  done=true;
+  var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){
+    b.disabled=true;
+    if(j==q.a)b.classList.add('ok');
+    else if(j==k)b.classList.add('no');
+  });
+  if(!isRestoring){
+    if(k==q.a)score++;
+    else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  }
+  var ex=$('#ex');
+  ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');
+  ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;
+  next.disabled=false;
+  if(!isRestoring){
+    ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
 }
 
 function finish(){
-  var p=Math.round(score/Q.length*100);
-  $('#fill').style.width='100%';$('#cnt').textContent='Natija';
+  clearActiveSession();
+  var cd={
+    exp:Date.now()+180000,
+    score:score,
+    total:Q.length,
+    wrong:wrong
+  };
+  try{localStorage.setItem(storageKey,JSON.stringify(cd));}catch(e){}
+  renderResultScreen(cd);
+}
+
+function renderResultScreen(cd){
+  var sc=typeof cd.score==='number'?cd.score:0;
+  var tot=typeof cd.total==='number'?cd.total:RAW.length;
+  var wr=Array.isArray(cd.wrong)?cd.wrong:[];
+  var p=Math.round(sc/tot*100);
+  $('#fill').style.width='100%';
+  $('#cnt').textContent='Natija';
+  $('#sc').textContent='To\u2018g\u2018ri: '+sc;
   var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
-  var h='<div class="res"><div class="n">'+score+' / '+Q.length+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  var h='<div class="res"><div class="n">'+sc+' / '+tot+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
   h+='<div id="cd-box" class="cd-box"></div>';
-  if(wrong.length){h+='<h3>Xatolar tahlili</h3><div class="rev">';wrong.forEach(function(w){h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+w.y+'</small><br>To\u2018g\u2018ri javob: '+w.c+'</div>'});h+='</div>'}
+  if(wr.length){
+    h+='<h3>Xatolar tahlili</h3><div class="rev">';
+    wr.forEach(function(w){
+      h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+(w.y||'')+'</small><br>To\u2018g\u2018ri javob: '+(w.c||'')+'</div>';
+    });
+    h+='</div>';
+  }
   card.innerHTML=h;
-  
-  // 3 daqiqalik cooldown taymer (180s)
-  var expiresAt=Date.now()+180000;
-  localStorage.setItem(storageKey,expiresAt.toString());
-  runCooldown();
   window.scrollTo(0,0);
+  runCooldown();
 }
 
 function runCooldown(){
   if(timerId)clearInterval(timerId);
   function tick(){
-    var stored=localStorage.getItem(storageKey);
-    var exp=stored?parseInt(stored,10):0;
+    var raw=null;
+    try{raw=localStorage.getItem(storageKey);}catch(e){}
+    var exp=0;
+    if(raw){
+      try{
+        var parsed=JSON.parse(raw);
+        exp=parsed.exp||parsed.expiresAt||0;
+      }catch(e){
+        exp=parseInt(raw,10)||0;
+      }
+    }
     var rem=Math.ceil((exp-Date.now())/1000);
     var cdBox=$('#cd-box');
     if(rem>0){
@@ -143,16 +219,18 @@ function runCooldown(){
       var m=Math.floor(rem/60),s=rem%60;
       var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
       next.textContent='Qayta urinish ('+ts+')';
-      if(cdBox)cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+      if(cdBox){
+        cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+      }
     }else{
       if(timerId)clearInterval(timerId);
-      localStorage.removeItem(storageKey);
+      try{localStorage.removeItem(storageKey);}catch(e){}
       next.disabled=false;
       next.textContent='Qayta urinish';
       if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
       next.onclick=function(){
+        clearActiveSession();
         initQuizData();
-        next.onclick=adv;
         show();
       };
     }
@@ -161,17 +239,62 @@ function runCooldown(){
   timerId=setInterval(tick,1000);
 }
 
-function adv(){if(i<Q.length-1){i++;show()}else finish()}
+function adv(){
+  if(i<Q.length-1){
+    i++;
+    show();
+  }else{
+    finish();
+  }
+}
 next.onclick=adv;
 
 document.addEventListener('keydown',function(e){
   if(i>=Q.length||!Q[i])return;
-  var n=parseInt(e.key,10);if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
-  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next.onclick()}
+  var n=parseInt(e.key,10);
+  if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){
+    e.preventDefault();
+    next.onclick();
+  }
 });
 
-initQuizData();
-show();
+function start(){
+  var raw=null;
+  try{raw=localStorage.getItem(storageKey);}catch(e){}
+  if(raw){
+    var cd=null;
+    try{cd=JSON.parse(raw);}catch(e){
+      var n=parseInt(raw,10);
+      if(!isNaN(n))cd={exp:n};
+    }
+    var exp=(cd&&(cd.exp||cd.expiresAt))||0;
+    if(exp>Date.now()){
+      renderResultScreen(cd);
+      return;
+    }else{
+      try{localStorage.removeItem(storageKey);}catch(e){}
+    }
+  }
+
+  var sessRaw=null;
+  try{sessRaw=localStorage.getItem(sessionKey);}catch(e){}
+  if(sessRaw){
+    try{
+      var s=JSON.parse(sessRaw);
+      if(s&&s.Q&&s.Q.length===RAW.length&&typeof s.i==='number'&&s.i<s.Q.length){
+        Q=s.Q;i=s.i;score=s.score||0;wrong=s.wrong||[];
+        show(s.done?s.picked:null);
+        return;
+      }
+    }catch(e){}
+  }
+
+  initQuizData();
+  show();
+}
+
+start();
 })();
 </script>
 </body>

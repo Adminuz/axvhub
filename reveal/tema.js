@@ -153,6 +153,15 @@
       return;
     }
 
+    // Faqat slaydlar (.reveal bor) sahifalarda shrift paneli qo'yiladi.
+    // Test sahifalarida (*-test-slayd.html) shrift boshqaruv tugmalari ko'rinmaydi.
+    var isSlide = !!document.querySelector('.reveal');
+    if (!isSlide) {
+      document.body.appendChild(b);
+      updateButton();
+      return;
+    }
+
     // Slaydlar uchun yuqori panel (.slide-top-tools)
     var tools = document.createElement('div');
     tools.className = 'slide-top-tools';
@@ -216,12 +225,14 @@
 
     if (e.key === 't' || e.key === 'T') {
       toggle();
-    } else if (e.key === '+' || e.key === '=') {
-      stepFontScale(1);
-    } else if (e.key === '-' || e.key === '_') {
-      stepFontScale(-1);
-    } else if (e.key === '0') {
-      resetFontScale();
+    } else if (document.querySelector('.reveal')) {
+      if (e.key === '+' || e.key === '=') {
+        stepFontScale(1);
+      } else if (e.key === '-' || e.key === '_') {
+        stepFontScale(-1);
+      } else if (e.key === '0') {
+        resetFontScale();
+      }
     }
   });
 
