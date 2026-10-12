@@ -83,7 +83,7 @@
     radial-gradient(900px 600px at 100% 100%, var(--glow2), transparent 60%),
     var(--bg);
 }
-.reveal { font-size: 28px; color: var(--text); }
+.reveal { font-size: calc(28px * var(--slide-font-scale, 1)); color: var(--text); }
 .reveal h1, .reveal h2, .reveal h3, .reveal h4 { text-transform: none; letter-spacing: -0.01em; color: var(--head); }
 .reveal h1 { font-size: 2.1em; }
 .reveal h2 { font-size: 1.5em; margin-bottom: 0.5em; }
@@ -116,21 +116,48 @@ svg.ic { width: 1.05em; height: 1.05em; vertical-align: -0.16em; margin-right: 0
 .callout.warn svg.ic { color: var(--warn); }
 .callout.bad svg.ic { color: var(--bad); }
 
-/* ===== Logo va tema tugmasi ===== */
+/* ===== Logo va tema/shrift boshqaruv paneli ===== */
 .slide-logo { position: absolute; top: 20px; right: 26px; height: 44px; opacity: 0.95; z-index: 30; pointer-events: none; }
 .reveal .logo-big { height: 150px; margin-bottom: 0.3em; }
+
+.slide-top-tools {
+  position: fixed; top: 16px; left: 22px; z-index: 100;
+  display: inline-flex; align-items: center; gap: 8px;
+}
 .theme-toggle {
-  position: fixed; top: 16px; left: 22px; z-index: 100; width: 40px; height: 40px; border-radius: 12px;
+  width: 40px; height: 40px; border-radius: 12px;
   display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
   background: var(--card-hi); border: 1px solid var(--line); color: var(--accent);
+  transition: border-color 0.2s, background-color 0.2s;
 }
-.theme-toggle:hover { border-color: var(--accent); }
+.theme-toggle:hover { border-color: var(--accent); background: var(--card); }
 .theme-toggle svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .theme-toggle .moon { display: none; }
 .theme-toggle .sun { display: block; }
 :root[data-theme="light"] .theme-toggle .sun { display: none; }
 :root[data-theme="light"] .theme-toggle .moon { display: block; }
 .theme-toggle.in-page { position: static; }
+
+.font-ctrl {
+  display: inline-flex; align-items: center;
+  background: var(--card-hi); border: 1px solid var(--line); border-radius: 12px;
+  overflow: hidden; height: 40px;
+}
+.font-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 100%; padding: 0 10px; background: transparent; border: none;
+  color: var(--text); font-family: inherit; font-size: 14px; font-weight: 600;
+  cursor: pointer; user-select: none; -webkit-user-select: none;
+  transition: color 0.15s, background-color 0.15s;
+}
+.font-btn:hover:not(:disabled) { background: var(--accent-soft); color: var(--accent); }
+.font-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.font-btn.font-reset {
+  min-width: 48px; padding: 0 6px; font-size: 12px;
+  font-variant-numeric: tabular-nums; color: var(--muted);
+  border-left: 1px solid var(--line); border-right: 1px solid var(--line);
+}
+.font-btn.font-reset:hover { color: var(--accent); }
 
 /* ===== Sarlavha va bo'lim slaydlari ===== */
 .reveal section.hero { text-align: center; }
@@ -276,8 +303,11 @@ svg .pulse { animation: pulse 1.6s ease-in-out infinite; }
   .reveal .hero h1 { font-size: 1.9em; }
   .reveal .logo-big { height: 110px; }
   .reveal .sec .num { font-size: 4.6em; }
-  .slide-logo { height: 32px; top: 12px; right: 14px; }
-  .theme-toggle { top: 8px; left: 12px; width: 34px; height: 34px; }
+  .slide-top-tools { top: 8px; left: 10px; gap: 6px; }
+  .theme-toggle { width: 34px; height: 34px; border-radius: 10px; }
+  .font-ctrl { height: 34px; border-radius: 10px; }
+  .font-btn { padding: 0 7px; font-size: 13px; }
+  .font-btn.font-reset { min-width: 40px; font-size: 11px; }
   .cards, .cards.two, .cards.three, .cards.four { grid-template-columns: 1fr; gap: 12px; }
   .stats { flex-direction: column; gap: 12px; }
   .vs { grid-template-columns: 1fr; gap: 10px; }
