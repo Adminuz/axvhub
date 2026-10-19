@@ -203,6 +203,7 @@ svg.ic { width: 1.05em; height: 1.05em; vertical-align: -0.16em; margin-right: 0
 
 /* ===== Taqqoslash (vs), iqtibos, chip ===== */
 .vs { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 18px; align-items: stretch; margin-top: 0.6em; }
+.vs:not(:has(.mid)) { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 .vs .side { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 16px 20px; font-size: 0.72em; color: var(--text); }
 .vs .side h3 { margin: 0 0 6px; font-size: 1.05em; color: var(--accent); }
 .vs .side.b h3 { color: var(--teal); }
