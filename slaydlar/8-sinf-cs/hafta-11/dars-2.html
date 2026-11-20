@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>“Talaba baholash tizimi” loyihasi (2-dars)</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>“Talaba baholash tizimi” loyihasi (2-dars)</h1>
+  <p class="muted">Ballar asosida bahoni aniqlash (A'lo, Yaxshi, Qoniqarli), xatoliklar nazorati va testlash.</p>
+  <span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">11-hafta · 32-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="award"></i></div>
+      <h3>1. Reyting shkalasi</h3>
+      <p>A'lo (5), Yaxshi (4), Qoniqarli (3) va Qoniqarsiz (2) mezonlari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="split"></i></div>
+      <h3>2. Decision zanjiri</h3>
+      <p>Kamayish tartibida ichma-ich shartlarni to'g'ri qurish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>3. Chegara testlari</h3>
+      <p>86, 71, 56 kabi muhim o'tish ballarida loyihani sinash.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Baholash shkalasi qoidalari</h1>
+  <p>100 ball qanday an'anaviy baholarga aylanadi?</p>
+</section>
+
+<section>
+  <h2>Reyting taqsimoti</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>A'lo — 5 baho</h3>
+      <p><strong>86 dan 100 gacha</strong></p>
+      <p>Eng yuqori o'zlashtirish darajasi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Yaxshi — 4 baho</h3>
+      <p><strong>71 dan 85 gacha</strong></p>
+      <p>Yaxshi o'zlashtirish darajasi.</p>
+    </div>
+  </div>
+  <div class="cards two" style="margin-top: 15px;">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-alert"></i></div>
+      <h3>Qoniqarli — 3 baho</h3>
+      <p><strong>56 dan 70 gacha</strong></p>
+      <p>Minimal qoniqarli chegara.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-alert"></i></div>
+      <h3>Qoniqarsiz — 2 baho</h3>
+      <p><strong>0 dan 55 gacha</strong></p>
+      <p>Qayta topshirishga yuboriladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Decision zanjiri arxitekturasi</h1>
+  <p>Shartlarni qanday tartibda tekshirish lozim?</p>
+</section>
+
+<section>
+  <h2>Kamayish tartibi qoidasi</h2>
+  <ol class="steps-n">
+    <li class="fragment">1-shart: <code>umumiy &gt;= 86</code> $\rightarrow$ <b>A'lo (5)</b></li>
+    <li class="fragment">False tarmog'i: <code>umumiy &gt;= 71</code> $\rightarrow$ <b>Yaxshi (4)</b></li>
+    <li class="fragment">False tarmog'i: <code>umumiy &gt;= 56</code> $\rightarrow$ <b>Qoniqarli (3)</b></li>
+    <li class="fragment">False tarmog'i: <b>Qoniqarsiz (2)</b></li>
+  </ol>
+  
+</section>
+
+<section>
+  <h2>Xato kiritilishdan himoya</h2>
+  <div class="callout warn">
+    Agar foydalanuvchi <code>-10</code> yoki <code>150</code> kiritsa nima bo'ladi?
+  </div>
+  <p style="margin-top: 15px;">Buning oldini olish uchun eng boshiga shart qo'yiladi:</p>
+  <p><code>umumiy &lt; 0 OR umumiy &gt; 100</code></p>
+  <p>True bo'lsa $\rightarrow$ «Xato: Ball 0 dan 100 gacha bo'lishi shart!» xabari chiqadi.</p>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Natijani sertifikat shaklida chiqarish</h1>
+  <p>Talaba reyting ma'lumotnomasi dizayni</p>
+</section>
+
+<section>
+  <h2>Rasmiy ma'lumotnoma formati</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="terminal"></i></div>
+      <h3>Konsoldagi ko'rinish</h3>
+      <p>Talaba: Ali Valiyev</p>
+      <p>Umumiy ball: 92 / 100</p>
+      <p>O'zlashtirish: 92%</p>
+      <p>Yakuniy baho: A'lo (5 baho)</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="award"></i></div>
+      <h3>Mukofot holati</h3>
+      <p>90 dan yuqori ball to'plaganlarga «Faxriy yorliq bilan taqdirlanadi!» xabari qo'shiladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Interaktiv jumboq: Bahoni toping</h2>
+  <div class="flip" style="min-height:190px"><div class="flip-in">
+    <div class="face front">
+      <h3>Agar talabaning umumiy bali 71 ga teng bo'lsa, u qaysi bahoni oladi?</h3>
+      <p class="t-muted">Javobni ko'rish uchun bosing</p>
+      <span class="flip-hint">bosing</span>
+    </div>
+    <div class="face back">
+      <h3>Yaxshi (4 baho)!</h3>
+      <p>Chunki 86 dan past, lekin 71 ga teng (umumiy &gt;= 71 sharti True bo'ladi).</p>
+    </div>
+  </div></div>
+  
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card">
+      <div class="icon"><i data-ic="award"></i></div>
+      <h3>4 ta Baho</h3>
+      <p>A'lo, Yaxshi, Qoniqarli, Qoniqarsiz.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="split"></i></div>
+      <h3>Kamayish zanjiri</h3>
+      <p>86 $\rightarrow$ 71 $\rightarrow$ 56 tartibi.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Baholash tizimi tayyor</h3>
+      <p>To'liq va xavfsiz reyting loyihasi!</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

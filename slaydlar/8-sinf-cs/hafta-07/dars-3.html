@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Flowalgorithm va blok-sxemalar</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Flowalgorithm va blok-sxemalar</h1>
+  <p class="muted">Interfeys, asosiy bloklar: Start, End, Input, Output, Process va Decision</p>
+  <span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">7-hafta · 21-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimalarni o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="laptop" data-anim="pulse"></i></div>
+      <h3>Flowgorithm muhiti</h3>
+      <p>Vizual dasturlash, ishchi maydon, Run (F5) va Step (F6)</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="blocks" data-anim="float"></i></div>
+      <h3>Blok-sxema shakllari</h3>
+      <p>Start/End, Output, Input, Process va Decision bloklari</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="bug" data-anim="blink"></i></div>
+      <h3>Xatolarni tuzatish</h3>
+      <p>Qo'shtirnoq qoidalari va konsolda natijani tekshirish</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">Algoritmni geometrik shakllar orqali ko'rsatish usuli nima deb ataladi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Jadval usuli</button>
+      <button class="opt" type="button" data-ok>Blok-sxema (Flowchart)</button>
+      <button class="opt" type="button">Matnli yo'riqnoma</button>
+      <button class="opt" type="button">Audio yozuv</button>
+    </div>
+    <div class="explain">Blok-sxema — har bir amalni maxsus geometrik shakllar bilan ifodalaydi.</div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Flowgorithm muhiti va interfeys</h1>
+  <p>Vizual dasturlash, ishchi maydon va boshqaruv tugmalari</p>
+</section>
+
+<section>
+  <h2>Nima uchun Flowgorithm?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Mantiqqa e'tibor</h3>
+      <p>Murakkab dasturlash sintaksisiga chalg'imasdan, sof algoritmik mantiqni o'rganishga yordam beradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="play"></i></div>
+      <h3>Interaktiv sinov</h3>
+      <p>Chizgan blok-sxemangizni bir zumda ishga tushirib, natijasini konsolda jonli ko'rishingiz mumkin.</p>
+    </div>
+  </div>
+  <div class="callout tip fragment fade-up" style="margin-top: 20px;">
+    Flowgorithm bepul, o'zbek tilini qo'llab-quvvatlaydi va juda kam joy egallaydi!
+  </div>
+  
+</section>
+
+<section>
+  <h2>Dastur interfeysi: Asosiy oynalar</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="workflow"></i></div>
+      <h3>Main oynasi</h3>
+      <p>Start va End o'rtasida blok-sxema tuziladigan asosiy ishchi maydon.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="square-terminal"></i></div>
+      <h3>Console oynasi</h3>
+      <p>Kiritilgan ma'lumotlar va ekranga chiqqan natijalar ko'rinadigan oyna.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="code"></i></div>
+      <h3>Code Viewer</h3>
+      <p>Sxemani avtomatik Python, C++ yoki Java kodiga aylantirib beruvchi oyna.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Boshqaruv tugmalari (Hotkeys)</h2>
+  <div class="stats">
+    <div class="stat fragment fade-up">
+      <div class="v">F5</div>
+      <div class="l">Dasturni to'liq tezlikda ishga tushirish (Run)</div>
+    </div>
+    <div class="stat fragment fade-up">
+      <div class="v">F6</div>
+      <div class="l">Qadamma-qadam rejim (Step)</div>
+    </div>
+    <div class="stat fragment fade-up">
+      <div class="v">Ctrl+S</div>
+      <div class="l">Loyihani (.fprg fayl) saqlash</div>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Blok-sxema elementlari va shakllari</h1>
+  <p>Start, End, Input, Output, Process va Decision bloklari</p>
+</section>
+
+<section>
+  <h2>Asosiy bloklar jadvali</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320" width="100%" height="260">
+      <!-- Start/End -->
+      <rect x="40" y="40" width="160" height="70" rx="35" class="fg" />
+      <text x="120" y="82" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Start / End</text>
+
+      <!-- Output -->
+      <polygon points="270,40 430,40 390,110 230,110" class="fg" />
+      <text x="330" y="82" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Output</text>
+
+      <!-- Input -->
+      <polygon points="510,40 670,40 630,110 470,110" class="fc" />
+      <text x="570" y="82" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Input</text>
+
+      <!-- Assign / Process -->
+      <rect x="710" y="40" width="160" height="70" rx="4" class="fb" />
+      <text x="790" y="82" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Assign</text>
+
+      <!-- Decision -->
+      <polygon points="450,180 540,240 450,300 360,240" class="fb" />
+      <text x="450" y="246" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Decision (If)</text>
+
+      <text x="120" y="140" text-anchor="middle" class="t-muted" font-size="18">Oval: Boshlanish/Tugash</text>
+      <text x="330" y="140" text-anchor="middle" class="t-muted" font-size="18">Yashil: Chiqarish</text>
+      <text x="570" y="140" text-anchor="middle" class="t-muted" font-size="18">Moviy: Kiritish</text>
+      <text x="790" y="140" text-anchor="middle" class="t-muted" font-size="18">Sariq: Hisoblash</text>
+      <text x="450" y="315" text-anchor="middle" class="t-muted" font-size="18">Romb: Shart tekshirish (Ha/Yo'q)</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Input va Output bloklari</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>Output (Chiqarish)</h3>
+      <ul>
+        <li>Yashil parallelogramm</li>
+        <li>Natijani ekranga chiqaradi</li>
+        <li>Matnlar qo'shtirnoqda: <code>"Salom"</code></li>
+        <li>Hisoblar: <code>5 + 10</code> (ekranga 15)</li>
+      </ul>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>Input (Kiritish)</h3>
+      <ul>
+        <li>Moviy parallelogramm</li>
+        <li>Foydalanuvchidan ma'lumot so'raydi</li>
+        <li>Faqat o'zgaruvchi nomi yoziladi: <code>yosh</code></li>
+        <li>Klaviaturadan qiymat qabul qiladi</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Assign (Jarayon / Hisoblash) bloki</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="calculator"></i></div>
+      <h3>Hisoblash amallari</h3>
+      <p>To'g'ri to'rtburchak blokida matematik amallar va formulalar bajariladi:</p>
+      <p><code>Yigindi = A + B</code></p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="save"></i></div>
+      <h3>Qiymat berish (O'zlashtirish)</h3>
+      <p>O'ng tarafdagi qiymat hisoblanib, chap tarafdagi o'zgaruvchiga yoziladi:</p>
+      <p><code>Hisob = 100</code></p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Birinchi dastur va xatolarni tuzatish</h1>
+  <p>Blok qo'shish, sintaksis qoidalari va konsol natijasi</p>
+</section>
+
+<section>
+  <h2>Blok qo'shish algoritmi</h2>
+  <ol class="steps-n">
+    <li class="fragment">Main va End orasidagi strelka chizig'ini bosing</li>
+    <li class="fragment">Ochilgan menyudan blok turini (masalan, Output) tanlang</li>
+    <li class="fragment">O'rnatilgan blok ustiga 2 marta bosib, ifodani yozing</li>
+    <li class="fragment">OK tugmasini bosing va F5 bilan ishga tushiring!</li>
+  </ol>
+  
+</section>
+
+<section>
+  <h2>Birinchi dastur: Salom, dunyo!</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 280" width="100%" height="220">
+      <rect x="380" y="20" width="240" height="50" rx="25" class="fg" />
+      <text x="500" y="52" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">Main</text>
+
+      <line x1="500" y1="70" x2="500" y2="105" class="la" marker-end="url(#ar-a)" />
+
+      <polygon points="410,110 590,110 560,165 380,165" class="fg" />
+      <text x="485" y="145" text-anchor="middle" class="t-head" font-size="18" font-weight="bold">Output "Salom, dunyo!"</text>
+
+      <line x1="500" y1="165" x2="500" y2="200" class="la" marker-end="url(#ar-a)" />
+
+      <rect x="380" y="205" width="240" height="50" rx="25" class="fg" />
+      <text x="500" y="237" text-anchor="middle" class="t-head" font-size="20" font-weight="bold">End</text>
+    </svg>
+  </div>
+  <div class="callout tip fragment fade-up">
+    F5 tugmasini bosishingiz bilan konsolda «Salom, dunyo!» yozuvi chiqadi!
+  </div>
+  
+</section>
+
+<section>
+  <h2>Eng ko'p uchraydigan xato: Qo'shtirnoq</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>Xato usul</h3>
+      <p><code>Output: Salom, dunyo!</code></p>
+      <ul>
+        <li>Qo'shtirnoq qo'yilmagan!</li>
+        <li>Flowgorithm «Salom»ni e'lon qilinmagan o'zgaruvchi deb o'ylaydi.</li>
+      </ul>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>To'g'ri usul</h3>
+      <p><code>Output: "Salom, dunyo!"</code></p>
+      <ul>
+        <li>Matn qo'shtirnoq ichida.</li>
+        <li>Dastur uni to'g'ridan-to'g'ri ekranga chiqaradi.</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Interaktiv jumboq: Blokni toping</h2>
+  <div class="flip" style="min-height:190px"><div class="flip-in">
+    <div class="face front">
+      <h3>Foydalanuvchidan yoshini kiritishni so'rash uchun qaysi blok kerak?</h3>
+      <p class="t-muted">Javobni ko'rish uchun bosing</p>
+      <span class="flip-hint">bosing</span>
+    </div>
+    <div class="face back">
+      <h3>Input (Kiritish) bloki!</h3>
+      <p>Moviy rangli parallelogramm shaklidagi blok foydalanuvchidan ma'lumot qabul qiladi.</p>
+      <p><code>Input: yosh</code></p>
+    </div>
+  </div></div>
+  
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card">
+      <div class="icon"><i data-ic="layout-grid"></i></div>
+      <h3>Flowgorithm</h3>
+      <p>Blok-sxemalar orqali dastur yaratuvchi interaktiv muhit.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="circle-play"></i></div>
+      <h3>F5 va F6</h3>
+      <p>Run — to'liq ishga tushirish, Step — bosqichma-bosqich tekshirish.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="check"></i></div>
+      <h3>Asosiy bloklar</h3>
+      <p>Output — yashil, Input — moviy, Assign — sariq to'rtburchak.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tezkor nazorat</h2>
+  <div class="quiz">
+    <p class="q">Flowgorithmda blok-sxemani Python kodiga o'girib ko'rsatuvchi oyna qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Console oynasi</button>
+      <button class="opt" type="button">Variables oynasi</button>
+      <button class="opt" type="button" data-ok>Source Code Viewer oynasi</button>
+      <button class="opt" type="button">Explorer oynasi</button>
+    </div>
+    <div class="explain">Source Code Viewer — chizilgan sxemani istalgan dasturlash tilidagi kodga o'giradi.</div>
+  </div>
+  
+</section>
+
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>7-hafta yakunlandi!</h1>
+  <p class="muted">Keyingi hafta: 8-hafta — Flowgorithmda o'zgaruvchilar, ma'lumot turlari va chiziqli algoritmlar</p>
+  <span class="badge">Vazifa: Flowgorithmda 3 qatorli loyiha yaratish</span>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

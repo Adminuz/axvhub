@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>“Mini bankomat tizimi” loyihasi (2-dars)</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>“Mini bankomat tizimi” loyihasi (2-dars)</h1>
+  <p class="muted">Pul yechish amali, yetarli balans tekshiruvi va Bankomat v2.0.</p>
+  <span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">12-hafta · 34-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="wallet"></i></div>
+      <h3>1. Pul yechish</h3>
+      <p>Hisobdan mablag' ayirish va yangi balansni belgilash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-alert"></i></div>
+      <h3>2. Yetarli balans nazorati</h3>
+      <p>Hisobda pul yetmaganda operatsiyani bekor qilish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="repeat"></i></div>
+      <h3>3. Bankomat v2.0</h3>
+      <p>While sikli orqali uzluksiz xizmat ko'rsatish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Pul yechish operatsiyasi</h1>
+  <p>Kartadan naqd pul berish algoritmi</p>
+</section>
+
+<section>
+  <h2>Yetarli balans sharti</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>Mablag' yetarli</h3>
+      <p><code>yechish &lt;= balans</code></p>
+      <ul>
+        <li><code>balans = balans - yechish</code></li>
+        <li>Pul taqdim etiladi va yangi balans ko'rsatiladi.</li>
+      </ul>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>Mablag' yetarli emas</h3>
+      <p><code>yechish &gt; balans</code></p>
+      <ul>
+        <li>Xatolik xabari chiqadi.</li>
+        <li>Balans o'zgarmasdan o'z holida qoladi.</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Bankomat v2.0 to'liq arxitekturasi</h1>
+  <p>Uzluksiz menyu va xavfsiz xizmat ko'rsatish</p>
+</section>
+
+<section>
+  <h2>Boshqaruv menyusi (While sikli)</h2>
+  <ol class="steps-n">
+    <li class="fragment"><code>While tanlov != 4</code></li>
+    <li class="fragment">1 bo'lsa $\rightarrow$ Balansni ko'rsatish</li>
+    <li class="fragment">2 bo'lsa $\rightarrow$ Pul yechish (balans tekshiruvi bilan)</li>
+    <li class="fragment">3 bo'lsa $\rightarrow$ Pul kiritish (hisobni to'ldirish)</li>
+    <li class="fragment">4 bo'lsa $\rightarrow$ Sikl to'xtaydi va karta qaytariladi</li>
+  </ol>
+  
+</section>
+
+<section>
+  <h2>Interaktiv jumboq: Balans qancha qoladi?</h2>
+  <div class="flip" style="min-height:190px"><div class="flip-in">
+    <div class="face front">
+      <h3>Agar boshida balans 500 000 bo'lib, foydalanuvchi 200 000 so'm yechsa va keyin 50 000 so'm kiritsa, yakuniy balans qancha bo'ladi?</h3>
+      <p class="t-muted">Javobni ko'rish uchun bosing</p>
+      <span class="flip-hint">bosing</span>
+    </div>
+    <div class="face back">
+      <h3>350 000 so'm!</h3>
+      <p>1. <code>500 000 - 200 000 = 300 000</code>. <br>2. <code>300 000 + 50 000 = 350 000</code> so'm.</p>
+    </div>
+  </div></div>
+  
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Xavfsizlik</h3>
+      <p>Yetarsiz mablag' nazorati.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="repeat"></i></div>
+      <h3>Uzluksiz rejim</h3>
+      <p>While tanlov != 4 sikli.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Bankomat v2.0</h3>
+      <p>Mukammal ishlovchi moliyaviy loyiha!</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

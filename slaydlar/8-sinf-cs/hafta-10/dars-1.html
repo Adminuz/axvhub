@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>While sikli va shartli takrorlanish</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>While sikli va shartli takrorlanish</h1>
+  <p class="muted">Takrorlanishlar soni noma'lum bo'lganda: While bloki, PIN-kod tekshiruvi va cheksiz sikllardan himoya.</p>
+  <span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">10-hafta · 28-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="repeat"></i></div>
+      <h3>1. While sikli mohiyati</h3>
+      <p>Shart bajarilib turguncha takrorlash qonuniyati.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-alert"></i></div>
+      <h3>2. Cheksiz sikl xavfi</h3>
+      <p>Sikldan chiqish sharti va hisoblagichni o'zgartirish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="key-round"></i></div>
+      <h3>3. Input validation</h3>
+      <p>To'g'ri ma'lumot kiritilmaguncha so'rash loyihalari.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>For va While sikllari farqi</h1>
+  <p>Qachon For, qachon While tanlanadi?</p>
+</section>
+
+<section>
+  <h2>For va While taqqoslanishi</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>For sikli</h3>
+      <p><strong>Chegarasi aniq</strong></p>
+      <ul>
+        <li>Aylanishlar soni oldindan ma'lum.</li>
+        <li>Masalan: 10 marta, 1 dan N gacha.</li>
+        <li>O'zi avtomatik hisoblab boradi.</li>
+      </ul>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>While sikli</h3>
+      <p><strong>Shartga bog'liq</strong></p>
+      <ul>
+        <li>Necha marta aylanishi noma'lum.</li>
+        <li>Masalan: to'g'ri PIN kiritilguncha.</li>
+        <li>Shart buzilmaguncha davom etadi.</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Hayotiy misol: Telefon quvvati</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="battery-charging"></i></div>
+      <h3>Shart: quvvat &lt; 100</h3>
+      <p>Toki telefon quvvati 100% ga yetmaguncha zaryadlash jarayoni to'xtovsiz davom etadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Tugash: quvvat == 100</h3>
+      <p>100% ga yetgan zahoti zaryadlash avtomatik to'xtaydi (sikl tugaydi).</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>While siklining 3 ta oltin qoidasi</h1>
+  <p>Xatosiz va cheksiz sikllarsiz ishlash uchun nima qilish kerak?</p>
+</section>
+
+<section>
+  <h2>3 ta majburiy qadam</h2>
+  <ol class="steps-n">
+    <li class="fragment"><b>Boshlang'ich qiymat:</b> Sikl boshlanishidan oldin o'zgaruvchiga boshlang'ich qiymat beriladi.</li>
+    <li class="fragment"><b>Davom etish sharti:</b> While darchasiga takrorlanish davom etishi uchun mantiqiy shart yoziladi.</li>
+    <li class="fragment"><b>Qiymatni o'zgartirish:</b> Sikl tanasi ichida o'sha o'zgaruvchi qiymati albatta o'zgarishi shart!</li>
+  </ol>
+  
+</section>
+
+<section>
+  <h2>Cheksiz sikl (Infinite Loop) xatosi</h2>
+  <div class="callout warn">
+    Agar shart hech qachon <strong>False</strong> bo'lmasa, sikl abadiy aylanadi va kompyuter qotib qoladi!
+  </div>
+  <div class="vs" style="margin-top: 20px;">
+    <div class="side fragment">
+      <h3>Xato (Cheksiz sikl)</h3>
+      <p><code>i = 1</code></p>
+      <p><code>While i &lt;= 5</code></p>
+      <p><code>Output i</code> (i o'zgarmadi!)</p>
+      <ul>
+        <li><code>i</code> doim 1 bo'lib qoladi va hech qachon to'xtamaydi.</li>
+      </ul>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>To'g'ri yondashuv</h3>
+      <p><code>i = 1</code></p>
+      <p><code>While i &lt;= 5</code></p>
+      <p><code>Output i</code></p>
+      <p><code>i = i + 1</code> (Har safar oshadi!)</p>
+      <ul>
+        <li>5 marta aylanib, 6 bo'lganda to'xtaydi.</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Amaliy loyihalar va hisob-kitoblar</h1>
+  <p>To'g'ri PIN-kod, 0 kiritilguncha yig'indi va son raqamlari soni</p>
+</section>
+
+<section>
+  <h2>1-loyiha: To'g'ri PIN-kod kiritish</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="lock"></i></div>
+      <h3>Shart: pin != 1234</h3>
+      <p>Foydalanuvchi to'g'ri <code>1234</code> PIN-kodini kiritmaguncha tizim qayta-qayta so'rayveradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Sikldan chiqish:</h3>
+      <p>To'g'ri PIN kiritilgach, shart <strong>False</strong> bo'lib, ekranga «Xush kelibsiz!» xabari chiqadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>2-loyiha: 0 kiritilguncha sonlar yig'indisi</h2>
+  <ol class="steps-n">
+    <li class="fragment"><code>sum = 0</code> va dastlabki <code>Input son</code></li>
+    <li class="fragment"><code>While son != 0</code></li>
+    <li class="fragment">Sikl tanasida: <code>sum = sum + son</code> va yangi <code>Input son</code></li>
+    <li class="fragment">Sikldan so'ng: <code>Output "Jami: " &amp; sum</code></li>
+  </ol>
+  
+</section>
+
+<section>
+  <h2>Interaktiv jumboq: Sikl necha marta aylanadi?</h2>
+  <div class="flip" style="min-height:190px"><div class="flip-in">
+    <div class="face front">
+      <h3>Agar boshida x = 10 bo'lsa va While x &gt; 0 da har safar x = x - 3 qilinsa, sikl necha marta takrorlanadi?</h3>
+      <p class="t-muted">Javobni ko'rish uchun bosing</p>
+      <span class="flip-hint">bosing</span>
+    </div>
+    <div class="face back">
+      <h3>4 marta takrorlanadi!</h3>
+      <p>Qadamlar: <code>10 -&gt; 7 -&gt; 4 -&gt; 1 -&gt; -2</code> (to'xtaydi). Jami 4 marta amallarni bajaradi.</p>
+    </div>
+  </div></div>
+  
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card">
+      <div class="icon"><i data-ic="repeat"></i></div>
+      <h3>While</h3>
+      <p>Shart bajarilib turguncha aylanadigan sikl.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="shield-alert"></i></div>
+      <h3>Cheksiz sikl</h3>
+      <p>Qiymat o'zgarmasa dastur qotib qolishi mumkin.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Input validation</h3>
+      <p>Foydalanuvchi ma'lumotlarini to'g'ri kiritishini nazorat qilish.</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

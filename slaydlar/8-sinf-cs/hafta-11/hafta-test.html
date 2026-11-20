@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>11-hafta yakuniy testi</title>
+<link rel="icon" href="../../../reveal/logo.png">
+<script src="../../../reveal/tema.js"></script>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--mut:#667;--card:#f4f5f7;--bd:#d5d8de;--ac:#2a6df4;--ok:#1a8f4a;--okbg:#e3f6ea;--no:#c62828;--nobg:#fdeaea}
+[data-theme=dark]{--bg:#1e1e1e;--fg:#eee;--mut:#9aa;--card:#2a2b2e;--bd:#44464b;--ac:#5b9bff;--ok:#4cc77f;--okbg:#17321f;--no:#ff7b72;--nobg:#3a1c1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 96px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+header img{width:40px;height:40px;object-fit:contain}
+h1{font-size:1.15rem;line-height:1.3;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.badge{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--card);overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.9rem;margin:8px 0 14px}
+.q{font-size:1.2rem;font-weight:600;margin:0 0 14px;overflow-wrap:anywhere}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;touch-action:manipulation;overflow-wrap:anywhere}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:.85rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{border-color:var(--no);background:var(--nobg)}.opt.no b{background:var(--no);border-color:var(--no);color:#fff}
+.explain{margin-top:14px;padding:12px 14px;border-left:4px solid var(--ac);background:var(--card);border-radius:8px;display:none}
+.explain.show{display:block}
+code{font-family:ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:0 5px;font-size:.92em}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--bd)}
+.foot div{max-width:720px;margin:0 auto}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.res{text-align:center;padding:12px 0}.res .n{font-size:3rem;font-weight:700}
+.cd-box{margin:14px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);text-align:center;line-height:1.4}
+.rev{margin-top:16px;display:grid;gap:10px;text-align:left}
+.rev div{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.rev small{color:var(--mut)}
+.theme-toggle{position:fixed;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:0;display:grid;place-items:center;z-index:5;cursor:pointer}.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+header{padding-right:48px}.opt{-webkit-tap-highlight-color:transparent;user-select:none}
+@media(min-width:700px){body{font-size:18px}.wrap{padding-top:32px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><img src="../../../reveal/logo.png" alt="AXV"><h1>11-hafta yakuniy testi</h1></header>
+<div class="badges"><span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">11-hafta</span><span class="badge">20 ta savol &amp;middot; taxminan 20 daqiqa</span></div>
+<div class="bar"><i id="fill"></i></div>
+<div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+<main id="card"></main>
+</div>
+<div class="foot"><div><button class="btn" id="next" type="button" disabled>Keyingi savol</button></div></div>
+<script type="application/json" id="qdata">[{"q": "Talaba baholash tizimida umumiy maksimal ball nechaga teng?", "o": ["50", "100", "200", "10"], "a": 1, "e": "100 ballik shkala asosida o'quvchilar reytingi shakllantiriladi."}, {"q": "Davomat komponentiga ajratilgan maksimal ball qancha?", "o": ["10 ball", "30 ball", "50 ball", "5 ball"], "a": 0, "e": "Davomat maksimal 10 ballni tashkil qiladi."}, {"q": "Uyga vazifa, amaliyot va test sinovlarining har biriga necha balldan ajratilgan?", "o": ["10 balldan", "20 balldan", "30 balldan", "40 balldan"], "a": 2, "e": "Uchta komponent 30 balldan jami 90 ball bo'ladi."}, {"q": "Umumiy ballni hisoblash uchun to'g'ri formula qaysi?", "o": ["jami = d + uv + a + t", "jami = d * uv * a * t", "jami = (d + t) / 2", "jami = 100 - uv"], "a": 0, "e": "Barcha to'rtta komponent yig'indisi olinadi."}, {"q": "A'lo (5 baho) olish uchun o'quvchi kamida necha ball to'plashi lozim?", "o": ["71 ball", "86 ball", "90 ball", "100 ball"], "a": 1, "e": "86 va undan yuqori ball A'lo (5 baho) hisoblanadi."}, {"q": "Yaxshi (4 baho) qaysi oraliqqa beriladi?", "o": ["56 dan 70 gacha", "71 dan 85 gacha", "86 dan 100 gacha", "50 dan 60 gacha"], "a": 1, "e": "71 dan 85 gacha ball to'plaganlar 4 baho oladi."}, {"q": "Qoniqarli (3 baho) ning eng pastki o'tish chegarasi necha ball?", "o": ["50 ball", "56 ball", "60 ball", "71 ball"], "a": 1, "e": "56 ball minimal o'tish chegarasi. 55 va past ballar qoniqarsiz hisoblanadi."}, {"q": "Decision zanjirida shartlar qaysi tartibda qo'yiladi?", "o": ["Kamayish tartibida (86, keyin 71, keyin 56)", "O'sish tartibida", "Aralash tartibda", "Tartibi muhim emas"], "a": 0, "e": "Kamayish tartibida tekshirish shartlarning to'g'ri ishlashini ta'minlaydi."}, {"q": "Ball manfiy yoki 100 dan oshiq bo'lsa qaysi shart tekshiradi?", "o": ["ball &lt; 0 OR ball &gt; 100", "ball &lt; 0 AND ball &gt; 100", "ball == 100", "ball != 0"], "a": 0, "e": "OR operatori ikkala chetdagi xato oraliqni qamrab oladi."}, {"q": "Bankomatda PIN-kod nima maqsadda ishlatiladi?", "o": ["Karta egasi xavfsizligini ta'minlash va autentifikatsiya uchun", "Faqat tilni tanlash uchun", "Pulni sanash uchun", "Chek chop etish uchun"], "a": 0, "e": "PIN karta egasini tasdiqlovchi shaxsiy maxfiy kalitdir."}, {"q": "Bankomat balansi qaysi turda e'lon qilinadi?", "o": ["Real (yoki Integer)", "String", "Boolean", "Char"], "a": 0, "e": "Balans sonli qiymat bo'lgani sababli Real/Integer turida saqlanadi."}, {"q": "Bankomat menyusida 1 raqami qaysi amalni bildiradi?", "o": ["Balansni ko'rish", "Pul yechish", "Chiqish", "PIN almashtirish"], "a": 0, "e": "1-band orqali foydalanuvchi joriy balansini tekshiradi."}, {"q": "Hisobga pul kiritilganda balans qanday o'zgaradi?", "o": ["balans = balans + summa", "balans = balans - summa", "balans = summa", "balans = 0"], "a": 0, "e": "Kiritilgan pul mavjud balansga qo'shiladi."}, {"q": "Bankomat menyusida 4 raqami qaysi amalni bajaradi?", "o": ["Chiqish va kartani qaytarish", "Pul yechish", "Balansni ko'rish", "PIN tekshirish"], "a": 0, "e": "4-band — bu tizimdan chiqish amali."}, {"q": "Boshlang'ich balans 500 000 so'm bo'lib, hisobga 300 000 so'm qo'yilsa, balans qancha bo'ladi?", "o": ["800 000 so'm", "200 000 so'm", "300 000 so'm", "500 000 so'm"], "a": 0, "e": "500 000 + 300 000 = 800 000 so'm."}, {"q": "Menyuda kiritilgan raqam (1, 2, 3, 4) qaysi blok orqali tahlil qilinadi?", "o": ["Decision (shartli bloklar)", "Declare", "Output", "End"], "a": 0, "e": "Decision bloklari orqali foydalanuvchi qaysi bo'limni tanlagani aniqlanadi."}, {"q": "Noto'g'ri PIN kiritilganda bankomat nima qilishi kerak?", "o": ["«PIN noto'g'ri!» deb qayta kiritishni so'rashi kerak", "Barcha pulni berib yuborishi kerak", "Kompyuterni o'chirishi kerak", "Hech narsa demasligi kerak"], "a": 0, "e": "Foydalanuvchiga xatolik haqida xabar berilib, qayta urinish taklif etiladi."}, {"q": "Talaba 70 ball to'plasa, uning bahosi nima bo'ladi?", "o": ["Qoniqarli (3 baho)", "Yaxshi (4 baho)", "A'lo (5 baho)", "Qoniqarsiz (2 baho)"], "a": 0, "e": "56 dan 70 gacha bo'lgan ballar Qoniqarli (3 baho) hisoblanadi. 71 dan boshlab 4 bo'ladi."}, {"q": "Bankomatda PIN tekshiruvi nega menyudan oldin qo'yiladi?", "o": ["Begona shaxslar hisob ma'lumotlarini ko'ra olmasligi va xavfsizlik uchun", "Faqat vaqt o'tkazish uchun", "Dastur hajmini oshirish uchun", "Buning farqi yo'q"], "a": 0, "e": "Autentifikatsiya menyudan oldin turishi shart."}, {"q": "11-haftada qaysi ikkita yirik loyiha yaratildi?", "o": ["«Talaba baholash tizimi» va «Mini bankomat tizimi»", "«Kalkulyator» va «Svetofor»", "«Matn muharriri» va «Brauzer»", "«O'yin» va «Antivirus»"], "a": 0, "e": "11-haftada baholash tizimi yakunlandi va bankomat loyihasi boshlandi."}]</script>
+<script>
+(function(){
+var RAW=JSON.parse(document.getElementById('qdata').textContent);
+var Q=[],i=0,score=0,wrong=[],done=false;
+var $=function(s){return document.querySelector(s)},card=$('#card'),next=$('#next');
+var pagePath=location.pathname||location.href.split('#')[0].split('?')[0];
+var storageKey='quiz_cd_'+pagePath;
+var sessionKey='quiz_act_'+pagePath;
+var timerId=null;
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var j=a.length-1;j>0;j--){
+    var k=Math.floor(Math.random()*(j+1));
+    var tmp=a[j];a[j]=a[k];a[k]=tmp;
+  }
+  return a;
+}
+
+function initQuizData(){
+  var shuffledQs=shuffle(RAW);
+  Q=shuffledQs.map(function(item){
+    var indexed=item.o.map(function(txt,idx){
+      return {t:txt,c:idx===item.a};
+    });
+    var shuffledOpts=shuffle(indexed);
+    var correctIdx=0;
+    for(var o=0;o<shuffledOpts.length;o++){
+      if(shuffledOpts[o].c){correctIdx=o;break;}
+    }
+    return {
+      q:item.q,
+      o:shuffledOpts.map(function(o){return o.t;}),
+      a:correctIdx,
+      e:item.e
+    };
+  });
+  i=0;score=0;wrong=[];done=false;
+  saveActiveSession(null);
+}
+
+function saveActiveSession(pickedKey){
+  try{
+    var data={
+      Q:Q,i:i,score:score,wrong:wrong,done:done,
+      picked:(typeof pickedKey==='number'?pickedKey:null)
+    };
+    localStorage.setItem(sessionKey,JSON.stringify(data));
+  }catch(e){}
+}
+
+function clearActiveSession(){
+  try{localStorage.removeItem(sessionKey);}catch(e){}
+}
+
+function show(restorePicked){
+  var q=Q[i];done=false;
+  $('#cnt').textContent='Savol '+(i+1)+' / '+Q.length;
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;
+  $('#fill').style.width=(i/Q.length*100)+'%';
+  var h='<p class="q">'+q.q+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" type="button" data-k="'+k+'"><b>'+'ABCDEFGH'[k]+'</b><span>'+o+'</span></button>'});
+  h+='</div><div class="explain" id="ex"></div>';
+  card.innerHTML=h;
+  next.textContent=i==Q.length-1?'Natijani ko\u2018rish':'Keyingi savol';
+  next.disabled=true;
+  next.onclick=adv;
+  card.querySelectorAll('.opt').forEach(function(b){
+    b.addEventListener('click',function(){pick(+b.dataset.k)});
+  });
+
+  if(typeof restorePicked==='number'){
+    applyPick(restorePicked,true);
+  }else{
+    saveActiveSession(null);
+    window.scrollTo(0,0);
+  }
+}
+
+function pick(k){
+  if(done)return;
+  applyPick(k,false);
+  saveActiveSession(k);
+}
+
+function applyPick(k,isRestoring){
+  done=true;
+  var q=Q[i],bs=card.querySelectorAll('.opt');
+  bs.forEach(function(b,j){
+    b.disabled=true;
+    if(j==q.a)b.classList.add('ok');
+    else if(j==k)b.classList.add('no');
+  });
+  if(!isRestoring){
+    if(k==q.a)score++;
+    else wrong.push({q:q.q,y:q.o[k],c:q.o[q.a]});
+  }
+  var ex=$('#ex');
+  ex.innerHTML=(k==q.a?'<b>To\u2018g\u2018ri!</b> ':'<b>Noto\u2018g\u2018ri.</b> ')+(q.e||'');
+  ex.classList.add('show');
+  $('#sc').textContent='To\u2018g\u2018ri: '+score;
+  next.disabled=false;
+  if(!isRestoring){
+    ex.scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
+}
+
+function finish(){
+  clearActiveSession();
+  var cd={
+    exp:Date.now()+180000,
+    score:score,
+    total:Q.length,
+    wrong:wrong
+  };
+  try{localStorage.setItem(storageKey,JSON.stringify(cd));}catch(e){}
+  renderResultScreen(cd);
+}
+
+function renderResultScreen(cd){
+  var sc=typeof cd.score==='number'?cd.score:0;
+  var tot=typeof cd.total==='number'?cd.total:RAW.length;
+  var wr=Array.isArray(cd.wrong)?cd.wrong:[];
+  var p=Math.round(sc/tot*100);
+  $('#fill').style.width='100%';
+  $('#cnt').textContent='Natija';
+  $('#sc').textContent='To\u2018g\u2018ri: '+sc;
+  var msg=p>=90?'Ajoyib!':p>=70?'Yaxshi natija!':p>=50?'Yomon emas, takrorlab ko\u2018ring.':'Mavzuni qayta o\u2018qib chiqing.';
+  var h='<div class="res"><div class="n">'+sc+' / '+tot+'</div><div>'+p+'% \u2014 '+msg+'</div></div>';
+  h+='<div id="cd-box" class="cd-box"></div>';
+  if(wr.length){
+    h+='<h3>Xatolar tahlili</h3><div class="rev">';
+    wr.forEach(function(w){
+      h+='<div><b>'+w.q+'</b><br><small>Sizning javobingiz: '+(w.y||'')+'</small><br>To\u2018g\u2018ri javob: '+(w.c||'')+'</div>';
+    });
+    h+='</div>';
+  }
+  card.innerHTML=h;
+  window.scrollTo(0,0);
+  runCooldown();
+}
+
+function runCooldown(){
+  if(timerId)clearInterval(timerId);
+  function tick(){
+    var raw=null;
+    try{raw=localStorage.getItem(storageKey);}catch(e){}
+    var exp=0;
+    if(raw){
+      try{
+        var parsed=JSON.parse(raw);
+        exp=parsed.exp||parsed.expiresAt||0;
+      }catch(e){
+        exp=parseInt(raw,10)||0;
+      }
+    }
+    var rem=Math.ceil((exp-Date.now())/1000);
+    var cdBox=$('#cd-box');
+    if(rem>0){
+      next.disabled=true;
+      var m=Math.floor(rem/60),s=rem%60;
+      var ts=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      next.textContent='Qayta urinish ('+ts+')';
+      if(cdBox){
+        cdBox.innerHTML='⏳ <b>Qayta urinish uchun kuting: '+ts+'</b><br><small style="color:var(--mut)">Shu vaqt ichida xatolaringizni tahlil qiling va mavzuni qayta o‘rganing.</small>';
+      }
+    }else{
+      if(timerId)clearInterval(timerId);
+      try{localStorage.removeItem(storageKey);}catch(e){}
+      next.disabled=false;
+      next.textContent='Qayta urinish';
+      if(cdBox)cdBox.innerHTML='✅ <b>Qayta topshirishga ruxsat berildi!</b>';
+      next.onclick=function(){
+        clearActiveSession();
+        initQuizData();
+        show();
+      };
+    }
+  }
+  tick();
+  timerId=setInterval(tick,1000);
+}
+
+function adv(){
+  if(i<Q.length-1){
+    i++;
+    show();
+  }else{
+    finish();
+  }
+}
+next.onclick=adv;
+
+document.addEventListener('keydown',function(e){
+  if(i>=Q.length||!Q[i])return;
+  var n=parseInt(e.key,10);
+  if(n>=1&&n<=Q[i].o.length&&!done&&card.querySelector('.opt'))pick(n-1);
+  else if((e.key=='Enter'||e.key==' ')&&!next.disabled&&document.activeElement.tagName!='BUTTON'){
+    e.preventDefault();
+    next.onclick();
+  }
+});
+
+function start(){
+  var raw=null;
+  try{raw=localStorage.getItem(storageKey);}catch(e){}
+  if(raw){
+    var cd=null;
+    try{cd=JSON.parse(raw);}catch(e){
+      var n=parseInt(raw,10);
+      if(!isNaN(n))cd={exp:n};
+    }
+    var exp=(cd&&(cd.exp||cd.expiresAt))||0;
+    if(exp>Date.now()){
+      renderResultScreen(cd);
+      return;
+    }else{
+      try{localStorage.removeItem(storageKey);}catch(e){}
+    }
+  }
+
+  var sessRaw=null;
+  try{sessRaw=localStorage.getItem(sessionKey);}catch(e){}
+  if(sessRaw){
+    try{
+      var s=JSON.parse(sessRaw);
+      if(s&&s.Q&&s.Q.length===RAW.length&&typeof s.i==='number'&&s.i<s.Q.length){
+        Q=s.Q;i=s.i;score=s.score||0;wrong=s.wrong||[];
+        show(s.done?s.picked:null);
+        return;
+      }
+    }catch(e){}
+  }
+
+  initQuizData();
+  show();
+}
+
+start();
+})();
+</script>
+</body>
+</html>

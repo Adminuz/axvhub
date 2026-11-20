@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Murakkab shartlar va mantiqiy operatorlar</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Murakkab shartlar va mantiqiy operatorlar</h1>
+  <p class="muted">AND, OR, NOT operatorlari hamda ko'p bosqichli qaror qabul qilish tizimlari.</p>
+  <span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">9-hafta · 26-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="network"></i></div>
+      <h3>1. AND operatori</h3>
+      <p>Barcha shartlar bir vaqtda bajarilishi talab etiladigan holatlar.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="split"></i></div>
+      <h3>2. OR va NOT</h3>
+      <p>Kamida bitta shart yetarli bo'lishi va mantiqiy inkor amali.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>3. Ichma-ich shartlar</h3>
+      <p>Talaba baholash va ko'p variantli qarorlar zanjiri.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Mantiqiy operatorlar: AND va OR</h1>
+  <p>Shartlarni bir-biriga bog'lash va murakkab mezonlar tuzish</p>
+</section>
+
+<section>
+  <h2>AND va OR taqqoslanishi</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>AND (Mantiqiy VA)</h3>
+      <p><strong>Barchasi bajarilishi shart!</strong></p>
+      <ul>
+        <li><code>yosh &gt;= 18 AND guvohnoma == true</code></li>
+        <li>Bitta shart xato bo'lsa ham butun natija <strong>False</strong> bo'ladi.</li>
+      </ul>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>OR (Mantiqiy YOKI)</h3>
+      <p><strong>Hech bo'lmasa bittasi yetarli!</strong></p>
+      <ul>
+        <li><code>kun == 6 OR kun == 7</code></li>
+        <li>Bitta shart to'g'ri bo'lsa ham butun natija <strong>True</strong> bo'ladi.</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Oraliqqa tegishlilik: 10 dan 50 gacha</h2>
+  <div class="callout warn">
+    Matematikadagi <strong>10 &lt; x &lt; 50</strong> yozuvi dasturlashda ishlamaydi!
+  </div>
+  <div class="vs" style="margin-top: 20px;">
+    <div class="side fragment">
+      <h3>Xato yozuv</h3>
+      <p><code>10 &lt; son &lt; 50</code></p>
+      <ul>
+        <li>Flowgorithm ikkita taqqoslashni ketma-ket bajara olmaydi.</li>
+      </ul>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>To'g'ri yozuv</h3>
+      <p><code>son &gt; 10 AND son &lt; 50</code></p>
+      <ul>
+        <li>Ikkita alohida shart AND bilan bog'lanadi.</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>NOT operatori va Haqiqat jadvali</h1>
+  <p>Inkor amali va mantiqiy ifodalarning matematik qonuniyatlari</p>
+</section>
+
+<section>
+  <h2>NOT (Inkor) operatori</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="refresh-cw"></i></div>
+      <h3>Teskari qiymat</h3>
+      <p>Agar ifoda <code>true</code> bo'lsa, uni <code>false</code>ga aylantiradi. Agar <code>false</code> bo'lsa, <code>true</code>ga aylantiradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="code"></i></div>
+      <h3>Misol</h3>
+      <p><code>NOT(yomgirYogyapti)</code></p>
+      <p>Bu ifoda «Yomg'ir yog'mayapti» degan ma'noni beradi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Haqiqat jadvali (Truth Table)</h2>
+  <div class="illus">
+    <svg viewBox="0 0 900 220" width="100%" height="180">
+      <rect x="50" y="30" width="800" height="40" class="fg" />
+      <text x="120" y="56" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">A</text>
+      <text x="240" y="56" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">B</text>
+      <text x="440" y="56" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">A AND B</text>
+      <text x="680" y="56" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">A OR B</text>
+
+      <rect x="50" y="75" width="800" height="36" class="fb" />
+      <text x="120" y="99" text-anchor="middle" class="t-head" font-size="15">True</text>
+      <text x="240" y="99" text-anchor="middle" class="t-head" font-size="15">True</text>
+      <text x="440" y="99" text-anchor="middle" class="t-accent" font-size="15" font-weight="bold">True</text>
+      <text x="680" y="99" text-anchor="middle" class="t-accent" font-size="15" font-weight="bold">True</text>
+
+      <rect x="50" y="115" width="800" height="36" class="fn" />
+      <text x="120" y="139" text-anchor="middle" class="t-head" font-size="15">True</text>
+      <text x="240" y="139" text-anchor="middle" class="t-head" font-size="15">False</text>
+      <text x="440" y="139" text-anchor="middle" class="t-muted" font-size="15">False</text>
+      <text x="680" y="139" text-anchor="middle" class="t-accent" font-size="15" font-weight="bold">True</text>
+
+      <rect x="50" y="155" width="800" height="36" class="fc" />
+      <text x="120" y="179" text-anchor="middle" class="t-head" font-size="15">False</text>
+      <text x="240" y="179" text-anchor="middle" class="t-head" font-size="15">False</text>
+      <text x="440" y="179" text-anchor="middle" class="t-muted" font-size="15">False</text>
+      <text x="680" y="179" text-anchor="middle" class="t-muted" font-size="15">False</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Ichma-ich shartlar (Nested Decision)</h1>
+  <p>3 ta va undan ko'p variantlar bo'lganda qanday yo'l tutiladi?</p>
+</section>
+
+<section>
+  <h2>Talaba baholash tizimi mantig'i</h2>
+  <ol class="steps-n">
+    <li class="fragment">Agar <code>ball &gt;= 86</code> bo'lsa $\rightarrow$ <b>A'lo (5)</b></li>
+    <li class="fragment">Aks holda agar <code>ball &gt;= 71</code> bo'lsa $\rightarrow$ <b>Yaxshi (4)</b></li>
+    <li class="fragment">Aks holda agar <code>ball &gt;= 56</code> bo'lsa $\rightarrow$ <b>Qoniqarli (3)</b></li>
+    <li class="fragment">Aks holda $\rightarrow$ <b>Qoniqarsiz (2)</b></li>
+  </ol>
+  
+</section>
+
+<section>
+  <h2>Amaliy misol: Login va Parol</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Xavfsiz kirish sharti</h3>
+      <p>Ikkala qiymat bir vaqtda mos kelishi shart:</p>
+      <p><code>login == "admin" AND parol == "12345"</code></p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-alert"></i></div>
+      <h3>Bitta xato bo'lsa:</h3>
+      <p>Agar login to'g'ri, lekin parol noto'g'ri bo'lsa ham tizimga kiritilmaydi (False tarmog'i).</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Interaktiv jumboq: Natija nima bo'ladi?</h2>
+  <div class="flip" style="min-height:190px"><div class="flip-in">
+    <div class="face front">
+      <h3>Agar A = True va B = False bo'lsa, (A AND B) OR A ifodaning natijasi nima bo'ladi?</h3>
+      <p class="t-muted">Javobni ko'rish uchun bosing</p>
+      <span class="flip-hint">bosing</span>
+    </div>
+    <div class="face back">
+      <h3>True (Rost)!</h3>
+      <p>1. <code>A AND B = False</code>. <br>2. <code>False OR A (True) = True</code>.</p>
+    </div>
+  </div></div>
+  
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card">
+      <div class="icon"><i data-ic="network"></i></div>
+      <h3>AND</h3>
+      <p>Barcha shartlar bir vaqtda rost bo'lishi shart.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="split"></i></div>
+      <h3>OR</h3>
+      <p>Bitta shart rost bo'lsa ham yetarli.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>Nested If</h3>
+      <p>Ko'p bosqichli baholash va tekshirishlar zanjiri.</p>
+    </div>
+  </div>
+  
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Takrorlanuvchi algoritmlar va For sikli</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Takrorlanuvchi algoritmlar va For sikli</h1>
+  <p class="muted">Dasturda qayta-qayta takrorlanuvchi jarayonlar, For bloki va hisoblagich bilan ishlash.</p>
+  <span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">9-hafta · 27-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="repeat"></i></div>
+      <h3>1. Sikl tushunchasi</h3>
+      <p>Hayotiy takrorlanishlar va dasturdagi davriy jarayonlar.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>2. For sikli bloklari</h3>
+      <p>Hisoblagich (i), boshlanish, tugash va qadam kattaligi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="calculator"></i></div>
+      <h3>3. Yig'indi hisoblash</h3>
+      <p>1 dan N gacha sonlarni jamlash va karra jadvali loyihasi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Sikl (Loop) nima?</h1>
+  <p>Kompyuter nima uchun takrorlash amallarida insonlardan million marta ustun?</p>
+</section>
+
+<section>
+  <h2>Siklsiz va Sikl bilan ishlash</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>Siklsiz yondashuv</h3>
+      <ul>
+        <li>100 marta so'z chiqarish uchun 100 ta blok chizish kerak!</li>
+        <li>Kod juda uzun, noqulay va xato qilish oson.</li>
+        <li>Sonlar ko'paysa dastur chizib bo'lmas holga keladi.</li>
+      </ul>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>Sikl bilan yondashuv</h3>
+      <ul>
+        <li>Atigi 1 ta For bloki yetarli!</li>
+        <li>Parametr beriladi: 1 dan 100 gacha.</li>
+        <li>Kompyuter buyruqni bir zumda 100 marta bajarib beradi.</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Hayotiy takrorlanishlar</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="clock"></i></div>
+      <h3>Soat mili</h3>
+      <p>Sekund mili 60 marta aylanib, 1 daqiqani hosil qiladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="rotate-cw"></i></div>
+      <h3>Stadionda yugurish</h3>
+      <p>Sportchi stadion aylanasi bo'ylab 5 marta yugurib aylanadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sun"></i></div>
+      <h3>Kun va Tun</h3>
+      <p>Yer o'z o'qi atrofida doimiy takroriy aylanib turadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Flowgorithmda For sikli</h1>
+  <p>Hisoblagich (i), oraliq va qadam kattaligi bilan tanishamiz</p>
+</section>
+
+<section>
+  <h2>For siklining 4 ta asosiy elementi</h2>
+  <ol class="steps-n">
+    <li class="fragment"><b>Hisoblagich (Variable):</b> Sikl nechanchi marta aylanayotganini sanovchi o'zgaruvchi (odatda <code>i</code>).</li>
+    <li class="fragment"><b>Boshlang'ich qiymat (Start):</b> Sanash qaysi sondan boshlanishi (masalan, <code>1</code>).</li>
+    <li class="fragment"><b>Tugash qiymati (End):</b> Sanash qaysi songacha borishi (masalan, <code>10</code>).</li>
+    <li class="fragment"><b>Qadam (Step):</b> Har aylanishda hisoblagich nechtaga o'zgarishi (odatda <code>+1</code>).</li>
+  </ol>
+  
+</section>
+
+<section>
+  <h2>For blokining ko'rinishi (Oltiburchak)</h2>
+  <div class="illus">
+    <svg viewBox="0 0 900 240" width="100%" height="200">
+      <polygon points="350,30 550,30 590,75 550,120 350,120 310,75" class="fc" />
+      <text x="450" y="70" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">For i = 1 to 5</text>
+      <text x="450" y="92" text-anchor="middle" class="t-muted" font-size="13">Step 1</text>
+
+      <line x1="450" y1="120" x2="450" y2="150" class="la" marker-end="url(#ar-a)" />
+
+      <polygon points="360,150 540,150 510,190 330,190" class="fg" />
+      <text x="435" y="175" text-anchor="middle" class="t-head" font-size="15">Output i</text>
+
+      <path d="M 330 170 L 250 170 L 250 75 L 305 75" fill="none" class="la" marker-end="url(#ar-a)" />
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Amaliy loyihalar va hisob-kitoblar</h1>
+  <p>1 dan N gacha sonlar, yig'indini jamlash va karra jadvali</p>
+</section>
+
+<section>
+  <h2>Yig'indi hisoblash mantig'i: Akkumulyator</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="plus"></i></div>
+      <h3>Boshlang'ich holat</h3>
+      <p>Yig'indi o'zgaruvchisi boshida nolga tenglashtiriladi:</p>
+      <p><code>sum = 0</code></p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="repeat"></i></div>
+      <h3>Sikl ichidagi qadam</h3>
+      <p>Har aylanishda joriy son yig'indiga qo'shib boriladi:</p>
+      <p><code>sum = sum + i</code></p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Karra jadvalini yaratish</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="calculator"></i></div>
+      <h3>Kiritish</h3>
+      <p>Foydalanuvchi son kiritadi: masalan <code>son = 5</code>.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="terminal"></i></div>
+      <h3>Siklda chiqarish</h3>
+      <p><code>For i = 1 to 10</code></p>
+      <p><code>Output son &amp; " * " &amp; i &amp; " = " &amp; (son * i)</code></p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Interaktiv jumboq: Sikl necha marta aylanadi?</h2>
+  <div class="flip" style="min-height:190px"><div class="flip-in">
+    <div class="face front">
+      <h3>For i = 1 to 10 step 2 sikli necha marta takrorlanadi?</h3>
+      <p class="t-muted">Javobni ko'rish uchun bosing</p>
+      <span class="flip-hint">bosing</span>
+    </div>
+    <div class="face back">
+      <h3>5 marta aylanadi!</h3>
+      <p>Hisoblagich qiymatlari: <code>1, 3, 5, 7, 9</code>. Keyingi qadam 11 bo'lib 10 dan oshgani uchun sikl to'xtaydi.</p>
+    </div>
+  </div></div>
+  
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card">
+      <div class="icon"><i data-ic="repeat"></i></div>
+      <h3>Sikl (Loop)</h3>
+      <p>Bir xil buyruqlarni qayta-qayta takrorlash vositasi.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="cpu"></i></div>
+      <h3>For bloki</h3>
+      <p>Boshlanish, tugash va qadam orqali boshqariladi.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="calculator"></i></div>
+      <h3>sum = sum + i</h3>
+      <p>Sonlarni jamlab borishning universal formulasi.</p>
+    </div>
+  </div>
+  
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

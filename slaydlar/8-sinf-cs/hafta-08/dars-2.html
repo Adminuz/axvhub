@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>O'zgaruvchilar va ma'lumot turlari</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>O'zgaruvchilar va ma'lumot turlari</h1>
+  <p class="muted">Kompyuter xotirasidagi sehrli qutichalar: Integer, Real, String va Boolean bilan ishlash asoslari.</p>
+  <span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">8-hafta · 23-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="box"></i></div>
+      <h3>1. O'zgaruvchi tushunchasi</h3>
+      <p>Xotirada joy ajratish, nomlash qoidalari va Declare bloki.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>2. Ma'lumot turlari</h3>
+      <p>Integer, Real, String va Boolean turlarining xususiyatlari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="calculator"></i></div>
+      <h3>3. Amaliy hisoblashlar</h3>
+      <p>Assign bloki orqali formulalar yechish va natija chiqarish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>O'zgaruvchi (Variable) nima?</h1>
+  <p>Kompyuter operativ xotirasi (RAM) ma'lumotlarni qanday saqlaydi?</p>
+</section>
+
+<section>
+  <h2>Xotira qutichasi o'xshatishi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 920 220" width="100%" height="180">
+      <rect x="50" y="40" width="230" height="130" rx="16" class="fb" />
+      <text x="165" y="80" text-anchor="middle" class="t-accent" font-size="18" font-weight="bold">Nomi: yosh</text>
+      <rect x="95" y="95" width="140" height="50" rx="8" class="fn" />
+      <text x="165" y="128" text-anchor="middle" class="t-head" font-size="24" font-weight="bold">14</text>
+
+      <rect x="345" y="40" width="230" height="130" rx="16" class="fg" />
+      <text x="460" y="80" text-anchor="middle" class="t-accent" font-size="18" font-weight="bold">Nomi: ism</text>
+      <rect x="380" y="95" width="160" height="50" rx="8" class="fn" />
+      <text x="460" y="128" text-anchor="middle" class="t-head" font-size="22" font-weight="bold">"Ali"</text>
+
+      <rect x="640" y="40" width="230" height="130" rx="16" class="fc" />
+      <text x="755" y="80" text-anchor="middle" class="t-accent" font-size="18" font-weight="bold">Nomi: ball</text>
+      <rect x="685" y="95" width="140" height="50" rx="8" class="fn" />
+      <text x="755" y="128" text-anchor="middle" class="t-head" font-size="24" font-weight="bold">4.8</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>O'zgaruvchi nomlashning 3 ta qat'iy qoidasi</h2>
+  <ol class="steps-n">
+    <li class="fragment"><b>Raqam bilan boshlanmaydi:</b> <code>son1</code> to'g'ri, ammo <code>1son</code> qat'iyan xato!</li>
+    <li class="fragment"><b>Bo'sh joy (probel) mumkin emas:</b> <code>mening_yoshim</code> yoki <code>meningYoshim</code> deb yoziladi.</li>
+    <li class="fragment"><b>Faqat lotin harflari va belgilar:</b> O'zbekcha harflar (o', g') o'rniga oddiy lotin harflari ishlatiladi.</li>
+  </ol>
+  
+</section>
+
+<section>
+  <h2>To'g'ri va Noto'g'ri nomlar</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>Xato nomlar</h3>
+      <ul>
+        <li><code>2xona</code> (Raqam bilan boshlangan)</li>
+        <li><code>foydalanuvchi yoshi</code> (Probel bor)</li>
+        <li><code>do'kon</code> (Tutruq belgisi bor)</li>
+        <li><code>Declare</code> (Kalit so'z)</li>
+      </ul>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>To'g'ri nomlar</h3>
+      <ul>
+        <li><code>xona2</code></li>
+        <li><code>foydalanuvchi_yoshi</code></li>
+        <li><code>dokon</code></li>
+        <li><code>dasturNomi</code></li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Ma'lumot turlari (Data Types)</h1>
+  <p>Flowgorithmda 4 ta asosiy ustun: Integer, Real, String, Boolean</p>
+</section>
+
+<section>
+  <h2>4 ta asosiy ma'lumot turi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="hash"></i></div>
+      <h3>Integer (Butun son)</h3>
+      <p>Kasr qismi bo'lmagan barcha musbat va manfiy butun sonlar: <code>10</code>, <code>-5</code>, <code>0</code>, <code>2026</code>.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="divide"></i></div>
+      <h3>Real (Haqiqiy son)</h3>
+      <p>Kasr (o'nlik) qismi bor sonlar (nuqta bilan yoziladi): <code>3.14</code>, <code>-0.5</code>, <code>12.75</code>.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="type"></i></div>
+      <h3>String (Matn / Satr)</h3>
+      <p>Harflar, so'zlar va gaplar ketma-ketligi (qo'shtirnoq ichida): <code>"Ali"</code>, <code>"Toshkent"</code>.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="toggle-left"></i></div>
+      <h3>Boolean (Mantiqiy)</h3>
+      <p>Faqat ikkita mantiqiy qiymatdan biri: <code>true</code> (rost) yoki <code>false</code> (yolg'on).</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Integer va Real: Muhim farq</h2>
+  <div class="callout warn">
+    Flowgorithmda haqiqiy sonlar yozilganda vergul (,) emas, faqat <strong>nuqta (.)</strong> ishlatiladi!
+  </div>
+  <div class="vs" style="margin-top: 20px;">
+    <div class="side fragment">
+      <h3>Integer</h3>
+      <ul>
+        <li>Odamlar soni: <code>25</code></li>
+        <li>Kitob sahifasi: <code>150</code></li>
+        <li>Avtomobillar soni: <code>4</code></li>
+        <li>Yarimta bo'lishi mumkin emas!</li>
+      </ul>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>Real</h3>
+      <ul>
+        <li>O'quvchi bo'yi: <code>1.72</code> m</li>
+        <li>Mahsulot narxi: <code>1500.50</code></li>
+        <li>Doira radiusi: <code>3.5</code></li>
+        <li>Harorat: <code>36.6</code> °C</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Declare va Assign bloklari bilan ishlash</h1>
+  <p>O'zgaruvchini xotirada yaratish va unga qiymat yuklash amaliyoti</p>
+</section>
+
+<section>
+  <h2>Declare (E'lon qilish) bloki</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-plus"></i></div>
+      <h3>Xotirada joy band qilish</h3>
+      <p>Dastur ishga tushishi bilan kompyuterga: «Menga mana shu nomdagi katakcha kerak!» degan buyruq beriladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="settings"></i></div>
+      <h3>Bir vaqtda bir nechtasini e'lon qilish</h3>
+      <p>Bir xil turdagi o'zgaruvchilarni bitta Declare blokida vergul bilan yozish mumkin: <code>a, b, c</code>.</p>
+    </div>
+  </div>
+  <div class="callout tip fragment fade-up" style="margin-top: 20px;">
+    O'zgaruvchini e'lon qilmasdan ishlatishga urinsangiz, Flowgorithm darhol xatolik chiqaradi!
+  </div>
+  
+</section>
+
+<section>
+  <h2>Assign (Qiymat yuklash) bloki</h2>
+  <div class="illus">
+    <svg viewBox="0 0 880 200" width="100%" height="160">
+      <rect x="60" y="40" width="220" height="120" rx="14" class="fb" />
+      <text x="170" y="90" text-anchor="middle" class="t-accent" font-size="20">O'zgaruvchi</text>
+      <text x="170" y="125" text-anchor="middle" class="t-head" font-size="22" font-weight="bold">narx</text>
+
+      <text x="340" y="115" text-anchor="middle" class="t-head" font-size="36" font-weight="bold">=</text>
+
+      <rect x="400" y="40" width="420" height="120" rx="14" class="fg" />
+      <text x="610" y="90" text-anchor="middle" class="t-accent" font-size="20">Ifoda / Qiymat</text>
+      <text x="610" y="125" text-anchor="middle" class="t-head" font-size="22" font-weight="bold">miqdor * 5000</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Amaliy misol: Doira yuzini hisoblash</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="terminal"></i></div>
+      <h3>Bloklar tartibi:</h3>
+      <ol>
+        <li><code>Declare Real r, S</code></li>
+        <li><code>Output "Radiusni kiriting:"</code></li>
+        <li><code>Input r</code></li>
+        <li><code>Assign S = 3.14159 * r * r</code></li>
+        <li><code>Output "Yuza: " &amp; S</code></li>
+      </ol>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Nega Real tanlandi?</h3>
+      <p>Radius kasr son bo'lishi mumkin (masalan 2.5) va $\pi$ soni ham o'nlik kasr. Agar Integer tanlansa, natija xato hisoblanadi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Interaktiv jumboq: Qaysi tur to'g'ri?</h2>
+  <div class="flip" style="min-height:190px"><div class="flip-in">
+    <div class="face front">
+      <h3>Daftarimizga do'kondagi non narxini (masalan: 3500.50 so'm) saqlamoqchimiz. Qaysi ma'lumot turini tanlash kerak?</h3>
+      <p class="t-muted">Javobni ko'rish uchun bosing</p>
+      <span class="flip-hint">bosing</span>
+    </div>
+    <div class="face back">
+      <h3>Real turi!</h3>
+      <p>Chunki narxda tiyinlar yoki o'nlik kasr qism (masalan .50) mavjud. Agar butun son bo'lsa Integer ham bo'lar edi.</p>
+    </div>
+  </div></div>
+  
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card">
+      <div class="icon"><i data-ic="box"></i></div>
+      <h3>Variable</h3>
+      <p>Xotiradagi nomlangan ma'lumot katakchasi.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="layers"></i></div>
+      <h3>4 ta Tur</h3>
+      <p>Integer (butun), Real (kasr), String (matn), Boolean (mantiqiy).</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="settings"></i></div>
+      <h3>Declare &amp; Assign</h3>
+      <p>E'lon qilish va qiymat yuklash bloklari.</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

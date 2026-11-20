@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Dasturlash tushunchalari: dastur, buyruq, kod va mantiq</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Dasturlash tushunchalari: dastur, buyruq, kod va mantiq</h1>
+  <p class="muted">Kompyuter qanday fikrlaydi? Dastur nima, buyruqlar qanday beriladi va universal IPO modeli sirlari.</p>
+  <span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">8-hafta · 22-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="code"></i></div>
+      <h3>1. Asosiy tushunchalar</h3>
+      <p>Dastur, buyruq va kod o'rtasidagi farq hamda bog'liqlik.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="workflow"></i></div>
+      <h3>2. IPO modeli</h3>
+      <p>Input — Process — Output: dastur mantiqining universal yuragi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-play"></i></div>
+      <h3>3. Flowgorithmda amaliyot</h3>
+      <p>Mantiqiy zanjir tuzish, kiritish va natija chiqarish amallari.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Dastur, Buyruq va Kod nima?</h1>
+  <p>Kompyuter tilini va unga buyruq berish mexanizmini o'rganamiz</p>
+</section>
+
+<section>
+  <h2>Kompyuter mustaqil fikrlay oladimi?</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>Inson ongi</h3>
+      <ul>
+        <li>Vaziyatga qarab o'zi qaror qabul qiladi</li>
+        <li>Noaniq va xato so'rovlarni ham tushunadi</li>
+        <li>Ijodiy va moslashuvchan fikrlaydi</li>
+      </ul>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>Kompyuter (CPU)</h3>
+      <ul>
+        <li>Mustaqil fikrlay olmaydi</li>
+        <li>Faqat berilgan buyruqlarni qat'iy bajaradi</li>
+        <li>Kichik noaniqlik bo'lsa ham xatolik (Error) beradi</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>3 ta tayanch tushuncha</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="file-code"></i></div>
+      <h3>Dastur (Program)</h3>
+      <p>Muayyan vazifani bajarish uchun yozilgan tartibli buyruqlar to'plami.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="check"></i></div>
+      <h3>Buyruq (Instruction)</h3>
+      <p>Kompyuter tushunadigan va bajara oladigan eng kichik harakat.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="terminal"></i></div>
+      <h3>Kod (Source Code)</h3>
+      <p>Buyruqlarning dasturlash tili qoidalari asosida yozilgan matni.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Algoritm va Dastur o'rtasidagi bog'liqlik</h2>
+  <div class="illus">
+    <svg viewBox="0 0 900 240" width="100%" height="200">
+      <rect x="50" y="50" width="220" height="120" rx="16" class="fb" />
+      <text x="160" y="105" text-anchor="middle" class="t-head" font-size="22" font-weight="bold">Muammo / G'oya</text>
+      <text x="160" y="135" text-anchor="middle" class="t-muted" font-size="16">Masala qo'yilishi</text>
+
+      <line x1="280" y1="110" x2="330" y2="110" class="la" marker-end="url(#ar-a)" />
+
+      <rect x="340" y="50" width="220" height="120" rx="16" class="fg" />
+      <text x="450" y="105" text-anchor="middle" class="t-head" font-size="22" font-weight="bold">Algoritm</text>
+      <text x="450" y="135" text-anchor="middle" class="t-muted" font-size="16">Qadamlar rejasi</text>
+
+      <line x1="570" y1="110" x2="620" y2="110" class="la" marker-end="url(#ar-a)" />
+
+      <rect x="630" y="50" width="220" height="120" rx="16" class="fc" />
+      <text x="740" y="105" text-anchor="middle" class="t-head" font-size="22" font-weight="bold">Dastur</text>
+      <text x="740" y="135" text-anchor="middle" class="t-muted" font-size="16">Kompyuter ijrosi</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Dastur mantiqining yuragi: IPO modeli</h1>
+  <p>Input (Kiritish) — Process (Qayta ishlash) — Output (Chiqarish)</p>
+</section>
+
+<section>
+  <h2>IPO modeli nima?</h2>
+  <div class="illus">
+    <svg viewBox="0 0 960 220" width="100%" height="180">
+      <rect x="30" y="40" width="260" height="130" rx="14" class="fb" />
+      <text x="160" y="95" text-anchor="middle" class="t-head" font-size="22" font-weight="bold">INPUT (Kiritish)</text>
+      <text x="160" y="125" text-anchor="middle" class="t-muted" font-size="16">Klaviatura, fayl, internet</text>
+
+      <line x1="300" y1="105" x2="340" y2="105" class="la" marker-end="url(#ar-a)" />
+
+      <rect x="350" y="40" width="260" height="130" rx="14" class="fc" />
+      <text x="480" y="95" text-anchor="middle" class="t-head" font-size="22" font-weight="bold">PROCESS (Jarayon)</text>
+      <text x="480" y="125" text-anchor="middle" class="t-muted" font-size="16">Hisoblash, saralash (CPU)</text>
+
+      <line x1="620" y1="105" x2="660" y2="105" class="la" marker-end="url(#ar-a)" />
+
+      <rect x="670" y="40" width="260" height="130" rx="14" class="fg" />
+      <text x="800" y="95" text-anchor="middle" class="t-head" font-size="22" font-weight="bold">OUTPUT (Natija)</text>
+      <text x="800" y="125" text-anchor="middle" class="t-muted" font-size="16">Ekran, dinamik, printer</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Hayotiy o'xshatish: Sharbat chiqargich</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="package"></i></div>
+      <h3>Input (Xomashyo)</h3>
+      <p>Idishga toza olma mevalari solinadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="settings"></i></div>
+      <h3>Process (Maydalash)</h3>
+      <p>Elektr motor pichoqlarni aylantirib, mevalarni siqadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="sparkles"></i></div>
+      <h3>Output (Tayyor mahsulot)</h3>
+      <p>Stakanga toza olma sharbati quyiladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Dasturlashda IPO: Yoshni hisoblash dasturi</h2>
+  <ol class="steps-n">
+    <li class="fragment"><b>Input:</b> Foydalanuvchi tug'ilgan yilini kiritadi (masalan: <code>2011</code>).</li>
+    <li class="fragment"><b>Process:</b> Dastur hozirgi yildan tug'ilgan yilni ayiradi: <code>2026 - 2011 = 15</code>.</li>
+    <li class="fragment"><b>Output:</b> Ekranga natija ko'rsatiladi: <code>"Siz 15 yoshdasiz!"</code>.</li>
+  </ol>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Flowgorithmda dastur mantig'ini ifodalash</h1>
+  <p>Bloklar ketma-ketligi, o'zgaruvchilarni ulash va natijani ko'rish</p>
+</section>
+
+<section>
+  <h2>Flowgorithmda 4 ta asosiy qadam</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="box"></i></div>
+      <h3>1. Declare (E'lon qilish)</h3>
+      <p>Kompyuter xotirasida o'zgaruvchi uchun joy ochish (masalan: <code>son</code>, <code>yosh</code>).</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="log-in"></i></div>
+      <h3>2. Input (Kiritish)</h3>
+      <p>Foydalanuvchidan klaviatura orqali ma'lumot qabul qilish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="calculator"></i></div>
+      <h3>3. Assign (Hisoblash)</h3>
+      <p>Matematik formulalar orqali qiymatni hisoblab o'zlashtirish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="log-out"></i></div>
+      <h3>4. Output (Chiqarish)</h3>
+      <p>Olingan yakuniy natijani konsol oynasiga chiqarish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Flowgorithmda matnlarni ulash: «&» belgisi</h2>
+  <div class="callout tip">
+    Matn va o'zgaruvchilarni bitta qatorda chiqarish uchun <strong>&amp;</strong> (ampersand) belgisi ishlatiladi!
+  </div>
+  <div class="vs" style="margin-top: 20px;">
+    <div class="side fragment">
+      <h3>Xato usul</h3>
+      <p><code>"Salom" ism</code></p>
+      <ul>
+        <li>Orada bog'lovchi belgi yo'q</li>
+        <li>Flowgorithm sintaksis xatoligi beradi</li>
+      </ul>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>To'g'ri usul</h3>
+      <p><code>"Salom, " &amp; ism</code></p>
+      <ul>
+        <li><code>&amp;</code> matn bilan o'zgaruvchini birlashtiradi</li>
+        <li>Natija: <code>Salom, Ali!</code></li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Amaliy misol: 2 barobar oshirish</h2>
+  <div class="illus">
+    <svg viewBox="0 0 900 320" width="100%" height="260">
+      <rect x="360" y="10" width="180" height="40" rx="20" class="fg" />
+      <text x="450" y="35" text-anchor="middle" class="t-head" font-size="16">Main</text>
+
+      <line x1="450" y1="50" x2="450" y2="75" class="la" marker-end="url(#ar-a)" />
+
+      <polygon points="360,75 540,75 510,115 330,115" class="fb" />
+      <text x="435" y="100" text-anchor="middle" class="t-head" font-size="15">Input son</text>
+
+      <line x1="450" y1="115" x2="450" y2="140" class="la" marker-end="url(#ar-a)" />
+
+      <rect x="330" y="140" width="240" height="40" class="fc" />
+      <text x="450" y="165" text-anchor="middle" class="t-head" font-size="15">natija = son * 2</text>
+
+      <line x1="450" y1="180" x2="450" y2="205" class="la" marker-end="url(#ar-a)" />
+
+      <polygon points="360,205 540,205 510,245 330,245" class="fg" />
+      <text x="435" y="230" text-anchor="middle" class="t-head" font-size="15">Output "Natija: " &amp; natija</text>
+
+      <line x1="450" y1="245" x2="450" y2="270" class="la" marker-end="url(#ar-a)" />
+
+      <rect x="360" y="270" width="180" height="40" rx="20" class="fg" />
+      <text x="450" y="295" text-anchor="middle" class="t-head" font-size="16">End</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tezkor tugmalar eslatmasi</h2>
+  <div class="stats">
+    <div class="stat fragment fade-up">
+      <div class="v">F5</div>
+      <div class="l">To'liq tezlikda ishga tushirish (Run)</div>
+    </div>
+    <div class="stat fragment fade-up">
+      <div class="v">F6</div>
+      <div class="l">Qadam-baqadam kuzatish (Step)</div>
+    </div>
+    <div class="stat fragment fade-up">
+      <div class="v">Ctrl+S</div>
+      <div class="l">Loyihani (.fprg) saqlash</div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Interaktiv jumboq: Bosqichni toping</h2>
+  <div class="flip" style="min-height:190px"><div class="flip-in">
+    <div class="face front">
+      <h3>Dastur foydalanuvchining ballarini qo'shib, umumiy ballni hisoblamoqda. Bu IPO ning qaysi bosqichi?</h3>
+      <p class="t-muted">Javobni ko'rish uchun bosing</p>
+      <span class="flip-hint">bosing</span>
+    </div>
+    <div class="face back">
+      <h3>Process (Qayta ishlash)!</h3>
+      <p>Hisoblash, qo'shish va formulalarni bajarish faqat <strong>Process</strong> bosqichiga tegishli.</p>
+    </div>
+  </div></div>
+  
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card">
+      <div class="icon"><i data-ic="code"></i></div>
+      <h3>Dastur</h3>
+      <p>Kompyuter uchun buyruqlar majmuasi.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="workflow"></i></div>
+      <h3>IPO modeli</h3>
+      <p>Kiritish → Qayta ishlash → Natija chiqarish.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="circle-play"></i></div>
+      <h3>Flowgorithm</h3>
+      <p>Dastur mantig'ini vizual sinash va tekshirish muhiti.</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

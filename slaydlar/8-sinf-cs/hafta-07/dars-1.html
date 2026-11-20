@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Kiberxavfsizlik va ma'lumotlar himoyasi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Kiberxavfsizlik va ma'lumotlar himoyasi</h1>
+  <p class="muted">Shaxsiy ma'lumotlar, raqamli iz, kuchli parol, 2FA va fishingdan saqlanish</p>
+  <span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">7-hafta · 19-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugun nimalarni o'rganamiz?</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-alert" data-anim="pulse"></i></div>
+      <h3>Kiberxavflar</h3>
+      <p>Malware, Spyware, Ransomware va raqamli iz</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="key-round" data-anim="float"></i></div>
+      <h3>Akkaunt himoyasi</h3>
+      <p>Kuchli parol, parollar menejeri va 2FA</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="user-shield" data-anim="blink"></i></div>
+      <h3>Kibergigiyena</h3>
+      <p>Fishingdan saqlanish va xavfsiz internet qoidalari</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Takrorlash</h2>
+  <div class="quiz">
+    <p class="q">Axborot va tizimlarni kiberhujumlardan himoya qiluvchi IT sohasi qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Web Development</button>
+      <button class="opt" type="button" data-ok>Cybersecurity (Kiberxavfsizlik)</button>
+      <button class="opt" type="button">Data Science</button>
+      <button class="opt" type="button">DevOps</button>
+    </div>
+    <div class="explain">Cybersecurity — tizimlar va ma'lumotlar xavfsizligini ta'minlaydi.</div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Kiberxavfsizlik va asosiy xavflar</h1>
+  <p>Raqamli iz, shaxsiy ma'lumotlar va zararli dasturlar</p>
+</section>
+
+<section>
+  <h2>Kiberxavfsizlik nima?</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="laptop"></i></div>
+      <h3>Tizim va tarmoqlar</h3>
+      <p>Kompyuter, telefon va serverlarni buzib kirishdan hamda ishdan chiqishdan asrash.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="lock"></i></div>
+      <h3>Ma'lumotlar daxlsizligi</h3>
+      <p>Shaxsiy yozishmalar, fotosuratlar, parollar va bank hisoblarini o'g'irlanishdan himoyalash.</p>
+    </div>
+  </div>
+  <div class="callout tip fragment fade-up" style="margin-top: 24px;">
+    Kiberxavfsizlik faqat tashkilotlar uchun emas, har bir oddiy smartfon foydalanuvchisi uchun zarur!
+  </div>
+  
+</section>
+
+<section>
+  <h2>Raqamli iz (Digital Footprint)</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 340" width="100%" height="280">
+      <rect x="60" y="40" width="410" height="260" rx="16" class="fb" />
+      <rect x="530" y="40" width="410" height="260" rx="16" class="fc" />
+      <text x="265" y="80" text-anchor="middle" class="t-head" font-size="24" font-weight="bold">Faol raqamli iz</text>
+      <text x="735" y="80" text-anchor="middle" class="t-head" font-size="24" font-weight="bold">Nofaol raqamli iz</text>
+      <line x1="90" y1="100" x2="440" y2="100" class="la" />
+      <line x1="560" y1="100" x2="910" y2="100" class="la" />
+      <text x="100" y="145" class="t-muted" font-size="22">• Ijtimoiy tarmoqdagi postlar va rasmlar</text>
+      <text x="100" y="195" class="t-muted" font-size="22">• Saytlardagi izohlar va layklar</text>
+      <text x="100" y="245" class="t-muted" font-size="22">• Ro'yxatdan o'tish anketalari</text>
+      <text x="570" y="145" class="t-muted" font-size="22">• Qidiruv va brauzer tarixi</text>
+      <text x="570" y="195" class="t-muted" font-size="22">• IP-manzil va joylashuv ma'lumoti</text>
+      <text x="570" y="245" class="t-muted" font-size="22">• Saytlar saqlaydigan Cookie fayllar</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Zararli dasturlar (Malware) turlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="bug"></i></div>
+      <h3>Virus va Worm</h3>
+      <p>Fayllarni buzadi, tizimni sekinlashtiradi va o'zini mustaqil ko'paytiradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="eye"></i></div>
+      <h3>Spyware</h3>
+      <p>Klaviaturada terilgan parollarni va ekran harakatlarini yashirincha yozib oladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-alert"></i></div>
+      <h3>Ransomware</h3>
+      <p>Barcha fayllarni shifrlab qulflaydi va ochish uchun pul (tovlamachilik) talab qiladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Ransomware (Tovlamachi dastur) xavfi</h2>
+  <ol class="steps-n">
+    <li class="fragment"><b>Tushish yo'li:</b> Shubhali havola yoki bepul deb yuklangan fayl orqali kiradi.</li>
+    <li class="fragment"><b>Fayllarni qulflash:</b> Barcha rasm, hujjat va videolarni maxfiy kalit bilan shifrlaydi.</li>
+    <li class="fragment"><b>Pul talab qilish:</b> Ekranga to'lov xabari chiqariladi. Yagona yechim — zaxira nusxa (Backup)!</li>
+  </ol>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Akkaunt himoyasi: Parol va 2FA</h1>
+  <p>Kuchli parol yaratish qoidalari va ikki bosqichli tekshiruv</p>
+</section>
+
+<section>
+  <h2>Kuchli va zaif parollar</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>Zaif parollar</h3>
+      <ul>
+        <li><code>123456</code>, <code>qwerty</code>, <code>parol</code></li>
+        <li>O'z ismi yoki tug'ilgan yili</li>
+        <li>Barcha akkauntlarga bir xil parol</li>
+        <li><strong>Natija:</strong> 1 soniyada buziladi!</li>
+      </ul>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>Kuchli parollar</h3>
+      <ul>
+        <li>Kamida 12–16 ta belgi</li>
+        <li>Katta va kichik harflar (<code>A-z</code>)</li>
+        <li>Raqamlar va belgilar (<code>#$!%</code>)</li>
+        <li><strong>Natija:</strong> Buzishga ming yillar kerak!</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Brute-Force hujumi va vaqt</h2>
+  <div class="stats">
+    <div class="stat fragment">
+      <div class="v">1 soniya</div>
+      <div class="l">Faqat 6 ta raqamdan iborat parol (123456)</div>
+    </div>
+    <div class="stat fragment">
+      <div class="v">2 daqiqa</div>
+      <div class="l">8 ta kichik harfdan iborat parol (alisher)</div>
+    </div>
+    <div class="stat fragment">
+      <div class="v">100+ yil</div>
+      <div class="l">12 ta aralash belgili parol (T@shkent#2026!)</div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>2FA (Ikki bosqichli autentifikatsiya)</h2>
+  <div class="illus">
+    <svg viewBox="0 0 1000 320" width="100%" height="260">
+      <rect x="60" y="60" width="260" height="200" rx="14" class="fb" />
+      <text x="190" y="110" text-anchor="middle" class="t-head" font-size="22" font-weight="bold">1-bosqich</text>
+      <text x="190" y="160" text-anchor="middle" class="t-accent" font-size="20">Siz biladigan narsa</text>
+      <text x="190" y="210" text-anchor="middle" class="t-muted" font-size="22">Parol (Password)</text>
+
+      <path d="M340 160 L440 160" class="la" marker-end="url(#ar-a)" />
+
+      <rect x="460" y="60" width="260" height="200" rx="14" class="fg" />
+      <text x="590" y="110" text-anchor="middle" class="t-head" font-size="22" font-weight="bold">2-bosqich</text>
+      <text x="590" y="160" text-anchor="middle" class="t-accent" font-size="20">Sizda bor narsa</text>
+      <text x="590" y="210" text-anchor="middle" class="t-muted" font-size="22">SMS yoki App kodi</text>
+
+      <path d="M740 160 L840 160" class="la" marker-end="url(#ar-a)" />
+
+      <circle cx="890" cy="160" r="45" class="fc" />
+      <text x="890" y="168" text-anchor="middle" class="t-head" font-size="22" font-weight="bold">Akkaunt</text>
+    </svg>
+  </div>
+  <div class="callout tip fragment fade-up">
+    Parol o'g'irlangan taqdirda ham, 2FA kodisiz akkauntga kirib bo'lmaydi!
+  </div>
+  
+</section>
+
+<section>
+  <h2>Parollar menejeri (Password Manager)</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="key"></i></div>
+      <h3>Muammo</h3>
+      <p>50 ta turli xil murakkab parollarni miyada yodlab qolish inson uchun imkonsiz.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="lock-keyhole"></i></div>
+      <h3>Yechim</h3>
+      <p>Barcha parollar shifrlangan omborda saqlanadi. Siz faqat 1 ta Bosh (Master) parolni eslab qolasiz.</p>
+    </div>
+  </div>
+  <div class="chips fragment fade-up" style="margin-top: 20px;">
+    <span class="chip">Bitwarden</span>
+    <span class="chip">1Password</span>
+    <span class="chip">Google Password Manager</span>
+    <span class="chip">KeePass</span>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Interaktiv topshiriq: Parol formulasi</h2>
+  <div class="flip" style="min-height:190px"><div class="flip-in">
+    <div class="face front">
+      <h3>Eslab qolish oson va juda kuchli parol formulasini bilasizmi?</h3>
+      <span class="flip-hint">bosing</span>
+    </div>
+    <div class="face back">
+      <h3>«Passphrase» usuli!</h3>
+      <p>Bitta so'z o'rniga 3–4 so'zni birlashtiring: <code>Moviy_Kitob!Uchdi#2026</code></p>
+      <p class="small">Uzunligi 22 belgi, eslash juda oson, buzish esa imkonsiz!</p>
+    </div>
+  </div></div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Ijtimoiy muhandislik va Fishing</h1>
+  <p>Inson ruhiyatini aldash usullari va ulardan himoyalanish</p>
+</section>
+
+<section>
+  <h2>Phishing (Fishing — «baliq ovi»)</h2>
+  <div class="quote">
+    «Tajovuzkorlar ko'pincha kompyuterni emas, balki kompyuter qarshisida o'tirgan insonni aldashadi.»
+  </div>
+  <div class="cards two" style="margin-top: 24px;">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="message-square-warning"></i></div>
+      <h3>Qanday ishlaydi?</h3>
+      <p>Sizga rasmiy xizmat (Telegram, Google, Click, Payme) nomidan soxta xabar keladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="triangle-alert"></i></div>
+      <h3>Maqsad nima?</h3>
+      <p>Sizni soxta veb-sahifaga kiritib, login, parol yoki SMS-kodni kiritishingizga majbur qilish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Fishing xabarining 3 ta asosiy belgisi</h2>
+  <ol class="steps-n">
+    <li class="fragment"><b>Shoshiltirish yoki qo'rqitish:</b> «Akkauntingiz 15 daqiqada o'chiriladi!» yoki «Katta yutuqni darhol oling!»</li>
+    <li class="fragment"><b>Soxta domen nomi (URL):</b> <code>telegram.org</code> o'rniga <code>telegraam-login.ru</code> yoki <code>t.me-bonus.site</code></li>
+    <li class="fragment"><b>Maxfiy kod yoki parolni so'rash:</b> Rasmiy ma'muriyat hech qachon shaxsiy xabarda parolni so'ramaydi!</li>
+  </ol>
+  
+</section>
+
+<section>
+  <h2>Havola manzilini (URL) tekshirish</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>Soxta havolalar</h3>
+      <ul>
+        <li><code>http://telegrarn-login.uz</code> («rn»)</li>
+        <li><code>http://payme-security.biz</code></li>
+        <li><code>http://g00gle.account.org</code></li>
+        <li>Qulf belgisi yo'q, domen begona</li>
+      </ul>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>Rasmiy havolalar</h3>
+      <ul>
+        <li><code>https://telegram.org</code></li>
+        <li><code>https://payme.uz</code></li>
+        <li><code>https://accounts.google.com</code></li>
+        <li>Yashil qulf va xavfsiz <code>https://</code></li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Ommaviy Wi-Fi tarmog'i xavfi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="triangle-alert"></i></div>
+      <h3>Ochiq tarmoq xavfi</h3>
+      <p>Kafedagi bepul Wi-Fi shifrlanmagan bo'lishi mumkin. Bir tarmoqdagi begonalar sizning trafigingizni ushlab olishi mumkin.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Xavfsiz qoida</h3>
+      <p>Ommaviy Wi-Fi'da bank to'lovlarini qilmang, muhim parollarni kiritmang. Imkon bo'lsa mobil internet (4G/5G) ishlating.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Kibergigiyenaning 5 oltin qoidasi</h2>
+  <ol class="steps-n">
+    <li class="fragment">Har bir akkauntga alohida kuchli parol qo'ying</li>
+    <li class="fragment">Telegram va Google'da 2FA (ikki bosqichli tekshiruv)ni yoqing</li>
+    <li class="fragment">Shubhali havolalar va notanish fayllarni aslo ochmang</li>
+    <li class="fragment">Dastur va operatsion tizimni o'z vaqtida yangilab turing</li>
+    <li class="fragment">Muhim fayllarni bulutda yoki alohida xotirada zaxiralang (Backup)</li>
+  </ol>
+  
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card">
+      <div class="icon"><i data-ic="fingerprint-pattern"></i></div>
+      <h3>Raqamli iz</h3>
+      <p>Internetdagi harakatlaringiz o'chmaydi, shaxsiy ma'lumotlarni asrang.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>2FA Qalqoni</h3>
+      <p>Parolingiz oshkor bo'lsa ham, 2-omil akkauntingizni qutqaradi.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="eye-off"></i></div>
+      <h3>Hushyorlik</h3>
+      <p>Fishing va ijtimoiy muhandislikka aldanmang, domenni tekshiring.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Tezkor savol-javob</h2>
+  <div class="quiz">
+    <p class="q">Parol o'g'irlanganda ham akkauntni himoya qila oladigan vosita qaysi?</p>
+    <div class="opts">
+      <button class="opt" type="button">Brauzer keshini tozalash</button>
+      <button class="opt" type="button" data-ok>2FA (Ikki bosqichli autentifikatsiya)</button>
+      <button class="opt" type="button">Ekranni qulflash</button>
+      <button class="opt" type="button">Antivirusni o'chirish</button>
+    </div>
+    <div class="explain">2FA ikkinchi tasdiqlash omilini (SMS/Authenticator kodi) talab qiladi.</div>
+  </div>
+  
+</section>
+
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>19-dars yakunlandi!</h1>
+  <p class="muted">Keyingi dars: III-bob boshlanadi — Algoritm tushunchasi va algoritmik fikrlash</p>
+  <span class="badge">Vazifa: Akkauntlarda 2FA ni tekshirish</span>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

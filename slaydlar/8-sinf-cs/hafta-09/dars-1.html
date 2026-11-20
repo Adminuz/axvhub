@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Tarmoqlanuvchi algoritmlar va shartlar</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Tarmoqlanuvchi algoritmlar va shartlar</h1>
+  <p class="muted">Dastur chorrahasida: Decision bloki, taqqoslash operatorlari va If/Else mantig'i.</p>
+  <span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">9-hafta · 25-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="split"></i></div>
+      <h3>1. Tarmoqlanish nima?</h3>
+      <p>Hayotiy tanlovlar va shartli bajarilish jarayoni.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="git-branch"></i></div>
+      <h3>2. Decision bloki</h3>
+      <p>Romb shakli, True (Ha) va False (Yo'q) tarmoqlari.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="calculator"></i></div>
+      <h3>3. Taqqoslash operatorlari</h3>
+      <p>&gt;, &lt;, &gt;=, &lt;=, == va != amallari bilan ishlash.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Tarmoqlanuvchi algoritm nima?</h1>
+  <p>Dastur qanday qilib o'ngga yoki chapga burilishni hal qiladi?</p>
+</section>
+
+<section>
+  <h2>Chiziqli va Tarmoqlanuvchi farqi</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>Chiziqli algoritm</h3>
+      <ul>
+        <li>Faqat bitta yo'nalishda boradi</li>
+        <li>Barcha qadamlar 100% bajariladi</li>
+        <li>Tanlov yoki shart yo'q</li>
+      </ul>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>Tarmoqlanuvchi algoritm</h3>
+      <ul>
+        <li>Shart tekshiriladi (Romb)</li>
+        <li>Yo'l ikki tomonga (Ha / Yo'q) ajraladi</li>
+        <li>Faqat bitta tarmoq ishlaydi</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Hayotiy misol: Yomg'ir yog'yaptimi?</h2>
+  <div class="illus">
+    <svg viewBox="0 0 920 240" width="100%" height="200">
+      <polygon points="460,30 580,90 460,150 340,90" class="fc" />
+      <text x="460" y="85" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">Yomg'ir</text>
+      <text x="460" y="108" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">yog'yaptimi?</text>
+
+      <line x1="580" y1="90" x2="680" y2="90" class="la" marker-end="url(#ar-a)" />
+      <text x="630" y="80" text-anchor="middle" class="t-accent" font-size="16" font-weight="bold">Ha (True)</text>
+      <rect x="680" y="65" width="200" height="50" rx="10" class="fg" />
+      <text x="780" y="96" text-anchor="middle" class="t-head" font-size="16">Soyabon olish</text>
+
+      <line x1="340" y1="90" x2="240" y2="90" class="la" marker-end="url(#ar-a)" />
+      <text x="290" y="80" text-anchor="middle" class="t-accent" font-size="16" font-weight="bold">Yo'q (False)</text>
+      <rect x="40" y="65" width="200" height="50" rx="10" class="fb" />
+      <text x="140" y="96" text-anchor="middle" class="t-head" font-size="16">Kepka kiyish</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Flowgorithmda Decision (Romb) bloki</h1>
+  <p>Shart yozish qoidalari va tarmoqlar harakati</p>
+</section>
+
+<section>
+  <h2>Decision blokining tuzilishi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-question-mark"></i></div>
+      <h3>Romb ichidagi savol</h3>
+      <p>Romb ichiga faqat javobi <strong>Rost (True)</strong> yoki <strong>Yolg'on (False)</strong> bo'ladigan ifoda yoziladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="split"></i></div>
+      <h3>Ikkita yo'l (True va False)</h3>
+      <p>Agar shart bajarilsa yashil (True) yo'ldan, bajarilmasa qizil (False) yo'ldan yuradi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Taqqoslash operatorlari</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="arrow-right-left"></i></div>
+      <h3>Katta va Kichik</h3>
+      <p><code>&gt;</code> — Katta: <code>yosh &gt; 18</code></p>
+      <p><code>&lt;</code> — Kichik: <code>ball &lt; 60</code></p>
+      <p><code>&gt;=</code> — Katta yoki teng: <code>x &gt;= 10</code></p>
+      <p><code>&lt;=</code> — Kichik yoki teng: <code>x &lt;= 50</code></p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="equal"></i></div>
+      <h3>Tenglik va Tengsizlik</h3>
+      <p><code>==</code> — Tengmi?: <code>parol == 1234</code></p>
+      <p><code>!=</code> — Teng emasmi?: <code>son != 0</code></p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Muhim qoida: = va == o'rtasidagi farq</h2>
+  <div class="callout warn">
+    Dasturlashda <strong>=</strong> va <strong>==</strong> butunlay boshqa vazifani bajaradi!
+  </div>
+  <div class="vs" style="margin-top: 20px;">
+    <div class="side fragment">
+      <h3>Bitta tenglik: =</h3>
+      <p><strong>Assign (O'zlashtirish)</strong></p>
+      <p><code>yosh = 15</code></p>
+      <ul>
+        <li>Xotiradagi katakka 15 qiymatini yozib qo'yadi.</li>
+      </ul>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>Ikkita tenglik: ==</h3>
+      <p><strong>Decision (Taqqoslash)</strong></p>
+      <p><code>yosh == 15</code></p>
+      <ul>
+        <li>Katakdagi qiymat 15 ga tengmi deb so'raydi (True/False).</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Amaliy loyihalar va masalalar</h1>
+  <p>Juft-toq son, musbat-manfiy va kattasini aniqlash dasturlari</p>
+</section>
+
+<section>
+  <h2>Juft va toq sonni aniqlash</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="percent"></i></div>
+      <h3>Qoldiq amali: %</h3>
+      <p>Sonni 2 ga bo'lgandagi qoldiq hisoblanadi:</p>
+      <p><code>son % 2 == 0</code></p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="git-branch"></i></div>
+      <h3>Natija:</h3>
+      <p><b>True:</b> Qoldiq 0 bo'lsa $\rightarrow$ «Juft son»</p>
+      <p><b>False:</b> Qoldiq 1 bo'lsa $\rightarrow$ «Toq son»</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Amaliy misol: Juft yoki Toq blok-sxemasi</h2>
+  <div class="illus">
+    <svg viewBox="0 0 900 280" width="100%" height="240">
+      <rect x="375" y="10" width="150" height="36" rx="18" class="fg" />
+      <text x="450" y="34" text-anchor="middle" class="t-head" font-size="15">Input n</text>
+
+      <line x1="450" y1="46" x2="450" y2="70" class="la" marker-end="url(#ar-a)" />
+
+      <polygon points="450,70 570,115 450,160 330,115" class="fc" />
+      <text x="450" y="120" text-anchor="middle" class="t-head" font-size="16" font-weight="bold">n % 2 == 0</text>
+
+      <line x1="570" y1="115" x2="660" y2="115" class="la" marker-end="url(#ar-a)" />
+      <polygon points="680,95 820,95 790,135 650,135" class="fg" />
+      <text x="735" y="120" text-anchor="middle" class="t-head" font-size="14">Output "Juft"</text>
+
+      <line x1="330" y1="115" x2="240" y2="115" class="la" marker-end="url(#ar-a)" />
+      <polygon points="220,95 80,95 110,135 250,135" class="fb" />
+      <text x="165" y="120" text-anchor="middle" class="t-head" font-size="14">Output "Toq"</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Interaktiv jumboq: Qaysi tarmoq ishlaydi?</h2>
+  <div class="flip" style="min-height:190px"><div class="flip-in">
+    <div class="face front">
+      <h3>Agar ball = 75 bo'lsa, ball &gt;= 80 sharti qaysi tarmoqqa (True yoki False) yo'naltiradi?</h3>
+      <p class="t-muted">Javobni ko'rish uchun bosing</p>
+      <span class="flip-hint">bosing</span>
+    </div>
+    <div class="face back">
+      <h3>False (Yo'q) tarmog'iga!</h3>
+      <p>Chunki 75 soni 80 dan katta ham, teng ham emas. Shart yolg'on (false) bo'ladi.</p>
+    </div>
+  </div></div>
+  
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card">
+      <div class="icon"><i data-ic="split"></i></div>
+      <h3>Tarmoqlanish</h3>
+      <p>Shartga ko'ra yo'nalish tanlash.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="git-branch"></i></div>
+      <h3>Decision</h3>
+      <p>Romb shakli: True va False tarmoqlari.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>== belgisi</h3>
+      <p>Tenglikni tekshirish uchun ishlatiladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

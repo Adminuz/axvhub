@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Flowgorithmda chiziqli algoritmlar yaratish</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>Flowgorithmda chiziqli algoritmlar yaratish</h1>
+  <p class="muted">Shartlarsiz, to'g'ri chiziq bo'ylab harakat: formulalar, arifmetik hisoblar va to'liq loyihalar.</p>
+  <span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">8-hafta · 24-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="arrow-down"></i></div>
+      <h3>1. Chiziqli tuzilma</h3>
+      <p>Chiziqli algoritm qonuniyatlari va bloklar ketma-ketligi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="calculator"></i></div>
+      <h3>2. Arifmetik amallar</h3>
+      <p>Amallarning ustunlik tartibi va qavslardan to'g'ri foydalanish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-play"></i></div>
+      <h3>3. Amaliy loyihalar</h3>
+      <p>Geometrik, fizik va moliyaviy hisob-kitob dasturlarini tuzish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Chiziqli algoritm nima?</h1>
+  <p>Hech qanday shartsiz, to'g'ridan-to'g'ri bajariladigan harakatlar zanjiri</p>
+</section>
+
+<section>
+  <h2>Chiziqli algoritmning o'ziga xosligi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Qat'iy ketma-ketlik</h3>
+      <p>Har bir buyruq faqat bir marta va o'z navbati kelganda aniq bajariladi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-alert"></i></div>
+      <h3>Tarmoqlanish va takrorlanish yo'q</h3>
+      <p>Hech qanday shart tekshirilmaydi, yo'l ikkiga bo'linmaydi va orqaga qaytish bo'lmaydi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Blok-sxemada chiziqli zanjir</h2>
+  <div class="illus">
+    <svg viewBox="0 0 900 240" width="100%" height="200">
+      <rect x="30" y="90" width="130" height="46" rx="23" class="fg" />
+      <text x="95" y="119" text-anchor="middle" class="t-head" font-size="16">Start</text>
+
+      <line x1="160" y1="113" x2="195" y2="113" class="la" marker-end="url(#ar-a)" />
+
+      <rect x="200" y="90" width="140" height="46" rx="6" class="fb" />
+      <text x="270" y="119" text-anchor="middle" class="t-head" font-size="15">Declare</text>
+
+      <line x1="340" y1="113" x2="375" y2="113" class="la" marker-end="url(#ar-a)" />
+
+      <polygon points="400,90 510,90 490,136 380,136" class="fb" />
+      <text x="445" y="119" text-anchor="middle" class="t-head" font-size="15">Input</text>
+
+      <line x1="510" y1="113" x2="545" y2="113" class="la" marker-end="url(#ar-a)" />
+
+      <rect x="550" y="90" width="140" height="46" class="fc" />
+      <text x="620" y="119" text-anchor="middle" class="t-head" font-size="15">Assign</text>
+
+      <line x1="690" y1="113" x2="725" y2="113" class="la" marker-end="url(#ar-a)" />
+
+      <polygon points="750,90 860,90 840,136 730,136" class="fg" />
+      <text x="795" y="119" text-anchor="middle" class="t-head" font-size="15">Output</text>
+    </svg>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Arifmetik amallar va qavslar siri</h1>
+  <p>Dasturlashda amallarning bajarilish tartibi (Precedence)</p>
+</section>
+
+<section>
+  <h2>Arifmetik operatorlar</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="plus"></i></div>
+      <h3>Qo'shish va Ayirish</h3>
+      <p><code>+</code> va <code>-</code> belgilari oddiy matematikadagidek ishlaydi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="x"></i></div>
+      <h3>Ko'paytirish va Bo'lish</h3>
+      <p>Ko'paytirish uchun <code>*</code> (yulduzcha), bo'lish uchun <code>/</code> (slash) ishlatiladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Amallarning ustunlik tartibi</h2>
+  <ol class="steps-n">
+    <li class="fragment"><b>1-darajali:</b> Qavslar ichidagi ifodalar <code>(...)</code> doimo eng birinchi hisoblanadi.</li>
+    <li class="fragment"><b>2-darajali:</b> Ko'paytirish <code>*</code>, Bo'lish <code>/</code> va Qoldiq <code>%</code> amallari.</li>
+    <li class="fragment"><b>3-darajali:</b> Qo'shish <code>+</code> va Ayirish <code>-</code> amallari.</li>
+  </ol>
+  
+</section>
+
+<section>
+  <h2>Xavfli xato: O'rtacha arifmetik</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>Xato ifoda</h3>
+      <p><code>orta = a + b + c / 3</code></p>
+      <ul>
+        <li>Avval faqat <code>c</code> soni 3 ga bo'linadi</li>
+        <li>Keyin <code>a</code> va <code>b</code> qo'shiladi</li>
+        <li>Natija butunlay xato chiqadi!</li>
+      </ul>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>To'g'ri ifoda</h3>
+      <p><code>orta = (a + b + c) / 3</code></p>
+      <ul>
+        <li>Qavs ichi avval hisoblanadi</li>
+        <li>Uchta son yig'indisi topiladi</li>
+        <li>So'ngra yig'indi 3 ga bo'linadi!</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Amaliy loyihalar va hisoblashlar</h1>
+  <p>To'g'ri to'rtburchak, Foiz va Selsiy-Farengeyt loyihalari</p>
+</section>
+
+<section>
+  <h2>1-loyiha: To'g'ri to'rtburchak</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="pencil"></i></div>
+      <h3>Formulalar</h3>
+      <p>Yuza: <code>S = a * b</code></p>
+      <p>Perimetr: <code>P = 2 * (a + b)</code></p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="terminal"></i></div>
+      <h3>Bloklar</h3>
+      <p>1. <code>Declare Real a, b, S, P</code></p>
+      <p>2. <code>Input a, b</code></p>
+      <p>3. <code>Assign S, P</code></p>
+      <p>4. <code>Output</code></p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Xatolarni qidirish: Step (F6) rejimi</h2>
+  <div class="stats">
+    <div class="stat fragment fade-up">
+      <div class="v">F6</div>
+      <div class="l">Har bir bosishda bitta blok yuradi</div>
+    </div>
+    <div class="stat fragment fade-up">
+      <div class="v">RAM</div>
+      <div class="l">O'zgaruvchilar oynasida qiymat o'zgarishi ko'rinadi</div>
+    </div>
+    <div class="stat fragment fade-up">
+      <div class="v">Debug</div>
+      <div class="l">Xatolik aynan qaysi blokda ekani darhol fosh bo'ladi</div>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Interaktiv jumboq: Natija nechaga teng?</h2>
+  <div class="flip" style="min-height:190px"><div class="flip-in">
+    <div class="face front">
+      <h3>Agar a = 10 va b = 2 bo'lsa, natija = a + b * 4 ifodasi necha bo'ladi?</h3>
+      <p class="t-muted">Javobni ko'rish uchun bosing</p>
+      <span class="flip-hint">bosing</span>
+    </div>
+    <div class="face back">
+      <h3>18 ga teng!</h3>
+      <p>Avval ko'paytirish bajariladi: <code>2 * 4 = 8</code>. Keyin qo'shiladi: <code>10 + 8 = 18</code>.</p>
+    </div>
+  </div></div>
+  
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card">
+      <div class="icon"><i data-ic="arrow-down"></i></div>
+      <h3>Chiziqli algoritm</h3>
+      <p>Qat'iy ketma-ketlik, to'g'ri chiziqli harakat.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="calculator"></i></div>
+      <h3>Qavslar</h3>
+      <p>Arifmetik amallar tartibini aniq belgilaydi.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="play"></i></div>
+      <h3>F5 va F6</h3>
+      <p>Tezkor ishga tushirish va qadam-baqadam tekshirish.</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

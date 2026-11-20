@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>“Kalkulyator” loyihasi: Xatolarni tuzatish va testlash</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>“Kalkulyator” loyihasi: Xatolarni tuzatish va testlash</h1>
+  <p class="muted">Nolga bo'lishdan himoya, While sikli bilan uzluksiz menyu va Kalkulyator v2.0.</p>
+  <span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">10-hafta · 30-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-alert"></i></div>
+      <h3>1. Nolga bo'lish xatosi</h3>
+      <p>Division by zero muammosi va uning xavfsiz yechimi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="repeat"></i></div>
+      <h3>2. Uzluksiz menyu</h3>
+      <p>While sikli orqali qayta-qayta hisoblash imkoniyati.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>3. Kalkulyator v2.0</h3>
+      <p>Loyihani to'liq testlash va professional ko'rinishga keltirish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Nolga bo'lish (Division by Zero) nima?</h1>
+  <p>Dasturni qotirib qo'yadigan xatolikdan himoyalanamiz</p>
+</section>
+
+<section>
+  <h2>Nima uchun nolga bo'lib bo'lmaydi?</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>Himoyasiz dastur</h3>
+      <p><code>b = 0</code> bo'lganda <code>natija = a / b</code> bajarilsa:</p>
+      <ul>
+        <li>Kompyuter qotib qoladi yoki favqulodda to'xtaydi (Crash).</li>
+        <li>Foydalanuvchi hech narsani tushunmay qoladi.</li>
+      </ul>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>Himoyalangan dastur</h3>
+      <p>Bo'lishdan oldin <code>b == 0</code> tekshiriladi:</p>
+      <ul>
+        <li>Agar nol bo'lsa: «0 ga bo'lish mumkin emas!» deb ogohlantiradi.</li>
+        <li>Dastur to'xtab qolmay, xavfsiz davom etadi.</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Himoya Decision blokining tuzilishi</h2>
+  <div class="cards two">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-alert"></i></div>
+      <h3>True: b == 0</h3>
+      <p><code>Output "Xatolik: Nolga bo'lish mumkin emas!"</code></p>
+      <p>Hech qanday bo'lish amali bajarilmaydi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>False: b != 0</h3>
+      <p><code>natija = a / b</code></p>
+      <p>Xavfsiz hisoblanib, natija ekranga ko'rsatiladi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>While sikli orqali uzluksiz menyu</h1>
+  <p>Dastur bir marta ishlab tugab qolmasin!</p>
+</section>
+
+<section>
+  <h2>Qayta ishlash mexanizmi</h2>
+  <ol class="steps-n">
+    <li class="fragment">Boshida <code>davom = "ha"</code> o'rnatiladi.</li>
+    <li class="fragment"><code>While davom == "ha"</code> sikli ochiladi.</li>
+    <li class="fragment">Sikl ichida barcha kiritish va hisoblashlar bajariladi.</li>
+    <li class="fragment">Oxirida so'raladi: <code>"Yana hisoblaysizmi? (ha/yo'q)"</code>.</li>
+    <li class="fragment">Agar <code>"yo'q"</code> deyilsa, sikl to'xtaydi va minnatdorchilik bildiriladi.</li>
+  </ol>
+  
+</section>
+
+<section class="sec">
+  <div class="num">03</div>
+  <h1>Kalkulyator v2.0 ni testlash</h1>
+  <p>To'liq ishlovchi mukammal loyiha</p>
+</section>
+
+<section>
+  <h2>Kalkulyator v2.0 imkoniyatlari</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="plus"></i></div>
+      <h3>4 ta Amal</h3>
+      <p>+, -, *, / amallarini to'liq bajaradi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Xavfsiz bo'lish</h3>
+      <p>0 ga bo'lish xatosini to'xtatadi.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="refresh-cw"></i></div>
+      <h3>Uzluksiz rejim</h3>
+      <p>Foydalanuvchi xohlagancha hisoblaydi.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Interaktiv jumboq: Dastur qachon to'xtaydi?</h2>
+  <div class="flip" style="min-height:190px"><div class="flip-in">
+    <div class="face front">
+      <h3>Kalkulyator v2.0 dasturi qachon o'z ishini yakunlaydi?</h3>
+      <p class="t-muted">Javobni ko'rish uchun bosing</p>
+      <span class="flip-hint">bosing</span>
+    </div>
+    <div class="face back">
+      <h3>Foydalanuvchi «ha» dan boshqa javob (masalan: «yo'q») kiritganda!</h3>
+      <p>Chunki While davom == "ha" sharti False bo'lib, sikl to'xtaydi.</p>
+    </div>
+  </div></div>
+  
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card">
+      <div class="icon"><i data-ic="shield-alert"></i></div>
+      <h3>Nolga bo'lish</h3>
+      <p>b == 0 sharti bilan himoyalanadi.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="repeat"></i></div>
+      <h3>While menyu</h3>
+      <p>Dasturni uzluksiz ishlatish imkoni.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="circle-check"></i></div>
+      <h3>Kalkulyator v2.0</h3>
+      <p>10-haftaning yakuniy yirik amaliy loyihasi!</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>

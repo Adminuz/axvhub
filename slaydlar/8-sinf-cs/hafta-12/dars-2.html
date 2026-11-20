@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>“Login va parol tekshirish tizimi” loyihasi</title>
+  <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/black.css">
+  <link rel="stylesheet" href="../../../reveal/dist/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="../../../reveal/dars.css">
+  <link rel="icon" href="../../../reveal/logo.png">
+  <script src="../../../reveal/tema.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <img class="slide-logo" src="../../../reveal/logo.png" alt="">
+    <div class="slides">
+<section class="hero">
+  <img class="logo-big" src="../../../reveal/logo.png" alt="AXV">
+  <h1>“Login va parol tekshirish tizimi” loyihasi</h1>
+  <p class="muted">Xavfsizlik choralari: shaxsni tasdiqlash, 3 ta urinish chegarasi va bloklash mexanizmi.</p>
+  <span class="badge">8-sinf</span><span class="badge">Computer Science Foundation</span><span class="badge">12-hafta · 35-dars</span>
+  
+</section>
+
+<section>
+  <h2>Bugungi dars rejasi</h2>
+  <div class="cards three">
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>1. Autentifikatsiya</h3>
+      <p>Login va parolni AND orqali solishtirish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="rotate-cw"></i></div>
+      <h3>2. 3 ta urinish</h3>
+      <p>Brute-force hujumlaridan himoyalanish.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <div class="icon"><i data-ic="lock"></i></div>
+      <h3>3. Bloklash tizimi</h3>
+      <p>Xavfsizlik yuzasidan tizimni vaqtincha to'xtatish.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">01</div>
+  <h1>Nega aynan 3 ta urinish?</h1>
+  <p>Kiberxavfsizlikda Brute-Force (kuch bilan buzish) tushunchasi</p>
+</section>
+
+<section>
+  <h2>Cheksiz urinish xavfi</h2>
+  <div class="vs">
+    <div class="side fragment">
+      <h3>Himoyasiz tizim</h3>
+      <ul>
+        <li>Hujumchi maxsus dastur yordamida millionlab parollarni tinimsiz sinab ko'radi.</li>
+        <li>Ertami-kechmi parol topiladi va akkaunt buziladi.</li>
+      </ul>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side b fragment">
+      <h3>Himoyalangan tizim</h3>
+      <ul>
+        <li>Faqat 3 ta imkoniyat beriladi.</li>
+        <li>3-xatodan keyin tizim avtomatik bloklanadi.</li>
+        <li>Buzg'unchining barcha rejalari chippakka chiqadi!</li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+<section class="sec">
+  <div class="num">02</div>
+  <h1>Mantiqiy tuzilma va While sikli</h1>
+  <p>Urinishlarni hisoblash va shartni tekshirish</p>
+</section>
+
+<section>
+  <h2>Tizimning asosiy sharti</h2>
+  <div class="callout tip">
+    Sikl davom etishi uchun ikkita shart bajarilishi lozim:
+    <br><code>urinish &lt; 3 AND kirildimi == false</code>
+  </div>
+  <ol class="steps-n" style="margin-top: 15px;">
+    <li class="fragment">To'g'ri kiritilsa $\rightarrow$ <code>kirildimi = true</code> bo'lib sikl darhol to'xtaydi.</li>
+    <li class="fragment">Xato bo'lsa $\rightarrow$ <code>urinish = urinish + 1</code> bo'lib, qolgan urinishlar ko'rsatiladi.</li>
+    <li class="fragment">Urinish 3 ga yetsa $\rightarrow$ Sikl to'xtaydi va «Bloklandi!» deyiladi.</li>
+  </ol>
+  
+</section>
+
+<section>
+  <h2>Interaktiv jumboq: Tizim nima deydi?</h2>
+  <div class="flip" style="min-height:190px"><div class="flip-in">
+    <div class="face front">
+      <h3>Agar foydalanuvchi 2-urinishida to'g'ri parol kiritsa nima bo'ladi?</h3>
+      <p class="t-muted">Javobni ko'rish uchun bosing</p>
+      <span class="flip-hint">bosing</span>
+    </div>
+    <div class="face back">
+      <h3>Tizimga kiradi va 3-urinish so'ralmaydi!</h3>
+      <p>Chunki kirildimi = true bo'ladi va While sikli o'z ishini darhol yakunlaydi.</p>
+    </div>
+  </div></div>
+  
+</section>
+
+<section>
+  <h2>Dars xulosasi</h2>
+  <div class="cards three">
+    <div class="card">
+      <div class="icon"><i data-ic="shield-check"></i></div>
+      <h3>Autentifikatsiya</h3>
+      <p>Login va parolni tekshirish.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="rotate-cw"></i></div>
+      <h3>3 ta Urinish</h3>
+      <p>Akkauntni buzg'unchilardan himoya qilish.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i data-ic="lock"></i></div>
+      <h3>Bloklash</h3>
+      <p>Xavfsizlikning yakuniy qalqoni.</p>
+    </div>
+  </div>
+  
+</section>
+
+    </div>
+  </div>
+
+  <script src="../../../reveal/ikonlar.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="../../../reveal/interaktiv.js"></script>
+  <script src="../../../reveal/dist/plugin/highlight.js"></script>
+  <script src="../../../reveal/dist/plugin/notes.js"></script>
+  <script>
+    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
+      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+  </script>
+</body>
+</html>
