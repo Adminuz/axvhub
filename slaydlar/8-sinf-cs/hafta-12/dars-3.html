@@ -2,7 +2,7 @@
 <html lang="uz">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="dark light">
   <title>Yakuniy nazorat ishi</title>
   <!-- Bu fayl QOBIQ: barcha slaydlar shu shablonga o'ralib chiqadi (slayd_yigish.py). Tahrirlash: bir joyda, hamma slaydga ta'sir qiladi. -->
@@ -14,6 +14,12 @@
   <script src="../../../reveal/tema.js"></script>
 </head>
 <body>
+  <header class="viewer-header">
+    <a class="viewer-back" href="/8-sinf-cs/hafta-12/dars-3" aria-label="Darsga qaytish"><svg viewBox="0 0 24 24"><path d="m14 7-5 5 5 5"/></svg><span>Darsga qaytish</span></a>
+    <div class="viewer-modes" role="group" aria-label="Ko'rish rejimi"><button id="reading-view" type="button" aria-pressed="false">Kartalar</button><button id="presentation-view" type="button" aria-pressed="true">Taqdimot</button></div>
+    <div class="deck-header-actions"><button id="deck-font-toggle" type="button" aria-label="Matn o'lchami" aria-expanded="false" aria-controls="deck-font-menu">Aa</button><span class="theme-slot"></span></div>
+    <div id="deck-font-menu" class="deck-font-menu" hidden><span>Matn o'lchami</span><div><button id="reader-smaller" type="button" aria-label="Matnni kichraytirish">A−</button><button id="reader-reset" type="button">100%</button><button id="reader-larger" type="button" aria-label="Matnni kattalashtirish">A+</button></div></div>
+  </header>
   <div class="reveal">
     <img class="slide-logo" src="../../../reveal/logo.png" alt="">
     <div class="slides">
@@ -155,6 +161,10 @@
 
     </div>
   </div>
+  <main id="mobile-deck" class="mobile-deck" hidden><div class="deck-progress" aria-hidden="true"><span id="deck-progress-fill"></span></div><div id="deck-scroll" class="deck-scroll"></div><p id="deck-status" class="deck-sr" aria-live="polite"></p></main>
+  <nav class="viewer-footer" aria-label="Slaydlar bo'yicha yurish"><button id="slide-prev" class="viewer-step" type="button" aria-label="Oldingi slayd"><svg viewBox="0 0 24 24"><path d="m14 7-5 5 5 5"/></svg><span>Oldingi</span></button><button id="deck-contents" type="button" aria-label="Mundarijani ochish" aria-haspopup="dialog"><span id="deck-position"></span><svg viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></svg></button><button id="slide-next" class="viewer-step" type="button" aria-label="Keyingi slayd"><span>Keyingi</span><svg viewBox="0 0 24 24"><path d="m10 7 5 5-5 5"/></svg></button></nav>
+  <div id="deck-overlay" class="deck-overlay" hidden></div>
+  <script id="deck-data" type="application/json">{"title": "Yakuniy nazorat ishi", "html": "<section class=\"hero\">\n  <img class=\"logo-big\" src=\"../../../reveal/logo.png\" alt=\"AXV\">\n  <h1>Yakuniy nazorat ishi<\/h1>\n  <p class=\"muted\">I chorak bo'yicha umumlashtiruvchi sinov va bilimlarni tekshirish<\/p>\n  <span class=\"badge\">12-hafta · 36-dars<\/span>\n<\/section>\n\n<section>\n  <h2>Nazorat ishi maqsadi<\/h2>\n  <div class=\"cards two\">\n    <div class=\"card\">\n      <i data-ic=\"award\" class=\"icon fg\"><\/i>\n      <h3>1-chorak sarhisobi<\/h3>\n      <p>O'tgan 12 hafta davomida egallangan nazariy va amaliy ko'nikmalarni baholash.<\/p>\n    <\/div>\n    <div class=\"card\">\n      <i data-ic=\"code-xml\" class=\"icon fa\"><\/i>\n      <h3>Mustaqil fikrlash<\/h3>\n      <p>Haqiqiy algoritmlar va dasturiy masalalarni mustaqil hal qilish mahorati.<\/p>\n    <\/div>\n  <\/div>\n<\/section>\n\n<section>\n  <h2>Nazorat ishi tuzilishi<\/h2>\n  <div class=\"stats\">\n    <div class=\"stat\">\n      <span class=\"v\">10<\/span>\n      <span class=\"l\">Nazariy test (30 ball)<\/span>\n    <\/div>\n    <div class=\"stat\">\n      <span class=\"v\">3<\/span>\n      <span class=\"l\">Amaliy masala (70 ball)<\/span>\n    <\/div>\n    <div class=\"stat\">\n      <span class=\"v\">80<\/span>\n      <span class=\"l\">Daqiqa vaqt<\/span>\n    <\/div>\n  <\/div>\n<\/section>\n\n<section>\n  <h2>Baholash mezonlari<\/h2>\n  <div class=\"cards three\">\n    <div class=\"card\">\n      <i data-ic=\"check\" class=\"icon fg\"><\/i>\n      <h3>Soddalik<\/h3>\n      <p>Kodni to'g'ri sintaksis bilan xatosiz yozish (20 ball).<\/p>\n    <\/div>\n    <div class=\"card\">\n      <i data-ic=\"cpu\" class=\"icon fa\"><\/i>\n      <h3>Mantiq<\/h3>\n      <p>Shartlar va sikllarning to'g'ri ishlashi (25 ball).<\/p>\n    <\/div>\n    <div class=\"card\">\n      <i data-ic=\"sparkles\" class=\"icon fc\"><\/i>\n      <h3>Komplekslik<\/h3>\n      <p>Bankomat va do'kon loyihalarida mukammallik (25 ball).<\/p>\n    <\/div>\n  <\/div>\n<\/section>\n\n<section>\n  <h2>O'tilgan mavzular xaritasi<\/h2>\n  <div class=\"cards two\">\n    <div class=\"card\">\n      <i data-ic=\"binary\" class=\"icon fb\"><\/i>\n      <h3>Boshlang'ich asoslar<\/h3>\n      <p>Ma'lumot turlari, arifmetik amallar, o'zgaruvchilar, `input()` va `print()`.<\/p>\n    <\/div>\n    <div class=\"card\">\n      <i data-ic=\"split\" class=\"icon fa\"><\/i>\n      <h3>Tarmoqlanish va sikllar<\/h3>\n      <p>`if/elif/else`, mantiqiy amallar, `for` diapazonlari, `while` va bayroqlar.<\/p>\n    <\/div>\n  <\/div>\n<\/section>\n\n<section>\n  <h2>Dasturlashda funksiyalar<\/h2>\n  <div class=\"card\">\n    <i data-ic=\"terminal\" class=\"icon fc\"><\/i>\n    <h3>Strukturali yondashuv<\/h3>\n    <p>`def` yordamida kodni qismlarga ajratish, parametrlarga ega funksiyalar va `return` qiymati orqali toza arxitektura qurish.<\/p>\n  <\/div>\n<\/section>\n\n<section>\n  <h2>1-masala: Harorat konvertori<\/h2>\n  <div class=\"callout tip\">\n    <p>Selsiy bo'yicha haroratni Farengeytga aylantirish formulasidan foydalaning ($F = C \\times 1.8 + 32$).<\/p>\n  <\/div>\n  <div class=\"card\">\n    <p class=\"muted\">Kiritish: 25 -> Chiqarish: 77.0°F<\/p>\n  <\/div>\n<\/section>\n\n<section>\n  <h2>2-masala: Juft va toqlarni sanash<\/h2>\n  <div class=\"callout tip\">\n    <p>Foydalanuvchi `0` kiritguncha sonlar qabul qilinadi. Sikl to'xtagach, kiritilgan juft va toq sonlar miqdori hisobot sifatida ko'rsatiladi.<\/p>\n  <\/div>\n<\/section>\n\n<section>\n  <h2>3-masala: Mini do'kon hisob-kitobi<\/h2>\n  <div class=\"callout warn\">\n    <p>Chegirma sharti: agar umumiy xarid summasi 100 000 so'mdan oshsa, 10% chegirma ayirib tashlansin!<\/p>\n  <\/div>\n<\/section>\n\n<section>\n  <h2>Nazorat ishi qoidalari<\/h2>\n  <div class=\"cards two\">\n    <div class=\"card\">\n      <i data-ic=\"shield-alert\" class=\"icon fb\"><\/i>\n      <h3>Halollik<\/h3>\n      <p>Bir-biridan ko'chirish va begona yordam qat'iyan taqiqlanadi.<\/p>\n    <\/div>\n    <div class=\"card\">\n      <i data-ic=\"clock\" class=\"icon fg\"><\/i>\n      <h3>Vaqt nazorati<\/h3>\n      <p>Barcha topshiriqlarni belgilangan 80 daqiqada yakunlang.<\/p>\n    <\/div>\n  <\/div>\n<\/section>\n\n<section>\n  <h2>Muvaffaqiyat tilaymiz!<\/h2>\n  <div class=\"card\">\n    <i data-ic=\"trophy\" class=\"icon fg\"><\/i>\n    <h3>Bilimingizga ishoning!<\/h3>\n    <p>Siz o'tgan 12 hafta davomida jiddiy tayyorgarlik ko'rdingiz. Xotirjamlik va diqqat — muvaffaqiyat garovidir!<\/p>\n  <\/div>\n<\/section>\n"}</script>
 
   <script src="../../../reveal/ikonlar.js"></script>
   <script src="../../../reveal/dist/reveal.js"></script>
@@ -162,8 +172,12 @@
   <script src="../../../reveal/dist/plugin/highlight.js"></script>
   <script src="../../../reveal/dist/plugin/notes.js"></script>
   <script>
-    Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: true, width: 1280, height: 720, margin: 0.06,
-      transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+    window.AXVStartPresentation = function () {
+      if (window.AXVPresentationReady) return window.AXVPresentationReady;
+      return window.AXVPresentationReady = Reveal.initialize({ scrollActivationWidth: null, hash: true, slideNumber: false, controls: false, progress: false, width: 1280, height: 720, margin: 0.06,
+        transition: 'slide', autoAnimateDuration: 0.7, plugins: [RevealHighlight, RevealNotes] });
+    };
   </script>
+  <script src="../../../reveal/oqish.js"></script>
 </body>
 </html>
